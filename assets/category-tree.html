@@ -1,0 +1,227 @@
+<script>
+(function () {
+  const separators = /\s*(?:>|\/|::)\s*/;
+  const pathSeparator = " > ";
+
+  function splitPath(category) {
+    return category
+      .split(separators)
+      .map((part) => part.trim())
+      .filter(Boolean);
+  }
+
+  function getPostCategories(post) {
+    return Array.from(post.querySelectorAll(".listing-category"))
+      .map((category) => category.textContent.trim())
+      .filter(Boolean);
+  }
+
+  function getPostPaths(post) {
+    return getPostCategories(post)
+      .map((category) => splitPath(category).join(pathSeparator))
+      .filter(Boolean);
+  }
+
+  function includesPath(paths, selectedPath) {
+    if (!selectedPath) {
+      return true;
+    }
+
+    return paths.some((path) =>
+      path === selectedPath || path.startsWith(selectedPath + pathSeparator)
+    );
+  }
+
+  function ensureNode(root, parts) {
+    let node = root;
+    let path = "";
+
+    for (const part of parts) {
+      path = path ? path + pathSeparator + part : part;
+
+      if (!node.children.has(part)) {
+        node.children.set(part, {
+          label: part,
+          path,
+          count: 0,
+          children: new Map(),
+        });
+      }
+
+      node = node.children.get(part);
+    }
+  }
+
+  function buildTree(posts) {
+    const root = { label: "All", path: "", count: posts.length, children: new Map() };
+    const counts = new Map();
+
+    posts.forEach((post) => {
+      const countedPaths = new Set();
+
+      getPostPaths(post).forEach((path) => {
+        const parts = splitPath(path);
+        ensureNode(root, parts);
+
+        parts.forEach((_part, index) => {
+          countedPaths.add(parts.slice(0, index + 1).join(pathSeparator));
+        });
+      });
+
+      countedPaths.forEach((path) => {
+        counts.set(path, (counts.get(path) || 0) + 1);
+      });
+    });
+
+    function applyCounts(node) {
+      node.children.forEach((child) => {
+        child.count = counts.get(child.path) || 0;
+        applyCounts(child);
+      });
+    }
+
+    applyCounts(root);
+    return root;
+  }
+
+  function createButton(node, state, onSelect) {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.dataset.categoryPath = node.path;
+    button.setAttribute("aria-label", node.path || "All categories");
+
+    if (node.path && node.children && node.children.size) {
+      const toggle = document.createElement("span");
+      toggle.className = "category-toggle";
+      toggle.setAttribute("aria-hidden", "true");
+      toggle.textContent = state.expanded.has(node.path) ? "-" : "+";
+      button.appendChild(toggle);
+    }
+
+    const label = document.createElement("span");
+    label.textContent = node.label;
+    button.appendChild(label);
+
+    const count = document.createElement("span");
+    count.className = "category-count";
+    count.textContent = " (" + node.count + ")";
+    button.appendChild(count);
+
+    if (state.selectedPath === node.path) {
+      button.classList.add("active");
+    }
+
+    button.addEventListener("click", () => onSelect(node));
+    return button;
+  }
+
+  function renderNode(node, state, onSelect) {
+    const li = document.createElement("li");
+    const hasChildren = node.children && node.children.size > 0;
+
+    if (hasChildren && !state.expanded.has(node.path)) {
+      li.classList.add("is-collapsed");
+    }
+
+    li.appendChild(createButton(node, state, onSelect));
+
+    if (hasChildren) {
+      const ul = document.createElement("ul");
+
+      Array.from(node.children.values())
+        .sort((a, b) => a.label.localeCompare(b.label))
+        .forEach((child) => ul.appendChild(renderNode(child, state, onSelect)));
+
+      li.appendChild(ul);
+    }
+
+    return li;
+  }
+
+  function renderTree(container, tree, state, onSelect) {
+    container.innerHTML = "";
+    container.className = "category-tree";
+    container.appendChild(createButton(tree, state, onSelect));
+
+    const ul = document.createElement("ul");
+    Array.from(tree.children.values())
+      .sort((a, b) => a.label.localeCompare(b.label))
+      .forEach((child) => ul.appendChild(renderNode(child, state, onSelect)));
+    container.appendChild(ul);
+  }
+
+  function filterPosts(posts, selectedPath) {
+    let visibleCount = 0;
+
+    posts.forEach((post) => {
+      const visible = includesPath(getPostPaths(post), selectedPath);
+      post.classList.toggle("d-none", !visible);
+      visibleCount += visible ? 1 : 0;
+    });
+
+    const noMatch = document.querySelector(".listing-no-matching");
+    if (noMatch) {
+      noMatch.classList.toggle("d-none", visibleCount > 0);
+    }
+  }
+
+  function setupCategoryTree() {
+    const defaultCategories = document.querySelector(".quarto-listing-category");
+    const title = document.querySelector(".quarto-listing-category-title");
+    const posts = Array.from(document.querySelectorAll(".quarto-post"));
+
+    if (!defaultCategories || posts.length === 0) {
+      return;
+    }
+
+    const tree = buildTree(posts);
+    const state = {
+      selectedPath: "",
+      expanded: new Set([""]),
+    };
+
+    const treeContainer = document.createElement("div");
+    defaultCategories.replaceWith(treeContainer);
+
+    if (title) {
+      title.textContent = "Categories";
+    }
+
+    function selectCategory(node) {
+      state.selectedPath = node.path;
+
+      if (node.children && node.children.size) {
+        if (state.expanded.has(node.path) && node.path) {
+          state.expanded.delete(node.path);
+        } else {
+          state.expanded.add(node.path);
+        }
+      }
+
+      filterPosts(posts, state.selectedPath);
+      renderTree(treeContainer, tree, state, selectCategory);
+    }
+
+    posts.forEach((post) => {
+      post.querySelectorAll(".listing-category").forEach((category) => {
+        category.addEventListener("click", (event) => {
+          event.preventDefault();
+          event.stopPropagation();
+
+          state.selectedPath = splitPath(category.textContent.trim()).join(pathSeparator);
+          filterPosts(posts, state.selectedPath);
+          renderTree(treeContainer, tree, state, selectCategory);
+        });
+      });
+    });
+
+    renderTree(treeContainer, tree, state, selectCategory);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupCategoryTree);
+  } else {
+    setupCategoryTree();
+  }
+})();
+</script>

@@ -3,7 +3,7 @@ title: "IMBH란 무엇인가?"
 date: "2026-06-11"
 categories:
   - Astronomy
-  - Black Hole
+  - Black Hole > IMBH
 ---
 
 # IMBH란?

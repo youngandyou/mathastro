@@ -18,5 +18,6 @@ format:
       - cosmo
       - brand
     css: styles.css
-
+    include-after-body:
+      - assets/category-tree.html
 

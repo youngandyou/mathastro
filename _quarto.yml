@@ -18,6 +18,7 @@ format:
       - cosmo
       - brand
     css: styles.css
+    html-math-method: mathjax
     include-after-body:
       - assets/category-tree.html
 

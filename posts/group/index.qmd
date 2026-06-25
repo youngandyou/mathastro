@@ -1,0 +1,27 @@
+---
+title: "Group"
+date: "2026-06-25"
+categories: 
+  - Math > Abstract Algebra > Group Theory
+---
+
+# 1.1. Definition
+**(i)** A ***group*** $\langle G, \ast \rangle$ is a binary algebraic structure which satisfies the following conditions:
+
+- $(a \ast b) \ast c = a \ast (b \ast c), \forall a, b, c \in G$.
+
+- $\exists e \in G$ such that $e \ast a = a \ast e = a, \forall a \in G$.
+
+- $\forall a \in G$, $\exists b \in G$ such that $a \ast b = e = b \ast a$.
+
+**(ii)** A group $\langle G, \ast \rangle$ is called an ***abelian group*** if $\ast$ is commutative.
+
+***
+# 1.2. Example
+**(i)** $\langle \mathbb{Z}, + \rangle, \langle \mathbb{Q}, + \rangle$, and $\langle \mathbb{R}, + \rangle$ are abelian groups.
+
+**(ii)** $\langle \mathbb{Q}^{\ast}, \cdot \rangle$ and $\langle \mathbb{R}^{\ast}, \cdot \rangle$ are abelian groups.
+
+**(iii)** $\langle \mathbb{R}^{m \times n}, + \rangle$ is an abelian group.
+
+**(iv)** $\langle GL(n, \mathbb{R}), \cdot \rangle$ and $\langle SL(n, \mathbb{R}), \cdot \rangle$ are not abelian groups.

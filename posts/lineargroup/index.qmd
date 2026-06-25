@@ -1,0 +1,15 @@
+---
+title: "Lienar Group"
+date: "2026-06-25"
+categories: 
+  - Math > Abstract Algebra > Group Theory
+---
+
+# 1.1. Definition
+**(i)** The ***general linear group of degree $n$*** $GL(n, \mathbb{R})$ is the set of all invertible $n \times n$ matrices with real entries. 
+
+$$GL(n, \mathbb{R}) = \{ A \in \mathbb{R}^{n \times n} \mid \det(A) \neq 0 \}.$$
+
+**(ii)** The ***special linear group of degree $n$*** $SL(n, \mathbb{R})$ is the set of all invertible $n \times n$ matrices with real entries and determinant 1.
+
+$$SL(n, \mathbb{R}) = \{ A \in \mathbb{R}^{n \times n} \mid \det(A) = 1 \}.$$

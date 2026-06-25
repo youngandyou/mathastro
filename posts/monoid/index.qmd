@@ -1,0 +1,13 @@
+---
+title: "Monoid"
+date: "2026-06-25"
+categories: 
+  - Math > Abstract Algebra
+---
+
+# 1. Definition
+A ***monoid*** $\langle M, \ast \rangle$ is a semigroup with an identity element. That is, $\langle M, \ast \rangle$ is a binary algebraic structure such that $\ast$ is associative and there exists an identity element.
+
+---
+# 2. Example
+$\langle \mathbb{N}_0, + \rangle$ is a monoid.

@@ -1,0 +1,16 @@
+---
+title: "Taylor series"
+date: "2026-07-03"
+categories: 
+  - Math > Analysis
+---
+
+# 1. Taylor Series
+함수 $f: (a, b) \to \mathbb{R}$에 대해서 편의를 위해 함수 $f^{(1)}, f^{(2)}, ..., f^{(n)}$을 다음과 같은 함수로 정의한다.
+
+\begin{align*}
+f^{(1)}(x) &= f'(x) \quad \text{with domain } f^{(1)} = \{ x \in (a, b) \mid f'(x) \text{ exists} \} \\
+f^{(2)}(x) &= (f^{(1)})'(x) \quad \text{with domain } f^{(2)} = \{ x \in (a, b) \mid (f^{(1)})'(x) \text{ exists} \}
+\end{align*}
+
+## 1.1. 

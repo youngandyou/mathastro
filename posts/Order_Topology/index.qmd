@@ -94,7 +94,13 @@ Let $X$ be an ordered set in the order topology, and let $Y$ be a subset of $X$ 
 ### Proof
 Let $\mathscr{T}, \mathscr{T}'$ be the order topology on $Y$, and the subspace topology on $Y$ inherited from $X$, respectively.
 
-Let $y \in Y$ and let $B'$ be a basis element of $\mathscr{T}'$ containing $y.$ Then $B' = A \cap Y$ for some basis element $A$ of $X$. 
+**(i)** $\mathscr{T}' \subset \mathscr{T}$
+
+Consider the ray $(a, \infty)$ in $X$. If $a \in Y,$ then $(a, \infty) \cap Y$ is a ray in $Y$ because $Y$ is convex. If $a \notin Y$, then $a$ is either a lower bound of $Y$, so that $(a, \infty) \cap Y = Y$, or an upper bound of $Y$, so that $(a, \infty) \cap Y = \emptyset.$ In either case, $(a, \infty) \cap Y$ is open in $Y$ with the order topology. Similarly, $(-\infty, a) \cap Y$ is open in $Y$ with the order topology. Since the sets $(a, \infty) \cap Y$ and $(-\infty, a) \cap Y$ form a subbasis for $\mathscr{T}$, we have $\mathscr{T}' \subset \mathscr{T}$.
+
+**(ii)** $\mathscr{T} \subset \mathscr{T}'$
+
+Consider the ray $(a, \infty)$ of $\mathscr{T}$. Clearly, $(a, \infty)$ is the intersection of the ray in $X$ with $Y.$ Since each ray is open in the order topology, and since each ray is a basis element of the order topology on $X$, we have that $(a, \infty)$ is open in $Y$ with the subspace topology. Similarly, $(-\infty, a)$ is open in $Y$ with the subspace topology. Since these sets form a subbasis for $\mathscr{T}$, we have $\mathscr{T} \subset \mathscr{T}'$. Hence, $\mathscr{T} = \mathscr{T}'. \blacksquare$
 
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

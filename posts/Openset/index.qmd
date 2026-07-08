@@ -1,0 +1,57 @@
+---
+title: "Open set"
+date: "2026-07-08"
+categories: 
+  - Math > Topology
+---
+
+## Definition
+Let $(X, \mathscr{T})$ be a topological space. If a subset $A$ of $X$ is an element of $\mathscr{T}$, then $A$ is called an ***open set*** of $X$, or $A$ is said to be ***open*** in $X$.
+
+## Theorem
+Let $(X, \mathscr{T})$ be a topological space, and $\mathscr{B}$ be a basis for $\mathscr{T}$. Let $A \subset X$. TFAE.
+
+**(i)** $A \in \mathscr{T}.$ That is, $A$ is open in $X$.
+
+**(ii)** $x \in A \implies \exists U \in \mathscr{T}$ such that $x \in U \subset A$.
+
+**(iii)** $\displaystyle A = \bigcup_{U \in \mathcal{A}} U$ where $\mathcal{A} \subset \mathscr{T}$.
+
+**(iv)** $x \in A \implies \exists B \in \mathscr{B}$ such that $x \in B \subset A$.
+
+처음 위상수학을 공부하게 되면 동치인 정의가 하도 많아서 헷갈릴 것이다. Munkres 책에 찾을 수 있는 오픈 셋의 모든 정의를 정리해 놓았으니 잘 기억해두자.
+
+### Proof
+**(i)** $\iff$ **(iv)**
+
+By definition of $\mathscr{T} _ {\mathscr{B}}$, it is clear.
+
+**(i)** $\implies$ **(ii)**
+
+Suppose that $A$ is open in $X$, i.e., $A \in \mathscr{T}$. If $x \in A$, we let $U = A$. Then clearly **(ii)** holds.
+
+**(ii)** $\implies$ **(i)**
+
+If $A = \emptyset$, then clearly $A \in \mathscr{T}$, so that $A$ is open in $X$.
+
+Suppose that $A \neq \emptyset$. Let $\mathcal{A} = \{ U \in \mathscr{T} \mid U \subset A \}$. We show that
+
+$$
+A = \bigcup_{U \in \mathcal{A}} U$$
+
+Let $x \in A$. By assumption, $\exists U \in \mathscr{T}$ such that $x \in U \subset A$, which means that $U \in \mathcal{A}$. Then $x \in U \subset \bigcup_{U \in \mathcal{A}} U$. 
+
+Let $x \in \bigcup_{U \in \mathcal{A}} U$. Then $x \in U$ for some $U \in \mathcal{A}$. Since $U \in \mathcal{A}$, $U \subset A$. Thus $x \in A$. Therefore $A = \bigcup_{U \in \mathcal{A}} U$.
+
+Since $\mathscr{T}$ is a topology, $\bigcup_{U \in \mathcal{A}} U \in \mathscr{T}$, so that $A \in \mathscr{T}$. Thus $A$ is open in $X$.
+
+**(ii)** $\implies$ **(iii)**
+
+We have shown that $A = \bigcup_{U \in \mathcal{A}} U$ where $\mathcal{A} \subset \mathscr{T}$. Thus **(iii)** holds.
+
+**(iii)** $\implies$ **(ii)**
+
+Suppose that $A = \bigcup_{U \in \mathcal{A}} U$ where $\mathcal{A} \subset \mathscr{T}$. If $x \in A$, then $x \in U$ for some $U \in \mathcal{A}$. Since each $U$ is an open set and $U \subset A$, we have $x \in U \subset A$. Thus **(ii)** holds. $\blacksquare$
+
+# Reference
+- James R. Munkres. (2000). Topology (2nd ed.). Pearson.

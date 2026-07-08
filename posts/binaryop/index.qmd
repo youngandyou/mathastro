@@ -60,3 +60,6 @@ Let $\langle S, \ast \rangle$ be a binary algebraic structure.
 **(i)** $\langle \mathbb{N}, + \rangle$ is a semigroup, but not a monoid.
 
 **(ii)** $\langle \mathbb{N}_0, + \rangle$ is a monoid, but not a group.
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

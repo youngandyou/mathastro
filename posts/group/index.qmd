@@ -5,7 +5,8 @@ categories:
   - Math > Abstract Algebra > Group Theory
 ---
 
-# 1.1. Definition
+# 1. Group
+## 1.1. Definition
 **(i)** A ***group*** $\langle G, \ast \rangle$ is a binary algebraic structure which satisfies the following conditions:
 
 - $(a \ast b) \ast c = a \ast (b \ast c), \forall a, b, c \in G$.
@@ -16,8 +17,7 @@ categories:
 
 **(ii)** A group $\langle G, \ast \rangle$ is called an ***abelian group*** if $\ast$ is commutative.
 
-***
-# 1.2. Example
+## 1.2. Example
 **(i)** $\langle \mathbb{Z}, + \rangle, \langle \mathbb{Q}, + \rangle$, and $\langle \mathbb{R}, + \rangle$ are abelian groups.
 
 **(ii)** $\langle \mathbb{Q}^{\ast}, \cdot \rangle$ and $\langle \mathbb{R}^{\ast}, \cdot \rangle$ are abelian groups.

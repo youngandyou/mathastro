@@ -5,15 +5,15 @@ categories:
   - Math > Abstract Algebra > Group Theory
 ---
 
-# 1.1. Definition
+# 1. Subgroup
+## 1.1. Definition
 **(i)** Let $H$ be a nonempty subset of a group $G$ which is closed under the binary operation on $G$. Then $H$ is called a ***subgroup*** of $G$ if $H$ is a group under the induced binary operation from $G$. In this case, we write $H \leq G$. 
 
 **(ii)** Let $H \le G$. Then $H$ is called a ***proper subgroup*** of $G$ if $H \ne G$. In this case, we write $H \subsetneq G$.
 
 **(iii)** Let $H \le G$. Then $H$ is called the ***trivial subgroup*** of $G$ if $H = \\{ e \\}$, where $e$ is the identity element of $G$.
 
-***
-# 1.2. Example
+## 1.2. Example
 **(i)** Let $A = \{ (a_1, ..., a_{n-1}, 0) \mid a_i \in \mathbb{R} \}$. Then $A < \mathbb{R}^n$.
 
 **(ii)** $\langle \mathbb{Q}^+, \cdot \rangle < \langle \mathbb{R}^+, \cdot \rangle$.
@@ -26,8 +26,7 @@ categories:
 
 **(vi)** $\langle \mathbb{Z}^+, \cdot \rangle \not < \langle \mathbb{Z}, + \rangle$.
 
-***
-# 1.3. Theorem
+## 1.3. Theorem
 Let $H$ be a nonempty subset of a group $G$. Then 
 
 $$H \le G \iff ab^{-1} \in H, \forall a, b \in H$$
@@ -51,8 +50,7 @@ Suppose that $ab^{-1} \in H, \forall a, b \in H$. Let $a, b \in H$.
 
 Thus, $H \le G$. $\blacksquare$
 
-***
-# 1.4. Theorem
+## 1.4. Theorem
 Let $G$ be a group and let $\\{ H_i \\} _ {i \in I}$ be a collection of subgroups of $G$. Then 
 
 $$\bigcap_{i \in I} H_i \le G.$$
@@ -60,8 +58,7 @@ $$\bigcap_{i \in I} H_i \le G.$$
 ### Proof
 Let $a, b \in \bigcap_{i \in I} H_i$. Then $a, b \in H_i, \forall i \in I$. Since $H_i \le G$ for each $i$, we have $ab^{-1} \in H_i, \forall i \in I$. Thus $ab^{-1} \in \bigcap_{i \in I} H_i$, which means that $\bigcap_{i \in I} H_i \le G$. $\blacksquare$
 
-***
-# 1.5. Theorem
+## 1.5. Theorem
 Let $G$ be a group, and let $H \le G, K \le H.$ Then $K \le G.$
 
 한마디로 말해서, subgroup의 subgroup은 다시 subgroup이다.
@@ -69,8 +66,7 @@ Let $G$ be a group, and let $H \le G, K \le H.$ Then $K \le G.$
 ### Proof
 Since $K \le H \le G,$ $K$ is a nonempty subset of $G.$ Let $a, b \in K.$ Since $K \le H,$ $ab^{-1} \in K.$ Thus, $K \le G.$ $\blacksquare$
 
-***
-# 1.6. Remark
+## 1.6. Remark
 A union of subgroups of a group need NOT be a subgroup.
 
 $\big[ (\because)$ $\langle 2 \rangle, \langle 3 \rangle \le \mathbb{Z}$ but $\langle 2 \rangle \cup \langle 3 \rangle$ is not a subgroup of $\mathbb{Z}$ because $(-2) + 3 = 1 \notin \langle 2 \rangle \cup \langle 3 \rangle.\big]$

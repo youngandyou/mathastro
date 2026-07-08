@@ -5,7 +5,8 @@ categories:
   - Math > Abstract Algebra
 ---
 
-# 1. Definition
+# 1. Binary operation
+## 1.1. Definition
 **(i)** A ***binary operation*** $\ast$ on a set $S$ is a function $\ast : S \times S \to S$. For each $(a, b) \in S \times S$, we will denote $\ast(a, b)$ by $a \ast b,$ or $ab.$ We call the ordered pair $\langle S, \ast \rangle$ a ***binary algebraic structure***.
 
 **(ii)** Let $\ast$ be a binary operation on $S$, and let $H \subset S$. Then $H$ is said to be ***closed*** under $\ast$ if $a \ast b \in H, \forall a, b \in H$. In this case, $\ast \vert_H$ is called the ***induced operation*** of $\ast$ on $H$.
@@ -20,8 +21,7 @@ categories:
 
 **(vi)** Let $a \in S$. If there is an element $b \in S$ such that $a \ast b = e = b \ast a$, then $b$ is called an **inverse element** of $a$ for $\ast$.
 
-***
-# 2. Theorem
+## 1.2. Theorem
 A binary algebraic structure $\langle S, \ast \rangle$ has at most one identity element.
 
 ### Proof
@@ -29,8 +29,7 @@ If $S$ does not have an identity element, then there is nothing to prove.
 
 Suppose that $e_1$ and $e_2$ are identity elements for $\ast.$ Then $e_1 = e_1 \ast e_2 = e_2.$ $\blacksquare$
 
-***
-# 3. Remark
+## 1.3. Remark
 Let $S = \{ a, b, c \}$, and let $\ast$ be a binary operation on $S$ as follows:
 
 $$
@@ -46,3 +45,18 @@ $$
 Then $\ast$ is not commutative.
 
 We can easily see that a binary operation $\ast$ defined by a table is commutative $\iff$ the table is symmetric.
+
+# 2. Binary algebraic structure
+## 2.1. Definition
+Let $\langle S, \ast \rangle$ be a binary algebraic structure.
+
+**(i)** $\langle S, \ast \rangle$ is called a ***semigroup*** if $\ast$ is associative.
+
+**(ii)** $\langle S, \ast \rangle$ is called a ***monoid*** if $\ast$ is associative and has an identity element.
+
+**(iii)** $\langle S, \ast \rangle$ is called a ***group*** if $\ast$ is associative and has an identity element and every element has an inverse.
+
+## 2.2. Example
+**(i)** $\langle \mathbb{N}, + \rangle$ is a semigroup, but not a monoid.
+
+**(ii)** $\langle \mathbb{N}_0, + \rangle$ is a monoid, but not a group.

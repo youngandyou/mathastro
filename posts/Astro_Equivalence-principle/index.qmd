@@ -1,5 +1,6 @@
 ---
 title: "등가원리 (Equivalence Principle)"
+author: "Young Jeong Lee"
 date: "2026-07-04"
 categories: 
   - Astronomy > General Relativity > Equivalence Principle

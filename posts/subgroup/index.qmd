@@ -1,5 +1,6 @@
 ---
 title: "Subgroup"
+author: "Youmin Chun"
 date: "2026-06-25"
 categories: 
   - Math > Abstract Algebra > Group Theory

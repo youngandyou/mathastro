@@ -1,5 +1,6 @@
 ---
 title: "Taylor series"
+author: "Youmin Chun"
 date: "2026-07-03"
 categories: 
   - Math > Analysis

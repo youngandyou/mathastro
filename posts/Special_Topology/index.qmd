@@ -1,5 +1,5 @@
 ---
-title: "Topology"
+title: "Special Topologies"
 date: "2026-07-08"
 categories: 
   - Math > Topology

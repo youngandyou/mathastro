@@ -1,5 +1,5 @@
 ---
-title: "Lienar Group"
+title: "Linear Group"
 date: "2026-06-25"
 categories: 
   - Math > Abstract Algebra > Group Theory

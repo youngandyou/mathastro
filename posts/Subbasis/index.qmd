@@ -1,5 +1,5 @@
 ---
-title: "Topology"
+title: "Subbasis"
 date: "2026-07-08"
 categories: 
   - Math > Topology

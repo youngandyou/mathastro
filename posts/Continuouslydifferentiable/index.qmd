@@ -1,5 +1,5 @@
 ---
-title: "Countiuosly Differentiable Functions"
+title: "Countiuously Differentiable Functions"
 date: "2026-07-03"
 categories: 
   - Math > Analysis > Multivariable

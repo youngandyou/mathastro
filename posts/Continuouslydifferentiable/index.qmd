@@ -1,5 +1,5 @@
 ---
-title: "Countiuously Differentiable Functions"
+title: "Continuously Differentiable Functions"
 date: "2026-07-03"
 categories: 
   - Math > Analysis > Multivariable

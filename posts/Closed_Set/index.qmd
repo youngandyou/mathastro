@@ -1,0 +1,105 @@
+---
+title: "Closed Set"
+date: "2026-07-10"
+categories: 
+  - Math > Topology
+---
+
+## Definition
+Let $X$ be a topological space and let $Y$ be a subspace of $X$. 
+
+**(i)** A subset $A \subset X$ is said to be ***closed*** in $X$ if $X - A$ is open in $X$. 
+
+**(ii)** A subset $B \subset Y$ is said to be ***closed*** in $Y$ if $Y - B$ is open in $Y$. 
+
+## Theorem 1
+Let $X$ be a topological space. Then the followings hold:
+
+**(i)** $\emptyset$ and $X$ are closed.
+
+**(ii)** The intersection of any collection of closed sets is closed.
+
+**(iii)** The union of any finite collection of closed sets is closed.
+
+### Proof
+
+**(i)** Clearly, $X - \emptyset = X$ and $X - X = \emptyset$ are open. Thus $\emptyset$ and $X$ are closed.
+
+**(ii)** Let $\{ C_\alpha \}$ be a collection of closed sets in $X$. Then 
+
+$$\begin{align*}
+X - \bigcap C_{\alpha} & = \bigcup (X - C_{\alpha}).
+\end{align*}$$
+
+Since each $X - C_{\alpha}$ is open, their union is open. Thus $\bigcap C_{\alpha}$ is closed.
+
+**(iii)** Let $\{ C_i \}_{i = 1}^n$ be a finite collection of closed sets in $X$. Then 
+
+$$\begin{align*}
+X - \bigcup_{i = 1}^n C_i & = \bigcap_{i = 1}^n (X - C_i).
+\end{align*}$$
+
+Since each $X - C_i$ is open, their finite intersection is open. Thus $\bigcup_{i = 1}^n C_i$ is closed. $\blacksquare$
+
+## Theorem 2
+Let $Y$ be a subspace of a topological space $X$, and let $A \subset Y$.
+
+**(i)** $A$ is closed in $Y$ $\iff$ $A = Y \cap C$ for some closed set $C$ of $X$.
+
+**(ii)** If $A$ is closed in $Y$ and $Y$ is closed in $X$, then $A$ is closed in $X$.
+
+### Proof
+
+**(i)** 
+
+$(\Longrightarrow)$
+
+Suppose that $A$ is closed in $Y$. (Clearly $A \subset Y$) Then $Y - A$ is open in $Y$, which means that $Y - A = Y \cap U$ for some open set $U$ of $X$. 
+
+Note that 
+
+$$\begin{align*}
+A = Y - (Y - A) &= Y - (Y \cap U) \\
+&= (Y - Y) \cup (Y - U) \\
+&= \emptyset \cup (Y - U) \\
+&= Y - U \\
+&= Y \cap (X - U).
+\end{align*}$$
+
+Since $U$ is open in $X$, $X - U$ is closed in $X$. Let $C = X - U$. Then $A = Y \cap C$ for some closed set $C$ of $X$. 
+
+$(\Longleftarrow)$
+
+Suppose that $A = Y \cap C$ for some closed set $C$ of $X$. Note that 
+
+$$\begin{align*}
+Y - A & = Y - (Y \cap C) \\
+&= (Y - Y) \cup (Y - C) \\
+&= \emptyset \cup (Y - C) \\
+&= Y - C \\
+&= Y \cap (X - C).
+\end{align*}$$ 
+
+Since $C$ is closed in $X$, $X - C$ is open in $X$. By definition, $Y - A$ is open in $Y$. Therefore, $A$ is closed in $Y$. 
+
+**(ii)** 
+
+Suppose that $A$ is closed in $Y$ and $Y$ is closed in $X$. By **(i)**, $A = Y \cap C$ for some closed subset $C$ of $X$, and $X - Y$ is open in $X$. Since $C$ is closed in $X$, $X - C$ is open in $X$. Then 
+
+$$\begin{align*} X - A &= X - (Y \cap C) \\
+&= (X - Y) \cup (X - C). \end{align*}$$
+
+Since $X - Y$ and $X - C$ are open in $X$, their union is open in $X$. Thus $X - A$ is open in $X$. Therefore, $A$ is closed in $X$. $\blacksquare$
+
+## Example
+
+**(i)** Let $X = \mathbb{R}$ with the usual topology. The closed interval $[1, 2], (-\infty, 0], [2, \infty)$ are closed in $\mathbb{R}$ because, for example, $\mathbb{R} - [1, 2] = (-\infty, 1) \cup (2, \infty)$ is open in $\mathbb{R}$. 
+
+**(ii)** Let $X = \mathbb{R}^2$ with the usual topology. The region $R = \{ (x, y) \in \mathbb{R}^2 \mid x \ge 0 \} = \mathbb{R}^+ \times \mathbb{R}$ is closed in $\mathbb{R}^2$ because $\mathbb{R} - R = \mathbb{R}^- \times \mathbb{R}$ and $\mathbb{R}^-$ and $\mathbb{R}$ are open in $\mathbb{R}$. 
+
+**(iii)** Let $\mathscr{T}_f$ be the cofinite topology on $X$. Then $\emptyset, X$ and all finite subsets of $X$ are closed in $X$. 
+
+**(iv)** Let $\mathscr{T}_d$ be the discrete topology on $X$. Then every subset of $X$ is closed in $X$. 
+
+# Reference
+- James R. Munkres. (2000). Topology (2nd ed.). Pearson.

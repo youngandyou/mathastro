@@ -1,0 +1,18 @@
+---
+title: "Interior"
+author: "Youmin Chun"
+date: "2026-07-10"
+categories: 
+  - Math > Topology
+---
+
+## Definition
+Let $X$ be a topological space, and let $A \subset X$. The ***interior*** of $A$, denoted by $\mathrm{Int} A$ or $A^\circ$, is the union of all open sets contained in $A$. 
+
+## Remark
+**(i)** $A^{\circ}$ is the largest open set contained in $A$.
+
+**(ii)** $A^{\circ} \subset A \subset \overline{A}$.
+
+# Reference
+- James R. Munkres. (2000). Topology (2nd ed.). Pearson.

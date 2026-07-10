@@ -1,0 +1,28 @@
+---
+title: "Closure"
+author: "Youmin Chun"
+date: "2026-07-10"
+categories: 
+  - Math > Topology
+---
+
+## Definition
+Let $X$ be a topological space, and let $A \subset X$. The ***closure*** of $A$, denoted by $\overline{A}$, is the intersection of all closed sets containing $A$. 
+
+## Remark
+**(i)** $\overline{A}$ is the smallest closed set containing $A$.
+
+**(ii)** $A^{\circ} \subset A \subset \overline{A}$.
+
+**(iii)** When dealing with a topological space $X$ and a subspace $Y$, one needs to exercise care in taking closures of sets If $A$ is a subset of $Y$, the closure of $A$ in $Y$ and the closure of $A$ in $X$ will in general be different. In such a situation, we reserve the notation $\overline{A}$ to stand for the closure of $A$ in $X$.
+
+## Theorem
+Let $Y$ be a subspace of a topological space $X$, and let $A \subset Y$. Then the closure of $A$ in $Y$ equals $Y \cap \overline{A}$.
+
+### Proof 1
+Denote the closure of $A$ in $Y$ by $B$. Let $C$ be a closed set in $Y$ containing $A$. Then $C = Y \cap C'$ for some closed set $C'$ in $X$. Since $\overline{A}$ is the smallest closed set in $X$ containing $A$ and $A \subset C \subset C'$, we have $\overline{A} \subset C'$. Then we get $Y \cap \overline{A} \subset Y \cap C' = C$. Since $B$ is also a closed set in $Y$ containing $A$, we have $Y \cap \overline{A} \subset B$.
+ 
+Since $\overline{A}$ is a closed set in $X$, $Y \cap \overline{A}$ is closed in $Y$. Since $A \subset \overline{A}$ and $A \subset Y$, we have $A \subset Y \cap \overline{A}$, which means that $Y \cap \overline{A}$ is a closed set in $Y$ containing $A$. Since $B$ is the smallest closed set in $Y$ containing $A$, we have $B \subset Y \cap \overline{A}$. Thus, we have $B = Y \cap \overline{A}$. $\blacksquare$
+
+# Reference
+- James R. Munkres. (2000). Topology (2nd ed.). Pearson.

@@ -1,0 +1,50 @@
+---
+title: "Homeomorphism"
+author: "Youmin Chun"
+date: "2026-07-10"
+categories: 
+  - Math > Topology
+---
+
+## Definition 1
+Let $(X, \mathscr{T}_X)$ and $(Y, \mathscr{T}_Y)$ be topological spaces. 
+
+**(i)** A function $f: X \to Y$ is called a ***homeomorphism*** if $f$ is bijective and both $f$ and $f^{-1}$ are continuous. If such a function exists, then we say that $X$ and $Y$ are ***homeomorphic***, denoted by $X \cong Y$. 
+
+**(ii)** Suppose that $X \cong Y$. A property $P$ of $X$ is called a ***topological property*** if $Y$ also possesses $P$ as well. 
+
+**(iii)** Let $f: X \to Y$ be an injective continuous function. If $X \cong f(X)$, where $f(X)$ is a subspace of $Y$, then $f$ is called an ***embedding*** of $X$ in $Y$. 
+
+## Remark
+**(i)** $f: X \to Y$ is a homeomorphism $\iff$ $[f(U) \in \mathscr{T}_Y \iff U \in \mathscr{T}_X]$. 
+
+**(ii)** Even though $f$ is bijective and continuous, $f^{-1}$ need not be continuous.
+
+$\big[(\because)$ The function $h: [0, 1) \to S^1$ defined by $h(t) = (\cos 2\pi t, \sin 2\pi t)$ is bijective and continuous. But for the point $(1, 0)$ and the neighborhood $V$ of $h^{-1}(1, 0) = 0$ in $[0, 1)$, we must have that for any neighborhood $U$ of $(1, 0)$, $h^{-1}(U) = [0, a) \cup (b, 1) \not \subset V$ for some $a, b \in (0, 1)$. Thus, $h^{-1}$ is not continuous.$\big]$
+
+## Example
+Usual topology가 부여된 실수 공간 $\mathbb{R}$을 생각하자. 
+
+**(i)** 함수 $f: (-1, 1) \to \mathbb{R}$가 $f(x) = \tan \frac{\pi}{2}x$로 정의되었다고 하자. 자명하게 $f$는 전단사이고, $f$와 $f^{-1}$ 모두 연속이므로 $f$는 homeomorphism이다. 즉 $\mathbb{R} \cong (-1, 1)$이다. 이 사실을 이용해서 실수 공간은 임의의 열린 구간과 homeomorphic이다는 것을 보일 수 있다. 
+
+**(ii)** Open unit disk $D$에 대해서, 함수 $g: D \to \mathbb{R}^2$가 $g(x, y) = \frac{(x, y)}{1-(x^2+y^2)}$로 정의되었다고 하자. 마찬가지로 $g$는 전단사이고, $g$와 $g^{-1}$ 모두 연속이므로 $g$는 homeomorphism이다. 즉 $D \cong \mathbb{R}^2$이다. 
+
+## Theorem 1
+Let $(X, \mathscr{T}_X)$ and $(Y, \mathscr{T}_Y)$ be topological spaces, and let $f: X \to Y$ be a homeomorphism. Let $A \subset X$.
+
+**(i)** If $\mathscr{B}$ is a basis for $\mathscr{T}_X$, then $f(\mathscr{B})$ is a basis for $\mathscr{T}_Y$. 
+
+**(ii)** $f(A') = f(A)'$.
+
+**(iii)** $f(\overline{A}) = \overline{f(A)}$.
+
+### Proof
+**(i)** Since each $B$ in $\mathscr{B}$ is open in $X$, each $f(B)$ is open in $Y$, which means that $f(\mathscr{B}) \subset \mathscr{T}_Y$.
+
+Let $V \in \mathscr{T}_Y$ and let $y \in V$. Since $f$ is continuous, $f^{-1}(V) \in \mathscr{T}_X$. Since $f$ is surjective, $y = f(x)$ for some $x \in X$. Then $x \in f^{-1}(V)$, and $x \in B \subset f^{-1}(V)$ for some $B \in \mathscr{B}$. Then $y = f(x) \in f(B) \subset f(f^{-1}(V)) = V$ because $f$ is surjective. Thus, [$f(\mathscr{B})$ is a basis for $\mathscr{T}_Y$.](../Basis_Topology/index.qmd#sec-theorem-3)
+
+**(ii)** Since $f$ and $f^{-1}$ is continuous and injective, we have that $f(A') \subset f(A)'$ and $f^{-1}()$
+$\blacksquare$
+
+# Reference
+- James R. Munkres. (2000). Topology (2nd ed.). Pearson.

@@ -1,5 +1,6 @@
 ---
 title: "Closed Set"
+author: "Youmin Chun"
 date: "2026-07-10"
 categories: 
   - Math > Topology

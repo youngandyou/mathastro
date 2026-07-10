@@ -1,5 +1,6 @@
 ---
 title: "Product Topology"
+author: "Youmin Chun"
 date: "2026-07-10"
 categories: 
   - Math > Topology
@@ -65,5 +66,5 @@ $$U \times V = \pi^{-1}_1(U) \cap \pi^{-1}_2(V),$$
 
 we have $\mathscr{T} \subset \mathscr{T}'$. Thus we have $\mathscr{T} = \mathscr{T}'$. $\blacksquare$ 
 
-## Reference
+# Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

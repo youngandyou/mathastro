@@ -83,7 +83,7 @@ $$U = \bigcup_{x \in U} B_x.$$
 
 Since $\\{ B_x \in \mathscr{B} \mid x \in U \\}$ is a subcollection of $\mathscr{B}$, we have $U \in T$, which means that $\mathscr{T} _ { \mathscr{B} } \subset T$. Thus $T = \mathscr{T} _ { \mathscr{B} }. \blacksquare$ 
 
-## Theorem 3
+## Theorem 3 {#sec-theorem-3}
 Let $(X, \mathscr{T})$ be a topological space, and let $\mathscr{B}$ be a subcollection of $\mathscr{T}$. TFAE.
 
 **(i)** $\mathscr{B}$ is a basis for $\mathscr{T}$. That is, $\mathscr{T} = \mathscr{T} _ { \mathscr{B} }$.

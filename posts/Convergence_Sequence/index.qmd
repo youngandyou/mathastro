@@ -1,0 +1,24 @@
+---
+title: "Convergence of a Sequence"
+author: "Youmin Chun"
+date: "2026-07-10"
+categories: 
+  - Math > Topology
+---
+
+## Definition
+Let $X$ be a topological space. We say that a sequence $\{ x_n \}_{n \in \mathbb{N}}$ in $X$ ***converges*** to a point $x \in X$ if for each neighborhood $U$ of $x$, there is a positive integer $N$ such that $x_n \in U$ for all $n \ge N$. 
+
+## Remark
+**(i)** Let $\mathscr{B}$ be a basis for the topological space $X$. If for each basis element $B$ containing $x$, there is a positive integer $N$ such that $x_n \in B, \forall n \ge N$, then the sequence $\{ x_n \}$ converges to $x$.
+
+**(ii)** Let $\mathscr{S}$ be a subbasis for the topological space $X$. If for each element $S$ containing $x$, there is a positive integer $N$ such that $x_n \in S, \forall n \ge N$, then the sequence $\{ x_n \}$ converges to $x$.
+
+**(iii)** 실수나 거리 공간에서는 어떤 수열이 수렴한다면 항상 극한값은 유일했지만, 일반적인 위상 공간으로 넘어오면 수렴한다고 해서 그 값이 유일하다고 보장할 수 없다. 예컨대 다음의 예시를 보자.
+
+$X = \{ a, b, c \}$로 주고, $\mathscr{T} = \{ \emptyset, \{ b \}, \{ a, b \}, \{ b, c \}, X \}$라고 하자. 이 때 모든 자연수에 대해서 $x_n = b$으로 정의되는 수열 $\{ x_n \}$을 가지고 오면, $a$와 $c$는 모두 위 정의를 만족함을 알 수 있다. 따라서 $a$와 $c$ 모두 수열 $\{ x_n \}$의 극한값이 될 수 있다. 
+
+이는 일반적인 위상 공간에서 singleton set $\{ x \}$가 닫혀 있다는 보장을 항상 할 수 없고, 따라서 하우스도르프 공간이 아니기 때문에 생기는 현상이다. 
+
+# Reference
+- James R. Munkres. (2000). Topology (2nd ed.). Pearson.

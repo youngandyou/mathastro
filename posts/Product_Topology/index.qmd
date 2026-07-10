@@ -30,7 +30,7 @@ $$(x, y) \in U_1 \times V_1 \cap U_2 \times V_2 = (U_1 \cap U_2) \times (V_1 \ca
 
 since $\mathscr{T}$ and $\mathscr{T}'$ are topologies. Thus $\mathscr{B}$ is a basis.
 
-**(ii)** We will use [Theorem 3](<{% post_url Basis_Topology/2026-07-08-Basis-Of-Topology %}#theorem-3>). Let $\mathscr{T}$ be the product topology. For each $W \in \mathscr{T}$ and each $(x, y) \in W$, $\exists U \in \mathscr{T}, V \in \mathscr{T}'$ such that $(x, y) \in U \times V \subset W$ by (i). Since $\mathscr{B}$ and $\mathcal{C}$ are bases, $\exists B \in \mathscr{B}, C \in \mathcal{C}$ such that 
+**(ii)** We will use [Theorem 3](../Basis_Topology/index.qmd#sec-theorem-3). Let $\mathscr{T}$ be the product topology. For each $W \in \mathscr{T}$ and each $(x, y) \in W$, $\exists U \in \mathscr{T}, V \in \mathscr{T}'$ such that $(x, y) \in U \times V \subset W$ by (i). Since $\mathscr{B}$ and $\mathcal{C}$ are bases, $\exists B \in \mathscr{B}, C \in \mathcal{C}$ such that 
 
 $$(x, y) \in B \times C \subset U \times V \subset W,$$
 

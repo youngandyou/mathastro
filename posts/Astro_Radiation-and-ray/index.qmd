@@ -2,6 +2,8 @@
 title: "복사와 광선(Radiation and Rays)"
 author: "Young Jeong Lee"
 date: "2026-07-11"
+description: "전자기 복사를 광선으로 근사할 수 있는 조건과 전파 천문학에서 다루는 관측 파장대 및 주요 관측 대상을 소개한다."
+image: ray.png
 categories: 
   - Astronomy > Radio Astronomy
 ---

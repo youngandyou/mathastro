@@ -6,3 +6,9 @@ freeze: true
 
 # Enable banner style title blocks
 title-block-banner: true
+
+# Show a navigable table of contents on every post.
+toc: true
+toc-location: right
+toc-title: "목차"
+toc-depth: 3

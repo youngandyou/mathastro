@@ -19,6 +19,31 @@ div.quarto-post .listing-description > a {
   display: block;
 }
 
+#TOC {
+  border-left: 1px solid var(--bs-border-color, #dee2e6);
+  padding-left: 0.85rem;
+}
+
+#TOC .nav-link {
+  border-left: 3px solid transparent;
+  color: var(--bs-secondary-color, #6c757d);
+  line-height: 1.35;
+  margin-left: -1rem;
+  padding: 0.25rem 0.7rem;
+}
+
+#TOC .nav-link:hover,
+#TOC .nav-link:focus {
+  color: #2f6f73;
+}
+
+#TOC .nav-link.active {
+  background-color: rgba(47, 111, 115, 0.08);
+  border-left-color: #2f6f73;
+  color: #2f6f73 !important;
+  font-weight: 600;
+}
+
 @media (max-width: 767.98px) {
   div.quarto-post .thumbnail {
     max-width: 140px;

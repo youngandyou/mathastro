@@ -150,7 +150,17 @@
     container.appendChild(ul);
   }
 
-  function filterPosts(posts, selectedPath) {
+  function filterPosts(posts, selectedPath, listing) {
+    if (listing) {
+      listing.filter(
+        selectedPath
+          ? (item) =>
+              item.elm && includesPath(getPostPaths(item.elm), selectedPath)
+          : undefined
+      );
+      return;
+    }
+
     let visibleCount = 0;
 
     posts.forEach((post) => {
@@ -168,7 +178,13 @@
   function setupCategoryTree() {
     const defaultCategories = document.querySelector(".quarto-listing-category");
     const title = document.querySelector(".quarto-listing-category-title");
-    const posts = Array.from(document.querySelectorAll(".quarto-post"));
+    const listingElement = document.querySelector(".quarto-listing[id]");
+    const listing = listingElement
+      ? window["quarto-listings"]?.[listingElement.id]
+      : null;
+    const posts = listing
+      ? listing.items.map((item) => item.elm).filter(Boolean)
+      : Array.from(document.querySelectorAll(".quarto-post"));
 
     if (!defaultCategories || posts.length === 0) {
       return;
@@ -198,7 +214,7 @@
         }
       }
 
-      filterPosts(posts, state.selectedPath);
+      filterPosts(posts, state.selectedPath, listing);
       renderTree(treeContainer, tree, state, selectCategory);
     }
 
@@ -209,7 +225,7 @@
           event.stopPropagation();
 
           state.selectedPath = splitPath(category.textContent.trim()).join(pathSeparator);
-          filterPosts(posts, state.selectedPath);
+          filterPosts(posts, state.selectedPath, listing);
           renderTree(treeContainer, tree, state, selectCategory);
         });
       });

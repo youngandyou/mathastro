@@ -44,6 +44,11 @@ The real line $\mathbb{R}$ is connected and so are intervals and rays in $\mathb
 Let $f : X \to Y$ be a continuous map, where $X$ is a connected space and $Y$ is an ordered set in the order topology. If $a$ and $b$ are two points of $X$ and if $r$ is a point of $Y$ lying between $f(a)$ and $f(b)$, then there exists a point $c$ of $X$ such that $f(c) = r$.
 
 ### Proof
+Note that the sets 
+
+$$A := f(X) \cap (-\infty, r) \quad \text{and} \quad B := f(X) \cap (r, \infty)$$
+
+are disjoint, and they are nonempty because one containes $f(a)$ and the other contains $f(b)$. Furthermore, they are open in $f(X).$ If there were no point $c$ of $X$ such that $f(c) = r$, then $f(X) = A \cup B,$ which means that $(A, B)$ is a separation of $f(X).$ However, $f(X)$ is connected since $X$ is connected and $f$ is continuous. Thus, there exists a point $c$ of $X$ such that $f(c) = r.$ $\blacksquare$
 
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

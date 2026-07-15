@@ -1,0 +1,49 @@
+---
+title: "Intermediate Value Theorem"
+author: "Youmin Chun"
+date: "2026-07-15"
+categories: 
+  - Math > Topology
+---
+
+## Definition
+A simply ordered set $L$ having more than one element is called a ***linear continuum*** if the following hold: 
+
+**(i)** $L$ has the least upper bound property. 
+
+**(ii)** If $x < y$, there exists $z$ such that $x < z < y$.
+
+## Theorem 1
+If $L$ is a linear continuum in the order topology, then $L$ is connected, and so are intervals and rays in $L$.
+
+### Proof
+We prove that if $Y$ is a convex subspace of $L$, then $Y$ is connected. Since $L$ is a convex subspace of $L$, $L$ is connected, and since the intervals and rays in $L$ are convex, they are connected.
+
+Let $Y$ be a convex subspace of $L$, and let assume that $Y$ is disconnected. Then $Y$ has a separation $(A, B)$, which means that $Y$ is the union of the disjoint nonempty sets $A$ and $B$, each of which is open in $Y.$ Choose $a \in A$ and $b \in B$. WLOG, we suppose that $a < b.$ 
+
+Since $Y$ is convex and $a, b \in Y,$ we have that $[a, b] \subset Y.$ Hence $[a, b]$ is the union of the disjoint sets 
+
+$$A_0 := A \cap [a, b] \quad \text{and} \quad B_0 := B \cap [a, b],$$
+
+each of which is open in $[a, b]$ in the subspace topology of $Y$. Since $Y$ is convex, the subspace topology of $Y$ is the same as the order topology itself, which means that $A_0$ and $B_0$ are open in $[a, b]$ in the order topology. 
+
+The sets $A_0$ and $B_0$ are nonempty because $a \in A_0$ and $b \in B_0.$ Thus, $(A_0, B_0)$ is a separation of $[a, b],$ so $[a, b]$ is disconnected. 
+
+Note that $[a, b]$ has the maximum $b,$ so the subset $A_0$ of $[a, b]$ is bounded above. Since $A_0$ is nonempty and $L$ has the least upper bound property, $A_0$ has the supremum, says $c$. We show that $c$ belongs neither to $A_0$ nor to $B_0$, which contradicts that $[a, b]$ is the union of $A_0$ and $B_0$. (Note that $c$ is the supremum of $A_0$ and $b$ is an upper bound of $A_0$, so $a \le c \le b$.)
+
+$\big[(\because)$ First, assume that $c \in B_0.$ Then $c \neq a,$ so either $c = b$ or $a < c < b.$ Note that $B_0$ is open in $[a, b]$ in the order topology. If $c = b,$ then there is some interval of the form $(d, c]$ contained in $B_0$ by definition of the order topology. Since $c = b,$ we have that $(d, c] \cap A_0 = \emptyset$, which means that $d$ is an upper bound of $A_0$ which is smaller than $c. \bigotimes$ 
+
+If $a < c < b,$ then, similarly, there is some interval containing $c$ of the form $(d, d')$ contained in $B_0$ by definition of the order topology. Since $(d, c] \subset (d, d')$, the interval $(d, c]$ is also contained in $B_0.$ Note that $(c, b] \cap A_0 = \emptyset$ because $c$ is an upper bound of $A_0.$ Then $(d, b] \cap A_0 = \emptyset$, which means that $d$ is an upper bound of $A_0$ which is smaller than $c. \bigotimes$ Thus, $c \notin B_0.$
+
+Next, we assume that $c \in A_0.$ Then $c \neq b,$ so either $c = a$ or $a < c < b.$ Note that $A_0$ is open in $[a, b]$ in ther order topology. If $c = a,$ then there is some interval of the form $[c, e)$ contained in $A_0$. Similarly, if $a < c < b,$ then there is some interval of the form $[c, e)$ contained in $A_0.$ Since $L$ is a linear continuum, there exists a point $z \in L$ such that $c < z < e.$ It follows that $z \in A_0,$ which contradicts that $c$ is an upper bound of $A_0.$ Thus, $c$ belongs neither to $A_0$ nor to $B_0$.$\big]$ $\blacksquare$
+
+## Corollary
+The real line $\mathbb{R}$ is connected and so are intervals and rays in $\mathbb{R}$.
+
+## Intermediate Value Theorem
+Let $f : X \to Y$ be a continuous map, where $X$ is a connected space and $Y$ is an ordered set in the order topology. If $a$ and $b$ are two points of $X$ and if $r$ is a point of $Y$ lying between $f(a)$ and $f(b)$, then there exists a point $c$ of $X$ such that $f(c) = r$.
+
+### Proof
+
+# Reference
+- James R. Munkres. (2000). Topology (2nd ed.). Pearson.

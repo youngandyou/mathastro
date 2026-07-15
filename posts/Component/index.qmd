@@ -1,0 +1,61 @@
+---
+title: "Component"
+author: "Youmin Chun"
+date: "2026-07-15"
+categories: 
+  - Math > Topology
+---
+
+## Definition 1
+Let $X$ be a topological space. 
+
+**(i)** Define an equivalence relation on $X$ by setting $x \sim y$ if there is a connected subspace of $X$ containing both $x$ and $y$. The equivalence classes are called the ***components*** of $X$.
+
+**(ii)** Define an equivalence relation on $X$ by setting $x \sim y$ if there is a path in $X$ from $x$ to $y$. The equivalence classes are called the ***path components*** of $X$.
+
+## Remark 1
+We check the relations defined above are indeed equivalence relations.
+
+**(i)** For each $x \in X$, $\{ x \}$ is a connected subspace of $X$ containing $x$. Thus, $x \sim x$, so $\sim$ is reflexive.
+
+If $x \sim y$, then there is a connected subspace of $X$ containing both $x$ and $y$. Clearly, $y \sim x$ since the connected subspace contains both $y$ and $x$. Thus, $\sim$ is symmetric.
+
+If $x \sim y$ and $y \sim z$, then there are connected subspaces $A$ and $B$ of $X$ containing both $x$ and $y$, and $y$ and $z$ respectively. [Since $A$ and $B$ contain $y$ in common, $A \cup B$ is a connected subspace of $X$ containing $x$ and $z$.](../Connected_Space/index.qmd#sec-theorem-1) Thus, $x \sim z$, so $\sim$ is transitive. Hence, $\sim$ is an equivalence relation.
+
+**(ii)** For each $x \in X$, the constant map $f:[0, 1] \to X$ defined by $f(t) = x$ for all $t \in [0, 1]$ is a path from $x$ to $x$. Thus, $x \sim x$, so $\sim$ is reflexive.
+
+If $x \sim y$, then there is a path $f:[0, 1] \to X$ in $X$ from $x$ to $y$. Note that $f(1-t) = g(t)$ is a path from $y$ to $x$. Thus, $y \sim x$, so $\sim$ is symmetric.
+
+If $x \sim y$ and $y \sim z$, then there are paths $f:[0, 1] \to X$ and $g:[1, 2] \to X$ in $X$ from $x$ to $y$ and from $y$ to $z$, respectively. By [pasting lemma](../Pasting_Lemma/index.qmd#sec-pasting-lemma), the function $h = f \cup g : [0, 2] \to X$ is a path in $X$ from $x$ to $z$, which means that $x \sim z.$ Thus, $\sim$ is transitive and therefore $\sim$ is an equivalence relation.
+
+## Theorem 1
+**(i)** The components of $X$ are connected disjoint subspaces of $X$ whose union is $X$, such that each nonempty connected subspace of $X$ intersects only one of them.
+
+**(ii)** The path components of $X$ are path-connected disjoint subspaces of $X$ whose union is $X$, such that each nonempty path-connected subspace of $X$ intersects only one of them.
+
+Component는 정의만 봐서는 그저 전체 공간의 부분공간일 뿐, 연결성이 자명하게 보장되는 것은 아님을 유의하자. 또한 위에서 동치 관계를 정의한 방법을 생각해본다면 component일 필요가 없는, 임의의 연결 부분 공간을 들고 왔을 때 반드시 두 개 이상의 component에 걸칠 수는 없음을 쉽게 파악할 수 있다.
+
+### Proof
+**(i)** First, we prove each nonempty connected subspace of $X$ intersects only one of the components of $X$. If a nonempty connected subspace of $X$ intersects the components $C_1$ and $C_2$ of $X$ in points $x_1$ and $x_2,$ then $x_1 \sim x_2,$ which means that $C_1 = C_2.$ 
+
+Being equivalence classes, the components of $X$ are disjoint and their union is $X$. To show a component $C$ is connected, choose a point $x_0$ of $C$. Note that for each point $x \in C,$ $x \sim x_0.$ Then there is a connected subspace $A_x$ containing $x$ and $x_0$. By the previous argument, $A_x \subset C.$ Therefore, 
+
+$$C = \bigcup_{x \in C} A_x.$$
+
+Since $A_x$ is connected for all $x \in C,$ and $x_0 \in A_x$ for all $x \in C,$ the union $C$ is connected by [theorem 1](../Connected_Space/index.qmd#sec-theorem-1). 
+
+**(ii)** It is similar to (i). $\blacksquare$
+
+## Remark 2
+**(i)** Each component of a space $X$ is closed in $X.$
+
+$\big[(\because)$ Note that a closure $\overline{C}$ of a component $C$ of $X$ is connected. Then $\overline{C} = C,$ which means that $C$ is closed in $X$.$\big]$
+
+**(ii)** If $X$ has only finitely many components, then each component is also open in $X.$
+
+$\big[(\because)$ Let $C$ be a component of $C.$ Then $X - C$ is the finite union of components of $X$ which is closed in $X.$ Thus, $C$ is open in $X.\big]$
+
+## Example
+
+# Reference
+- James R. Munkres. (2000). Topology (2nd ed.). Pearson.

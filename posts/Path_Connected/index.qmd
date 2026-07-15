@@ -1,0 +1,65 @@
+---
+title: "Path-Connected Space"
+author: "Youmin Chun"
+date: "2026-07-15"
+categories: 
+  - Math > Topology
+---
+
+## Definition
+Let $X$ be a topological space.
+
+**(i)** For given $x, y \in X,$ a ***path*** in $X$ from $x$ to $y$ is defined as a continuous map $f: [a, b] \to X$ such that $f(a) = x$ and $f(b) = y.$ 
+
+**(ii)** $X$ is said to be ***path connected*** if every pair of points of $X$ can be joined by a path in $X$, that is, any two points in $X$, there is a path between them.
+
+정의에서 확인할 수 있는 것처럼 "연결성"을 자연스럽게 정의한 내용이다. 그러나 그냥 connected보다는 더 강한 조건임을 아래 정리에서 확인할 수 있다.
+
+## Theorem
+**(i)** Every path connected space is connected, but the converse does not hold.
+
+**(ii)** Let $f: X \to Y$ be a continuous map. If a subspace $A$ of $X$ is path connected, then so is $f(A).$
+### Proof
+**(i)** Let $X$ be a path connected space. Suppose that $X$ is not connected. Then $X$ has a separation $(A, B).$ Since $A, B \neq \emptyset$ and $A \cap B = \emptyset,$ we can choose distinct two points $x \in A$ and $y \in B.$ Since $x, y \in X$ and $X$ is path connected, there is a path $p: [a, b] \to X$ from $x$ to $y$, i.e., $p$ is continuous and satisfies that $p(a) = x$ and $p(b) = y.$
+
+[Since $p$ is continuous, $p([a, b])$ is also connected.](../Connected_Space/index.qmd#sec-theorem-3) Since $p([a, b]) \subset X$ and $X$ is not connected, [either $p([a, b]) \subset A$ or $p([a, b]) \subset B.$](../Connected_Space/index.qmd#sec-lemma-2) But it contradicts to the fact that $p(a) = x \in A$ and $p(b) = y \in B.$ Thus, $X$ is connected.
+
+The counterexample of the converse is given by the [comb space.](../Comb_Space/index.qmd#sec-example)
+
+**(ii)** Let $x, y \in f(A).$ Then $f(a) = x$ and $f(b) = y$ for some $a, b \in A.$ Since $A$ is path connected, there is a path $p:[\alpha, \beta] \to A$ from $a$ to $b$. That is, $p$ is continuous and satisfies that $p(\alpha) = a$ and $p(\beta) = b.$ 
+
+[Since $f$ is continuous, the restriction $g: A \to f(A)$ is also continuous.](../Continuous_Function/index.qmd#sec-theorem-3) Furthermore, [the composition $g \circ p : [\alpha, \beta] \to f(A)$ is also continuous.](../Continuous_Function/index.qmd#sec-theorem-3) Then $g \circ p$ is a path in $f(A)$ from $x$ to $y$ because 
+
+$$(g \circ p)(\alpha) = g(p(\alpha)) = g(a) = f(a) = x$$
+
+and 
+
+$$(g \circ p)(\beta) = g(p(\beta)) = g(b) = f(b) = y.$$
+
+Thus, $f(A)$ is path connected. $\blacksquare$
+
+## Example
+**(i)** The ***unit ball*** 
+
+$$B^n = \{ (x_1, \cdots, x_n) \in \mathbb{R}^n \mid \sqrt{x_1^2 + \cdots x_n^2} \le 1 \}$$
+
+is path connected.
+
+$\big[(\because)$ Let $x, y \in B^n$ with $x \neq y,$ and let define the map $p: [0, 1] \to B^n$ such that $p(t) = tx + (1-t)y, \forall t \in [0, 1].$ Since $B^n$ is convex, the image $p([0, 1]) \subset B^n,$ so $p$ is well-defined. Clearly, $p$ is continuous, so $p$ is a path. Hence, $B^n$ is path connected.$\big]$
+
+**(ii)** The ***punctured Euclidean space*** $\mathbb{R}^n - \{ \mathbf{0} \}$ is path connected. $(n \ge 2)$
+
+$\big[(\because)$ Let $x, y \in \mathbb{R}^n - \{ \mathbf{0} \}$ with $x \neq y.$ If $\{ x, y \}$ is linearly independent, which means that $x$ and $y$ do not lie in a same straight line in $\mathbb{R}^n,$ then the map $p:[0, 1] \to \mathbb{R}^n - \{ \mathbf{0} \}$ defined by $p(t) = tx + (1-t)y, \forall t \in [0, 1]$ is a path.
+
+If $\{ x, y \}$ is linearly dependent, which means that $y = cx$ for some scalar $c \in \mathbb{R},$ then we can choose another point $z \in \mathbb{R}^n - \{ \mathbf{0} \},$ so $\{ x, z \}$ and $\{ y, z \}$ are linearly independent. Then there are paths $p_1$ and $p_2$ from $x$ to $z$ and from $z$ to $y$, respectively, so $p_2 \circ p_1$ is a path from $x$ to $y$. Hence, $\mathbb{R}^n - \{ \mathbf{0} \}$ is path connected.$\big]$
+
+**(iii)** The ***unit sphere*** 
+
+$$S^{n-1} = \{ (x_1, \cdots, x_n) \in \mathbb{R}^n \mid \sqrt{x_1^2 + \cdots x_n^2} = 1 \}$$
+
+is path connected.
+
+$\big[(\because)$ Define a map $g: \mathbb{R}^n - \{ \mathbf{0} \} \to S^{n-1}$ by $g(x) = \frac{x}{\| x \|}, \forall x \in \mathbb{R}^n - \{ \mathbf{0} \}.$ Then clearly $g$ is continuous and surjective. Since $\mathbb{R}^n - \{ \mathbf{0} \}$ is path connected, $g(\mathbb{R}^n - \{ \mathbf{0} \}) = S^{n-1}$ is path connected.$\big]$
+
+# Reference
+- James R. Munkres. (2000). Topology (2nd ed.). Pearson.

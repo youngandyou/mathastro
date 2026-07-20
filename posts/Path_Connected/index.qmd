@@ -19,6 +19,7 @@ Let $X$ be a topological space.
 **(i)** Every path connected space is connected, but the converse does not hold.
 
 **(ii)** Let $f: X \to Y$ be a continuous map. If a subspace $A$ of $X$ is path connected, then so is $f(A).$
+
 ### Proof
 **(i)** Let $X$ be a path connected space. Suppose that $X$ is not connected. Then $X$ has a separation $(A, B).$ Since $A, B \neq \emptyset$ and $A \cap B = \emptyset,$ we can choose distinct two points $x \in A$ and $y \in B.$ Since $x, y \in X$ and $X$ is path connected, there is a path $p: [a, b] \to X$ from $x$ to $y$, i.e., $p$ is continuous and satisfies that $p(a) = x$ and $p(b) = y.$
 

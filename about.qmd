@@ -1,5 +1,5 @@
 ---
-title: "About"
+title: "MathAstro"
 image: profile.jpg
 about:
   template: jolla
@@ -15,8 +15,6 @@ about:
       href: https://github.com/youngandyou/mathastro
 
 ---
-
-# MathAstro
 
 ## 🔗 블로그 하이퍼링크
 

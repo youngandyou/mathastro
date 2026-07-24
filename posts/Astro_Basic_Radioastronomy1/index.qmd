@@ -1,5 +1,5 @@
 ---
-title: "Basic Interferometer(간섭계의 기초)"
+title: "Power and Intensity, Brightness"
 author: "Young Jeong Lee"
 date: "2026-07-24"
 description: "전파 천문학에서 다루는 물리량인 Power, Intensity, Brightness 등에 대해서 소개하는 글이다."

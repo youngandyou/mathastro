@@ -175,6 +175,28 @@
     }
   }
 
+  function createMobileCategoryTree(listingElement) {
+    const main = listingElement?.closest("main");
+
+    if (!main) {
+      return null;
+    }
+
+    const panel = document.createElement("section");
+    panel.className = "mobile-category-panel";
+    panel.setAttribute("aria-label", "Categories");
+
+    const heading = document.createElement("h2");
+    heading.className = "mobile-category-title";
+    heading.textContent = "Categories";
+
+    const container = document.createElement("div");
+    panel.append(heading, container);
+    main.insertBefore(panel, listingElement);
+
+    return container;
+  }
+
   function setupCategoryTree() {
     const defaultCategories = document.querySelector(".quarto-listing-category");
     const title = document.querySelector(".quarto-listing-category-title");
@@ -198,9 +220,21 @@
 
     const treeContainer = document.createElement("div");
     defaultCategories.replaceWith(treeContainer);
+    const treeContainers = [treeContainer];
+    const mobileTreeContainer = createMobileCategoryTree(listingElement);
+
+    if (mobileTreeContainer) {
+      treeContainers.push(mobileTreeContainer);
+    }
 
     if (title) {
       title.textContent = "Categories";
+    }
+
+    function renderCategoryTrees() {
+      treeContainers.forEach((container) => {
+        renderTree(container, tree, state, selectCategory);
+      });
     }
 
     function selectCategory(node) {
@@ -215,7 +249,7 @@
       }
 
       filterPosts(posts, state.selectedPath, listing);
-      renderTree(treeContainer, tree, state, selectCategory);
+      renderCategoryTrees();
     }
 
     posts.forEach((post) => {
@@ -226,12 +260,12 @@
 
           state.selectedPath = splitPath(category.textContent.trim()).join(pathSeparator);
           filterPosts(posts, state.selectedPath, listing);
-          renderTree(treeContainer, tree, state, selectCategory);
+          renderCategoryTrees();
         });
       });
     });
 
-    renderTree(treeContainer, tree, state, selectCategory);
+    renderCategoryTrees();
   }
 
   if (document.readyState === "loading") {

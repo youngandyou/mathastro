@@ -1,0 +1,145 @@
+---
+title: "Modulus"
+author: "Youmin Chun"
+date: "2026-07-24"
+categories: 
+  - Math > Complex Analysis
+---
+
+## Definition
+Let $z = x + iy$ be a complex number. The ***modulus*** or ***absolute value*** of $z$, denoted by $\vert z \vert$, is defined by
+
+$$\vert z \vert = \sqrt{x^2 + y^2}.$$
+
+주의할 점은 여기서 $x, y$는 $\mathbb{R} \times \{ 0 \}$에 mapping된, 즉 complex number로 identified된 숫자가 아니라 그 자체로 실수 공간 $\mathbb{R}$의 원소이다. 즉 
+
+$$\sqrt{x^2 + y^2} \neq \sqrt{(x,0)^2 + (y,0)^2}$$
+
+으로 정의되는 것이 아님을 주의하자. 
+
+한편 위와 같이 정의되는 modulus는 자명하게 놈의 정의를 만족하고, 자연스럽게 복소 공간 $\mathbb{C}$에 거리 $d(z_1, z_2) = \vert z_1 - z_2 \vert$를 부여할 수 있다. 이로써 극한의 개념을 논할 수 있게 된다.
+
+## Remark
+Let $z = x + iy$ be a complex number. Then 
+
+$$\mathrm{Re} z \le \vert \mathrm{Re} z \vert \le \vert z \vert \quad \text{and} \quad \mathrm{Im} z \le \vert \mathrm{Im} z \vert \le \vert z \vert.$$
+
+## Theorem
+Let $z_1, z_2 \in \mathbb{C}$. Then
+
+**(i)** $\vert z_1 z_2 \vert = \vert z_1 \vert \vert z_2 \vert$
+
+**(ii)** $\vert z_1 + z_2 \vert \le \vert z_1 \vert + \vert z_2 \vert$
+
+**(iii)** $\vert z_1 - z_2 \vert \ge \vert \vert z_1 \vert - \vert z_2 \vert \vert$
+
+### Proof
+Let $z_1 = (x_1, y_1)$ and $z_2 = (x_2, y_2)$.
+
+**(i)** Since $z_1z_2 = (x_1x_2 - y_1y_2, x_1y_2 + x_2y_1)$, we have 
+
+$$\begin{align*} 
+\vert z_1z_2 \vert^2 &= (x_1x_2 - y_1y_2)^2 + (x_1y_2 + x_2y_1)^2 \\ 
+&= (x_1x_2)^2 - 2x_1x_2y_1y_2 + (y_1y_2)^2 + (x_1y_2)^2 + 2x_1x_2y_1y_2 + (x_2y_1)^2 \\ 
+&= (x_1x_2)^2 + (y_1y_2)^2 + (x_1y_2)^2 + (x_2y_1)^2 \\ 
+&= (x_1^2 + y_1^2)(x_2^2 + y_2^2) \\ 
+&= \vert z_1 \vert^2 \vert z_2 \vert^2
+\end{align*}$$
+
+Taking the square root of both sides, we get $\vert z_1z_2 \vert = \vert z_1 \vert \vert z_2 \vert$. 
+
+**(ii)** Note that 
+
+$$\begin{align*}
+\vert z_1 + z_2 \vert^2 & = (z_1 + z_2) \overline{z_1+z_2} \\
+& = (z_1 + z_2) (\overline{z_1} + \overline{z_2}) \\
+& = z_1\overline{z_1} + z_1\overline{z_2} + z_2\overline{z_1} + z_2\overline{z_2} \\
+& = \vert z_1 \vert^2 + \vert z_2 \vert^2 + z_1\overline{z_2} + \overline{z_1\overline{z_2}} \\
+& = \vert z_1 \vert^2 + \vert z_2 \vert^2 + 2\text{Re}(z_1\overline{z_2}) \\
+& \le \vert z_1 \vert^2 + \vert z_2 \vert^2 + 2\vert z_1\overline{z_2} \vert \\
+& = \vert z_1 \vert^2 + \vert z_2 \vert^2 + 2\vert z_1 \vert \vert z_2 \vert \\
+& = (\vert z_1 \vert + \vert z_2 \vert)^2
+\end{align*}$$
+
+Taking the square root of both sides, we get $\vert z_1 + z_2 \vert \le \vert z_1 \vert + \vert z_2 \vert$.
+
+**(iii)**  Note that 
+
+$$\begin{align*}
+\vert z_1 \vert &= \vert (z_1 + z_2) - z_2 \vert \\
+& \le \vert z_1 + z_2 \vert + \vert -z_2 \vert \\
+& = \vert z_1 + z_2 \vert + \vert z_2 \\
+& \implies \vert z_1 \vert - \vert z_2 \vert \le \vert z_1 + z_2 \vert
+\end{align*}$$
+
+Similarly, we have 
+
+$$\begin{align*}
+\vert z_2 \vert &= \vert (z_1 + z_2) - z_1 \vert \\
+& \le \vert z_1 + z_2 \vert + \vert -z_1 \vert \\
+& = \vert z_1 + z_2 \vert + \vert z_1 \\
+& \implies \vert z_2 \vert - \vert z_1 \vert \le \vert z_1 + z_2 \vert
+\end{align*}$$
+
+Combining the two inequalities, we get 
+
+$$\begin{gather*}
+\vert z_1 \vert - \vert z_2 \vert \le \vert z_1 + z_2 \vert \le \vert z_1 \vert + \vert z_2 \vert \\
+\implies \vert z_1 - z_2 \vert \ge \vert \vert z_1 \vert - \vert z_2 \vert \vert. \blacksquare
+\end{gather*}$$
+
+## Remark
+Let $n \in \mathbb{N}$ and let $a_0, a_1, ..., a_n \in \mathbb{C}$ where $a_n \neq 0$. Let 
+
+$$P(z) = a_0 + a_1z+ \cdots + a_nz^n$$
+
+be a polynomial of degree $n$. Then there exists $R > 0$ such that 
+
+$$\left \vert \frac{1}{P(z)} \right \vert < \frac{2}{\vert a_n \vert R^n} \quad \text{whenever} \quad \vert z \vert > R.$$
+
+$(\because)$ Let 
+
+$$w = \frac{a_0}{z^n} + \frac{a_1}{z^{n-1}} + \cdots + \frac{a_{n-1}}{z^1} \quad (z \neq 0)$$
+
+so that 
+
+$$P(z) = (w + a_n)z^n$$
+
+when $z \neq 0$. Then we have 
+
+$$\begin{gather*}
+wz^n = a_1 + a_1z + \cdots + a_{n-1}z^{n-1} \\
+\implies \vert w \vert \vert z \vert^n \le \vert a_0 \vert + \vert a_1 \vert \vert z \vert + \cdots + \vert a_{n-1} \vert \vert z \vert^{n-1} \\
+\vert w \vert \le \frac{\vert a_0 \vert}{\vert z \vert^n} + \frac{\vert a_1 \vert}{\vert z \vert^{n-1}} + \cdots + \frac{\vert a_{n-1} \vert}{\vert z \vert} \quad (z \neq 0)
+\end{gather*}$$
+
+We claim that $\exists R > 0$ such that for any $k \in \{ 1, 2, ..., n \}$, 
+
+$$\frac{|a_{n-k}|}{|z|^k} < \frac{|a_n|}{2n} \quad \text{for } \vert z \vert > R.$$
+
+$(\because)$ Note that for each $k = 1, 2, \dots, n$, $\frac{\vert a_{n-k} \vert}{\vert a_n \vert} 2n$ is some fixed nonnegative real number. Choose $R > 1$ such that 
+
+$$\max_{1 \le k \le n} \left\{ \frac{|a_{n-k}|}{|a_n|} \cdot 2n \right\} \le R.$$ 
+
+For any $k \in \{1, 2, \dots, n\}$, we have 
+
+$$ \begin{gather*} 
+\frac{|a_{n-k}|}{|a_n|} \cdot 2n \le R \le R^k < |z|^k \quad \text{for } |z| > R \\
+\implies \frac{|a_{n-k}|}{|z|^k} < \frac{|a_n|}{2n} \quad \text{for } |z| > R. 
+ \end{gather*}$$
+
+Thus
+
+$$\begin{align*}
+& \vert w \vert < n \cdot \frac{\vert a_n \vert}{2n} = \frac{\vert a_n \vert}{2} \quad \text{for } \vert z \vert > R \\
+\implies &\vert a_n + w \vert \ge \vert \vert a_n \vert - \vert w \vert \vert = \left\vert \frac{\vert a_n \vert}{2} + \frac{\vert a_n \vert}{2} - \vert w \vert \right\vert \ge \frac{\vert a_n \vert}{2} \quad \text{for } \vert z \vert > R \\
+\implies &\vert P(z) \vert = \vert w + a_n \vert \vert z \vert^n > \frac{\vert a_n \vert}{2} R^n \quad \text{for } \vert z \vert > R \\ 
+\implies &\left \vert \frac{1}{P(z)} \right \vert < \frac{2}{\vert a_n \vert R^n} \quad \text{for } \vert z \vert > R. \blacksquare
+\end{align*}$$
+
+Similarly, we can show that there exists $R > 0$ such that 
+
+$$\vert P(z) \vert < 2 \vert a_n \vert \vert z \vert^n \quad \text{for } \vert z \vert > R.$$
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

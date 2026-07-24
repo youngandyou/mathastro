@@ -12,6 +12,8 @@ website:
         href: https://github.com/youngandyou/mathastro
       - icon: bluesky
         href: https://bsky.app/
+      - href: README.md
+        text: "블로그 소개"
 format:
   html:
     theme:

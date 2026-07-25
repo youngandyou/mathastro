@@ -1,0 +1,53 @@
+---
+title: "Coincidence Principle"
+author: "Youmin Chun"
+date: "2026-07-25"
+categories: 
+  - Math > Complex Analysis
+---
+
+## Lemma
+- Let $f: D \to \mathbb{C}$ be an analytic function in a domain $D$. If $f(z) = 0$ at each point $z$ of a subdomain or line segment contained in $D$, then $f(z) \equiv 0$ in $D$.
+
+[여기서 도메인은 정의역의 의미가 아니라 연결된 열린 집합을 의미함을 주의하자.](../Topology_Complex/index.qmd#sec-definition)
+
+### Proof
+Let $z_0$ be a point of the subdomain or line segment where $f(z) = 0$. Since $D$ is a domain, connectd open set, there is a polygonal line $L$, consisting of a finite number of line segments joined end to end and lying entirely in $D$, that extends from $z_0$ to any other point $P$ in $D$. We let $d$ denote the shortest distance from points on $L$ to $\partial D$. When $D = \mathbb{C}$, $d$ may have any positive value.
+
+Next, we construct a finite sequence of points $z_0, z_1, \cdots, z_n = P$ along $L$ such that $\vert z_k - z_{k-1} \vert < d$ for each $k = 1, 2, ..., n$. Furthermore, we form a finite sequence of neighborhoods $N_0, N_1, \cdots, N_n$ where each $N_k$ has center $z_k$ and radius $d$. Note that $f$ is analytic in each of these neighborhoods, and the center $z_k$ of each neighborhoods $N_k$ lies in the neighborhood $N_{k-1}$. 
+
+> **Lemma**
+>
+> Given a function $f$ and a point $z_0$, suppose that 
+>
+> **(i)** $f$ is analytic throughout a neighborhood $N_0$ of $z_0$
+>
+> **(ii)** $f(z) = 0$ at each point $z$ of a domain $D$ or line segment $L$ containing $z_0$.
+>
+> Then $f(z) \equiv 0$ in $N_0$.
+
+By the above lemma, $f(z) \equiv 0$ in $N_0$. Since $z_1 \in N_0$, by applying the above lemma again, we obtain that $f(z) \equiv 0$ in $N_1$. By continuing in this manner, we arrive at the fact that $f(z) \equiv 0$ in $N_n$, so $f(z_n) = f(P) = 0$. Since $P$ was arbitrarily selected in $D$, we conclude that $f(z) \equiv 0$ in $D$. $\blacksquare$
+
+## Theorem
+- A function that is analytic in a domain $D$ is uniquely determined over $D$ by its values in a subdomain, or along a line segment, contained in $D$.
+
+다시 말해 해석 함수를 완전히 결정하기 위해서 정의역 전체의 정보를 알 필요 없이 정의역의 일부만 알아도 가능하다. 이 정리는 아래 coincidence principle이라는 이름의 정리로 더욱 일반화할 수 있다.
+
+### Proof
+Suppose that two functions $f$ and $g$ are analytic in the same domain $D$ and that $f(z) = g(z)$ at each point $z$ of some subdomain or line segment contained in $D$. Since the function $h$ defined by $h(z) = f(z) - g(z)$ is analytic in $D$ and $h(z) = 0$ throughout the subdomain or on the line segment, it follows from the lemma above that $h(z) = 0$ for all points in $D$. That is, $f(z) = g(z)$ for all $z \in D$. $\blacksquare$
+
+## Coincidence Principle
+- If two functions $f$ and $g$ are analytic in the same domain $D$ and if $f(z) = g(z)$ on a subset of $D$ that has a limit point $z_0$ in $D$, then $f(z) = g(z)$ everywhere in $D$.
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.
+
+<style>
+/* 아이콘 숨기기 및 아이콘이 있던 왼쪽 빈 여백 줄이기 */
+.no-icon {
+  padding-left: 1rem !important; 
+}
+.no-icon::before {
+  display: none !important; 
+}
+</style>

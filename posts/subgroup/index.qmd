@@ -27,7 +27,7 @@ categories:
 **(vi)** $\langle \mathbb{Z}^+, \cdot \rangle \not < \langle \mathbb{Z}, + \rangle$.
 
 ## Theorem 1
-Let $H$ be a nonempty subset of a group $G$. Then 
+- Let $H$ be a nonempty subset of a group $G$. Then 
 
 $$H \le G \iff ab^{-1} \in H, \forall a, b \in H$$
 
@@ -51,7 +51,7 @@ Suppose that $ab^{-1} \in H, \forall a, b \in H$. Let $a, b \in H$.
 Thus, $H \le G$. $\blacksquare$
 
 ## Theorem 2
-Let $G$ be a group and let $\\{ H_i \\} _ {i \in I}$ be a collection of subgroups of $G$. Then 
+- Let $G$ be a group and let $\{ H_i \}_{i \in I}$ be a collection of subgroups of $G$. Then 
 
 $$\bigcap_{i \in I} H_i \le G.$$
 
@@ -59,7 +59,7 @@ $$\bigcap_{i \in I} H_i \le G.$$
 Let $a, b \in \bigcap_{i \in I} H_i$. Then $a, b \in H_i, \forall i \in I$. Since $H_i \le G$ for each $i$, we have $ab^{-1} \in H_i, \forall i \in I$. Thus $ab^{-1} \in \bigcap_{i \in I} H_i$, which means that $\bigcap_{i \in I} H_i \le G$. $\blacksquare$
 
 ## Theorem 3
-Let $G$ be a group, and let $H \le G, K \le H.$ Then $K \le G.$
+- Let $G$ be a group, and let $H \le G, K \le H.$ Then $K \le G.$
 
 한마디로 말해서, subgroup의 subgroup은 다시 subgroup이다.
 
@@ -67,7 +67,7 @@ Let $G$ be a group, and let $H \le G, K \le H.$ Then $K \le G.$
 Since $K \le H \le G,$ $K$ is a nonempty subset of $G.$ Let $a, b \in K.$ Since $K \le H,$ $ab^{-1} \in K.$ Thus, $K \le G.$ $\blacksquare$
 
 ## Remark
-A union of subgroups of a group need NOT be a subgroup.
+- A union of subgroups of a group need NOT be a subgroup.
 
 $\big[ (\because)$ $\langle 2 \rangle, \langle 3 \rangle \le \mathbb{Z}$ but $\langle 2 \rangle \cup \langle 3 \rangle$ is not a subgroup of $\mathbb{Z}$ because $(-2) + 3 = 1 \notin \langle 2 \rangle \cup \langle 3 \rangle.\big]$
 

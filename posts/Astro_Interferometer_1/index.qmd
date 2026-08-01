@@ -1,5 +1,5 @@
 ---
-title: "Basic Interferometer(간섭계의 기초)"
+title: "Basic Interferometer(간섭계의 기초) (1)"
 author: "Young Jeong Lee"
 date: "2026-07-17"
 description: "간섭계의 기초에 대해서 소개하는 첫 번째 글이다."
@@ -35,7 +35,7 @@ categories:
 
 ## 1.2. One-Dimensional Source 
 
-- 위상이 오는 방향, 즉, 천체에서 전파 신호가 오는 방향을 **phase reference position**이라고 한다. 다르게 말하면 안테나가 천체를 향하는 방향이다. 
+- **Phase reference position**은 간섭계에서 신호의 위상이 0으로 맞춰지는 임의의 기준 방향을 의미한다. 즉, **어떤 기준이 되는 방향**을 말한다. 
 - 다음 그림과 같은 상황을 고려해보자. 
 
 ![그림 4: 똑같은 두 안테나가 baseline $D$ 만큼 떨어져 있고 천체에서 오는 전파 신호가 안테나로 향하고 있다. 이때, **천체 입장** 에서 하나의 안테나는 가깝고 다른 하나의 안테나는 멀리 떨어져 있어서 경로차를 가지게 된다. 그 **경로 차이 시간**을 $\tau_g$ 라고 할 때, 이를 **기하학적 지연(geometric delay)** 이라고 한다. 그리고 이때의 **projected baseline**을 $\Delta L$, $D$ 와 $\Delta L$ 이 이루는 각을 $\theta$ 로 두었다.](phase_reference_position.png){width="80%"}
@@ -115,6 +115,38 @@ $$
 - 종종 논문에서 **Fringe spacing**이라는 표현이 나오는데, 이는 $\Delta l$ 을 원의 형태로 나타낸 것을 의미한다. 예를 들어서 $25{\rm \mu as}$, $50{\rm \mu as}$인 Fringe spacing은 간섭계의 각분해능을 아래 이미지와 같이 원의 형태로 나타낸 것이다. (아래 사진 참고)
 
 ![그림 6: 위 그림에서 작은 원이 $25{\rm \mu as}$, 큰 원이 $50{\rm \mu as}$ 인 fringe spacing을 나타낸다. (3)](fringe_spacing.png)
+
+---
+
+### 1.2.2. Instrumental delay 
+
+- **기기 지연(Instrumental delay)**은 phase reference position으로부터 오는 복사의 기하학적 지연과 같아지도록 지속적으로 조정된다. 
+- phase reference position의 방향을 $\theta_0$ 라고 하면, phase reference position에서 오는 기하학적 지연을 상쇄하기 위한 보상 지연 $\tau_i$ 는 다음과 같다: 
+
+$$
+\tau_i=\frac{D}{c}\sin\theta_0 \tag{1.8}
+$$
+
+- 식 (1.8)은 식 (1.1)과 형태가 같은데, 이는 임의의 $\theta$ 에 대한 **순 지연(net delay)**는 "기하학적 지연 - 기기 지연"으로 주어기기 때문이다: 
+
+$$
+\tau = \frac{D}{c}\sin \theta - \tau_i \tag{1.9}
+$$
+
+- 만약 $\theta = \theta_0$ 이면, $\tau = 0$ 이 되면서 phase reference position에서 오는 신호는 두 안테나 사이의 위상차가 제거되어 프린지 위상이 기준값으로 고정되는 것을 알 수 있다. 
+- 작은 각도 $\Delta \theta$ 만큼 벗어난 방향에서 들어오는 기하학적 지연은 다음과 같이 나타낼 수 있다:
+
+$$
+\tau_g (\theta_0 -\Delta \theta) = \frac{D}{c}\sin (\theta_0 - \Delta \theta) \tag{1.10}
+$$
+
+- 기기는 phase reference position에 맞춰진 지연 $\tau_i$ 만 보상한다. 식 (1.10) 및 지구 자전까지 고려한 순 지연은 다음과 같다:
+
+$$
+\tau \simeq \frac{D}{c} \Delta \theta \cos \theta_0 \tag{1.11}
+$$
+
+- 지구 자전에 의해 $\theta_0$ 에 관한 기하학적 관계가 변하기 때문에 실제 관측에서는 $\tau_i$ 가 시간에 따라 계속 조정된다. 
 
 ---
 

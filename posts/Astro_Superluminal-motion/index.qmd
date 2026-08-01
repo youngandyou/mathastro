@@ -2,6 +2,7 @@
 title: "초광속 운동(Superluminal motion)"
 author: "Young Jeong Lee"
 date: "2026-06-25"
+description: "초광속 운동에 대해서 소개하는 글이다."
 categories: 
   - Astronomy > Relativistic Jets 
 ---

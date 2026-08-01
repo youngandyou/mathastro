@@ -2,6 +2,7 @@
 title: "등가원리 (Equivalence Principle)"
 author: "Young Jeong Lee"
 date: "2026-07-04"
+description: "등가원리에 대해서 소개하는 글이다."
 categories: 
   - Astronomy > General Relativity > Equivalence Principle
 ---

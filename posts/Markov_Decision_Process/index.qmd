@@ -187,6 +187,12 @@ $$q_*(s, a) := \max_{\pi} q_\pi(s, a), \forall s \in \mathcal{S}, \forall a \in 
 
 앞서 우리의 목표는 $G_t$의 기댓값을 최대화하는 정책 $\pi_\ast$를 찾는 것이라고 했었다. 위에서 정의한 용어에 따르면, optimal policy가 바로 그 정책이 될 것이다. 그리고 자연스럽게 $\pi_\ast$의 value function $v_{\pi_\ast}$는 optimal value function $v_\ast$와 같음을 알 수 있다. 
 
+한편 정의를 보면 모든 정책들이 항상 비교가능한 것은 아님을 알 수 있는데, 그렇다면 optimal policy가 항상 존재하는지에 대한 질문을 할 수 있다. 답은 항상 존재하지만 유일하지는 않다는 것이다. 백문이 불여일견이다.
+
+![](mdp5.png)
+
+Policy 1과 policy 2는 imcomparable하지만 그리디하게 max 값을 택함으로써 policy 3이라는 optimal policy를 만들어 낼 수 있다. 같은 논리로, optimal policy는 유일하지 않을 수 있다. 
+
 ## Bellman Optimality Equation
 앞서 유도한 Bellman equation을 optimal 버전으로도 유도할 수 있고, 이를 ***Bellman Optimality Equation***이라고 부른다.
 

@@ -3,7 +3,7 @@ title: "Bipartite Graph"
 author: "Youmin Chun"
 date: "2026-08-05"
 categories: 
-  - Math > Graph Theory
+  - Math > Graph Theory > Graph
 ---
 
 ## Bipartite Graph

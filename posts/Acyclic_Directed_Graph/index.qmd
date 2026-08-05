@@ -3,7 +3,7 @@ title: "Acyclic Directed Graph"
 author: "Youmin Chun"
 date: "2026-07-31"
 categories: 
-  - Math > Graph Theory
+  - Math > Graph Theory > Graph
 ---
 
 ## Definition

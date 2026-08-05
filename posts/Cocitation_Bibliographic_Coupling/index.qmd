@@ -3,7 +3,7 @@ title: "Cocitation and Bibliographic Coupling"
 author: "Youmin Chun"
 date: "2026-07-24"
 categories: 
-  - Math > Graph Theory
+  - Math > Graph Theory > Network Analysis
 ---
 
 ## Definition

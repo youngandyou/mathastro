@@ -41,4 +41,5 @@ Let $T$ be a tree on $n$ verticies. Then $T$ has exactl $n-1$ edges, so the sum 
 Let $T$ be a tree with a leaf $\ell$. If $V(T) = n$ and $E(T) = m$, then we have $n = m - 1$ by Theoerm 1 (v). If we remove a left $\ell$ from $T$, then a graph $T - \ell$ is a graph with $n-1$ vertices and $m-1$ edges. Since $(n-1) = (m-1) - 1$, we conclude that $T - \ell$ is also a tree. $\blacksquare$ 
 
 # Reference
+- Matousek, J., & Nesetril, J. (2008). Invitation to Discrete Mathematics. Oxford University Press.
 - Newman, M.E.J. (2010). Networks: An Introduction. Oxford University Press.

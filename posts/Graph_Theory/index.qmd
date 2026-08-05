@@ -9,7 +9,7 @@ categories:
 ## Definition
 **(i)** A graph or network is a pair $G = (V, E)$ where $V$ is a finite set whose elements are called ***vertices*** and $E \subset \binom{V}{2}$ is a set whose elements are called ***edges***. We often write $V(G)$ and $E(G)$ for the vertex set and edge set of a given graph $G$, respectively. 
 
-**(ii)** A graph that has neither self-edges nor multiedges is called a simple graph. 
+**(ii)** A graph that has neither self-edges nor multiedges is called a ***simple graph***. 
 
 ## Example
 

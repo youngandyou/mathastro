@@ -59,4 +59,5 @@ $$P_{ii} = \sum_{k=1}^g B^2_{ki} = \sum_{k=1}^g B_{ki}$$
 비슷한 방법으로 그룹 $i$와 $j$가 동시에 포함하고 있는 멤버의 총 개수를 $P'_{ij}$라고 하면 행렬 $P' = BB^T$를 정의할 수 있고, 동일한 논의를 할 수 있다.
 
 # Reference
+- Matousek, J., & Nesetril, J. (2008). Invitation to Discrete Mathematics. Oxford University Press.
 - Newman, M.E.J. (2010). Networks: An Introduction. Oxford University Press.

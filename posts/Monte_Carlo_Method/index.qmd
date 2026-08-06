@@ -24,8 +24,7 @@ $$G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \cdots + \gamma^{T - t - 1
 
 ## Control
 한편, 우리는 여전히 dynamics function $p$를 모르므로 value function $v$를 통해 정책을 개선할 수는 없다. 때문에 action-value function $q$를 사용해 업데이트를 하고, $\varepsilon-$greedy 방법으로 정책을 개선해 나가야 한다.
-
 $$Q(S_t, A_t) \longleftarrow Q(S_t, A_t) + \alpha_t \left[ G_t - Q(S_t, A_t) \right]$$
 
-# Reference
+# Reference 
 - Richard S. Sutton, Andrew G. Barto. (2020). Reinforcement Learning : An Introduction (2nd ed.). MIT press.

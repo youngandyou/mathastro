@@ -77,11 +77,10 @@ $$\begin{align*}
 G_t := \begin{cases}
 \text{(episodic)}  & R_{t+1} + R_{t+2} + R_{t+3} \cdots + R_T \\
 \text{(continuing)} & R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} \cdots = \sum_{k=0}^\infty \gamma^k R_{t+k+1}
-\end{cases} \\
-\text{where } \gamma \in [0, 1] \text{ is the discount rate.}
+\end{cases}
 \end{align*}$$
 
-Episodic case를 종료 시점 $T$에서 무한히 빠져나오지 못하는 상태로 간주한다면 두 정의를 합쳐서 다음과 같이 일반적으로 쓸 수 있다.
+여기서 $\gamma \in [0, 1]$는 discount rate으로, 미래에 받을 보상에 적용되는 값이다. Episodic case를 종료 시점 $T$에서 무한히 빠져나오지 못하는 상태로 간주한다면 두 정의를 합쳐서 다음과 같이 일반적으로 쓸 수 있다.
 
 $$G_t := \sum_{k = t+1}^T \gamma^{k - t-1} R_k \quad (\text{possibly } T = \infty \text{ or } \gamma = 1)$$
 

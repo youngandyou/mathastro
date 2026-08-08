@@ -4,7 +4,7 @@ author: "Youmin Chun"
 date: "2026-08-04"
 description: "강화학습의 기본적인 개념들과 마르코브 의사 결정 과정(MDP), Bellman equation 등에 대해서 소개한다."
 categories: 
-  - Math > Reinforcement Learning
+  - Computer > Machine Learning > Reinforcement Learning
 ---
 
 # Agent-Environment Interface

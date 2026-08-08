@@ -4,7 +4,7 @@ author: "Youmin Chun"
 date: "2026-08-04"
 description: "강화 학습에서 dynamical programming에 대해서 소개하고, 이를 이용해 MDP를 푸는 방법을 소개한다."
 categories: 
-  - Math > Reinforcement Learning
+  - Computer > Machine Learning > Reinforcement Learning
 ---
 
 # Dynamic Programming

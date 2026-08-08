@@ -2,7 +2,7 @@
 title: "Connected Directed Graph"
 author: "Youmin Chun"
 date: "2026-08-08"
-description: "연결 그래프와 component에 대해서 소개한다."
+description: "유향 그래프에서 연결성과 in, out component에 대해서 소개한다."
 categories: 
   - Math > Graph Theory > Graph
 ---

@@ -2,6 +2,7 @@
 title: "Kruskal Algorithm"
 author: "Youmin Chun"
 date: "2026-08-05"
+description: "최소 신장 트리(Minimum Spanning Tree)를 구하는 알고리즘 중 하나인 Kruskal 알고리즘에 대해서 소개한다."
 categories: 
   - Math > Graph Theory > Algorithm
 ---

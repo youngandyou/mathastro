@@ -2,6 +2,7 @@
 title: "Directed Graph"
 author: "Youmin Chun"
 date: "2026-07-24"
+description: "에지에 방향을 고려한 그래프인 유향 그래프(directed graph)를 소개한다."
 categories: 
   - Math > Graph Theory > Graph
 ---

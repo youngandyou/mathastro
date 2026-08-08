@@ -2,6 +2,7 @@
 title: "Cycle"
 author: "Youmin Chun"
 date: "2026-08-06"
+description: "그래프에서 cycle의 정의와 그 개수를 세는 공식에 대해서 소개한다."
 categories: 
   - Math > Graph Theory > Graph
 ---

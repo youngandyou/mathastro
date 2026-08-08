@@ -2,6 +2,7 @@
 title: "Weighted Graph"
 author: "Youmin Chun"
 date: "2026-07-24"
+description: "그래프의 각 에지에 가중치를 부여한 개념인 가중 그래프(weighted graph)를 소개한다."
 categories: 
   - Math > Graph Theory > Graph
 ---

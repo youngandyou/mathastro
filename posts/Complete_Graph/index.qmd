@@ -2,6 +2,7 @@
 title: "Complete Graph"
 author: "Youmin Chun"
 date: "2026-08-06"
+description: "완전 그래프에 대해서 소개한다."
 categories: 
   - Math > Graph Theory > Graph
 ---

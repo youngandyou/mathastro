@@ -2,6 +2,7 @@
 title: "Euler Formula"
 author: "Youmin Chun"
 date: "2026-08-05"
+description: "그래프 이론에서 오일러 공식에 대해서 설명한다."
 categories: 
   - Math > Graph Theory > Graph
 ---

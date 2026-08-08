@@ -2,6 +2,7 @@
 title: "Walk and Path"
 author: "Youmin Chun"
 date: "2026-08-06"
+description: "워크와 패스의 정의와 성질에 대해서 소개한다."
 categories: 
   - Math > Graph Theory > Graph
 ---

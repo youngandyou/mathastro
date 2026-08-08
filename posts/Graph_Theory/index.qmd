@@ -2,6 +2,7 @@
 title: "Graph"
 author: "Youmin Chun"
 date: "2026-07-24"
+description: "그래프의 기본적인 정의와 대표적인 그래프들의 예시들을 소개한다."
 categories: 
   - Math > Graph Theory > Graph
 ---
@@ -11,11 +12,41 @@ categories:
 
 **(ii)** A graph that has neither self-edges nor multiedges is called a ***simple graph***. 
 
-## Example
+## Example 1
 
 ![](graph1.png)
 
 단순하게 위 그림에서 (a)가 simple graph인 예시, (b)가 아닌 예시이다. Self-edge란 자기 자신과 연결된 엣지를 말하며 multiedge란 두 버텍스 사이에 연결된 둘 이상의 엣지들을 말한다. 즉 Simple graph는 여러 가능성을 배제한 채 두 버텍스 사이에 딱 하나의 에지만 연결된 단순한 경우만을 고려한 그래프라고 생각할 수 있다. 앞으로 특별한 언급이 없는 경우 그래프는 항상 simple graph로 들고온 것으로 생각한다.
+
+## Example 2
+**(i)** The [***complete graph*** (or ***clique***) $K_n$ on $n$ vertices](../Complete_Graph/index.qmd#sec-definition) is defined by 
+
+$$V(K_n) = [n] \quad \text{and} \quad E(K_n) = \binom{V(K_n)}{2}.$$
+
+![](graph2.png)
+
+**(ii)** The [***$n$-cycle*** $C_n$ on $n$ vertices](../Cycle/index.qmd#sec-definition) is defined by 
+
+$$V(C_n) = [n] \quad \text{and} \quad E(C_n) = \{\{ 1, 2 \}, \{ 2, 3 \}, ..., \{ n-1, n \}, \{ n, 1 \} \}.$$
+
+![](graph3.png)
+
+**(iii)** The [***$n$-path*** $P_n$ on $n$ vertices](../Walk_Path/index.qmd#sec-definition) is defined by 
+
+$$V(P_n) = \{ 0 \} \cup [n] \quad \text{and} \quad E(P_n) = \{\{ i-1, i \} \mid i \in [n] \}.$$
+
+![](graph4.png)
+
+**(iv)** The [***complete bipartite graph*** $K_{m, n}$](../Bipartite_Graph/index.qmd#sec-definition) on the sets $M$ and $N$ with $\vert M \vert = m$ and $\vert N \vert = n$ is defined by 
+
+$$V(K_{m, n}) = M \cup N \quad \text{and} \quad E(K_{m, n}) = \{\{ x, y \} \mid x \in M, y \in N \}.$$
+
+![](graph5.png)
+
+**(v)** A graph $G$ is [***bipartite***](../Bipartite_Graph/index.qmd#sec-definition) if $V(G)$ has a partition $V(G) = A \cup B$ such that all edges go from $A$ to $B$.
+
+## Remark
+- The number of graphs on $n$ vertices is $2^{\binom{n}{2}}$.
 
 # Reference
 - Matousek, J., & Nesetril, J. (2008). Invitation to Discrete Mathematics. Oxford University Press.

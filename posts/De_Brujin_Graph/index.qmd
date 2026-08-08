@@ -1,7 +1,8 @@
 ---
-title: "De Brujin Graph"
+title: "De Bruijn Graph"
 author: "Youmin Chun"
 date: "2026-08-05"
+description: "De Bruijn graph와 이를 활용한 룰렛 문제에 대해서 소개한다."
 categories: 
   - Math > Graph Theory > Graph
 ---

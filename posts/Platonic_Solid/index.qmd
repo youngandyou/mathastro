@@ -2,6 +2,7 @@
 title: "Platonic Solid"
 author: "Youmin Chun"
 date: "2026-08-05"
+description: "정다면체와 다면체의 성질에 대해서 소개한다."
 categories: 
   - Math > Graph Theory > Graph
 ---

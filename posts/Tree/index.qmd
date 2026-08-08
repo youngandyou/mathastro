@@ -2,6 +2,7 @@
 title: "Tree"
 author: "Youmin Chun"
 date: "2026-08-05"
+description: "트리 그래프에 대해서 소개한다."
 categories: 
   - Math > Graph Theory > Tree
 ---

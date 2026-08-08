@@ -2,6 +2,7 @@
 title: "Bipartite Graph"
 author: "Youmin Chun"
 date: "2026-08-05"
+description: "이분그래프과 incidence matrix, one-mode projeciton에 대해서 소개한다."
 categories: 
   - Math > Graph Theory > Graph
 ---

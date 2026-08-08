@@ -2,6 +2,7 @@
 title: "Acyclic Directed Graph"
 author: "Youmin Chun"
 date: "2026-07-31"
+description: "사이클이 없는 유향 그래프와 이를 통해 얻을 수 있는 위상 정렬에 대해서 소개한다."
 categories: 
   - Math > Graph Theory > Graph
 ---

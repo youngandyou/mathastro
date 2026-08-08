@@ -2,6 +2,7 @@
 title: "Degree"
 author: "Youmin Chun"
 date: "2026-08-05"
+description: "그래프에서 노드의 차수(degree)의 정의와 성질에 대해서 소개한다."
 categories: 
   - Math > Graph Theory > Graph
 ---

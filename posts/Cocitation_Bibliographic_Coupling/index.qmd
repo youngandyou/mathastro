@@ -2,6 +2,7 @@
 title: "Cocitation and Bibliographic Coupling"
 author: "Youmin Chun"
 date: "2026-07-24"
+description: "유향 그래프에서 두 노드의 연관성을 측정하는 방법인 cocitation과 bibliographic coupling을 소개한다."
 categories: 
   - Math > Graph Theory > Network Analysis
 ---

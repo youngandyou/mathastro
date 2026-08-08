@@ -2,6 +2,7 @@
 title: "Planar Graph"
 author: "Youmin Chun"
 date: "2026-08-05"
+description: "평면 그래프와 Kuratowski의 정리에 대해서 소개한다."
 categories: 
   - Math > Graph Theory > Graph
 ---

@@ -2,6 +2,7 @@
 title: "Spanning Tree"
 author: "Youmin Chun"
 date: "2026-08-05"
+description: "Spanning tree와 연결 그래프에서 spanning tree를 찾는 알고리즘에 대해서 소개한다."
 categories: 
   - Math > Graph Theory > Tree
 ---

@@ -2,6 +2,7 @@
 title: "Subgraph"
 author: "Youmin Chun"
 date: "2026-08-05"
+description: "서브그래프의 정의와 induced subgraph에 대해서 소개한다."
 categories: 
   - Math > Graph Theory > Graph
 ---

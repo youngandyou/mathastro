@@ -2,6 +2,7 @@
 title: "Tree Isomorphism"
 author: "Youmin Chun"
 date: "2026-08-05"
+description: "트리 그래프가 주어졌을 때, 두 트리 그래프가 동형인지 판별하는 방법을 소개한다."
 categories: 
   - Math > Graph Theory > Tree
 ---

@@ -1,0 +1,26 @@
+---
+title: "Geodesic Path"
+author: "Youmin Chun"
+date: "2026-08-08"
+description: "그래프에서 최단 경로인 Geodesic path에 대해서 소개한다."
+categories: 
+  - Math > Graph Theory > Graph
+---
+
+## Definition
+Let $G$ be a graph.
+
+**(i)** The ***distance*** between two vertices $u$ and $v$ in $G$, denoted by $d_G(u, v)$, is the length of the shortest $uv$-[path](../Walk_Path/index.qmd#sec-definition) in $G$. If $u$ and $v$ are not connected in $G$, we write $d_G(u, v) = \infty$.
+
+**(ii)** A geodesic path or a shortest path is a path between two vertices in $G$ such that no shorter path exists. That is, the distance between two vertices $u$ and $v$ is the length of a geodesic path.
+
+**(iii)** The ***diameter*** $\mathrm{diam}(G)$ of G is the maximum of the distance over all pairs of vertices $u$ and $v$ of the graph, that is, $\displaystyle \mathrm{diam}(G) = \max_{u, v \in V(G)} d(u, v)$.
+
+## Remark
+**(i)** It is possible for there to be no geodesic path between two vertices if the vertices are not connected together.
+
+**(ii)** Geodesic paths are not necessarily unique.
+
+# Reference
+- Matousek, J., & Nesetril, J. (2008). Invitation to Discrete Mathematics. Oxford University Press.
+- Newman, M.E.J. (2010). Networks: An Introduction. Oxford University Press.

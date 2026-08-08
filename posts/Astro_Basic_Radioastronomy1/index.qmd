@@ -36,6 +36,8 @@ S_\nu = \int_{\Omega_s} I_\nu(\vartheta, \varphi) \cos \vartheta \, d\Omega  \ta
 $$
 
 - 식 (1.2)는 **플럭스 밀도(flux density)** 라고 부르며, 단위로 $\text{W m}^{-2} \text{Hz}^{-1}$ 를 가진다. 
+    - 책마다 **spectral flux density**, **spectral power flux density** 등으로 불린다. 
+    - 만약 식 (1.2)가 주파수에 대해 적분된 복사량이면, 즉, 단위가 $\text{W m}^{-2}$ 라면, **power flux density**라고 불린다.  
 - 전파원(radio sources)의 플럭스 밀도는 보통 매우 작기 때문에, **잔스키(Jansky, 약어 Jy)** 라는 단위를 이용한다: 
 $$
 1 \text{ Jy} = 10^{-26} \text{ W m}^{-2} \text{ Hz}^{-1} = 10^{-23} \text{ erg s}^{-1} \text{ cm}^{-2} \text{ Hz}^{-1} \tag{1.3}

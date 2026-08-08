@@ -10,6 +10,7 @@ categories:
 # 1. Basic Interferometer 
 
 - 한 망원경의 구경을 크게하는 데는 한계가 있어 여러 대의 전파 망원경을 이용하여 전파를 서로 간섭시켜 하나의 전파 망원경으로 작동하는 시스템을 **전파 간섭계(Radio Interferometer)** 라고 한다. 
+  - 작은 전파 망원경들이 마치 큰 망원경처럼 기능하여 높은 분해능을 얻을 수 있다. 
 - 간섭계를 이루는 망원경들은 서로 완전히 떨어져 있다. (예: VLBI, VLA, EHT, KVN, EAVN)
 
 ![그림 1: EHT(Event Horizon Telescope)의 망원경들과 그 위치를 나타냈다. (1)](EHT.png){width="60%"}
@@ -20,6 +21,9 @@ categories:
 ![그림 2: SKA 건설 예상도. (2)](SKA.png){width="60%"}
 
 - **기선(Baseline)**: 간섭계에서 두 안테나 사이의 거리를 의미한다. 
+- 예를 들어, baseline이 10km인 2개의 전파 망원경을 고려하자. 두 망원경이 받는 신호가 동조화된다면, 각각은 마치 지름 10km의 단일 접시 안테나처럼 작동할 수 있으나, 단지 하늘을 가로지르는 좁은 영역에 국한된다.
+  - 이는 커다란 접시의 반대편 양 끝에 2개의 작은 조각처럼 작용하기 때문이다.
+- 즉, 두 망원경을 동조화하면, 해상도 마치 10km짜리 초거대 접시를 쓴 것처럼 매우 좋아지지만, 실제로는 접시 전체가 아니라 "양 끝 두 점"만 쓰는 것이기 때문에, 하늘에서 **아주 좁은 방향 범위의 신호만 강하게 감지할 수 있다.**
 
 ---
 
@@ -35,6 +39,9 @@ categories:
 
 ## 1.2. One-Dimensional Source 
 
+- 간섭계의 본질은 하나의 단순 간섭계를 이루는 두 안테나에 도달하는 파면의 **위상**을 고려하는 것이다.
+- 한 전파원이 머리 바로 있으면 파동은 같은 위상으로 두 전파 망원경에 도달할 것이다. 
+  - 이 경우, 신호들이 상관기에서 전기적으로 결합될 때, 이들은 합쳐져 보강되어 강한 신호를 검출할 것이다.
 - **Phase reference position**은 간섭계에서 신호의 위상이 0으로 맞춰지는 임의의 기준 방향을 의미한다. 즉, **어떤 기준이 되는 방향**을 말한다. 
 - 다음 그림과 같은 상황을 고려해보자. 
 
@@ -147,6 +154,36 @@ $$
 $$
 
 - 지구 자전에 의해 $\theta_0$ 에 관한 기하학적 관계가 변하기 때문에 실제 관측에서는 $\tau_i$ 가 시간에 따라 계속 조정된다. 
+
+## 1.3. Projected Baseline and Fringe Response 
+
+- 하늘의 어느 위치에 있는 광원을 관측하더라도, 프린지의 각분해능은 광원 방향에 수직한 평면에 투영한 projected baseline 길이에 의해 결정된다. 
+- phase reference position $\theta_0$ 에 대해서 projected baseline을 파장 단위로 정규화한 양을 도입할 수 있는데, 이는 다음과 같이 나타난다: 
+
+$$
+u =\frac{D\cos\theta_0}{\lambda} = \frac{\nu_0 D\cos\theta_0}{c} \tag{1.12}
+$$  
+
+- 즉, $u$ 는 두 안테나 사이의 projected baseline을 파장 단위로 정규화해서 나타낸 무차원 단위의 길이를 의미한다. 
+- 이후에 보겠지만, 양의 $u$ 값은 **공간 주파수(spatial frequency)** 로 해석된다. 
+- 작은 각도 $\Delta\theta$ 에 대해 방향 $(\theta_0-\Delta\theta)$ 에서 오는 프린지 응답은 다음과 같이 계산된다:
+
+$$
+\cos(2\pi\nu_0\tau)=\cos\{2\pi\nu_0 [\frac{D}{c}\sin(\theta_0-\Delta\theta)-\tau_i]\}
+$$
+
+$$
+\simeq  \cos\left[2\pi\nu_0(D/c)\sin\Delta\theta\cos\theta_0 \right] \tag{1.13}  
+$$
+
+- 식 (1.13)을 이용해서 프린지 응답을 나타내면 다음과 같다:
+
+$$
+F(l) = \cos(2\pi\nu_0\tau) = \cos(2\pi u l), \tag{1.14}
+$$
+
+- 단, $l=\sin\Delta\theta$ 이다. 
+- 식 (1.14)는 $\theta=\theta_0-\Delta\theta$ 에 위치한 점광원에 대한 응답을 의미한다.
 
 ---
 

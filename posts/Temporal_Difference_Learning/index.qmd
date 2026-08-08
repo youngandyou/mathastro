@@ -81,7 +81,7 @@ $$\pi(A\vert{}S) = \begin{cases}
 이렇게 되면 당시의 상황 $S$에서 최대값을 주지 않는 행동이더라도 이론적으로는 모두 선택될 확률이 $0$보다는 크도록 존재하게 된다. 그러나 영원히 $\varepsilon > 0$인 상태로 학습하도록 두지는 않는데, 결국 뒤로 갈수록 최대값을 주지 않는 행동의 선택을 줄이고 그리디하게 선택하는 방법으로 학습을 진행하게 된다. 예를 들어 $\varepsilon_t = \frac{1}{t}$로 두면 이러한 조건을 만족시킨다. 이렇게 두면 정책 $\pi_t(a \mid s)$는 GLIE라고 불리는 다음의 조건을 만족하게 되고, 이는 SARSA 알고리즘이 최적의 value function $q_\ast$로 수렴하도록 하는 수학적 정당성을 마련해준다. 뒤이어서 소개할 Q-learning 역시 같은 조건을 만족하면 최적의 결과로 수렴하게 된다.
 
 ### GLIE
-The following assumptions is called greedy in the limit of infinite exploration (GLIE):
+The following assumptions is called greedy in the ***limit of infinite exploration (GLIE)***:
 
 **(i)** All state-action pairs are explored infinitely many times:
 

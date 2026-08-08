@@ -23,8 +23,7 @@ $\alpha_t$는 step size로, 오차인 $G_t - V(S_t)$를 얼마나 반영할 것�
 
 $$G_t = R_{t+1} + \gamma R_{t+2} + \gamma^2 R_{t+3} + \cdots + \gamma^{T - t - 1} R_T$$
 
-## Control
-한편, 우리는 여전히 dynamics function $p$를 모르므로 value function $v$를 통해 정책을 개선할 수는 없다. 때문에 action-value function $q$를 사용해 업데이트를 하고, $\varepsilon-$greedy 방법으로 정책을 개선해 나가야 한다.
+한편, 우리는 여전히 dynamics function $p$를 모르므로 value function $v$을 가지고 직접 계산할 수는 없다. 때문에 action-value function $q$를 사용해 업데이트를 하게 된다.
 $$Q(S_t, A_t) \longleftarrow Q(S_t, A_t) + \alpha_t \left[ G_t - Q(S_t, A_t) \right]$$
 
 # Reference 

@@ -1,0 +1,97 @@
+---
+title: "Graph Laplacian"
+author: "Youmin Chun"
+date: "2026-08-10"
+description: "라플라시안 행렬과 그래프 이론에서 확산 과정에 대해서 소개한다."
+categories: 
+  - Math > Graph Theory > Graph
+---
+
+## Definition
+Let $G$ be a graph, and let $D$ and $A$ be the degree matrix and adjacency matrix of $G$ respectively. Then the ***graph Laplacian*** of $G$ is the $n \times n$ matrix $L$ given by
+
+$$L = D - A.$$
+
+Specifically, the $ij$ entry of $L$ is given by
+
+$$L_{ij} = \begin{cases} d_i & \text{if } i = j \\ -1 & \text{if } i \neq j \text{ and } v_i \sim v_j \\ 0 & \text{otherwise} \end{cases}$$
+
+or 
+
+$$L_{ij} = \delta_{ij} d_i - A_{ij}$$
+
+where $\delta_{ij}$ is the Kronecker-delta.
+
+## Diffusion
+본래 확산이란 기체와 같은 유체, 혹은 열에너지가 밀도와 압력 차이에 의해 높은 곳에서 낮은 곳으로 이동하며 퍼져나가는 물리적 현상을 일컫는다. 한편 이러한 현상의 메커니즘을 그대로 유지하되 그래프 이론에 적용하는 방식으로 재해석해보려 한다. 
+
+그래프 $G$가 주어졌을 때 각 정점 $v_i$에 어떤 물질이 $\psi_i$ 만큼 존재한다고 하자. 이때 $v_j$에서 $v_i$로 물질이 흘러들어올 때 확산하는 비율은 $C(\psi_j - \psi_i)$와 같이 쓸 수 있다. $v_j$에서 $v_i$로 흘러들어오는 상황이라면 $v_j$에서 더 밀도가 높다는 뜻이고, 자연스럽게 양의 비율로 측정되는 효과를 준다. 반대로 $v_j$로 물질이 빠져나가는 상황이라면 $v_i$에서 더 밀도가 높다는 뜻이고, 역시나 자연스럽게 음의 비율로 측정되는 효과를 준다. $C$는 ***diffusion constant***로 주어지는 상수이다.
+
+이제 $dt$라는 작은 시간이 흘렀을 때 $v_i$에서 물질의 변화율, 다시 말해 $\frac{d \psi_i}{dt}$를 알고 싶다면 모든 $j$에 대해서 위 비율을 더해주면 되고, 따라서 다음의 식이 성립한다.
+
+$$\frac{d \psi_i}{dt} = C \sum_{j} A_{ij} (\psi_j - \psi_i)$$
+
+$A$는 그래프 $G$의 인접 행렬이다. 한편 위 식은 다음과 같이 조작되고, 이러한 과정에서 그래프 라플라시안 $L$이 정의된다.
+
+$$\begin{align*}
+\frac{d \psi_i}{dt} &= C \sum_{j} A_{ij} (\psi_j - \psi_i) \\
+&= C \sum_j A_{ij} \psi_j - C \psi_i \sum_j A_{ij} \\
+&= C \sum_j A_{ij} \psi_j - C \psi_i d_i \\
+&= \sum_j (A_{ij} - \delta_{ij} d_i) \psi_j \\
+&= - C \sum_j L_{ij} \psi_j \\
+&= - C [L \psi]_i
+\end{align*}$$
+
+여기서 $\psi = [\psi_1 \,\, \cdots \,\, \psi_n]^T$로 정의하면 마지막 식은 다음과 같은 1계 연립 상미분방정식이 된다.
+
+$$\frac{d \psi}{dt} + C L \psi = 0$$
+
+이때 그래프 라플라시안 $L$은 실대칭행렬이므로 에르미트 행렬이고, 따라서 대각화가능하다. $L$의 고유값과 고유벡터들을 각각 $\lambda_i, \mathbf{v}_i$라고 하면 위 미분방정식의 해는 상수 $c_i$들에 대하여 다음과 같이 주어지고, 적절히 초기조건이 주어진다면 완벽하게 해를 결정할 수 있다. 
+
+$$\psi(t) = e^{-CtL} \psi(0) = \sum_{i} c_i e^{-C\lambda_i t} \mathbf{v}_i$$
+
+## Edge Incident Matrix
+Let $G$ be a graph with $n$ vertices and $m$ edges. let us arbitrarily designate one end of each edge to be end $1$ and the other to be end $2$. (It doesn’t matter which end is which, only that they have different labels.) The ***edge-incidence matrix*** $B$ is the $m \times n$ matrix whose $ij$ entry is given by 
+
+$$B_{ij} = \begin{cases} +1 & \text{if end 1 of } e_i \text{ is attached } \text{ to } v_j \\ -1 & \text{if end 2 of } e_i \text{ is attached } \text{ to } v_j \\ 0 & \text{otherwise} \end{cases}$$
+
+각 에지의 양 끝에 $1$번, $2$번이라고 이름을 붙혀서 구분하자는 것인데, 써놨듯이 그냥 아무렇게나 붙이면 된다. 사실 정의처럼 써놓긴 했지만 잘 정의된 개념은 아닌데, 다음의 정리를 증명하기 위한 중간 과정에 불과하기 때문이다.
+
+## Theorem
+Let $L$ be the graph Laplacian of a graph $G$. Then we have:
+
+**(i)** $L$ is positive semi-definite, i.e., each eigenvalue of $L$ is nonnegative.
+
+**(ii)** $L$ has at least one zero eigenvalue; that is, $L$ is not invertible.
+
+### Proof
+**(i)** We claim that $L = B^TB$, that is, $L_{ij} = \sum_k B_{ki} B_{kj}$.
+
+$\big[ (\because)$ If $i \neq j$, then the only non-zero terms in the sum will occur if both $B_{ki}$ and $B_{kj}$ are non-zero, i.e., if $e_k$ connects $v_i$ and $v_j$, in which case the product will have value $-1$. If $i = j$, then the sum is $\sum_{k} B_{ki}^2$, which has a term $+1$ for every edge connected to $v_i$, so the whole sum is just equal to $d_i$. It follows that $\sum_k B_{ki} B_{kj} = L_{ij}$, which means that $L = B^TB. \big]$
+
+Now, let $\mathbb{v}_i$ be an normalized eigenvector of $L$ with eigenvalue $\lambda_i$. Then we have
+
+$$\begin{align*}
+\| B\mathbf{v}_i \|^2 &= \langle B\mathbf{v}_i, B\mathbf{v}_i \rangle \\
+&= (B\mathbf{v}_i)^T (B\mathbf{v}_i) \\
+&= \mathbf{v}_i^T B^T B \mathbf{v}_i \\
+&= \mathbf{v}_i^T L \mathbf{v}_i \\
+&= \lambda_i \| \mathbf{v}_i \|^2 \\
+&= \lambda_i.
+\end{align*}$$
+
+so $\lambda_i \ge 0$. Hence, each eigenvalue of $L$ is nonnegative, which means that $L$ is positive semi-definite.
+
+**(ii)** Let us denote $\mathbf{1} = [1 \,\, \cdots \,\, 1]^T$. Then we have that for each $i$,
+
+$$\begin{align*}
+[L \cdot \mathbf{1}]_i &= \sum_{j} L_{ij} \times 1 \\
+&= \sum_j (\delta_{ij} d_i - A_{ij}) \\
+&= d_i - d_i \\
+&= 0.
+\end{align*}$$
+
+which implies that $L \cdot \mathbf{1} = \mathbf{0} = 0 \cdot \mathbf{1}$. Thus, $\mathbf{0}$ is an eigenvalue of $L$ with eigenvector $\mathbf{1}$, and so $L$ is not invertible. $\blacksquare$
+
+# Reference
+- Newman, M.E.J. (2010). Networks: An Introduction. Oxford University Press.

@@ -51,13 +51,13 @@ $$\frac{d \psi}{dt} + C L \psi = 0$$
 $$\psi(t) = e^{-CtL} \psi(0) = \sum_{i} c_i e^{-C\lambda_i t} \mathbf{v}_i$$
 
 ## Edge Incident Matrix
-Let $G$ be a graph with $n$ vertices and $m$ edges. let us arbitrarily designate one end of each edge to be end $1$ and the other to be end $2$. (It doesn’t matter which end is which, only that they have different labels.) The ***edge-incidence matrix*** $B$ is the $m \times n$ matrix whose $ij$ entry is given by 
+Let $G$ be a graph with $n$ vertices and $m$ edges. let us arbitrarily designate one end of each edge to be end $1$ and the other to be end $2$. (It doesn’t matter which end is which, only that they have different labels.) The ***edge-incidence matrix*** $B$ of $G$ is the $m \times n$ matrix whose $ij$ entry is given by 
 
-$$B_{ij} = \begin{cases} +1 & \text{if end 1 of } e_i \text{ is attached } \text{ to } v_j \\ -1 & \text{if end 2 of } e_i \text{ is attached } \text{ to } v_j \\ 0 & \text{otherwise} \end{cases}$$
+$$B_{ij} = \begin{cases} +1 & \text{if end 1 of } e_i \text{ is attached to } v_j \\ -1 & \text{if end 2 of } e_i \text{ is attached to } v_j \\ 0 & \text{otherwise} \end{cases}$$
 
 각 에지의 양 끝에 $1$번, $2$번이라고 이름을 붙혀서 구분하자는 것인데, 써놨듯이 그냥 아무렇게나 붙이면 된다. 사실 정의처럼 써놓긴 했지만 잘 정의된 개념은 아닌데, 다음의 정리를 증명하기 위한 중간 과정에 불과하기 때문이다.
 
-## Theorem
+## Theorem 1
 Let $L$ be the graph Laplacian of a graph $G$. Then we have:
 
 **(i)** $L$ is positive semi-definite, i.e., each eigenvalue of $L$ is nonnegative.
@@ -65,11 +65,11 @@ Let $L$ be the graph Laplacian of a graph $G$. Then we have:
 **(ii)** $L$ has at least one zero eigenvalue; that is, $L$ is not invertible.
 
 ### Proof
-**(i)** We claim that $L = B^TB$, that is, $L_{ij} = \sum_k B_{ki} B_{kj}$.
+**(i)** Let $B$ be the edge-incidence matrix of $G$. We claim that $L = B^TB$, that is, $L_{ij} = \sum_k B_{ki} B_{kj}$.
 
 $\big[ (\because)$ If $i \neq j$, then the only non-zero terms in the sum will occur if both $B_{ki}$ and $B_{kj}$ are non-zero, i.e., if $e_k$ connects $v_i$ and $v_j$, in which case the product will have value $-1$. If $i = j$, then the sum is $\sum_{k} B_{ki}^2$, which has a term $+1$ for every edge connected to $v_i$, so the whole sum is just equal to $d_i$. It follows that $\sum_k B_{ki} B_{kj} = L_{ij}$, which means that $L = B^TB. \big]$
 
-Now, let $\mathbb{v}_i$ be an normalized eigenvector of $L$ with eigenvalue $\lambda_i$. Then we have
+Now, let $\mathbb{v}_i$ be a normalized eigenvector of $L$ with eigenvalue $\lambda_i$. Then we have
 
 $$\begin{align*}
 \| B\mathbf{v}_i \|^2 &= \langle B\mathbf{v}_i, B\mathbf{v}_i \rangle \\
@@ -92,6 +92,56 @@ $$\begin{align*}
 \end{align*}$$
 
 which implies that $L \cdot \mathbf{1} = \mathbf{0} = 0 \cdot \mathbf{1}$. Thus, $\mathbf{0}$ is an eigenvalue of $L$ with eigenvector $\mathbf{1}$, and so $L$ is not invertible. $\blacksquare$
+
+증명에서 (i)의 claim 부분을 보면 알겠지만, 에지의 양 끝을 어떤 방식으로 이름을 붙이던간에 어차피 우리가 관심있는 값은 $B_{ki}$와 $B_{kj}$의 곱, 혹은 제곱이기 때문에 항상 일정한 값이 나오게 된다. 따라서 $L = B^TB$라는 결론을 이끌어 내기 위해서 어떤 방식으로 edge-incidence matrix를 정의하던지 상관이 없게 된다.
+
+## Theorem 2
+Let $G$ be a graph which is divided up into $c$ different components of sizes $n_1, n_2, \cdots, n_c$, and let $L$ be the graph Laplacian of $G$.
+
+**(i)** $L$ has exactly $c$ zero eigenvalues.
+
+**(ii)** Let $0 = \lambda_1 \le \lambda_2 \le \cdots \le \lambda_n$ be the eigenvalues of $L$ in increasing order. Then the second eigenvalue $\lambda_2$, called ***algebraic connectivity*** of $G$, is nonzero $\iff$ the graph $G$ is connected, i.e., it consists of a single component.
+
+### Proof
+**(i)** For convinience, let us number the vertices of the graph so that  the first $n_1$ vertices are those of the first component, the next $n_2$ are those of the second component, and so forth. With this choice the Laplacian of the network will be block diagonal, looking something like this:
+
+$$L =
+\begin{bmatrix}
+    \boxed{\phantom{\Huge O}} & 0 & \cdots \\
+    0 & \boxed{\phantom{\Huge O}} & \cdots \\
+    \vdots & \vdots & \ddots
+\end{bmatrix}.$$
+
+Note that each block in the Laplacian is the Laplacian of the corresponding component. By Theorem 1 (ii), there are $c$ linearly independent vectors $\mathbf{v}_1, \cdots, \mathbf{v}_c$ such that $L\mathbf{v}_i = \mathbf{0}$, where
+
+$$\mathbf{v}_i = [0 \cdots 0 \,\, \underbrace{1 \cdots 1}_{n_i \text{ entries}} \,\, 0 \cdots 0]^T.$$
+
+We claim that these $c$ vectors form a basis for the null space $\ker(L)$ of $L$, which is the eigenspace corresponding to the eigenvalue $0$.
+
+$\big[ (\because)$ Let $N = n_1 + n_2 + \cdots + n_c$. Then $L$ is a $N \times N$ real matrix. For each $\mathbf{x} \in \mathbb{R}^N$, we obtain:
+
+$$\begin{align*}
+\mathbf{x}^T L \mathbf{x} &= \sum_{i} x_i [L\mathbf{x}]_i \\
+&= \sum_i x_i \sum_j L_{ij} x_j \\
+&= \sum_i x_i \sum_j (\delta_{ij}d_i - A_{ij}) x_j \\
+&= \sum_{i, j} \delta_{ij} d_i x_i x_j - \sum_{i, j} A_{ij} x_i x_j \\
+&= \sum_i d_i x_i^2 - \sum_{i, j} A_{ij} x_i x_j \\
+&= \sum_{i, j} A_{ij} x_i^2 - \sum_{i, j} A_{ij} x_i x_j \\
+&= \frac{1}{2}\left[ \sum_{i, j} A_{ij} (x_i - x_j)^2 \right] \\
+&= \sum_{\{i, j\} \in E(G)} (x_i - x_j)^2.
+\end{align*}$$
+
+Let $\mathbf{x} \in \ker(L)$. Then $L\mathbf{x} = \mathbf{0}$, and so $\mathbf{x}^T L \mathbf{x} = 0$. By above result, it follows that $x_i = x_j$ for all $\{i, j\} \in E(G)$.
+
+For any component $C_k$, let $u$ and $v$ be any two vertices in $V(C_k)$. Since they are connected by a path in $C_k$, it follows that $x_u = x_v$. This implies that the restriction of the vector $\mathbf{x}$ to the vertices of $C_k$ is constant. Thus, we can express the vector $\mathbf{x} \in \ker(L)$ as the linear combination of $\{ \mathbf{v}_1, \cdots, \mathbf{v}_c \}$:
+
+$$\mathbf{x} = X_1 \mathbf{v}_1 + \cdots + X_c \mathbf{v}_c$$
+
+for some constants $X_1, \cdots, X_c$. Hence, the set $\{ \mathbf{v}_1, \cdots, \mathbf{v}_c \}$ forms a basis for $\ker(L)$.$\big]$
+
+Since $L$ is Hermitian, it is diagonalizable, which means that the geometric multiplicity $c$ is equal to the algebraic multiplicity. Thus, $L$ has exactly $c$ zero eigenvalues.
+
+**(ii)** By (i), the algebraic multiplicity of the zero eigenvalue is exactly $c$. If the graph $G$ is connected, then $c = 1$. This means only the first eigenvalue $\lambda_1$ is zero, forcing the second eigenvalue $\lambda_2 > 0$. Conversely, if $G$ is disconnected, then $c \ge 2$, which means there are at least two zero eigenvalues (i.e., $\lambda_1 = \lambda_2 = 0$). Thus, $\lambda_2 \neq 0$ if and only if $G$ is connected. $\blacksquare$
 
 # Reference
 - Newman, M.E.J. (2010). Networks: An Introduction. Oxford University Press.

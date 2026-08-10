@@ -1,0 +1,46 @@
+---
+title: "Topology in Complex Plane"
+author: "Youmin Chun"
+date: "2026-07-24"
+categories: 
+  - Math > Complex Analysis
+---
+
+## Definition
+Let $z_0 \in \mathbb{C}$ and let $S \subset \mathbb{C}$.
+
+**(1)** Let $\varepsilon > 0$. The ***$\varepsilon$-neighborhood*** of $z_0$ is 
+
+$$N_{\varepsilon}(z_0) = \{ z \in \mathbb{C} \mid \vert z - z_0 \vert < \varepsilon \}.$$
+
+***A deleted neighborhood*** of $z_0$ is a neighborhood of $z_0$ with $z_0$ removed. That is, $N_{\varepsilon}(z_0) \setminus \{ z_0 \}$.
+
+**(2)** $z_0$ is an ***interior point*** of $S$ if $\exists \varepsilon > 0$ such that $N_{\varepsilon}(z_0) \subset S$. The set of all interior points of $S$ is called the ***interior*** of $S$ and is denoted by $\mathrm{int}(S)$.
+
+**(3)** $z_0$ is an ***exterior point*** of $S$ if $\exists \varepsilon > 0$ such that $N_{\varepsilon}(z_0) \cap S = \emptyset$.
+
+**(4)** $z_0$ is a ***boundary point*** of $S$ if every neighborhood of $z_0$ contains at least one point in $S$ and at least one point not in $S$. In other words, $z_0$ is a boundary point of $S$ if it is neither an interior point nor an exterior point of $S$. The set of all boundary points of $S$ is called the ***boundary*** of $S$ and is denoted by $\partial S$.
+
+**(5)** $S$ is an ***open set*** if $S = \mathrm{int}(S) \iff S \cap \partial S = \emptyset$.
+
+**(6)** $S$ is a ***closed set*** if $\partial S \subset S$.
+
+**(7)** The ***closure*** of $S$ is $\overline{S} = S \cup \partial S$.
+
+**(8)** An open set $S$ is ***connected*** if each pair of points $z_1$ and $z_2$ in it can be joint by a polygonal line, consisting of a finite number of line segments, joined end to end, that lies entirely in $S$. 
+
+**(9)** A nonempty open set that is connected is a ***domain***.
+
+**(10)** If $D$ is a domain, then the ***region*** is the set $D \cup \partial D$.
+
+**(11)** $S$ is ***bounded*** if every point in $S$ lies inside some circle $N_R(0)$. Otherwise, $S$ is ***unbounded***.
+
+**(12)** $z_0$ is an ***accumulation point***, or ***limit point***, of $S$ if each deleted neighborhood of $z_0$ contains at least one point in $S$. The ***derived set*** of $S$, denoted by $S'$, is the set of all accumulation points of $S$.
+
+## Remark
+**(i)** $S$ is closed $\iff$ $S' \subset S$.
+
+**(ii)** A point $z_0$ of a domain is an accumulation point of that domain.
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

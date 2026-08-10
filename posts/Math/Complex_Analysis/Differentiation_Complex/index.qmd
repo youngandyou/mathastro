@@ -1,0 +1,96 @@
+---
+title: "Differentiation"
+author: "Youmin Chun"
+date: "2026-07-24"
+categories: 
+  - Math > Complex Analysis
+---
+
+## Definition
+Let $f$ be a function whose domain contains a neighborhood of a point $z_0$. Then $f$ is said to be ***differentiable*** at $z_0$ if the limit 
+
+$$\lim_{z \to z_0} \frac{f(z) - f(z_0)}{z - z_0}$$
+
+exists. If the limit exists, it is denoted by $f'(z_0)$ and said to be the ***derivative*** of $f$ at $z_0$. A function $f$ is said to be ***differentiable*** on a set $S$ if it is differentiable at every point in $S$.
+
+## Remark
+By expressing $\Delta z = z - z_0$ and $\Delta w = f(z) - f(z_0)$ which denotes the change in the value $w = f(z)$ of $f$ corresponding to a change $\Delta z$ in the point at which $f$ is evaluated, we can write the derivative as 
+
+$$\frac{dw}{dz} = \lim_{\Delta z \to 0} \frac{\Delta w}{\Delta z}$$
+
+## Theorem 1
+If $f$ is differentiable at $z_0$, then $f$ is continuous at $z_0$.
+
+### Proof
+
+$$\begin{align*}
+\lim_{z \to z_0} (f(z) - f(z_0)) &= \lim_{z \to z_0} \frac{f(z) - f(z_0)}{z - z_0} \cdot (z - z_0) \\
+&= \lim_{z \to z_0} \frac{f(z) - f(z_0)}{z - z_0} \cdot \lim_{z \to z_0} (z - z_0) \\
+&= f'(z_0) \cdot 0 \\
+&= 0.
+\end{align*}$$
+
+Thus we have $\lim_{z \to z_0} f(z) = f(z_0)$, which means that $f$ is continuous at $z_0$. $\blacksquare$
+
+## Theorem 2
+**(i)** $\displaystyle \frac{d}{dz} [cf(z) + g(z)] = c f'(z) + g'(z)$
+
+**(ii)** $\displaystyle \frac{d}{dz} [f(z) g(z)] = f'(z) g(z) + f(z) g'(z)$
+
+**(iii)** $\displaystyle \frac{d}{dz} \left[ \frac{f(z)}{g(z)} \right] = \frac{f'(z) g(z) - f(z) g'(z)}{[g(z)]^2}$
+
+**(iv)** $\displaystyle \frac{d}{dz} [f(g(z))] = f'(g(z)) g'(z)$
+
+
+## Corollary 
+**(i)** $\displaystyle \frac{d}{dz} [c] = 0$
+
+**(ii)** $\displaystyle \frac{d}{dz} [z] = 1$
+
+**(iii)** $\displaystyle \frac{d}{dz} [z^n] = n z^{n-1}, \forall n \in \mathbb{Z}$, provided $z \neq 0$.
+
+
+## Example
+**(i)** Let $f(z) = \frac{1}{z}, \forall z \in \mathbb{C} \setminus \{0\}$. Then we have $f'(z) = -\frac{1}{z^2}$. Thus, $f$ is differentiable on $\mathbb{C}$ except at $z = 0$.
+
+**(ii)** Let $f(z) = \overline{z}, \forall z \in \mathbb{C}$. Note that 
+
+$$\begin{align*}
+\frac{\Delta w}{\Delta z} &= \frac{\overline{z + \Delta z} - \overline{z}}{\Delta z} \\ 
+&= \frac{\overline{\Delta z}}{\Delta z} = \begin{cases} 1, & \text{if } \Delta z = \Delta x \\ -1, & \text{if } \Delta z = i \Delta y \end{cases}
+\end{align*}$$
+
+Thus $f$ is not differentiable at any point in $\mathbb{C}$. Note that for $f(z) = \overline{z} = x - iy$, $u(x, y) = x$ and $v(x, y) = -y$ are differentiable everywhere. 
+
+**(iii)** Let $f(z) = \vert z \vert^2 = x^2 + y^2, \forall z \in \mathbb{C}$. Then we have 
+
+$$\begin{align*}
+\frac{\Delta w}{\Delta z} &= \frac{\vert z + \Delta z \vert^2 - \vert z \vert^2}{\Delta z} \\ 
+&= \frac{(z + \Delta z) \overline{z + \Delta z} - \vert z \vert^2}{\Delta z} \\
+&= \frac{(z + \Delta z)(\overline{z} + \overline{\Delta z} - \vert z \vert^2}{\Delta z} \\
+&= \frac{\vert z \vert^2 + z \overline{\Delta z} + \overline{z} \Delta z + \vert \Delta z \vert^2 - \vert z \vert^2}{\Delta z} \\
+&= z \frac{\overline{\Delta z}}{\Delta z} + \overline{z} + \overline{\Delta z} = \begin{cases} z + \overline{z} + \Delta x, & \text{if } \Delta z = \Delta x \\ z - \overline{z} - i \Delta y, & \text{if } \Delta z = i \Delta y \end{cases}
+\end{align*}$$
+
+If $z = 0$, then $\frac{\Delta w}{\Delta z} = \overline{\Delta z}$, so $\lim_{\Delta z \to 0} \frac{\Delta w}{\Delta z} = 0$. Thus $f$ is differentiable at $z = 0$ and $f'(0) = 0$.
+
+Suppose that $z \neq 0$. Along the real axis, we have 
+
+$$\frac{\Delta w}{\Delta z} = z + \overline{z} + \Delta x$$
+
+so that 
+
+$$\lim_{\Delta z \to 0} \frac{\Delta w}{\Delta z} = z + \overline{z}.$$
+
+Along the imaginary axis, we have 
+
+$$\frac{\Delta w}{\Delta z} = z - \overline{z} - i \Delta y$$
+
+so that 
+
+$$\lim_{\Delta z \to 0} \frac{\Delta w}{\Delta z} = z - \overline{z}.$$
+
+Since $z \neq 0$, $z + \overline{z} \neq z - \overline{z}$. Thus $f$ is not differentiable at any point in $\mathbb{C}$ except at $z = 0$. 
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

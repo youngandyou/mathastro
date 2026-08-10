@@ -1,0 +1,58 @@
+---
+title: "Analytic Function"
+author: "Youmin Chun"
+date: "2026-07-24"
+categories: 
+  - Math > Complex Analysis
+---
+
+## Definition
+Let $f$ be a complex function.
+
+**(i)** $f$ is said to be ***analytic*** on an open set $S$ if it has a derivative everywhere on $S$. 
+
+**(ii)** $f$ is said to be ***analytic*** at a point $z_0$ if it is analytic on some open set containing $z_0$.
+
+**(iii)** $f$ is said to be ***entire*** if it is analytic on $\mathbb{C}$.
+
+**(iv)** If $f$ fails to be analytic at a point $z_0$ but is analytic at some point in every neightborhood of $z_0$, then $z_0$ is called a ***singular point*** of $f$.
+
+## Example
+**(i)** Let $f(z) = \frac{1}{z}$. Since $f$ has a derivative at each nonzero point in $\mathbb{C}$, $f$ is analytic on $\mathbb{C} \setminus \{ 0 \}$ and $f$ is NOT analyic at $0$. Thus $z_0 = 0$ is a singular point of $f$.
+
+**(ii)** Let $f(z) = \vert z \vert^2$. Since $f$ has a derivative at only $z = 0$, $f$ is NOT analytic anywhere. Thus $f$ has no singular points.
+
+## Remark
+Let $f$ and $g$ be analytic functions in $D \subset \mathbb{C}$. Then $f + g$, $f - g$, $f g$, $f / g$ (where $g(z) \neq 0$), and $f \circ g$ are analytic in $D$. 
+
+## Theorem 1
+If $f'(z) = 0, \forall z \in D$, then $f(z)$ is constant in $D$. 
+
+### Proof
+Let $f(x+iy) = u(x, y) + i v(x, y)$. Since $f$ is differentiable in $D$, $u_x, u_y, v_x$ and $v_y$ exist and they satisfy the Cauchy-Riemann equation $u_x = v_y$ and $u_y = -v_x$. Since $f'(z) = 0, \forall z \in D$, $u_x = 0 = v_x$ and $u_y = 0 = v_y$. Then $\nabla u = \mathbf{0} = \nabla v$ in $D$, which implies that $u$ and $v$ are constants on $D$. Thus $f$ is also constant in $D$. $\blacksquare$
+
+## Theorem 2
+Let $f$ be an analytic function in $D \subset \mathbb{C}$. 
+
+**(i)** If $\overline{f}$ is also analytic in $D$, then $f$ is constant in $D$. 
+
+**(ii)** If $\vert f (z) \vert$ is constant in $D$, then $f$ is constant in $D$.
+
+### Proof
+**(i)** Let $f = u + iv$. Then $\overline{f} = u - iv$. Since $f$ and $\overline{f}$ are analytic, we have the Cauchy-Riemann equations 
+
+$$\begin{cases}
+u_x = v_y \\
+u_y = -v_x
+\end{cases} \quad \text{and} \quad 
+\begin{cases}
+\overline{u}_x = -\overline{v}_y \\
+\overline{u}_y = \overline{v}_x
+\end{cases}$$
+
+Thus we have $u_x = 0 = u_y$ and $v_x = 0 = v_y$. By Theorem 1, $f$ is constant in $D$.
+
+**(ii)** Let $\vert f(z) \vert^2 = c$ in $D$. If $c = 0$, then clearly $f(z) = 0$ in $D$. If $c > 0$, then $0 < c = \vert f(z) \vert^2 = f(z) \overline{f(z)}$, which means that both $f(z)$ and $\overline{f(z)}$ are not zero. Then $\overline{f(z)} = \frac{c}{f(z)}$. Since $f$ is analytic in $D$, $\overline{f}$ is also analytic in $D$. By (i), $f$ is constant in $D$. $\blacksquare$
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

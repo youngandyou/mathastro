@@ -1,0 +1,68 @@
+---
+title: "Cauchy-Riemann Equations in Polar Coordinates"
+author: "Youmin Chun"
+date: "2026-07-24"
+categories: 
+  - Math > Complex Analysis
+---
+
+## Remark
+Suppose that for $f(z) = u(x, y) + i v(x, y)$, $u(x, y)$ and $v(x, y)$ satisfy the Cauchy-Riemann equations 
+
+$$
+\begin{cases}
+u_x = v_y \\
+u_y = -v_x
+\end{cases}
+$$
+
+Let substitute $x = r \cos \theta$ and $y = r \sin \theta$. Note that 
+
+$$
+\begin{cases}
+u_r = u_x \cos \theta + u_y \sin \theta \\
+u_\theta = -u_x r \sin \theta + u_y r \cos \theta \\
+v_r = v_x \cos \theta + v_y \sin \theta \\
+v_\theta = -v_x r \sin \theta + v_y r \cos \theta
+\end{cases}
+$$
+
+By Cauchy-Riemann equations, we obtain
+
+$$
+\begin{cases}
+v_\theta = u_y r \sin \theta + u_x r \cos \theta = ru_r \\
+u_\theta = -v_x r \sin \theta + v_y r \cos \theta = -ru_r
+\end{cases}
+$$
+
+Thus we obtain the Cauchy-Riemann equations in polar coordinates:
+
+$$
+\begin{cases}
+ru_r = v_\theta \\ 
+rv_r = -u_\theta
+\end{cases}
+$$
+
+Conversely, if $u_r, u_\theta, v_r, v_\theta$ exist and satisfy the Cauchy-Riemann equations in polar coordinates at $(r_0, \theta_0)$, then $u_x, u_y, v_x, v_y$ exist and satisfy the Cauchy-Riemann equations in Cartesian coordinates at $(x_0, y_0)$.
+
+## Theorem 1
+Let $f(z) = u(r, \theta) + i v(r, \theta)$ be defined throughout some $\varepsilon$ neighborhood of $z_0 = r_0 e^{i \theta_0}$. Suppose that $u_r, u_\theta, v_r, v_\theta$ exist in this neighborhood, are continuous at $(r_0, \theta_0)$, and satisfy the Cauchy-Riemann equations in polar coordinates at $(r_0, \theta_0)$:
+
+$$
+\begin{cases}
+r u_r = v_\theta \\
+r v_r = -u_\theta
+\end{cases}
+$$
+
+Then $f$ is differentiable at $z_0$ and
+
+$$\begin{align*}
+f'(z_0) &= e^{-i \theta_0} (u_r + i v_r) \\
+&= -\frac{i}{z_0}(u_\theta + i v_\theta)
+\end{align*}$$
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

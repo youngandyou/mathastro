@@ -1,0 +1,64 @@
+---
+title: "Connected Directed Graph"
+author: "Youmin Chun"
+date: "2026-08-08"
+description: "유향 그래프에서 연결성과 in, out component에 대해서 소개한다."
+categories: 
+  - Math > Graph Theory > Graph
+---
+
+## Theorem
+Let $G$ be a directed graph.
+
+**(i)** Let $\sim_w$ be a relation on $V(G)$ defined by
+
+$$u \sim_w v \iff \text{there exists a } uv\text{-walk or } vu \text{-walk in } G$$
+
+**(ii)** Let $\sim_s$ be a relation on $V(G)$ defined by
+
+$$u \sim_s v \iff \text{there exists a } uv\text{-walk and } vu\text{-walk in } G$$
+
+Then $\sim_w$ and $\sim_s$ are equivalence relations.
+
+## Definition 1
+Let $G$ be a directed graph, and let $u, v \in V(G)$.
+
+**(i)** Two vertices $u$ and $v$ is said to be ***weakly connected*** if $u \sim_w v$. Let $W$ be a equivalence class of $V(G)$ under $\sim_w$. The subgraph of $G$ induced by $W$ is called a ***weakly connected component*** of $G$. 
+
+**(ii)** Two vertices $u$ and $v$ is said to be ***strongly connected*** if $u \sim_s v$. Let $S$ be a equivalence class of $V(G)$ under $\sim_s$. The subgraph of $G$ induced by $S$ is called a ***strongly connected component*** of $G$. Specifically, we denote $[v]$ for the strongly connected component containing $v$.
+
+Undirected graph의 경우와는 달리 directed graph의 경우에는 두 정점이 연결되어 있더라도 한 방향으로만 되어 있느냐, 두 방향 모두 연결되어 있느냐라는 경우의 수가 존재하기 때문에 위와 같이 연결성을 정의하는 방법이 두 가지가 존재한다.
+
+자명하게 정점 하나로만 이루어진 subgraph 또한 component로 간주하는데, strongly connected component의 경우 두 개 이상의 정점이 있을 경우 반드시 cycle을 포함하게 된다.
+
+## Definition 2
+Let $G$ be a directed graph, and let $v \in V(G)$.
+
+**(i)** The ***out-component*** of $v$ is the set defined as
+
+$$\mathrm{Out}(v) = \{w \in V(G) \mid \text{there is a } vw\text{-walk in } G\}$$
+
+**(ii)** The ***in-component*** of $v$ is the set defined as
+
+$$\mathrm{In}(v) = \{w \in V(G) \mid \text{there is a } wv\text{-walk in } G$$
+
+특정 정점 $v$가 속한 component 안에서 도달할 수 있는 정점들의 집합을 out-component, 반대로 $v$에 도달할 수 있는 정점들의 집합을 in-component로 정의한다. 자명하게 굳이 이 집합들은 서로소일 필요가 없다. 
+
+## Theorem 1
+If $u \in [v]$, then their corresponding out-components and in-components are identical; that is, $\mathrm{Out}(u) = \mathrm{Out}(v)$ and $\mathrm{In}(u) = \mathrm{In}(v)$.
+
+### Proof
+Since $u \sim_s v$, it is clear that $u \in \mathrm{Out}(v)$ and $v \in \mathrm{Out}(u)$. Let $w \in \mathrm{Out}(u)$. Then there is a $uw$-walk in $G$. Since $u \in \mathrm{Out}(v)$, there is also a $vu$-walk in $G$. By transitivity of walks, there is a $vw$-walk in $G$ which means that $w \in \mathrm{Out}(v)$. Therefore, $\mathrm{Out}(u) \subset \mathrm{Out}(v)$. Similarly, $\mathrm{Out}(v) \subset \mathrm{Out}(u)$, so $\mathrm{Out}(u) = \mathrm{Out}(v)$, and also $\mathrm{In}(u) = \mathrm{In}(v)$. $\blacksquare$
+
+## Theorem 2
+For each $v \in V(G)$, we have $$[v] = \mathrm{In}(v) \cap \mathrm{Out}(v)$$
+
+### Proof
+Let $u \in [v]$. Then there are $uv$-walk and $vu$-walk in $G$. So $u \in \mathrm{In}(v)$ and $u \in \mathrm{Out}(v)$. Thus, $[v] \subset \mathrm{In}(v) \cap \mathrm{Out}(v)$.
+
+Let $u \in \mathrm{In}(v) \cap \mathrm{Out}(v)$. Then there are $uv$-walk and $vu$-walk in $G$. So $u \in [v]$. Thus, $[v] \supset \mathrm{In}(v) \cap \mathrm{Out}(v)$, so $[v] = \mathrm{In}(v) \cap \mathrm{Out}(v)$. $\blacksquare$
+
+
+# Reference
+- Matousek, J., & Nesetril, J. (2008). Invitation to Discrete Mathematics. Oxford University Press.
+- Newman, M.E.J. (2010). Networks: An Introduction. Oxford University Press.

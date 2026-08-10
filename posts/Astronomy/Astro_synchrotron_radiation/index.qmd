@@ -1,0 +1,74 @@
+---
+title: "싱크로트론 복사(Synchrotron Radiation)"
+author: "Young Jeong Lee"
+date: "2026-08-08"
+description: "천체물리학의 복사 중에서 중요하게 다뤄지는 싱크로트론 복사에 대해서 소개한다."
+categories: 
+  - Astronomy > High Energy Astrophysics
+---
+
+# 1. 싱크로트론 복사(Synchrotron Radiation)
+
+- **싱크로트론 복사(synchrotron radiation)**: 전자가 강한 자기장 속에서 상대론적 운동을 하며, 전파 복사하는 것을 의미한다. 보통 전자가 자기장을 따라 나선형을 그리며, 광속에 가까운 속도로 운동하면서 방출되는 복사로 생각된다. (아래 그림 참고)
+
+![싱크로트론 복사를 보여주는 그림. [1]](synchrotron_radiation.png)
+
+- 반면, 비상대론적으로 운동하는 전자에 의해 방출되는 복사를 **사이클로트론 복사(cyclotron radiation)** 이라고 한다. 
+
+---
+
+# 2. Spectrum density for single particle 
+
+- 단일 전자를 고려하자. 해당 전자는 자기장과 pitch angle $\alpha$ 를 이루고 있으며, 그때의 전자 에너지는 $E$, 그리고 Lorentz factor $\gamma \gg 1$ 라고 가정하자. 
+- 이때, 주파수 $\nu$ 근처에서 단위 주파수당 방출되는 total emissivity는 다음과 같다:
+
+$$
+P(\nu) = \sqrt{3} \frac{e^3B\sin\alpha}{mc^2}  \frac{\nu}{\nu_c} \int_{\nu/\nu_c}^{\infty} K_{5/3}(\eta) d\eta  \tag{2.1}
+$$
+
+- 단위: $\mathrm{erg\ s^{-1}\ Hz^{-1}}$ 
+- $K_{5/3}$ 는 차수(order) $5/3$ 의 modified Bessel function이다.
+- **pitch angle**: 자기장 방향에 대한 입자 속도 벡터의 각도를 의미하며, 다음과 같이 정의된다: 
+
+$$
+\tan\alpha = \frac{|v_\perp|}{|v_\parallel|}  \tag{2.2}
+$$
+
+- 전자는 자기장 안에서 속도 $v$ 로 나선 운동하고 있으며, $v_\perp$ 은 자기장에 수직한 속도 성분, $v_\parallel$ 은 자기장에 평행한 속도 성분을 의미한다. 
+- 그리고 식 (2.1)에서 임계 주파수(critical frequency) $\nu_c$ 는 다음과 같이 정의된다: 
+
+$$
+\nu_c = \frac{3}{2}\gamma^2\nu_G\sin\alpha = \frac{3}{2}\gamma^3\nu_B\sin\alpha,  \tag{2.3}
+$$
+
+- $\nu_G=\omega_G / 2\pi$ 는 비상대론적 자이로 주파수(non-relativistic gyro-frequency)이다.
+
+<div style="height: 2rem;"></div>
+
+- 이제 $F(x)$ 를 다음과 같이 정의하자: 
+
+$$
+F(x) = x \int_x^\infty K_{5/3}(\eta)d\eta  \tag{2.4}
+$$
+
+- 여기서 $x= {\nu} / {\nu_c}$ 이며, $\eta$ 는 적분을 위한 무차원 변수이다. 
+- 이를 이용하면, 식 (2.1)은 다음과 같이 나타낼 수 있다:
+
+$$
+P(\nu) = \sqrt{3} \frac{e^3B\sin\alpha}{mc^2} F(x)  \tag{2.5}
+$$
+
+- 식 (2.5)에서 상수 부분은 방출 세기의 크기를 결정하며, $F(x)$ 는 주파수에 따른 스펙트럼의 모양을 결정한다.  
+- 식 (2.4)에 대한 저주파 근사는 다음과 같다: 
+
+$$
+F(x)=\frac{4\pi}{\sqrt{3}\Gamma\left(\frac{1}{3}\right)}  
+\left(\frac{x}{2}\right)^{1/3},  
+\qquad x\ll 1  \tag{2.6}
+$$
+
+---
+
+# Reference 
+
+- $1.$ https://pages.uoregon.edu/jschombe/glossary/synchrotron_radiation.html

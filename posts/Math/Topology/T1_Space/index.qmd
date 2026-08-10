@@ -1,0 +1,53 @@
+---
+title: "T1 Space"
+author: "Youmin Chun"
+date: "2026-07-10"
+categories: 
+  - Math > Topology
+---
+
+## Definition
+Let $(X, \mathscr{T})$ be a topological space, and let $x, y \in X$ with $x \neq y$. Then $X$ is called a ***$T_1$-space*** if $\exists U, V \in \mathscr{T}$ such that $x \in U, y \notin U$ and $y \in V, x \notin V$.
+
+## Theorem 1
+$X$ is a $T_1$-space $\iff$ Every finite subset of $X$ is closed.
+
+### Proof
+$(\Longrightarrow)$
+
+Suppose that $X$ is a $T_1$-space. To show that every finite subset of $X$ is closed, it suffices to show that the singleton set $\\{ x \\}$ is closed, because any finite set is a union of singleton sets.
+
+We consider the set $\{ x \}.$ Let $y \in \overline{\{x \}},$ and suppose that $y \notin \{ x \},$ so $y \neq x.$ Then there exist two open set $U$ and $V$ of $X$ such that $x \in U, y \notin U$ and $y \in V, x \notin U.$ Since $V$ is a neighborhood of $y$, $\{ x\} \cap V \neq \emptyset.$ If $z \in \{ x\} \cap V,$ then $z = x$ and $z \in V.$ But $x \notin V,$ which is a contradiction. Thus, $y \in \{ x \},$ which means that $\overline{\{x\}} = \{ x\}.$ Hence, a singleton is closed, and therefore any finite subset of $X$ is closed.
+
+$(\Longleftarrow)$
+
+Suppose that every finite subset of $X$ is closed. Let $x, y \in X$ with $x \neq y$. Since $\{x \}$ and $\{ y\}$ are closed, $X - \{ x\}$ and $X - \{ y\}$ are open, and $y \notin X - \{ y \}$, $x \notin X - \{x\}$. Thus $X$ is a $T_1$-space. $\blacksquare$
+
+---
+
+## Theorem 2
+Let $X$ be a $T_1$-space, and let $A \subset X$. Then $x \in A'$ $\iff$ every neighborhood of $x$ contains infinitely many points of $A$.
+
+### Proof
+$(\Longrightarrow)$
+
+Let $x \in A'$. Then for any neighborhood $U$ of $x$, we have $A \cap (U - \{x\}) \neq \emptyset$. Suppose that there is some neighborhood $U$ of $x$ such that $U \cap A$ is finite. Then $U \cap (A - \{ x \})$ is also finite, and we denote $U \cap (A - \{ x \}) = \{ x_1, ..., x_n \}$. 
+
+Since $X$ is a $T_1$ space, $\{ x_1, ..., x_n \}$ is closed in $X$, so that $X - \{ x_1, ..., x_n \}$ is open in $X$. Then $U \cap (X - \{ x_1, ..., x_n \}) = U - \{ x_1, ..., x_n \}$ is also open in $X$. Since $x \notin U \cap (A - \{ x \}) = \{ x_1, ..., x_n \}$, we have that $x \in U - \{ x_1, ..., x_n \}$, which means that $U - \{ x_1, ..., x_n \}$ is a neighborhood of $x$.
+
+Then 
+
+$$(U - \{ x_1, ..., x_n \}) \cap (A - \{ x \}) \neq \emptyset$$
+
+by assumption. But $U \cap (A - \{ x \}) = \{ x_1, ..., x_n \}$, so that
+
+$$(U - \{ x_1, ..., x_n \}) \cap (A - \{ x \}) = \emptyset. \bigotimes$$
+
+Thus, every neighborhood of $x$ contains infinitely many points of $A$. 
+
+$(\Longleftarrow)$
+
+Let $U$ be a neighborhood of $x$. Then $U$ contains infinitely many points of $A$. Then $A \cap (U - \{ x \})$ also contains infinitely many points of $A$, which means that it is not empty. Thus $x \in A'$. $\blacksquare$
+
+# Reference
+- James R. Munkres. (2000). Topology (2nd ed.). Pearson.

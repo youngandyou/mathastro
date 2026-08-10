@@ -1,0 +1,31 @@
+---
+title: "Pasting Lemma"
+author: "Youmin Chun"
+date: "2026-07-10"
+categories: 
+  - Math > Topology
+---
+
+## Pasting Lemma
+Let $X = A \cup B$, where $A$ and $B$ are closed (open) in $X$. Let $f: A \to Y$ and $g:B \to Y$ be continuous functions. If $f(x) = g(x), \forall x \in A \cap B$, then the function $h: X \to Y$ defined by 
+
+$$h(x) = \begin{cases}
+f(x) & \text{if } x \in A \\
+g(x) & \text{if } y \in B
+\end{cases}$$
+
+is continuous.
+
+증명 과정을 보면 알겠지만 $A$와 $B$가 닫힌 집합이 아닌 열린 집합으로 줘도 동일하게 결론이 성립한다는 사실을 알 수 있다. 다만 함수와 함수의 정의역을 합쳐서 만든다는 점에서 닫힌 집합으로 조건을 주는 게 여러모로 유용하다. 실수 상에서 열린 구간은 결코 한 점에서만 겹칠 수 없지만, 닫힌 구간은 각 구간의 양 끝점, 그러니까 딱 한 점에서만 겹치더라도 합쳐서 만들어낼 수 있다는 점에서 열린 집합보다는 닫힌 집합일 때 그 빛을 발한다. 
+
+### Proof
+Clearly, the function $h$ is well-defined. Let $C$ be a closed subset of $X$. Note that $h^{-1}(C) = f^{-1}(C) \cup g^{-1}(C)$. 
+
+$\big[(\because)$ Let $x \in h^{-1}(C)$. Then $h(x) \in C$. Since $x \in X = A \cup B$, either $x \in A$ or $x \in B$. WLOG, we may assume that $x \in A$. Then $f(x) = h(x) \in C$, which means that $x \in f^{-1}(C)$. Thus, $x \in f^{-1}(C) \cup g^{-1}(C)$, so that $h^{-1}(C) \subset f^{-1}(C) \cup g^{-1}(C)$. 
+
+Let $x \in f^{-1}(C) \cup g^{-1}(C)$. Then either $x \in f^{-1}(C)$ or $x \in g^{-1}(C)$. WLOG, we may assume that $x \in f^{-1}(C)$. Then $f(x) \in C$. Since $f^{-1}(C) \subset A$, we have $x \in A$, which means that $h(x) = f(x) \in C$. Thus, $x \in h^{-1}(C)$, so that $h^{-1}(C) \cup g^{-1}(C) \subset h^{-1}(C)$. Hence, $h^{-1}(C) = f^{-1}(C) \cup g^{-1}(C)$.$\big]$
+
+Since $f^{-1}(C)$ and $g^{-1}(C)$ are closed in $A$ and $B$, respectively, and $A$ and $B$ are closed in $X$, we have that [$f^{-1}(C)$ and $g^{-1}(C)$ are closed in $X$.](../Closed_Set/index.qmd#sec-theorem-2) Thus, [$h^{-1}(C) = f^{-1}(C) \cup g^{-1}(C)$ is closed in $X$, which means that $h$ is continuous.](../Continuous_Function/index.qmd#sec-theorem-1) $\blacksquare$ 
+
+# Reference
+- James R. Munkres. (2000). Topology (2nd ed.). Pearson.

@@ -1,0 +1,46 @@
+---
+title: "Tree"
+author: "Youmin Chun"
+date: "2026-08-05"
+description: "트리 그래프에 대해서 소개한다."
+categories: 
+  - Math > Graph Theory > Tree
+---
+
+## Definition
+**(i)** A graph is called a ***tree*** if it is connected and has no cycle.
+
+**(ii)** A vertex of degree one is called a ***leaf***.
+
+**(iii)** If each component of a graph is a tree, then the graph is called a ***forest***. 
+
+## Theorem 1
+For a graph $T$, TFAE.
+
+**(i)** $T$ is a tree.
+
+**(ii)** For any vertices $u, v \in V(T)$, there is a unique $uv$-path in $T$.
+
+**(iii)** $T$ is connected, but is disconnected by the removal of any edge.
+
+**(iv)** $T$ has no cylce, but has a cycle on the addition of any edge.
+
+**(v)** $\vert V(T) \vert = \vert E(T) \vert + 1$.
+
+## Theorem 2
+For a finite tree $T$, it has a leaf $\ell$. Furthermore, $T - \ell$ is also a tree.
+
+### Proof
+**[Proof 1]**
+
+Let $P = v_1 \cdots v_r$ be a longest path in $T$. If $v_r$ is a leaf, then we are done. If $v_r$ is not a leaf, then it has an edge diffrent from $\\{ v_{r-1}, v_r \\}$. This must not be to a vertex in $P$, but to some other vertex walking a longer path than $P$. $\bigotimes$ Thus, $T$ has a leaf. 
+
+**[Proof 2]**
+
+Let $T$ be a tree on $n$ verticies. Then $T$ has exactl $n-1$ edges, so the sum of the degrees of $T$ is $2(n-1)$ by [the Handshaking lemma.](<{% post_url Graph Theory/2026-05-05-Degree %}#handshaking-lemma>) If every vertex has degree more than $2$, then we must obtain that $2n-2 \ge 2n$, which is clearly a contradiction. Thus, there exists a vertex with degree one, which is called a leaf.
+
+Let $T$ be a tree with a leaf $\ell$. If $V(T) = n$ and $E(T) = m$, then we have $n = m - 1$ by Theoerm 1 (v). If we remove a left $\ell$ from $T$, then a graph $T - \ell$ is a graph with $n-1$ vertices and $m-1$ edges. Since $(n-1) = (m-1) - 1$, we conclude that $T - \ell$ is also a tree. $\blacksquare$ 
+
+# Reference
+- Matousek, J., & Nesetril, J. (2008). Invitation to Discrete Mathematics. Oxford University Press.
+- Newman, M.E.J. (2010). Networks: An Introduction. Oxford University Press.

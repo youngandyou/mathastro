@@ -1,0 +1,94 @@
+---
+title: "Triangle Free Graph"
+author: "Youmin Chun"
+date: "2026-08-05"
+description: "Triangle free와 Turan number에 대해서 소개한다."
+categories: 
+  - Math > Graph Theory > Graph
+---
+
+## Definition
+**(i)** A graph $G$ is called ***triangle-free*** if $G$ does not contain $K_3$ as a subgraph. In general, a graph $G$ is called ***$K_k$-free*** if $G$ does not contain $K_k$ as a subgraph. 
+
+**(ii)** Let $T(n)$ be the maximum number of edges in triangle-free graphs on $n$ vertices. In general, the ***Turan number*** $T_k(n)$ is the maximum number of edges in $K_k$-free graphs on $n$ vertices. That is, $T(n) = T_3(n)$.
+
+## Problem
+Let $G$ be a graph on $n$ verticies. 
+
+**(i)** How many edges must $G$ have to be connected?
+
+- $n-1$
+
+**(ii)** How many edges can $G$ have to be disconnected?
+
+- $\displaystyle \binom{n-1}{2}$
+
+**(iii)** How many edges can $G$ have to be triangle-free?
+
+- $\displaystyle \left\lfloor \frac{n^2}{4} \right\rfloor$
+
+## Answer
+**(i)** 자명하게 적어도 $n-1$개의 에지가 필요하다.
+
+**(ii)** $G$가 disconnected라면 최소한 두 개의 component를 가져야 한다. 두 개의 component가 있다고 가정하고, 각 $a, b$개의 버텍스를 가지고 있다고 하자. 즉 $a, b \ge 1$이고 $a+b = n$이다. 이때 $G$가 가질 수 있는 에지의 최대값을 구해야하므로 각 component는 complete graph $K_a$, $K_b$이다. 따라서 각각의 에지의 개수는 $\binom{a}{2}$와 $\binom{b}{2}$이고, 더해서 계산하면 다음과 같다.
+
+$$\begin{align*}
+\binom{a}{2} + \binom{b}{2} &= \frac{a(a-1)}{2} + \frac{b(b-1)}{2} \\
+&= \frac{a^2 - a + b^2 - b}{2} \\
+&= \frac{(a+b)^2 - (a+b) - 2ab}{2} \\
+&= \frac{n^2 - n - 2ab}{2}
+\end{align*}$$
+
+이 값을 최대로 하는 $a, b$는 $a=1, b=n-1$ 또는 $a=n-1, b=1$일 때이다. 즉, 우리가 원하는 최대값은 $\binom{n-1}{2}$이다.
+
+**(iii)** $G$가 $K_3$를 부분그래프로 가지지 않으려면 자명하게 complete bipartite graph $K_{a, b}$가 되어야 한다. 이때 $a, b \ge 1$이고 $a+b=n$이다. $K_{a, b}$의 에지의 개수는 $ab$이므로 산술기하평균 부등식에 의해 
+
+$$\frac{n}{2} = \frac{a+b}{2} \ge \sqrt{ab}$$
+
+이 성립하고, 등호는 $a = \frac{b}{2} = b$일 때 성립한다. 따라서 에지의 최대값은 $\left\lfloor \frac{n^2}{4} \right\rfloor$이다.
+
+## Theorem
+For all $n \ge 1$, we have 
+
+$$T(n) = \left\lfloor \frac{n^2}{4} \right\rfloor$$
+
+### Proof
+We prove by induction on $n$. 
+
+The case $n = 1$ and $n=2$ hold clearly. Assume that $n \ge 3$ and $T(m) = \left\lfloor \frac{m^2}{4} \right\rfloor$ for all $m < n$. 
+
+Let $G$ be a triangle-free graph on $n$ vertices with $T(m)$ edges. 
+
+Let $\{ u, v \}$ be an edge in $G$, and let $G'$ be a graph with $V(G') = V(G) - \{ u, v \}$. Then $G'$ has $n-2$ vertices and is triangle-free. By the induction hypothesis, $G'$ has at most $T(n-2) = \left\lfloor \frac{(n-2)^2}{4} \right\rfloor$ edges. 
+
+Since $u$ and $v$ cannot have common neighbors in $G'$, $G$ has at most $\left\lfloor \frac{(n-2)^2}{4} \right\rfloor + 1 + n-2$ edges.
+
+**Claim:** $\left\lfloor \frac{(n-2)^2}{4} \right\rfloor + 1 + n-2 = \left\lfloor \frac{n^2}{4} \right\rfloor$
+
+$\big[(\because)$ If $n = 2k$ for some $k \in \mathbb{N}$, then we have 
+
+$$\begin{align*}
+\left\lfloor \frac{(n-2)^2}{4} \right\rfloor + 1 + n-2 &= \left\lfloor \frac{(2k-2)^2}{4} \right\rfloor + 1 + (2k-2) \\
+&= (k-1)^2 + 1 + (2k-2) \\
+&= k^2 - 2k + 1 + 2k - 1 \\
+&= k^2 \\
+&= \left\lfloor \frac{n^2}{4} \right\rfloor
+\end{align*}$$
+
+If $n = 2k-1$ for some $k \in \mathbb{N}$, then we have
+
+$$
+\begin{align*}
+\left\lfloor \frac{(n-2)^2}{4} \right\rfloor + 1 + n-2 &= \left\lfloor \frac{(2k-1)^2}{4} \right\rfloor + 1 + (2k-1) \\
+&= \frac{(2k-1)^2 - 1}{4} + 1 + (2k-1) \\
+&= \frac{4k^2 - 4k}{4} + 2k \\
+&= k^2 - k + 2k \\
+&= k^2 + k \\
+&= \left\lfloor \frac{n^2}{4} \right\rfloor
+\end{align*}
+$$
+
+Hence, in any cases, we obtain the desired result. $\blacksquare$ $\big]$
+
+# Reference
+- Matousek, J., & Nesetril, J. (2008). Invitation to Discrete Mathematics. Oxford University Press.

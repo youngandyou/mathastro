@@ -1,0 +1,134 @@
+---
+title: "Connected Space"
+author: "Youmin Chun"
+date: "2026-07-15"
+categories: 
+  - Math > Topology
+---
+
+## Definition
+Let $X$ be a topological space. A ***seperation*** of $X$ is a pair $(U, V)$ of disjoint nonemepty open subsets of $X$ whose union is $X$. The space $X$ is said to be ***connected*** if there does not exist a separation of $X$.
+
+정의에서 $U, V$를 open이 아니라 closed로 바꿔도 상관없다. 어떤 경우든 $U$와 $V$는 open이면서 closed이기 때문이다. 
+
+즉 $X$가 연결되지 않는다는 말은 열리면서 닫힌 비자명 부분집합으로 이루어진 $X$의 partition이 존재한다는 말이다. 위상 공간에서 열리면서 닫힌 집합으로는 당연하게 $\emptyset$과 집합 그 자신 $X$이 있다. 그런데 이 둘이 아닌 또 다른 집합들이 존재한다는 말은, $X$ 안에 마치 그 자신이 위상 공간처럼 행동하는 두 부분이 존재하는 것처럼 생각할 수 있다. 그러면 두 부분은 사실상 독립적인 공간들로 다뤄질 수 있고, 이는 연결되어 있지 않다는 직관으로 이어진다.
+
+## Remark
+**(i)** If $X \cong Y$ and $X$ is connected, then so is $Y$. That is, connectedness is a topological property, so it is preserved by a homeomorphism.
+
+**(ii)** A space $X$ is connected $\iff$ the only subsets of $X$ that are both open and closed in $X$ are $\emptyset$ and $X$ itself.
+
+## Lemma 1
+If $Y$ is a subspace of $X$, a separation of $Y$ is a pair $(A, B)$ of disjoint nonempty subsets of $Y$ whose union is $Y$, neither of which contains a limit point of the other. The space $Y$ is connected if there exists no separation of $Y$. 
+
+### Proof
+Suppose that $(A, B)$ is a separation of $Y$. Then $A$ is a nonempty subset of $Y$ that is both open and closed in $Y$. Note that the closure of $A$ in $Y$ is $\overline{A} \cap Y$, where $\overline{A}$ is the closure of $A$ in $X$. Since $A$ is closed in $Y$, $A = \overline{A} \cap Y$. Since $A \cap B = \emptyset$, we have
+
+$$\begin{align*}
+\emptyset &= A \cap B \\
+&= (\overline{A} \cap Y) \cap B \\
+&= \overline{A} \cap (Y \cap B) \\
+&= \overline{A} \cap B.
+\end{align*}$$
+
+It follows that $B$ does not contain a limit point of $A$. A similar argument shows that $A$ does not contain a limit point of $B$. 
+
+Conversely, let $(A, B)$ be a pair of disjoint nonempty subsets of $Y$ whose union is $Y$, neither of which contains a limit point of the other. Since $\overline{A} \cap B = \emptyset = A \cap \overline{B}$,  we obtain that $Y - B = \overline{A}$ and $Y - A = \overline{B}$, which means that $A$ and $B$ are open in $Y$. Since $Y - A = B$ and $Y - B = A$, $A$ and $B$ are closed in $Y$. Thus, $(A, B)$ is a separation of $Y$. $\blacksquare$
+
+## Lemma 2
+If the sets $C$ and $D$ form a separation of $X$, and if $Y$ is a connected subspace of $X$, then $Y$ lies entirely within either $C$ or $D$.
+
+### Proof
+Since $C$ and $D$ are open in $X$, $Y \cap C$ and $Y \cap D$ are open in $Y$. Note that 
+
+$$\begin{align*}
+(Y \cap C) \cup (Y \cap D) &= Y \cap (C \cup D) \\
+&= Y \cap X \\
+&= Y,
+\end{align*}$$
+
+and
+
+$$\begin{align*}
+(Y \cap C) \cap (Y \cap D) &= Y \cap (C \cap D) \\
+&= Y \cap \emptyset \\
+&= \emptyset.
+\end{align*}$$
+
+If $Y \cap C$ and $Y \cap D$ are nonempty, then $(C, D)$ is a separation of $Y$. Thus, either $Y \cap C$ or $Y \cap D$ is empty, which means that $Y$ lies entirely within either $C$ or $D$. $\blacksquare$
+
+## Theorem 1
+**(i)** The union of a collection of connected subspaces of $X$ that have a point in common is connected.
+
+**(ii)** Let $\{ A_n \}$ be a sequence of connected subspaces of $X$ such that $A_n \cap A_{n+1} \neq \emptyset, \forall n.$ Then the union of $A_n$ is connected.
+
+### Proof
+**(i)** Let $\{ Y_\alpha \}$ be a collection of connected subspaces $Y_\alpha$ of $X$ that have a point in common. Suppose that 
+
+$$Y:= \bigcup Y_\alpha$$
+
+is not connected. Then $Y$ has a separation $(A, B)$. [Since each $Y_\alpha$ is also a subspace of $Y$,](../Subspace_Topology/index.qmd#sec-theorem-4) by Lemma 2, each $Y_\alpha$ lies entirely within $A$ or $B$. 
+
+Since $\bigcap Y_\alpha \neq \emptyset$, $\exists p \in \bigcap Y_\alpha$. Then $p$ is in only one of $A$ or $B$. WLOG, we let $p \in A$. Then each $Y_\alpha$ must lie entirely in $A$, because each $Y_\alpha$ contains $p$. It follows that $B = \emptyset$, which is a contradiction. Thus, $Y$ is connected. 
+
+**(ii)** Suppose that 
+
+$$A := \bigcup_{n=1}^\infty A_n$$
+
+is disconnected. Then there exists a separation $(U, V)$ of $A.$ Since each $A_n$ is a connected subspace of $A$, $A_n$ lies entirely in $U$ or $V$ by Lemma 2.
+
+There must exist an index $n$ such that $A_n \subset U$ and $A_{n+1} \subset V$. (It is possible that $A_n \subset V$ and $A_{n+1} \subset U$, but WLOG, assume the former case.) If not, then for all $n \in \mathbb{N},$ $A_n, A_{n+1} \subset U$ or $A_n, A_{n+1} \subset V$. It follows that every $A_n$ is contained in either $U$ or $B$, so either $U$ or $V$ is empty, which is a contradiction. Thus, such an index $n$ exists. 
+
+Since $A_n \cap A_{n+1} \neq \emptyset,$ $\exists x \in A_n \cap A_{n+1}.$ Since $A_n \subset U$ and $A_{n+1} \subset V$, $x \in U \cap V = \emptyset. \bigotimes$ Hence, $A$ is connected. $\blacksquare$
+
+## Theorem 2
+Let $A$ be a connected subspace of $X$. If $A \subset B \subset \overline{A}$, then $B$ is also connected. 
+
+특별히 $B = \overline{A}$를 대입하면 연결공간의 closure도 연결공간이라는 결론을 얻는다.
+
+### Proof
+Suppose that $B$ is not connected. That is, $B$ has a separation $(C, D)$. It is easily verified that $(A \cap C, A \cap D)$ is a pair of disjoint nonempty open subsets of $A$ whose union is $A$, which implies that $A$ is not connected. $\bigotimes$ Thus, $B$ is connected. $\blacksquare$
+
+### Another Proof
+
+By Lemma 2, $A$ lies entirely within $C$ or $D$; suppose that $A \subset C$. Then $\overline{A} \subset \overline{C}$. Since $\overline{C} \cap D = \emptyset$ by Lemma 1, we have 
+
+$$B \cap D \subset \overline{A} \cap D \subset \overline{C} \cap D = \emptyset,$$
+
+so $B \cap D = \emptyset. \bigotimes$ Thus, $B$ is connected. $\blacksquare$ 
+
+## Theorem 3
+The image of a connected space under a continuous map is connected.
+
+한마디로 요약해서, 연속함수는 연결성을 보존한다.
+### Proof
+Let $f: X \to Y$ be a continuous map, and let $A$ be a connected subspace of $X$. Suppose that $f(A)$ is not connected. Then $f(A)$ has a separation $(C, D).$ 
+
+[Let $g: A \to f(A)$ be the function restricting the domain and range of $f$. Then $g$ is continuous.](../Continuous_Function/index.qmd#sec-theorem-3) Since $C$ and $D$ are open subsets of $f(A)$, $g^{-1}(C)$ and $g^{-1}(D)$ are open in $A$. Since $g^{-1}(C \cap D) = g^{-1}(C) \cap g^{-1}(D)$ and $C \cap D = \emptyset$, $g^{-1}(C)$ and $g^{-1}(D)$ are disjoint. Since $g^{-1}(C \cup D) = g^{-1}(C) \cup g^{-1}(D)$ and $C \cup D = f(A)$, $g^{-1}(C) \cup g^{-1}(D) = A$. Since $g$ is surjective, $g^{-1}(C)$ and $g^{-1}(D)$ is nonempty. Thus, $(g^{-1}(C), g^{-1}(D))$ is a separation of $A$, which means that $A$ is not connected. $\bigotimes$ Thus, $f(A)$ is connected. $\blacksquare$
+
+## Theorem 4
+A finite cartesian product of connected spaces is connected.
+
+### Proof
+Let $\{ A_i \}_{i=1}^n$ be a collection of connected spaces. We use the induction on $n$.
+
+First, we prove the base case $n=2$. Fix $a \in A_1$. Note that $\{ a \} \times A_2 \cong A_2$, so that $\{ a \} \times A_2$ is connected. Similarly, for each $y \in A_2$, $A_1 \times \{ y \} \cong A_2$, so that $A_1 \times \{ y \}$ is connected. 
+
+By Theorem 1, $T_y := (\{ a \} \times A_2) \cup (A_1 \times \{ y \})$ is connected, for each $y \in A_2$. Then
+
+$$\bigcup_{y \in A_2} T_y$$
+
+is connected by Theorem 1. Since 
+
+$$\bigcup_{y \in A_2} T_y = A_1 \times A_2,$$
+
+we conclude that $A_1 \times A_2$ is connected.  
+
+Suppose that $\prod_{i=1}^{k} A_i$ is connected for some $2 < k < n$. Since 
+
+$$\left(\prod_{i=1}^{k} A_i \right) \times A_{k+1} \cong \prod_{i=1}^{k+1}A_i$$
+
+and each $\prod_{i=1}^{k} A_i$ and $A_{k+1}$ is connected, by the base case, $\prod_{i=1}^{k+1}A_i$ is also connected. $\blacksquare$
+
+# Reference
+- James R. Munkres. (2000). Topology (2nd ed.). Pearson.

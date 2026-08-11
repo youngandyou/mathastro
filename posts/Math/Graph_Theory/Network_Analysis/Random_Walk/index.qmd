@@ -1,0 +1,36 @@
+---
+title: "Random Walk"
+author: "Youmin Chun"
+date: "2026-08-11"
+description: "네트워크 이론에서의 랜덤 워크에 대해서 소개한다."
+categories: 
+  - Math > Graph Theory > Network Analysis
+---
+
+# Random Walk
+***랜덤 워크(Random Walk)***란 나이브하게 말하자면 주어진 그래프 위에서 균등한 확률로 인접한 정점을 이동해나가서 만들어진 워크를 의미한다. 기본적으로 확률에 의존하여 워크를 만들어나가므로 무한히 많은 개수의 랜덤 워크들이 존재할 수 있으며, 워크의 길이 또한 일반적으로 무한히 이어진다고 가정한다. 
+
+## Definition 1
+Let $G = (V, E)$ be a connected graph with $V = \{1, 2, \dots, N\}$. Let $A$ be the adjacency matrix of $G$, and let $D = \mathrm{diag}(d_1, ..., d_N)$ be the degree matrix of $G$. A ***random walk*** on $G$ is a discrete-time stochastic process $\{X_t\}_{t \in \mathbb{N}_0}$ taking values in $V$, where the process transitions by taking repeated random steps across the graph $G$. The transition probabilities is given by:
+
+$$P[X_t = i \mid X_{t-1} = j] = \frac{A_{ij}}{d_j}$$
+
+Let $\mathbf{p}(t) \in \mathbb{R}^N$ be the state probability vector at time $t$, where the $i$th componenet $p_i(t)$ is defined as the conditional probability $p_i(t) = P[X_t = i \mid X_0 = u]$ for a given initial vertex $u \in V$.
+
+자연스럽게 $p_i(t)$는 다음과도 같이 계산될 수 있다.
+
+$$\begin{align*}
+p_i(t) &= \sum_{j=1}^N P[X_t = i \mid X_{t-1} = j] P[X_{t-1} = j \mid X_0 = u] \\
+&= \sum_{j=1}^N \frac{A_{ij}}{d_j} p_j(t-1)
+\end{align*}$$
+
+이를 벡터 꼴로 다시 쓰면 다음과 같은 점화식을 얻는다.
+
+$$\mathbf{p}(t) = AD^{-1}\mathbf{p}(t-1)$$
+
+## Theorem 1
+Suppose that the stationary distribution 
+
+
+# Reference
+- Newman, M.E.J. (2010). Networks: An Introduction. Oxford University Press.

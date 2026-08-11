@@ -23,7 +23,7 @@ $$L_{ij} = \delta_{ij} d_i - A_{ij}$$
 where $\delta_{ij}$ is the Kronecker-delta.
 
 ## Diffusion
-본래 확산이란 기체와 같은 유체, 혹은 열에너지가 밀도와 압력 차이에 의해 높은 곳에서 낮은 곳으로 이동하며 퍼져나가는 물리적 현상을 일컫는다. 한편 이러한 현상의 메커니즘을 그대로 유지하되 그래프 이론에 적용하는 방식으로 재해석해보려 한다. 
+본래 확산이란 기체와 같은 유체, 혹은 열에너지가 밀도와 압력 차이, 온도 차이에 의해 높은 곳에서 낮은 곳으로 이동하며 퍼져나가는 물리적 현상을 일컫는다. 한편 이러한 현상의 메커니즘을 그대로 유지하되 그래프 이론에 적용하는 방식으로 재해석해보려 한다. 
 
 그래프 $G$가 주어졌을 때 각 정점 $v_i$에 어떤 물질이 $\psi_i$ 만큼 존재한다고 하자. 이때 $v_j$에서 $v_i$로 물질이 흘러들어올 때 확산하는 비율은 $C(\psi_j - \psi_i)$와 같이 쓸 수 있다. $v_j$에서 $v_i$로 흘러들어오는 상황이라면 $v_j$에서 더 밀도가 높다는 뜻이고, 자연스럽게 양의 비율로 측정되는 효과를 준다. 반대로 $v_j$로 물질이 빠져나가는 상황이라면 $v_i$에서 더 밀도가 높다는 뜻이고, 역시나 자연스럽게 음의 비율로 측정되는 효과를 준다. $C$는 ***diffusion constant***로 주어지는 상수이다.
 
@@ -69,7 +69,7 @@ Let $L$ be the graph Laplacian of a graph $G$. Then we have:
 
 $\big[ (\because)$ If $i \neq j$, then the only non-zero terms in the sum will occur if both $B_{ki}$ and $B_{kj}$ are non-zero, i.e., if $e_k$ connects $v_i$ and $v_j$, in which case the product will have value $-1$. If $i = j$, then the sum is $\sum_{k} B_{ki}^2$, which has a term $+1$ for every edge connected to $v_i$, so the whole sum is just equal to $d_i$. It follows that $\sum_k B_{ki} B_{kj} = L_{ij}$, which means that $L = B^TB. \big]$
 
-Now, let $\mathbb{v}_i$ be a normalized eigenvector of $L$ with eigenvalue $\lambda_i$. Then we have
+Now, let $\mathbf{v}_i$ be a normalized eigenvector of $L$ with eigenvalue $\lambda_i$. Then we have
 
 $$\begin{align*}
 \| B\mathbf{v}_i \|^2 &= \langle B\mathbf{v}_i, B\mathbf{v}_i \rangle \\

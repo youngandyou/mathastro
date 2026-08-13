@@ -1,0 +1,16 @@
+---
+title: "Degree Centrality"
+author: "Youmin Chun"
+date: "2026-08-14"
+description: "네트워크 이론에서의 차수 중심성(Degree Centrality)에 대해서 소개한다."
+categories: 
+  - Math > Graph Theory > Network Analysis
+---
+
+# Degree Centrality
+***중심성(Centrality)***이란 주어진 네트워크에서 어떤 노드가 얼마나 중요하고 중심적인 역할을 하는지 나타내는 척도를 의미한다. 당연히 어떤 기준을 메인으로 삼느냐에 따라 다양한 중심성의 개념이 존재한다. 그중에서도 가장 간단하고 직관적인 기준이란, 노드가 주변 노드들로부터 많이 연결되면 연결될수록 중요하다고 인정받는, 다시 말해 노드의 차수 $d$가 높으면 높을수록 더 높은 중심성을 가진다고 평가받는 기준일 것이다. 이를 ***차수 중심성(degree centrality)***이라고 부른다.
+
+예컨대 논문이 많이 인용되면 인용될수록 그 가치를 인정받고, SNS 상에서 친구가 많을수록 인플루언서로서의 가치가 인정받듯, 중심성이라는 개념에 대해서 생각할 때 가장 먼저 떠오름직한 개념이다. 다르게 말하면, 그만큼 단순하므로 더 복잡하고 세세하게 중심성을 평가해야 할 경우 그다지 쓸모가 없는 개념이기도 하다.
+
+# Reference
+- Newman, M.E.J. (2010). Networks: An Introduction. Oxford University Press.

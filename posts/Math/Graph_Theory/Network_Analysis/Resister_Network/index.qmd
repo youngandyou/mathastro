@@ -2,7 +2,7 @@
 title: "Resister Network"
 author: "Youmin Chun"
 date: "2026-08-14"
-description: "저항 네트워크와 랜덤 워크의 관계에 대해서 소개한다."
+description: "직류 회로를 네트워크의 관점에서 분석한 결과를 설명한다."
 categories: 
   - Math > Graph Theory > Network Analysis
 ---

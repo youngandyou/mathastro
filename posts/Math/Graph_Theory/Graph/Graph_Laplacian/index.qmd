@@ -8,11 +8,11 @@ categories:
 ---
 
 ## Definition
-Let $G$ be a graph, and let $D$ and $A$ be the degree matrix and adjacency matrix of $G$ respectively. Then the ***graph Laplacian*** of $G$ is the $n \times n$ matrix $L$ given by
+Let $G$ be a graph, and let $\mathbf{D}$ and $\mathbf{A}$ be the degree matrix and adjacency matrix of $G$ respectively. Then the ***graph Laplacian*** of $G$ is the $n \times n$ matrix $\mathbf{L}$ given by
 
-$$L = D - A.$$
+$$\mathbf{L} = \mathbf{D} - \mathbf{A}.$$
 
-Specifically, the $ij$ entry of $L$ is given by
+Specifically, the $ij$ entry of $\mathbf{L}$ is given by
 
 $$L_{ij} = \begin{cases} d_i & \text{if } i = j \\ -1 & \text{if } i \neq j \text{ and } v_i \sim v_j \\ 0 & \text{otherwise} \end{cases}$$
 
@@ -22,8 +22,39 @@ $$L_{ij} = \delta_{ij} d_i - A_{ij}$$
 
 where $\delta_{ij}$ is the Kronecker-delta.
 
+함수 $f: \mathbb{R}^n \to \mathbb{R}$에 대해 정의되는 라플라시안 연산자 $\Delta$는 주어진 함수가 어떤 점에서 주변 값들과 차이가 얼마나 나는지 알려주는 척도로 해석할 수 있다. 편의를 위해 $f: \mathbb{R} \to \mathbb{R}$로 생각해 봤을 때 라플라시안 연산자는 단순히 이계도함수 $f''(x)$에 해당한다. 
+
+점 $x$에서 $\pm h$만큼 떨어진 점에서의 테일러 전개는 다음과 같다.
+
+$$\begin{align*}
+f(x+h) &= f(x) + h \cdot f'(x) + \frac{h^2}{2} f''(x) + \mathcal{O}(h^3) \\
+f(x-h) &= f(x) - h \cdot f'(x) + \frac{h^2}{2} f''(x) + \mathcal{O}(h^3)
+\end{align*}$$ 
+
+이를 $f''(x)$에 대해 정리하면 다음과 같다.
+
+$$\begin{align*}
+f''(x) &\approx \frac{f(x+h) - 2f(x) + f(x-h)}{h^2} \\
+&= \frac{2}{h^2} \left[ \frac{f(x+h) + f(x-h)}{2} - f(x) \right]
+\end{align*}$$
+
+즉 위치 $x$를 기준으로 양옆으로 $h$만큼 떨어진 지점에서의 평균값과 $x$에서의 함숫값의 차이로 근사할 수 있다. 따라서 이 값이 $0$보다 크면 주변값이 더 크다는 말이고, 아래로 볼록하다는 의미가 된다. 거꾸로 $0$보다 작으면 주변값이 더 작다는 말이고, 위로 볼록하다는 의미가 된다.
+
+정확히 같은 해석을 위에서 정의한 그래프 라플라시안에도 적용할 수 있다. 그래프 라플라시안은 노드들의 개수로 크기가 결정되는 행렬이므로, 각 노드에서의 정보를 담은 어떤 벡터 $\mathbf{x} \in \mathbb{R}^n$이 있다고 가정한 뒤 곱해보면 다음과 같은 결과를 얻는다.
+
+$$\begin{align*}
+[\mathbf{L}\mathbf{x}]_i &= \sum_{j=1}^n L_{ij}x_j \\
+&= \sum_{j=1}^n (\delta_{ij} d_i - A_{ij})x_j \\
+&= d_ix_i - \sum_{j=1}^n A_{ij} x_j \\
+&= \sum_{j=1}^n A_{ij} x_i - \sum_{j=1}^n A_{ij} x_j \\
+&= \sum_{j=1}^n A_{ij}(x_i - x_j) \\
+&= \sum_{j \sim i} (x_i - x_j)
+\end{align*}$$
+
+즉 벡터 $\mathbf{L}\mathbf{x}$의 $i$번째 성분은 $i$와 연결되어 있는 노드들에 대해서 차이 $x_i - x_j$를 모두 더한 값이다. 다시 말해 주변 값들과의 차이로 주어진다. 이 값이 크면 클수록 $i$번째 노드의 상태, 혹은 정보가 더 높은 위치에 있다는 의미이고, 반대도 마찬가지로 해석할 수 있다. 즉 함수에서의 라플라시안 연산자 $\Delta$와 그래프 라플라시안 $\mathbf{L}$은 직관적으로 같은 의미를 지닌다. 아래에서 소개할 확산 현상에 대해서도 일반적인 확산 방정식 $u_t = k\Delta u$와 정확히 같은 모양으로 유도됨을 확인할 수 있다.
+
 ## Diffusion
-본래 확산이란 기체와 같은 유체, 혹은 열에너지가 밀도와 압력 차이, 온도 차이에 의해 높은 곳에서 낮은 곳으로 이동하며 퍼져나가는 물리적 현상을 일컫는다. 한편 이러한 현상의 메커니즘을 그대로 유지하되 그래프 이론에 적용하는 방식으로 재해석해보려 한다. 
+본래 확산이란 기체와 같은 유체, 혹은 열에너지가 밀도와 압력 차이, 온도 차이에 의해 높은 곳에서 낮은 곳으로 이동하며 퍼져나가는 물리적 현상을 일컫는다. 한편 이러한 현상의 메커니즘을 그대로 유지하되 그래프 이론에 적용하는 방식으로 재해석해보자.
 
 그래프 $G$가 주어졌을 때 각 정점 $v_i$에 어떤 물질이 $\psi_i$ 만큼 존재한다고 하자. 이때 $v_j$에서 $v_i$로 물질이 흘러들어올 때 확산하는 비율은 $C(\psi_j - \psi_i)$와 같이 쓸 수 있다. $v_j$에서 $v_i$로 흘러들어오는 상황이라면 $v_j$에서 더 밀도가 높다는 뜻이고, 자연스럽게 양의 비율로 측정되는 효과를 준다. 반대로 $v_j$로 물질이 빠져나가는 상황이라면 $v_i$에서 더 밀도가 높다는 뜻이고, 역시나 자연스럽게 음의 비율로 측정되는 효과를 준다. $C$는 ***diffusion constant***로 주어지는 상수이다.
 
@@ -39,73 +70,75 @@ $$\begin{align*}
 &= C \sum_j A_{ij} \psi_j - C \psi_i d_i \\
 &= \sum_j (A_{ij} - \delta_{ij} d_i) \psi_j \\
 &= - C \sum_j L_{ij} \psi_j \\
-&= - C [L \psi]_i
+&= - C [\mathbf{L} \pmb{\psi}]_i
 \end{align*}$$
 
-여기서 $\psi = [\psi_1 \,\, \cdots \,\, \psi_n]^T$로 정의하면 마지막 식은 다음과 같은 1계 연립 상미분방정식이 된다.
+여기서 $\pmb{\psi} = [\psi_1 \,\, \cdots \,\, \psi_n]^T$로 정의하면 마지막 식은 다음과 같은 연립 미분방정식이 된다.
 
-$$\frac{d \psi}{dt} + C L \psi = 0$$
+$$\frac{d \pmb{\psi}}{dt} + C \mathbf{L} \pmb{\psi} = \mathbf{0}$$
 
-이때 그래프 라플라시안 $L$은 실대칭행렬이므로 에르미트 행렬이고, 따라서 대각화가능하다. $L$의 고유값과 고유벡터들을 각각 $\lambda_i, \mathbf{v}_i$라고 하면 위 미분방정식의 해는 상수 $c_i$들에 대하여 다음과 같이 주어지고, 적절히 초기조건이 주어진다면 완벽하게 해를 결정할 수 있다. 
+그래프 라플라시안 $\mathbf{L}$이 함수에서의 라플라시안 연산자 $\Delta$와 같은 역할을 한다는 사실을 기억한다면 위 방정식이 정확히 확산 방정식 $u_t = k\Delta u$와 동일한 꼴임을 알 수 있따.
 
-$$\psi(t) = e^{-CtL} \psi(0) = \sum_{i} c_i e^{-C\lambda_i t} \mathbf{v}_i$$
+한편 그래프 라플라시안 $\mathbf{L}$은 실대칭행렬이므로 에르미트 행렬이고, 따라서 대각화가능하다. $\mathbf{L}$의 고유값과 고유벡터들을 각각 $\lambda_i, \mathbf{v}_i$라고 하면 위 미분방정식의 해는 상수 $c_i$들에 대하여 다음과 같이 주어지고, 적절히 초기조건이 주어진다면 완벽하게 해를 결정할 수 있다. 
+
+$$\pmb{\psi}(t) = e^{-Ct\mathbf{L}} \pmb{\psi}(0) = \sum_{i} c_i e^{-C\lambda_i t} \mathbf{v}_i$$
 
 ## Edge Incident Matrix
-Let $G$ be a graph with $n$ vertices and $m$ edges. let us arbitrarily designate one end of each edge to be end $1$ and the other to be end $2$. (It doesn’t matter which end is which, only that they have different labels.) The ***edge-incidence matrix*** $B$ of $G$ is the $m \times n$ matrix whose $ij$ entry is given by 
+Let $G$ be a graph with $n$ vertices and $m$ edges. let us arbitrarily designate one end of each edge to be end $1$ and the other to be end $2$. (It doesn’t matter which end is which, only that they have different labels.) The ***edge-incidence matrix*** $\mathbf{B}$ of $G$ is the $m \times n$ matrix whose $ij$ entry is given by 
 
 $$B_{ij} = \begin{cases} +1 & \text{if end 1 of } e_i \text{ is attached to } v_j \\ -1 & \text{if end 2 of } e_i \text{ is attached to } v_j \\ 0 & \text{otherwise} \end{cases}$$
 
 각 에지의 양 끝에 $1$번, $2$번이라고 이름을 붙혀서 구분하자는 것인데, 써놨듯이 그냥 아무렇게나 붙이면 된다. 사실 정의처럼 써놓긴 했지만 잘 정의된 개념은 아닌데, 다음의 정리를 증명하기 위한 중간 과정에 불과하기 때문이다.
 
 ## Theorem 1
-Let $L$ be the graph Laplacian of a graph $G$. Then we have:
+Let $\mathbf{L}$ be the graph Laplacian of a graph $G$. Then we have:
 
-**(i)** $L$ is positive semi-definite, i.e., each eigenvalue of $L$ is nonnegative.
+**(i)** $\mathbf{L}$ is positive semi-definite, i.e., each eigenvalue of $\mathbf{L}$ is nonnegative.
 
-**(ii)** $L$ has at least one zero eigenvalue; that is, $L$ is not invertible.
+**(ii)** $\mathbf{L}$ has at least one zero eigenvalue; that is, $\mathbf{L}$ is not invertible.
 
 ### Proof
-**(i)** Let $B$ be the edge-incidence matrix of $G$. We claim that $L = B^TB$, that is, $L_{ij} = \sum_k B_{ki} B_{kj}$.
+**(i)** Let $\mathbf{B}$ be the edge-incidence matrix of $G$. We claim that $\mathbf{L} = \mathbf{B}^\top\mathbf{B}$, that is, $L_{ij} = \sum_k B_{ki} B_{kj}$.
 
-$\big[ (\because)$ If $i \neq j$, then the only non-zero terms in the sum will occur if both $B_{ki}$ and $B_{kj}$ are non-zero, i.e., if $e_k$ connects $v_i$ and $v_j$, in which case the product will have value $-1$. If $i = j$, then the sum is $\sum_{k} B_{ki}^2$, which has a term $+1$ for every edge connected to $v_i$, so the whole sum is just equal to $d_i$. It follows that $\sum_k B_{ki} B_{kj} = L_{ij}$, which means that $L = B^TB. \big]$
+$\big[ (\because)$ If $i \neq j$, then the only non-zero terms in the sum will occur if both $B_{ki}$ and $B_{kj}$ are non-zero, i.e., if $e_k$ connects $v_i$ and $v_j$, in which case the product will have value $-1$. If $i = j$, then the sum is $\sum_{k} B_{ki}^2$, which has a term $+1$ for every edge connected to $v_i$, so the whole sum is just equal to $d_i$. It follows that $\sum_k B_{ki} B_{kj} = L_{ij}$, which means that $\mathbf{L} = \mathbf{B}^\top\mathbf{B}. \big]$
 
-Now, let $\mathbf{v}_i$ be a normalized eigenvector of $L$ with eigenvalue $\lambda_i$. Then we have
+Now, let $\mathbf{v}_i$ be a normalized eigenvector of $\mathbf{L}$ with eigenvalue $\lambda_i$. Then we have
 
 $$\begin{align*}
 \| B\mathbf{v}_i \|^2 &= \langle B\mathbf{v}_i, B\mathbf{v}_i \rangle \\
-&= (B\mathbf{v}_i)^T (B\mathbf{v}_i) \\
-&= \mathbf{v}_i^T B^T B \mathbf{v}_i \\
-&= \mathbf{v}_i^T L \mathbf{v}_i \\
+&= (B\mathbf{v}_i)^\top (B\mathbf{v}_i) \\
+&= \mathbf{v}_i^\top B^\top B \mathbf{v}_i \\
+&= \mathbf{v}_i^\top L \mathbf{v}_i \\
 &= \lambda_i \| \mathbf{v}_i \|^2 \\
 &= \lambda_i.
 \end{align*}$$
 
-so $\lambda_i \ge 0$. Hence, each eigenvalue of $L$ is nonnegative, which means that $L$ is positive semi-definite.
+so $\lambda_i \ge 0$. Hence, each eigenvalue of $\mathbf{L}$ is nonnegative, which means that $\mathbf{L}$ is positive semi-definite.
 
-**(ii)** Let us denote $\mathbf{1} = [1 \,\, \cdots \,\, 1]^T$. Then we have that for each $i$,
+**(ii)** Let us denote $\mathbf{1} = [1 \,\, \cdots \,\, 1]^\top$. Then we have that for each $i$,
 
 $$\begin{align*}
-[L \cdot \mathbf{1}]_i &= \sum_{j} L_{ij} \times 1 \\
+[\mathbf{L} \cdot \mathbf{1}]_i &= \sum_{j} L_{ij} \times 1 \\
 &= \sum_j (\delta_{ij} d_i - A_{ij}) \\
 &= d_i - d_i \\
 &= 0.
 \end{align*}$$
 
-which implies that $L \cdot \mathbf{1} = \mathbf{0} = 0 \cdot \mathbf{1}$. Thus, $\mathbf{0}$ is an eigenvalue of $L$ with eigenvector $\mathbf{1}$, and so $L$ is not invertible. $\blacksquare$
+which implies that $\mathbf{L} \mathbf{1} = \mathbf{0} = 0 \cdot \mathbf{1}$. Thus, $\mathbf{0}$ is an eigenvalue of $\mathbf{L}$ with eigenvector $\mathbf{1}$, and so $\mathbf{L}$ is not invertible. $\blacksquare$
 
-증명에서 (i)의 claim 부분을 보면 알겠지만, 에지의 양 끝을 어떤 방식으로 이름을 붙이던간에 어차피 우리가 관심있는 값은 $B_{ki}$와 $B_{kj}$의 곱, 혹은 제곱이기 때문에 항상 일정한 값이 나오게 된다. 따라서 $L = B^TB$라는 결론을 이끌어 내기 위해서 어떤 방식으로 edge-incidence matrix를 정의하던지 상관이 없게 된다.
+증명에서 (i)의 claim 부분을 보면 알겠지만, 에지의 양 끝을 어떤 방식으로 이름을 붙이던간에 어차피 우리가 관심있는 값은 $B_{ki}$와 $B_{kj}$의 곱, 혹은 제곱이기 때문에 항상 일정한 값이 나오게 된다. 따라서 $\mathbf{L} = \mathbf{B}^\top\mathbf{B}$라는 결론을 이끌어 내기 위해서 어떤 방식으로 edge-incidence matrix를 정의하던지 상관이 없게 된다.
 
 ## Theorem 2
-Let $G$ be a graph which is divided up into $c$ different components of sizes $n_1, n_2, \cdots, n_c$, and let $L$ be the graph Laplacian of $G$.
+Let $G$ be a graph which is divided up into $c$ different components of sizes $n_1, n_2, \cdots, n_c$, and let $\mathbf{L}$ be the graph Laplacian of $G$.
 
-**(i)** $L$ has exactly $c$ zero eigenvalues.
+**(i)** $\mathbf{L}$ has exactly $c$ zero eigenvalues.
 
-**(ii)** Let $0 = \lambda_1 \le \lambda_2 \le \cdots \le \lambda_n$ be the eigenvalues of $L$ in increasing order. Then the second eigenvalue $\lambda_2$, called ***algebraic connectivity*** of $G$, is nonzero $\iff$ the graph $G$ is connected, i.e., it consists of a single component.
+**(ii)** Let $0 = \lambda_1 \le \lambda_2 \le \cdots \le \lambda_n$ be the eigenvalues of $\mathbf{L}$ in increasing order. Then the second eigenvalue $\lambda_2$, called ***algebraic connectivity*** of $G$, is nonzero $\iff$ the graph $G$ is connected, i.e., it consists of a single component.
 
 ### Proof
 **(i)** For convinience, let us number the vertices of the graph so that  the first $n_1$ vertices are those of the first component, the next $n_2$ are those of the second component, and so forth. With this choice the Laplacian of the network will be block diagonal, looking something like this:
 
-$$L =
+$$\mathbf{L} =
 \begin{bmatrix}
     \boxed{\phantom{\Huge O}} & 0 & \cdots \\
     0 & \boxed{\phantom{\Huge O}} & \cdots \\
@@ -114,11 +147,11 @@ $$L =
 
 Note that each block in the Laplacian is the Laplacian of the corresponding component. By Theorem 1 (ii), there are $c$ linearly independent vectors $\mathbf{v}_1, \cdots, \mathbf{v}_c$ such that $L\mathbf{v}_i = \mathbf{0}$, where
 
-$$\mathbf{v}_i = [0 \cdots 0 \,\, \underbrace{1 \cdots 1}_{n_i \text{ entries}} \,\, 0 \cdots 0]^T.$$
+$$\mathbf{v}_i = [0 \cdots 0 \,\, \underbrace{1 \cdots 1}_{n_i \text{ entries}} \,\, 0 \cdots 0]^\top.$$
 
-We claim that these $c$ vectors form a basis for the null space $\ker(L)$ of $L$, which is the eigenspace corresponding to the eigenvalue $0$.
+We claim that these $c$ vectors form a basis for the null space $\ker(\mathbf{L})$ of $\mathbf{L}$, which is the eigenspace corresponding to the eigenvalue $0$.
 
-$\big[ (\because)$ Let $N = n_1 + n_2 + \cdots + n_c$. Then $L$ is a $N \times N$ real matrix. For each $\mathbf{x} \in \mathbb{R}^N$, we obtain:
+$\big[ (\because)$ Let $N = n_1 + n_2 + \cdots + n_c$. Then $\mathbf{L}$ is a $N \times N$ real matrix. For each $\mathbf{x} \in \mathbb{R}^N$, we obtain:
 
 $$\begin{align*}
 \mathbf{x}^T L \mathbf{x} &= \sum_{i} x_i [L\mathbf{x}]_i \\
@@ -131,15 +164,15 @@ $$\begin{align*}
 &= \sum_{\{i, j\} \in E(G)} (x_i - x_j)^2.
 \end{align*}$$
 
-Let $\mathbf{x} \in \ker(L)$. Then $L\mathbf{x} = \mathbf{0}$, and so $\mathbf{x}^T L \mathbf{x} = 0$. By above result, it follows that $x_i = x_j$ for all $\{i, j\} \in E(G)$.
+Let $\mathbf{x} \in \ker(\mathbf{L})$. Then $L\mathbf{x} = \mathbf{0}$, and so $\mathbf{x}^T L \mathbf{x} = 0$. By above result, it follows that $x_i = x_j$ for all $\{i, j\} \in E(G)$.
 
-For any component $C_k$, let $u$ and $v$ be any two vertices in $V(C_k)$. Since they are connected by a path in $C_k$, it follows that $x_u = x_v$. This implies that the restriction of the vector $\mathbf{x}$ to the vertices of $C_k$ is constant. Thus, we can express the vector $\mathbf{x} \in \ker(L)$ as the linear combination of $\{ \mathbf{v}_1, \cdots, \mathbf{v}_c \}$:
+For any component $C_k$, let $u$ and $v$ be any two vertices in $V(C_k)$. Since they are connected by a path in $C_k$, it follows that $x_u = x_v$. This implies that the restriction of the vector $\mathbf{x}$ to the vertices of $C_k$ is constant. Thus, we can express the vector $\mathbf{x} \in \ker(\mathbf{L})$ as the linear combination of $\{ \mathbf{v}_1, \cdots, \mathbf{v}_c \}$:
 
 $$\mathbf{x} = X_1 \mathbf{v}_1 + \cdots + X_c \mathbf{v}_c$$
 
-for some constants $X_1, \cdots, X_c$. Hence, the set $\{ \mathbf{v}_1, \cdots, \mathbf{v}_c \}$ forms a basis for $\ker(L)$.$\big]$
+for some constants $X_1, \cdots, X_c$. Hence, the set $\{ \mathbf{v}_1, \cdots, \mathbf{v}_c \}$ forms a basis for $\ker(\mathbf{L})$.$\big]$
 
-Since $L$ is Hermitian, it is diagonalizable, which means that the geometric multiplicity $c$ is equal to the algebraic multiplicity. Thus, $L$ has exactly $c$ zero eigenvalues.
+Since $\mathbf{L}$ is Hermitian, it is diagonalizable, which means that the geometric multiplicity $c$ is equal to the algebraic multiplicity. Thus, $\mathbf{L}$ has exactly $c$ zero eigenvalues.
 
 **(ii)** By (i), the algebraic multiplicity of the zero eigenvalue is exactly $c$. If the graph $G$ is connected, then $c = 1$. This means only the first eigenvalue $\lambda_1$ is zero, forcing the second eigenvalue $\lambda_2 > 0$. Conversely, if $G$ is disconnected, then $c \ge 2$, which means there are at least two zero eigenvalues (i.e., $\lambda_1 = \lambda_2 = 0$). Thus, $\lambda_2 \neq 0$ if and only if $G$ is connected. $\blacksquare$
 

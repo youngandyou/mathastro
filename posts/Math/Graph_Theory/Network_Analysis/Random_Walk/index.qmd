@@ -8,10 +8,10 @@ categories:
 ---
 
 # Random Walk
-***랜덤 워크(Random Walk)***란 나이브하게 말하자면 주어진 그래프 위에서 균등한 확률로 인접한 정점을 이동해나가서 만들어진 워크를 의미한다. 기본적으로 확률에 의존하여 워크를 만들어나가므로 무한히 많은 개수의 랜덤 워크들이 존재할 수 있으며, 워크의 길이 또한 일반적으로 무한히 이어진다고 가정한다. 
+***랜덤 워크(Random Walk)***란 나이브하게 말하자면 주어진 네트워크 위에서 균등한 확률로 인접한 정점을 이동해나가서 만들어진 워크를 의미한다. 기본적으로 확률에 의존하여 워크를 만들어나가므로 무한히 많은 개수의 랜덤 워크들이 존재할 수 있으며, 워크의 길이 또한 일반적으로 무한히 이어진다고 가정한다. 
 
 ## Definition 1
-Let $G = (V, E)$ be a connected graph with $V = \{1, 2, \dots, N\}$. Let $A$ be the adjacency matrix of $G$, and let $D = \mathrm{diag}(d_1, ..., d_N)$ be the degree matrix of $G$. A ***random walk*** on $G$ is a discrete-time stochastic process $\{X_t\}_{t \in \mathbb{N}_0}$ taking values in $V$, where the process transitions by taking repeated random steps across the graph $G$. The transition probabilities is given by:
+Let $G = (V, E)$ be a connected network with $V = \{1, 2, \dots, N\}$. Let $\mathbf{A}$ be the adjacency matrix of $G$, and let $\mathbf{D} = \mathrm{diag}(d_1, ..., d_N)$ be the degree matrix of $G$. A ***random walk*** on $G$ is a discrete-time stochastic process $\{X_t\}_{t \in \mathbb{N}_0}$ taking values in $V$, where the process transitions by taking repeated random steps across the graph $G$. The transition probabilities is given by:
 
 $$P[X_t = i \mid X_{t-1} = j] = \frac{A_{ij}}{d_j}$$
 
@@ -26,10 +26,135 @@ p_i(t) &= \sum_{j=1}^N P[X_t = i \mid X_{t-1} = j] P[X_{t-1} = j \mid X_0 = u] \
 
 이를 벡터 꼴로 다시 쓰면 다음과 같은 점화식을 얻는다.
 
-$$\mathbf{p}(t) = AD^{-1}\mathbf{p}(t-1)$$
+$$\mathbf{p}(t) = \mathbf{A} \mathbf{D}^{-1}\mathbf{p}(t-1)$$
 
 ## Theorem 1
-Suppose that the stationary distribution 
+Let $G = (V, E)$ be a connected network with $V = \{1, 2, \dots, N\}$ and $\vert E \vert = m$. Suppose that the stationary distribution $\mathbf{p} = \displaystyle \lim_{t \to \infty} \mathbf{p}(t)$ exists. Then
+
+$$\mathbf{p} = \frac{1}{2m} \mathbf{D} \cdot \mathbf{1},$$
+
+that is,
+
+$$p_i = \frac{d_i}{2m}$$
+
+for $i = 1, 2, \cdots, N$.
+
+다시 말해 차수가 높은 노드일수록 랜덤 워크에서 방문될 확률이 더 높다는 지극히 상식적인 이야기다.
+
+### Proof
+The stationary distribution $\mathbf{p}$ must satisfy the equation:
+
+$$\mathbf{p} = \mathbf{A} \mathbf{D}^{-1} \mathbf{p}$$
+
+Rearranging, this can also be written as
+
+$$\begin{align*}
+(\mathbf{I} - \mathbf{A}\mathbf{D}^{-1})\mathbf{p} &= (\mathbf{D} - \mathbf{A})\mathbf{D}^{-1}\mathbf{p} \\
+&= \mathbf{L} \mathbf{D}^{-1} \mathbf{p} \\
+& = \mathbf{0},
+\end{align*}$$
+
+which means that the vector $\mathbf{D}^{-1}\mathbf{p}$ is an eigenvector of $\mathbf{L}$ with zero eigenvalue. By [Theorem 2](../Graph_Laplacian/index.qmd#sec-theorem-2), we conclude that $\mathbf{D}^{-1}\mathbf{p} = a \mathbf{1}$ for some constant $a$. Thus, we have
+
+$$\mathbf{p} = a\mathbf{D} \cdot\mathbf{1}.$$
+
+By the normalization condition, the constant $a$ is given as $a = \frac{1}{2m}$. $\blacksquare$
+
+## Definition 2
+Let $G = (V, E)$ be a connected network, and let $\{X_t\}_{t \in \mathbb{N}_0}$ be a random walk on $G$.
+
+**(i)** The ***first passage time*** from an initial vertex $u$ to a target vertex $v$ is the minimum number of steps before a walk starting at $u$ first reaches $v$ on $G$. We denote it by $T_{uv}$.
+
+**(ii)** The ***absorbing random walk*** $\{ \tilde{X}_t \}_{t \in \mathbb{N}_0}$ is a random walk which possesses an absorbing state at $v$. That is, the transition probabilities are defined as:
+
+$$\begin{align*}
+P(\tilde{X}_t = i \mid \tilde{X}_{t-1} = j) &= \frac{A_{ij}}{d_j}, \quad \text{for } j \neq v, \\
+P(\tilde{X}_t = v \mid \tilde{X}_{t-1} = v) &= 1
+\end{align*}$$ 
+
+First passage time이란 단순하게 말해서 $u$에서 시작해서 $v$에 도달하기까지 걸리는 최소 시간, 다시 말해 최소 스텝 수를 말한다. 자명하게 그 자체로 확률변수이며, 때문에 우리는 $T_{u, v}$의 기댓값 $E[T_{u, v}] =: \tau$을 계산하는 것을 목표로 한다. 
+
+## Lemma
+Let $p_v(t) = P[\tilde{X}_t = v \mid \tilde{X}_0 = u]$ be the conditional probability of being at vertex $v$ at time $t$ for an absorbing random walk starting at $u$. The probability that a walk has first passage time exactly $t$ is given by 
+
+$$P[T_{u,v} = t] = p_v(t) - p_v(t-1)$$
+
+### Proof
+Note that $p_v(t)$ represents the probability that the first passage time to $v$ is less than or equal to $t$ by the absorbing condition. That is, $p_v(t) = P[T_{u, v} \le t]$, which means that $p_v(t)$ is the CDF of $T_{u, v}$. Thus, we obtain:
+
+$$\begin{align*}
+P[T_{u, v} = t] &= P[T_{u, v} \le t] - P[T_{u, v} \le t - 1] \\
+&= p_v(t) - p_v(t-1). \blacksquare
+\end{align*}$$
+
+## Theorem 2
+Let $\mathbf{L}'$ be the ***$v$-th reduced Laplacian***, which is the symmetric matrix obtained by removing the $v$-th row and column from the graph Laplacian $\mathbf{L}$. Let $\mathbf{\Lambda}^{(v)}$ be the $N \times N$ symmetric matrix constructed by taking $(\mathbf{L}')^{-1}$ and reintroducing the $v$-th row and column having elements all zero. The ***mean first passage time*** $\tau = \mathbb{E}[T_{u,v}]$ is given by:
+
+$$\tau = \sum_{i=1}^N d_i \Lambda_{iu}^{(v)}$$
+
+굳이 $v$에 해당하는 행과 열을 지워주고 다시 채워주는 테크닉을 사용하는 이유는, absorbing random walk에서 인접 행렬 $\mathbf{A}$가 대칭이 아니기 때문이다. 따라서 대칭으로 만들어주기 위한 트릭을 사용했다고 이해하면 된다. 결국 $u$에서 $v$에 도달하기까지 걸리는 최소 시간의 기댓값 $\tau$는 그래프 라플라시안 $\mathbf{L}$의 역행렬만 있으면 계산할 수 있다는 결론이 주어진다.
+
+한편 정리의 스테이트먼트에서 당연하게 $\mathbf{L}'$의 역행렬의 존재성을 가정하고 갔는데, 라플라시안 $\mathbf{L}$은 비가역이지만 $\mathbf{L}'$은 항상 가역행렬이다.
+
+$\big[ (\because)$ 어떤 벡터 $\mathbf{y} \in \mathbb{R}^{N-1}$에 대해서 $\mathbf{L}' \mathbf{y} = \mathbf{0}$을 만족한다고 가정하자. 그러면 $\mathbf{y}^\top \mathbf{L}' \mathbf{y} = 0$을 얻는다.
+
+한편 $v$번째 성분만 $0$이고 나머지는 $\mathbf{y}$와 모두 동일한 새로운 벡터 $\mathbf{x} \in \mathbb{R}^N$을 정의하자. 즉 $x_v = 0, x_i = y_i, \forall i \neq v$이다. 이제 $\mathbf{x}$에 대해서 계산하면 다음과 같다.
+
+$$\begin{align*}
+\mathbf{x}^\top \mathbf{L} \mathbf{x} &= \sum_{(i, j) \in E} (x_i - x_j)^2 \\
+&= \sum_{i \neq v, j \neq v} x_i L_{ij} x_j + 2 \sum_{i \neq v} x_i L_{iv} x_v + x_v L_{vv} x_v \\
+&= \sum_{i \neq v, j \neq v} x_i L_{ij} x_j \\
+&= \sum_{i, j} y_i L'_{ij} y_j \\
+&= \mathbf{y}^\top \mathbf{L}' \mathbf{y} \\
+&= 0
+\end{align*}$$
+
+따라서 $x_i = x_j, \forall i, j \in E$를 얻고, $x_v = 0$이므로 벡터 $\mathbf{x}$의 모든 성분은 $0$의 값을 가짐을 알 수 있다. 따라서 벡터 $\mathbf{y}$는 영벡터이고, $\mathbf{L}'$에 대해서 고유값 $0$을 가지는 고유벡터는 존재하지 않음을 알 수 있으므로 행렬 $\mathbf{L}'$은 가역행렬이다.$\big]$
+
+### Proof
+By the above Lemma and the definition of the expected value, we have
+
+$$\tau = \sum_{t=0}^\infty tP[T_{u, v} = t] = \sum_{t=0}^\infty t[p_v(t) - p_v(t-1)].$$
+
+Let $\mathbf{p}'(t) \in \mathbb{R}^{N-1}$ be the vector obtained by removing the $v$-th element from $\mathbf{p}(t)$, and let $\mathbf{A}', \mathbf{D}' \in \mathbb{R}^{n \times n}$ be the matrix obtained by removing the $v$-th column and row from $\mathbf{A}, \mathbf{D}$, respectively. 
+
+Since the absorbing random walk is exactly same the ordinary random walk without the absorbing condition of the vertex $v$, we have
+
+$$\mathbf{p}'(t) = \mathbf{A}'(\mathbf{D}')^{-1}\mathbf{p}'(t-1).$$
+
+By iterating this equation, we get
+
+$$\mathbf{p}'(t) = [\mathbf{A}'(\mathbf{D}')^{-1}]^t \mathbf{p}'(0).$$
+
+By the normalization condition $\displaystyle \sum_{i=1}^N p_i(t) = 1$, we have
+
+$$p_v(t) = 1 - \sum_{i \neq v} p_i(t) = 1 - \mathbf{1}^\top \mathbf{p}'(t).$$
+
+> **Lemma**
+  For a matrix $\mathbf{M}$ and the identity matrix $\mathbf{I}$, we have 
+  $$\sum_{t=0}^\infty t(\mathbf{M}^{t-1} - \mathbf{M}^t) = (\mathbf{I} - \mathbf{M})^{-1}$$
+  assuming the sum converges.
+
+Then
+
+$$\begin{align*}
+\tau &= \sum_{t=0}^\infty t[p_v(t) - p_v(t-1)] \\
+&= \sum_{t=0}^\infty t [(1 - \mathbf{1}^\top \mathbf{p}'(t)) - (1 - \mathbf{1}^\top \mathbf{p}'(t-1))] \\
+&= \sum_{t=0}^\infty t \mathbf{1}^\top [\mathbf{p}'(t-1) - \mathbf{p}'(t)] \\
+&= \sum_{t=0}^\infty t \mathbf{1}^\top [[\mathbf{A}'(\mathbf{D}')^{-1}]^{t-1} \mathbf{p}'(0) - [\mathbf{A}'(\mathbf{D}')^{-1}]^t \mathbf{p}'(0)] \\
+&= \sum_{t=0}^\infty t \mathbf{1}^\top [[\mathbf{A}'(\mathbf{D}')^{-1}]^{t-1} - [\mathbf{A}'(\mathbf{D}')^{-1}]^t]\mathbf{p}'(0) \\
+&= \mathbf{1}^\top[\mathbf{I} - \mathbf{A}'(\mathbf{D}')^{-1}]^{-1} \mathbf{p}'(0) \\
+&= \mathbf{1}^\top \mathbf{D}' [\mathbf{D}' - \mathbf{A}']^{-1} \mathbf{p}'(0) \\
+&= \mathbf{1}^\top \mathbf{D}' \mathbf{L}'^{-1} \mathbf{p}'(0)
+\end{align*}$$
+
+Since we started at the vertex $u$, the initial vector $\mathbf{p}'(0)$ has all elements $0$ except the one corresponding to vertex $u$, which is $1$. By the definition of the matrix $\mathbf{\Lambda}^{(v)}$, we obtain the result:
+
+$$\tau = \mathbf{1}^\top \mathbf{D}' \mathbf{L}'^{-1} \mathbf{p}'(0) = \mathbf{1}^\top \mathbf{D}' \mathbf{\Lambda}^{(v)} \mathbf{p}(0),$$
+
+which is calculated by the matrix multiplication:
+
+$$\tau = \sum_{i=1}^N d_i \Lambda^{(v)}_{iu}. \blacksquare$$
 
 
 # Reference

@@ -11,3 +11,6 @@ categories:
 Let $G$ be a graph with $n$ vertices and $m$ edges, and let $d_i$ denote the degree of the vertex $v_i$. Then the ***degree matrix*** of $G$ is the $n \times n$ matrix $D$ whose entries are given by
 
 $$D_{ij} = \begin{cases} d_i & \text{if } i = j \\ 0 & \text{if } i \neq j \end{cases}$$
+
+# Reference
+- Newman, M.E.J. (2010). Networks: An Introduction. Oxford University Press.

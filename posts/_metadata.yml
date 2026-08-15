@@ -11,4 +11,5 @@ title-block-banner: true
 toc: true
 toc-location: right
 toc-title: "목차"
-toc-depth: 3
+toc-depth: 6
+toc-expand: true

@@ -9,6 +9,8 @@ website:
     right:
       - href: about.qmd
         text: "블로그 소개"
+      - href: team.qmd
+        text: "운영진 소개"
       - icon: github
         href: https://github.com/youngandyou/mathastro
       - icon: bluesky

@@ -71,4 +71,4 @@ $$
 
 # Reference 
 
-- $1.$ https://pages.uoregon.edu/jschombe/glossary/synchrotron_radiation.html
+- $1.$ [Synchrotron Radiation](https://pages.uoregon.edu/jschombe/glossary/synchrotron_radiation.html)

@@ -1,0 +1,58 @@
+---
+title: "포인팅 벡터(Poynting vector)"
+author: "Young Jeong Lee"
+date: "2026-08-16"
+description: "천문학에서 에너지 흐름을 정의하는 물리량인 포인팅 벡터(Poynting vector)에 대해서 소개한다."
+categories: 
+  - Astronomy > Radio Astronomy
+---
+
+# 1. 포인팅 벡터(Poynting vector)
+
+- **포인팅 벡터(Poynting vector)** 는 방향 $\mathbf{n}$ 을 따라 바깥쪽으로 나타나는 에너지 흐름의 밀도이다. 쉽게 말해, 전자기파 에너지가 이동하는 방향을 의미한다. 수학적으로 다음과 같이 표현된다:
+
+$$
+S = \frac{c}{4\pi} E \times H \tag{1.1}
+$$
+
+- $E$: 전기장 intensity 
+- $H$: 자기장 intensity 
+- 단위: ${\rm W \ m^{-2}}$
+
+<div style="height: 2rem;"></div>
+
+- 식 (1.1)은 오른손 법칙으로도 이해할 수 있다. 오른손의 (엄지 손가락을 제외한) 손가락이 향하는 방향이 $E$ 방향, 손바닥이 안쪽으로 감기는 방향이 $H$ 방향일 때, 엄지 손가락이 Poynting vector($S$)의 방향이다. 
+
+![그림: (a)는 포인팅 벡터와 파수 벡터 $k$ 가 같은 방향을 향하는 상황을 보여준다. 즉, 위상이 진행하는 방향과 에너지 흐름 방향이 일치한다. 반면, (b)는 위상과 에너지 흐름 방향이 일치하지 않는데, 이는 매질의 성질에 따라 위상이 반대 방향으로 진행할 수 있다는 것을 시사한다. [1]](Poynting_vector.png){width=80%}
+
+<div style="height: 2rem;"></div>
+
+- $S$ 에 대한 평균은 다음과 같다:
+
+$$
+\langle S \rangle = \frac{c}{4\pi} \mathrm{Re}\{{E \times H^*}\}  \tag{1.2}
+$$
+
+이때, 
+$$
+\mathrm{Re}\{{E}\} = E_1 \cos\omega t + E_2 \sin\omega t  \tag{1.3a}
+$$
+
+$$
+\mathrm{Re}\{{H}\} = H_1 \cos\omega t + H_2 \sin\omega t  \tag{1.3b}
+$$
+
+식 (1.2)에 대입하고 계산하면, 
+
+$$
+\mathrm{Re}\{{E \times H^*}\}
+=
+E_1 \times H_1 + E_2 \times H_2  \tag{1.4}
+$$
+
+---
+
+# Reference 
+
+- $1.$ Badawi, M. I. (2013). _Left-Handed Material: New Era of Future Metamaterials for Biomedical Applications_ [Figure 2]. ResearchGate. [https://www.researchgate.net/figure/The-direction-of-Poynting-vector-and-direction-of-wave-for-the-RHM-and-LHM-a-RHM-in_fig2_330999254](https://www.researchgate.net/figure/The-direction-of-Poynting-vector-and-direction-of-wave-for-the-RHM-and-LHM-a-RHM-in_fig2_330999254)
+

@@ -1,0 +1,113 @@
+---
+title: "운영진 소개"
+toc: false
+---
+
+```{=html}
+<div class="staff-page">
+  <p class="staff-lead"
+style="color: black;">
+    MathAstro를 함께 가꾸고 만들어가는 운영진을 소개합니다!
+  </p>
+
+  <!-- 새 운영진은 아래 article.staff-member 블록을 복사해 이 목록의 끝에 추가합니다. -->
+  <section class="staff-list" aria-label="MathAstro 운영진">
+    <article class="staff-member">
+      <figure class="staff-photo">
+        <img src="teams/youngjeonglee.jpg">
+      </figure>
+
+      <div class="staff-details">
+        <header class="staff-header">
+          <h2>Young Jeong Lee <span lang="ko">(이영정)</span></h2>
+          <p><strong>역할 및 직책</strong> 블로그 총괄 운영 및 편집(Founder & Managing Editor)</p>
+          
+          <div style="height: 0.5rem;"></div>
+
+          <p><strong>소속</strong> 경북대학교 대학원 천문학과(석사 과정)</p>
+        </header>
+
+        <dl class="staff-profile">
+          <div>
+            <dt>최종 학력</dt>
+            <dd>경북대학교 지질학전공 | 
+              천문대기과학 복수전공 | 
+              물리학 부전공
+            </dd>
+          </div>
+          <div>
+            <dt>연구 분야</dt>
+            <dd>전파 천문학(Radio Astronomy), AGN jets & physics, IMBH</dd>
+          </div>
+          <div class="staff-bio">
+            <dt>자기 소개</dt>
+            <dd>
+              AI로 인해, 지식의 질이 점차 중요해지고 있는 시대에, 정확하고 전문성 있는 지식 체계를 구축하고 전달하기 위해 블로그를 시작했습니다. 세상 모든 분야의 지식을 하나로 묶어서 운영하는 것이 저의 비전입니다.
+              <br>
+              <br>
+              여러분이 가진 능력을 글이나 영상 등으로 표현하고 싶은 열정이 있다면, 아래의 이메일 또는 링크드인으로 언제든 연락주시길 바랍니다. (현재 운영진 충원중입니다!)
+            </dd>
+          </div>
+        </dl>
+
+        <nav class="staff-links" aria-label="Young Jeong Lee 외부 링크">
+          <span><i class="bi bi-envelope" aria-hidden="true"></i> 이메일(e-mail): goo0804b123@gmail.com</span>
+          <a href="https://www.linkedin.com/in/lyj-astro/" target="_blank" rel="noopener noreferrer">
+            <i class="bi bi-linkedin" aria-hidden="true"></i> LinkedIn
+          </a>
+        </nav>
+      </div>
+    </article>
+
+    <article class="staff-member">
+      <figure class="staff-photo staff-photo-placeholder">
+        <i class="bi bi-person-fill" aria-hidden="true"></i>
+        <figcaption class="visually-hidden">Youmin Chun 프로필 사진</figcaption>
+      </figure>
+
+      <div class="staff-details">
+        <header class="staff-header">
+          <h2>Youmin Chun <span lang="ko">(천유민)</span></h2>
+          <p><strong>역할 및 직책</strong> 블로그 운영 및 편집(Managing Editor)</p>
+          <p><strong>소속</strong> 정보 업데이트 예정</p>
+        </header>
+
+        <dl class="staff-profile">
+          <div>
+            <dt>최종 학력</dt>
+            <dd>정보 업데이트 예정</dd>
+          </div>
+          <div>
+            <dt>연구 분야</dt>
+            <dd>정보 업데이트 예정</dd>
+          </div>
+          <div class="staff-bio">
+            <dt>짧은 소개</dt>
+            <dd>
+              정보 업데이트 예정
+            </dd>
+          </div>
+        </dl>
+
+        <nav class="staff-links" aria-label="Youmin Chun 외부 링크">
+          <span class="staff-link-placeholder"><i class="bi bi-envelope" aria-hidden="true"></i> 이메일</span>
+          <span class="staff-link-placeholder"><i class="bi bi-linkedin" aria-hidden="true"></i> LinkedIn</span>
+          <span class="staff-link-placeholder"><i class="bi bi-github" aria-hidden="true"></i> GitHub</span>
+        </nav>
+      </div>
+    </article>
+  </section>
+</div>
+
+<!--
+프로필 사진을 추가할 때:
+<figure class="staff-photo">
+  <img src="assets/team/name.jpg" alt="이름 프로필 사진">
+</figure>
+
+외부 링크를 추가할 때 staff-link-placeholder 대신:
+<a href="mailto:name@example.com"><i class="bi bi-envelope"></i> 이메일</a>
+<a href="https://www.linkedin.com/in/username/"><i class="bi bi-linkedin"></i> LinkedIn</a>
+<a href="https://github.com/username"><i class="bi bi-github"></i> GitHub</a>
+-->
+```

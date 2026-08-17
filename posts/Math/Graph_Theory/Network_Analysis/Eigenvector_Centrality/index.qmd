@@ -1,0 +1,58 @@
+---
+title: "Eigenvector Centrality"
+author: "Youmin Chun"
+date: "2026-08-14"
+description: "네트워크 이론에서의 고유벡터 중심성(Eigenvector Centrality)에 대해서 소개한다."
+categories: 
+  - Math > Graph Theory > Network Analysis
+---
+
+# Eigenvector Centrality
+중심성을 정의할 때 차수 중심성(degree centrality)은 그 정의만큼이나 매우 단순한 개념이다. 차수 중심성은 단순히 주어진 노드가 다른 주변 노드들과 '얼마나 많이' 연결되었냐만 따지는데, 다르게 말하면 모든 주변 노드들에 동일한 가중치를 부여하고 있는 것과 같다. 그러나 당연하게도 모든 네트워크에서 주변 노드들이 같은 가중치를 갖고 있을 수는 없기에 어떤 방식으로든 서로 다른 가중치를 부여하는 메커니즘이 필요하다. 이러한 점에서 고유벡터 중심성(eigenvector centrality)은 차수 중심성과는 본질적으로 다른 방법으로 중심성을 정의하는 방법 중 하나로, 특정 노드의 주변 노드들의 중심성의 합에 비례해서 중심성을 정의한다.
+
+## Definition
+Let $G = (V, E)$ be an undirected connected network, and $\mathbf{A}$ be the adjacency matrix of $G$. The ***eigenvector centrality*** of a vertex $v_i$ is the $i$-th component $x_i$ of the eigenvector $\mathbf{x}_1$ of $\mathbf{A}$ corresponding to the spectral radius $\lambda_1$ of $\mathbf{A}$.
+
+## Derivation
+그 정의가 너무나도 간단했던 차수 중심성에 비해 고유벡터 중심성의 정의는 꽤나 뜬금없게 느껴진다. 이 정의가 나오기까지의 과정을 유도해보자.
+
+우선 우리의 목표는 무언가 '새로운' 종류의 중심성을 정의하는 것이다. 따라서 뭐가 됐든간에 기존에 주어져 있던 중심성 $\mathbf{x}$가 있다고 가정하자. 즉 $x_i$는 $i$번째 노드의 중심성을 의미한다. 이제 $\mathbf{x}$와는 다른 새로운 중심성인 $\mathbf{x}'$은 $\mathbf{x}' = \mathbf{A} \mathbf{x}$으로 개선되어서 정의된다고 둔다. 이렇게 두면 주변 노드들의 중심성의 합으로 새로운 중심성이 정의되는 것이다. 
+
+이를 $t$번 반복해서 얻은 중심성 벡터를 $\mathbf{x}_t$라고 두면 결국 다음의 식을 얻게 된다.
+
+$$\mathbf{x}_t = \mathbf{A}^t \mathbf{x}_0$$
+
+이때 $\mathbf{x}_0 = \mathbf{x}$이다. 
+
+한편 $\mathbf{x}_0$를 딱히 특정짓지 않았었지만, 여기서는 특별히 인접행렬 $\mathbf{A}$의 고유벡터들 $\{ \mathbf{v}_i \}$의 선형결합으로 두기로 한다.
+
+$$\mathbf{x}_0 := \sum_i c_i \mathbf{v}_i$$
+
+여기서 $c_i$는 상수이다. 이때 스펙트럴 래디어스를 $\lambda_1$으로 두고, 그에 대응되는 고유벡터를 $\mathbf{v}_1$으로 두자. 네트워크 $G$가 무향연결그래프이므로 인접행렬 $\mathbf{A}$는 대각화가 가능하며 페론-프로베니우스 고유값 $\lambda_1$을 가지고, 이에 대응되는 고유벡터는 유일하게 $\mathbf{v}_1$이 존재한다. 한편 $\lambda_1$에 대해서 다음의 식이 성립한다.
+
+$$\begin{align*}
+\mathbf{x}_t &= \mathbf{A}^t \mathbf{x}_0 \\
+&= \mathbf{A}^t \left( \sum_i c_i \mathbf{v}_i \right) \\
+&= \sum_i c_i \mathbf{A}^t \mathbf{v}_i \\
+&= \sum_i c_i \lambda_i^t \mathbf{v}_i \\
+&= \lambda_1^t \sum_i c_i \left( \frac{\lambda_i}{\lambda_1} \right)^t \mathbf{v}_i
+\end{align*}$$
+
+이때 $i \neq 1$인 모든 $i$에 대해서 $\frac{\lambda_i}{\lambda_1} < 1$이 성립함으로, 적당히 큰 $t$에 대해서 다음과 같이 벡터 $\mathbf{x}_t$를 근사할 수 있다.
+
+$$\mathbf{x}_t \approx \lambda_1^t c_1 \mathbf{v}_1$$
+
+실제로 고유값 $\lambda_1$과 상수 $c_1$이 뭐가 됐든 우리가 개선시킨 중심성 $\mathbf{x}_t$와 고유벡터 $\mathbf{v}_1$이 비례하는 것은 사실이니, $\mathbf{v}_1$의 각 성분을 각 노드의 새로운 중심성으로 두고, 이를 고유벡터 중심성으로 부르겠다는 것이다.
+
+따라서 고유벡터 중심성 $\mathbf{x}$는 사실상 다음의 식을 만족한다고 볼 수 있다.
+
+$$\mathbf{A} \mathbf{x} = \lambda_1 \mathbf{x}$$
+
+성분별로 적으면 다음과 같다.
+
+$$x_i = \frac{1}{\lambda_1} \sum_j A_{ij} x_j$$
+
+즉 특정한 노드의 고유벡터 중심성은 주변 노드들이 많으면 많을수록, 혹은 주변 노드들의 중심성이 높으면 높을수록 함께 높아진다.
+
+# Reference
+- Newman, M.E.J. (2010). Networks: An Introduction. Oxford University Press.

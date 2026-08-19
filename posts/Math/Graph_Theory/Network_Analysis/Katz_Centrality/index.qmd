@@ -1,7 +1,7 @@
 ---
 title: "Katz Centrality"
 author: "Youmin Chun"
-date: "2026-08-14"
+date: "2026-08-18"
 description: "네트워크 이론에서의 카츠 중심성(Katz Centrality)에 대해서 소개한다."
 categories: 
   - Math > Graph Theory > Network Analysis
@@ -20,7 +20,7 @@ categories:
 $A$야 out-degree만 가지므로 그러려니 하겠지만, $B$의 경우 $1$의 in-degree를 가지지만 $A$에서 들어오는 에지이고, $A$는 $0$의 고유벡터 중심성을 가지므로 $B$ 또한 $0$의 고유벡터 중심성을 가진다. 이러한 직관에 반하는 예시가 존재하므로 유향그래프의 경우 고유벡터 중심성만으로는 충분하지 않음을 알 수 있고, 이는 새로운 중심성을 정의해야 함을 시사한다.
 
 ## Definition
-Let $G$ be a network, and let $\mathbf{A}$ be the adjacency matrix of $G$. The ***Katz centrality*** of a vertex $i$ is defined as
+Let $G$ be a network, and let $\mathbf{A}$ be the adjacency matrix of $G$. The ***Katz centrality*** $x_i$ of a vertex $i$ is defined as
 
 $$x_i = \alpha \sum_j A_{ij} x_j + \beta$$
 

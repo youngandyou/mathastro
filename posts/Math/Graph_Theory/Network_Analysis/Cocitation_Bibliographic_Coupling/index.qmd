@@ -10,9 +10,9 @@ categories:
 ## Definition
 Let $A$ be the $n \times n$ adjacency matrix of a directed network $G$.
 
-**(i)** The ***cocitation matrix*** $C$ of $A$ is the $n \times n$ matrix $C = AA^T$, and the ****cocitation network**** is a network in wich there is an edge between $i$ and $j$ if $C_{ij} > 0$ for $i \neq j$ in the network $G$.
+**(i)** The ***cocitation matrix*** $C$ of $A$ is the $n \times n$ matrix $C = AA^T$, and the ***cocitation network*** is a network in which there is an edge between $i$ and $j$ if $C_{ij} > 0$ for $i \neq j$ in the network $G$.
 
-**(ii)** The ***bibliographic coupling matrix*** $B$ of $A$ is the $n \times n$ matrix $B = A^TA$, and the ****bibliographic coupling network**** is a network in wich there is an edge between $i$ and $j$ if $B_{ij} > 0$ for $i \neq j$ in the network $G$.
+**(ii)** The ***bibliographic coupling matrix*** $B$ of $A$ is the $n \times n$ matrix $B = A^TA$, and the ***bibliographic coupling network*** is a network in which there is an edge between $i$ and $j$ if $B_{ij} > 0$ for $i \neq j$ in the network $G$.
 
 유향 그래프를 무향 그래프로 바꾸는 작업은 네트워크를 분석할 때 종종 필요한 일이다. 가장 단순한 방법은 원래는 방향이 있는데 그냥 없다고 생각하는 것이다. 그러나 이럴 경우 기존 그래프에 있던 정보들이 손쉽게 사라진다는 단점이 있기에 조금 복잡하지만 유용한 방법을 도입하게 되는데, 이때 등장하는 접근법이 바로 cocitation과 bibliographic coupling이다. 
 

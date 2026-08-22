@@ -1,8 +1,8 @@
 ---
-title: "Power and Intensity, Brightness"
+title: "Power, Intensity, Brightness and Radiation Energy Density"
 author: "Young Jeong Lee"
 date: "2026-07-24"
-description: "전파 천문학에서 다루는 물리량인 Power, Intensity, Brightness 등에 대해서 소개하는 글이다."
+description: "전파 천문학에서 다루는 물리량인 Power, Intensity, Brightness, Radiation Energy Density에 대해서 소개하는 글이다."
 categories: 
   - Astronomy > Radio Astronomy
 ---
@@ -77,6 +77,22 @@ $$
 u_\nu = \int_{4\pi} u_\nu(\Omega) d\Omega  
 = \frac{1}{c} \int_{4\pi} I_\nu  d\Omega \tag{1.5}
 $$
+
+<div style="height: 2rem;"></div>
+
+- 에너지 밀도($u$)를 연속 방정식 형태로 쓰면 다음과 같다:
+
+$$
+\frac{\partial u}{\partial t} + \nabla \cdot S = - E \cdot J \tag{1.6}
+$$
+
+- $S$: 포인팅 벡터(Poynting vector)
+- $J$: 전기 전류 밀도(electric current density)
+- 식 (1.1)의 시간 변화는 포인팅 벡터의 공간적 변화와 전기장과 전기 전류 밀도의 내적에 영향을 받는다. 
+- 식 (1.1)의 우변은 전기장이 전하에 단위시간당 가하는 일률(power density, 단위: ${\rm W \ m^{-3}}$)와 같다. 이는 전자기 에너지가 열에너지로 전환되는 과정(줄의 에너지 정리)으로 볼 수 있다. 
+- 만약, $E \cdot J > 0$ 라면, 전기장 전류를 흐르게 하며 전자기장 에너지를 물질 에너지로 변환할 수 있다. 
+    - 저항체에서는 전자기장 에너지가 전하의 이동으로 나타나지 못해, 격자 진동 및 충돌로 분산되어 내부 에너지로 바꾼다. 이를 **줄 가열(Joule heating)** 이라고 한다. 
+- 반대로, $E \cdot J < 0$ 라면, 전하 또는 물질이 전자기장에 에너지를 공급한다.
 
 ---
 

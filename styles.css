@@ -303,3 +303,354 @@ div.quarto-post .listing-description > a {
     margin-bottom: 0.15rem;
   }
 }
+
+.qna-page {
+  --qna-accent: #2f6f73;
+  --qna-accent-soft: rgba(47, 111, 115, 0.09);
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.qna-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.7rem 1rem;
+  margin: 0 0 2.75rem;
+}
+
+.qna-actions > span {
+  color: var(--bs-secondary-color, #6c757d);
+  font-size: 0.92rem;
+}
+
+.qna-ask-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 2.6rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid var(--qna-accent);
+  border-radius: 6px;
+  background: var(--qna-accent);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.qna-ask-button:hover,
+.qna-ask-button:focus {
+  background: #285f62;
+  border-color: #285f62;
+  color: #fff;
+}
+
+.qna-featured-section,
+.qna-browser,
+.qna-guidelines {
+  margin-top: 2.75rem;
+}
+
+.qna-section-heading {
+  margin-bottom: 1rem;
+}
+
+.qna-section-heading h2 {
+  margin: 0;
+  font-size: 1.45rem;
+}
+
+.qna-section-heading p {
+  margin: 0.35rem 0 0;
+  color: var(--bs-secondary-color, #6c757d);
+}
+
+.qna-section-heading .qna-eyebrow {
+  margin: 0 0 0.2rem;
+  color: var(--qna-accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.qna-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 1.25rem;
+}
+
+.qna-filters button {
+  min-height: 2.25rem;
+  padding: 0.38rem 0.72rem;
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: 5px;
+  background: var(--bs-body-bg, #fff);
+  color: var(--bs-body-color, #212529);
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.qna-filters button:hover,
+.qna-filters button:focus,
+.qna-filters button.active {
+  border-color: var(--qna-accent);
+  color: var(--qna-accent);
+}
+
+.qna-filters button.active {
+  background: var(--qna-accent-soft);
+  font-weight: 700;
+}
+
+.qna-list {
+  display: grid;
+  gap: 0.9rem;
+}
+
+.qna-card {
+  padding: 1.25rem 1.35rem;
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: 6px;
+  background: var(--bs-body-bg, #fff);
+}
+
+.qna-card-featured {
+  border-left: 4px solid var(--qna-accent);
+  background: var(--qna-accent-soft);
+}
+
+.qna-card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.qna-card-header h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  line-height: 1.4;
+}
+
+.qna-metadata {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.35rem;
+  flex: 0 0 auto;
+}
+
+.qna-badge {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.55rem;
+  padding: 0.15rem 0.45rem;
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.qna-badge-field {
+  color: var(--qna-accent);
+}
+
+.qna-badge-difficulty {
+  color: var(--bs-secondary-color, #6c757d);
+}
+
+.qna-badge-status.waiting {
+  background: rgba(108, 117, 125, 0.1);
+  color: var(--bs-secondary-color, #6c757d);
+}
+
+.qna-badge-status.reviewing {
+  background: rgba(13, 110, 253, 0.09);
+  color: #0a58ca;
+}
+
+.qna-badge-status.answered {
+  background: rgba(25, 135, 84, 0.1);
+  color: #146c43;
+}
+
+.qna-badge-status.featured {
+  background: rgba(180, 125, 20, 0.12);
+  color: #8b600f;
+}
+
+.qna-excerpt {
+  margin: 0.8rem 0 0.45rem;
+  color: var(--bs-secondary-color, #6c757d);
+  line-height: 1.65;
+}
+
+.qna-date {
+  color: var(--bs-secondary-color, #6c757d);
+  font-size: 0.82rem;
+}
+
+.qna-details {
+  margin-top: 0.85rem;
+  border-top: 1px solid var(--bs-border-color, #dee2e6);
+}
+
+.qna-details summary {
+  padding-top: 0.75rem;
+  color: var(--qna-accent);
+  cursor: pointer;
+  font-weight: 650;
+}
+
+.qna-question-body,
+.qna-official-answer,
+.qna-related,
+.qna-developed {
+  margin-top: 1rem;
+}
+
+.qna-question-body h4,
+.qna-related h4 {
+  margin: 0 0 0.45rem;
+  font-size: 1rem;
+}
+
+.qna-question-body p,
+.qna-official-answer p,
+.qna-policy p {
+  margin: 0;
+  line-height: 1.7;
+}
+
+.qna-official-answer {
+  padding: 1rem;
+  border-left: 3px solid var(--qna-accent);
+  background: var(--qna-accent-soft);
+}
+
+.qna-official-answer .qna-answer-label {
+  margin-bottom: 0.5rem;
+  color: var(--qna-accent);
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+.qna-related ul {
+  margin: 0;
+}
+
+.qna-related a,
+.qna-developed a,
+.qna-discussion-link {
+  color: var(--qna-accent);
+  font-weight: 600;
+}
+
+.qna-developed {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: 5px;
+}
+
+.qna-developed span {
+  font-size: 0.84rem;
+  color: var(--bs-secondary-color, #6c757d);
+}
+
+.qna-discussion-link {
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.qna-empty,
+.qna-load-error {
+  padding: 1rem 0;
+  color: var(--bs-secondary-color, #6c757d);
+}
+
+.qna-guidelines {
+  padding-top: 2rem;
+  border-top: 1px solid var(--bs-border-color, #dee2e6);
+}
+
+.qna-guideline-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 2rem;
+}
+
+.qna-guideline-grid h3,
+.qna-policy h3 {
+  margin: 0 0 0.55rem;
+  font-size: 1rem;
+}
+
+.qna-guideline-grid ul {
+  margin: 0;
+  padding-left: 1.25rem;
+  color: var(--bs-secondary-color, #6c757d);
+}
+
+.qna-guideline-grid li {
+  margin: 0.3rem 0;
+}
+
+.qna-policy {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--bs-border-color, #dee2e6);
+  color: var(--bs-secondary-color, #6c757d);
+}
+
+@media (max-width: 767.98px) {
+  .qna-card-header {
+    display: block;
+  }
+
+  .qna-metadata {
+    justify-content: flex-start;
+    margin-top: 0.65rem;
+  }
+
+  .qna-guideline-grid {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .qna-actions {
+    align-items: flex-start;
+    margin-bottom: 2rem;
+  }
+
+  .qna-actions > span {
+    flex-basis: 100%;
+  }
+
+  .qna-featured-section,
+  .qna-browser,
+  .qna-guidelines {
+    margin-top: 2.1rem;
+  }
+
+  .qna-filters {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 0.35rem;
+  }
+
+  .qna-filters button {
+    flex: 0 0 auto;
+  }
+
+  .qna-card {
+    padding: 1rem;
+  }
+}

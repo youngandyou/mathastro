@@ -1,0 +1,58 @@
+title: "[질문] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Mathastro Q&A에 질문해주셔서 감사합니다.
+        질문을 구체적으로 작성하면 더 정확한 답변을 받는 데 도움이 됩니다.
+
+  - type: dropdown
+    id: field
+    attributes:
+      label: 분야
+      description: 질문과 가장 가까운 분야를 선택해주세요.
+      options:
+        - Astronomy
+        - Physics
+        - Mathematics
+        - Computer Science
+        - Others
+    validations:
+      required: true
+
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: 난이도
+      description: 질문을 이해하는 데 필요한 배경 수준을 선택해주세요.
+      options:
+        - 입문
+        - 학부
+        - 대학원
+        - 전문
+    validations:
+      required: true
+
+  - type: textarea
+    id: question
+    attributes:
+      label: 질문 내용
+      description: 궁금한 점과 이해하기 어려운 부분을 구체적으로 작성해주세요.
+      placeholder: 질문의 배경, 시도해본 접근, 막힌 부분을 함께 적어주세요.
+    validations:
+      required: true
+
+  - type: input
+    id: related-material
+    attributes:
+      label: 관련 자료 또는 Mathastro 글
+      description: 참고한 자료나 관련 Mathastro 게시글이 있다면 링크를 입력해주세요.
+      placeholder: https://youngandyou.github.io/mathastro/...
+
+  - type: checkboxes
+    id: guidelines
+    attributes:
+      label: Q&A 이용 규칙
+      options:
+        - label: 서로 다른 의견을 존중하며 Q&A Guidelines를 준수하겠습니다.
+          required: true

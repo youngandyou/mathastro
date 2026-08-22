@@ -1,0 +1,54 @@
+---
+title: "각분해능(Angular Resolution)"
+author: "Young Jeong Lee"
+date: "2026-08-22"
+description: "관측 천문학에서 중요하게 다루는 개념인 각분해능(Angular Resolution)에 대해서 소개한다."
+categories: 
+  - Astronomy > Radio Astronomy
+---
+
+# 1. 각분해능(Angular Resolution) 
+
+- 보통 전파 천문학에서 "beam size"로 불리고, 광학 천문학에서는 "회절 한계(diffraction limit)"로 불리는 **각분해능(angular resolution)** 은 다음과 같이 주어진다:
+
+$$
+\theta \approx \frac{\lambda}{D} \tag{1.1}
+$$
+
+- $\theta$: 각분해능
+- $\lambda$: 관측 파장
+- $D$: 망원경의 직경
+- 각분해능 값이 작을수록 천체의 더 작은 구조까지 분해할 수 있기 때문에 "분해능이 좋다"고 표현한다. 
+- 전파 망원경은 본질적으로 낮은 분해능을 가진다.
+    - 예: 전파 망원경이 5m 헤일 광학 망원경과 같은 이론적인 분해능을 가지려면 지름이 $10^5$ 배인 약 500km가 되어야 한다. 
+- 파장이 일정할 때, 망원경의 직경이 클수록 더 좋은 분해능을 얻을 수 있다. 
+    - 파장이 짧아지면, 각분해능이 감소하므로 더 작은 구조까지 분해할 수 있다. 
+
+<div style="height: 2rem;"></div>
+
+- **Spectral resolution**은 다음과 같이 정의된다:
+
+$$
+R = \frac{\lambda}{\Delta \lambda }\tag{1.2}
+$$
+
+- 보통 $R \gg 1$ 이면 고분해능, $R \ll 1$ 이면 저분해능이라고 한다. 
+
+<div style="height: 2rem;"></div>
+
+- **Super-resolution**: "표준적인 회절 한계 분해능에 해당하는 $\lambda / D$ 보다 더 높은 분해능을 얻는다" 라는 것을 뜻하는 용어이다. Super-resolution을 달성할 수 있다면 표준 한계보다 더 작은 구조를 복원할 수 있다. 
+    - 이는 배열(array)의 크기 확장 혹은 더 높은 주파수로 확장하는 것과 같은 의미이다. 
+
+---
+
+## 1.1. Angular Resolution Discussion 
+
+- EHT는 230GHz에서 전파 영상을 형성할 수 있는데, EHT 망원경의 각분해능은 약 $20{\rm \mu as}$ 에 달한다. 
+    - 이러한 전파 영상에는 total intensity, 선형 편광(linear polarization, LP) 등의 정보가 포함된다. 
+    - $20{\rm \mu as} \sim 0.1606{\rm pc} \sim 0.52{\rm ly}$ 으로 환산되므로 이 정도의 각분해능은 퀘이사 중싱부 제트의 0.1pc 정도되는 구조를 분해할 수 있다. 
+
+<style>
+h2 {
+border-bottom: none !important;
+}
+</style>

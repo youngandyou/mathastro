@@ -189,6 +189,12 @@ $$
 
 ---
 
+## 1.4. Basic Interferometer Discussion 
+
+- 간섭계의 분해능은 baseline 길이에만 의존하지 않는다. 시간 및 위도에 따라 변하는 물리량이 많기 때문이다. 따라서 다양한 요인에 의해서 간섭계 분해능은 달라진다. 
+
+---
+
 # Reference 
 
 - 1. [Andrew Chael, github](https://achael.github.io/_pages/imaging/)

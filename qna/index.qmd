@@ -1,0 +1,90 @@
+---
+title: "Ask Mathastro"
+description: "수학 · 물리 · 천문학 · 컴퓨터 과학에 대해 궁금한 점을 질문해주세요. Mathastro 운영진이 가능한 한 정확한 근거와 참고자료를 바탕으로 답변합니다."
+toc: false
+page-layout: article
+---
+
+```{=html}
+<div class="qna-page" data-qna-root>
+  <div class="qna-actions">
+    <a
+      class="qna-ask-button"
+      href="https://github.com/youngandyou/mathastro/discussions/new?category=q-a"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      <i class="bi bi-chat-right-text" aria-hidden="true"></i>
+      질문하기
+    </a>
+    <span>GitHub 계정으로 질문을 등록합니다.</span>
+  </div>
+
+  <section class="qna-featured-section" data-qna-featured hidden>
+    <div class="qna-section-heading">
+      <p class="qna-eyebrow">Featured Question</p>
+      <h2>이번 질문</h2>
+    </div>
+    <div data-qna-featured-content></div>
+  </section>
+
+  <section class="qna-browser" aria-labelledby="qna-list-title">
+    <div class="qna-section-heading">
+      <h2 id="qna-list-title">질문 둘러보기</h2>
+      <p>분야를 선택해 질문을 모아볼 수 있습니다.</p>
+    </div>
+
+    <div class="qna-filters" role="group" aria-label="질문 분야 필터">
+      <button type="button" class="active" data-qna-filter="All" aria-pressed="true">전체</button>
+      <button type="button" data-qna-filter="Astronomy" aria-pressed="false">Astronomy</button>
+      <button type="button" data-qna-filter="Physics" aria-pressed="false">Physics</button>
+      <button type="button" data-qna-filter="Mathematics" aria-pressed="false">Mathematics</button>
+      <button type="button" data-qna-filter="Computer Science" aria-pressed="false">Computer Science</button>
+      <button type="button" data-qna-filter="Others" aria-pressed="false">Others</button>
+    </div>
+
+    <div class="qna-list" data-qna-list aria-live="polite"></div>
+    <p class="qna-empty" data-qna-empty hidden>이 분야에 등록된 질문이 아직 없습니다.</p>
+    <p class="qna-load-error" data-qna-error hidden>
+      질문 목록을 불러오지 못했습니다. 잠시 후 다시 시도해주세요.
+    </p>
+  </section>
+
+  <section class="qna-guidelines" aria-labelledby="qna-guidelines-title">
+    <div class="qna-section-heading">
+      <h2 id="qna-guidelines-title">Q&amp;A Guidelines</h2>
+    </div>
+
+    <div class="qna-guideline-grid">
+      <section>
+        <h3>좋은 질문</h3>
+        <ul>
+          <li>질문 내용을 가능한 구체적으로 작성해주세요.</li>
+          <li>관련 자료나 Mathastro 글이 있다면 함께 알려주세요.</li>
+          <li>서로 다른 의견과 질문을 존중해주세요.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>허용되지 않는 내용</h3>
+        <ul>
+          <li>욕설, 비방 및 인신공격</li>
+          <li>혐오·차별적 표현</li>
+          <li>반복적인 도배, 광고 또는 분쟁 유도</li>
+          <li>타인의 저작물을 무단으로 게시하는 행위</li>
+        </ul>
+      </section>
+    </div>
+
+    <div class="qna-policy">
+      <h3>운영 정책</h3>
+      <p>
+        운영진은 위 규칙을 위반한 게시물을 수정, 숨김 또는 삭제할 수 있으며,
+        반복적으로 규칙을 위반할 경우 Q&amp;A 이용을 제한할 수 있습니다.
+      </p>
+    </div>
+  </section>
+</div>
+
+<script src="qna.js"></script>
+```

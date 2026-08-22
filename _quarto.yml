@@ -1,5 +1,7 @@
 project:
   type: website
+  resources:
+    - qna/questions.json
 
 website:
   description: "A blog built with Quarto"
@@ -11,6 +13,8 @@ website:
         text: "블로그 소개"
       - href: team.qmd
         text: "운영진 소개"
+      - href: qna/
+        text: "Q&A"
       - icon: github
         href: https://github.com/youngandyou/mathastro
       - icon: bluesky

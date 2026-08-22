@@ -1,0 +1,69 @@
+[
+  {
+    "id": "visibility-in-radio-interferometry",
+    "title": "전파간섭계에서 visibility란 무엇인가요?",
+    "field": "Astronomy",
+    "difficulty": "학부",
+    "status": "답변 완료",
+    "featured": false,
+    "date": "2026-08-20",
+    "excerpt": "전파간섭계가 직접 측정하는 visibility의 물리적 의미와 영상 복원에서의 역할이 궁금합니다.",
+    "question": "두 안테나의 신호를 상관해서 얻는 visibility가 왜 복소수이며, 이것이 하늘의 밝기 분포와 어떻게 연결되는지 알고 싶습니다.",
+    "answer": "Visibility는 한 쌍의 안테나가 측정한 전기장 신호의 상호상관을 복소수로 나타낸 값입니다. 진폭은 해당 공간 주파수 성분의 세기를, 위상은 그 성분의 위치 정보를 담습니다. 서로 다른 baseline에서 얻은 visibility를 모으면 하늘 밝기 분포의 푸리에 성분을 표본화할 수 있고, 이를 역변환해 천체 영상을 복원합니다.",
+    "relatedArticles": [
+      {
+        "title": "Basic Interferometer(간섭계의 기초)",
+        "url": "../posts/Astronomy/Interferometer_1/"
+      },
+      {
+        "title": "Visibility와 전파간섭계",
+        "url": "../posts/Astronomy/Interferometer_2/"
+      }
+    ],
+    "developedArticle": {
+      "title": "Visibility와 전파간섭계",
+      "url": "../posts/Astronomy/Interferometer_2/"
+    },
+    "discussionUrl": null
+  },
+  {
+    "id": "why-quotient-topology",
+    "title": "Quotient topology는 왜 필요한가요?",
+    "field": "Mathematics",
+    "difficulty": "학부",
+    "status": "답변 대기",
+    "featured": false,
+    "date": "2026-08-21",
+    "excerpt": "점을 서로 붙여 새로운 공간을 만들 때 quotient topology가 어떤 역할을 하는지 궁금합니다.",
+    "question": "동치관계로 점들을 식별한 집합에 단순히 열린집합을 정하면 안 되는 이유와 quotient map의 의미를 알고 싶습니다.",
+    "answer": null,
+    "relatedArticles": [
+      {
+        "title": "Quotient Topology",
+        "url": "../posts/Math/Topology/Quotient_Topology/"
+      }
+    ],
+    "developedArticle": null,
+    "discussionUrl": null
+  },
+  {
+    "id": "q-learning-vs-sarsa",
+    "title": "Q-learning과 SARSA의 차이는 무엇인가요?",
+    "field": "Computer Science",
+    "difficulty": "학부",
+    "status": "Featured",
+    "featured": true,
+    "date": "2026-08-22",
+    "excerpt": "두 알고리즘이 모두 temporal-difference 학습을 사용하는데도 서로 다른 정책을 학습하는 이유를 알고 싶습니다.",
+    "question": "Q-learning은 off-policy, SARSA는 on-policy라고 하는데 업데이트 식에서 이 차이가 어떻게 나타나는지 궁금합니다.",
+    "answer": null,
+    "relatedArticles": [
+      {
+        "title": "Temporal Difference Learning",
+        "url": "../posts/Computer/Reinforcement Learning/Temporal_Difference_Learning/"
+      }
+    ],
+    "developedArticle": null,
+    "discussionUrl": null
+  }
+]

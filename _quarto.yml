@@ -15,10 +15,6 @@ website:
         text: "운영진 소개"
       - href: qna/
         text: "Q&A"
-      - icon: github
-        href: https://github.com/youngandyou/mathastro
-      - icon: bluesky
-        href: https://bsky.app/
 format:
   html:
     theme:

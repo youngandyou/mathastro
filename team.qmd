@@ -60,39 +60,41 @@ style="color: black;">
     </article>
 
     <article class="staff-member">
-      <figure class="staff-photo staff-photo-placeholder">
-        <i class="bi bi-person-fill" aria-hidden="true"></i>
-        <figcaption class="visually-hidden">Youmin Chun 프로필 사진</figcaption>
+      <figure class="staff-photo">
+        <img src="teams/youminchun.jpg">
       </figure>
 
       <div class="staff-details">
         <header class="staff-header">
           <h2>Youmin Chun <span lang="ko">(천유민)</span></h2>
           <p><strong>역할 및 직책</strong> 블로그 운영 및 편집(Managing Editor)</p>
-          <p><strong>소속</strong> 정보 업데이트 예정</p>
+
+          <div style="height: 0.5rem;"></div>
+
+          <p><strong>소속</strong> 경북대학교 수학과(학부 과정)</p>
         </header>
 
         <dl class="staff-profile">
           <div>
-            <dt>최종 학력</dt>
-            <dd>정보 업데이트 예정</dd>
+            <dt>학력</dt>
+            <dd>경북대학교 수학전공 |
+              물리학 부전공
+            </dd>
           </div>
           <div>
             <dt>연구 분야</dt>
-            <dd>정보 업데이트 예정</dd>
+            <dd>비선형 동역학(Nonlinear Dynamics)</dd>
           </div>
           <div class="staff-bio">
-            <dt>짧은 소개</dt>
+            <dt>자기 소개</dt>
             <dd>
-              정보 업데이트 예정
+              자연의 언어인 수학과 과학을 통해 세상과 사회의 문제들을 해결하고 싶습니다. 나아가 다양한 전공의 전문지식들을 소개하고 통합하는 장으로서 Mathastro를 만들어 가고 싶습니다. 함께 지식을 탐구하고 사회에 기여하고 싶으신 분들을 기다립니다!
             </dd>
           </div>
         </dl>
 
         <nav class="staff-links" aria-label="Youmin Chun 외부 링크">
-          <span class="staff-link-placeholder"><i class="bi bi-envelope" aria-hidden="true"></i> 이메일</span>
-          <span class="staff-link-placeholder"><i class="bi bi-linkedin" aria-hidden="true"></i> LinkedIn</span>
-          <span class="staff-link-placeholder"><i class="bi bi-github" aria-hidden="true"></i> GitHub</span>
+          <span><i class="bi bi-envelope" aria-hidden="true"></i> 이메일(e-mail): chunyoumin1@gmail.com</span>
         </nav>
       </div>
     </article>

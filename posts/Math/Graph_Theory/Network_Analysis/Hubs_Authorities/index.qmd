@@ -27,17 +27,17 @@ where $\alpha, \beta$ are nonnegative constants. In matrix forms,
 
 $$\begin{align*}
 \mathbf{x} &= \alpha \mathbf{A} \mathbf{y} \\
-\mathbf{y} &= \beta \mathbf{A}^T \mathbf{x}
+\mathbf{y} &= \beta \mathbf{A}^\top \mathbf{x}
 \end{align*}$$
 
 정의를 보면 $\mathbf{x}$와 $\mathbf{y}$가 서로 얽혀있다. 이대로면 곧바로 계산은 힘들기에 다음과 같은 고유값 방정식 형태로 고칠 수 있다.
 
 $$\begin{align*}
-\mathbf{A}\mathbf{A}^top\mathbf{x} &= \lambda \mathbf{x} \\
+\mathbf{A}\mathbf{A}^\top\mathbf{x} &= \lambda \mathbf{x} \\
 \mathbf{A}^\top \mathbf{A} \mathbf{y} &= \lambda \mathbf{y}
 \end{align*}$$
 
-이때 $\lambda = \frac{1}{\alpha \beta}$이다. 따라서 중심성 $\mathbf{x}$와 $\mathbf{y}$는 행렬 $\mathbf{A}\mathbf{A}^top$와 $\mathbf{A}^\top \mathbf{A}$의 고유벡터이며, 이때 대응되는 고유값은 $\lambda$로 동일하다. 이때, 고유벡터 중심성과 동일하게 고유값 $\lambda$는 스펙트럴 래디어스로 둔다. 즉 벡터 $\mathbf{x}$와 $\mathbf{y}$는 행렬 $\mathbf{A}\mathbf{A}^\top$와 $\mathbf{A}^\top \mathbf{A}$의 스펙트럴 래디어스에 대응되는 고유벡터로 정의되는데, 두 행렬 $\mathbf{A}\mathbf{A}^\top$와 $\mathbf{A}^\top \mathbf{A}$은 같은 고유값을 가지기 때문에 이러한 정의가 유효하다.
+이때 $\lambda = \frac{1}{\alpha \beta}$이다. 따라서 중심성 $\mathbf{x}$와 $\mathbf{y}$는 행렬 $\mathbf{A}\mathbf{A}^\top$와 $\mathbf{A}^\top \mathbf{A}$의 고유벡터이며, 이때 대응되는 고유값은 $\lambda$로 동일하다. 이때, 고유벡터 중심성과 동일하게 고유값 $\lambda$는 스펙트럴 래디어스로 둔다. 즉 벡터 $\mathbf{x}$와 $\mathbf{y}$는 행렬 $\mathbf{A}\mathbf{A}^\top$와 $\mathbf{A}^\top \mathbf{A}$의 스펙트럴 래디어스에 대응되는 고유벡터로 정의되는데, 두 행렬 $\mathbf{A}\mathbf{A}^\top$와 $\mathbf{A}^\top \mathbf{A}$은 같은 고유값을 가지기 때문에 이러한 정의가 유효하다.
 
 이때 
 

@@ -3,10 +3,15 @@ name: Publish Quarto site
 on:
   push:
     branches: [main]
+  discussion:
+    types: [created, edited, deleted, transferred, pinned, unpinned, category_changed, answered, unanswered]
+  discussion_comment:
+    types: [created, edited, deleted]
   workflow_dispatch:
 
 permissions:
   contents: read
+  discussions: read
   pages: write
   id-token: write
 
@@ -20,6 +25,15 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+
+      - name: Test Discussion sync
+        run: python3 -m unittest discover -s tests
+
+      - name: Sync Q&A Discussions
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+        run: python3 scripts/sync_discussions.py
 
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2

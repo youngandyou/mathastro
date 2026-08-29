@@ -1,5 +1,7 @@
 /.quarto/
 /_site/
 .DS_Store
+__pycache__/
+*.py[cod]
 
 **/*.quarto_ipynb

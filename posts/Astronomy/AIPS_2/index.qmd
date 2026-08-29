@@ -1,0 +1,60 @@
+---
+title: "AIPS (2) - AIPS Code"
+author: "Young Jeong Lee"
+date: "2026-08-29"
+description: "AIPS에서 사용되는 코드에 대해서 전반적으로 소개한다. "
+categories: 
+  - Astronomy > Radio Astronomy > Radio Software > AIPS
+---
+
+- 이 글은 VLBI 데이터를 보정할 때, 실제로 사용되는 AIPS 코드들에 대해서 소개한다. 연습용 데이터 및 AIPS 설치 과정에 관련해서는 추후에 글을 업로드 하겠다.
+
+---
+
+# 1. AIPS task 
+- AIPS의 대부분 작업은 **task**를 통해서 이루어진다. 
+	- 예: `task 'prtab'`을 입력했다면, 여기서 input은 `prtab`이 된다. 이때의 input을 **adverb**라고 한다. 
+- `help`와 같은 간단한 용어는 **verb**라고 한다.
+
+---
+
+# 2. Data get in AIPS (AIPS 안으로 데이터 불러오기)
+
+- 관측 데이터를 AIPS 안으로 가져와서 데이터 처리를 수행하게 된다.
+- AIPS는 원본 데이터를 수정하지 않고 보정을 마친 후, 얻어낸 새로운 파일을 저장하는 방식으로 데이터를 처리한다.
+- AIPS 안으로 데이터를 불러올 때, `task 'fitld'`를 사용한다. `fitld`는 fits/uvfits 형태의 파일을 AIPS 안으로 불러오는 task이다. 
+
+```AIPS 
+default fitld 
+  # task 앞에 default를 붙이면, 이전에 작업했던 input parameter를 모두 초기화한다. 
+task 'fitld'
+datain 'DATA:a25h3a.fits
+  # AIPS 안에서 데이터 처리를 수행할 파일 이름을 적는다. 
+  # AIPS는 사용자 끝에 따옴표(')를 사용하지 않으면, 대소문자를 구분한다. 'DATA:a25h3a.fits'처럼 양 끝에 따옴표를 모두 붙이면, 대소문자를 구분하지 않는다.
+bif 0 
+  # Beginning IF로 사용할 첫 번째 IF 번호를 의미한다. 0을 주면 모든 IF를 사용한다.
+eif 0 
+  # Ending IF로 사용할 마지막 IF 번호를 의미한다. 0을 주면 모든 IF를 사용한다.
+bchan 0
+  # Beginnig Channel의 약자로 사용할 첫 번째 Channel 번호를 의미한다. 0이면 각 IF의 모든 Channel을 사용한다.
+echan 0
+  # Ending Channel의 약자로 사용할 마지막 Channel 번호를 의미한다. 0이면 각 IF의 모든 Channel을 사용한다.
+clint 0.05 
+  # CL table의 시간 샘플링(sampling) 간격으로 '분' 단위를 가진다. 보통 3초(0.05분)를 준다.
+douvcomp 1
+  # uv 데이터를 AIPS로 저장한다는 의미를 담고 있다. 
+digicor 1 
+  # 디지털 보정(digital correction)을 적용한다.
+outdisk 1
+  # AIPS disk 1번에 불러온 데이터를 저장한다.
+inp 
+  # 입력 parameter를 확인한다.
+go 
+  # task 'fitld'를 수행한다. 
+```
+
+<div height="2rem"></div> 
+
+- `fitld`를 수행할 때, 특별한 용도가 아니라면, bif, eif, bchan, echan는 모두 0으로 둔다. 
+- AIPS에 익숙하지 않다면 task를 수행할 때, `inp`를 항상 수행하여, 입력 parameter에 대해서 익숙해지는 것을 권장한다. 반면, 익숙하다면 inp를 하지 않아도 된다. 
+

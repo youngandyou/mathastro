@@ -1,0 +1,26 @@
+---
+title: "AIPS (1) - AIPS(Astronomical Image Processing System) 소개"
+author: "Young Jeong Lee"
+date: "2026-08-29"
+description: "전파 천문학 자료를 처리하고 보정하는 소프트웨어인 AIPS에 대해서 소개한다."
+categories: 
+  - Astronomy > Radio Astronomy > Radio Software > AIPS
+---
+
+# 1. Introduction (소개)
+
+- **AIPS(Astronomical Image Processing System)**: 주어진 관측 데이터의 보정(calibration), 편집, 분석을 수행하는 전파 천문학 데이터 처리 소프트웨어이다. 
+    - 데이터 가공, uv-데이터 set의 결합, 파일 실행 등도 수행한다. 
+- AIPS는 주어진 uv-data에 대해 보정 과정을 거쳐 이미지를 얻은 후, target에 대한 정확한 brightness 분포를 얻는 데, 목적이 있다. 
+- AIPS의 자세한 내용을 알고 싶은 독자들은 아래의 링크를 참고하길 바란다.
+- $1.$ NRAO 공식 AIPS 문서: [AIPS Documentation](https://www.aips.nrao.edu/aipsdoc.html)
+- $2.$ AIPS에 대해서 깊게 서술한 AIPS CookBook: [AIPS CookBook](https://www.aips.nrao.edu/CookHTML/CookBook.html)
+- $3.$ 짧게 서술된 초보자를 위한 AIPS 가이드: [A small guide to AIPS](https://www3.mpifr-bonn.mpg.de/staff/hrk/AIPS_TUTORIAL/HRK_AIPS_1.html)
+
+<div height="2rem"></div> 
+
+- AIPS 설치에 관련해서는 추후에 글을 작성하도록 하겠다.
+
+---
+
+

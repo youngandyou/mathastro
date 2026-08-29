@@ -1,6 +1,6 @@
 ---
 title: "Ask Mathastro"
-description: "수학 · 물리 · 천문학 · 컴퓨터 과학에 대해 궁금한 점을 질문해주세요. Mathastro 운영진이 가능한 한 정확한 근거와 참고자료를 바탕으로 답변합니다."
+description: "수학 · 물리 · 천문학 · 컴퓨터 과학에 대해 궁금한 점이 있다면 '질문하기' 클릭! Mathastro 운영진이 가능한 한 정확한 근거와 참고자료를 바탕으로 답변해드립니다!"
 toc: false
 page-layout: article
 ---
@@ -30,8 +30,8 @@ page-layout: article
 
   <section class="qna-browser" aria-labelledby="qna-list-title">
     <div class="qna-section-heading">
-      <h2 id="qna-list-title">질문 둘러보기</h2>
-      <p>분야를 선택해 질문을 모아볼 수 있습니다.</p>
+      <h2 id="qna-list-title">Question Collection</h2>
+      <p>하단의 박스로 표기된 분야를 선택하여 분야 별로 질문을 볼 수 있습니다!</p>
     </div>
 
     <div class="qna-filters" role="group" aria-label="질문 분야 필터">

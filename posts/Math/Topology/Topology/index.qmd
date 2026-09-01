@@ -15,7 +15,7 @@ A ***topology*** on a set $X$ is a collection $\mathscr{T} \subset 2^X$ such tha
 
 $$\bigcup_{U \in \mathcal{A} \subset \mathscr{T}} U \in \mathscr{T}$$
 
-**(iii)** The intersection of the elements of any finite subcollection of $\mathscr{T}$ is in $\mathscr{T}$. That is, for $\\{ U_{i} \\}_{i=1}^n \subset \mathscr{T}$,
+**(iii)** The intersection of the elements of any finite subcollection of $\mathscr{T}$ is in $\mathscr{T}$. That is, for $\{ U_{i} \}_{i=1}^n \subset \mathscr{T}$,
 
 $$\bigcap_{i=1}^n U_i \in \mathscr{T}$$
 
@@ -31,15 +31,15 @@ $\mathscr{T}$는 전체 집합 $X$를 항상 포함하고 있기 때문에, 집�
 ## Example
 Let $X$ be a set. 
 
-**(i)** The topology $\mathscr{T} = \\{ \emptyset, X \\}$ on $X$ is called the ***trivial topology***.
+**(i)** The topology $\mathscr{T} = \{ \emptyset, X \}$ on $X$ is called the ***trivial topology***.
 
 **(ii)** The topology $\mathscr{T} = 2^X$ on $X$ is called the ***discrete topology***.
 
-**(iii)** The collection $\mathscr{T}_f = \\{ U \subset X \mid X \setminus U \text{ is either finite or } X \\}$ of subsets of $X$ is called the ***cofinite topology*** or the ***finite complement topology***. 
+**(iii)** The collection $\mathscr{T}_f = \{ U \subset X \mid X \setminus U \text{ is either finite or } X \}$ of subsets of $X$ is called the ***cofinite topology*** or the ***finite complement topology***. 
 
-**(iv)** The collection $\mathscr{T}_c = \\{ U \subset X \mid X \setminus U \text{ is either countable or } X \\}$ of subsets of $X$ is called the ***cocountable topology*** or the ***countable complement topology***. 
+**(iv)** The collection $\mathscr{T}_c = \{ U \subset X \mid X \setminus U \text{ is either countable or } X \}$ of subsets of $X$ is called the ***cocountable topology*** or the ***countable complement topology***. 
 
-$\big[ (\because)$ Since $X \setminus \emptyset = X$ and $X \setminus X = \emptyset$ is finite, we have $\emptyset, X \in \mathscr{T}_f$. Let $\\{ U_{\alpha} \\}$ be a subcollection of $\mathscr{T}_f$. Then we have
+$\big[ (\because)$ Since $X \setminus \emptyset = X$ and $X \setminus X = \emptyset$ is finite, we have $\emptyset, X \in \mathscr{T}_f$. Let $\{ U_{\alpha} \\$ be a subcollection of $\mathscr{T}_f$. Then we have
 
 $$\begin{align*}
 X \setminus \bigcup_\alpha U_\alpha &= X \cap \left( \bigcup_\alpha U_\alpha \right)^c \\
@@ -50,7 +50,7 @@ X \setminus \bigcup_\alpha U_\alpha &= X \cap \left( \bigcup_\alpha U_\alpha \ri
 
 Since each $U_{\alpha}$ is an element of $\mathscr{T}_f$, each $X \setminus U_{\alpha}$ is either finite or $X$. Since $X \setminus U_{\alpha}$ is finite or $X$ itself and $\bigcap_{\alpha} (X \setminus U_{\alpha}) \subset X \setminus U_{\alpha}$ for any $\alpha$, $\bigcap_{\alpha} (X \setminus U_{\alpha})$ is either finite or $X$. Thus the union belongs to $\mathscr{T}_f$.
 
-Let $\\{ U_1, ..., U_n \\}$ be a finite subcollection of $\mathscr{T}_f$. Then we have 
+Let $\{ U_1, ..., U_n \}$ be a finite subcollection of $\mathscr{T}_f$. Then we have 
 
 $$\begin{align*}
 X \setminus \bigcap_{i=1}^n U_i &= X \cap \left( \bigcap_{i=1}^n U_i \right)^c \\
@@ -61,7 +61,7 @@ X \setminus \bigcap_{i=1}^n U_i &= X \cap \left( \bigcap_{i=1}^n U_i \right)^c \
 
 Since each $X \setminus U_i$ is either finite or $X$, the finite union is also either finite or $X$. Thus the finite intersection is an element of $\mathscr{T}_f$, and therefore the collection $\mathscr{T}_f$ is a topology on $X$. $\blacksquare \big]$
 
-Cofinite topology $(X, \mathscr{T}_f)$의 원소가 어떤 꼴인지 살펴보자. 정의상 $\emptyset$과 $X$는 들어가 있어야 하고, 그 외에 어떤 집합이 이 위상의 원소가 될 수 있는지 결정해야 한다. 이러한 집합을 전체 공간 $X$에서 빼면 유한한 원소만이 남아있어야 하고, $A \backslash (A \backslash B) = B$가 성립하기 때문에 $X$의 임의의 유한 부분집합 $\\{ x_1, ..., x_n \\}$에 대하여 $U = X \backslash \\{ x_1, ..., x_n \\}$ 꼴의 집합은 모두 이 위상의 원소가 된다. 
+Cofinite topology $(X, \mathscr{T}_f)$의 원소가 어떤 꼴인지 살펴보자. 정의상 $\emptyset$과 $X$는 들어가 있어야 하고, 그 외에 어떤 집합이 이 위상의 원소가 될 수 있는지 결정해야 한다. 이러한 집합을 전체 공간 $X$에서 빼면 유한한 원소만이 남아있어야 하고, $A \backslash (A \backslash B) = B$가 성립하기 때문에 $X$의 임의의 유한 부분집합 $\{ x_1, ..., x_n \}$에 대하여 $U = X \backslash \{ x_1, ..., x_n \}$ 꼴의 집합은 모두 이 위상의 원소가 된다. 
 
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

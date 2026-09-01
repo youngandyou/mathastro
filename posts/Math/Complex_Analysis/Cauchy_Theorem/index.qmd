@@ -1,0 +1,45 @@
+---
+title: "Cauchy's Theorem"
+author: "Youmin Chun"
+date: "2026-09-01"
+description: "복소해석학에서의 코시의 정리에 대해서 소개한다."
+categories: 
+  - Math > Complex Analysis
+---
+
+## Cauchy's Theorem
+If a function $f(z)$ is analytic and $f'(z)$ is continuous at each point interior to and on the simple closed contour $C$, then 
+
+$$\int_C f(z) \, dz = 0.$$
+
+### Proof
+Let $C$ be a positively oriented simple closed contour with the parametrization $z = z(t) (a \le t \le b)$. Suppose that $f(z)$ is analytic at each point interior to and on $C$. We denote $f(z) = u(x, y) + iv(x, y)$ and $z(t) = x(t) + iy(t)$. Then we have 
+
+$$\begin{align*}
+\int_C f(z) \, dz &= \int_a^b f[z(t)] z'(t) \, dt \\
+&= \int_a^b (u + iv)(x' + iy') \, dt \\
+&= \int_a^b (ux' - vy') \, dt + i \int_a^b (uy' + vx') \, dt \\
+&= \int_C u \, dx - v \, dy + i \int_C v \, dx + u \, dy.
+\end{align*}$$
+
+Let $R$ be the closed region consisting of all points interior to and on $C$. Since $f'(z)$ is continuous on $R$, $u_x, u_y, v_x, v_y$ are continuous on $R$. By the [Green's Theorem]({% post_url Vector Calculus/2026-05-08-Green-Theorem %}#theorem-1), we have 
+
+$$\begin{align*}
+\int_C u \, dx - v \, dy + i \int_C v \, dx + u \, dy &= \iint_R [(-v)_x - u_y] \, dA + i \iint_R (u_x - v_y) \, dA \\
+&= \iint_R (-v_x - u_y) \, dA + i \iint_R (u_x - v_y) \, dA.
+\end{align*}$$
+
+Since $f(z)$ is analytic in $R$, the [Cauchy-Riemann equation]({% post_url Complex Analysis/2026-04-07-Cauchy-Riemann-Equation %}#theorem-1) holds: 
+
+$$u_x = v_y \quad \text{and} \quad u_y = -v_x$$
+
+Thus, we have 
+
+$$\begin{align*}
+\int_C f(z) \, dz &= \iint_R (-v_x - u_y) \, dA + i \iint_R (u_x - v_y) \, dA \\
+&= \iint_R (u_y - u_y) \, dA + i \iint_R (v_y - v_y) \, dA \\
+&= 0. \quad \blacksquare
+\end{align*}$$
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

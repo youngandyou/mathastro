@@ -1,0 +1,78 @@
+---
+title: "Multiply Connected Domain"
+author: "Youmin Chun"
+date: "2026-09-01"
+description: "복소해석학에서 다루는 도메인과 principle of deformation of paths에 대해서 소개한다."
+categories: 
+  - Math > Complex Analysis
+---
+
+## Definition
+**(i)** An open set $S$ is ***connected*** if each pair of points $z_1$ and $z_2$ in it can be joint by a polygonal line, consisting of a finite number of line segments, joined end to end, that lies entirely in $S$. 
+
+**(ii)** A nonempty open set that is connected is a ***domain***.
+
+**(iii)** If $D$ is a domain, then the ***region*** is the set $D \cup \partial D$.
+
+**(iv)** A ***simply connected domain*** $D$ is a domain such that every simple closed contour within it encloses only points of $D$. 
+
+**(v)** A ***multiply connected domain*** is a domain that is not simply connected.
+
+## Theorem 1
+If a function $f(z)$ is analytic throughout a simply connected domain $D$, then 
+
+$$\int_C f(z) \, dz = 0$$
+
+for every closed contour $C$ lying in $D$.
+
+### Proof
+Let $C$ be a closed contour lying in $D$. If $C$ is simple, then it follows directly from the [Cauchy-Goursat theorem.]
+
+Suppose that $C$ is not simple and intersets itself a finite number of times. Then it consists of a finite number of simple closed contours $C_1, \cdots, C_n$, which measn that $C = C_1 \cup \cdots \cup C_n$. By applying the Cauchy-Goursat theorem to them, we have
+
+$$\int _ {C_i} f(z) \, dz = 0$$
+
+for all $1 \le i \le n$. Therefore, we conclude
+
+$$\begin{align*}
+\int_C f(z) \, dz = \sum_{i=1}^n \int _ {C_i} f(z) \, dz = 0
+\end{align*}$$
+
+## Corollary 1
+**(i)** A function $f$ that is analytic throughout a simply connected domain $D$ must have an antiderivative everywhere in $D$. 
+
+**(ii)** Entire functions always have antiderivatives.
+
+## Theorem 2
+Suppose that
+
+**(i)** $C$ is positively oriented simple closed contour.
+
+**(ii)** $C_k (k = 1, 2, \cdots, n)$ are disjoint, positively oriented simple closed contours interior to $C$.
+
+**(iii)** A function $f(z)$ is analytic on all of these contours and throughout the multiply connected domain consisting of the points inside $C$ and exterior to each $C_k$.
+
+Then 
+
+$$\int_C f(z) \, dz = \sum_{k=1}^n \int_{C_k} f(z) \, dz.$$
+
+### Proof
+
+## Corollary 2
+Let $C_1$ and $C_2$ denote positively oriented simple closed contours, where $C_1$ is interior to $C_2$. If a function $f(z)$ is analytic in the closed region consisting of those contours and all points between them, then 
+
+$$\int_{C_1} f(z) \, dz = \int_{C_2} f(z) \, dz.$$
+
+이 따름정리는 ***Principle of deformation of paths***라고도 불리는데, $C_1$이 $f$가 analytic한 점들, 그러니까 $C_1$과 $C_2$ 사이에 있는 점들을 지나면서 "연속적으로" $C_2$로 변형된다고 했을 때, $C_1$에서의  $f$의 적분값은 변하지 않는다고 이해할 수 있기 때문이다. 
+
+## Example
+Let $C$ be any positively oriented simple closed contour surrounding the origin. Then we can construct a positively oriented circle $C_0$ with center at the origin and sufficiently small radius, lying inside $C$. Since 
+
+$$\int_{C_0} \frac{1}{z} \, dz = 2 \pi i,$$
+
+by corollary 2, we have 
+
+$$\int_C \frac{1}{z} \, dz = 2 \pi i.$$
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

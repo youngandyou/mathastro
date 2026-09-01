@@ -1,0 +1,27 @@
+---
+title: "Liouville's Theorem"
+author: "Youmin Chun"
+date: "2026-09-01"
+description: "복소해석학의 리우빌 정리에 대해서 소개한다."
+categories: 
+  - Math > Complex Analysis
+---
+
+## Liouville's Theorem
+If a function $f$ is entire and bounded in the complex plane $\mathbb{C}$, then $f(z)$ is constant throughout the plane.
+
+### Proof
+Let $z_0 \in \mathbb{C}$ and let $R > 0$. By the Cauchy's inequality, we have 
+
+$$\vert f'(z_0) \vert \le \frac{M_R}{R}$$
+
+where $M_R$ is the maximum value of $f(z)$ on the circle centered at $z_0$ with radius $R$. 
+
+Since $f$ is bounded in $\mathbb{C}$, we have that $\vert f(z) \vert \le M, \forall z \in \mathbb{C}$. Since $M_R \le M$, it follows that 
+
+$$\vert f'(z_0) \vert \le \frac{M}{R}.$$
+
+Since we have chosen $R$ arbitrarily, we have $f'(z_0) = 0$. Since $z_0$ is also arbitrary, we have $f'(z) = 0, \forall z \in \mathbb{C}$. By [Theorem 1](<{% post_url Complex Analysis/2026-04-09-Analytic-Function %}#theorem-1>), $f$ is a constant function in $\mathbb{C}$. $\blacksquare$
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

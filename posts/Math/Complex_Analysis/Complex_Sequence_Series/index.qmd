@@ -1,0 +1,72 @@
+---
+title: "Complex Sequence and Series"
+author: "Youmin Chun"
+date: "2026-09-01"
+description: "복소해석학의 수열과 급수에 대해서 소개한다."
+categories: 
+  - Math > Complex Analysis
+---
+
+## Definition 1
+**(i)** A sequence $\{ z_n \}_{n=1}^{\infty}$ in $\mathbb{C}$ is said to ***converge*** to a number $z_0$, denoted by 
+
+$$\lim_{n \to \infty} z_n = z_0$$
+
+if $\forall \varepsilon > 0, \exists N \in \mathbb{N}$ such that $\vert z_n - z_0 \vert < \varepsilon, \forall n \ge N$. If a sequence has no limit, it is said to ***diverge***.
+
+**(ii)** An ***infinite series*** 
+
+$$\sum_{n=1}^\infty z_n$$
+
+of complex numbers is said to ***converge*** to the sum $S$ if the sequence
+
+$$S_n = \sum_{k=1}^n z_n$$
+
+of partial sums converges to $S$:
+
+$$S := \lim_{n \to \infty} S_n = \lim_{n \to \infty} \sum_{k=1}^n z_n = \sum_{n=1}^\infty z_n.$$
+
+If the sequence $\{ S_n \}$ diverges, the series is said to ***diverge***.
+
+**(iii)** An infinite series $\sum_{n=1}^\infty z_n$ is said to ***converge absolutely*** if $\sum_{n=1}^\infty \vert z_n \vert$ converges. If $\sum_{n=1}^\infty \vert z_n \vert$ diverges, but $\sum_{n=1}^\infty z_n$ converges, then the series is said to ***converge conditionally***.
+
+**(iv)** For a complex number $S$, we define the ***remainder*** $\rho_N$ after $N$ times by $\rho_N = S - S_n$, where $S_n$ is the $n$-th partial sum of $\sum_{n=1}^\infty z_n$. 
+
+**(v)** The series of the form 
+
+$$\sum_{n=0}^\infty a_n(z-z_0)^n$$
+
+is called a ***power series*** centered at $z_0$.
+
+## Theorem 1
+Let $z_n = x_n + iy_n$ be a sequence of complex numbers, and let $z = x+iy$.
+
+**(i)** If $\{ z_n \}$ has a limit, then it is unique.
+
+**(ii)** $\displaystyle \lim_{n \to \infty} z_n = z \iff \lim_{n \to \infty} x_n = x \text{ and } \lim_{n \to \infty} y_n = y$.
+
+**(iii)** If $\{ z_n \}$ converges, then it is bounded.
+
+**(iv)** If $\displaystyle \lim_{n \to \infty} z_n = z$, then $\displaystyle \lim_{n \to \infty} \vert z_n \vert = \vert z \vert$.
+
+### Proof
+
+## Theorem 2
+Let $z_n = x_n + iy_n$ be a sequence of complex numbers, and let $S = X + iY$.
+
+**(i)** $\displaystyle \sum_{n=1}^\infty z_n = S \iff \sum_{n=1}^\infty x_n = X \text{ and } \sum_{n=1}^\infty y_n = Y$.
+
+**(ii)** If $\sum_{n=1}^\infty z_n$ converges, then $\displaystyle \lim_{n \to \infty} z_n = 0$.
+
+**(iii)** If $\sum_{n=1}^\infty z_n$ converges absolutely, then $\sum_{n=1}^\infty z_n$ converges.
+
+**(iv)** If $\displaystyle \sum_{n=1}^\infty z_n = S$, then $\displaystyle \sum_{n=1}^\infty \overline{z_n} = \overline{S}$.
+
+**(v)** A series converges to $S$ $\iff$ the sequence of remainders $\{ \rho_n \}$ converges to $0$.
+
+**(vi)** $\displaystyle \sum_{n=0}^\infty z^n = \frac{1}{1-z}$ whenever $\vert z \vert < 1$. Moreover, if $\vert z \vert \ge 1$, the series diverges.
+
+### Proof
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

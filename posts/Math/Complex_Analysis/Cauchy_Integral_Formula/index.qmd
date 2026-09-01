@@ -1,0 +1,133 @@
+---
+title: "Cauchy Integral Formula"
+author: "Youmin Chun"
+date: "2026-09-01"
+description: "복소해석학의 코시 적분 공식에 대해서 소개한다."
+categories: 
+  - Math > Complex Analysis
+---
+
+## Cauchy Integral Formula
+Let $f$ be an analytic function inside and on a positvely oriented simple closed contour $C$. If $z_0$ be any point interior to $C$, then 
+
+$$f(z_0) = \frac{1}{2\pi i} \int_C \frac{f(z)}{z - z_0} \, dz.$$
+
+### Proof
+We let $C _ {\rho}$ denote a positively oriented circle $\vert z - z_0 \vert = \rho$, where $\rho$ is small enough that $C _ {\rho} \subset C$. Since the function $\displaystyle \frac{f(z)}{z - z_0}$ is analytic between and on the contours $C _ {\rho}$ and $C$, we have 
+
+$$\int_C \frac{f(z)}{z - z_0} \, dz = \int _ {C _ {\rho}} \frac{f(z)}{z - z_0} \, dz$$
+
+by [the principle of deformation of paths.] Note that 
+
+$$\begin{align*} 
+\int _ {C _ {\rho}} \frac{f(z) - f(z_0)}{z - z_0} \, dz &= \int _ {C _ {\rho}} \frac{f(z)}{z - z_0} \, dz - f(z_0) \int _ {C _ {\rho}} \frac{dz}{z - z_0} \\
+&= \int _ {C _ {\rho}} \frac{f(z)}{z - z_0} \, dz - 2\pi i f(z_0).
+\end{align*}$$
+
+Since $f$ is analytic, and therefore continuous, at $z_0$, we have that for given $\varepsilon > 0$, there exists $\delta > 0$ such that 
+
+$$\vert z - z_0 \vert < \delta \implies \vert f(z) - f(z_0) \vert < \varepsilon.$$
+
+We assume that $\rho < \delta$. Since $\vert z - z_0 \vert = \rho < \delta$ for all $z$ in $C _ {\rho}$, we have that 
+
+$$\begin{align*}
+\left \vert \frac{f(z) - f(z_0)}{z - z_0} \right \vert < \frac{\varepsilon}{\rho}
+\end{align*}$$
+
+for all $z$ in $C _ {\rho}$. By [$ML$-Lemma], we obtain 
+
+$$\begin{align*}
+\left \vert \int _ {C _ {\rho}} \frac{f(z) - f(z_0)}{z - z_0} \, dz \right \vert < \frac{\varepsilon}{\rho} \cdot 2\pi \rho = 2 \pi \varepsilon.
+\end{align*}$$
+
+Since we choose $\varepsilon$ arbitrarily, we conclude that 
+
+$$\int_{C _ {\rho}} \frac{f(z) - f(z_0)}{z - z_0} \, dz = 0.$$
+
+Thus, 
+
+$$\int_{C _ {\rho}} \frac{f(z)}{z - z_0} \, dz = 2\pi i f(z_0). \quad \blacksquare$$
+
+## Corollary 1
+Let $f$ be an analytic function inside and on a positvely oriented simple closed contour $C$. If $z_0$ be any point interior to $C$, then 
+
+$$f^{(n)}(z_0) = \frac{n!}{2\pi i} \int_C \frac{f(z)}{(z - z_0)^{n+1}} \, dz$$
+
+for each $n = 0, 1, 2, \cdots.$
+
+### Proof
+We use induction on $n$.
+
+For any point $z$ interior to $C$, we have 
+
+$$f(z) = \frac{1}{2\pi i} \int_C \frac{f(s)}{s-z} \, ds$$
+
+by Cauchy integral formula. Let $d := \min \\{ \vert s - z \vert \mid s \in C \\}$. (Assume that $C$ is parametrized by $\gamma: [a, b] \to C$. Since $C$ is a simple closed contour, $\gamma$ is (piecewise) continuous and surjective. Then $C = \gamma([a, b])$ is compact. Note that the function $f: C \to \mathbb{R}$ defined by $f(s) = \vert s - z \vert$ is continuous. Thus, $f$ has the minimum, says $d$.) 
+
+We may assume that $0 < \vert \Delta z \vert < d$ because $f$ is analytic inside and on $C$. Then we have 
+
+$$\begin{align*}
+\frac{f(z + \Delta z) - f(z)}{\Delta z} &= \frac{1}{2 \pi i} \int_C \left[ \frac{1}{s-(z + \Delta z)} - \frac{1}{s - z} \right] \frac{f(s)}{\Delta z} \, ds \\
+&= \frac{1}{2\pi i} \int_C \frac{f(s)}{(s - z - \Delta z)(s-z)}\, ds \\
+&= \frac{1}{2\pi i} \int_C f(s)\left[ \frac{1}{(s-z)^2} + \frac{1}{(s - z - \Delta z)(s-z)} - \frac{1}{(s-z)^2} \right] \, ds \\
+&= \frac{1}{2\pi i} \int_C \frac{f(s)}{(s-z)^2} \, ds + \frac{1}{2\pi i} \int_C f(s) \left[ \frac{1}{(s - z - \Delta z)(s-z)} - \frac{1}{(s-z)^2} \right] \, ds.
+\end{align*}$$
+
+Since $\vert s - z \vert \ge d$ and $\vert \Delta z \vert < d$, we have
+
+$$\begin{align*}
+\vert s - z - \Delta z \vert &\ge \vert \vert s- z \vert - \vert \Delta z \vert \vert \\
+& \ge d - \vert \Delta z \vert > 0,
+\end{align*}$$
+
+so that 
+
+$$\begin{align*}
+\left \vert \frac{1}{(s - z - \Delta z)(s-z)} - \frac{1}{(s-z)^2} \right \vert &= \left \vert \frac{(s-z) - (s-z-\Delta z)}{(s-z-\Delta z)(s-z)^2} \right \vert \\
+&= \left \vert \frac{\Delta z}{(s-z-\Delta z)(s-z)^2} \right \vert \\
+& \le \frac{\vert \Delta z \vert}{(d - \vert \Delta z \vert)d^2}.
+\end{align*}$$
+
+If we let $M$ denote the maximum value of $\vert f(s) \vert$ on $C$, then we have 
+
+$$\left \vert \int_C f(s) \left[ \frac{1}{(s - z - \Delta z)(s-z)} - \frac{1}{(s-z)^2} \right] \, ds \right \vert \le \frac{M\vert \Delta z \vert}{(d - \vert \Delta z \vert)d^2}L$$
+
+where $L$ is the lenght of $C$. By taking the limit that $\Delta z$ goes to $0$, we obtain that 
+
+$$\lim_{\Delta z \to 0} \int_C f(s) \left[ \frac{1}{(s - z - \Delta z)(s-z)} - \frac{1}{(s-z)^2} \right] \, ds = 0.$$
+
+Thus, we conclude that 
+
+$$\begin{align*}
+f'(z) &= \lim_{\Delta z \to 0} \frac{f(z + \Delta z) - f(z)}{\Delta z} \\
+&= \frac{1}{2\pi i} \int_C \frac{f(s)}{(s-z)^2} \, ds + \lim_{\Delta z \to 0} \frac{1}{2\pi i} \int_C f(s) \left[ \frac{1}{(s - z - \Delta z)(s-z)} - \frac{1}{(s-z)^2} \right] \, ds \\
+&=  \frac{1}{2\pi i} \int_C \frac{f(s)}{(s-z)^2} \, ds.
+\end{align*}$$
+
+## Corollary 2
+If a function $f$ is analytic at a given point, then its derivatives of all orders are analytic there too.
+
+다시 말해 복소공간에서는 함수가 한번 미분가능하면 무한번 미분가능하다는 사실이 보장된다는 말도 안되는 내용이 성립한다.
+
+### Proof
+Let $f^{(n)}$ be the $n$th order derivative of $f$. We use induction on $n$.
+
+Suppose that $f$ is analytic at a point $z_0$. By definition, there is a neighborhood $\vert z-z_0 \vert < \varepsilon$ of $z_0$ throughout which $f$ is analytic. Then there is a positively oriented circle $C_0$ centered at $z_0$ and with radius $\frac{\varepsilon}{2}$, such that $f$ is analytic inside and on $C_0$. 
+
+By Cauchy integral formula, we have 
+
+$$f''(z) = \frac{1}{\pi i} \int _ {C_0} \frac{f(s)}{(s-z)^3} \, ds$$
+
+at each point $z$ interior to $C_0$. This means that $f''$ exists throughout $C_0$. Thus, $f'$ is analytic throughout the neighborhood $\vert z - z_0 \vert < \frac{\varepsilon}{2}$, which means that $f'$ is analytic at $z_0$. 
+
+Suppose that $f^{(n)}$ is analytic at $z_0$ for some $n > 1$. Then we can show that $f^{(n+1)}$ is analytic at $z_0$ as before. Thus, $f^{(n)}$ is analytic at $z_0$ for all $n$. $\blacksquare$
+
+---
+## Corollary 3
+If a function $f(z) = u(x, y) + iv(x, y)$ is analytic at a point $z = (x, y)$, then the component functions $u$ and $v$ are of class $C^\infty$, that is, have continuous partial derivatives of all orders at that point.
+
+### Proof
+Since $f$ is analytic at $z$, $f'(z) = u_x + iv_x = v_y - iu_x$ is also analytic, which means that $u_x, u_y, v_x, v_y$ exist and are continuous. By induction, $u$ and $v$ have continuous partial derivatives of all orders at $z$, which means that they are of class $C^\infty$. $\blacksquare$
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

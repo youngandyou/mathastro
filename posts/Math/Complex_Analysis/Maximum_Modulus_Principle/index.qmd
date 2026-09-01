@@ -1,0 +1,78 @@
+---
+title: "Maximum Modulus Principle"
+author: "Youmin Chun"
+date: "2026-09-01"
+description: "복소해석학의 최대값 원리에 대해서 소개한다."
+categories: 
+  - Math > Complex Analysis
+---
+
+## Lemma
+Let $z_0 \in \mathbb{C}$ be a given point. Suppose that $\vert f(z) \vert \le \vert f(z_0) \vert$ at each point $z$ in some neighborhood $\vert z - z_0 \vert < \varepsilon$ in which $f$ is analytic. Then $f(z)$ has the constant value $f(z_0)$ throughout that neighborhood.
+
+### Proof
+Let $0 < \rho < \varepsilon$. If $C_\rho$ denotes the positively oriented circle $\vert z- z_0 \vert = \rho$, centered at $z_0$ with radius $\rho$, then the Gauss's mean value theorem tells us that 
+
+$$f(z_0) = \frac{1}{2 \pi} \int_0^{2\pi} f(z_0 + \rho e^{i\theta}) \, d\theta.$$
+
+Then we have 
+
+$$\begin{align*}
+\vert f(z_0) \vert &= \frac{1}{2 \pi} \left \vert \int_0^{2\pi} f(z_0 + \rho e^{i\theta}) \, d\theta \right \vert \\
+& \le \frac{1}{2 \pi} \int_0^{2\pi} \vert f(z_0 + \rho e^{i\theta}) \vert \, d\theta.
+\end{align*}$$
+
+Since $\vert f(z_0 + \rho e^{i\theta}) \vert \le \vert f(z_0) \vert$ for all $\theta$ by assumption, we see that
+
+$$\begin{align*}
+\vert f(z_0) \vert & \le \frac{1}{2 \pi}\int_0^{2\pi} \vert f(z_0 + \rho e^{i\theta}) \vert \, d\theta \\
+& \le \frac{1}{2 \pi}\int_0^{2\pi} \vert f(z_0) \vert \, d\theta \\
+&= \frac{1}{2 \pi}2\pi \vert f(z_0) \vert \\
+&= \vert f(z_0) \vert.
+\end{align*}$$
+
+Thus, we have
+
+$$\begin{align*}
+\vert f(z_0) \vert = \frac{1}{2 \pi}\int_0^{2\pi} \vert f(z_0 + \rho e^{i\theta}) \vert \, d\theta \\
+\implies \int_0^{2\pi} \left[ \vert f(z_0) \vert - \vert f(z_0 + \rho e^{i\theta}) \vert \right] \, d\theta = 0
+\end{align*}$$
+
+The integrand in the last integral is continuous in the variable $\theta$, and is nonnegative for all $\theta$ by assumption. Since the value of integral is zero, we must have that the integrand is equal to zero. That is, 
+
+$$\vert f(z_0) \vert = \vert f(z_0 + \rho e^{i\theta}) \vert, \forall \theta \in [0, 2\pi],$$
+
+which means that $\vert f(z) \vert = \vert f(z_0) \vert$ for all $z$ on the circle $C_\rho$. 
+
+Since we have chosen $\rho$ arbitrarily, it follows that $\vert f(z) \vert = \vert f(z_0) \vert$ in the neighborhood $\vert z - z_0 \vert < \varepsilon$. By [Theorem 2](<{% post_url Complex Analysis/2026-04-09-Analytic-Function %}#theorem-2>), $f(z)$ is constant throughout that neighborhood, which means that $f(z) = f(z_0)$ for each point $z$ in the neighborhood. $\blacksquare$
+
+## Maximum Modulus Principle
+If a function $f$ is analytic and not constant in a given domain $D$, then $\vert f(z) \vert$ has no maximum value in $D$. That is, there is no point $z_0 \in D$ such that $\vert f(z) \vert \le \vert f(z_0) \vert, \forall z \in D$. 
+
+### Proof
+Suppose that there is a point $z_0 \in D$ such that $\vert f(z) \vert \le \vert f(z_0) \vert, \forall z \in D$. 
+
+We draw a polygonal line $L$ lying in $D$ and extending from $z_0$ to any other point $P$ in $D$. Also, we let $d$ denote the shortest distance from points on $L$ to $\partial D$. When $D = \mathbb{C}$, $d$ may have any positive value. 
+
+Next, we construct a finite sequence of points $z_0, z_1, \cdots, z_n = P$ along $L$ such that $\vert z_k - z_{k-1} \vert < d$ for each $k = 1, 2, ..., n$. Furthermore, we form a finite sequence of neighborhoods $N_0, N_1, \cdots, N_n$ where each $N_k$ has center $z_k$ and radius $d$. Note that $f$ is analytic in each of these neighborhoods, and the center $z_k$ of each neighborhoods $N_k$ lies in the neighborhood $N_{k-1}$. 
+
+Since $\vert f(z) \vert \le \vert f(z_0) \vert, \forall z \in D$, it also holds throughout $N_0$. By the preceeding lemma, $f$ has the constant value $f(z_0)$ throughout $N_0$. In particular, $f(z_1) = f(z_0)$. It implies that $\vert f(z) \vert \le \vert f(z_1) \vert$ for each point $z$ in $N_1$. By applying the lemma again, $f$ has the constant value $f(z_1) = f(z_0)$ throughout $N_1$. Continuing this process, we must arrive at the neighborhood $N_n$ and the fact $f(z_n) = f(z_0)$. 
+
+Since $z_n = P$ and we have chosen an arbitrary point $P$ in $D$, we conclude that $f(z) = f(z_0), \forall z \in D$, which means that $f$ is a constant function in $D$. $\bigotimes$ Thus, $f$ does not have the maximum value in $D$. $\blacksquare$ 
+
+## Corollary 1
+Suppose that a function $f$ is continuous on a compact region $R$ and that it is analytic and not constant in the interior of $R$. Then the maximum value of $\vert f(z) \vert$ in $R$, which is always reached, occurs somewhere on the boundary of $R$ and never in the interior.
+
+즉 최대값은 항상 경계에서 일어날 수 밖에 없음을 보장해준다. 이는 Lagrange multiplier의 직관과도 잘 일치함을 알 수 있다.
+
+### Proof
+Since $f$ is continuous on a compact region $R$, $|f|$ has the maximum value somewhere in $R$. By the maximum modulus principle, $|f|$ has no maximum value in the interior of $R$. Thus, the maximum value must occur on the boundary of $R$ and never in the interior. $\blacksquare$
+
+## Corollary 2
+Suppose that a function $f(z) = u(x, y) + iv(x, y)$ is continuous on a compact region $R$ and that it is analytic and not constant in the interior of $R$. Then the maximum value of $\vert u(x, y) \vert$ in $R$, which is always reached, occurs somewhere on the boundary of $R$ and never in the interior.
+
+### Proof
+Since $f$ is continuous on $R$, so are $u$ and $v$. Then $g(z) = e^{f(z)}$ is continuous on $R$ and analytic and not constant in the interior of $R$ by assumption. Since $\vert g(z) \vert = e^{u(x, y)}$ is continuous on $R$, it must have the maximum values somewhere in $R$. Since the exponential function is an increasing function, the maximum value of $u(x, y)$ must occurs on the boundary of $R$, not interior. $\blacksquare$ 
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

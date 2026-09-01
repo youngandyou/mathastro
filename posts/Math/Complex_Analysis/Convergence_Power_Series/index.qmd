@@ -1,0 +1,314 @@
+---
+title: "Convergence of Power Series"
+author: "Youmin Chun"
+date: "2026-09-01"
+description: "복소해석학에서 멱급수들의 수렴 정리들에 대해서 소개한다."
+categories: 
+  - Math > Complex Analysis
+---
+
+## Definition
+Let 
+
+$$S(z) = \sum_{n=0}^\infty a_n(z-z_0)^n$$
+
+be a power series.
+
+**(i)** The ***circle of convergence*** of the series $S(z)$ is the greatest circle centered at $z_0$ such that the above series converges at each point inside it.
+
+**(ii)** Let 
+
+$$S_k(z) = \sum_{n=0}^k a_n(z-z_0)^n$$
+
+be the partial sums of the power series. Let $\rho_k(z) := S(z) - S_k(z)$ for each $k = 0, 1, 2, \cdots.$ The series $S(z)$ is said to be ***uniformly convergent*** in some region $E$ if 
+
+$$\forall \varepsilon > 0, \exists N \in \mathbb{N} \text{ such that } \vert \rho_k(z) \vert < \varepsilon, \forall k \ge N \text{ whenever } z \in E.$$
+
+## Theorem
+Let 
+
+$$S(z) = \sum_{n=0}^\infty a_n(z-z_0)^n$$
+
+be a power series with the circle of convergence $\vert z - z_0 \vert = R.$
+
+
+**(i)** If $S(z)$ converges when $z = z_1 (z_1 \neq z_0)$, then it is absolutely convergent at each point $z$ in the open disk $\vert z - z_0 \vert < R_1$ where $R_1 = \vert z_1 - z_0 \vert$. 
+
+**(ii)** Let $z_1$ be a point inside the circle of convergence. Then the series $S(z)$ must be uniformly convergent in the closed disk $\vert z- z_0 \vert \le R_1$, where $R_1 = \vert z_1 - z_0 \vert$. 
+
+**(iii)** The series $S(z)$ is a continuous function at each point inside its circle of convergence.
+
+**(iv)** Let $C$ denote any contour interior to the circle of convergence of the series $S(z),$ and let $g$ be a continuous function on $C$. Then 
+
+$$\int_C g(z) S(z) \, dz = \sum_{n=0}^\infty a_n \int_C g(z) (z-z_0)^n \, dz.$$
+
+**(v)** The series $S(z)$ is analytic at each point $z$ interior to the circle of convergence.
+
+**(vi)** The derivative of $S(z)$ is given by
+
+$$S'(z) = \sum_{n=1}^\infty na_n(z-z_0)^{n-1}$$
+
+at each point $z$ inside the circle of convergence of the series. 
+
+**(vii)** If the series $S(z)$ converges to $f(z)$ at all points interior to the circle of convergence, then it is the Taylor series expansion for $f$ in powers $z - z_0$. That is, 
+
+$$a_n = \frac{f^{(n)}(z_0)}{n!}, \forall n = 0, 1, 2, \cdots.$$
+
+**(viii)** If a series 
+
+$$\sum_{n=-\infty}^\infty c_n(z-z_0)^n$$
+
+converges to $f(z)$ at all points in some annular domain about $z_0$, then it is the Laurent series expansion for $f$ in powers of $z-z_0$ for that domain. That is, 
+
+$$c_n = \frac{1}{2\pi i} \int_C \frac{f(z)}{(z-z_0)^{n+1}} \, dz, \forall n \in \mathbb{Z}.$$
+
+### Proof
+**(i)** Since the series 
+
+$$\sum_{n=0}^\infty a_n(z_1 - z_0)^n$$
+
+converges, the sequence $\\{ a_n(z_1 - z_0)^n \\}$ is bounded, that is, 
+
+$$\vert a_n(z_1 - z_0)^n \vert \le M, \forall n \in \{ 0, 1, 2, \cdots \}$$
+
+for some $M > 0$. 
+
+Let $z$ be a point in the open disk $\vert z - z_0 \vert < R_1$, and let 
+
+$$\rho = \frac{\vert z - z_0 \vert}{ \vert z_1 - z_0 \vert}.$$
+
+Note that $\rho < 1$. Then we have 
+
+$$\begin{align*}
+\vert a_n(z-z_0)^n \vert &= \vert a_n(z_1 - z_0)^n \vert \left( \frac{\vert z - z_0 \vert}{\vert z_1 - z_0 \vert} \right)^n \\
+& \le M \rho^n
+\end{align*}$$
+
+for each $n = 0, 1, 2, \cdots.$ Since $\rho < 1$, the series
+
+$$\sum_{n=0}^\infty M \rho^n$$
+
+converges. By the comparison test, we conclude that 
+
+$$\sum_{n=0}^\infty \vert a_n(z-z_0)^n \vert$$
+
+converges, which means that the given power series converges absolutely.
+
+**(ii)** Since $R_1 < R$, there are points inside the circle of convergence and farther from $z_0$ than $z_1$ for which the series converges. By Theorem 1, there is a open disk containing $z_1$, lying in the circle of convergence. Thus, the series converges absolutely at $z_1$, i.e., 
+
+$$\sum_{n=0}^\infty \vert a_n(z_1-z_0)^n \vert$$
+
+converges. 
+
+For each point $z$ inside the circle of convergence, we can write the remainders as
+
+$$\begin{align*}
+\rho_k(z) = \lim_{m \to \infty} \sum_{n=k}^m a_n(z-z_0)^n
+\end{align*}$$
+
+and
+
+$$\sigma_k = \lim_{m \to \infty} \sum_{n=k}^m \vert a_n(z_1 - z_0)^n \vert$$
+
+for each positive integer $k$, respectively. Since $\rho_k(z)$ is defined at each point inside the circle of convergence, the limit converges. Then we have 
+
+$$\vert \rho_k(z) \vert = \lim_{m \to \infty} \left \vert \sum_{n=k}^m a_n(z-z_0)^n \right \vert.$$
+
+Let $z$ be a point in the closed disk $\vert z - z_0 \vert \le R_1$, where $R_1 = \vert z_1 - z_0 \vert$, so $\vert z - z_0 \vert \le \vert z_1 - z_0 \vert$. Then we have
+
+$$\begin{align*}
+\left \vert \sum_{n=k}^m a_n(z-z_0)^n \right \vert & \le \sum_{n=k}^m \vert a_n \vert \vert z-z_0 \vert^n \\
+& \le \sum_{n=k}^m \vert a_n \vert \vert z_1-z_0 \vert^n \\
+&= \sum_{n=k}^m \vert a_n (z_1-z_0)^n \vert.
+\end{align*}$$
+
+By taking the limit that $m$ goes to infinity, we obtain 
+
+$$\vert \rho_k(z) \vert \le \sigma_k \quad \text{when} \quad \vert z-z_0 \vert \le R_1.$$
+
+Since the remainders are well-defined, each limit exists. 
+
+Note that $\lim_{k \to \infty} \sigma_k = 0$ because the series $\displaystyle \sum_{n=0}^\infty \vert a_n(z_1-z_0)^n \vert$ converges. That is, for a given $\varepsilon > 0$, there exists a positive integer $N$ such that 
+
+$$\sigma_k = \vert \sigma_k \vert < \varepsilon, \forall k \ge N.$$
+
+Thus, we have that 
+
+$$\vert \rho_k(z) \vert < \varepsilon, \forall k \ge N, \text{ whenever } \vert z - z_0 \vert \le R_1,$$
+
+which means that the series $\displaystyle \sum_{n=0}^\infty a_n(z-z_0)^n$ converges uniformly in the closed disk $\vert z - z_0 \vert \le R_1$. 
+
+**(iii)** We let $S_k(z)$ denote the sum of the firsk $k$ terms of series, and write the remainder function 
+
+$$\rho_k(z) = S(z) - S_k(z)$$
+
+for $\vert z- z_0 \vert < R$. Since $S(z) = S_k(z) + \rho_k(z)$ for $\vert z- z_0 \vert < R$, we have 
+
+$$\begin{align*}
+\vert S(z) - S(z_1) \vert &= \vert [S_k(z) + \rho_k(z)] - [S_k(z_1) + \rho_k(z_1)] \vert \\
+&= \vert [S_k(z) - S_k(z_1)] + [\rho_k(z) - \rho_k(z_1)] \vert \\
+& \le \vert S_k(z) - S_k(z_1) \vert + \vert \rho_k(z) \vert + \vert \rho_k(z_1) \vert
+\end{align*}$$
+
+for each positive integer $k$ and $\vert z- z_0 \vert < R.$
+
+Let $z$ be a point inside some closed disk $\vert z - z_0 \vert \le R_0$ where $\vert z_1 - z_0 \vert < R_0 < R$. By Theorem 2, $S(z)$ converges uniformly in that closed disk. That is, for a given $\varepsilon > 0$, there exists a positive integer $N$ such that 
+
+$$\vert \rho_k(z) \vert < \frac{\varepsilon}{3}, \forall k \ge N, \text{ whenever } \vert z - z_0 \vert \le R_0.$$
+
+In particular, the preceeding condition holds for each point $z$ in some neighborhood $\vert z- z_1 \vert < \delta_1$ of $z_1$ that is small enough to be contained in the closed disk $\vert z - z_0 \vert \le R_0$. 
+
+Since the partial sum $S_k(z)$ is a polynomial, it is continuous at $z_1$ for each positive integer $k$. In particular, taking $k = N$, there exists $\delta_2 > 0$ such that if $\vert z - z_1 \vert < \delta_2$, then
+
+$$\vert S_N(z) - S_N(z_1) \vert < \frac{\varepsilon}{3}.$$
+
+Let $\delta := \min \\{ \delta_1, \delta_2 \\}.$ Thus, we obtain 
+
+$$\begin{align*}
+\vert S(z) - S(z_1) \vert &\le \vert S_N(z) - S_N(z_1) \vert + \vert \rho_N(z) \vert + \vert \rho_N(z_1) \vert \\
+&< \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} \\
+&= \varepsilon
+\end{align*}$$
+
+for $\vert z - z_1 \vert < \delta$. Hence, $S(z)$ is continuous at each point $z$ inside $\vert z- z_0 \vert < R$. 
+
+**(iv)** Let 
+
+$$\rho_k(z) = \sum_{n=k}^\infty a_n(z-z_0)^n$$
+
+for each positive integer $k$. By Theorem (iii), both $g$ and $S$ are continuous on $C$. Then the integeral over $C$ of 
+
+$$g(z) S(z) = \sum_{n=0}^{k-1} a_n \, g(z) (z-z_0)^n + g(z) \rho_k(z)$$
+
+exists for each $k$. Since both the partial sum of $S(z)$ and the remainder are continuous, we obtain 
+
+$$\int_C g(z) S(z) \, dz = \sum_{n=0}^{k-1} a_n \int_C g(z) (z-z_0)^n \, dz + \int_C g(z) \rho_k(z) \, dz.$$
+
+Let $\displaystyle M := \max _ {z \in C} \vert g(z) \vert$, and let $L := \text{length}(C)$. Since the series converges uniformly on $C$, for a given $\varepsilon > 0$, there exists a positive integer $N$ such that 
+
+$$\vert \rho_k(z) \vert < \frac{\varepsilon}{ML}, \forall k \ge N.$$
+
+By $ML$-Lemma, we have 
+
+$$\left \vert \int_C g(z) \rho_k(z) \, dz \right \vert \le M \frac{\varepsilon}{ML} L = \varepsilon, \forall k \ge N,$$
+
+which implies that 
+
+$$\lim_{k \to \infty} \int_C g(z) \rho_k(z) \, dz = 0.$$
+
+It follows that 
+
+$$\begin{align*}
+\int_C g(z) S(z) \, dz &= \lim_{k \to \infty} \int_C g(z) S(z) \, dz \\
+&= \lim_{k \to \infty} \left[ \sum_{n=0}^{k-1} a_n \int_C g(z) (z-z_0)^n \, dz + \int_C g(z) \rho_k(z) \, dz \right] \\
+&= \sum_{n=0}^\infty a_n \int_C g(z) (z-z_0)^n \, dz.
+\end{align*}$$
+
+**(v)** Let $C$ be a closed contour lying in the open disk bounded by the circle of convergence of the series, and let $g(z) = 1$ for each point $z$ in that domain. Since $(z-z_0)^n$ is a polynomial, it is entire for each $n = 0, 1, 2, \cdots.$ Then we have 
+
+$$\int_C g(z) (z-z_0)^n \, dz = \int_C (z-z_0)^n \, dz = 0$$
+
+by [Theorem 1.](<{% post_url Complex Analysis/2026-05-08-Multiply-Connected-Domain %}#theorem-1>) 
+
+By Theorem 4, we have 
+
+$$\int_C S(z) \, dz = 0.$$
+
+By [Morera's Theorem](<{% post_url Complex Analysis/2026-05-16-Morera-Theorem %}#morera-theorem>), we conclude that $S$ is analytic throughout the circle of convergence of the series.
+
+**(vi)** Let $z$ be a point interior to the circle of convergence of series. Let $C$ be a positively oriented simple closed contour surrounding $z$ and interior to that circle. 
+
+Define the function 
+
+$$g(s) = \frac{1}{2\pi i} \cdot \frac{1}{(s-z)^2},\forall s \in C.$$
+
+Since $g$ is continuous on $C$, we have 
+
+$$\int_C g(s) S(s) \, ds = \sum_{n=0}^\infty a_n \int_C g(s) (s-z_0)^n \, ds$$
+
+by **(iv)**. Since the series $S(z)$ is analytic inside and on $C,$ the Cauchy integral formula ensures 
+
+$$\int_C g(s) S(s) \, ds = \frac{1}{2 \pi i} \int_C \frac{S(s)}{(s-z)^2} \, ds = S'(z).$$
+
+Furthermore, 
+
+$$\begin{align*}
+\int_C g(s) (s-z_0)^n \, ds &= \frac{1}{2\pi i} \int_C \frac{(s-z_0)^{n}}{(s-z)^2} \, ds \\
+&= \frac{d}{dz}(z-z_0)^n \\
+&= n(z-z_0)^{n-1}
+\end{align*}$$
+
+for each $n = 1, 2, \cdots.$
+
+Hence, we obtain
+
+$$S'(z) = \sum_{n=1}^\infty n a_n(z-z_0)^{n-1}.$$
+
+**(vii)** By assumption, we write 
+
+$$f(z) = \sum_{n=0}^\infty a_n(z-z_0)^n$$
+
+for each $z$ interior to the circle of convergence. 
+
+Let $g(z)$ be any one of the functions 
+
+$$g(z) = \frac{1}{2\pi i} \cdot \frac{1}{(z-z_0)^{n+1}} \quad (n = 0, 1, 2, \cdots)$$
+
+for each $z$ on $C$, which is a positively oriented circle centered at $z_0$ and interior to the circle of convergence. Then we have 
+
+$$\int_C g(z) f(z) \, dz = \sum_{m=0}^\infty a_m \int_C g(z)(z-z_0)^m \, dz.$$
+
+Since $f(z)$ is analytic inside and on $C$, by the Cauchy integral formula, we have 
+
+$$\int_C g(z) f(z) \, dz = \frac{1}{2\pi i} \int_C \frac{f(z)}{(z-z_0)^{n+1}} \, dz = \frac{f^{(n)}(z_0)}{n!}.$$
+
+Furthermore, we have 
+
+$$\begin{align*}
+\int_C g(z) (z-z_0)^m \, dz &= \frac{1}{2\pi i} \int_C \frac{(z-z_0)^m}{(z-z_0)^{n+1}} \, dz \\ 
+&= \frac{1}{2\pi i} \int_C \frac{(z-z_0)^{m-n}}{z-z_0} \, dz \\
+&= \begin{cases}
+0 & \text{if } m \neq n \\
+1 & \text{if } m = n.
+\end{cases}
+\end{align*}$$
+
+Thus, we obtain 
+
+$$a_n = \frac{f^{(n)}(z_0)}{n!}$$
+
+for each $n = 0, 1, 2, \cdots,$ and therefore the given series is the Taylor series for $f$ about $z_0.$
+
+**(viii)** By assumption, we write 
+
+$$f(z) = \sum_{n=-\infty}^\infty c_n(z-z_0)^n$$
+
+for each $z$ interior to the some annular domain about $z_0.$ 
+
+Let $g(z)$ be any one of the functions 
+
+$$g(z) = \frac{1}{2\pi i} \cdot \frac{1}{(z-z_0)^{n+1}} \quad (n = 0, \pm 1, \pm 2, \cdots)$$
+
+for each $z$ on $C$, which is a positively oriented circle centered at $z_0$ and interior to the annular domain. Then we have 
+
+$$\int_C g(z) f(z) \, dz = \sum_{m=-\infty}^\infty c_m \int_C g(z)(z-z_0)^m \, dz.$$
+
+Then we have 
+
+$$\begin{align*}
+\int_C g(z) (z-z_0)^m \, dz &= \frac{1}{2\pi i} \int_C \frac{(z-z_0)^m}{(z-z_0)^{n+1}} \, dz \\ 
+&= \frac{1}{2\pi i} \int_C \frac{(z-z_0)^{m-n}}{z-z_0} \, dz \\
+&= \begin{cases}
+0 & \text{if } m \neq n \\
+1 & \text{if } m = n.
+\end{cases}
+\end{align*}$$
+
+Thus, we obtain 
+
+$$c_n = \int_C g(z) f(z) \, dz = \frac{1}{2\pi i} \int_C \frac{f(z)}{(z-z_0)^{n+1}} \, dz$$
+
+for each $n = 0, \pm 1, \pm 2, \cdots,$ and therefore the given series is the Laurent series for $f$ about $z_0.$ $\blacksquare$
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

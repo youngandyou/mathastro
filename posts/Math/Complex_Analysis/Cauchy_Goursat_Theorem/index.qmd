@@ -1,0 +1,130 @@
+---
+title: "Cauchy-Goursat Theorem"
+author: "Youmin Chun"
+date: "2026-09-01"
+description: "복소해석학에서의 코시-구르사의 정리에 대해서 소개한다."
+categories: 
+  - Math > Complex Analysis
+---
+
+[Cauchy Theorem]은 $f(z)$가 analytic하고 $f'(z)$가 연속이어야 한다는 두 가지 조건이 필요했었다. 이때 $f'(z)$가 연속이라는 조건을 빼도 동일한 결론이 성립한다는 사실을 보인 정리가 Cauchy-Goursat Theorem이다. 
+
+우선 simple closed contour $C$의 내부와 그 점들로 만든 영역을 $R$이라고 하자. 이때 구분구적법처럼 $R$을 각 축에 평행하게 잘게 자른다. 이때 $R$의 모양에 따라서 완벽한 사각형으로 잘릴 수도 있고, 경계면에 의해 잘려서 완벽하지 못한 사각형으로 잘릴 수도 있다. 이때 완벽한 사각형을 square, 완벽하지 못한 사각형을 partial sqaure이라고 하자. 각 square과 partial square들은 경계면 또한 포함하고 있음을 주의하자. 
+
+그러면 영역 $R$은 당연하게도 square와 partial square들의 합집합으로 표현, 다시 말해 cover된다. 이때 다음의 Lemma가 성립한다.
+
+## Lemma
+Let $R$ be a closed region consisting of the points interior to a positively oriented simple closed contour $C$ together with the points on $C$ itself. Let $f(z)$ be an analytic function throughout $R$. For each $\varepsilon > 0$, the region $R$ can be covered with a finite number of squares and partial squares, indexed by $j = 1, 2,...,n$ such that in each one there is a fixed point $z_j$ for which the inequality
+
+$$\left \vert \frac{f(z) - f(z_j)}{z - z_j} - f'(z_j) \right \vert < \varepsilon \quad \cdots \quad (\ast)$$
+
+is satisfied by all points other than $z_j$ in that square or partial square.
+
+### Proof
+If every subregion contains a needed point $z_j$ such that the inequality $(\ast)$ holds for all other points $z$ in it, then we are done.
+
+Suppose that there is some subregion in which no point $z_j$ exists such that the inequality $(\ast)$ holds for all other points $z$ in it. 
+
+If the subregion is a square, then we construct four smaller squares by drawing line segments joining the midpoints of its opposite sides. If the subregion is a partial square, then we treat the whole square in the same manner and then let the portions that lie outside of $R$ be discarded. 
+
+We claim that if this process is done to each of the original subreigions that requires it, then we can find that after a finite number of steps, $R$ can be covered with a finite number of subregions such that the lemma is true. 
+
+$\big[(\because)$ Suppose that after any finite number of steps, $R$ cannot be covered with a finite number of subregions such that the lemma is true. Since $R$ was initially divided into a finite number of subregions, there must exist at least one initial subregion that cannot be covered in a finite number of steps.
+
+We let $\sigma_0$ denote that subregion if it is a square; otherwise, if it is a partial square, we let $\sigma_0$ denote the entire square of which it is a part. 
+
+After we subdivide $\sigma_0$, at least one of the four smaller squares, denoted by $\sigma_1$, must contain points of $R$ but does not contain a point $z_j$ such that the inequality $(\ast)$ holds for all other points in it. We take $\sigma_1$ to be the one lowest and then furthest to the left. We then subdivide $\sigma_1$ and continue in this manner. Thus, we obtain the nested infinite sequence 
+
+$$\sigma_0, \sigma_1, \cdots, \sigma_{k-1}, \sigma_k, \cdots$$
+
+of squares. Note that in each $\sigma_k$, there exists no point $z_j$ such that the inequality $(\ast)$ holds for all other points in it.
+
+By the [nested interval theorem]({% post_url Real Analysis/2026-05-09-Nested-Interval-Theorem %}#nested-interval-theorem), there exists a point $z_0$ common to each $\sigma_k$. (By regarding each $\sigma_k$ as the product of two closed intervals in $\mathbb{R}$ and applying the theorem twice, we can find such point $z_0$.) Note that each of these squares contains points of $R$ other than possibly $z_0$. Note that any $\delta$-neighborhood $\vert z - z_0 \vert < \delta$ of $z_0$ contains such squares when their diagonals have lengths less than $\delta$. Therefore, every $\delta$-neighborhood $\vert z - z_0 \vert < \delta$ of $z_0$ contains points of $R$ distinct from $z_0$, which means that $z_0$ is a limit point of $R$. Since $R$ is closed, $z_0 \in R$. 
+
+Since $f(z)$ is analytic in $R$, it is analytic at $z_0$, which means that $f'(z_0)$ exists. Then for each $\varepsilon > 0$, there exists $\delta > 0$ such that
+
+$$\vert z - z_0 \vert < \delta \implies \left \vert \frac{f(z) - f(z_0)}{z - z_0} - f'(z_0) \right \vert < \varepsilon.$$
+
+Note that the neighborhood $\vert z − z_0 \vert < \delta$ of $z_0$ contains a square $\sigma_K$ when the integer $K$ is large enough that the length of a diagonal of that square is less than $\delta$. Thus, $z_0$ is the needed point $z_j$ in inequality $(\ast)$ for the subregion consisting of the square $\sigma_K$ or a part of $\sigma_K$. This contradicts that in each $\sigma_k$, there exists no point $z_j$ such that the inequality $(\ast)$ holds for all other points in it. $\bigotimes$ Hence, the claim is true. $\big]$
+
+Thus, we can always cover $R$ with a finite number of subregions such that the lemma is true. $\blacksquare$
+
+## Cauchy-Goursat Theorem
+If a function $f(z)$ is analytic at each point interior to and on the simple closed contour $C$, then 
+
+$$\int_C f(z) \, dz = 0.$$
+
+### Proof
+Let $C$ be a positively oriented simple closed contour, and let $R$ be a closed region consisting of the points of $C$ and interior to it. (If the theorem holds for a positively oriented contour, then we can show that the theorem also holds for a negatively oriented contour $C'$, by taking the positively oriented contour $-C'$.)
+
+Let $\varepsilon > 0$. By the Lemma, $R$ can be covered with a finite number of squares and partial squares, indexed by $j = 1, 2,...,n$ such that in each one there is a fixed point $z_j$ for which the inequality
+
+$$\left \vert \frac{f(z) - f(z_j)}{z - z_j} - f'(z_j) \right \vert < \varepsilon \quad \cdots \quad (\ast)$$
+
+is satisfied by all points other than $z_j$ in that square or partial square. 
+
+We define a function $\delta_j(z)$ on the $j$th square or partial square by 
+
+$$\delta_j(z) = \begin{cases}
+0 & \text{if } z = z_j \\
+\frac{f(z) - f(z_j)}{z-z_j} - f'(z_j) & \text{if } z \neq z_j
+\end{cases}$$
+
+Note that 
+
+**1.** $\vert \delta_j(z) \vert < \varepsilon$ for all $z$ in the subregion on which it is defined. 
+
+**2.** $\delta_j(z)$ is continuous throughout the subregion and $\lim_{z \to z_j} \delta_j(z) = f'(z_j) - f'(z_j) = 0$ since $f(z)$ is analytic there.
+
+We let $C_j (j = 1, \cdots, n)$ denote the positively oriented boundaries of the above squares or partial squares covering $R$. By the definition of $\delta_j(z)$, we have 
+
+$$f(z) = f(z_j) - z_jf'(z_j) +f'(z_j)z + (z-z_j)\delta_j(z)$$
+
+on any particular $C_j$. Then we have 
+
+$$\int _ {C_j} f(z) \, dz = [f(z_j) - z_jf'(z_j)]\int _ {C_j} \, dz + f'(z_j) \int _ {C_j} z \, dz + \int _ {C_j} (z-z_j)\delta_j(z) \, dz.$$
+
+Since the two integrals along the common boundary of every pair of adjacent subregions cancel each other, we have 
+
+$$\int_C f(z) \, dz = \sum_{j=1}^n \int _ {C_j} f(z) \, dz.$$
+
+Since the functions $1$ and $z$ always have antiderivatives, we have 
+
+$$\int _ {C_j} dz = 0 \quad \text{and} \quad \int _ {C_j} z \, dz = 0$$
+
+by [Theorem 1]({% post_url Complex Analysis/2026-05-07-Antiderivative %}#theorem-1). Thus, we have 
+
+$$\begin{align*}
+&\int _ {C_j} f(z) \, dz = \int _ {C_j} (z-z_j)\delta_j(z) \, dz \\
+\implies &\int_C f(z) \, dz = \sum_{j=1}^n \int _ {C_j} f(z) \, dz = \sum_{j=1}^n \int _ {C_j} (z-z_j)\delta_j(z) \, dz \\
+\implies &\left \vert \int_C f(z) \, dz \right \vert \le \sum_{j=1}^n \left \vert \int _ {C_j} (z-z_j)\delta_j(z) \, dz \right \vert.
+\end{align*}$$
+
+Note that each $C_j$ coincides either entirely or partially with the boundary of a square. In either case, we let $s_j$ and $A_j$ denote the length of a side of the $j$th square and the area of the square, respectively. Since, in $j$th integral, both the variable $z$ and the point $z_j$ lie in that square, we have 
+
+$$\vert z - z_j \vert \le \sqrt{2} s_j,$$
+
+so that 
+
+$$\vert (z-z_j)\delta_j(z) \vert < \sqrt{2} s_j \varepsilon.$$
+
+We will use the [$ML$ Lemma]({% post_url Complex Analysis/2026-05-01-ML-Lemma %}). Note that the length of $C_j$ is $4s_j$ if $C_j$ is the boundary of a square. In that case, we have 
+
+$$\left \vert \int _ {C_j} (z-z_j)\delta_j(z) \, dz \right \vert < (\sqrt{2}s_j \varepsilon) \cdot (4s_j) = 4\sqrt{2}A_j\varepsilon.$$
+
+If $C_j$ is the boundary of a partial square, its length does not exceed $4s_j + L_j$, where $L_j$ is the length of that part of $C_j$ which is also a part of $C$. In that case, we have 
+
+$$\left \vert \int _ {C_j} (z-z_j)\delta_j(z) \, dz \right \vert < (\sqrt{2}s_j \varepsilon) \cdot (4s_j + L_j) = 4\sqrt{2}A_j\varepsilon + \sqrt{2}s_jL_j \varepsilon,$$
+
+where $S$ is the length of a side of some square that encloses the entire contour $C$ as well as all of the squares originally used in covering $R$. Note that the sum of all the $A_j$’s does not exceed $S^2$ and $s_j \le S$.
+
+If we let $L$ denote the length of $C$, then we obtain that 
+
+$$\left \vert \int_C f(z) \, dz \right \vert < 4 \sqrt{2} S^2 \varepsilon + \sqrt{2} SL \varepsilon = (4\sqrt{2}S^2 + \sqrt{2}SL) \varepsilon.$$
+
+Since we have chosen $\varepsilon$ arbitrarily, we must have 
+
+$$\int_C f(z) \, dz =0. \quad \blacksquare$$
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

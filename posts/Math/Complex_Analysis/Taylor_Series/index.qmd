@@ -1,0 +1,105 @@
+---
+title: "Taylor Series"
+author: "Youmin Chun"
+date: "2026-09-01"
+description: "복소해석학의 테일러 급수에 대해서 소개한다."
+categories: 
+  - Math > Complex Analysis
+---
+
+## Theorem
+Suppose that a function $f$ is analytic throughout a disk $\vert z - z_0 \vert < R_0$ centered at $z_0$ and with radius $R_0$. Then $f$ has the power series expansion 
+
+$$f(z) = \sum_{n=0}^\infty a_n(z-z_0)^n \quad (\vert z - z_0 \vert < R_0),$$
+
+where
+
+$$a_n = \frac{f^{(n)}(z_0)}{n!}, \quad n = 0, 1, 2, \cdots,$$
+
+for each point in the open disk $\vert z - z_0 \vert < R_0$.
+
+This series is called the ***Taylor series*** for $f$ about $z_0$. When $z_0 = 0$, the series is also called the ***Maclaurin series*** for $f$.
+
+### Proof
+For a given $z$ in the open disk $\vert z - z_0 \vert < R_0$, we write $\vert z - z_0 \vert = r$ and let $C_0$ denote the positively oriendted circle $\vert z - z_0 \vert = r_0$ where $r < r_0 < R_0$. Since $f$ is analytic inside and on $C_0$ and $z$ is interior to $C_0$, we have 
+
+$$f(z) = \frac{1}{2\pi i} \int _{C_0} \frac{f(s)}{s-z} \, ds$$
+
+by the Cauchy integral formula. 
+
+Note that $\left \vert \frac{z-z_0}{s-z_0} \right \vert = \frac{r}{r_0} < 1$. Then we have
+
+$$\begin{align*}
+\frac{1}{s-z} &= \frac{1}{(s-z_0) - (z- z_0)} \\
+&=\frac{1}{s-z_0} \cdot \frac{1}{1- \frac{z-z_0}{s-z_0}} \\
+&= \frac{1}{s-z_0} \left[ \sum_{n=0}^{k-1} \left( \frac{z-z_0}{s-z_0} \right)^n + \frac{\left( \frac{z-z_0}{s-z_0} \right)^k}{1 - \frac{z-z_0}{s-z_0}} \right] \\
+&= \sum_{n=0}^{k-1} \frac{\left( z-z_0 \right)^n}{(s-z_0)^{n+1}} + \frac{(z-z_0)^k}{(s-z)(s-z_0)^k},
+\end{align*}$$
+
+for all $k \ge 0$. It follows that 
+
+$$\begin{align*}
+f(z) &= \frac{1}{2\pi i} \int _{C_0} \frac{f(s)}{s-z} \, ds \\
+&= \frac{1}{2\pi i} \int _{C_0} f(s) \left[ \sum_{n=0}^{k-1} \frac{\left( z-z_0 \right)^n}{(s-z_0)^{n+1}} + \frac{(z-z_0)^k}{(s-z)(s-z_0)^k} \right] \, ds \\
+&= \sum_{n=0}^{k-1} (z-z_0)^n \frac{1}{2\pi i} \int _{C_0} \frac{f(s)}{(s-z_0)^{n+1}} \, ds + \frac{1}{2\pi i} (z-z_0)^k \int _{C_0} \frac{f(s)}{(s-z)(s-z_0)^k} \, ds,
+\end{align*}$$
+
+for all $k \ge 0$.
+
+We let 
+
+$$\rho_k = \frac{1}{2\pi i} (z-z_0)^k \int _{C_0} \frac{f(s)}{(s-z)(s-z_0)^k} \, ds, \forall k \ge 0.$$
+
+Since 
+
+$$\frac{1}{2\pi i} \int _{C_0} \frac{f(s)}{(s-z_0)^{n+1}} \, ds = \frac{f^{(n)}(z_0)}{n!} =: a_n$$
+
+by the Cauchy integral formula, we obtain 
+
+$$f(z) = \sum_{n=0}^{k-1}a_n(z-z_0)^n + \rho_k.$$
+
+We claim that $\displaystyle \lim_{k \to \infty} \rho_k = 0$.
+
+To see this, we use the $ML$-lemma. Note that 
+
+$$\begin{align*}
+\vert s-z \vert &= \vert (s-z_0) - (z-z_0) \vert \\
+&\ge \vert s-z_0 \vert - \vert z-z_0 \vert \\
+&= r_0 - r.
+\end{align*}$$
+
+Then we have 
+
+$$\begin{align*}
+\vert \rho_k \vert &= \left \vert \frac{1}{2\pi i} (z-z_0)^k \int _{C_0} \frac{f(s)}{(s-z)(s-z_0)^k} \, ds \right \vert \\
+& \le \frac{1}{2\pi} \cdot r^k \cdot \frac{\max _{s \in C_0} f(s) }{(r_0 - r)r_0^k} \cdot 2 \pi r_0 \\
+&= \max _{s \in C_0} f(s) \frac{r_0}{r_0 - r} \left( \frac{r}{r_0} \right)^k.
+\end{align*}$$
+
+Since $\frac{r}{r_0} < 1$, we see that 
+
+$$\lim_{k \to \infty} \max _{s \in C_0} f(s) \frac{r_0}{r_0 - r} \left( \frac{r}{r_0} \right)^k = 0.$$
+
+Thus, we conclude 
+
+$$\lim_{k \to \infty} \left \vert \rho_k \right \vert = 0,$$
+
+so that 
+
+$$\lim_{k \to \infty} \rho_k = 0.$$
+
+Hence,
+
+$$\begin{align*} 
+f(z) &= \lim_{k \to \infty} f(z) \\
+&= \lim_{k \to \infty} \left( \sum_{n=0}^{k-1}a_n(z-z_0)^n + \rho_k \right) \\
+&= \sum_{n=0}^\infty a_n(z-z_0)^n. \quad \blacksquare
+\end{align*}$$
+
+## Remark
+**(i)** Any function which is analytic at a point $z_0$ must have a Taylor series about $z_0$.
+
+**(ii)** An entire function has a Taylor series everywhere.
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

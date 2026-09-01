@@ -1,0 +1,48 @@
+---
+title: "ML Lemma"
+author: "Youmin Chun"
+date: "2026-09-01"
+description: "복소해석학의 ML Lemma에 대해서 소개한다."
+categories: 
+  - Math > Complex Analysis
+---
+
+## Lemma
+If $w(t)$ is a piecewise continuous complex-valued function defined on an interval $a \le t \le b$, then 
+
+$$\left \vert \int_a^b w(t) \, dt \right \vert \le \int_a^b \vert w(t) \vert \, dt.$$
+
+### Proof
+If $\displaystyle \int_a^b w(t) \, dt = 0$, then clearly we have $\displaystyle 0 \le \int_a^b \vert w(t) \vert \, dt$. 
+
+Suppose that $\displaystyle \int_a^b w(t) \, dt \neq 0$, and $\displaystyle \int_a^b w(t) \, dt = r_0e^{i \theta_0}$ for some $r_0 > 0$ and $\theta_0$. Then we have that
+
+$$\begin{align*}
+\left \vert \int_a^b w(t) \, dt \right \vert & = r_0 \\
+&= \int_a^b e^{-i\theta_0} w(t) \, dt \\
+&= \mathrm{Re}\left[ \int_a^b e^{-i\theta_0} w(t) \, dt \right] \\
+&= \int_a^b \mathrm{Re} [e^{-i\theta_0} w(t)] \, dt \\
+& \le \int_a^b \vert e^{-i \theta_0} w(t) \vert \, dt \\
+& = \int_a^b \vert w(t) \vert \, dt. \quad \blacksquare
+\end{align*}$$
+
+## Theorem ($ML$ Lemma)
+Let $C$ denote a contour of lenght $L$, and suppose that a function $f(z)$ is piecewise continuous on $C$. If $\vert f(z) \vert \le M, \forall z \in C$ for some $M \ge 0$, then we have 
+
+$$\left \vert \int_C f(z) \, dz \right \vert \le ML.$$
+
+$f$가 $C$위에서 piecewise continuous이면 parametrization을 통해 $a \le t \le b$에서 $f[z(t)]$와 같이 둘 수 있다. 즉 compact set $[a, b]$에서 $f$가 연속이므로 bounded되어 있기 때문에 위 정리에서 $M$의 존재성은 항상 보장된다. 
+
+### Proof
+Suppose that $C$ is parametrized by the equation $z = z(t), \forall a \le t \le b$. Then we have that
+
+$$\begin{align*}
+\left \vert \int_C f(z) \, dz \right \vert &= \left \vert \int_a
+^b f[z(t)] z'(t) \, dt \right \vert \\
+& \le \int_a^b \vert f[z(t)] z'(t) \vert \, dt \\
+&\le M \int_a^b \vert z'(t) \vert \, dt \\
+&= ML. \quad \blacksquare
+\end{align*}$$
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

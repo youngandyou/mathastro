@@ -1,0 +1,137 @@
+---
+title: "Antiderivative"
+author: "Youmin Chun"
+date: "2026-09-01"
+description: "복소해석학에서의 역도함수와 관련된 정리에 대해서 소개한다."
+categories: 
+  - Math > Complex Analysis
+---
+
+## Definition
+Let $f(z)$ be a continuous function on a domain $D$. A function $F(z)$ is called an ***antiderivative*** of $f(z)$ if $F'(z) = f(z), \forall z \in D$.
+
+## Remark
+An antiderivative of a given function $f(z)$ is unique except for an additive constant.
+
+$\big[(\because)$ Let $F(z)$ and $G(z)$ be two antiderivatives of $f(z)$. Since $F'(z) = f(z) = G'(z)$ on $D$, we have $(F - G)'(z) = F'(z) - G'(z) = 0$ on $D$, which means that the function $F - G$ is analytic on $D$. By [Theorem 1], we have $F(z) - G(z) = (F-G)(z) = C$ for some constant $C$.$\big]$
+
+## Theorem 1
+Suppose that a function $f(z)$ is continuous on a domain $D$. TFAE.
+
+**(i)** $f(z)$ has an antiderivative $F(z)$ throughout $D$.
+
+**(ii)** For any contour $C \subset D$, extending from any fixed point $z_1$ to any fixed point $z_2$, the value of integral along $C$ is ***independent of path*** taken. In particular, 
+
+$$\int_{z_1}^{z_2} f(z) \, dz = F(z_2) - F(z_1),$$
+
+where $F(z)$ is the antiderivative of $f(z)$.
+
+**(iii)** For any closed contour $C \subset D$, $\displaystyle \int_C f(z) \, dz = 0$.
+
+### Proof
+**(i)** $\Longrightarrow$ **(ii)**
+
+Suppose that $f(z)$ has an antiderivative $F(z)$ throughout $D$. Let $C$ be a contour in $D$ from $z_1$ to $z_2$ with the parametrization $z = z(t) (a \le t \le b)$. Suppose that $C$ is a single smooth curve. Then we have 
+
+$$\frac{d}{dt}F[z(t)] = F'[z(t)] z'(t) = f[z(t)]z'(t)$$
+
+for $a \le t \le b$. Then we have 
+
+$$\begin{align*}
+\int_C f(z) \, dz &= \int_a^b f[z(t)] z'(t) \, dt \\
+&= \int_a^b \frac{d}{dt} F[z(t)] \, dt \\
+&= F[z(b)] - F[z(a)] \\
+&= F(z_2) - F(z_2)
+\end{align*}$$
+
+by [Theorem 3]({% post_url Complex Analysis/2026-04-28-Contours %}#theorem-3). The value $F(z_2) - F(z_1)$ of this countour integral is independent of the contour $C$. 
+
+If $C$ consists of a finite number of smooth curves $C_1, \cdots, C_n$, each $C_k$ extending from a point $z_k$ to a point $z_{k+1}$, then we have 
+
+$$\begin{align*}
+\int_C f(z) \, dz &= \sum_{k=1}^n \int _ {C_k} f(z) \, dz \\
+&= \sum_{k=1}^n \int _ {z_k} ^ {z_{k+1}} f(z) \, dz \\
+&= \sum_{k=1}^n [F(z_{k+1}) - F(z_k)] \\
+&= F(z_n) - F(z_1).
+\end{align*}$$
+
+Thus, the value $F(z_n) - F(z_1)$ of this countour integral is independent of the contour $C$. 
+
+**(ii)** $\Longrightarrow$ **(iii)**
+
+Suppose that the value of the integral of $f(z)$ is independent of path in $D$. Let $z_1$ and $z_2$ be two points on any closed contour $C$ lying in $D$ and form two paths $C_1$ and $C_2$, each with initial point $z_1$ and final point $z_2$, such that $C = C_1 - C_2$. By the independence of path, we have 
+
+$$\int _ {C_1} f(z) \, dz = \int _ {C_2} f(z) \, dz,$$
+
+so that 
+
+$$\begin{align*}
+\int_C f(z) \, dz &= \int _ {C_1 - C_2} f(z) \, dz \\
+&= \int _ {C_1} f(z) \, dz + \int _ {-C_2} f(z) \, dz \\
+&= \int _ {C_1} f(z) \, dz - \int _ {C_2} f(z) \, dz \\
+&= 0.
+\end{align*}$$
+
+**(iii)** $\Longrightarrow$ **(i)**
+
+Suppose that the value of the integral on the closed contour $C$ in $D$ is zero. We let $C_1$ and $C_2$ denote any two contours, lying in $D$, from a point $z_1$ to a point $z_2$. Then $C := C_1 - C_2$ is a closed contour in $D$. Then we have 
+
+$$\begin{align*}
+0 &= \int_C f(z) \, dz \\
+&= \int _ {C_1 - C_2} f(z) \, dz \\
+&= \int _ {C_1} f(z) \, dz + \int _ {-C_2} f(z) \, dz \\
+&= \int _ {C_1} f(z) \, dz - \int _ {C_2} f(z) \, dz,
+\end{align*}$$
+
+so that 
+
+$$\int _ {C_1} f(z) \, dz = \int _ {C_2} f(z) \, dz.$$
+
+Thus, the value of the integral on a contour in $D$ is independent of path. 
+
+We define the function 
+
+$$F(z) = \int _ {z_0}^z f(s) \, ds$$
+
+on $D$, where $z_0$ is a fixed point in $D$. Note that 
+
+$$\begin{align*}
+F(z + \Delta z) - F(z) &= \int _ {z_0} ^ {z + \Delta z} f(s) \, ds - \int _ {z_0}^z f(s) \, ds \\
+&= \int _ {z} ^ {z + \Delta z} f(s) \, ds,
+\end{align*}$$
+
+and we regard this integral as the contour integral in which the path is a line segment from $z$ to $z + \Delta z$. 
+
+Since 
+
+$$\int _ {z} ^ {z + \Delta z} ds = \Delta z,$$
+
+we have 
+
+$$f(z) = \frac{1}{\Delta z} \int _ {z} ^ {z + \Delta z} f(z) \, ds,$$
+
+so that
+
+$$\frac{F(z+ \Delta z) - F(z)}{\Delta z} - f(z) = \frac{1}{\Delta z}\int _ {z} ^ {z + \Delta z} [f(s) - f(z)] \, ds.$$
+
+Since $f(z)$ is continuous at $z$, for each $\varepsilon > 0$, there exists $\delta > 0$ such that 
+
+$$\vert s - z \vert < \delta \implies \vert f(s) - f(z) \vert < \varepsilon.$$
+
+For sufficiently small $\Delta z$, so that $\vert \Delta z \vert < \delta$, we have 
+
+$$\begin{align*}
+\left \vert \frac{F(z+ \Delta z) - F(z)}{\Delta z} - f(z) \right \vert &= \left \vert \frac{1}{\Delta z}\int _ {z} ^ {z + \Delta z} [f(s) - f(z)] \, ds \right \vert \\
+&\le \frac{1}{\vert \Delta z \vert} \int _ {z} ^ {z + \Delta z} \vert f(s) - f(z) \vert \, ds \\
+& < \frac{1}{\vert \Delta z \vert} \varepsilon \vert \Delta z \vert \\
+& = \varepsilon.
+\end{align*}$$
+
+Thus, we have 
+
+$$F'(z) = \lim_{\Delta z \to 0} \frac{F(z+ \Delta z) - F(z)}{\Delta z} = f(z)$$
+
+on $D$. $\blacksquare$
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

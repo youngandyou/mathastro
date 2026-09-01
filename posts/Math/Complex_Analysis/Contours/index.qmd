@@ -1,0 +1,116 @@
+---
+title: "Contours"
+author: "Youmin Chun"
+date: "2026-09-01"
+description: "복소해석학의 경로, contour와 parametrization에 대해서 소개한다."
+categories: 
+  - Math > Complex Analysis
+---
+
+## Definition 1
+Let $w(t) = u(t) + iv(t)$ be a complex valued function of a real variable $t$ where the functions $u$ and $v$ are real-valued functions of $t$. Then the derivative of $w(t)$ is defined as 
+
+$$w'(t) = \frac{dw}{dt} := u'(t) + iv'(t)$$
+
+provided each of the derivatives $u'$ and $v'$ exists at $t$. 
+
+## Theorem 1
+Let $w(t) = u(t) + iv(t)$ and $W(t) = U(t) + iV(t)$ be complex-valued function of a real variable $t$ where $u,v,U,V$ are real-valued functions of $t$. Then 
+
+**(i)** $\displaystyle \frac{d}{dt} [w(t) + cW(t)] = w'(t) + c W'(t)$ for any complex constant $c$.
+
+**(ii)** $\displaystyle \frac{d}{dt} [w(t) W(t)] = w'(t) W(t) + w(t) W'(t)$
+
+**(iii)** $\displaystyle \frac{d}{dt} \left[ \frac{w(t)}{W(t)} \right] = \frac{w'(t) W(t) - w(t) W'(t)}{[W(t)]^2}$ provided $W(t) \neq 0$.
+
+**(iv)** $\displaystyle \frac{d}{dt} [e^{z_0 t}] = z_0 e^{z_0 t}$ for any complex constant $z_0$.
+
+## Remark 1
+실수에서 그러했듯이, 2차원 상에서의 경로 내지는 곡선을 표현할 때 적절히 parametrization해주면 편리하다. 마찬가지로 복소평면 상에서의 경로, 즉 contour를 적절히 parametrization 해주기 위해서는 위와 같은 함수의 미분과 적분의 정의가 필요함을 알 수 있다.
+
+주의할 점은, 위와 같이 상식적인 미분의 결과들이 잘 성립하는 것처럼 보이지만 평균값 정리는 그렇지 않다. 예컨대 $0 \le t \le 2 \pi$에서 $w(t) = e^{it}$로 정의하면 $\vert w'(t) \vert = \vert i e^{it} \vert = 1$이다. 반면 
+
+$$\frac{w(2\pi) - w(0)}{2 \pi - 0} = 0$$
+
+이므로, 어떤 $t$에 대해서도 위 값과 $w'(t)$의 값이 같을 수 없고 따라서 평균값 정리가 성립하지 않는다. 추가적으로, 위와 같이 적분 또한 componentwise하게 정의할 수 있는데, 이에 대해 위와 동일한 예시로 계산해보면 적분의 평균값 정리 또한 성립하지 않음을 확인할 수 있다. 놀라운 점은, 그럼에도 불구하고 미적분학의 기본정리가 잘 확장된다는 점이다. 
+
+## Definition 2
+Let $w(t) = u(t) + iv(t)$ be a complex valued function of a real variable $t$ where the functions $u$ and $v$ are real-valued functions of $t$. Then the definite integral of $w(t)$ over $a \le t \le b$ is defined as 
+
+$$\int_{a}^{b} w(t) \, dt := \int_{a}^{b} u(t) dt + i \int_{a}^{b} v(t) dt,$$
+
+provided the individual integrals on the right-hand side exist. 
+
+## Theorem 2
+Let $w(t) = u(t) + iv(t)$ and $W(t) = U(t) + iV(t)$ be complex-valued function of a real variable $t$ where $u,v,U,V$ are real-valued functions of $t$. Then 
+
+**(i)** $\displaystyle \int_{a}^{b} [w(t) + cW(t)] \, dt = \int_{a}^{b} w(t) \, dt + c \int_{a}^{b} W(t) \, dt$
+
+**(ii)** $\displaystyle \int_a^b w(t) \, dt = \int_a^c w(t) \, dt + \int_c^b w(t) \, dt$ for any real number $c$ such that $a \le c \le b$.
+
+**(iii)** $\displaystyle \int_a^b w(t) \, dt = - \int_b^a w(t) \, dt$
+
+**(iv)** $\displaystyle \int_a^a w(t) \, dt = 0$
+
+## Theorem 3
+Let $w(t) = u(t) + iv(t)$ be a complex-valued function of a real variable $t$ where the functions $u$ and $v$ are real-valued functions of $t$. Then we have
+
+$$\int_a^b w'(t) \, dt = w(b) - w(a).$$
+
+### Proof
+
+$$\begin{align*}
+\int_a^b w'(t) \, dt &= \int_a^b u'(t) + iv'(t) \, dt \\
+&= \int_a^b u'(t) \, dt + i \int_a^b v'(t) \, dt \\
+&= (u(b) - u(a)) + i (v(b) - v(a)) \\
+&= w(b) - w(a). \blacksquare
+\end{align*}$$
+
+## Definition 3
+**(i)** A set of points $z = (x, y)$ in $\mathbb{C}$ is called an ***arc*** or ***curve*** if $x = x(t)$ and $y = y(t)$ for $a \le t \le b$, where $x(t)$ and $y(t)$ are continuous functions of real parameter $t$. In this case, a curve can be written as $z(t) = x(t) + iy(t)$. 
+
+**(ii)** A curve is called a ***simple curve***, or a ***Jordan curve*** if $z(t_1) \neq z(t_2), \forall t_1 \neq t_2$. 
+
+**(iii)** A curve is called a ***simple closed curve*** if the curve is simple except for the boundary points, that is, $z(a) = z(b)$. 
+
+**(iv)** A curve is said to be ***smooth*** if $z'(t)$ is continuous and $z'(t) \neq 0, \forall t \in [a, b]$.
+
+**(v)** A curve is said to be ***positively oriented*** if it is in the counterclockwise direction.
+
+## Remark 2
+곡선 $C$가 $z = z(t), a \le t \le b$ 로 표현된다고 하자. 이때 이러한 parametrization은 유일하지 않음이 잘 알려져 있다. 예컨대 속도를 $2$배로 키워주면 구간이 반으로 줄어들지만 여전히 같은 곡선의 parametrization이다. 일반적으로 쓰면 다음과 같다.
+
+$\alpha \le \tau \le \beta$에서 정의된 real-valued function $\phi$를 다음과 같이 쓰자. 
+
+$$t = \phi(\tau), \quad \alpha \le \tau \le \beta$$
+
+이때 $\phi$는 연속이고, 도함수 $\phi'(\tau)$ 또한 연속이며 전체 구간에 대해서 $\phi'(\tau) > 0$을 만족한다고 하자. 그러면 $C$는 $z = Z(\tau) = z(\phi(\tau)), \alpha \le \tau \le \beta$로 표현 가능하다. 
+
+## Definition 4
+Let $C$ be a curve represented by the equation $z(t) = x(t) + iy(t)$ for $a \le t \le b$. 
+
+**(i)** $C$ is called a ***differentiable curve*** if $x'(t)$ and $y'(t)$ are continuous on $[a, b]$.
+
+**(ii)** The ***length*** of $C$ is defined by 
+
+$$L = \int_a^b \vert z'(t) \vert \, dt = \int_a^b \sqrt{[x'(t)]^2 + [y'(t)]^2} \, dt$$
+
+## Remark 3
+자명하게도 곡선의 길이 $L$은 parametrization의 선택에 대해 불변이다. Remark 2에서와 같이 $t = \phi(\tau), \alpha \le \tau \le \beta$로 가지고 오고 $z = Z(\tau) = z(\phi(\tau))$로 두면 다음을 얻는다. 
+
+$$\begin{align*}
+L &= \int_a^b \vert z'(t) \vert \, dt \\
+&= \int_\alpha^\beta \vert z'(\phi(\tau)) \vert \phi'(\tau) \, d\tau \\
+&= \int_\alpha^\beta \vert z'(\phi(\tau)) \phi'(\tau) \vert \, d \tau \\
+&= \int_\alpha^\beta \vert Z'(\tau) \vert \, d \tau
+\end{align*}$$
+
+$z(t)$와 $Z(\tau)$는 모두 같은 곡선을 나타내는 parametrization이므로 곡선의 길이는 변하지 않는다. 
+
+## Definition 5
+**(i)** A ***contour*** is an curve consisting of a finite number of simple smooth curves joined end to end. That is, a contour is a piecewise smooth curve.
+
+**(ii)** If only the initial and final values of $z(t)$ are the same, a contour is called a ***simple closed contour***. 
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

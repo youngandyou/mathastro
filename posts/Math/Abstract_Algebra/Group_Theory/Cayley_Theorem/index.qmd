@@ -1,0 +1,112 @@
+---
+title: "Cayley Theorem"
+author: "Youmin Chun"
+date: "2026-09:02 00:00:07"
+description: "케일리의 정리(Cayley Theorem)에 대해서 소개한다."
+categories: 
+  - Math > Abstract Algebra > Group Theory
+---
+
+## Lemma
+Let $\phi:G \to G'$ be a monomorphism of groups. Then $\operatorname{Im}(\phi) \le G'$ and $\operatorname{Im}(\phi) \cong G$.
+
+### Proof 
+Since $\phi$ is a homomorphism, clearly $\operatorname{Im}(\phi) = \phi(G) \le G'$.
+
+Define a function $f: G \to \phi(G)$ by $f(g) = \phi(g)$ for all $g \in G$. Since $\phi$ is a monomorphism, $f$ is injective. Clearly $f$ is surjective, so that $f$ is an isomorphism. Thus, $\operatorname{Im}(\phi) \cong G$. $\blacksquare$
+
+## Cayley's Theorem
+Every group is isomorphic to a subgroup of $S_A$ for some set $A$.
+
+### Proof
+Let $G$ be a group. Define a function $\sigma_x : G \to G$ by 
+
+$$\sigma_x(g) = xg, \forall g \in G.$$
+
+Since $G$ is a group, the binary operation is well-defined, so that $\sigma_x$ is well-defined. 
+
+Suppose that $\sigma_x(g_1) = \sigma_x(g_2)$ for some $g_1, g_2 \in G$. Then we have 
+
+$$\begin{align*}
+\sigma_x(g_1) = \sigma_x(g_2) &\implies xg_1 = xg_2 \\
+&\implies g_1 = g_2,
+\end{align*}$$
+
+which means that $\sigma_x$ is one-to-one. 
+
+Let $a \in G$. Since $x^{-1}a \in G$, we have 
+
+$$\sigma_x(x^{-1}a) = x(x^{-1}a) = a$$
+
+Thus $\sigma_x$ is onto, so that $\sigma_x \in S_G$.
+
+Define a function $\phi: G \to S_G$ by 
+
+$$\phi(x) = \sigma_x, \forall x \in G.$$
+
+Clearly $\phi$ is well-defined. If $\phi(x) = \phi(y)$, then $\sigma_x = \sigma_y$. Since 
+
+$$x = xe = \sigma_x(e) = \sigma_y(e) = ye = y,$$
+
+$x = y$ so that $\phi$ is one-to-one.
+
+Let $x, y \in G$. Then we have 
+
+$$\begin{align*}
+(\phi(xy))(g) &= (xy)g \\
+&= x(yg) \\
+&= \sigma_x(\sigma_y(g)) \\
+&= (\sigma_x \sigma_y)(g) \\
+&= (\phi(x) \phi(y))(g)
+\end{align*}$$
+
+for all $g \in G$. Thus $\phi(xy) = \phi(x) \phi(y)$, so that $\phi$ is a homomorphism. 
+
+By Lemma, $G$ is isomorphic to $\operatorname{Im}(\phi)$, a subgroup of $S_G$. $\blacksquare$
+
+## Example
+Let $G = \{ e, a, b \}$ be a group given by
+
+$$
+\begin{array}{c|ccc}
+* & e & a & b \\
+\hline
+e & e & a & b \\
+a & a & b & e \\
+b & b & e & a
+\end{array}
+$$
+
+Define for each $x \in G$, $\sigma_x: G \to G$ by $\sigma_x(g) = xg$ for all $g \in G$. Then we have
+
+$$
+\sigma_e = \begin{pmatrix}
+e & a & b \\
+e & a & b \\
+\end{pmatrix}, \quad 
+\sigma_a = \begin{pmatrix}
+e & a & b \\
+a & b & e \\
+\end{pmatrix}, \quad 
+\sigma_b = \begin{pmatrix}
+e & a & b \\
+b & e & a \\
+\end{pmatrix}
+$$
+
+Now, $\{\sigma_e, \sigma_a, \sigma_b\}$ forms a group under composition of functions as follows:
+
+$$
+\begin{array}{c|ccc}
+ & \sigma_e & \sigma_a & \sigma_b \\
+\hline
+\sigma_e & \sigma_e & \sigma_a & \sigma_b \\
+\sigma_a & \sigma_a & \sigma_b & \sigma_e \\
+\sigma_b & \sigma_b & \sigma_e & \sigma_a.
+\end{array}
+$$
+
+Hence $G \cong \{ \sigma_e, \sigma_a, \sigma_b \} \le S_G.$
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

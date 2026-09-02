@@ -1,0 +1,242 @@
+---
+title: "Orbit, Cycle and Transposition"
+author: "Youmin Chun"
+date: "2026-09:02 00:00:04"
+description: "대수학에서 순열(Permutation)의 궤도(Orbit)와 순환(Cylce), 전위(Transposition)에 대해서 설명한다. 또한 홀순열(Odd Permutation)과 짝순열(Even Permutation)에 대해서 정의하고 홀이면서 짝인 순열은 존재할 수 없음을 보인다."
+categories: 
+  - Math > Abstract Algebra > Group Theory
+---
+
+## Remark 1
+Let $\sigma$ be a permutation of a set $A$. Define a relation $\sim$ on $A$ by
+
+$$ a \sim b \iff b = \sigma^n(a) \text{ for some } n \in \mathbb{Z}. $$
+
+Then $\sim$ is an equivalence relation on $A$.
+
+$\big[ (\because)$ Let $a, b, c \in A$.
+
+**(i)** Note that $a = \sigma^0(a)$; so $a \sim a$. Thus, $\sim$ is reflexive.
+
+**(ii)** If $a \sim b$, then $b = \sigma^n(a)$ for some $n \in \mathbb{Z}$. Since $\sigma$ is bijective, $a = \sigma^{-n}(b)$; so $b \sim a$. Thus, $\sim$ is symmetric.
+
+**(iii)** Suppose that $a \sim b$ and $b \sim c$. Then $b = \sigma^m(a)$ and $c = \sigma^n(b)$ for some $m, n \in \mathbb{Z}$. Hence $c = \sigma^n(\sigma^m(a)) = \sigma^{n+m}(a)$, which means that $a \sim c$. Thus, $\sim$ is transitive.
+
+Therefore, $\sim$ is an equivalence relation on $A. \big]$
+
+## Definition 1
+Let $\sigma$ be a permutation of a set $A$. 
+
+**(i)** The ***orbits*** of $\sigma$ are the equivalence classes in $A$ determined by the equivalence relation $\sim$ in the previous remark.
+
+**(ii)** $\sigma$ is called a ***cycle*** if it has at most one orbit containing more than one element.
+
+**(iii)** The ***length*** of a cycle is the number of elements in its largest orbit.
+
+**(iv)** A cycle of length 2 is a ***transposition***.
+
+## Example
+
+예컨대 $\sigma \in S_8$이 다음과 같이 주어져 있다.
+
+$$\sigma = \begin{pmatrix} 1 & 2 & 3 & 4 & 5 & 6 & 7 & 8 \\ 3 & 8 & 6 & 7 & 4 & 1 & 5 & 2 \end{pmatrix}$$
+
+그러면 다음의 관계가 성립한다. 
+
+$$
+\begin{align*}
+1 &\xrightarrow{\sigma} 3 \xrightarrow{\sigma} 6 \xrightarrow{\sigma} 1 \xrightarrow{\sigma} 3 \xrightarrow{\sigma} 6 \xrightarrow{\sigma} \cdots, \\
+2 &\xrightarrow{\sigma} 8 \xrightarrow{\sigma} 2 \xrightarrow{\sigma} 8 \xrightarrow{\sigma} 2 \xrightarrow{\sigma} 8 \xrightarrow{\sigma} \cdots, \\
+4 &\xrightarrow{\sigma} 7 \xrightarrow{\sigma} 5 \xrightarrow{\sigma} 4 \xrightarrow{\sigma} 7 \xrightarrow{\sigma} 5 \xrightarrow{\sigma} \cdots.
+\end{align*}
+$$
+
+즉, $\sigma$에 의해서 결정되는 equivalence class들, 즉 orbit들은 $\{1, 3, 6\}, \{2, 8\}, \{ 4, 5, 7 \}$이다. 이때 우리는 orbit들을 이용해서 $\sigma$를 다음과 같이 작성할 수 있다.
+
+$$\sigma = (1, 3, 6)(2, 8)(4, 7, 5)$$
+
+한편 
+
+$$\tau = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 2 & 3 & 1 & 4 \end{pmatrix} \in S_4$$
+
+를 고려하면, $\tau = (1, 2, 3)(4)$로 쓸 수 있다. 이때 orbit은 $\{ 1, 2, 3 \}, \{ 4 \}$로 주어지는데, 원소가 하나보다 많은 orbit은 $\{ 1, 2, 3 \}$뿐이고, 따라서 $\tau$를 cycle이라고 부른다. 이때 cylce $\tau$의 길이는 $3$이다. 그리고 이때 $(4)$는 그저 $4$라는 원소를 다시 $4$로 되돌려주는 역할만 하기 때문에, 크리티컬한 역할을 하지 않으므로 보통 생략해서 $\tau = (1, 2, 3)$으로 표기한다. 그런데 이런 경우 $\tau$가 정확히 어떤 집합의 순열인지 알 수 없기 때문에 $\tau = (1, 2, 3) \in S_4$와 같이 속해있는 집합을 분명히 명시해주어야 한다. 
+
+반면 앞서 살펴본 $\sigma$는 원소가 하나보다 많은 orbit이 무려 세 개나 있고, 따라서 cycle이 아니다. 
+
+한편, 순열을 orbit들로 표기하는 방법은 단순한 노테이션을 넘어서서, 실제로 함수의 합성으로 엄밀한 의미를 가짐을 보일 수 있다. 즉, $\sigma$는 세 함수 $(1, 3, 6), (2, 8), (4, 7, 5)$의 합성으로 표현될 수 있다는 것이다.  
+
+다시 $\tau = (1, 2, 3)(4)$를 고려해보자. 이 순열을 실제로 두 cycle $(1, 2, 3)$과 $(4)$의 합성으로 이해하려면 우선 정의역과 공역이 잘 맞아 떨어져야 한다. 그러기 위해서 다음과 같이 간주해보자.
+
+$$(1, 2, 3) = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 2 & 3 & 1 & 4 \end{pmatrix}, \quad (4) = \begin{pmatrix} 1 & 2 & 3 & 4 \\ 1 & 2 & 3 & 4 \end{pmatrix}$$
+
+이렇게 놓고 보면 두 cycle의 합성이 잘 정의되고, 실제로 계산해보면 $(1, 2, 3)(4) = \tau$임을 알 수 있다. 이때 $(4)$는 사실상 항등함수이므로, 일반적인 함수의 합성의 관점에서 본다면 identity의 역할로서 생략할 수 있다. 즉, 앞서 $(4)$가 크리티컬한 역할을 하지 않으므로 생략했던 것이 실제로도 reasonable함을 확인할 수 있다. 마찬가지로 $\sigma$ 또한 세 개의 순열 $(1, 3, 6), (2, 8), (4, 7, 5)$의 합성으로 이해할 수 있다. 
+
+한편, $1$부터 $8$까지의 원소들이 $\sigma$에 의해 바뀌는 현상을 고려할 때 각 cycle을 위에서 간주한 방법으로 생각해보면 $(1, 3, 6)$은 다른 원소들은 바꾸지 않고 오직 $1, 3, 6$만 바꾸고, 다른 cycle들도 그렇다. 그렇다면, 위에서는 $\sigma = (1, 3, 6)(2, 8)(4, 7, 5)$의 순서로 cycle을 나열해서 $\sigma$를 표현했는데, cycle들의 순서를 바꿔도 사실상 결과는 달라지지 않는다는 사실을 알 수 있다. 
+
+이러한 결과는 각 cycle끼리 서로 공유하는 원소가 없기 때문에, 즉 disjoint하기 때문에 가능한 일인데, 만약 두 cycle이 서로 공유하는 원소가 있다면 일반적으로 cycle들의 순서를 함부로 바꿀 수 없다. 예를 들어 
+
+$$\begin{pmatrix} 1 & 2 & 3 & 4 & 5 \\ 2 & 3 & 1 & 5 & 4 \end{pmatrix} = (1, 3)(1, 2)(4, 5)$$
+
+임을 쉽게 확인할 수 있다. 이때 $(1, 3)$과 $(1, 2)$의 순서를 바꿨을 때 두 표현이 $1$을 어떻게 보내는지 살펴보면 다음과 같다.
+
+$$(1, 3)(1, 2)(4, 5)(1) = (1, 3)(1, 2)(1) = (1, 3)(2) = 2$$
+
+$$(1, 2)(1, 3)(4, 5)(1) = (1, 2)(1, 3)(1) = (1, 2)(3) = 3$$
+
+따라서 두 표현이 $1$을 보내는 방식이 다르므로 두 표현이 같지 않음을 알 수 있다. $(1, 3)$과 $(1, 2)$가 모두 $1$이라는 원소가 바뀌는 현상에 대해 관여하고 있으므로, 일반적으로 그 순서를 바꾸면 결과도 달라지기 때문이다. 
+
+위 내용들을 모두 종합하면, 모든 순열은 disjoint cycle들의 곱으로 항상 표현될 수 있고, 순서를 고려하지 않는다면 이러한 표현은 유일하다는 사실을 알 수 있다.
+
+## Theorem 1
+Every permutation of a finite set is a product of disjoint cycles, and the expression is unique up to the order of factors.
+
+### Proof
+Let $\sigma$ be a permutation of a finite set $A$, and let $B_1, ..., B_r$ be the orbits of $\sigma$. For each $i \in \{ 1, ..., r \}$, define $\mu_i : A \to A$ as 
+
+$$\mu_i(a) = \begin{cases} \sigma(a) & \text{if } a \in B_i \\\ 
+a & \text{if } a \notin B_i \end{cases}$$
+
+**Claim 1**: each $\mu_i$ is a permutation of $A$.
+
+$\Big[$ $(\because)$ Since either $a \in B_i$ or $a \notin B_i$ (not both), $\mu_i$ is well-defined. 
+
+Suppose that $\mu_i(a) = \mu_i(b)$ for some $a, b \in A$. If $a, b \in B_i$, then we have $\sigma(a) = \sigma(b)$. Since $\sigma$ is injective, $a = b$. If $a \in B_i$ and $b \notin B_i$, then we have $\sigma(a) = b$. Then $a \sim b$, which means that $a$ and $b$ belong to the same orbit. Since $a \in B_i$, $b \in B_i$. $\bigotimes$. Similarly, if $a \notin B_i$ and $b \in B_i$, then we obtain the contradiction. If $a, b \notin B_i$, then we have $a = b$. For any case, we obtain $a = b$, which means that $\mu_i$ is injective. 
+
+Let $b \in A$. If $b \notin B_i$, then $\mu_i(b) = b$. If $b \in B_i$, then $\sigma(a) = b$ for some $a \in B_i$. Since $a \in B_i$, we have $\mu_i(a) = \sigma(a) = b$. Thus, $\mu_i$ is surjective. 
+
+Hence, $\mu_i$ is bijective, which means that $\mu_i$ is a permutation of $A$. $\Big]$
+
+**Claim 2**: each $\mu_i$ is a cycle.
+
+$\Big[$ $(\because)$ Let $a \in A$. If $a \notin B_i$, then $a \in B_j$ for some $j \neq i$, because the orbits $B_1, ..., B_r$ of $\sigma$ are disjoint. Denote the equivalence class of $a$ determined by $\mu_i$ by $[a]_i$. If $b \in [a]_i$, then $\mu_i^n(a) = b$ for some $n \in \mathbb{Z}$. Since $a \notin B_i$, we have $a = b$. Thus, for each $a \notin B_i$, the equivalence class $[a]_i$, which is the orbit of $\mu_i$,. contains only one element $a$.
+
+Suppose that $a \in B_i$. If $b \in [a]_i$, then $\mu_i^n(a) = b$ for some $n \in \mathbb{Z}$. Since $a \in B_i$, we have $\sigma^n(a) = b$, which implies that $b \in B_i$. Thus, $[a]_i \subset B_i$. If $b \in B_i$, then $\sigma^n(a) = b$ for some $n \in \mathbb{Z}$. Since $a \in B_i$, we have $\mu_i^n(a) = b$, which means that $b \in [a]_i$. Thus, $B_i \subset [a]_i$. 
+
+Hence, $B_i = [a]_i$, which means that each $\mu_i$ has at most one orbit containing more then one element of $A$. Therefore, $\mu_i$ is a cycle. $\Big]$
+
+**Claim 3**: $\sigma = \mu_1 \mu_2 \cdots \mu_r$.
+
+$\Big[$ $(\because)$ Let $a \in A$. Then $a \in B_i$ for some $i \in \\{ 1, ..., r \\}$, which implies that $\sigma(a) \in B_i$. Then we have
+
+$$\begin{align*}
+(\mu_1 \cdots \mu_r)(a) &= (\mu_1 \cdots \mu_{r-1})\mu_r(a) \\
+&= \cdots \\
+&= (\mu_1 \cdots \mu_{i-1})\mu_i(a) \\
+&= (\mu_1 \cdots \mu_{i-1})\sigma(a) \\
+&= \cdots \\
+&= \sigma(a)
+\end{align*}$$
+
+Hence $\sigma = \mu_1 \mu_2 \cdots \mu_r$. Since $B_1, ..., B_r$ are disjoint, $\mu_1, ..., \mu_r$ are disjoint. $\Big]$
+
+**Claim 4**: The expression $\sigma = \mu_1 \mu_2 \cdots \mu_r$ is unique up to the order of the factors.
+
+$\Big[$ $(\because)$ If $\sigma = \mathrm{id}$, then clearly the expression is unique. Suppose that $\sigma \neq \mathrm{id}$ and $\sigma$ is also expressed as $\sigma = \tau_1 \tau_2 \cdots \tau_k$ where $\tau_1, \tau_2, \cdots , \tau_k$ are disjoint cycles. Since $\sigma \neq \mathrm{id}$, there is an element $a \in A$ such that $\sigma(a) \neq a$. Since $\mu_i$'s and $\tau_j$'s are disjoint, respectively, $\sigma(a) = (\mu_1 \mu_2 \cdots \mu_r)(a) = \mu_i(a)$ for some $1 \le i \le r$, which means that $a \in B_i$, and $\sigma(a) = (\tau_1 \tau_2 \cdots \tau_k)(a) = \tau_j(a)$ for some $1 \le j \le k$. Then we have $\mu_i(a) = \tau_j(a)$, $a \neq \mu_i(a)$ and $a \neq \tau_j(a)$. 
+
+Denote the equivalence class of $a$ determined by $\tau_j$ by $[a]_j$. Then $\tau_j(a) \in [a]_j$. Since $a \neq \tau_j(a)$, the orbit $[a]_j$ contains more than one element. Since $\tau_j$ is a cycle, it has at most one orbit containing more than one element. Then we have
+
+$$\tau_j(x) = \begin{cases}
+\sigma(x) & \text{for } x \in [a]_j \\
+x & \text{for } x \notin [a]_j.
+\end{cases}$$
+
+Note that $\tau_j^n(a) = \sigma^n(a)$ and $\mu_i^n(a) = \sigma^n(a)$ for any integer $n$, because $\mu_i$'s and $\tau_j$'s are disjoint, respectively. Thus, $\mu_i^n(a) = \tau_j^n(a)$ for any integer $n$.
+
+If $b \in [a]_j$, then $\tau_j^n(a) = b$ for some $n \in \mathbb{Z}$. Since $\mu_i^n(a) = \tau_j^n(a)$ for any integer $n$, we have $\mu_i^n(a) = b$, which means that $b \in [a]_i$. If $b \in [a]_i$, then $\mu_i^n(a) = b$ for some $n \in \mathbb{Z}$. Similarly, we have $\tau_j^n(a) = b$, so that $b \in [a]_j$. Thus, $[a]_i = [a]_j$, so that $B_i = [a]_j$ because $B_i = [a]_i$. Thus, we have $\tau_j = \mu_i$, and therefore, the expression of $\sigma$ is unique up to the order of the factors. $\blacksquare$ $\Big]$
+
+## Remark
+**(i)** A product of disjoint cycles is commutative.
+
+**(ii)** Every cycle of finite length is a product of transpositions. That is, 
+
+$$(a_1, a_2, ..., a_n) = (a_1, a_n)(a_1, a_{n-1})...(a_1, a_2).$$
+
+**(iii)** In $S_n(n \ge 2)$, the identity permutation is $(i, j)(i, j), \forall i \ge j$. It implies that $(i, j)^{-1} = (i, j)$.
+
+## Corollary 1
+Let $A$ be a finite set with $\vert A \vert \ge 2$. Then any permutation of $A$ is a product of transpositions. 
+
+### Proof
+By Theorem 1, a permutation of $A$ is a product of disjoint cycles, and by the previous remark, each cycle is a product of transpositions. Thus, any permutation of $A$ is a product of transpositions. $\blacksquare$
+
+## Theorem 2
+No permutation in $S_n$ can be expressed by both as a product of an even number of transpositions and as a product of an odd number of transpositions.
+
+### Proof 
+Let $\sigma \in S_n$ and let $\tau = (i, j) \in S_n$ with $i \neq j$. 
+
+We claim that $\sigma$ and $\tau \sigma$ have different numbers of orbits by $1$. 
+
+$\big[$ $(\because)$ **Case 1**: $i$ and $j$ belong to different orbits in $\sigma$. 
+
+**Subcase 1**: $\sigma = (i, a_1, ..., a_s)(j, b_1, ..., b_t) \cdots$ (a product of disjoint cycles)
+
+In this subcase, we have 
+
+$$\begin{align*}
+\tau \sigma &= (i, j)(i, a_1, ..., a_s)(j, b_1, ..., b_t) \cdots \\
+&= (i, a_1, ..., a_s, j, b_1, ..., b_t) \cdots
+\end{align*}$$
+
+Thus the number of orbits of $\tau \sigma$ is different from $\sigma$ by $1$.
+
+**Subcase 2**: $\sigma = (i)(j, b_1, ..., b_t) \cdots$ (a product of disjoint cycles)
+
+In this subcase, we have 
+
+$$\begin{align*}
+\tau \sigma &= (i, j)(i)(j, b_1, ..., b_t) \cdots \\
+&= (i, j, b_1, ..., b_t) \cdots
+\end{align*}$$
+
+Thus the number of orbits of $\tau \sigma$ is different from $\sigma$ by $1$.
+
+**Subcase 3**: $\sigma = (i, a_1, ..., a_s)(j) \cdots$ (a product of disjoint cycles)
+
+In this subcase, we have 
+
+$$\begin{align*}
+\tau \sigma &= (i, j)(i, a_1, ..., a_s)(j) \cdots \\
+&= (j, i, a_1, ..., a_s) \cdots
+\end{align*}$$
+
+Thus the number of orbits of $\tau \sigma$ is different from $\sigma$ by $1$.
+
+**Subcase 4**: $\sigma = (i)(j) \cdots$ (a product of disjoint cycles)
+
+In this subcase, we have 
+
+$$\begin{align*}
+\tau \sigma &= (i, j)(i)(j) \cdots \\
+&= (i, j) \cdots
+\end{align*}$$
+
+Thus the number of orbits of $\tau \sigma$ is different from $\sigma$ by $1$.
+
+**Case 2**: $i$ and $j$ belong to the same orbits of $\sigma$. 
+
+In this case, we can write $\sigma = (i, a_1, ..., a_s, j, b_1, ..., b_t) \cdots$ (a product of disjoint cycles)
+
+Then we have
+
+$$\begin{align*}
+\tau \sigma &= (i, j)(i, a_1, ..., a_s, j, b_1, ..., b_t) \cdots \\
+&= (i, a_1, ..., a_s)(j, b_1, ..., b_t) \cdots
+\end{align*}$$
+
+Thus the number of orbits of $\tau \sigma$ is different from $\sigma$ by $1$. $\big]$
+
+We have shown that the number of orbits of a permutation $\sigma$ is different from $\tau \sigma$ by $1$ whenever we multiply $\sigma$ by a transposition $\tau$ in any cases. 
+
+Note that the identity permutation $id = (1)(2) \cdots (n) \in S_n$ has $n$ orbits. Also, the number of orbits of $\sigma$ is fixed. By Corollary 1, $\sigma$ can be expressed as the product of transpositions. Since we can go from $id$ to $\sigma$ by multiplying these transpositions, there are no ways to go from $id$ to $\sigma$ by multiplying both an even number of transpositions and an odd number of transpositions. Thus, $\sigma$ cannot be both even and odd. $\blacksquare$
+
+## Definition 2
+**(i)** A permutation $\sigma \in S_n$ is said to be ***even*** (***odd***) if it can be expreesed as a product of an even (odd) number of transpositions.
+
+**(ii)** The ***sign*** of an even permutation is $+1$ and the sign of an odd permutation is $-1.$ 
+
+## Remark 2
+Let $\sigma = c_1 \cdots c_k \in S_n$ where each $c_i$ is a disjoint cycle whose length is $\ell_i$. Then $\vert \langle \sigma \rangle \vert = \mathrm{lcm}(\ell_1, ..., \ell_k)$.
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

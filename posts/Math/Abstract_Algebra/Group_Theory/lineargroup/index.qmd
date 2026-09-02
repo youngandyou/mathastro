@@ -1,7 +1,7 @@
 ---
 title: "Linear Group"
 author: "Youmin Chun"
-date: "2026-07:31 00:00:04"
+date: "2026-07:31 00:00:05"
 description: "군의 예시 중에 하나인 선형군(Linear Group)에 대해서 설명한다."
 categories: 
   - Math > Abstract Algebra > Group Theory

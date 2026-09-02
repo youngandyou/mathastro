@@ -1,0 +1,26 @@
+---
+title: "Klein 4-Group"
+author: "Youmin Chun"
+date: "2026-07-31 00:00:02"
+description: "클라인 사원군에 대해서 소개한다."
+categories: 
+  - Math > Abstract Algebra > Group Theory
+---
+
+# Definition
+For a set $V = \{e, a, b, c \}$, ***Klein 4-group*** is a group $\langle V, \ast \rangle$ with the following group table:
+
+$$\begin{array}{c|cccc}
+* & e & a & b & c \\
+\hline
+e & e & a & b & c \\
+a & a & e & c & b \\
+b & b & c & e & a \\
+c & c & b & a & e \\
+\end{array}$$
+
+## Properties
+**(i)** $V \cong \mathbb{Z}_2 \times \mathbb{Z}_2$
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

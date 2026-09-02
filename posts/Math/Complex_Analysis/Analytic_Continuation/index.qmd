@@ -2,6 +2,7 @@
 title: "Analytic Continuation"
 author: "Youmin Chun"
 date: "2026-07-25 00:00:17"
+description: "해석적 연속에 대해서 소개한다."
 categories: 
   - Math > Complex Analysis
 ---

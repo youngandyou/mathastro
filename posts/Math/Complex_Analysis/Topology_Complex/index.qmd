@@ -2,6 +2,7 @@
 title: "Topology in Complex Plane"
 author: "Youmin Chun"
 date: "2026-07-24 00:00:07"
+description: "복소공간에서 사용하는 위상수학적 개념들을 정의한다."
 categories: 
   - Math > Complex Analysis
 ---

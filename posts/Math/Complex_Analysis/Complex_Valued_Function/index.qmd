@@ -2,6 +2,7 @@
 title: "Complex-Valued Functions"
 author: "Youmin Chun"
 date: "2026-07-24 00:00:06"
+description: "Complex valued function을 정의하고 관련된 성질을 소개한다."
 categories: 
   - Math > Complex Analysis
 ---

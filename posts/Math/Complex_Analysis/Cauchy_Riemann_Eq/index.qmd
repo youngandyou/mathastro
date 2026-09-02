@@ -2,6 +2,7 @@
 title: "Cauchy-Riemann Equations"
 author: "Youmin Chun"
 date: "2026-07-24 00:00:13"
+description: "코시-리만 방정식에 대해서 소개한다."
 categories: 
   - Math > Complex Analysis
 ---

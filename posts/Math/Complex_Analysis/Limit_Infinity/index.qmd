@@ -2,6 +2,7 @@
 title: "Limit at Infinity"
 author: "Youmin Chun"
 date: "2026-07-24 00:00:09"
+description: "리만 스피어(Riemann Sphere)를 통해 복소함수의 극한 중 무한대로 가는 경우를 정의한다."
 categories: 
   - Math > Complex Analysis
 ---

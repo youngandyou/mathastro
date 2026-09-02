@@ -2,6 +2,7 @@
 title: "Continuous Function"
 author: "Youmin Chun"
 date: "2026-07-24 00:00:10"
+description: "복소함수의 연속성을 정의한다."
 categories: 
   - Math > Complex Analysis
 ---

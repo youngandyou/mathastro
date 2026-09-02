@@ -2,6 +2,7 @@
 title: "Cauchy-Riemann Equations in Polar Coordinates"
 author: "Youmin Chun"
 date: "2026-07-24 00:00:14"
+description: "극좌표계에서 코시-리만 방정식을 소개한다."
 categories: 
   - Math > Complex Analysis
 ---

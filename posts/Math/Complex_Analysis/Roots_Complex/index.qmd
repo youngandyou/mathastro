@@ -2,6 +2,7 @@
 title: "Roots of Complex Numbers"
 author: "Youmin Chun"
 date: "2026-07-24 00:00:05"
+description: "복소수의 n제곱근을 구하는 방법에 대해서 소개한다."
 categories: 
   - Math > Complex Analysis
 ---

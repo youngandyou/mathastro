@@ -2,6 +2,7 @@
 title: "Exponential Form"
 author: "Youmin Chun"
 date: "2026-07-24 00:00:04"
+description: "복소수의 극형식, 편각(argument)에 대해서 소개한다."
 categories: 
   - Math > Complex Analysis
 ---

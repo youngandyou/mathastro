@@ -2,6 +2,7 @@
 title: "Differentiation"
 author: "Youmin Chun"
 date: "2026-07-24 00:00:11"
+description: "복소함수의 미분을 정의한다."
 categories: 
   - Math > Complex Analysis
 ---

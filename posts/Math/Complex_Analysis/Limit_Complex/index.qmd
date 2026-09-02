@@ -2,6 +2,7 @@
 title: "Limit of Complex Functions"
 author: "Youmin Chun"
 date: "2026-07-24 00:00:08"
+description: "복소함수의 극한을 정의한다."
 categories: 
   - Math > Complex Analysis
 ---

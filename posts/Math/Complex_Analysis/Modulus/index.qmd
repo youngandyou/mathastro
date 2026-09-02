@@ -2,6 +2,7 @@
 title: "Modulus"
 author: "Youmin Chun"
 date: "2026-07-24 00:00:02"
+description: "복소수의 크기인 모듈러스(modulus)에 대해서 소개한다."
 categories: 
   - Math > Complex Analysis
 ---

@@ -2,6 +2,7 @@
 title: "Complex Number"
 author: "Youmin Chun"
 date: "2026-07-24 00:00:01"
+description: "복소공간의 정의와 연산 규칙, 복소 평면에 대해서 소개한다."
 categories: 
   - Math > Complex Analysis
 ---

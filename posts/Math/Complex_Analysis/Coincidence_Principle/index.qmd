@@ -2,6 +2,7 @@
 title: "Coincidence Principle"
 author: "Youmin Chun"
 date: "2026-07-25 00:00:16"
+description: "복소해석학에서 일치 원리(coincidence principle)에 대해서 소개한다."
 categories: 
   - Math > Complex Analysis
 ---

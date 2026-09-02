@@ -2,7 +2,7 @@
 title: "Contours"
 author: "Youmin Chun"
 date: "2026-09-01 00:00:01"
-description: "복소평면 위에서 매개변수화된 경로 $w: \mathbb{R} \to \mathbb{C}$의 미분과 적분에 대해서 정의하고, 이를 통해 parametrization과 curve, contour를 정의한다."
+description: "복소평면 위에서 매개변수화된 경로의 미분과 적분에 대해서 정의하고, 이를 통해 parametrization과 curve, contour를 정의한다."
 categories: 
   - Math > Complex Analysis
 ---

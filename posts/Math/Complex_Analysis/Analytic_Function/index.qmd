@@ -2,6 +2,7 @@
 title: "Analytic Function"
 author: "Youmin Chun"
 date: "2026-07-24 00:00:12"
+description: "해석함수에 대해서 소개한다."
 categories: 
   - Math > Complex Analysis
 ---

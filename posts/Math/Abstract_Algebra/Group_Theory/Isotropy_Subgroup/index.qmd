@@ -1,7 +1,7 @@
 ---
 title: "Isotropy Subgroup"
 author: "Youmin Chun"
-date: "2026-09:02 00:00:22"
+date: "2026-09:02 00:00:23"
 description: "군의 작용(Group Action)이 주어졌을 때 등방부분군(Isotropy Subgroup)과 궤도(Orbit)에 대해서 설명한다."
 categories: 
   - Math > Abstract Algebra > Group Theory

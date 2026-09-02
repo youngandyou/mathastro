@@ -1,7 +1,8 @@
 ---
 title: "Finite Group"
 author: "Youmin Chun"
-date: "2026-07-31"
+date: "2026-07-31 00:00:01"
+description: "군 중에서 원소의 개수가 유한한 유한군(Finite Group)에 대해서 설명하고 간단한 경우들을 분류한다."
 categories: 
   - Math > Abstract Algebra > Group Theory
 ---

@@ -1,9 +1,10 @@
 ---
 title: "Homomorphism"
 author: "Youmin Chun"
-date: "2026-07-31"
+date: "2026-06-25 00:00:02"
+description: "대수학의 준동형사상(Homomorphism)과 여러가지 사상들에 대해서 소개한다."
 categories: 
-  - Math > Abstract Algebra
+  - Math > Abstract Algebra > Binary Algebraic Structure
 ---
 
 ## Definition

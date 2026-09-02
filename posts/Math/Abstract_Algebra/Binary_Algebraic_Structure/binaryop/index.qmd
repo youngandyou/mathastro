@@ -1,9 +1,10 @@
 ---
 title: "Binary Operation"
 author: "Youmin Chun"
-date: "2026-06-25"
+date: "2026-06-25 00:00:01"
+description: "이항 연산과 연산 규칙들에 대해서 소개한다."
 categories: 
-  - Math > Abstract Algebra
+  - Math > Abstract Algebra > Binary Algebraic Structure
 ---
 
 # 1. Binary operation

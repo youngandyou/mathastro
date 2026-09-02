@@ -1,7 +1,8 @@
 ---
 title: "Subgroup"
 author: "Youmin Chun"
-date: "2026-06-25"
+date: "2026-06-25 00:00:04"
+description: "부분군(Subgroup)에 대해서 설명하고 관련된 여러 정리를 소개한다."
 categories: 
   - Math > Abstract Algebra > Group Theory
 ---

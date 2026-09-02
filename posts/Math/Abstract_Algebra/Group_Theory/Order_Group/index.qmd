@@ -1,7 +1,8 @@
 ---
 title: "Order of Groups"
 author: "Youmin Chun"
-date: "2026-07-31"
+date: "2026-07-31 00:00:03"
+description: "군의 원소의 개수인 오더(order)를 설명한다."
 categories: 
   - Math > Abstract Algebra > Group Theory
 ---
@@ -14,7 +15,7 @@ categories:
 **(ii)** The ***order of an element*** $a \in G$ is the order of the cyclic group $\langle a \rangle$. That is, $\vert a \vert = \vert \langle a \rangle \vert$.
 
 ## Theorem
-- Let $G$ be a finite group, and let $a \in G$. Then
+Let $G$ be a finite group, and let $a \in G$. Then
 
 $$\vert a \vert = \vert \langle a \rangle \vert = \min \{ m \in \mathbb{N} \mid a^m = e \}$$
 

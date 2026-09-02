@@ -1,7 +1,8 @@
 ---
 title: "Group"
 author: "Youmin Chun"
-date: "2026-06-25"
+date: "2026-06-25 00:00:03"
+description: "대수학의 군(Group)에 대해서 설명하고 군에서 성립하는 여러 결과들에 대해서 소개한다."
 categories: 
   - Math > Abstract Algebra > Group Theory
 ---

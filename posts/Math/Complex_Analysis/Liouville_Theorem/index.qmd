@@ -21,7 +21,7 @@ Since $f$ is bounded in $\mathbb{C}$, we have that $\vert f(z) \vert \le M, \for
 
 $$\vert f'(z_0) \vert \le \frac{M}{R}.$$
 
-Since we have chosen $R$ arbitrarily, we have $f'(z_0) = 0$. Since $z_0$ is also arbitrary, we have $f'(z) = 0, \forall z \in \mathbb{C}$. By [Theorem 1](<{% post_url Complex Analysis/2026-04-09-Analytic-Function %}#theorem-1>), $f$ is a constant function in $\mathbb{C}$. $\blacksquare$
+Since we have chosen $R$ arbitrarily, we have $f'(z_0) = 0$. Since $z_0$ is also arbitrary, we have $f'(z) = 0, \forall z \in \mathbb{C}$. By [Theorem 1](../Analytic_Function/index.qmd#sec-theorem-1), $f$ is a constant function in $\mathbb{C}$. $\blacksquare$
 
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

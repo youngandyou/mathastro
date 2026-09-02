@@ -22,14 +22,14 @@ $$\begin{align*}
 &= \int_C u \, dx - v \, dy + i \int_C v \, dx + u \, dy.
 \end{align*}$$
 
-Let $R$ be the closed region consisting of all points interior to and on $C$. Since $f'(z)$ is continuous on $R$, $u_x, u_y, v_x, v_y$ are continuous on $R$. By the [Green's Theorem]({% post_url Vector Calculus/2026-05-08-Green-Theorem %}#theorem-1), we have 
+Let $R$ be the closed region consisting of all points interior to and on $C$. Since $f'(z)$ is continuous on $R$, $u_x, u_y, v_x, v_y$ are continuous on $R$. By the [Green's Theorem], we have 
 
 $$\begin{align*}
 \int_C u \, dx - v \, dy + i \int_C v \, dx + u \, dy &= \iint_R [(-v)_x - u_y] \, dA + i \iint_R (u_x - v_y) \, dA \\
 &= \iint_R (-v_x - u_y) \, dA + i \iint_R (u_x - v_y) \, dA.
 \end{align*}$$
 
-Since $f(z)$ is analytic in $R$, the [Cauchy-Riemann equation]({% post_url Complex Analysis/2026-04-07-Cauchy-Riemann-Equation %}#theorem-1) holds: 
+Since $f(z)$ is analytic in $R$, the [Cauchy-Riemann equation](../Cauchy_Riemann_Eq/index.qmd#sec-theorem-1) holds: 
 
 $$u_x = v_y \quad \text{and} \quad u_y = -v_x$$
 

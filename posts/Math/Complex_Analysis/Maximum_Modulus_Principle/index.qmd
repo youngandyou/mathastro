@@ -44,7 +44,7 @@ $$\vert f(z_0) \vert = \vert f(z_0 + \rho e^{i\theta}) \vert, \forall \theta \in
 
 which means that $\vert f(z) \vert = \vert f(z_0) \vert$ for all $z$ on the circle $C_\rho$. 
 
-Since we have chosen $\rho$ arbitrarily, it follows that $\vert f(z) \vert = \vert f(z_0) \vert$ in the neighborhood $\vert z - z_0 \vert < \varepsilon$. By [Theorem 2](<{% post_url Complex Analysis/2026-04-09-Analytic-Function %}#theorem-2>), $f(z)$ is constant throughout that neighborhood, which means that $f(z) = f(z_0)$ for each point $z$ in the neighborhood. $\blacksquare$
+Since we have chosen $\rho$ arbitrarily, it follows that $\vert f(z) \vert = \vert f(z_0) \vert$ in the neighborhood $\vert z - z_0 \vert < \varepsilon$. By [Theorem 2](../Analytic_Function/index.qmd#sec-theorem-2), $f(z)$ is constant throughout that neighborhood, which means that $f(z) = f(z_0)$ for each point $z$ in the neighborhood. $\blacksquare$
 
 ## Maximum Modulus Principle
 If a function $f$ is analytic and not constant in a given domain $D$, then $\vert f(z) \vert$ has no maximum value in $D$. That is, there is no point $z_0 \in D$ such that $\vert f(z) \vert \le \vert f(z_0) \vert, \forall z \in D$. 
@@ -63,7 +63,7 @@ Since $z_n = P$ and we have chosen an arbitrary point $P$ in $D$, we conclude th
 ## Corollary 1
 Suppose that a function $f$ is continuous on a compact region $R$ and that it is analytic and not constant in the interior of $R$. Then the maximum value of $\vert f(z) \vert$ in $R$, which is always reached, occurs somewhere on the boundary of $R$ and never in the interior.
 
-즉 최대값은 항상 경계에서 일어날 수 밖에 없음을 보장해준다. 이는 Lagrange multiplier의 직관과도 잘 일치함을 알 수 있다.
+즉 최대값은 항상 경계에서 일어날 수 밖에 없음을 보장해준다.
 
 ### Proof
 Since $f$ is continuous on a compact region $R$, $|f|$ has the maximum value somewhere in $R$. By the maximum modulus principle, $|f|$ has no maximum value in the interior of $R$. Thus, the maximum value must occur on the boundary of $R$ and never in the interior. $\blacksquare$

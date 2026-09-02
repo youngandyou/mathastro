@@ -13,7 +13,7 @@ Let $f(z)$ be a continuous function on a domain $D$. A function $F(z)$ is called
 ## Remark
 An antiderivative of a given function $f(z)$ is unique except for an additive constant.
 
-$\big[(\because)$ Let $F(z)$ and $G(z)$ be two antiderivatives of $f(z)$. Since $F'(z) = f(z) = G'(z)$ on $D$, we have $(F - G)'(z) = F'(z) - G'(z) = 0$ on $D$, which means that the function $F - G$ is analytic on $D$. By [Theorem 1], we have $F(z) - G(z) = (F-G)(z) = C$ for some constant $C$.$\big]$
+$\big[(\because)$ Let $F(z)$ and $G(z)$ be two antiderivatives of $f(z)$. Since $F'(z) = f(z) = G'(z)$ on $D$, we have $(F - G)'(z) = F'(z) - G'(z) = 0$ on $D$, which means that the function $F - G$ is analytic on $D$. By [Theorem 1](../Analytic_Function/index.qmd#sec-theorem-1), we have $F(z) - G(z) = (F-G)(z) = C$ for some constant $C$.$\big]$
 
 ## Theorem 1
 Suppose that a function $f(z)$ is continuous on a domain $D$. TFAE.
@@ -44,7 +44,7 @@ $$\begin{align*}
 &= F(z_2) - F(z_2)
 \end{align*}$$
 
-by [Theorem 3]({% post_url Complex Analysis/2026-04-28-Contours %}#theorem-3). The value $F(z_2) - F(z_1)$ of this countour integral is independent of the contour $C$. 
+by [Theorem 3](../Contours/index.qmd#sec-theorem-3). The value $F(z_2) - F(z_1)$ of this countour integral is independent of the contour $C$. 
 
 If $C$ consists of a finite number of smooth curves $C_1, \cdots, C_n$, each $C_k$ extending from a point $z_k$ to a point $z_{k+1}$, then we have 
 

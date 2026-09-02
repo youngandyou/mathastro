@@ -89,7 +89,7 @@ for all $z$ in the domain $R_1 < \vert z - z_0 \vert < R_2$.
 To verify this, we use $ML$-lemma.
 
 $$\begin{align*}
-\vert \rho_k(z) \vert &= \left\vert \frac{(z-z_0)^k}{2\pi i} \int _{C_2} \frac{f(s)}{(s-z)(s-z_0)^{k}} \, ds  \right \vert  \\
+\vert \rho_k(z) \vert &= \left \vert \frac{(z-z_0)^k}{2\pi i} \int _{C_2} \frac{f(s)}{(s-z)(s-z_0)^{k}} \, ds  \right \vert  \\
 & \le \frac{r^k}{2\pi} \cdot \frac{\max _{s \in C_2} f(s)}{(r_2 - r)r_2^k} \cdot 2\pi r_2 \\
 &= \frac{r_2}{r_2 - r} \cdot \max _{s \in C_2} f(s) \cdot \left( \frac{r}{r_2} \right)^k.
 \end{align*}$$

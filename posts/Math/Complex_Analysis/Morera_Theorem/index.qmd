@@ -17,7 +17,7 @@ for every closed contour $C$ in $D$, then $f$ is analytic throughout $D$.
 [Cauchy-Goursat Theorem]이 $f$가 analytic일 때 모든 closed contour에 대해서 적분이 $0$인 것을 보인 것과 반대로, 모레라 정리는 적분이 $0$일 때 $f$가 analytic임을 보인다. 
 
 ### Proof
-By [Theorem 1](<{% post_url Complex Analysis/2026-05-07-Antiderivative %}#theorem-1>), $f$ has an antiderivative $F$ in $D$, which means that there exists an analytic function $F$ such that $F'(z) = f(z), \forall z \in D$. Since $f$ is a derivative of $F$, $f$ is analytic by [Corollary 2](<{% post_url Complex Analysis/2026-05-12-Cauchy-Integral-Formula %}#corollary-2>). $\blacksquare$
+By [Theorem 1](../Antiderivative/index.qmd#sec-theorem-1), $f$ has an antiderivative $F$ in $D$, which means that there exists an analytic function $F$ such that $F'(z) = f(z), \forall z \in D$. Since $f$ is a derivative of $F$, $f$ is analytic by [Corollary 2](../Cauchy_Integral_Formula/index.qmd#sec-corollary-2). $\blacksquare$
 
 ## Cauchy's Inequality
 Suppose that a function $f$ is analytic inside and on a positively oriented circle $C_R$, centered at $z_0$ and with radius $R$. If we define $\displaystyle M_R := \max _ {z \in C_R} \vert f(z) \vert$, then 

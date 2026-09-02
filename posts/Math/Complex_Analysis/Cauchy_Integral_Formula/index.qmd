@@ -17,7 +17,7 @@ We let $C _ {\rho}$ denote a positively oriented circle $\vert z - z_0 \vert = \
 
 $$\int_C \frac{f(z)}{z - z_0} \, dz = \int _ {C _ {\rho}} \frac{f(z)}{z - z_0} \, dz$$
 
-by [the principle of deformation of paths.] Note that 
+by [the principle of deformation of paths](../Multiply_Connected_Domain/index.qmd#sec-corollary-2). Note that 
 
 $$\begin{align*} 
 \int _ {C _ {\rho}} \frac{f(z) - f(z_0)}{z - z_0} \, dz &= \int _ {C _ {\rho}} \frac{f(z)}{z - z_0} \, dz - f(z_0) \int _ {C _ {\rho}} \frac{dz}{z - z_0} \\
@@ -122,7 +122,6 @@ at each point $z$ interior to $C_0$. This means that $f''$ exists throughout $C_
 
 Suppose that $f^{(n)}$ is analytic at $z_0$ for some $n > 1$. Then we can show that $f^{(n+1)}$ is analytic at $z_0$ as before. Thus, $f^{(n)}$ is analytic at $z_0$ for all $n$. $\blacksquare$
 
----
 ## Corollary 3
 If a function $f(z) = u(x, y) + iv(x, y)$ is analytic at a point $z = (x, y)$, then the component functions $u$ and $v$ are of class $C^\infty$, that is, have continuous partial derivatives of all orders at that point.
 

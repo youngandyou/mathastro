@@ -67,7 +67,7 @@ $$c_n = \frac{1}{2\pi i} \int_C \frac{f(z)}{(z-z_0)^{n+1}} \, dz, \forall n \in 
 
 $$\sum_{n=0}^\infty a_n(z_1 - z_0)^n$$
 
-converges, the sequence $\\{ a_n(z_1 - z_0)^n \\}$ is bounded, that is, 
+converges, the sequence $\{ a_n(z_1 - z_0)^n \}$ is bounded, that is, 
 
 $$\vert a_n(z_1 - z_0)^n \vert \le M, \forall n \in \{ 0, 1, 2, \cdots \}$$
 
@@ -162,7 +162,7 @@ Since the partial sum $S_k(z)$ is a polynomial, it is continuous at $z_1$ for ea
 
 $$\vert S_N(z) - S_N(z_1) \vert < \frac{\varepsilon}{3}.$$
 
-Let $\delta := \min \\{ \delta_1, \delta_2 \\}.$ Thus, we obtain 
+Let $\delta := \min \{ \delta_1, \delta_2 \}.$ Thus, we obtain 
 
 $$\begin{align*}
 \vert S(z) - S(z_1) \vert &\le \vert S_N(z) - S_N(z_1) \vert + \vert \rho_N(z) \vert + \vert \rho_N(z_1) \vert \\
@@ -208,13 +208,13 @@ $$\begin{align*}
 
 $$\int_C g(z) (z-z_0)^n \, dz = \int_C (z-z_0)^n \, dz = 0$$
 
-by [Theorem 1.](<{% post_url Complex Analysis/2026-05-08-Multiply-Connected-Domain %}#theorem-1>) 
+by [Theorem 1.](../Multiply_Connected_Domain/index.qmd#sec-theorem-1)
 
 By Theorem 4, we have 
 
 $$\int_C S(z) \, dz = 0.$$
 
-By [Morera's Theorem](<{% post_url Complex Analysis/2026-05-16-Morera-Theorem %}#morera-theorem>), we conclude that $S$ is analytic throughout the circle of convergence of the series.
+By [Morera's Theorem](../Morera_Theorem/index.qmd#morera-theorem), we conclude that $S$ is analytic throughout the circle of convergence of the series.
 
 **(vi)** Let $z$ be a point interior to the circle of convergence of series. Let $C$ be a positively oriented simple closed contour surrounding $z$ and interior to that circle. 
 

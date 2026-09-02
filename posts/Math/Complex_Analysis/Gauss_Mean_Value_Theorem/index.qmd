@@ -13,7 +13,7 @@ Suppose that a function $f$ is analytic inside and on the closed circle $C\rho: 
 $$f(z_0) = \frac{1}{2 \pi} \int_0^{2\pi} f(z_0 + \rho e^{i\theta}) \, d\theta.$$
 
 ### Proof
-By Cauchy integral formula, 
+By [Cauchy integral formula](../Cauchy_Integral_Formula/index.qmd#sec-cauchy-integral-formula), 
 
 $$f(z_0) = \frac{1}{2 \pi i} \int _ {C_\rho} \frac{f(z)}{z-z_0} \, dz.$$
 

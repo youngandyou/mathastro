@@ -13,13 +13,13 @@ Any $n$th degree polynomial has exactly $n$ roots.
 ### Proof
 Let $P(z) = a_0 + a_1z + \cdots + a_nz^n$ $(n \ge 1, a_n \neq 0)$ be a $n$th degree polynomial. 
 
-Suppose that $P(z)$ does not have a root. Then the function $\frac{1}{P(z)}$ is clearly entire. By [remark](<{% post_url Complex Analysis/2026-03-09-Modulus %}#remark>), there exists $R > 0$ such that 
+Suppose that $P(z)$ does not have a root. Then the function $\frac{1}{P(z)}$ is clearly entire. By [remark](../Modulus/index.qmd#sec-remark), there exists $R > 0$ such that 
 
 $$\left \vert \frac{1}{P(z)} \right \vert < \frac{2}{\vert a_n \vert R^n} \quad \text{whenever} \quad \vert z \vert > R.$$
 
-It follows that $\frac{1}{P(z)}$ is bounded exterior to the disk $\vert z \vert \le R$. Furthermore, since $\frac{1}{P(z)}$ is continuous on that disk, which is compact, $\frac{1}{P(z)}$ is bounded there by [Theorem 4](<{% post_url Complex Analysis/2026-04-03-Continuous-Function %}#theorem-4>). Hence, $\frac{1}{P(z)}$ is bounded in $\mathbb{C}$. 
+It follows that $\frac{1}{P(z)}$ is bounded exterior to the disk $\vert z \vert \le R$. Furthermore, since $\frac{1}{P(z)}$ is continuous on that disk, which is compact, $\frac{1}{P(z)}$ is bounded there by [Theorem 4](../Continuous_Function/index.qmd#sec-theorem-4). Hence, $\frac{1}{P(z)}$ is bounded in $\mathbb{C}$. 
 
-By the Liouville's theorem, $\frac{1}{P(z)}$ is constant in $\mathbb{C}$, so that $P(z)$ is constant. Since it is a contradiction, we obtain the result that $P(z)$ has a root $z_1$. 
+By the [Liouville's theorem](../Liouville_Theorem/index.qmd#sec-liouville's-theorem), $\frac{1}{P(z)}$ is constant in $\mathbb{C}$, so that $P(z)$ is constant. Since it is a contradiction, we obtain the result that $P(z)$ has a root $z_1$. 
 
 Then we can express as $P(z) = a_n(z - z_1)P_1(z)$ for some $(n-1)$th degree polynomial $P_1(z)$. By applying the above result to $P_1(z)$, it follows that $P_1$ has a root $z_2$, so that $P(z) = a_n(z-z_1)(z-z_2)P_2(z)$ for some $(n-2)$th degree polynomial $P_2(z)$. By repeating this process, we must reach the conclustion: 
 

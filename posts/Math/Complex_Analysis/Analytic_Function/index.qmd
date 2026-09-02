@@ -1,7 +1,7 @@
 ---
 title: "Analytic Function"
 author: "Youmin Chun"
-date: "2026-07-24"
+date: "2026-07-24 00:00:12"
 categories: 
   - Math > Complex Analysis
 ---

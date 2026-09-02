@@ -1,7 +1,7 @@
 ---
 title: "Fundamental Theorem of Algebra"
 author: "Youmin Chun"
-date: "2026-09-01"
+date: "2026-09-01 00:00:12"
 description: "복소해석학으로 증명하는 대수학의 기본정리에 대해서 소개한다."
 categories: 
   - Math > Complex Analysis

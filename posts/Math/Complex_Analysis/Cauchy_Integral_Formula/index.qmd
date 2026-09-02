@@ -1,7 +1,7 @@
 ---
 title: "Cauchy Integral Formula"
 author: "Youmin Chun"
-date: "2026-09-01"
+date: "2026-09-01 00:00:08"
 description: "복소해석학의 코시 적분 공식에 대해서 소개한다."
 categories: 
   - Math > Complex Analysis

@@ -1,7 +1,7 @@
 ---
 title: "Convergence of Power Series"
 author: "Youmin Chun"
-date: "2026-09-01"
+date: "2026-09-01 00:00:17"
 description: "복소해석학에서 멱급수들의 수렴 정리들에 대해서 소개한다."
 categories: 
   - Math > Complex Analysis

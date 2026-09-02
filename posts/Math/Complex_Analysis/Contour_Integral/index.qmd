@@ -1,7 +1,7 @@
 ---
 title: "Contour Integral"
 author: "Youmin Chun"
-date: "2026-09-01"
+date: "2026-09-01 00:00:02"
 description: "복소해석학의 경로 적분, contour integral에 대해서 소개한다."
 categories: 
   - Math > Complex Analysis

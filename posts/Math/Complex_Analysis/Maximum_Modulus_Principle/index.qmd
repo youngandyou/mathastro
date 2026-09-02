@@ -1,7 +1,7 @@
 ---
 title: "Maximum Modulus Principle"
 author: "Youmin Chun"
-date: "2026-09-01"
+date: "2026-09-01 00:00:13"
 description: "복소해석학의 최대값 원리에 대해서 소개한다."
 categories: 
   - Math > Complex Analysis

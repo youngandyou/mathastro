@@ -1,7 +1,7 @@
 ---
 title: "Gauss's Mean Value Theorem"
 author: "Youmin Chun"
-date: "2026-09-01"
+date: "2026-09-01 00:00:09"
 description: "복소해석학의 가우스 평균값 정리에 대해서 소개한다."
 categories: 
   - Math > Complex Analysis

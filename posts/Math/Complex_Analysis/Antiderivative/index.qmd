@@ -1,7 +1,7 @@
 ---
 title: "Antiderivative"
 author: "Youmin Chun"
-date: "2026-09-01"
+date: "2026-09-01 00:00:04"
 description: "복소해석학에서의 역도함수와 관련된 정리에 대해서 소개한다."
 categories: 
   - Math > Complex Analysis

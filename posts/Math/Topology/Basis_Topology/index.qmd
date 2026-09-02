@@ -81,7 +81,7 @@ Let $U \in \mathscr{T}_{ \mathscr{B} }$. If $x \in U$, then $\exists B_x \in \ma
 
 $$U = \bigcup_{x \in U} B_x.$$
 
-Since $\\{ B_x \in \mathscr{B} \mid x \in U \\}$ is a subcollection of $\mathscr{B}$, we have $U \in T$, which means that $\mathscr{T}_{ \mathscr{B} } \subset T$. Thus $T = \mathscr{T}_{ \mathscr{B} }. \blacksquare$ 
+Since $\{ B_x \in \mathscr{B} \mid x \in U \}$ is a subcollection of $\mathscr{B}$, we have $U \in T$, which means that $\mathscr{T}_{ \mathscr{B} } \subset T$. Thus $T = \mathscr{T}_{ \mathscr{B} }. \blacksquare$ 
 
 ## Theorem 3 {#sec-theorem-3}
 Let $(X, \mathscr{T})$ be a topological space, and let $\mathscr{B}$ be a subcollection of $\mathscr{T}$. TFAE.

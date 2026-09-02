@@ -1,0 +1,29 @@
+---
+title: "Burnside's Lemma"
+author: "Youmin Chun"
+date: "2026-09:02 00:00:24"
+description: "번사이드의 보조정리(Burnside's Lemma)에 대해서 설명한다."
+categories: 
+  - Math > Abstract Algebra > Group Theory
+---
+
+## Burnside's Lemma
+Let $G$ be a finite group, and let $X$ be a finite $G$-set. If $r$ is the number of orbits in $X$ under $G,$ then 
+
+$$r \vert G \vert = \sum_{g \in G} \vert X_g \vert \quad \text{or} \quad r = \frac{1}{\vert G \vert} \sum_{g \in G} \vert X_g \vert.$$
+
+### Proof
+
+## Example
+**(ii)** 7명의 사람이 원탁에 둘러앉을 때 가능한 경우의 수를 구해보자. 단, 회전해서 상태가 같다면 같은 것으로 본다. 쉽게 말해 원순열 문제를 풀어보자는 거다.
+
+한국에서 중등교육과정을 착실하게 받았다면 보자마자 답이 $6! = 720$이라는 걸 알텐데, 대수학의 언어로 하나하나 분해해서 생각해보면 의외로 재밌고 새로운 점들을 많이 발견할 수 있는 문제다.
+
+우선 집합 $X$를 가능한 모든 배열들의 집합으로 정의하자. 즉 $7!$개의 배열들을 포함하고 있다. 이때 $X$에서의 '회전'을 group action으로 정의하려고 한다. 가능한 회전은 총 $7$가지가 있으므로 그룹 $G$를 $\mathbb{Z}_7$으로 주자. 
+
+이때 조건에서 "회전해서 상태가 같다면 같은 것"으로 본다고 했으므로 이 같은 것들을 모아놓은 집합은 다름 아닌 $X$에서의 orbit이 된다. 즉 우리는 orbit의 개수를 찾으면 되고, 이때 번사이드 렘마가 필요하다.
+
+따라서 $X_0, X_1, \cdots, X_6$의 크기를 구해야 하는데, 자명하게 $\vert X_0 \vert = 7!$이고 $\vert X_1 \vert = \cdots = \vert X_6 \vert = 0$이다. 따라서 번사이드 렘마에 의해 구하고자 하는 경우의 수는 $\frac{1}{7} 7! = 6!$이다.
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

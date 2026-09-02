@@ -1,0 +1,141 @@
+---
+title: "Normal Subgroup"
+author: "Youmin Chun"
+date: "2026-09:02 00:00:11"
+description: "정규부분군(Normal Subgroup)에 대해서 설명한다."
+categories: 
+  - Math > Abstract Algebra > Group Theory
+---
+
+## Definition
+Let $H$ be a subgroup of a group $G$. Then $H$ is called a ***normal subgroup*** of $G$ if $aH = Ha$ for all $a \in G$. If $H$ is normal in $G$, then we denoted by $H \lhd G$. 
+
+## Remark
+**(i)** Let $\phi: G \to G'$ be a group homomorphism. Then $\ker(\phi) \lhd G$.
+
+**(ii)** Every subgroup of an abelian group is normal.
+
+$\big[(\because)$ Let $G$ be an abelian group and $H \le G$. Let $a \in G$. Then $ah = ha, \forall h \in H$, which means that $aH = Ha$. Thus $H \lhd G.\big]$
+
+**(iii)** Every group has trivial normal subgroups $\{ e\}$ and $G$.
+
+$\big[(\because)$ Let $a \in G$. Then $ae = ea = a$, so $a\{e\} = \{a\} = \{e\}a$. Thus $\{e\} \lhd G$. 
+
+Let $a \in G$. Then for each $g \in G$, $a = a(a^{-1}g) \in aG$ and $a = (ga^{-1})a \in Ga$. Thus $aG = Ga$, which means that $G \lhd G.\big]$
+
+## Example
+**(i)** For $n \ge 3,$ the map $\mathrm{sgn}_n: S_n \to \{ 1, -1 \}$ defined by 
+
+$$\mathrm{sgn}_n(\sigma) = \text{sign of } \sigma$$
+
+is a group epimorphism. (We consider $\{ 1, -1 \}$ as the multiplicative group.) Then $\ker(\mathrm{sgn}_n) = A_n,$ which is a normal subgroup of $S_n.$ This is an example of a nontrivial proper normal subgroup.
+
+**(ii)** $V \cong \mathbb{Z}_2 \times \mathbb{Z}_2$ is nontrivial proper normal subgroup of $S_4.$
+
+## Theorem 1
+Let $H \le G$. TFAE.
+
+**(i)** $H \lhd G$
+
+**(ii)** $gHg^{-1} \subset H, \forall g \in G$
+
+**(iii)** $gHg^{-1} = H, \forall g \in G$
+
+결국 normal group에 한해서, 집합 양 옆에 곱해져있는 원소들을 마치 원소를 연산하듯이 처리해도 된다는 결론을 얻는다.
+
+### Proof
+**(i)** $\Longrightarrow$ **(ii)**
+
+Suppose that $H \lhd G$. Let $g \in G$ and $h \in H$. Since $gH = Hg$, we have $gh = ag$ for some $a \in H$. Then we have $ghg^{-1} = a \in H$, so that $gHg^{-1} \subset H$.
+
+**(ii)** $\Longrightarrow$ **(iii)**
+
+Suppose that $gHg^{-1} \subset H, \forall g \in G$.  We need to show that $H \subset gHg^{-1}, \forall g \in G.$ Let $h \in H$, and note that 
+
+$$h = ehe = (gg^{-1})h(gg^{-1}) = g(g^{-1}hg)g^{-1}.$$
+
+Since $g^{-1}hg \in g^{-1}Hg \subset H,$ $h = g(g^{-1}hg)g^{-1} \in gHg^{-1}.$ Hence, $gHg^{-1} = H, \forall g \in G$.
+
+**(iii)** $\Longrightarrow$ **(i)**
+
+Suppose that $gHg^{-1} = H, \forall g \in G$. Let $g \in G$, and let $h \in H$. Then $ghg^{-1} = a$ for some $a \in H$, so that $gh = ag \in Hg$. Thus $gH \subset Hg$.
+
+Let $h \in H$. Since $g^{-1}Hg = H$, we have $g^{-1}hg = b$ for some $b \in H$, so that $hg = gb \in gH$. Thus $Hg \subset gH$. Hence, $gH = Hg$, which means that $H \lhd G$. $\blacksquare$
+
+## Corollary
+Let $H \le G,$ and let $N \lhd G.$ If $N \le H,$ then $N \lhd H.$
+
+즉, 부분군 $N$의 normal 구조는 전체 군을 $G$에서 $H$로 축소시킨다고 하더라도 완전히 보존된다고 말할 수 있다. [제 3 동형 정리](../Third_Isomorphism_Theorem/index.qmd#sec-third-isomorphism-theorem)에서 이 내용이 사용됨을 확인할 수 있다.
+
+그러나 반대로는 일반적으로 성립하지 않는다. 그러니까, $N$이 어떤 부분군 $H$에서 normal이라고 하더라도 전체 군 $G$로 확장시켜서 봤을 때 여전히 normal이라는 보장은 없다. (자명한 예시로, $N = H$로 두고 $H$를 $G$에서 normal이 아닌 subgroup으로 가져오면 $N \lhd H$이지만 $N = H \not \lhd G$가 성립한다.)
+
+그러면 $H \lhd G$로 가져오면 $N \lhd G$가 될까? 이는 다른 말로 표현하면 normality는 transitive한가? 라는 질문으로 바꿀 수 있다. 그리고 ***그렇지 않다***라는 게 답이다. 구체적인 예시는 다음과 같다.
+
+$\big[(\because)$ Let $G = D_4,$ and let $H = \\{ \rho_0, \rho_2, \mu_1, \mu_2 \\}, N = \\{ \rho_0, \mu_1 \\}.$ Actually, $H = \langle \mu_1 \rangle \langle \mu_2 \rangle.$ Since $\langle \mu_1 \rangle \langle \mu_2 \rangle = \langle \mu_2 \rangle \langle \mu_1 \rangle,$ $H \le G.$ Actually, $H \cong V,$ so $N \lhd H.$
+
+However, $N \not \lhd G.$ Note that $\rho_1 \mu_1 = \delta_2 \neq \delta_1 = \mu_1 \rho_1.$$\big]$
+
+### Proof
+Since $N \lhd G,$ we have $gNg^{-1} \subset N, \forall g \in G$ by Theorem 1. It follows that $hNh^{-1} \subset N, \forall h \in H,$ which means that $N \lhd H.$ $\blacksquare$
+
+## Theorem 2
+An intersection of normal subgroups of a group $G$ is again a normal subgroup of $G$.
+
+### Proof
+Let $\{ H_i \lhd G \mid i \in I\}$ be a collection of normal subgroups of $G$, where $I$ is an index set. By [Theorem 2](../Subgroup/index.qmd#sec-theorem-2), $\bigcap_{i \in I}  H_i \le G$. By Theorem 1, we have that $gH_ig^{-1} \subset H_i, \forall g \in G$, for each $i \in I$. 
+
+Denote 
+
+$$H := \bigcap_{i \in I}H_i.$$
+
+We will show that $gHg^{-1} \subset H, \forall g \in G,$ which is equivalent to $H \lhd G$. 
+
+Fix $g \in G$, and let $x \in gHg^{-1}$. Then $x = gyg^{-1}$ for some $y \in H$. Since $y \in H_i, \forall i \in I$, $gyg^{-1} \in gH_ig^{-1} \subset H_i, \forall i \in I$ by Theorem 1, which means that $gyg^{-1} \in H$. Thus, we have $x = gyg^{-1} \in H$, and therefore $gHg^{-1} \subset H$. By Theorem 1, $H \lhd G$. $\blacksquare$
+
+## Theorem 3
+Let $\phi: G \to G'$ be a group homomorphism. 
+
+**(i)** If $N \lhd G$, then $\phi(N) \lhd \phi(G)$. 
+
+**(ii)** If $N' \lhd \phi(G)$, then $\phi^{-1}(N') \lhd G.$
+
+### Proof
+**(i)** We will show that $g'\phi(N)g'^{-1} \subset \phi(N), \forall g' \in \phi(G)$. 
+
+Fix $g' \in \phi(G)$. Then $g' = \phi(g)$ for some $g \in G$. 
+
+Let $y \in g'\phi(N)g'^{-1}$. Then $y = g'hg'^{-1}$ for some $h \in \phi(N)$, and $h = \phi(k)$ for some $k \in N$. Since $N \lhd G$, $gNg \subset N$ which implies that $gkg^{-1} \in N$. Then we have 
+
+$$\begin{align*}
+    y &= g'hg'^{-1} \\
+    &= \phi(g) \phi(k) \phi(g)^{-1} \\
+    &= \phi(g)\phi(k) \phi(g^{-1}) \\
+    &= \phi(gkg^{-1}) \\
+    & \subset \phi(N).
+\end{align*}$$
+
+Thus, $y \in \phi(N)$, and therefore $g'\phi(N)g'^{-1} \subset \phi(N)$. Hence, $\phi(N) \lhd \phi(G)$.
+
+**(ii)** We will show that $g\phi^{-1}(N')g^{-1} \subset \phi^{-1}(N'), \forall g \in G.$ 
+
+Fix $g \in G.$ Then $\phi(g), \phi(g^{-1}) \in \phi(G) \subset G'.$ 
+
+Let $x \in g\phi^{-1}(N')g^{-1}$. Then $x = gx'g^{-1}$ for some $x' \in \phi^{-1}(N')$, so that $\phi(x') \in N'$. Since $N' \lhd \phi(G)$, $\phi(g) N' \phi(g)^{-1} = \phi(g) N' \phi(g^{-1}) \subset N'$, which implies that 
+
+$$\phi(gx'g^{-1}) = \phi(g)\phi(x')\phi(g^{-1}) \in N'.$$
+
+Thus, $x = gx'g^{-1} \in \phi^{-1}(N')$, and therefore $g\phi^{-1}(N')g^{-1} \subset \phi^{-1}(N').$ Hence, $\phi^{-1}(N') \lhd G. \blacksquare$
+
+## Remark
+**(i)** In the above theorem, $\phi(N)$ need NOT to be normal in $G'$ if $N \lhd G.$
+
+$\big[(\because)$ Consider a map $\phi: \mathbb{Z}_2 \to S_3$ given by $\phi(0) = \rho_0$ and $\phi(1) = \mu_1$. Note that $\mathbb{Z}_2 \le \mathbb{Z}_2.$ However, $\phi(\mathbb{Z}_2) = \{ \rho_0, \mu_1 \} \ntriangleleft S_3,$ because 
+
+$$\rho_1 \phi(\mathbb{Z}_2) = \{ \rho_1, \mu_3 \} \neq \{ \rho_1, \mu_2 \} = \phi(\mathbb{Z}_2) \rho_1. \big]$$
+
+**(ii)** A union of normal subgroups of a group need NOT be a normal subgroup.
+
+$\big[(\because)$ Consider the Klein-$4$ group $V = \{e, a, b, c \}$. Since $V$ is abelian, $\{ e, a \}$ and $\{ e, b \}$ are normal subgroups of $V$. But $\{ e, a\} \cup \{ e, b \} = \{ e, a, b \}$ is not closed under the operation of $V$ because $ab = c$. Thus, $\{ e, a\} \cup \{ e, b \} = \{ e, a, b \}$ is not a subgroup of $G$, so is not a normal subgroup of $G$. $\big]$
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

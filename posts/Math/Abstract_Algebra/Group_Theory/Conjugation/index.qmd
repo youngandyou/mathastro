@@ -1,0 +1,54 @@
+---
+title: "Conjugation"
+author: "Youmin Chun"
+date: "2026-09:02 00:00:18"
+description: "군론에서 켤레(conjugation)에 대해서 설명한다."
+categories: 
+  - Math > Abstract Algebra > Group Theory
+---
+
+## Theorem 1
+Let $G$ be a group and let $g \in G.$ Then the map $i_g: G \to G$ defined by 
+
+$$i_g(x) = gxg^{-1}, \forall x \in G$$
+
+is an automorphism of $G.$
+
+### Proof
+Clearly, $i_g$ is well-defined. 
+
+Let $x, y \in G.$ Then we have 
+
+$$\begin{align*}
+i_g(xy) &= g(xy)g^{-1} \\
+&= g(xg^{-1}gy)g^{-1} \\
+&= (gxg^{-1})(gyg^{-1}) \\
+&= i_g(x)i_g(y).
+\end{align*}$$
+
+Thus, $i_g$ is a homomorphism.
+
+Let $x \in \ker(i_g).$ Then $e = i_g(x) = gxg^{-1},$ so that $x = g^{-1}g = e$. Thus, $\ker(i_g) = \{ e \}$, which means that $i_g$ is injective.
+
+For each $a \in G,$ $i_g(g^{-1}ag) = g(g^{-1}ag)g^{-1} = a,$ which means that $i_g$ is surjective.
+
+Thus, $i_g$ is an automorphism. $\blacksquare$
+
+## Definition
+**(i)** The map $i_g$ defined in the previous theorem is called the ***inner automorphism*** of $G$ by $g$.
+
+**(ii)** Performing $i_g$ on an element $x$ is called ***conjugation*** of $x$ by $g$. 
+
+**(iii)** A subgroup $H \le G$ is said to be ***invariant*** under all inner automorphisms of $G$ if $i_g(H) = H, \forall g \in G.$ 
+
+**(iv)** A subgroup $K \le G$ is called a ***conjugate subgroup*** of $H \le G$ if $K = i_g(H)$ for some $g \in G.$ 
+
+## Remark
+**(i)** The condition of a subgroup $H \le G$ to be normal is $gHg^{-1} = H, \forall g \in G.$ It is equivalent to the condition of $H$ to be invariant under all inner automorphism of $G$. That is, 
+
+$$H \lhd G \iff i_g(H) = H, \forall g \in G.$$
+
+**(ii)** Any normal subgroup $H \le G$ is a conjugate of $H$, because $H = i_g(H), \forall g \in G.$ 
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

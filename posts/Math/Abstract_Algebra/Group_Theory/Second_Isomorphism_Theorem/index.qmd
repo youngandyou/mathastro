@@ -1,0 +1,158 @@
+---
+title: "Second Isomorphism Theorem"
+author: "Youmin Chun"
+date: "2026-09:02 00:00:16"
+description: "제2 동형사상 정리(Second Isomorphism Theorem)에 대해서 설명한다."
+categories: 
+  - Math > Abstract Algebra > Group Theory
+---
+
+## Definition
+Let $G$ be a group, and let $H, N \le G.$ Then the ***join*** of $H$ and $N$, denoted by $H \vee N,$ is defined by 
+
+$$H \vee N := \bigcap_{HN \subset K \le G} K.$$
+
+아래 Remark를 보면 알겠지만, 두 개의 서브그룹 $H, N$이 주어졌다고 해서 그 곱 $HN$은 일반적으로 서브그룹이 되지 않는다. 그러면 두 개의 서브그룹으로 다시 서브그룹을 만들기 위한 다른 방법이 필요하고, 그 답 중에 하나로 join을 정의할 수 있다. 
+ 
+## Lemma
+Let $G$ be a group, and let $H,N \le G.$ We denote $HN := \{ hn \mid h \in H, n \in N \}.$
+
+**(i)** $H \vee N$ is the smallest subgroup of $G$ containing $HN.$
+
+**(ii)** $H \vee N$ is the smallest subgroup of $G$ containing both $H$ and $N.$
+
+**(iii)** If $N \lhd G,$ then $HN$ is the smallest subgroup of $G$ containing both $H$ and $N.$ That is, $H \vee N = HN = NH.$
+
+**(iv)** If $N, H \lhd G,$ then $HN \lhd G.$
+
+위에서 언급했듯이 $H \vee N$은 서브그룹이 되고, 특별히 $HN$과 $H$ 그리고 $N$을 포함하는 가장 작은 서브그룹임을 알 수 있다.
+
+그러면 자연스럽게 어떤 조건을 더 줘야 곱 $HN$이 서브그룹이 되겠느냐는 질문을 할 수가 있고, 그 답은 둘 중 하나가 normal이면 충분하다로 주어진다. 더욱 특별하게는, 이때 join과 곱은 정확히 일치하게 된다.
+
+### Proof
+**(i)** It is obtained by definition of the join and [Theorem 2](../subgroup/index.qmd#sec-theorem-2).
+
+**(ii)** We have already shown that $H \vee N$ is the subgroup of $G.$ Note that $H, N \subset HN,$ so $H \vee N$ contains $H$ and $N.$ 
+
+Let $K$ be a subgroup of $G$ containing both $H$ and $N.$ Then $HN \subset K.$ By definition of the join $H \vee N,$ we have $H \vee N \subset K.$ Thus, $H \vee N$ is the smallest subgroup of $G$ containing both $H$ and $N.$ 
+
+**(iii)** **Claim 1:** $HN \le G.$ 
+
+$\big[(\because)$ Let $x, y \in HN.$ (Since $H$ and $N$ are subgroups of $G$, clearly, $HN$ is not empty.) Then $x = h_1n_1$ and $y = h_2n_2$ for some $h_1, h_2 \in H$ and $n_1, n_2 \in N.$ Note that 
+
+$$\begin{align*}
+    xy^{-1} &= (h_1n_1)(h_2n_2)^{-1} \\
+    &= h_1(n_1n_2^{-1})h_2^{-1} \\
+    &\in h_1Nh_2^{-1}
+\end{align*}$$ 
+
+because $n_1n_2^{-1} \in N.$ 
+
+Since $N$ is normal, $Nh_2^{-1} = h_2^{-1}N.$ Then 
+
+$$\begin{align*}
+    xy^{-1} &\in h_1Nh_2^{-1} \\
+    &=(h_1h_2^{-1})N \\
+    &\subset HN
+\end{align*}$$
+
+because $h_1h_2^{-1} \in H.$ Thus, $xy^{-1} \in HN,$ so $HN \le G.$ Note that clearly $H, N \subset HN.$ Similarly, we can show that $NH \le G.$$\big]$
+
+**Claim 2:** $HN$ is the smallest subgroup containing both $H$ and $N.$ 
+
+$\big[(\because)$ Take a subgroup $K \le G$ containing both $H$ and $N.$ Let $a \in HN.$ Then $a = hn$ for some $h \in H$ and $n \in N.$ Since $K$ contains $H$ and $N,$ $h \in K$ and $n \in K.$ Since $K$ is a group, $a = hn \in K$. Thus, $HN \subset K,$ which means that $HN$ is the smallest subgroup containing both $H$ and $N.$ Similarly, we can show that $NH$ is the smallest subgroup containing both $H$ and $N.$ Therefore, $HN = NH.$
+
+By (ii), $H \vee N$ is the smallest subgroup of $G$ containing both $H$ and $N.$ Thus, $H \vee N = HN = NH.\big]$
+
+**(iv)** Let $g \in G,$ and let $hn \in HN.$ Then we have 
+
+$$\begin{align*}
+g(hn)g^{-1} &= (ghg^{-1})(gng^{-1}) \\
+& \in HN,
+\end{align*}$$
+
+so $g(HN)g^{-1} \subset HN,$ which means that $HN \lhd G.$ $\blacksquare$
+
+## Remark
+Let $G$ be a group, and let $H, N \le G.$ 
+
+**(i)** $HN$ need not to be a subgroup of $G.$
+
+$\big[(\because)$ Let $G = S_3$ and let $H = \langle \mu_1 \rangle = \\{ \rho_0, \mu_1 \\}$ and $N = \langle \mu_3 \rangle = \\{ \rho_0, \mu_3 \\}.$ Then $H, N \le G$ but $HN = \\{ \rho_0, \mu_1, \mu_3, \rho_2 \\} \not \le S_3. \big]$
+
+**(ii)** Although $N \lhd G,$ $HN$ need not to be a normal subgroup of $G.$
+
+$\big[(\because)$ Let $G = S_3$ and let $H = \langle \mu_1 \rangle = \\{ \rho_0, \mu_1 \\} \le G$ and $N = \\{ \rho_0 \\} \lhd G.$ Then $HN = \langle \mu_1 \rangle \not \lhd G.\big]$
+
+**(iii)** $HN \le G \iff HN = NH.$
+
+$\big[(\because)$ 
+
+$(\Longrightarrow)$
+
+Suppose that $HN \le G.$ By definition of the join, we have $HN = H \vee N.$ 
+
+Let $K \le G$ with $HN \subset K.$ Let $nh \in NH.$ 
+
+\big]$
+
+## Second Isomorphism Theorem
+Let $G$ be a group, and let $H \le G, N \lhd G.$ Then 
+
+$$(HN)/N \cong H/(H \cap N)$$
+
+### Proof
+**Claim 1:** $N \lhd HN$ and $H \cap N \lhd H$.
+
+$\big[(\because)$ Since $N \subset HN$ and $N \lhd G,$ we have $N \lhd HN.$
+
+To verify another one, let $h \in H$ and let $x \in H \cap N.$ Since $N \lhd G$ and $x \in N,$ we have $hxh^{-1} \in N.$ Furthermore, $hxh^{-1} \in H,$ so $h(H \cap N)h^{-1} \subset H \cap N.$ Thus, $H \cap N \lhd H.\big]$
+
+We define a map $\phi: HN \to H/(H \cap N)$ by $\phi(hn) = h(H \cap N), \forall hn \in HN.$ 
+
+**Claim 2:** $\phi$ is well-defined.
+
+$\big[(\because)$ Let $h_1n_1, h_2n_2 \in HN.$ Suppose that $h_1n_1 = h_2n_2.$ Then we have $h_1 = h_2n_2n_1^{-1}$ and $h_2^{-1}h_1 = n_2n_1^{-1} \in H \cap N.$ Then we obtain 
+
+$$\begin{align*}
+\phi(h_1n_1) &= h_1(H \cap N) \\
+&= (h_2n_2n_1^{-1})(H \cap N) \\
+&= (h_2(H \cap N))((n_2n_1^{-1})(H \cap N)) \\
+&= h_2(H \cap N) (H \cap N) \\
+&=h_2(H \cap N) \\
+&= \phi(h_2n_2),
+\end{align*}$$
+
+so $\phi$ is well-defined.$\big]$
+
+**Claim 3:** $\phi$ is an epimorphism with $\ker(\phi) = N.$
+
+$\big[(\because)$ Let $h_1n_1, h_2n_2 \in HN.$ Since $HN \le G,$ $(h_1n_1)(h_2n_2) \in HN.$ Since $N \lhd G,$ we have $n_1h_2 \in Nh_2 = h_2N,$ so $n_1h_2 = h_2n_1'$ for some $n_1' \in N.$ Then $h_1n_1h_2n_2 = h_1h_2n_1'n_2,$ so  
+
+$$\begin{align*}
+\phi((h_1n_1)(h_2n_2)) &= \phi((h_1h_2)(n_1'n_2)) \\
+&= (h_1h_2)(H \cap N) \\
+&= (h_1(H \cap N))(h_2(H \cap N)) \\
+&=\phi(h_1n_1) \phi(h_2n_2).
+\end{align*}$$
+
+Thus, $\phi$ is a homomorphism.
+
+Let $h(H \cap N) \in H/(H \cap N).$ Since $e \in N,$ we have $\phi(he) = h(H \cap N),$ so $\phi$ is an epimorphism. 
+
+Note that 
+
+$$\begin{align*}
+hn \in \ker(\phi) &\iff h(H \cap N) = \phi(hn) = H \cap N \\
+& \iff h \in H \cap N \\
+& \iff hn \in N,
+\end{align*}$$
+
+so $\ker(\phi) = N.\big]$
+
+By the first isomorphism theorem, we conclude 
+
+$$HN/N \cong H/(H \cap N). \quad \blacksquare$$
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

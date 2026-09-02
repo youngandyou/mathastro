@@ -1,0 +1,73 @@
+---
+title: "Center of Group"
+author: "Youmin Chun"
+date: "2026-09:02 00:00:19"
+description: "군의 중심(Center)에 대해서 설명한다."
+categories: 
+  - Math > Abstract Algebra > Group Theory
+---
+
+## Definition
+The ***center*** $Z(G)$ of a group is defined by
+
+$$Z(G) = \{ a \in G \mid ga = ag, \forall g \in G \}.$$
+
+If $Z(G) = \{ e \},$ then we say that the center of $G$ is ***trivial***.
+
+## Theorem 1
+Let $G$ be a group.
+
+**(i)** $Z(G)$ is an abelian normal subgroup of $G.$ 
+
+**(ii)** $Z(G) = G \iff G$ is abelian.
+
+### Proof
+**(i)** First, we will prove $Z(G) \le G.$
+
+Since $ge = eg, \forall g \in G,$ $e \in Z(G),$ so $Z(G) \neq \emptyset.$
+
+Let $a, b \in Z(G).$ Then $ga = ag$ and $gb = bg$ for all $g \in G.$ Note that $gb^{-1} = b^{-1}g.$ Then we have 
+
+$$\begin{align*}
+g(ab^{-1}) &= (ga)b^{-1} \\
+&= (ag)b^{-1} \\
+&= a(gb^{-1}) \\
+&= a(b^{-1}g) \\
+&= (ab^{-1})g,
+\end{align*}$$
+
+which implies that $ab^{-1} \in Z(G).$ Thus, $Z(G) \le G.$ Clearly, $Z(G)$ is abelian.
+
+Now, we will show $Z(G) \lhd G.$
+
+Let $g \in G,$ and let $x \in gZ(G)g^{-1}.$ Then $x = gag^{-1}$ for some $a \in Z(G).$ Then we have 
+
+$$\begin{align*}
+x &= gag^{-1} \\
+&= agg^{-1} \\
+&= a \in Z(G),
+\end{align*}$$
+
+which means that $gZ(G)g^{-1} \subset Z(G), \forall g \in G$. Thus, $Z(G) \lhd G.$ 
+
+**(ii)** If $Z(G) = G,$ then $gh = hg$ for all $g, h \in G = Z(G),$ which means that $G$ is abelian.
+
+If $G$ is abelian, each element of $G$ belongs to $Z(G)$ clearly. $\blacksquare$
+
+## Theorem 2
+Let $G_1, G_2$ be groups. Then 
+
+$$Z(G_1 \times G_2) = Z(G_1) \times Z(G_2).$$
+
+### Proof
+
+$$\begin{align*}
+Z(G_1 \times G_2) &= \{ (g_1, g_2) \in G_1 \times G_2 \mid (a_1, a_2) (g_1, g_2) = (g_1, g_2)(a_1, a_2), \forall (a_1, a_2) \in G_1 \times G_2 \} \\
+&= \{ (g_1, g_2) \in G_1 \times G_2 \mid (a_1g_1, a_2g_2) = (g_1a_1, g_2a_2), \forall a_1 \in G_1, a_2 \in G_2 \} \\
+&= \{ (g_1, g_2) \in G_1 \times G_2 \mid a_1g_1 = g_1a_1 \text{ and } a_2g_2 = g_2a_2, \forall a_1 \in G_1, a_2 \in G_2 \} \\
+&= \{ (g_1, g_2) \in G_1 \times G_2 \mid g_1 \in Z(G_1), g_2 \in Z(G_2) \} \\
+&= Z(G_1) \times Z(G_2). \quad \blacksquare
+\end{align*}$$
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

@@ -1,0 +1,100 @@
+---
+title: "Commutator Subgroup"
+author: "Youmin Chun"
+date: "2026-09:02 00:00:20"
+description: "Commutator Subgroup에 대해서 설명한다."
+categories: 
+  - Math > Abstract Algebra > Group Theory
+---
+
+## Definition
+Let $G$ be a group. 
+
+**(i)** An element of $G$ that can be expressed in the form $aba^{-1}b^{-1}$ for some $a, b \in G$ is called a ***commutator*** in $G$.
+
+**(ii)** The ***commutator subgroup*** $C(G)$ of a group $G$ is a subgroup $\langle \{ aba^{-1}b^{-1} \mid a, b \in G \} \rangle$ of $G$. 
+
+## Theorem
+Let $G$ be a group, and let $N \lhd G.$
+
+**(i)** $C(G) \lhd G.$
+
+**(ii)** $G/N$ is abelian $\iff$ $C(G) \le N.$
+
+### Proof
+**(i)** Let $g \in G$. We will show that $gC(G)g^{-1} \subset C(G).$ 
+
+To see this, let $x \in gC(G)g^{-1}.$ Then $x = gcg^{-1}$ for some $c \in C(G)$, and we write 
+
+$$c = (a_1b_1a^{-1}_1b^{-1}_1) \cdots (a_nb_na^{-1}_nb^{-1}_n)$$
+
+for some $a_1, b_1, \cdots, a_n, b_n \in G.$ Then we obtain
+
+$$\begin{align*}
+x &= gcg^{-1} \\
+&= g(a_1b_1a^{-1}_1b^{-1}_1) \cdots (a_nb_na^{-1}_nb^{-1}_n)g^{-1} \\
+&= g(a_1b_1a^{-1}_1b^{-1}_1) e \cdots e(a_nb_na^{-1}_nb^{-1}_n) \\
+&= g(a_1b_1a^{-1}_1b^{-1}_1)g^{-1}g \cdots g^{-1}g (a_nb_na^{-1}_nb^{-1}_n)g^{-1} \\
+&= (ga_1b_1a^{-1}_1b^{-1}_1g^{-1}) \cdots (ga_nb_na^{-1}_nb^{-1}_ng^{-1}) \\
+&= (ga_1b_1a^{-1}_1eb^{-1}_1g^{-1}) \cdots (ga_nb_na^{-1}_neb^{-1}_ng^{-1}) \\
+&= (ga_1b_1a^{-1}_1(g^{-1}b^{-1}_1b_1g)b^{-1}_1g^{-1}) \cdots (ga_nb_na^{-1}_n(g^{-1}b^{-1}_nb_ng)b^{-1}_ng^{-1}) \\
+&= ((ga_1)b_1(ga_1)^{-1}b^{-1}_1)(b_1gb^{-1}_1g^{-1}) \cdots ((ga_n)b_n(ga_n)^{-1}b^{-1}_n)(b_ngb^{-1}_ng^{-1}) \\
+&\in C(G),
+\end{align*}$$
+
+which implies that $gC(G)g^{-1} \subset C(G).$ Hence, $C(G) \lhd G.$ 
+
+**(ii)** 
+
+$(\Longrightarrow)$
+
+Suppose that $G/N$ is abelian. First, we will show that $C(G) \subset N.$ 
+
+To see this, it suffices to show that for each $a, b \in C(G),$ the generator $aba^{-1}b^{-1}$ belongs to $N.$
+
+Let $a, b \in C(G).$ Since $G/N$ is abelian, we have 
+
+$$\begin{align*}
+(a^{-1}b^{-1})N &= (a^{-1}N)(b^{-1}N) \\
+&=(b^{-1}N)(a^{-1}N)\\
+&= (b^{-1}a^{-1}N) \\
+&= (ab)^{-1}N.
+\end{align*}$$
+
+Then we obtain 
+
+$$\begin{align*}
+(aba^{-1}b^{-1})N &= [(ab)N][(a^{-1}b^{-1}N)] \\
+&= [(ab)N][(ab)^{-1}N] \\
+&= N,
+\end{align*}$$
+
+so $aba^{-1}b^{-1} \in N.$ Thus, $C(G) \subset N,$ so $C(G) \le N.$
+
+$(\Longleftarrow)$
+
+Suppose that $C(G) \le N.$ Let $a, b \in G.$ Then $aba^{-1}b^{-1} \in C(G) \subset N.$ Since $N \lhd G,$ we have 
+
+$$ab \in N(a^{-1}b^{-1})^{-1} = N(ba) = (ba)N,$$
+
+so 
+
+$$\begin{align*}
+(aN)(bN) &= (ab)N \\
+&=(ba)N \\
+&= (bN)(aN). 
+\end{align*}$$
+
+Hence, $G/N$ is abelian. $\blacksquare$
+
+## Example
+$C(S_3)$를 구체적으로 계산해보자. 우선 $(S_3 : A_3) = 2$이므로 $A_3 \lhd S_3$이고, 자명하게 $S_3/A_3$는 abelian이다. 그러면 위 정리에 의해서 $C(S_3) \le A_3$가 성립한다.
+
+또한 $A_3 = \{ \rho_0, \rho_1, \rho_2 \}$의 원소 $\rho_1, \rho_2$에 대해서 
+
+$$\rho_1 = \rho_2 \mu_1 \rho_2^{-1}\mu_1^{-1} \quad \text{and} \quad \rho_2 = \rho_1 \mu_1 \rho_1^{-1}\mu_1^{-1}$$
+
+이 성립한다는 사실을 계산을 통해 알 수 있다. 즉 $A_3 \subset C(S_3)$이다. 따라서 $C(S_3) = A_3$을 얻는다. 
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

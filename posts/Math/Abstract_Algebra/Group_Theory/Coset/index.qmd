@@ -1,0 +1,203 @@
+---
+title: "Coset"
+author: "Youmin Chun"
+date: "2026-09:02 00:00:08"
+description: "잉여류(Coset)와 인덱스(Index)에 대해서 소개한다."
+categories: 
+  - Math > Abstract Algebra > Group Theory
+---
+
+## Theorem 1
+Let $G$ be a group and let $H \le G$. Let the relation $\sim_L$ be defined on $G$ by 
+
+$$a \sim_L b \iff a^{-1}b \in H$$
+
+and let the relation $\sim_R$ be defined on $G$ by 
+
+$$
+a \sim_R b \iff ab^{-1} \in H.
+$$
+
+Then $\sim_L$ and $\sim_R$ are equivalence relations on $G$.
+
+### Proof
+Let $a, b, c \in G$. 
+
+Since $a^{-1}a = e \in H$, we have $a \sim_L a$. **(reflexive)**
+
+If $a \sim_L b$, then $a^{-1}b \in H$, so $b^{-1}a = (a^{-1}b)^{-1} \in H$, which means $b \sim_L a$. **(symmetric)**
+
+If $a \sim_L b$ and $b \sim_L c$, then $a^{-1}b \in H$ and $b^{-1}c \in H$, so $a^{-1}c = (a^{-1}b)(b^{-1}c) \in H$, which means $a \sim_L c$. **(transitive)**
+
+Thus $\sim_L$ is an equivalence relation. 
+
+Similarly, we can show that $\sim_R$ is an equivalence relation. $\blacksquare$
+
+## Remark 1
+Let $G$ be a group and $H \le G$. 
+
+**(i)** For $x \in G$, we obtain 
+
+$$\begin{align*}
+a \sim_L x &\iff a^{-1}x \in H \\
+& \iff a^{-1}x = h \text{ for some } h \in H \\
+& \iff x = ah \text{ for some } h \in H \\
+& \iff x \in aH
+\end{align*}$$
+
+where $aH := \{ ah \mid h \in H \}.$ Hence the equivalence class $\{ x \in G \mid a \sim_L x \}$ of $a$ under $\sim_L$ is $aH$. 
+
+**(ii)** By a similar argument as in (i), the equivalence class $\{ x \in G \mid a \sim_R x \}$ of $a$ under $\sim_R$ is $Ha$.
+
+그러니까 $aH$는 부분군 $H$의 모든 원소의 왼쪽에 $a$를 곱해서 만들어진 원소들의 집합이기도 하지만, $a$와 관계 $\sim_L$에 대해서 관계가 있는 모든 원소들의 집합, 즉 동치류이기도 하다. 그럼 여기서 알 수 있는 사실은, $a \sim_L b$이면 $aH = bH$가 성립한다. 미리 말하자면, 이는 같은 동치류에 속해있는 원소들은 모두 같은 coset을 생성한다는 사실을 의미한다.
+
+**(iii)** $eH = H = He$
+
+**(iv)** $aH = H \iff a \in H \iff Ha = H$.
+
+$\big[(\because)$ Suppose that $a \in H$. Then $a^{-1}e = a^{-1} \in H$ and $ea^{-1} = a^{-1} \in H$, which means that $a \sim_L e$ and $a \sim_R e$. Then $aH = eH = H$ and $Ha = He = H$.
+
+Suppose that $aH = H$. Since $H = eH$, we have $aH = eH$, which means that $a \sim_L e$, so that $e \sim_L a$. Thus $e^{-1}a = a \in H$. Similarly, if $Ha = H$, then we have $a \in H$.$\big]$
+
+## Definition 1
+Let $G$ be a group and $H \le G$. Let $a \in G$. 
+
+**(i)** $aH$ is the ***left coset*** of $H$ containing $a$.
+
+**(ii)** $Ha$ is the ***right coset*** of $H$ containing $a$.
+
+## Example
+**(i)** $\mathbb{Z}$의 부분군 $3 \mathbb{Z}$을 고려하자. 어떤 정수 $m \in \mathbb{Z}$에 대하여 $m$을 포함하는 $3 \mathbb{Z}$의 모든 left coset은 다음과 같은 형태를 가진다. 
+
+$$m + 3\mathbb{Z} = \{ \cdots, m - 3, m, m+3, \cdots \}.$$
+
+이때 하나씩 $m$의 값을 대입해서 구체적으로 계산해보면 다음과 같다.
+
+1. $m = 0 \implies$ $3\mathbb{Z} = \{ \cdots, -3, 0, 3, \cdots \}$
+2. $m = 1 \implies$ $1 + 3\mathbb{Z} = \{ \cdots, -2, 1, 4, \cdots \}$
+3. $m = 2 \implies$ $2 + 3\mathbb{Z} = \{ \cdots, -1, 2, 5, \cdots \}$
+
+$m$의 값이 $3$이 넘어가거나 $0$보다 작아지면 반드시 위 세 집합 중 하나와 반드시 같아짐은 자명하다. 어떤 정수를 $3$으로 나눈 나머지는 $0, 1, 2$ 중 하나이고, 따라서 모든 정수는 $0, 1, 2$ 중 하나와 관계가 있다. 예컨대 $-1 + 4 = 3 \in 3 \mathbb{Z}$이므로 $1 \sim_L 4$이고, 따라서 $4 + 3\mathbb{Z} = 1 + 3\mathbb{Z}$이다. 
+
+즉 $3\mathbb{Z}$라는 부분군은 총 $3$개의 left coset을 가지고, 이 coset들은 정수 집합 $\mathbb{Z}$의 partition을 형성하므로 다음이 성립한다. 
+
+$$\mathbb{Z} = (3\mathbb{Z}) \bigsqcup (1 + 3\mathbb{Z}) \bigsqcup (2 + 3\mathbb{Z}).$$
+
+한편 $\mathbb{Z}$는 abelian이므로, $m + 3\mathbb{Z} = 3\mathbb{Z} + m, \forall m \in \mathbb{Z}$가 성립한다. 즉 이 경우 $m$을 포함하는 left coset과 right coset은 항상 같다.
+
+**(ii)** 이번엔 유한군으로 생각해보자. $H = \{ 0, 3 \} \le \mathbb{Z}_6$에 대하여 정수 $m \in \mathbb{Z}$을 포함하는 left coset을 위와 같이 계산하면 다음과 같다. 
+
+1. $m = 0 \implies$ $0 + H = \{ 0, 3 \}$
+2. $m = 1 \implies$ $1 + H = \{ 1, 4 \}$
+3. $m = 2 \implies$ $2 + H = \{ 2, 5 \}$
+
+동일하게 left coset은 위 세 집합이 전부고, 
+
+$$\mathbb{Z}_6 = (0+H) \bigsqcup (1+H) \bigsqcup (2+H)$$
+
+가 성립한다. 마찬가지로 $m$을 포함하는 left coset과 right coset은 동일하다. 
+
+한편 라그랑주 정리에 의해서도 알 수 있듯이, $\vert \mathbb{Z}_6 \vert = 6$은 $H$의 크기 $2$와 left coset의 개수 $3$의 곱으로 표현된다. 
+
+**(iii)** 이번엔 $H = \langle \mu_1 \rangle \le S_3$을 고려해보자. 대칭군 $S_3$는 회전의 역할을 하는 $\rho_i$와 반전의 역할을 하는 $\mu_j$로 구성되어 있으므로, $H$의 모든 left coset은 $\rho_i H$ 혹은 $\mu_j H$의 꼴을 가진다. 이때 각각을 계산해보면 다음과 같다.
+
+1. $\rho_0 H = \{ e, \mu_1 \} = \mu_1 H$
+2. $\rho_1 H = \{ \rho_1, \mu_2 \} = \mu_2 H$
+3. $\rho_2 H = \{ \rho_2, \mu_3 \} = \mu_3 H$
+
+따라서
+
+$$S_3 = H \bigsqcup \rho_1 H \bigsqcup \rho_2 H$$
+
+임을 알 수 있다. 
+
+한편, $\rho_0$는 사실상 항등함수이므로 $\rho_0 H$는 $H$ 그 자체가 된다는 건 쉽게 알 수 있는데, 이게 다시 $\mu_1 H$와도 같다는 사실은 어떻게 튀어나오는 걸까? 위에서 언급했던대로, $\rho_0 H$는 $H$의 모든 원소의 왼편에 $\rho_0$를 곱해서 얻어진 집합이기도 하지만, $\rho_0$의 동치류이기도 하다. 즉 $\rho_0$와 관련이 있는 원소들을 모두 모아놓은 집합이 $\rho_0 H$이므로, 이 집합의 원소 $\mu_1$은 $\rho_0$와 관련이 있다. 따라서 $\mu_1$을 포함하는 left coset $\mu_1 H$는 $\rho_0 H$와 동일하고, 다른 경우도 모두 마찬가지이다. 
+
+또한 $S_3$는 abelian이 아니므로 위 두 예시와는 다르게 left coset과 right coset이 일치하지 않는다.
+
+## Definition 2
+Let $H \le G$. The number of left cosets of $H$ in $G$ is called the ***index*** of $H$ in $G$, denoted by $(G: H)$. 
+
+## Remark 2
+**(i)** The number of right cosets of $H$ in $G$ is the same as the index. 
+
+$\big[(\because)$ Let $L$ and $R$ be sets of left cosets and right cosets of $H$ in $G$, respectively. Define a function $\phi: L \to R$ by $\phi(aH) = Ha^{-1}, \forall aH \in L$. 
+
+Clearly, for each $aH \in L$, $Ha^{-1} \in R$. If $aH = bH$ for some $a, b \in G$, then $a \sim_L b$, so that $b \sim_L a$, which means that $b^{-1}(a^{-1})^{-1} = b^{-1}a \in H$. Then $b^{-1} \sim_R a^{-1}$, which means that $Hb^{-1} = Ha^{-1}$. Thus, $\phi(aH) = \phi(bH)$, so that $\phi$ is well-defined.
+
+If $\phi(aH) = \phi(bH)$ for some $a, b \in G$, then we have $Ha^{-1} = Hb^{-1}$, which means that $a^{-1} \sim_R b^{-1}$. Then $a^{-1}b = a^{-1}(b^{-1})^{-1} \in H$, so that $a \sim_L b$. Hence, $aH = bH$, so that $\phi$ is injective.
+
+Let $Hx \in R$ for some $x \in G$. Then $x^{-1}H \in L$, so that $\phi(x^{-1}H) = H(x^{-1})^{-1} = Hx$. Thus, $\phi$ is surjective. 
+
+Thus, $\phi$ is bijective, so that $\vert L \vert = \vert R \vert$. $\blacksquare \big]$
+
+**(ii)** If $H$ is a subgroup of a finite group $G$, then $\vert G \vert = \vert H \vert (G : H)$ by Lagrange's theorem. In other words, 
+
+$$(G : H) = \frac{\vert G \vert}{ \vert H \vert}.$$
+
+한편 index $(G : H)$는 $H$의 coset의 개수이고, $H$가 $G$의 normal group이라면 이 값은 정의상 factor group $G/H$의 크기일 수 밖에 없다. 따라서 다음의 관계가 성립한다.
+
+$$\vert G/H \vert = \frac{\vert G \vert}{\vert H \vert}.$$
+
+마치 factor group $G/H$를 '실제로' $G$와 $H$의 나눗셈처럼 생각해서 계산한 것 같은 결과가 성립함을 알 수 있다.
+
+## Theorem 2
+Let $K \le H \le G$. If $(G : H)$ and $(H : K)$ are finite, then $(G : K)$ is finite, and 
+
+$$(G : K) = (G : H)(H : K).$$
+
+### Proof
+Suppose that $(G : H) = m$ and $(H : K) = n$, which means that there are $m$ left cosets $g_1H, ..., g_mH$ of $H$ in $G$ for some $g_1, ..., g_m \in G$, and there are $n$ left cosets $h_1K, ..., h_nK$ of $K$ in $H$ for some $h_1, ..., h_n \in H$. Then we have
+
+$$G = \bigsqcup_{i=1}^m g_iH \quad \text{and} \quad H = \bigsqcup_{j=1}^n h_jK.$$
+
+**Claim**: $\displaystyle g_iH = \bigsqcup_{j=1}^n g_ih_jK$ for each $i = 1, ..., m$.
+
+$\big[$$(\because)$ Fix some $1 \le i \le m$. First, we will show that $\displaystyle g_iH = \bigcup_{j=1}^n g_ih_jK$. 
+
+Let $x \in g_iH$. Then $x = g_ih$ for some $h \in H$. Since $\displaystyle H = \bigsqcup_{j=1}^n h_jK$, we have $h \in h_jK$ for some $1 \le j \le n$, which means that $h = h_jk$ for some $k \in K$. Then $\displaystyle x = g_ih_jK \in \bigcup_{j=1}^n g_ih_jK$. 
+
+Let $\displaystyle x \in \bigcup_{j=1}^n g_ih_jK$. Then $x \in g_ih_jK$ for some $1 \le j \le n$, which means that $x = g_ih_jk$ for some $k \in K$. Since $\displaystyle h_jk \in h_jK \subset \bigsqcup_{j=1}^n h_jK = H$, we have $x = g_ih_jk \in g_ih_jK \subset g_iH$. Thus, we have 
+
+$$g_iH = \bigcup_{j=1}^n g_ih_jK.$$
+
+Next, we will show that 
+
+$$g_iH = \bigsqcup_{j=1}^n g_ih_jK,$$
+
+which means that each $g_ih_jK$ is disjoint. Suppose, WLOG, that there is an element $x$ of $G$ such that $x \in g_ih_1K$ and $x \in g_ih_2K.$ Then $x = g_ih_1k_1$ and $x = g_ih_2k_2$ for some $k_1, k_2 \in K$, which implies that 
+
+$$\begin{gather*}
+g_ih_1k_1 = x = g_ih_2k_2 \\
+\implies h_1k_1 = h_2k_2 \quad \text{(cancellation law)}.
+\end{gather*}$$
+
+Note that each $h_jK$ is disjoint. But we have $h_1k_1 \in h_1K$ and $h_1k_1 = h_2k_2 \in h_2K$. $\bigotimes$ Thus, each $g_ih_jK$ is disjoint, which means that 
+
+$$g_iH = \bigsqcup_{j=1}^n g_ih_jK. \big]$$
+
+By above claim, we have 
+
+$$\begin{align*}
+G &= \bigsqcup_{i=1}^m g_iH \\
+&= \bigsqcup_{i=1}^m \left( g_i \bigsqcup_{j=1}^n h_jK \right) \\
+&= \bigsqcup_{i=1}^m \bigsqcup_{j=1}^n g_ih_jK \\
+&= \bigsqcup_{1 \le i \le m, 1 \le j \le n} g_ih_jK.
+\end{align*}$$
+
+The last equality comes from the fact that each $g_iH$ is disjoint, so that each $g_ih_jK$ is also disjoint. 
+
+Note that there are $mn$ left cosets $g_ih_jK$ of $K$ in $G$. Hence, we have 
+
+$$(G:K) = mn = (G:H)(H:K). \blacksquare$$
+
+## Theorem 3
+Let $G$ be a finite group, and let $H \le G$. If $(G:H) = 2$, then $H \lhd G$.
+
+### Proof
+Since $(G:H) = 2$, $H$ and $aH$ is all the left cosets of $H$ where $a \notin H$. Since the number of right cosets is also $2$, $H$ and $Ha$ is all the right cosets of $H$. Since $\{ H, aH \}$ and $\{ H, Ha \}$ is the partitions of $G$, if the element $x$ of $G$ belongs to $aH$, then $x \notin H$. Then $x \in Ha$. Similarly, if $x \in Ha$, then $x \in Ha$. Thus, we have $aH = Ha$ for all $a \in G$ with $a \notin H$.
+
+If $b \in H$, then $bH = H = Hb$. Therefore, $aH = Ha, \forall a \in G$, which means that $H \lhd G$. $\blacksquare$
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

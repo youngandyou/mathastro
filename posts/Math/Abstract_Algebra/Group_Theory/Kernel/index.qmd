@@ -1,0 +1,63 @@
+---
+title: "Kernel"
+author: "Youmin Chun"
+date: "2026-09:02 00:00:12"
+description: "군의 준동형사상의 커널(Kernel)과 그 성질에 대해서 설명한다."
+categories: 
+  - Math > Abstract Algebra > Group Theory
+---
+
+## Definition
+Let $\phi: G \to G'$ be a group homomorphism. The ***kernel*** $\mathrm{Ker}(\phi)$ of $\phi$ is a set $\mathrm{Ker}(\phi) = \phi^{-1}(\{ e_{G'} \}) = \{ a \in G \mid \phi(a) = e_{G'} \}$. 
+
+즉 $G'$의 identity로 mapping되는 원소들의 집합을 커널이라고 부른다. 한편 $\{ e_{G'} \} \le G'$이므로 $\mathrm{Ker}(\phi) = \phi^{-1}(\{ e_{G'} \}) \le G$가 성립한다. 즉 커널은 $G$의 부분군이다. 
+
+## Theorem 1
+Let $\phi: G \to G'$ be a group homomorphism. Let $a \in G$ and $H := \mathrm{Ker}(\phi)$. Then $aH = \phi^{-1}(\{ \phi(a) \}) = Ha$. 
+
+다르게 표현하면, kernel은 항상 normal subgroup이라는 뜻이 된다.
+
+### Proof
+Let $x \in aH$. Then $x = ah$ for some $h \in H$. Then we have 
+
+$$\begin{align*}
+\phi(x) &= \phi(ah) \\
+&= \phi(a) \phi(h) \\
+&= \phi(a),
+\end{align*}$$
+
+which implies that $x \in \phi^{-1}(\{ \phi(a) \})$.
+
+Let $x \in \phi^{-1}(\{ \phi(a) \})$. Then $\phi(x) = \phi(a)$. Note that 
+
+$$\begin{align*}
+\phi(a^{-1}x) &= \phi(a^{-1})\phi(x) \\
+&= \phi(a)^{-1}\phi(x) \\
+&= \phi(a)^{-1}\phi(a) \\
+&= e_{G'},
+\end{align*}$$
+
+which means that $a^{-1}x \in H$. Thus, $x \in aH$, and therefore $aH = \phi^{-1}(\{ \phi(a) \})$. Similarly, we can show that $Ha = \phi^{-1}(\{ \phi(a) \})$. $\blacksquare$
+
+## Theorem 2
+Let $\phi: G \to G'$ be a group homomorphism. Then $\phi$ is a monomorphism $\iff$ $\mathrm{Ker}(\phi) = \{ e_G \}$.
+
+### Proof
+$(\Longrightarrow)$
+
+Suppose that $\phi$ is a monomorphism. Clearly, we have $\{ e_G \} \subset \mathrm{Ker}(\phi)$. Let $x \in \mathrm{Ker}(\phi)$. Then $\phi(x) = e_{G'} = \phi(e_G)$. Since $\phi$ is injective, we have $x = e_G$. Thus, $\mathrm{Ker}(\phi) = \{ e_G \}$.
+
+$(\Longleftarrow)$
+
+Suppose that $\mathrm{Ker}(\phi) = \{ e_G \}$. If $\phi(x) = \phi(y)$ for some $x, y \in G$, then we have 
+
+$$\begin{align*}
+e_{G'} &= \phi(x)\phi(y)^{-1} \\
+&= \phi(x)\phi(y^{-1}) \\
+&= \phi(xy^{-1}),
+\end{align*}$$
+
+which implies that $xy^{-1} \in \mathrm{Ker}(\phi) = \{ e_G \}$. Thus, $xy^{-1} = e_G \iff x= y$, and therefore $\phi$ is injective. Hence, $\phi$ is a monomorphism. $\blacksquare$
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

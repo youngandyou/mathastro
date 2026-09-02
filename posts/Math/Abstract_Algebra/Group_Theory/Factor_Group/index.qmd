@@ -1,0 +1,168 @@
+---
+title: "Factor Group"
+author: "Youmin Chun"
+date: "2026-09:02 00:00:14"
+description: "몫군(Factor Group)에 대해서 설명한다."
+categories: 
+  - Math > Abstract Algebra > Group Theory
+---
+
+## Theorem 1
+Let $H \le G$. We denote $G / H = \{ aH \mid a \in G \}$. Then the operation on $G / H$ defined by 
+
+$$(aH)(bH) = (ab)H, \forall a , b \in G$$
+
+is well-defined $\iff$ $H \lhd G$.
+
+### Proof
+$(\Longrightarrow)$
+
+Suppose that the operation is well-defined. We will show that $aH = Ha, \forall a \in G$.
+
+Let $a \in G$. If $x \in aH$, then we have $xH = aH$, so that 
+
+$$\begin{align*}
+(xa^{-1})H &= (xH)(a^{-1}H) \\
+&= (aH)(a^{-1}H) \\
+&= (aa^{-1})H \\
+&= eH \\
+&= H.
+\end{align*}$$
+
+Thus, $xa^{-1} \in H$, which means that $x \in Ha$. Hence, $aH \subset Ha$.
+
+Conversely, if $x \in Ha$, then we have $x = ha$ for some $h \in H$. Then 
+
+$$\begin{align*}
+xH &= (ha)H \\
+&=(hH)(aH) \\
+&= H(aH) \\
+&= aH.
+\end{align*}$$
+
+Thus, $x \in aH$ and therefore, $Ha \subset aH$. Hence, $aH = aH.$
+
+$(\Longleftarrow)$
+
+Suppose that $aH = Ha, \forall a \in G$. We assume that $a_1H = a_2H$ and $b_1H = b_2H$. We will show that $(a_1b_1)H = (a_1H)(b_1H) = (a_2H)(b_2H) = (a_2b_2)H$.
+
+Let $x \in (a_1b_1)H$. Then $x = a_1b_1h$ for some $h \in H$. Since $b_1h \in b_1H$ and $b_1H = b_2H$, $b_1h \in b_2H$, which means that $b_1h = b_2h_1$ for some $h_1 \in H$. Then $x = a_1b_2h_1$.
+
+Since $b_2h_1 \in b_2H$ and $b_2H = Hb_2$, $b_2h_1 \in Hb_2$, which means that $b_2h_1 = h_2b_2$ for some $h_2 \in H$. Then $x = a_1h_2b_2$.
+
+Since $a_1h_2 \in a_1H$ and $a_1H = a_2H$, $a_1h_2 \in a_2H$, which means that $a_1h_2 = a_2h_3$ for some $h_3 \in H$. Then $x = a_2h_3b_2$.
+
+Since $h_3b_2 \in Hb_2$ and $Hb_2 = b_2H$, $h_3b_2 \in b_2H$, which means that $h_3b_2 = b_2h_4$ for some $h_4 \in H$. Then $x = a_2b_2h_4$. Thus, $x \in (a_2b_2)H$, and therefore $(a_1b_1)H \subset (a_2b_2)H$.
+
+Similarly, we also have $(a_2b_2)H \subset (a_1b_1)H$. Hence, $(a_1b_1)H = (a_2b_2)H$. $\blacksquare$
+
+## Corollary
+Let $H \lhd G$. Then $G / H$ is a group under the binary operaton defined above theorem. 
+
+### Proof
+By Theorem 1, the operation is well-defined.
+
+Let $a, b, c \in G$. Then we have 
+
+$$\begin{align*}
+[(aH)(bH)](cH) &= [(ab)H](cH) \\
+&= [(ab)c]H \\
+&= [a(bc)]H \\
+&= (aH)[(bc)H] \\
+&= (aH)[(bH)(cH)].
+\end{align*}$$
+
+Thus, the operation is associative.
+
+Note that 
+
+$$\begin{align*}
+(aH)(eH) &= (ae)H \\
+&=aH \\
+&=(ae)H \\
+&= (aH)(eH).
+\end{align*}$$
+
+Thus, $eH (=H)$ is the identity element in $G/H$.
+
+Note that 
+
+$$\begin{align*}
+(aH)(a^{-1}H) &= (aa^{-1})H \\
+&= eH \\
+&= (a^{-1}a)H\\
+&= (a^{-1}H)(aH).
+\end{align*}$$
+
+Thus, each element $aH$ in $G/H$ has the inverse and $(aH)^{-1} = a^{-1}H$. Hence, $G/H$ is a group. $\blacksquare$
+
+## Definition
+Let $H \lhd G$. The group $G/H$ is called the ***factor group*** (or ***quotient group***) of $G$ by $H$. 
+
+## Remark
+**(i)** If $G$ is abelian and $H \lhd G$, then $G / H$ is abelian.
+
+**(ii)** $G /H$ being abelian does not imply that $G$ is abelian.
+
+$\big[(\because)$ Note that $A_n \le S_n$ and $\vert A_n \vert = \frac{n!}{2}$. Then we have $(S_n:A_n) = \frac{\vert S_n \vert}{\vert A_n \vert} = 2$ by [Remark 2 (ii).](../Coset/index.qmd#sec-remark-2), and therefore $A_n \lhd S_n$ by [Theorem 3.](../Coset/index.qmd#sec-theorem-3) For all $n \ge 3$, $S_n/A_n \cong \mathbb{Z}_2$ is abelian, but $S_n$ is not abelian.$\big]$
+
+**(iii)** For $n \in \mathbb{N}$, we have $n\mathbb{Z} \lhd \mathbb{Z}$ because $\mathbb{Z}$ is abelian. Then $\mathbb{Z}/n\mathbb{Z}$ is the factor group of $\mathbb{Z}$ by $n\mathbb{Z}$. In particular, $\mathbb{Z}/n\mathbb{Z} \cong \mathbb{Z}_n$.
+
+**(iv)** Note that $\ker(\phi) \lhd G$ for a group homomorphism $\phi : G \to G'$ by [Theorem 1.](../Kernel/index.qmd#sec-theorem-1) Then $G/\ker(\phi)$ is a factor group of $G$ by $\ker(\phi)$. 
+
+**(v)** $G / \{ e \} \cong G$ and $G / G \cong \{ e \}$.
+
+## Theorem 2
+A factor group of a cyclic group is cyclic.
+
+### Proof
+Let $G = \langle a \rangle$ and let $H \lhd G$. We claim that $G/H = \langle a H \rangle$.
+
+To see this, let $bH \in G/H$. Since $b \in G$, $b = a^n$ for some $n \in \mathbb{Z}$. Then we have $bH = a^nH = (aH)^n \in \langle aH \rangle$, which means that $G/H \subset \langle aH \rangle$.
+
+Since $aH \in G/H$, $\langle aH \rangle \subset G/H$ is clear. Thus, $G/H = \langle a H \rangle$. $\blacksquare$
+
+## Theorem 3
+Let $H$ and $K$ be groups, and let $N_1 \lhd H$ and $N_2 \lhd K$. Then
+
+$$(H \times K) / (N_1 \times N_2) \cong (H/N_1) \times (K / N_2).$$
+
+### Proof
+Note that the factor groups $(H \times K)/(N_1 \times N_2),$ $H/N_1$ and $K/N_2$ are well-defined because $N_1 \lhd H$ and $N_2 \lhd K$ by Theoerm 1 and $N_1 \times N_2 \lhd H \times K.$
+
+Define a function $\phi: H \times K \to (H/N_1) \times (K / N_2)$ by 
+
+$$\phi(h, k) = (hN_1, kN_2), \forall (h, k) \in H \times K.$$
+
+Clearly, $\phi$ is well-defined. For each $(hN_1, kN_2) \in (H/N_1) \times (K / N_2)$, we have $\phi(h, k) = (hN_1, kN_2)$, which means that $\phi$ is onto. 
+
+Let $(h_1,k_1), (h_2,k_2) \in H \times K$. Then we have 
+
+$$\begin{align*}
+\phi((h_1,k_1)(h_2,k_2)) &= \phi((h_1h_2,k_1k_2)) \\
+&= ((h_1h_2)N_1,(k_1k_2)N_2) \\
+&= ((h_1N_1)(h_2N_1), (k_1N_2)(k_2N_2)) \\
+&= (h_1N_1,k_1N_2)(h_2N_1,k_2N_2) \\
+&= \phi(h_1,k_1) \phi(h_2,k_2).
+\end{align*}$$
+
+Thus, $\phi$ is an epimorphism. Furthermore, $\ker(\phi) = N_1 \times N_2$ because $N_1$ is the identity element of $H / N_1$ and $hN_1 = N_1 \iff h \in N_1$, and the same holds for $N_2$ and $K/N_2$.
+ 
+By [the first isomorphism theorem](../First_Isomorphism_Theorem/index.qmd#sec-the-first-isomorphism-theorem), we conclude
+
+$$(H \times K) / (N_1 \times N_2) \cong (H/N_1) \times (K / N_2). \quad \blacksquare$$
+
+## Corollary
+Let $H$ and $K$ be groups. 
+
+**(i)** $(H \times K) / (H \times \{ e_K \}) \cong K$.
+
+**(ii)** $(H \times K) / (\{ e_H \} \times K) \cong H$.
+
+### Proof
+**(i)** Define a function $\phi: H \times K \to K$ by $\phi(h, k) = k, \forall (h, k) \in H \times K$. Clearly, $\phi$ is an epimorphism with kernel $H \times \{ e_K \}$. By the first isomorphism theorem, $(H \times K)/(H \times \{ e_K \}) \cong K$. 
+
+**(ii)** Similar to (i). $\blacksquare$
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

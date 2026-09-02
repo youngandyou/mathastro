@@ -1,0 +1,257 @@
+---
+title: "Direct Product Group"
+author: "Youmin Chun"
+date: "2026-09:02 00:00:10"
+description: "직곱군(Direct Product Group)에 대해서 설명하고, Fundamental Theorem of Finitely Generated Abelian Groups에 대해서 설명한다."
+categories: 
+  - Math > Abstract Algebra > Group Theory
+---
+
+## Theorem 1
+Let $G_1, ..., G_n$ be groups. Then $\displaystyle \prod_{i=1}^n G_i$ is a group under the binary operation defined by 
+
+$$(a_1, \cdots, a_n) (b_1, \cdots, b_n) = (a_1b_1, \cdots, a_nb_n)$$
+
+for all $(a_1, \cdots, a_n), (b_1, \cdots, b_n) \in \displaystyle \prod_{i=1}^n G_i$, and we call it the ***(external) direct product*** of the groups $G_i$. 
+
+### Proof
+Let $a = (a_1, \cdots, a_n), b = (b_1, \cdots, b_n), c = (c_1, \cdots, c_n) \in \displaystyle \prod_{i=1}^n G_i$. Then 
+
+$$\begin{align*}
+ab &= (a_1, \cdots, a_n)(b_1, \cdots, b_n) \\
+&= (a_1b_1, \cdots, a_nb_n) \\
+& \in \prod_{i=1}^n G_i.
+\end{align*}$$
+
+Next, we have 
+
+$$\begin{align*}
+(ab)c &= ((a_1, \cdots, a_n)(b_1, \cdots, b_n))(c_1, \cdots, c_n) \\
+&= (a_1b_1, \cdots, a_nb_n)(c_1, \cdots, c_n) \\
+&= ((a_1b_1)c_1, \cdots, (a_nb_n)c_n) \\
+&= (a_1(b_1c_1), \cdots, a_n(b_nc_n)) \\
+&= (a_1, \cdots, a_n)((b_1, \cdots, b_n)(c_1, \cdots, c_n)) \\
+&= a(bc).
+\end{align*}$$
+
+Next, let $e := (e_1, \cdots, e_n)$. Then $e \in \displaystyle \prod_{i=1}^n G_i$ and we have 
+
+$$\begin{align*}
+ea &= (e_1, \cdots, e_n)(a_1, \cdots, b_n) \\
+&= (e_1a_1, \cdots, e_na_n) \\
+&= (a_1, \cdots, a_n) \\
+&= (a_1e_1, \cdots, a_ne_n) \\
+&= (a_1, \cdots, a_n)(e_1, \cdots, e_n) \\
+&= ae.
+\end{align*}$$
+
+Hence $e$ is the identity element of $\displaystyle \prod_{i=1}^n G_i$. 
+
+Let $a^{-1} := (a^{-1}_1, \cdots, a^{-1}_n)$. Then we have 
+
+$$\begin{align*}
+a^{-1}a &= (a^{-1}_1, \cdots, a^{-1}_n)(a_1, \cdots, a_n) \\
+&= (a^{-1}_1a_1, \cdots, a^{-1}_na_n) \\
+&= (e_1, \cdots, e_n) \\
+&= e \\
+&= (e_1, \cdots, e_n) \\
+&= (a_1a^{-1}_1, \cdots, a_na^{-1}_n) \\
+&= (a_1, \cdots, a_n)(a^{-1}_1, \cdots, a^{-1}_n) \\
+&= aa^{-1}.
+\end{align*}$$
+
+Thus, $\displaystyle \prod_{i=1}^n G_i$ is a group. $\blacksquare$
+
+## Remark
+Let $G := \displaystyle \prod_{i=1}^n G_i$.
+
+**(i)** $G$ is abelian $\iff$ each $G_i$ is ablelian. In this case, we denote $\displaystyle \bigoplus_{i=1}^n G_i$, and we call $G$ the ***direct sum*** of the groups $G_i$.
+
+**(ii)** $G$ is finite $\iff$ each $G_i$ is finite. 
+
+**(iii)** If $G$ is cyclic, then each $G_i$ is cyclic. But the converse does not hold.
+
+$\big[$$(\because)$ Note that $\mathbb{Z}_2 \times \mathbb{Z}_2 \cong V$, $\mathbb{Z}_3 \times \mathbb{Z}_3 \not \cong \mathbb{Z}_9$ and $\mathbb{Z}_2 \times \mathbb{Z}_3 \cong \mathbb{Z}_6$.$\big]$
+
+**(iv)** Define
+
+$$\overline{G_i} := \{ (e_1, \cdots, e_{i-1}, g_i, e_{i+1}, \cdots, a_n) \mid g_i \in G_i \}.$$
+
+Then we have that for each $i = 1, \cdots, n$, 
+
+**1.** $\overline{G_i} \le G$.
+
+**2.** $\overline{G_i} \cong G_i$.
+
+We consider $G$ to be the ***internal direct product*** of these subgroups $\overline{G_i}$'s. 
+
+## Theorem 2
+Let $G := \displaystyle \prod_{i=1}^n G_i.$
+
+**(i)** If $H_i \le G_i$ for each $i = 1, 2, \cdots, n,$ then $H := \displaystyle \prod_{i=1}^n H_i \le G.$
+
+**(ii)** If $N_i \lhd G_i$ for each $i = 1, 2, \cdots, n,$ then $N := \displaystyle \prod_{i=1}^n N_i \lhd G.$
+
+### Proof
+**(i)** Since each $H_i$ is nonempty, so is $H.$ Let $x = (x_1, \cdots, x_n), y = (y_1, \cdots, y_n) \in H.$ Then
+
+$$\begin{align*}
+xy^{-1} &= (x_1, \cdots, x_n)(y_1, \cdots, y_n)^{-1} \\
+&= (x_1, \cdots, x_n)(y^{-1}_1, \cdots, y^{-1}_n) \\
+&= (x_1y^{-1}_1, \cdots, x_ny^{-1}_n) \\
+& \in \prod_{i=1}^n H_i = H
+\end{align*}$$
+
+because each $H_i \le G_i,$ so each $x_iy_i^{-1} \in H_i.$ Hence, $H \le G.$
+
+**(ii)** By (i), $N \lhd G.$ Let $g = (g_1, \cdots, g_n) \in G,$ and let $x = (x_1, \cdots, x_n) \in gNg^{-1}.$ Then $x = gag^{-1}$ for some $a = (a_1, \cdots, a_n) \in N$ where each $g_i \in G_i, a_i \in N_i.$
+
+$$\begin{align*}
+x &= gag^{-1} \\
+&= (g_1, \cdots, g_n)(a_1, \cdots, a_n)(g_1, \cdots, g_n)^{-1} \\
+&= (g_1a_1g^{-1}_1, \cdots, g_na_ng^{-1}_n) \\
+&\in N
+\end{align*}$$
+
+because each $g_ia_ig^{-1}_i \in N_i.$ Hence $N \lhd G. \blacksquare$
+
+## Theorem 3
+$\mathbb{Z}_m \times \mathbb{Z}_n$ is cyclic $\iff$ $\gcd(m, n) = 1$. In this case, $\mathbb{Z}_m \times \mathbb{Z}_n \cong \mathbb{Z} _ {mn}$.
+
+특별히 cyclic인 경우에 generator 중 하나로 $(1, 1)$이 있음음을 아래 증명을 통해 알 수 있다.
+
+### Proof
+
+$(\Longrightarrow)$
+
+Suppose that $\alpha = \gcd(m, n) \neq 1$. Then $m = \alpha k_1$ and $n = \alpha k_2$ for some $k_1, k_2 \in \mathbb{N}$ with $\gcd(k_1, k_2) = 1$. Since $\mathbb{Z}_m \times \mathbb{Z}_n$ is cyclic, it has a generator $(a, b)$. Then $r(a, b) \neq (0, 0), \forall r \in \\{ 1, ..., mn-1\\}$ because $\mathbb{Z}_m \times \mathbb{Z}_n$ has order $mn$. 
+
+However, we have 
+
+$$\begin{align*}
+\frac{mn}{\alpha}(a, b) &= \left( \frac{n}{\alpha}ma, \frac{m}{\alpha} nb \right) \\
+&= (k_2ma, k_1nb) \\
+&= (0, 0)
+\end{align*}$$ 
+
+which is a contradiction. Therefore $\alpha = 1$.
+
+$(\Longleftarrow)$
+
+Suppose that $\gcd(m, n) = 1$. Note that $(1, 1) \in \mathbb{Z}_m \times \mathbb{Z}_n$. We claim that $r(1, 1) \neq s(1,1), \forall 0 \le r < s < mn$. 
+
+$\big[(\because)$ Suppose that $r(1, 1) = s(1, 1)$ for some $0 \le r < s < mn$. Then $(s-r)(1, 1) = (s-r, s-r) = (0, 0) \in \mathbb{Z}_m \times \mathbb{Z}_n$, which implies that $m$ and $n$ divide $s-r$. Since $\gcd(m ,n) = 1$, $mn$ divides $s-r$, which implies that $mn \le s-r$. But we have $s-r < mn$. $\bigotimes$ $\big]$
+
+Note that $mn(1, 1) = (mn, mn) = (0, 0)$. Thus, $\vert (1, 1) \vert = mn$, which means that $\mathbb{Z}_m \times \mathbb{Z}_n = \langle (1, 1) \rangle. \blacksquare$
+
+## Corollary
+$\displaystyle \prod_{i=1}^n \mathbb{Z} _ {m_i}$ is cyclic $\iff \gcd(m_i, m_j) = 1$ for all $i \neq j$. In this case, $\displaystyle \prod_{i=1}^n \mathbb{Z} _ {m_i} \cong \mathbb{Z} _ {m_1 m_2 \cdots m_n}$.
+
+마찬가지로, generator 중 하나로 $(1, 1, \cdots, 1)$이 있음을 알 수 있다.
+
+### Proof
+We use the induction on $n$. The case when $n=2$ was shown in Theorem 3.
+
+Suppose that there exists $t \ge 2$ such that 
+
+$$\prod_{i=1}^t \mathbb{Z} _ {m_i} \cong \mathbb{Z} _ {m_1 \cdots m_t} \iff \gcd(m_i, m_j) = 1, \forall 1 \le i < j \le t.$$
+
+Note that 
+
+$$\prod_{i=1}^{t+1} \mathbb{Z} _ {m_i} \cong \left( \prod_{i=1}^t \mathbb{Z} _ {m_i} \right) \times \mathbb{Z} _ {m_{t+1}}.$$
+
+By the induction hypothesis and Theorem 3, we have 
+
+$$\prod_{i=1}^{t+1} \mathbb{Z} _ {m_i} \cong \mathbb{Z} _ {m_1 \cdots m_{t+1}} \iff \gcd(m_1 \cdots m_t, m_{t+1}) = 1 \iff \gcd(m_i, m_{t+1}) = 1, \forall 1 \le i \le t.$$
+
+Hence, for all $n \ge 2$, we have
+
+$$\displaystyle \prod_{i=1}^n \mathbb{Z} _ {m_i} \cong \mathbb{Z} _ {m_1 m_2 \cdots m_n} \iff \gcd(m_i, m_j) = 1, \forall i \neq j. \quad \blacksquare$$
+
+## Example 1
+**(i)** Let $n = p_1^{r_1} \cdots p_m^{r_m}$ be the prime factorization of $n$, where $p_1, \cdots, p_r$ are distinct primes. Then $\mathbb{Z}_n \cong \mathbb{Z} _ {p_1^{r_1}} \times \cdots \times \mathbb{Z} _ {p_m^{r_m}}$. 
+
+**(ii)** $\mathbb{Z} _ {72} = \mathbb{Z}_8 \times \mathbb{Z}_9$.  
+
+## Theorem 4
+Let $(a_1, \cdots, a_n) \in \displaystyle \prod_{i=1}^n G_i$. If $\vert \langle a_i \rangle \vert = r_i$ in $G_i$, then $\vert \langle (a_1, \cdots, a_n) \rangle \vert = \mathrm{lcm}(r_1, \cdots, r_n)$ in $\displaystyle \prod_{i=1}^n G_i$.
+
+### Proof
+Let $\vert \langle (a_1, \cdots, a_n) \rangle \vert = m$. Then 
+
+$$(a_1^m, \cdots, a_n^m) = (a_1, \cdots, a_n)^m = (e_1, \cdots, e_n),$$
+
+so that each $r_i$ divides $m$. Hence $m$ is a common multiple of $r_1, ..., r_n$. 
+
+Suppose that there exists a common multiple $t \in \mathbb{N}$ of $r_1, ..., r_n$. Then we have 
+
+$$(a_1, \cdots, a_n)^t = (a_1^t, \cdots, a_n^t) = (e_1, \cdots, e_n).$$
+
+Since $\vert \langle (a_1, \cdots, a_n) \rangle \vert = m$, we have $m \vert t$. Thus, $m = \mathrm{lcm}(r_1, \cdots, r_n)$. $\blacksquare$
+
+## Example 2
+**(i)** Let $(8, 4, 10) \in \mathbb{Z} _ {12} \times \mathbb{Z} _ {60} \times \mathbb{Z} _ {24}$. Then $\vert \langle 8 \rangle \vert = 3, \vert \langle 4 \rangle \vert = 15$ and $\vert \langle 10 \rangle \vert = 12$. By Theorem 3, $\vert \langle (8, 4, 10) \rangle \vert = \mathrm{lcm}(3, 15, 12) = 60$.
+
+**(ii)** $\mathbb{Z} \times \mathbb{Z}_2 = \langle (1, 0), (0, 1) \rangle$ 
+
+**(iii)** $\mathbb{Z} _ {m_1} \times \cdots \times \mathbb{Z} _ {m_n} = \langle (1, 0, \cdots, 0), (0, 1, 0, \cdots, 0), \cdots, (0, \cdots, 0, 1) \rangle$
+
+**(iv)** $\mathbb{Z} _ 3 \times \mathbb{Z} _ 4 \times \mathbb{Z} _ {35} = \langle (1, 1, 1) \rangle$.  
+
+(ii)와 (ii)의 경우,  finite가 아니거나 서로소라는 보장이 없으면 cyclic으로 나타낼 수 없지만 finitely generated set은 항상 된다는 사실을 보여준다. 반면 (iv)는 finite하면서 모두 서로소이므로 one-generated set, 즉 cyclic group이 된다.
+
+## Theorem 5 (Fundamental Theorem of Finitely Generated Abelian Groups)
+**(i)** Every finitely generated abelian group $G$ is isomorphic to a direct product of cyclic groups in the form 
+
+$$\mathbb{Z}_{p_1^{r_1}} \times \cdots \times \mathbb{Z}_{p_k^{r_k}} \times \mathbb{Z} \times \cdots \times \mathbb{Z}$$
+
+where $p_i$ are not necessarily distinct primes and $r_i \in \mathbb{N}$.
+
+**(ii)** The direct product as in (i) is unique except for possible rearrangement of the factors.
+
+Furthermore, the number of $\mathbb{Z}$ in the direct product of cyclic groups in (i) is called the ***Betti number*** of $G$.
+
+## Example 3
+위 정리를 사용해서 오더가 $360$인 아벨군을 모두 찾아보자. 우선 위 정리에 의해서 우리가 구하고자 하는 군은 반드시 
+
+$$\mathbb{Z}_{p_1^{r_1}} \times \cdots \times \mathbb{Z}_{p_k^{r_k}}$$
+
+와 동형이어야 한다. 일단 유한군이므로 $\mathbb{Z} \times \cdots \times \mathbb{Z}$ 파트는 나타나지 않는다. 즉, Betti number가 0이다.
+
+한편 $360 = 2^3 \times 3^2 \times 5$이므로, 각 $p_i^{r_i}$는 이 소인수들 안에서만 나타나야 한다. 그렇지 않으면 원소의 개수가 반드시 다르게 나타나므로 동형이 아니다.
+
+**1.** $2^3$
+
+소인수 $2$에 관해서는 다음의 세 가지 경우가 가능하다. 
+
+$$\mathbb{Z}_8, \quad \mathbb{Z}_4 \times \mathbb{Z}_2, \quad \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_2$$
+
+이 세 군이 서로 동형이 아님은 자명한데, $\mathbb{Z}_8$은 order가 8인 원소를 갖는 반면 $\mathbb{Z}_4 \times \mathbb{Z}_2$와 $\mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_2$는 그렇지 않으므로 동형이 아니고, 다른 경우들도 같은 이유로 동형이 아니다. 
+
+**2.** $3^2$
+
+마찬가지로 $3$에 대해서도 다음의 두 가지 경우가 나타난다.
+
+$$\mathbb{Z}_9, \quad \mathbb{Z}_3 \times \mathbb{Z}_3$$
+
+마찬가지로 이 두 군도 서로 동형이 아니다.
+
+**3.** $5$
+
+$5$는 한 번만 곱해졌으므로 $\mathbb{Z}_5$의 한 가지 경우만 나타난다.
+
+따라서 오더가 $360$인 아벨군은 다음 여섯 가지의 서로 동형이 아닌 케이스가 존재한다.
+
+$$\begin{align*}
+& 1. \quad \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_3 \times \mathbb{Z}_3 \times \mathbb{Z}_5 \\
+& 2. \quad \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_2 \times \mathbb{Z}_9 \times \mathbb{Z}_5 \\
+& 3. \quad \mathbb{Z}_2 \times \mathbb{Z}_4 \times \mathbb{Z}_3 \times \mathbb{Z}_3 \times \mathbb{Z}_5 \\
+& 4. \quad \mathbb{Z}_2 \times \mathbb{Z}_4 \times \mathbb{Z}_9 \times \mathbb{Z}_5 \\
+& 5. \quad \mathbb{Z}_8 \times \mathbb{Z}_3 \times \mathbb{Z}_3 \times \mathbb{Z}_5 \\
+& 6. \quad \mathbb{Z}_8 \times \mathbb{Z}_9 \times \mathbb{Z}_5
+\end{align*}$$
+
+한편, '형태' 자체는 위 여섯 가지 경우와 다른 케이스도 존재한다. 예를 들어 $\mathbb{Z} _ {72} \times \mathbb{Z}_5$도 오더가 360인 아벨군이지만, 사실 $\mathbb{Z}_8 \times \mathbb{Z}_9 \cong \mathbb{Z} _ {72}$ 이기 때문에 이 경우는 6번 케이스와 동형이다.
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

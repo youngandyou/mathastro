@@ -1,0 +1,104 @@
+---
+title: "Simple Group"
+author: "Youmin Chun"
+date: "2026-09:02 00:00:21"
+description: "단순군(Simple Group)에 대해서 설명한다."
+categories: 
+  - Math > Abstract Algebra > Group Theory
+---
+
+## Definition 1
+A group $G$ is ***simple*** if 
+
+**(i)** $G \neq \{ e \},$
+
+**(ii)** $G$ has no proper nontrivial normal subgroups.
+
+정의를 한마디로 요약하면 $\{ e \} \lneq H \lneq G$를 만족하는 normal subgroup $H \lhd G$가 존재하지 않으면 $G$를 simple group이라고 부른다. 조금 다르게 정의해서, $G$의 subgroup $H$가 오직 $\{ e\}$이거나 $G$이면 simple이라고 하기도 하나, 이 경우 $G = \{ e \}$인 경우를 포함한다는 데 있어서 위 정의와 차이점이 있다. 
+
+정수론에서 소수가 $1$과 자기 자신만을 약수로 가지는 수로 정의하는 맥락에 있어서, 군의 관점에서 소수의 역할을 하는 개념이라고 볼 수 있겠다. 실제로 다음의 사실이 성립한다.
+
+## Theorem 1
+A group $G$ is a simple abelian group $\iff$ $G \cong \mathbb{Z}_p$ for some prime $p.$
+
+### Proof
+$(\Longrightarrow)$
+
+Suppose that $G$ is a simple abelian group. Let $a \in G \setminus \{ e \}.$ Then $\langle a \rangle \lhd G.$ Since $G$ is simple and $a \neq e,$ $\langle a \rangle = G,$ which means that $G$ is cyclic.
+
+Note that $\mathbb{Z}$ has infinitely many subgroups, and since $\mathbb{Z}$ is abelian, all subgroups are normal. Thus, $G \not \cong \mathbb{Z},$ which implies that $G \cong \mathbb{Z}_p$ for some prime $p.$ 
+
+$(\Longleftarrow)$
+
+Suppose that $G \cong \mathbb{Z}_p$ for some prime $p.$ Clearly, $G$ is abelian.
+
+By Lagrangle's theorem, the only subgroups, actually normal, of $\mathbb{Z}_p$ are $\{ 0 \}$ and $\mathbb{Z}_p.$ Thus, $\mathbb{Z}_p$ is normal, so is $G.$ $\blacksquare$
+
+## Theorem 2
+$A_n$ is simple $\iff$ $n=3$ or $n \ge 5.$
+
+### Proof
+$(\Longrightarrow)$
+
+$(\Longleftarrow)$
+
+First, we consider $n=3.$ Note that $\vert A_3 \vert = 3$, so $A_3 \cong \mathbb{Z}_3.$ By Theorem 1, $A_3$ is simple.
+
+## Remark
+$A_2$ is the trivial group, and $A_4$ is not simple.
+
+$\big[(\because)$ Clearly, $A_2 = \{ e \}.$ Note that $N = \{ (1), (1, 2)(3, 4), (1, 3)(2, 4), (1, 4)(2, 3) \} \lhd A_4.$ Hence, $A_4$ is not simple.$\big]$
+
+## Definition 2
+A ***maximal normal subgroup*** of a group $G$ is a normal subgroup $M$ of $G$ such that 
+
+**(i)** $M \neq G,$
+
+**(ii)** If there exists a normal subgroup $N$ of $G$ such that $M \le N$, then $N = M$ or $N = G.$
+
+앞서 설명했듯이, simple group은 더 이상 그 안에 trivial하지 않은 더 작은 normal subgroup을 발견할 수 없는, normal에 있어서 소수의 역할을 하는 group이다. 그러면 역으로 생각해서 non-simple group은 그 안에 nontrivial한 normal subgroup을 가지고 있다는 뜻이고, 자연스럽게 그 중에 가장 maximal한 놈은 무엇인지 생각해 볼 수 있다. 
+
+따라서 maximal normal subgroup $M$이 주어졌다면, $M$과 $G$ 사이에는 더 이상 normal subgroup을 찾아볼 수 없다는 말이 된다.  
+
+## Theorem 3
+Let $G$ be a group, and let $M \lhd G.$ Then $M$ is a maximal normal subgroup of $G$ $\iff$ $G/M$ is simple.
+
+직관적으로도 잘 읽히는 스테이트먼트다. $G$에서 $M$을 factoring해서 얻은 factor group $G/M$이 단순군이 되려면 최대한 $M$을 크게 잘라내야 하지 않을까? 이때 어떤 센스에서 잘라내야 하냐는 기준이 normal subgroup에 있어서 가장 크게 잘라내야 한다는 것으로 주어지고, 이 개념이 바로 maximal normal subgroup에 대응된다.
+
+### Proof
+$(\Longrightarrow)$
+
+Suppose that $M$ is a maximal normal subgroup of $G.$ Let $\gamma: G \to G/M$ be the canonical epimorphism, that is, $\gamma(g) = gM, \forall g \in G.$ 
+
+Let $\mathcal{N} \lhd G/M.$ Since $\gamma$ is an epimorphism, $\gamma^{-1}(\mathcal{N}) \lhd G.$ 
+
+Let $m \in M.$ Then $\gamma(m) = M,$ which means that $m \in \gamma^{-1}(\{M\}).$ It follows that $M \subset \gamma^{-1}(\{M\}).$ 
+
+Since $M$ is the identity of the factor group $G/M$, $M \in \mathcal{N}$. Then $\{ M \} \subset \mathcal{N},$ which implies that $\gamma^{-1}(\{ M \}) \subset \gamma^{-1}(\mathcal{N}).$
+
+Then we have 
+
+$$M \subset \gamma^{-1}(\{M\}) \subset \gamma^{-1}(\mathcal{N}) \lhd G.$$
+
+Since $M$ is a maximal normal subgroup of $G$, $\gamma^{-1}(\mathcal{N}) = M$ or $\gamma^{-1}(\mathcal{N}) = G$, and therefore $\mathcal{N} = \gamma(M) = \{ M \}$ or $\mathcal{N} = \gamma(G) = G.$ Hence, $G/M$ is simple.
+
+$(\Longleftarrow)$
+
+Suppose that $G/M$ is simple. 
+
+We assume that $M$ is not a maximal normal subgroup of $G$, that is, there exists a normal subgroup $N$ of $G$ such that $M \lneq N \lneq G.$ 
+
+Let $\gamma: G \to G/M$ be the canonical epimorphism, that is, $\gamma(g) = gM, \forall g \in G.$ 
+
+Since $M \lneq N \lneq G,$ it follows that $\gamma(M) \subsetneq \gamma(N) \subsetneq \gamma(G) = G/M.$ 
+
+To verify this, we may suppose that $\gamma(M) = \gamma(N).$ Since $M \lneq N,$ there is some element $n \in N \setminus M.$ Then $\gamma(n) \in \gamma(N) = \gamma(M),$ so $\gamma(n) = \gamma(m)$ for some $m \in M.$ Then we have $nM = mM = M,$ which means that $n \in M. \bigotimes$ Thus, we have the strict inclusion $\gamma(M) \subsetneq \gamma(N)$, and similarly, $\gamma(N) \subsetneq \gamma(G).$ 
+
+Since $\gamma(m) = M, \forall m \in M,$ $\gamma(M) = \{ M \}.$ These follow that
+
+$$\{ M \} = \gamma(M) \subsetneq \gamma(N) \subsetneq \gamma(G) = G/M.$$
+
+Since $N \lhd G,$ $\gamma(N) \lhd \gamma(G) = G/M.$ It contradicts to the fact that $G/M$ is simple. Hence, $M$ is a maximal normal subgroup of $G$. $\blacksquare$
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

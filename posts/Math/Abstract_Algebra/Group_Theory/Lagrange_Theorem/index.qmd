@@ -1,0 +1,78 @@
+---
+title: "Lagrange's Theorem"
+author: "Youmin Chun"
+date: "2026-09:02 00:00:09"
+description: "라그랑주의 정리에 대해서 소개한다."
+categories: 
+  - Math > Abstract Algebra > Group Theory
+---
+
+## Lemma
+Let $G$ be a group and let $H \le G$. Let $a \in G$. Then $\vert aH \vert = \vert H \vert = \vert Ha \vert$.
+
+즉 어떤 부분군 $H$와, $H$에 대해서 정의된 coset $aH, Ha$의 크기는 모두 같다. 이때 coset들은 동치관계가 주어짐으로 결정된 동치류들이었고, 이 동치류들은 부분군 $H$의 partition을 이룬다. 즉 동치류들은 서로 disjoint하게 $G$를 구성하므로, 집합의 크기를 고려했을 때 부분군 $H$의 크기는 $G$의 크기를 항상 나눈다. 
+
+### Proof
+Define $\phi: H \to aH$ by $\phi(h) = ah$ for all $h \in H$. Since $a$ and each $h$ are elements of $G$, $ah \in G$. Then $\phi$ is well-defined. 
+
+If $\phi(h_1) = \phi(h_2)$, then $a h_1 = a h_2$, so $h_1 = h_2$. Thus $\phi$ is injective. 
+
+Let $ah \in aH$. Then $\phi(h) = ah$, so $\phi$ is surjective. 
+
+Thus $\vert aH \vert = \vert H \vert$.
+
+Similarly, we can show that $\vert Ha \vert = \vert H \vert$. $\blacksquare$
+
+## Theorem (Lagrange's Theorem)
+Let $H$ be a subgroup of a finite group $G$. Then $\vert H \vert$ divides $\vert G \vert$. 
+
+### Proof
+Let $H_1, ..., H_n$ be all distinct left cosets of $H$ in $G$. Then $G = \bigsqcup_{i=1}^n H_i$, so we obtain 
+
+$$\vert G \vert = \sum_{i=1}^n \vert H_i \vert = n \vert H \vert$$
+
+by the previous lemma. Thus $\vert H \vert$ divides $\vert G \vert$. $\blacksquare$
+
+군 $G$의 부분군 $H$가 주어질 때마다 그 $H$를 기준으로 동치 관계를 정의할 수 있고, 따라서 동치류들로 구성된 파티션을 만들 수 있다. 이때 각 동치류들을 coset이라고 부르기로 했으므로 위 증명에서 각 $H_i$들은 $G$를 구성하는 서로 disjoint한 coset들이다. 한편, $G$가 유한군이므로 coset들은 반드시 유한 개만 존재한다. 
+
+또한, 위 증명에서 각 coset들의 크기는 모두 $\vert H \vert$로 같은데, 이러한 coset들이 총 $n$개 존재한다. 다르게 말하면, 부분군 $H$의 크기는 군 $G$의 크기를 나누는데, 이때 몫은 $n$이고 이는 원소의 개수가 $\vert H \vert$인 부분군으로 만들 수 있는 coset의 개수이다. 
+
+## Corollary
+Let $G$ be a finite group.
+
+**(i)** If $a \in G$, then $\vert \langle a \rangle \vert$ divides $\vert G \vert$.
+
+**(ii)** If the order of $G$ is prime, then $G$ is cyclic.
+
+(ii)의 내용을 좀 더 확장해서 생각해 본다면 다음과 같은 흐름이 성립한다.
+
+$$\vert G \vert = p \implies G = \langle a \rangle \implies G \cong \mathbb{Z}_p \iff G \text{ is simple abelian}$$
+
+### Proof
+**(i)** Note that $\langle a \rangle \le G$. By Lagrange's theorem, $\vert \langle a \rangle \vert$ divides $\vert G \vert$. 
+
+**(ii)** Suppose that $\vert G \vert$ is prime, and let $a \in G - \\{ e \\}$. By (i), $\vert \langle a \rangle \vert$ divides $\vert G \vert$. Since $a \neq e$, $\vert \langle a \rangle \vert > 1$. Thus, $\vert \langle a \rangle \vert = \vert G \vert$. Hence, $\langle a \rangle = G$, so $G$ is cyclic. $\blacksquare$
+
+## Example
+$\vert G \vert = 5$인 군 $G$는 위 corollary (ii)에 의해 반드시 $G \cong \mathbb{Z}_5$여야만 한다. 반면 $\vert G \vert = 6$인 군 $G$는 cyclic일 수도, 아닐 수도 있다. 예를 들어 $G = \mathbb{Z}_6$는 cyclic이지만 $G = S_3$는 cyclic이 아니다. 
+
+## Remark
+**(i)** The converse of Lagrange's theorem does NOT hold!!
+
+$\big[ (\because) $ Consider $A_4$. Suppose that $H$ is a subgroup of $A_4$ with $\vert H \vert = 6$. [Then $(A_n : H) = 2$, so that $H \lhd A_4$.](../Coset/index.qmd#sec-theorem-3) Therefore, $A_4 / H \cong \mathbb{Z_2}$. 
+
+Let $\sigma H \in A_4 / H$. Then $\sigma^2H = (\sigma H)^2 = H$, which means that $\sigma^2 \in H$. But we see that 
+
+$$\begin{align*}
+(1, 2, 3) = (1, 3, 2)^2 \quad (1, 3, 2) = (1, 2, 3)^2 \\
+(1, 2, 4) = (1, 4, 2)^2 \quad (1, 4, 2) = (1, 2, 4)^2 \\
+(1, 3, 4) = (1, 4, 3)^2 \quad (1, 4, 3) = (1, 3, 4)^2 \\
+(2, 3, 4) = (2, 4, 3)^2 \quad (2, 4, 3) = (2, 3, 4)^2.
+\end{align*}$$
+
+Therefore, $H$ contains at least $8$ elements: $(1,2,3), (1, 3,2), (1, 2,4), (1, 4,2), (1, 3,4), (1, 4,3), (2, 3,4), (2, 4,3)$. Hence, $6 = \vert H \vert \ge 8. \bigotimes$ Thus, $A_4$ does not have a subgroup of order $6$. $\big]$
+
+**(ii)** ***(The fisrt Sylow Theorem)*** Let $G$ be a finite group and let $p$ be a prime. If $p^n$ divides $\vert G \vert$ for some $n \in \mathbb{N}$, then there exists a subgroup $H$ of $G$ with $\vert H \vert = p^i$ for all $i = 1, ..., n$. 
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

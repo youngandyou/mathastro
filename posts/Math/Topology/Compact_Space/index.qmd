@@ -15,15 +15,17 @@ Let $X$ be a topological space.
 **(ii)** The space $X$ is said to be ***compact*** if every open cover of $X$ has a finite subcover.
 
 ## Example
-**(i)** $\mathbb{R}$ is **NOT** compact.
+**(i)** $\mathbb{R}$ with the usual topology is **NOT** compact.
 
 $\big[ (\because)$ The collection $\{ (n, n+2) \mid n \in \mathbb{Z} \}$ is an open cover of $\mathbb{R}$, but it has no finite subcover. $\big]$
 
-**(ii)** $[0, 1)$ is NOT compact.
+**(ii)** $\mathbb{R}$ with the trivial topology is compact.
+
+**(iii)** $[0, 1)$ is NOT compact.
 
 $\big[ (\because)$ The collection $\left \{ \left[ 0, 1 - \frac{1}{n} \right) \,\, \bigg | \,\, n \in \mathbb{N} \right \}$ is an open cover of $[0, 1)$, but it has no finite subcover. $\big]$
 
-**(iii)** $K = \{ 0 \} \cup \left \{ \frac{1}{n} \,\, \bigg | \,\, n \in \mathbb{N} \right \}$ is compact.
+**(iv)** $K = \{ 0 \} \cup \left \{ \frac{1}{n} \,\, \bigg | \,\, n \in \mathbb{N} \right \}$ is compact.
 
 $\big[ (\because)$ Let $\mathcal{U}$ be an open cover of $K$. Since $0 \in K$ and $\mathcal{U}$ is an open cover of $K$, $0 \in U$ for some $U \in \mathcal{U}$. Then $U$ contains all but finitely many of the points $\frac{1}{n}$. By choosing, for each point of $X$ not in $U$, an open set in $\mathcal{U}$ containing it, we obtain a finite subcover of $K$. $\big]$
 
@@ -44,6 +46,8 @@ By the nested interval theorem, there exists $x^\ast \in \displaystyle \bigcap_{
 # Theorem 2
 Let $Y$ be a subspace of $X$. Then $Y$ is compact $\iff$ every collection $\mathcal{U} = \{ U \subset X \mid U \text{ is open in } X \}$ such that $Y \subset \bigcup_{U \in \mathcal{U}} U$ has a finite subcollection that covers $Y$.
 
+본디 부분공간 $Y$의 오픈 커버는 $Y$의 오픈셋들로 구성되어야 한다. 이는 부분공간의 정의상 오픈셋의 모양이 조금 지저분해질 수 밖에 없는데, 위 정리는 그러한 불편함을 없애고 $X$의 오픈셋들만 가지고도 부분공간의 컴팩터성을 논할 수 있게 해준다는 점을 시사한다.
+
 ## Proof
 $(\Longrightarrow)$
 
@@ -52,6 +56,18 @@ Suppose that $Y$ is compact. Let $\mathcal{U} = \{ U \subset X \mid U \text{ is 
 $(\Longleftarrow)$
 
 Suppose that the given condition holds. Let $\mathcal{U}$ be an open cover of $Y$. Since $U_\alpha = V_\alpha \cap Y$ for some open subset $V_\alpha$ of $X$, the collection $\{ V_\alpha \}$ satisfies that $\displaystyle Y \subset \bigcup_{\alpha} V_\alpha$. By the assumption, there exists a finite subcollection $\{ V_1, V_2, \dots, V_n \}$ that covers $Y$. Then $\{ V_1 \cap Y, V_2 \cap Y, \dots, V_n \cap Y \}$ is a finite subcover of $\mathcal{U}$. Thus, $Y$ is compact. $\blacksquare$
+
+# Theorem 3
+Every closed subspace of a compact space is compact.
+
+## Proof
+Let $X$ be a compact space, and let $Y$ be a closed subspace of $X$. Let $\mathcal{U}$ be a collection of open subsets of $X$ such that $Y \subset \bigcup_{U \in \mathcal{U}} U$. Then $\mathcal{U} \cup \{ X - Y \}$ is an open cover of $X$. Since $X$ is compact, it has a finite subcover $\{ U_1, \dots, U_n, X - Y \}$. Since $\{ U_1, \dots, U_n \}$ covers $Y$, by Theorem 2, $Y$ is compact. $\blacksquare$
+
+# Theorem 4
+Every compact subspace of a Hausdorff space is closed.
+
+## Proof
+
 
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

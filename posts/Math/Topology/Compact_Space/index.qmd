@@ -47,9 +47,11 @@ Let $Y$ be a subspace of $X$. Then $Y$ is compact $\iff$ every collection $\math
 ## Proof
 $(\Longrightarrow)$
 
-Suppose that $Y$ is compact. Let $\mathcal{U} = \{ U \subset X \mid U \text{ is open in } X \}$ be a collection such that $Y \subset \bigcup_{U \in \mathcal{U}} U$. Since $U \cap Y$ is open in $Y$ for each $U \in \mathcal{U}$, the collection $\{ U \cap Y \mid U \in \mathcal{U} \}$ is an open cover of $Y$. Since $Y$ is compact, there exists a finite subcollection $\{ U_1 \cap Y, U_2 \cap Y, \dots, U_n \cap Y \}$ that covers $Y$. Then $\{ U_1, U_2, \dots, U_n \}$ is a finite subcollection of $\mathcal{U}$ that covers $Y$.
+Suppose that $Y$ is compact. Let $\mathcal{U} = \{ U \subset X \mid U \text{ is open in } X \}$ be a collection such that $Y \subset \bigcup_{U \in \mathcal{U}} U$. Since $U \cap Y$ is open in $Y$ for each $U \in \mathcal{U}$, the collection $\{ U \cap Y \mid U \in \mathcal{U} \}$ is an open cover of $Y$. Since $Y$ is compact, there exists a finite subcover $\{ U_1 \cap Y, U_2 \cap Y, \dots, U_n \cap Y \}$ of $Y$. Then $\{ U_1, U_2, \dots, U_n \}$ is a finite subcollection of $\mathcal{U}$ that covers $Y$.
 
 $(\Longleftarrow)$
+
+Suppose that the given condition holds. Let $\mathcal{U}$ be an open cover of $Y$. Since $U_\alpha = V_\alpha \cap Y$ for some open subset $V_\alpha$ of $X$, the collection $\{ V_\alpha \}$ satisfies that $\displaystyle Y \subset \bigcup_{\alpha} V_\alpha$. By the assumption, there exists a finite subcollection $\{ V_1, V_2, \dots, V_n \}$ that covers $Y$. Then $\{ V_1 \cap Y, V_2 \cap Y, \dots, V_n \cap Y \}$ is a finite subcover of $\mathcal{U}$. Thus, $Y$ is compact. $\blacksquare$
 
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

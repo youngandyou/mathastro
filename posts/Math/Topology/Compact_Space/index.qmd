@@ -1,0 +1,53 @@
+---
+title: "Compact Space"
+author: "Youmin Chun"
+date: "2026-09-03 00:00:01"
+description: "컴팩트 공간에 대해서 설명한다."
+categories: 
+  - Math > Topology
+---
+
+# Definition
+Let $X$ be a topological space.
+
+**(i)** A collection $\mathcal{U}$ of open subsets of $X$ is called an ***open cover*** of $X$ if $\displaystyle X = \bigcup_{U \in \mathcal{U}} U$.
+
+**(ii)** The space $X$ is said to be ***compact*** if every open cover of $X$ has a finite subcover.
+
+## Example
+**(i)** $\mathbb{R}$ is **NOT** compact.
+
+$\big[ (\because)$ The collection $\{ (n, n+2) \mid n \in \mathbb{Z} \}$ is an open cover of $\mathbb{R}$, but it has no finite subcover. $\big]$
+
+**(ii)** $[0, 1)$ is NOT compact.
+
+$\big[ (\because)$ The collection $\left \{ \left[ 0, 1 - \frac{1}{n} \right) \,\, \bigg | \,\, n \in \mathbb{N} \right \}$ is an open cover of $[0, 1)$, but it has no finite subcover. $\big]$
+
+**(iii)** $K = \{ 0 \} \cup \left \{ \frac{1}{n} \,\, \bigg | \,\, n \in \mathbb{N} \right \}$ is compact.
+
+$\big[ (\because)$ Let $\mathcal{U}$ be an open cover of $K$. Since $0 \in K$ and $\mathcal{U}$ is an open cover of $K$, $0 \in U$ for some $U \in \mathcal{U}$. Then $U$ contains all but finitely many of the points $\frac{1}{n}$. By choosing, for each point of $X$ not in $U$, an open set in $\mathcal{U}$ containing it, we obtain a finite subcover of $K$. $\big]$
+
+# Theorem 1
+A closed interval $[a, b]$ is compact.
+
+## Proof
+Suppose that $[a, b]$ is not compact. Then there is an open cover $\mathcal{U}$ of $[a, b]$ such that $\mathcal{U}$ does not have a finite subcover.
+
+Note that $\displaystyle [a, b] = \left[ a, \frac{a+b}{2} \right] \cup \left[ \frac{a+b}{2}, b \right]$. Then $\mathcal{U}$ has no finite subcover that covers one of $\left[ a, \frac{a+b}{2} \right]$ and $\left[ \frac{a+b}{2}, b \right]$, say $I_1 = [a_1, b_1]$. 
+
+Again, note that $\left[ a_1, b_1 \right] = \left[ a_1, \frac{a_1 + b_1}{2} \right] \cup \left[ \frac{a_1 + b_1}{2}, b_1 \right]$. Then $\mathcal{U}$ has no finite subcover that covers one of $\left[ a_1, \frac{a_1 + b_1}{2} \right]$ and $\left[ \frac{a_1 + b_1}{2}, b_1 \right]$, say $I_2 = [a_2, b_2]$.
+
+Continuing the process, we can construct a sequence $\{ I_n \}_{n=1}^\infty$ of nested closed intervals $I_n = [a_n, b_n]$ of $[a, b]$ such that each $I_n$ cannot be covered by a finite subcover of $\mathcal{U}$, and $\vert x-y \vert \le \frac{b-a}{2^n} = \vert I_n \vert,\forall x, y \in I_n$.
+
+By the nested interval theorem, there exists $x^\ast \in \displaystyle \bigcap_{n=1}^\infty I_n$. Since $\mathcal{U}$ is an open cover of $[a, b]$ and $x^\ast \in [a, b]$, $x^\ast \in U$ for some $U \in \mathcal{U}$. Then there is $\delta > 0$ such that $(x^\ast - \delta, x^\ast + \delta) \subset U$. Choosing $n$ large enough such that $\vert I_n \vert = \frac{b-a}{2^n} < \delta$, we obtain that $I_n \subset (x^\ast - \delta, x^\ast + \delta) \subset U$. $\big[ (\because)$ If $y \in I_n$, then $\vert x^\ast - y \vert < \vert I_n \vert < \delta$, so $y \in (x^\ast - \delta, x^\ast + \delta)$.$\big]$ This contradicts that $\mathcal{U}$ does not have a finite subcover that covers $I_n$. Thus, $[a, b]$ is compact. $\blacksquare$
+
+# Theorem 2
+Let $Y$ be a subspace of $X$. Then $Y$ is compact $\iff$ every collection $\mathcal{U} = \{ U \subset X \mid U \text{ is open in } X \}$ such that $Y \subset \bigcup_{U \in \mathcal{U}} U$ has a finite subcollection that covers $Y$.
+
+## Proof
+$(\Longrightarrow)$
+
+$(\Longleftarrow)$
+
+# Reference
+- James R. Munkres. (2000). Topology (2nd ed.). Pearson.

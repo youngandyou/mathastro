@@ -1,7 +1,8 @@
 ---
 title: "Hausdorff Space"
 author: "Youmin Chun"
-date: "2026-07-10"
+date: "2026-07-10 00:00:10"
+description: "위상공간 중 T2 공간, 혹은 하우스도르프 공간(Hausdorff Space)에 대해서 설명한다."
 categories: 
   - Math > Topology
 ---

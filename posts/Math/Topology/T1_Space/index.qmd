@@ -1,7 +1,8 @@
 ---
 title: "T1 Space"
 author: "Youmin Chun"
-date: "2026-07-10"
+date: "2026-07-10 00:00:09"
+description: "위상공간 중 T1 공간에 대해서 설명한다."
 categories: 
   - Math > Topology
 ---

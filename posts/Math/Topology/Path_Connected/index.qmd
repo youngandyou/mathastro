@@ -1,7 +1,8 @@
 ---
 title: "Path-Connected Space"
 author: "Youmin Chun"
-date: "2026-07-15"
+date: "2026-07-15 00:00:04"
+description: "경로 연결성(Path-Connectedness)과 경로 연결 공간(Path-Connected Space)에 대해서 다룬다."
 categories: 
   - Math > Topology
 ---

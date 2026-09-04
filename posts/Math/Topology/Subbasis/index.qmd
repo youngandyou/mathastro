@@ -1,7 +1,8 @@
 ---
 title: "Subbasis"
 author: "Youmin Chun"
-date: "2026-07-08"
+date: "2026-07-08 00:00:05"
+description: "위상공간의 부분기저에 대해서 설명한다."
 categories: 
   - Math > Topology
 ---

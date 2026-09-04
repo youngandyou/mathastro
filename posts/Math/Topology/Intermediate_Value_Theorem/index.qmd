@@ -1,7 +1,8 @@
 ---
 title: "Intermediate Value Theorem"
 author: "Youmin Chun"
-date: "2026-07-15"
+date: "2026-07-15 00:00:08"
+description: "위상수학에서 사잇값정리(Intermediate Value Theorem)에 대해서 설명한다."
 categories: 
   - Math > Topology
 ---

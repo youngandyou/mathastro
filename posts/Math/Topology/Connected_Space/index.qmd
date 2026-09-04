@@ -1,7 +1,8 @@
 ---
 title: "Connected Space"
 author: "Youmin Chun"
-date: "2026-07-15"
+date: "2026-07-15 00:00:03"
+description: "위상공간에서 연결성(Connectedness)과 연결 공간(Connected Space)에 대해서 설명한다."
 categories: 
   - Math > Topology
 ---

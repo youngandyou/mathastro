@@ -1,7 +1,8 @@
 ---
 title: "Convergence of a Sequence"
 author: "Youmin Chun"
-date: "2026-07-10"
+date: "2026-07-10 00:00:07"
+description: "위상공간에서 정의되는 수열의 수렴성을 설명한다."
 categories: 
   - Math > Topology
 ---

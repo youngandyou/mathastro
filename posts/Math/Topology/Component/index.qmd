@@ -1,7 +1,8 @@
 ---
 title: "Component"
 author: "Youmin Chun"
-date: "2026-07-15"
+date: "2026-07-15 00:00:06"
+description: "연결 성분(Component)와 경로연결 성분(Path Component)에 대해서 설명한다."
 categories: 
   - Math > Topology
 ---

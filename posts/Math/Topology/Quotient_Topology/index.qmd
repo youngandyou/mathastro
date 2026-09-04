@@ -1,7 +1,8 @@
 ---
 title: "Quotient Topology"
 author: "Youmin Chun"
-date: "2026-07-15"
+date: "2026-07-15 00:00:02"
+description: "위상공간 중 몫공간(Quotient Topology)에 대해서 설명한다."
 categories: 
   - Math > Topology
 ---

@@ -1,7 +1,8 @@
 ---
 title: "Metric Topology"
 author: "Youmin Chun"
-date: "2026-07-15"
+date: "2026-07-15 00:00:01"
+description: "메트릭(Metric)을 통해 정의되는 위상공간인 거리 위상(Metric Topology)에 대해서 설명한다."
 categories: 
   - Math > Topology
 ---

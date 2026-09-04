@@ -1,7 +1,8 @@
 ---
 title: "Finite Product Topology"
 author: "Youmin Chun"
-date: "2026-07-10"
+date: "2026-07-10 00:00:01"
+description: "유한 개의 위상공간들의 곱공간에 대해서 설명한다."
 categories: 
   - Math > Topology
 ---

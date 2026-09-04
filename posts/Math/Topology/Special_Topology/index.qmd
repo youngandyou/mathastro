@@ -1,7 +1,8 @@
 ---
 title: "Special Topologies"
 author: "Youmin Chun"
-date: "2026-07-08"
+date: "2026-07-08 00:00:04"
+description: "위상공간들 중 자주 등장하는 특별한 예시들을 소개한다."
 categories: 
   - Math > Topology
 ---

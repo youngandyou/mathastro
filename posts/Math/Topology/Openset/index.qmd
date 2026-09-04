@@ -1,7 +1,8 @@
 ---
 title: "Open set"
 author: "Youmin Chun"
-date: "2026-07-08"
+date: "2026-07-08 00:00:03"
+description: "위상공간의 열린 집합의 동치인 여러 정의들을 설명한다."
 categories: 
   - Math > Topology
 ---

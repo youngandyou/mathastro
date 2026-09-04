@@ -1,7 +1,8 @@
 ---
 title: "Infinite Product Topology"
 author: "Youmin Chun"
-date: "2026-07-10"
+date: "2026-07-10 00:00:15"
+description: "무한 개의 위상공간들의 곱공간에 대해서 설명하고, 상자위상(Box Topology)과 곱위상(Product Topology)을 비교한다."
 categories: 
   - Math > Topology
 ---

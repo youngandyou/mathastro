@@ -1,7 +1,8 @@
 ---
 title: "Limit Point"
 author: "Youmin Chun"
-date: "2026-07-10"
+date: "2026-07-10 00:00:06"
+description: "위상공간에서 집적점 혹은 극한점(Limit Point)에 대해서 설명한다."
 categories: 
   - Math > Topology
 ---

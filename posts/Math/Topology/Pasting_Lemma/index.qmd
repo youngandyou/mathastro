@@ -1,7 +1,8 @@
 ---
 title: "Pasting Lemma"
 author: "Youmin Chun"
-date: "2026-07-10"
+date: "2026-07-10 00:00:14"
+description: "위상수학에서의 접착 보조정리(Pasting Lemma)를 설명한다."
 categories: 
   - Math > Topology
 ---

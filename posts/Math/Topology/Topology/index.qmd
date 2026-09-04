@@ -1,7 +1,8 @@
 ---
 title: "Topology"
 author: "Youmin Chun"
-date: "2026-07-08"
+date: "2026-07-08 00:00:01"
+description: "위상공간에 대해서 설명한다."
 categories: 
   - Math > Topology
 ---

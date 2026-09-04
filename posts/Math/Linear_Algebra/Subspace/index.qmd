@@ -1,0 +1,59 @@
+---
+title: "Subspace"
+author: "Youmin Chun"
+date: "2026-09-04 00:00:02"
+description: "벡터공간의 부분공간에 대해서 설명한다."
+categories: 
+  - Math > Linear Algebra
+---
+
+# Definition
+Let $V$ be a [vector space](../Vector_Space/index.qmd#sec-definition) over $F$. A subset $W$ of $V$ is called a ***subspace*** of $V$ if $W$ is a vector space over $F$ with the same operations defined on $V$. In this case, we denote $W \leq V$. 
+
+즉 벡터공간 $V$와 동일한 필드와 연산을 가진, 다시 말해 동일한 대수적 구조를 가지면서 크기만 줄인 $V$의 부분집합을 $V$의 부분공간이라고 부른다. 자명하게 자기 자신 $V$와 영벡터만을 가지는 집합 $\{ \mathbf{0} \}$는 $V$의 부분공간이다.
+
+## Theorem 1
+Let $V$ be a vector space, and let $W \subset V$. Then $W \leq V$ $\iff$ $W \neq \emptyset$ and $ax + y \in W, \forall x, y \in W, a \in F$.
+
+벡터공간 $V$의 어떤 부분집합 $W$가 $V$의 subspace인지 판별하려면 벡터공간의 정의를 모두 만족한다는 것을 일일이 체크해야 한다. 그러나 실상은 $W$가 $V$의 부분집합이라는 사실만으로 대부분의 조건이 자동으로 성립한다는 것을 쉽게 알 수 있다. 예컨대, 교환 법칙의 경우 $V$라는 전체 집합에 대해서 성립하는데 그 부분 집합인 $W$에서 성립하지 않는 반례가 있을 수 없다. 따라서 $W$가 공집합이 아니고 선형성을 가진다는 것만 확인하면 $W$가 $V$의 부분공간임을 보장할 수 있다. 교재에 따라서 공집합이 아니라는 조건 대신 $\mathbf{0} \in W$으로 적혀있기도 한데, 어차피 같은 말이다. 직접 정리를 적용할 때도 영벡터가 들어있다는 걸 보임으로써 공집합이 아니라는 걸 보이는 게 가장 쉽기도 하다.
+
+### Proof
+
+$(\Longrightarrow)$ 
+
+It is clear by the definition of a [vector space.](../Vector_Space/index.qmd#sec-definition)
+
+$(\Longleftarrow)$ 
+
+Let $x \in W$. We only need to check the existence of the zero vector and the inverse. Note that $0x = \mathbf{0} \in W$ and $(-1)x = -x \in W$. Thus $W \leq V$. $\blacksquare$
+
+## Theorem 2
+Let $V$ be a vector space, and let $W_1, \dots, W_n \leq V$. Then $\displaystyle \bigcap_{i=1}^n W_i \leq V$. 
+
+즉 부분공간은 finite intersection에 의해 보존된다고 말할 수 있다.
+
+### Proof
+We use induction on $n$. 
+
+Let $x, y \in W_1 \cap W_2$ and $a \in F$. Then $x, y \in W_1$ and $x, y \in W_2$, which implies that $ax + y \in W_1$ and $ax + y \in W_2$ by Theorem 1. Then $ax + y \in W_1 \cap W_2$. Thus $W_1 \cap W_2 \leq V$ by Theorem 1.
+
+Suppose that $\displaystyle \bigcap_{i=1}^{k} W_i \leq V$ for some $k \geq 1$. Then $\displaystyle \left(\bigcap_{i=1}^{k} W_i \right) \cap W_{k+1} = \bigcap_{i=1}^{k+1} W_i \leq V$ by Theorem 1. Thus $\displaystyle \bigcap_{i=1}^{n} W_i \leq V$ for all $n \geq 1$. $\blacksquare$
+
+## Remark
+주의할 점은 일반적으로 부분공간의 합집합은 부분공간이 되지 않는다. 이는 덧셈에 대해서 닫혀있지 않을 수도 있기 때문인데, 부분공간이 겹치는 부분이 아닌 각각의 영역에 속한 벡터들을 뽑아서 더한 벡터가 여전히 두 부분공간의 합집합에 머물러 있으리라고는 단정할 수 없다. 따라서 주어진 부분공간들을 모두 포함하는 부분공간은 합집합으로는 항상 얻을 수 없고, 합과 직합으로 쉽게 얻을 수 있다.
+
+## Theorem 3
+Let $V$ be a vector space, and let $W_1, W_2 \leq V$. Then $W_1 \cup W_2 \leq V \Longleftrightarrow W_1 \subset W_2 \vee W_2 \subset W_1$.
+
+### Proof
+
+($\Longleftarrow$) 
+
+Trivial.
+
+($\Longrightarrow$) 
+
+Let $x \in W_1, y \in W_2$ such that $x \notin W_2, y \notin W_1$. Then $x+y \in W_1 \cup W_2 \Longrightarrow x+y \in W_1 \vee x+y \in W_2.$ If $x+y \in W_1$, then $(x+y) - x = y \in W_1 \bigotimes$. If $x+y \in W_2$, then $(x+y) - y = x \in W_2 \bigotimes$. Hence $x \in W_1 \Longrightarrow x \in W_2$ or $y \in W_2 \Longrightarrow y \in W_1$. $\blacksquare$
+
+# Reference
+- S. H. Friedberg, A. J. Insel, and L. E. Spence, Linear Algebra, 4th ed. (Pearson New International Edition), Pearson, 2013.

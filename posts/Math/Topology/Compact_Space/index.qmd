@@ -67,7 +67,44 @@ Let $X$ be a compact space, and let $Y$ be a closed subspace of $X$. Let $\mathc
 Every compact subspace of a Hausdorff space is closed.
 
 ## Proof
+Let $X$ be a Hausdorff space, and let $Y$ be a compact subspace of $X$. We will show that $X - Y$ is open, so $Y$ is closed.
 
+Let $x \in X - Y$. Since $x \notin Y$ and $X$ is Hausdorff, for each $y \in Y$, there exist two disjoint open subsets $U_y, V_y$ of $X$ such that $x \in U_y$ and $y \in V_y$. Then the collection of such $V_y$ covers $Y$. Since $Y$ is compact, the finite subcollection $\{ V_{y_1}, \dots, V_{y_n} \}$ covers $Y$ by Theorem 2. That is, 
+
+$$V := \bigcup_{i=1}^n V_{y_i} \supset Y.$$
+
+Note that 
+
+**(i)** $U := \bigcap_{i=1}^n U_{y_i}$ is open, 
+
+**(ii)** $U \cap V_i = \emptyset, \forall i \in \{ 1, \dots, n \}$, so 
+
+$$U \cap \bigcup_{i=1}^n V_{y_i} = U \cap V = \emptyset.$$
+
+Since $V$ contains $Y$, we have $U \cap Y = \emptyset$, so $U \subset X - Y$. Since each $U_{y}$ contains $x$, we conclude that 
+
+$$x \in U \subset X - Y,$$
+
+which means that $X - Y$ is open. Therefore, $Y$ is closed. $\blacksquare$
+
+# Theorem 5
+Let $X$ be a compact space, and let $f: X \to Y$ be a continuous function. Then $f(X)$ is compact.
+
+## Proof
+Let $\mathcal{V}$ be a collection consisting of open subsets of $Y$ that covers $f(X)$. Then the collection $\{ f^{-1}(V) \mid V \in \mathcal{V} \}$ covers $X$. $\big[ (\because)$ Let $x \in X$. Since $\mathcal{V}$ covers $f(X)$, $f(x) \in V$ for some $V \in \mathcal{V}$. Then $x \in f^{-1}(V)$. $\big]$
+
+Since $f$ is continuous, the collection $\{ f^{-1}(V) \mid V \in \mathcal{V} \}$ is an open covering of $X$. Since $X$ is compact, the finite subcover $\{ f^{-1}(V_1), \dots, f^{-1}(V_n) \}$ exists. Thus, we have 
+
+$$\begin{align*}
+X &= \bigcup_{i=1}^n f^{-1}(V_i) \\
+&= f^{-1} \left( \bigcup_{i=1}^n V_i \right),
+\end{align*}$$
+
+which means that
+
+$$f(X) \subset \bigcup_{i=1}^n V_i.$$
+
+By Theorem 2, $f(X)$ is compact. $\blacksquare$
 
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

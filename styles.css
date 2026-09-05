@@ -113,6 +113,58 @@ div.quarto-post .listing-description > a {
   display: none;
 }
 
+.category-related-links {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--bs-border-color, #dee2e6);
+}
+
+.category-related-links h2 {
+  margin: 0 0 0.65rem;
+  padding: 0;
+  border: 0;
+  font-size: 1em;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.category-related-links ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.category-related-links li + li {
+  margin-top: 0.45rem;
+}
+
+.category-related-links a {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  padding: 0.15rem 0;
+  color: var(--bs-body-color, #212529);
+  line-height: 1.5;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
+
+.category-related-links a:hover,
+.category-related-links a:focus-visible {
+  color: var(--bs-link-color, #0d6efd);
+  text-decoration: underline;
+}
+
+.category-related-links a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+.related-link-emoji {
+  flex: 0 0 1.25em;
+  text-align: center;
+}
+
 @media (max-width: 991.98px) {
   .mobile-category-panel {
     display: block;

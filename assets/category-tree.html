@@ -2,6 +2,40 @@
 (function () {
   const separators = /\s*(?:>|\/|::)\s*/;
   const pathSeparator = " > ";
+  const relatedLinks = [
+    { emoji: "🔭", label: "한국천문연구원", url: "https://www.kasi.re.kr/" },
+    { emoji: "🌌", label: "한국천문학회", url: "https://www.kas.org/index.html" },
+    { emoji: "📚", label: "네이버 천문학백과", url: "https://terms.naver.com/~%EC%B2%9C%EB%AC%B8%ED%95%99%EB%B0%B1%EA%B3%BC-4jCeB76aXmnbp44IBL8pRW" },
+    { emoji: "📄", label: "Astrophysics arxiv", url: "https://arxiv.org/archive/astro-ph" },
+  ];
+
+  function createRelatedLinks() {
+    const navigation = document.createElement("nav");
+    navigation.className = "category-related-links";
+    navigation.setAttribute("aria-label", "관련 링크");
+
+    const heading = document.createElement("h2");
+    heading.textContent = "관련 링크";
+    const list = document.createElement("ul");
+
+    relatedLinks.forEach(({ emoji, label, url }) => {
+      const item = document.createElement("li");
+      const link = document.createElement("a");
+      link.href = url;
+      const icon = document.createElement("span");
+      icon.className = "related-link-emoji";
+      icon.setAttribute("aria-hidden", "true");
+      icon.textContent = emoji;
+      const name = document.createElement("span");
+      name.textContent = label;
+      link.append(icon, name);
+      item.appendChild(link);
+      list.appendChild(item);
+    });
+
+    navigation.append(heading, list);
+    return navigation;
+  }
 
   function splitPath(category) {
     return category
@@ -226,6 +260,10 @@
     if (mobileTreeContainer) {
       treeContainers.push(mobileTreeContainer);
     }
+
+    treeContainers.forEach((container) => {
+      container.after(createRelatedLinks());
+    });
 
     if (title) {
       title.textContent = "Categories";

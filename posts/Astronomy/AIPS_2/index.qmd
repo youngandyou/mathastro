@@ -55,6 +55,6 @@ go
 
 <div height="2rem"></div> 
 
-- `fitld`를 수행할 때, 특별한 용도가 아니라면, bif, eif, bchan, echan는 모두 0으로 둔다. 
-- AIPS에 익숙하지 않다면 task를 수행할 때, `inp`를 항상 수행하여, 입력 parameter에 대해서 익숙해지는 것을 권장한다. 반면, 익숙하다면 inp를 하지 않아도 된다. 
+- `fitld`를 수행할 때, 특별한 용도가 아니라면, bif, eif, bchan, echan은 모두 0으로 둔다. 
+- AIPS에 익숙하지 않다면 task를 수행할 때, `inp`를 항상 수행하여, 입력 parameter에 대해서 익숙해지는 것을 권장한다. 반면, 익숙하다면 `inp`를 하지 않아도 된다. 
 

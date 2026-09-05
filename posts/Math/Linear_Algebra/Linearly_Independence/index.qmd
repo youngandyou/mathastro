@@ -1,0 +1,67 @@
+---
+title: "Linear Independence and Dependence"
+author: "Youmin Chun"
+date: "2026-09-05 00:00:02"
+description: "벡터들의 선형 독립(Linear Independence)과 선형 종속(Linear Dependence)에 대해서 설명한다."
+categories: 
+  - Math > Linear Algebra
+---
+
+# Definition
+Let $S$ be a subset of a vector space $V$.
+
+**(i)** $S$ is said to be ***linearly dependent*** if there exist distinct vectors $v_1, \dots, v_n \in S$ and scalars $a_1, \dots, a_n \in F$, not all zero, such that 
+
+$$a_1v_1 + \cdots + a_nv_n = \mathbf{0}.$$ 
+
+**(ii)** $S$ is said to be ***linearly independent*** if $S$ is not linearly dependent.
+
+어떤 [벡터공간](../Vector_Space/index.qmd#sec-definition) $V$에 대해서 이를 [생성](../Linear_Combination/index.qmd#sec-definition)하는 집합을 알 수 있다면 $V$를 다루는 것이 훨씬 수월해진다. 굳이 전체 공간인 $V$를 다룰 필요 없이 훨씬 더 작은 크기의 집합을 가지고 $V$를 표현할 수 있기 때문이다. 이때 $V$를 생성하는 집합은 여러 개가 존재할 수 있기에 그중에서도 가장 크기가 작은 집합을 고르는 것이 자연스럽다.
+
+만약 $V$를 생성하는 어떤 집합 안의 한 벡터가 그 집합 안의 다른 벡터들의 [선형 결합](../Linear_Combination/index.qmd#sec-definition)으로 나타낼 수 있다면, 그 벡터를 제거해도 무방하다. 그렇게 집합을 축소시켜도 여전히 $V$를 생성하는데는 아무런 문제가 없기 때문이다.
+
+그러나 어떤 벡터가 제거 가능한지 일일이 확인하는 과정은 상당히 번거롭고 귀찮기에, 영벡터를 기준으로 생각하는 편이 편하다. 어떤 벡터가 다른 벡터들의 선형 결합이라는 말은, 다시 말해 $x = \sum a_iu_i$로 표현 가능하다는 말은 $\mathbf{0} = \sum a_iu_i + (-x)$의 꼴로 영벡터를 나타낼 수 있다는 말과 같다. 따라서 주어진 집합이 축소 가능한지의 여부는 영벡터를 기준으로 쉽게 결정 가능하며 자연스럽게 위와 같은 정의를 제시할 수 있다.
+
+간단하게 말해서 영벡터를 선형 결합으로 나타낼 수 있는 방법이 모든 계수를 $0$으로 주는 자명한 방법 밖에 없을 경우 그 집합을 선형 독립이라고 말하고, 아니면 선형 종속이라고 말한다.
+
+## Remark
+**(i)** $\emptyset, \{ \mathbf{0} \}$ are linearly independent.
+
+**(ii)** Let $u$ and $v$ be distinct vectors in $V$. Then $\{u, v\}$ is linearly dependent $\Longleftrightarrow$ $u$ or $v$ is a multiple of the other.
+
+**(iii)** If $\mathbf{0} \in S$, then $S$ is linearly dependent.
+
+# Theorem 1
+Let $V$ be a vector space and let $S_1 \subset S_2 \subset V$. Then the following statements hold:
+
+**(i)** If $S_1$ is linearly dependent, then $S_2$ is linearly dependent.
+
+**(ii)** If $S_2$ is linearly independent, then $S_1$ is linearly independent.
+
+$S_1$이 선형 종속이라면, 이미 $S_1$만 가지고도 영벡터를 자명하지 않게 표현할 수 있기 때문에 $S_2$는 자동으로 선형 종속이 된다. 반대로 $S_2$가 선형 독립이라면, 애초에 $S_2$의 선택지들을 가지고도 영벡터를 자명하게만 표현할 수 있었는데, 거기서 더 선택지를 줄인 $S_1$에서는 자명하지 않은 표현을 만들어 낼 수 있을 리 없다.
+
+## Proof
+**(i)** Since $S_1$ is linearly dependent, there exist distinct vectors $u_1, \dots, u_n \in S_1$ and scalars $a_1, \dots, a_n \in F$, not all zero, such that $\sum_{i=1}^n a_iu_i = \mathbf{0}$. Since each $u_i$ belongs to $S_2$, $S_2$ is linearly dependent.
+
+**(ii)** By the contrapositive of (i), it also holds. $\blacksquare$
+
+# Theorem 2
+Let $S$ be a linearly independent subset of a vector space $V$, and let $v \in V$ that $v \notin S$. Then $S \cup \{v\}$ is linearly dependent $\iff v \in \langle S \rangle$.
+
+이 정리를 통해 선형 독립성을 유지한 채 전체 벡터공간 $V$를 생성하는 집합을 만들어나갈 수 있고, 이는 곧 [기저(basis)](../Basis/index.qmd#sec-definition-1)를 만드는 과정으로 이어진다.
+
+## Proof
+($\Longleftarrow$) 
+
+Trivial.
+
+$(\Longrightarrow)$ 
+ 
+Suppose that $S \cup \{ v \}$ is linearly dependent. Then there exist distinct vectors $u_1, \dots, u_n \in S \cup \{ v \}$ and scalars $a_1, \dots, a_n \in F$, not all zero, such that $\sum_{i=1}^n a_iu_i = \mathbf{0}$. Since $S$ is linearly independent, one of the $u_i$'s must be $v$, say $u_1 = v$. Then $a_1 \neq 0$ since $v \notin S$ and $S$ is linearly independent. Thus 
+
+$$v = \sum_{i=2}^n \left(-\frac{a_i}{a_1} \right) u_i.$$
+
+Thus $v \in \langle S \rangle$. $\blacksquare$
+
+# Reference
+- S. H. Friedberg, A. J. Insel, and L. E. Spence, Linear Algebra, 4th ed. (Pearson New International Edition), Pearson, 2013.

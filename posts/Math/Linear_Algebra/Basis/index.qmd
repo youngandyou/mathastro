@@ -1,0 +1,100 @@
+---
+title: "Basis"
+author: "Youmin Chun"
+date: "2026-09-05 00:00:03"
+description: "벡터공간의 기저(Basis)에 대해서 설명한다."
+categories: 
+  - Math > Linear Algebra
+---
+
+# Definition 1
+A ***basis*** $\beta$ for a [vector space](../Vector_Space/index.qmd#sec-definition) $V$ is a [linearly independent](../Linearly_Independence/index.qmd#sec-definition) [generating](../Linear_Combination/index.qmd#sec-definition) subset of $V$.
+
+벡터공간 $V$를 연구하기 위해 전체를 볼 필요 없이 $V$를 생성하는 집합만 보면 됐었고, 그 생성하는 집합 중에서도 불필요한 벡터가 포함되지 않은 집합을 선형 독립이라고 불렀었다. 따라서 이 두 조건을 모두 만족하는 집합을 벡터공간의 기저(basis)라고 부른다.
+
+## Remark
+**(i)** A basis can be infinite.
+
+**(ii)** Since $\langle \emptyset \rangle = \{\mathbf{0}\}$ and $\emptyset$ is linearly independent, $\emptyset$ is a basis for $\{\mathbf{0}\}$.
+
+**(iii)** In $F^n$, let $e_1 = (1, 0, ..., 0), e_2 = (0, 1, ..., 0), ..., e_n = (0, 0, ..., 1)$. Then the set $\{e_1, e_2, ..., e_n\}$ is a basis for $F^n$ and is called the ***standard basis*** for $F^n$.
+
+# Theorem 1
+Let $\beta = \{u_1, u_2, ..., u_n\}$ be a subset of a vector space $V$. Then $\beta$ is a basis for $V$ $\iff$ For each vector $v$ in $V$, there uniquely exist scalars $a_1, ..., a_n$ such that $v = \sum_{i=1}^n a_iu_i$.
+
+즉 기저는 각 벡터들을 [선형 결합](../Linear_Combination/index.qmd#sec-definition)으로 유일하게 표현해준다는 매우 좋은 성질을 가진다. 따라서 벡터공간에 기저가 주어지면 각 벡터들을 오로지 계수들만으로 네이밍가능하고, 이는 좌표라는 개념으로 이어진다.
+
+## Proof
+$(\Longrightarrow)$ 
+
+Since $\langle \beta \rangle = V$, it suffices to check the uniqueness. Let $v \in V$. Suppose that $v$ can be represented as two different ways: $v = \sum_{i=1}^n a_iu_i$ and $v = \sum_{i=1}^n b_iu_i$ for $a_i, b_i \in F (i=1, \dots, n)$. Then we have $\mathbf{0} = \sum_{i=1}^n (a_i - b_i)u_i$. Since $\beta$ is linearly independent, $a_i - b_i = 0 \Longleftrightarrow a_i = b_i$. Hence $v$ is uniquely expressible as a linear combination of the vectors of $\beta$.
+
+$(\Longleftarrow)$
+
+Clearly $\langle \beta \rangle = V$. Suppose that $\beta$ is linearly dependent. Then $\mathbf{0} = \sum_{i=1}^n a_iu_i$ for $a_1, \dots, a_n \in F$, not all zero. Then we have
+
+$$
+\begin{align*}
+\mathbf{0} &= \mathbf{0} + \mathbf{0} \\ 
+&= \sum_{i=1}^n a_iu_i + \sum_{i=1}^n a_iu_i \\ 
+&= \sum_{i=1}^n (2a_i)u_i
+\end{align*}
+$$
+
+Since $\mathbf{0} \in V$, $\mathbf{0}$ is uniquely expressed by vectors of $\beta$. Thus $a_i = 2a_i \iff a_i = 0$. $\bigotimes$ Hence $\beta$ is linearly independent, and therefore $\beta$ is a basis for $V$. $\blacksquare$
+
+# Theorem 2
+Let $V$ be a vector space, and let $\alpha = \{ v_1, \dots, v_m \}$ and $\beta = \{ u_1, \dots, u_n \}$ be subsets of $V$ with $m < n$.
+
+**(i)** If $\alpha$ spans $V$, then $\beta$ is linearly dependent.
+
+**(ii)** If $\beta$ is linearly independent, then $\alpha$ cannot span $V$.
+
+간단하게 말해서 선형 독립인 집합은 항상 생성 집합보다 크기가 작고, 거꾸로 생성 집합은 항상 선형 독립인 집합보다 크기가 크다고 할 수 있다. 그렇다면 선형 독립과 생성 집합 그 사이에 절묘하게 위치하는 집합이 바로 기저라는 사실을 직관적으로 알 수 있다.
+
+## Proof
+
+## Corollary
+Let $\alpha = \{v_1, \dots, v_m \}$ and $\beta = \{u_1, \dots, u_n \}$ be bases for a vector space $V$. Then $m = n$.
+
+벡터공간의 기저는 일반적으로 유일하지 않지만, 그 크기 만큼은 모두 동일하다. 따라서 우리는 벡터공간의 기저의 크기라는 수학적으로 잘 정의된 값을 벡터공간의 ***차원(dimension)***이라고 정의한다.
+
+### Proof
+Assume $m < n$. Since $\alpha$ is a basis, it spans $V$. By Theorem 2 (i), $\beta$ is linearly dependent. $\bigotimes$ Similarly, assume $n < m$. Since $\beta$ is a basis, it spans $V$. By Theorem 2 (i), $\alpha$ is linearly dependent. $\bigotimes$ Hence $m = n$. $\blacksquare$
+
+# Definition 2
+The ***dimension*** of a vector space $V$, denoted by $\dim(V)$, is the number of vectors in a basis for $V$.If $V$ has a finite basis, then $V$ is called ***finite-dimensional***. Otherwise $V$ is called ***infinite-dimensional***. We define $\dim \{ \mathbf{0} \} := 0$.
+
+벡터공간의 차원은 벡터공간에 주어진 필드에 따라서 달라질 수 있다. 예컨대 $\mathbb{C}$는 필드로 자기 자신 $\mathbb{C}$가 주어지면 차원이 $1$이지만, $\mathbb{R}$이 필드로 주어지면 $2$의 차원을 가진다.
+
+# Theorem 3
+Let $V$ be a finite-dimensional vector space with $\dim(V) = n$, and let $\beta = \{ v_1, \dots, v_n \} \subset V$.
+
+**(i)** Every linearly independent subset of $V$ can be extended to a basis for $V$.
+
+**(ii)** Every generating set for $V$ can be reduced to a basis for $V$.
+
+**(iii)** If $\beta$ is linearly independent, then $\beta$ is a basis for $V$.
+
+**(iv)** If $\beta$ spans $V$, then $\beta$ is a basis for $V$.
+
+다시 말해 선형 독립 집합과 생성 집합은 그 크기 관계가 분명할 뿐더러, 기저를 사이에 두고 연속적으로 존재하는 개념이라고 이해할 수 있다.
+
+## Proof
+
+# Theorem 4
+Let $W$ be a [subspace](../Subspace/index.qmd#sec-definition) of a finite-dimensional vector space $V$.
+
+**(i)** $W$ is finite-dimensional and $\dim(W) \le \dim(V)$.
+
+**(ii)** If $\dim(W) = \dim(V)$, then $W = V$.
+
+**(iii)** Any basis for $W$ can be extended to a basis for $V$.
+
+**(iv)** There exists a subspace $U$ of $V$ such that $V = W \oplus U$.
+
+## Proof
+
+# Reference
+- S. H. Friedberg, A. J. Insel, and L. E. Spence, Linear Algebra, 4th ed. (Pearson New International Edition), Pearson, 2013.
+- 곽진호, 핵심선형대수학, 개정 3판, 경문사, 2023.

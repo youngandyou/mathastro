@@ -1,0 +1,69 @@
+---
+title: "Linear Combination"
+author: "Youmin Chun"
+date: "2026-09-05 00:00:01"
+description: "벡터들의 선형 결합(Linear Combination)에 대해서 설명한다."
+categories: 
+  - Math > Linear Algebra
+---
+
+# Definition
+**(i)** Let $V$ be a [vector space](../Vector_Space/index.qmd#sec-definition), and let $v_1, \dots, v_n \in V$. A vector $v \in V$ is called a ***linear combination*** of vectors $v_1, \dots, v_n$ if $v = a_1v_1 + \cdots + a_nv_n$ for some $a_1, \dots, a_n \in F$. 
+
+**(ii)** Let $S$ be a nonempty subset of $V$. The ***span*** of $S$, denoted $\langle S \rangle$ (or span($S$)), is the set consisting of all linear combinations of the vectors in $S$. For convenience, we define $\langle \emptyset \rangle := \{ \mathbf{0} \}$. We say that $S$ ***generates***, or ***spans*** $V$ if $\langle S \rangle = V$.
+
+## Remark
+Let $S \subset V$.
+
+**(i)** $\langle S \rangle \neq \emptyset$. In particular, $\mathbf{0} \in \langle S \rangle$.
+
+**(ii)** $S \subset \langle S \rangle$.
+
+# Theorem 1
+Let $S$ be a subset of a vector space $V$. Then $\langle S \rangle$ is the smallest [subspace](../Subspace/index.qmd#sec-definition) of $V$ that contains $S$.
+
+## Proof
+First, we will show that $\langle S \rangle \le V$. We have already noted that $\langle S \rangle \neq \emptyset$. Let $x, y \in \langle S \rangle$ and $c \in F$. Then for vectors $x_1, ..., x_n \in S$, we have 
+
+$$
+\begin{align*}
+cx + y &= c(a_1x_1 + \cdots + a_nx_n) + (b_1x_1 + \cdots + b_nx_n) \\
+&= (ca_1 + b_1)x_1 + \cdots + (ca_n + b_n)x_n \\
+&\in \langle S \rangle
+\end{align*}
+$$
+
+[Thus $\langle S \rangle \leq V$.](../Subspace/index.qmd#sec-theorem-1)
+
+Let $U$ be a subspace of $V$ that contains $S$. Let $v \in \langle S \rangle$. Then for $y_1, \dots, y_n \in S$, we have $v = a_1y_1 + \cdots + a_ny_n$ for some $a_1, \dots, a_n \in F$. Since $y_1, \dots, y_n \in U$ and $U$ is a vector space, $v = a_1y_1 + \cdots + a_ny_n \in U$. Thus $\langle S \rangle \subset U$. $\blacksquare$
+
+# Theorem 2
+Let $S$ be a nonempty subset of a vector space $V$. Then $S \leq V \iff S = \langle S \rangle$.
+
+## Proof
+($\Longrightarrow$) 
+
+Let $v \in \langle S \rangle$. Then for vectors $v_1, \dots, v_n \in S$, $v = a_1v_1 + \cdots + a_nv_n$ for some $a_1, \dots, a_n \in F$. Since $S$ is a vector space, $v = a_1v_1 + \cdots + a_nv_n \in S$. Thus $\langle S \rangle \subset S$. Since $S \subset \langle S \rangle$ clearly, we have $S = \langle S \rangle$.
+
+($\Longleftarrow$) 
+
+It is clear by Theorem 1. $\blacksquare$
+
+# Theorem 3
+Let $S_1, S_2$ be subsets of a vector space $V$. Then the following statements hold:
+
+**(i)** If $S_1 \subset S_2$, then $\langle S_1 \rangle \subset \langle S_2 \rangle$. 
+
+**(ii)** $\langle S_1 \cup S_2 \rangle = \langle S_1 \rangle + \langle S_2 \rangle$.
+
+**(iii)** $\langle S_1 \cap S_2 \rangle \subset \langle S_1 \rangle \cap \langle S_2 \rangle$.
+
+## Proof
+**(i)** Let $x \in$ $ \langle S_1 \rangle $. Then $x = \sum a_iv_i$ for $a_i \in F, v_i \in S_1$. Since $S_1 \subset S_2$, $x \in $ $ \langle S_2 \rangle $. Hence $ \langle S_1 \rangle $ $\subset$ $ \langle S_2 \rangle $.
+
+**(ii)** Let $u \in$ $ \langle S_1 \cup S_2 \rangle $. Then $u = \sum a_iu_i$ for $a_i \in F, u_i \in S_1 \cup S_2$. Since each $u_i \in S_1 \cup S_2$, we can rewrite $u$ as $u = a_iu_i = a_jx_j + a_ky_k$ where $x_j \in S_1, y_k \in S_2$. Then $v \in$ $ \langle S_1 \rangle $ + $ \langle S_2 \rangle $, i.e., $ \langle S_1 \cup S_2 \rangle $ $\subset$ $ \langle S_1 \rangle $ + $ \langle S_2 \rangle $. The converse can be shown in similar manner.
+
+**(iii)** Let $u \in$ $ \langle S_1 \cap S_2 \rangle $. Then $u = \sum a_iu_i$ for $a_i \in F, u_i \in S_1 \cap S_2$. Since $u_i \in S_1 \wedge u_i \in S_2$, $u \in$ $ \langle S_1 \rangle $ $\wedge$ $u \in$ $ \langle S_2 \rangle $. Thus $u \in$ $ \langle S_1 \rangle $ $\cap$ $ \langle S_2 \rangle $. $\blacksquare$
+
+# Reference
+- S. H. Friedberg, A. J. Insel, and L. E. Spence, Linear Algebra, 4th ed. (Pearson New International Edition), Pearson, 2013.

@@ -59,11 +59,11 @@ Let $S_1, S_2$ be subsets of a vector space $V$. Then the following statements h
 **(iii)** $\langle S_1 \cap S_2 \rangle \subset \langle S_1 \rangle \cap \langle S_2 \rangle$.
 
 ## Proof
-**(i)** Let $x \in$ $ \langle S_1 \rangle $. Then $x = \sum a_iv_i$ for $a_i \in F, v_i \in S_1$. Since $S_1 \subset S_2$, $x \in $ $ \langle S_2 \rangle $. Hence $ \langle S_1 \rangle $ $\subset$ $ \langle S_2 \rangle $.
+**(i)** Let $x \in$ $ \langle S_1 \rangle $. Then $x = \sum_{i=1}^n a_iv_i$ for $a_i \in F, v_i \in S_1 (i=1, \dots, n)$. Since $S_1 \subset S_2$, $x \in \langle S_2 \rangle$. Hence $\langle S_1 \rangle \subse \langle S_2 \rangle$.
 
-**(ii)** Let $u \in$ $ \langle S_1 \cup S_2 \rangle $. Then $u = \sum a_iu_i$ for $a_i \in F, u_i \in S_1 \cup S_2$. Since each $u_i \in S_1 \cup S_2$, we can rewrite $u$ as $u = a_iu_i = a_jx_j + a_ky_k$ where $x_j \in S_1, y_k \in S_2$. Then $v \in$ $ \langle S_1 \rangle $ + $ \langle S_2 \rangle $, i.e., $ \langle S_1 \cup S_2 \rangle $ $\subset$ $ \langle S_1 \rangle $ + $ \langle S_2 \rangle $. The converse can be shown in similar manner.
+**(ii)** Let $u \in \langle S_1 \cup S_2 \rangle$. Then $u = \sum_{i=1}^n a_iu_i$ for $a_i \in F, u_i \in S_1 \cup S_2 (i=1, \dots, n)$. Since each $u_i \in S_1 \cup S_2$, we can rewrite $u$ as $u = a_iu_i = a_jx_j + a_ky_k$ where $x_j \in S_1, y_k \in S_2$. Then $u \in \langle S_1 \rangle + \langle S_2 \rangle$, i.e., $\langle S_1 \cup S_2 \rangle \subset \langle S_1 \rangle + \langle S_2 \rangle$. The converse can be shown in similar manner.
 
-**(iii)** Let $u \in$ $ \langle S_1 \cap S_2 \rangle $. Then $u = \sum a_iu_i$ for $a_i \in F, u_i \in S_1 \cap S_2$. Since $u_i \in S_1 \wedge u_i \in S_2$, $u \in$ $ \langle S_1 \rangle $ $\wedge$ $u \in$ $ \langle S_2 \rangle $. Thus $u \in$ $ \langle S_1 \rangle $ $\cap$ $ \langle S_2 \rangle $. $\blacksquare$
+**(iii)** Let $u \in \langle S_1 \cap S_2 \rangle$. Then $u = \sum_{i=1}^n a_iu_i$ for $a_i \in F, u_i \in S_1 \cap S_2 (i=1, \dots, n)$. Since $u_i \in S_1 \wedge u_i \in S_2, u \in \langle S_1 \rangle \wedge u \in \langle S_2 \rangle$. Thus $u \in \langle S_1 \rangle \cap \langle S_2 \rangle$. $\blacksquare$
 
 # Reference
 - S. H. Friedberg, A. J. Insel, and L. E. Spence, Linear Algebra, 4th ed. (Pearson New International Edition), Pearson, 2013.

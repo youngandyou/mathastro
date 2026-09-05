@@ -63,7 +63,7 @@ Let $\alpha = \{v_1, \dots, v_m \}$ and $\beta = \{u_1, \dots, u_n \}$ be bases 
 Assume $m < n$. Since $\alpha$ is a basis, it spans $V$. By Theorem 2 (i), $\beta$ is linearly dependent. $\bigotimes$ Similarly, assume $n < m$. Since $\beta$ is a basis, it spans $V$. By Theorem 2 (i), $\alpha$ is linearly dependent. $\bigotimes$ Hence $m = n$. $\blacksquare$
 
 # Definition 2
-The ***dimension*** of a vector space $V$, denoted by $\dim(V)$, is the number of vectors in a basis for $V$.If $V$ has a finite basis, then $V$ is called ***finite-dimensional***. Otherwise $V$ is called ***infinite-dimensional***. We define $\dim \{ \mathbf{0} \} := 0$.
+The ***dimension*** of a vector space $V$, denoted by $\dim(V)$, is the number of vectors in a basis for $V$.If $V$ has a finite basis, then $V$ is called ***finite-dimensional***. Otherwise, $V$ is called ***infinite-dimensional***. We define $\dim \{ \mathbf{0} \} := 0$.
 
 벡터공간의 차원은 벡터공간에 주어진 필드에 따라서 달라질 수 있다. 예컨대 $\mathbb{C}$는 필드로 자기 자신 $\mathbb{C}$가 주어지면 차원이 $1$이지만, $\mathbb{R}$이 필드로 주어지면 $2$의 차원을 가진다.
 

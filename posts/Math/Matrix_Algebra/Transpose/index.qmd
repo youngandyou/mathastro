@@ -1,0 +1,21 @@
+---
+title: "Transpose of a Matrix"
+author: "Youmin Chun"
+date: "2026-09-05 00:00:05"
+description: "행렬의 전치(Transpose)에 대해서 설명한다."
+categories: 
+  - Math > Matrix Algebra
+---
+
+# Definition
+The ***transpose*** $A^\top$ of an $m \times n$ matrix $A$ is the $n \times m$ matrix obtained from $A$ by interchanging the rows with the columns, i.e., $(A^\top)_{ij} = A_{ji}$.
+
+# Theorem
+**(i)** $(aA+bB)^\top = aA^\top + bB^\top$ for any $A, B \in F^{m \times n}$ and any $a, b\in F$. 
+
+**(ii)** $(A^\top)^\top = A$ for each $A \in F^{m \times n}$.
+
+**(iii)** $(A_1A_2 \cdots A_k)^\top = A_k^\top \cdots A_2^\top A_1^\top$ for any $A_1, A_2, \dots, A_k \in F^{n \times n}$ and any $k \in \mathbb{N}$.
+
+# Reference
+- S. H. Friedberg, A. J. Insel, and L. E. Spence, Linear Algebra, 4th ed. (Pearson New International Edition), Pearson, 2013.

@@ -1,0 +1,24 @@
+---
+title: "Symmetric and Skew-Symmetric Matrix"
+author: "Youmin Chun"
+date: "2026-09-05 00:00:06"
+description: "대칭 행렬과 반대칭 행렬에 대해서 설명한다."
+categories: 
+  - Math > Matrix Algebra
+---
+
+# Definition
+A ***symmetric matrix*** is a matrix $A$ such that $A^\top = A$, and a ***skew-symmetric matrix*** is a matrix $A$ such that $A^\top = -A$.
+
+# Theorem
+**(i)** $A + A^\top$ is symmetric for any square matrix $A$.
+
+**(ii)** $A - A^\top$ is skew-symmetric for any square matrix $A$.
+
+**(iii)** Every square matrix can be uniquely expressed by a sum of a symmetric matrix and skew-symmetric matrix. In particular, for any square matrix $A$,
+
+$$A = \frac{A+A^\top}{2} + \frac{A-A^\top}{2}$$
+
+# Reference
+- S. H. Friedberg, A. J. Insel, and L. E. Spence, Linear Algebra, 4th ed. (Pearson New International Edition), Pearson, 2013.
+- 곽진호, 핵심선형대수학, 개정 3판, 경문사, 2023.

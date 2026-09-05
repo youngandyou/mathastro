@@ -1,0 +1,46 @@
+---
+title: "Similar Matrix"
+author: "Youmin Chun"
+date: "2026-09-05 00:00:11"
+description: "행렬의 닮음(Similar)에 대해서 설명한다."
+categories: 
+  - Math > Matrix Algebra
+---
+
+# Definition
+Two square matrix $A, B \in F^{n \times n}$ are said to be ***similar*** if there exists an invertible matrix $Q \in F^{n \times n}$ such that $B = Q^{-1}AQ$. 
+
+보통 기저벡터들을 나열해서 가역행렬 $Q$를 구성하므로, 두 행렬이 닮음 관계에 있다는 것은 마치 좌표 변환 관계에 있는 것처럼 이해해도 무방하다.
+
+## Remark
+The relation of similarity is an equivalence relation.
+
+# Theorem 1
+Let $\alpha$ be a basis for a finite-dimensional vector space $V$, and let $T \in \mathcal{L}(V)$ such that $[T]_{\alpha} = A$. Suppose that $B$ is similar with $A$, i.e, there exists an invertible matrix $Q$ such that $B = Q^{-1}AQ$. Then there exists a basis $\beta$ for $V$ such that $[T]_{\beta} = B$ and $Q = [\mathrm{id}_V]_{\beta}^{\alpha}$.
+
+## Proof
+
+# Theorem 2
+Let $A$ and $B$ be similar matrices.
+
+**(i)** $\det(A) = \det(B)$
+
+**(ii)** tr($A$) = tr($B$)
+
+**(iii)** $A$ and $B$ have the same characteristic polynomial.
+
+## Proof
+**(i)** Since $A$ and $B$ are similar, there exists an invertible matrix $Q \in F^{n \times n}$ such that $B = Q^{-1}AQ$. Let $f_A(t)$ and $f_B(t)$ be the characteristic polynomials of $A$ and $B$, respectively. Then
+
+$$
+\begin{align*}
+f_B(t) &= \det(B - tI) = \det(Q^{-1}AQ - tI) \\ 
+&= \det(Q^{-1}(A - tI)Q) \\ 
+&= \det(Q^{-1})\det(A-tI)\det(Q) \\ 
+&= \det(A - tI) = f_A(t). \blacksquare
+\end{align*}
+$$
+
+# Reference
+- S. H. Friedberg, A. J. Insel, and L. E. Spence, Linear Algebra, 4th ed. (Pearson New International Edition), Pearson, 2013.
+- 곽진호, 핵심선형대수학, 개정 3판, 경문사, 2023.

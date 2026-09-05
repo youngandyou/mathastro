@@ -1,0 +1,18 @@
+---
+title: "Triangular Matrix"
+author: "Youmin Chun"
+date: "2026-09-05 00:00:08"
+description: "삼각행렬에 대해서 설명한다."
+categories: 
+  - Math > Matrix Algebra
+---
+
+# Definition
+A ***upper triangular matrix*** is an $m \times n$ matrix such that $A_{ij} = 0$ whenever $i > j$, and a ***lower triangular matrix*** is an $m \times n$ matrix such that $A_{ij} = 0$ whenver $i < j$. 
+
+# Theorem
+Let $A$ be an $n \times n$ triangular matrix. Then $\det(A)$ equals the product of the diagonal entries of $A$.
+
+# Reference
+- S. H. Friedberg, A. J. Insel, and L. E. Spence, Linear Algebra, 4th ed. (Pearson New International Edition), Pearson, 2013.
+- 곽진호, 핵심선형대수학, 개정 3판, 경문사, 2023.

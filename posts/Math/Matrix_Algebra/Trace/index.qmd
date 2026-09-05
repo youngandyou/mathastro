@@ -1,0 +1,26 @@
+---
+title: "Trace of a Matrix"
+author: "Youmin Chun"
+date: "2026-09-05 00:00:07"
+description: "행렬의 대각합(Trace)에 대해서 설명한다."
+categories: 
+  - Math > Matrix Algebra
+---
+
+# Definition
+The ***trace*** of an $n \times n$ matrix $M$, denoted by tr($M$), is the sum of the diagonal entries of $M$, that is, tr($M$) = $\sum_{i=1}^n M_{ii}$.
+
+# Theorem
+**(i)** tr($aA+bB$) = $a$ tr($A$) + $b$ tr($B)$ for any $A, B \in F^{n \times n}$ and any $a, b \in F$.
+
+**(ii)** tr($AB$) = tr($BA$) for any $A \in F^{m \times n}$ and $B \in F^{n \times m}$.
+
+**(iii)** tr($ABC$) = tr($BCA$) = tr($CAB$) for any $A \in F^{n \times m}, B \in F^{m \times p}, C \in F^{p \times n}$.
+
+**(iv)** tr($A^\top$) = tr($A$) for any $A \in F^{n \times n}$.
+
+**(v)** tr($A$) = $\displaystyle \sum_{i=1}^n \lambda_i$ for any $A \in \mathbb{C}^{n \times n}$, where $\lambda_1, \dots, \lambda_n$ are the eigenvalues of $A$.
+
+# Reference
+- S. H. Friedberg, A. J. Insel, and L. E. Spence, Linear Algebra, 4th ed. (Pearson New International Edition), Pearson, 2013.
+- 곽진호, 핵심선형대수학, 개정 3판, 경문사, 2023.

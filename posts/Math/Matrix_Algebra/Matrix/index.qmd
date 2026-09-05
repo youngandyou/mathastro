@@ -1,0 +1,39 @@
+---
+title: "Matrix"
+author: "Youmin Chun"
+date: "2026-09-05 00:00:04"
+description: "행렬에 대해서 설명한다."
+categories: 
+  - Math > Matrix Algebra
+---
+
+# Definition 1
+**(i)** An $m \times n$ ***matrix*** $A$ with entries from a field $F$ is a rectangular array of the form
+$$A = \begin{bmatrix} a_{11} & a_{12} & \cdots & a_{1n} \\ a_{21} & a_{22} & \cdots & a_{2n} \\ \vdots & \vdots & \ddots & \vdots \\ a_{m1} & a_{m2} & \cdots & a_{mn} \end{bmatrix}$$
+
+where each entry $a_{ij}\, (1 \leq i \leq m, 1 \leq j \leq n)$ is an element of $F$. The number $a_{ij}$ is called the $(i, j)$-***entry*** of the matrix $A$, and is also written as $a_{ij} = [A]_{ij}$.
+
+**(ii)** The entries $a_{ij}$ with $i = j$ are the ***diagonal entries*** of the matrix.
+
+**(iii)** The entries $a_{i1}, a_{i2}, \cdots, a_{in}$ compose the $i$-th ***row*** of the matrix, and the entries $a_{1j}, a_{2j}, \cdots, a_{mj}$ compose the $j$-th ***column*** of the matrix.
+
+**(iv)** If $m = n$, that is, the number of rows and columns of a matrix are equal, then the matrix $A$ is called ***square***. In contrast, if $m \neq n$, then the matrix $A$ is called ***rectangular***. Moreover, the matrix $A$ is said to be ***wide*** if $m \leq n$, and is ***long*** if $m \geq n$.
+
+**(v)** Two matrices $A$ and $B$ are said to be ***equal*** if they have the same sizes and $a_{ij} = b_{ij}$ for all $1 \leq i \leq m$ and $1 \leq j \leq n$.
+
+# Theorem 1
+The set of all $m \times n$ matrices with entries from a field $F$ is a vector space, denoted $F^{m \times n}$, with the following operations of matrix addition and scalar multiplication: For $A, B \in F^{m \times n}$ and $c \in F$,
+
+$$\begin{align*} (A+B)_{ij} = A_{ij}+B_{ij} \,\,\text{and}\,\, (cA)_{ij}=cA_{ij} \end{align*}$$ 
+
+for $1 \leq i \leq m, 1 \leq j \leq n$.
+
+# Definition 2
+**(i)** The $n \times n$ ***identity matrix*** $I_n$ (or $I$ if the size is clear from the context) is a diagonal matrix whose diagonal entries are all $1$. 
+
+**(ii)** The $m \times n$ matrix in which each entry equals zero is called the ***zero matrix***, denoted by $O$.
+
+**(iii)** A ***diagonal matrix*** is a matrix $M$ such that $M_{ij} = 0, \forall i \neq j$.
+
+# Reference
+- S. H. Friedberg, A. J. Insel, and L. E. Spence, Linear Algebra, 4th ed. (Pearson New International Edition), Pearson, 2013.

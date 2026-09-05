@@ -1,0 +1,39 @@
+---
+title: "Matrix Multiplication"
+author: "Youmin Chun"
+date: "2026-09-05 00:00:10"
+description: "행렬의 곱셈에 대해서 설명한다."
+categories: 
+  - Math > Matrix Algebra
+---
+
+# Definition
+Let $A \in F^{m \times n}, B \in F^{n \times p}$. We define the ***product*** of $A$ and $B$, denoted $AB$, to be the $m \times p$ matrix such that 
+$$(AB)_{ij} = \sum_{k=1}^{n}A_{ik}B_{kj} \quad \text{for} \quad 1 \leq i \leq m, 1 \leq j \leq p.$$
+
+행렬의 합과 상수배가 각 성분별로, 다르게 말하면 지극히 상식적으로 정의되었던 것과 다르게 곱은 다소 직관적이지 않게 정의되는데, 이는 '행렬 = 선형변환'이라는 선형대수학의 상식에서 기인하였다.
+
+선형변환은 하나의 행렬로 표현할 수 있었고, 선형변환의 합과 상수배도 행렬로 표현했을 때 $[T + U]_{\beta}^{\gamma} = [T]_{\beta}^{\gamma} + [U]_{\beta}^{\gamma}$, $[aT]_{\beta}^{\gamma} = a[T]_{\beta}^{\gamma}$으로 잘 맞아떨어졌다. 그러면 자연스럽게 두 선형변환의 합성의 행렬 표현은 무엇인지 물을 수 있고, 두 행렬의 곱을 위와 같이 정의해야 자연스럽게 선형변환의 합성과 잘 맞아떨어지는 결과를 얻음을 알 수 있다.
+
+Let $T \in \mathcal{L}(V, W), U \in \mathcal{L}(W, Z)$, and let $A := [U]_{\beta}^{\gamma}, B := [T]_{\alpha}^{\beta}$, where $\alpha = \{v_1, ..., v_n\}, \beta = \{w_1, ..., w_m\}$, and $\gamma = \{z_1, ..., z_p\}$ are ordered bases for $V, W$, and $Z$, respectively. 
+
+Consider the matrix $[UT]_{\alpha}^{\gamma}$. For $1 \leq j \leq n$, we have
+
+$$\begin{align*}
+(UT)(v_j) &= U(T(v_j)) = U(\sum_{k=1}^{m} B_{kj}w_k) \\ 
+&= \sum_{k=1}^{m}B_{kj}U(w_k) = \sum_{k=1}^{m}B_{kj}(\sum_{i=1}^{p} A_{ik}z_i) \\ 
+&= \sum_{i=1}^{p}(\sum_{k=1}^{m} A_{ik}B_{kj})z_i = \sum_{i=1}^{p}C_{ij}z_i,
+\end{align*}$$ 
+
+where 
+$$C_{ij} := \sum_{k=1}^{m} A_{ik}B_{kj}.$$
+
+# Theorem
+Let $T \in \mathcal{L}(V, W), U \in \mathcal{L}(W, Z)$. Then $[UT]_{\alpha}^{\gamma} = [U]_{\beta}^{\gamma} [T]_{\alpha}^{\beta}$, where $\alpha, \beta, \gamma$ are ordered bases for $V, W, Z$, respectively.
+
+## Remark
+일반적으로 함수의 합성은 교환법칙이 성립하지 않는 연산인 것처럼, 행렬의 곱셈은 그 근본이 함수의 합성에 있으므로 교환법칙이 성립하지 않는다. 즉, 일반적으로 $AB \neq BA$이다.
+
+# Reference
+- S. H. Friedberg, A. J. Insel, and L. E. Spence, Linear Algebra, 4th ed. (Pearson New International Edition), Pearson, 2013.
+- 곽진호, 핵심선형대수학, 개정 3판, 경문사, 2023.

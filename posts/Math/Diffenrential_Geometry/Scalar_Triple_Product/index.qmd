@@ -11,7 +11,7 @@ categories:
 Let $\mathbf{u}, \mathbf{v}, \mathbf{w} \in \mathbb{R}^3$. Then the ***scalar triple product*** of $\mathbf{u}, \mathbf{v}, \mathbf{w}$ is defined as
 
 $$
-\langle \mathbf{u} \times \mathbf{v}, \mathbf{w} \rangle
+\langle \mathbf{u} \times \mathbf{v}, \mathbf{w} \rangle.
 $$
 
 ## Proposition

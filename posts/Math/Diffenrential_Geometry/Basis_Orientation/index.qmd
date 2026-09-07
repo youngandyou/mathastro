@@ -12,8 +12,10 @@ Let $\beta = \{\mathbf{u}_1, \dots, \mathbf{u}_n \}$ and $\gamma = \{\mathbf{v}_
 
 If $\det(T) = \det([\mathsf{T}]_\alpha) > 0$ for the standard ordered basis $\alpha$, then $\beta$ and $\gamma$ are said to have the ***same orientation*** or $\mathsf{T}$ is said to be ***orientation preserving***. Otherwise, they are said to have ***opposite orientation***, or $\mathsf{T}$ is said to be ***orientation reversing***.
 
+특별히 $\mathbb{R}^3$ 상에서 표준순서기저 $\{ \mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3 \}$이 갖는 방향을 ***오른손 방향(right handed)***이라고 부른다.
+
 ## Example
-$\mathbb{R}^3$ 상에서의 두 순서기저 $\{ \mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3 \}$와 $\{ \mathbf{e}_1, \mathbf{e}_2, - \mathbf{e}_3 \}$는 서로 다른 방향을 가지는데, $\mathsf{T}(\mathbf{e}_1) = \mathbf{e}_1, \mathsf{T}(\mathbf{e}_2) = \mathbf{e}_2, \mathsf{T}(\mathbf{e}_3) = - \mathbf{e}_3$으로 정의되는 선형변환 $\mathsf{T}$를 가져오면 행렬식은 다음과 같이 주어진다.
+$\mathbb{R}^3$ 상에서의 두 순서기저 $\{ \mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3 \}$와 $\{ \mathbf{e}_1, \mathbf{e}_2, - \mathbf{e}_3 \}$는 서로 다른 방향을 가지는데, 위 정의에 따라 $\mathsf{T}(\mathbf{e}_1) = \mathbf{e}_1, \mathsf{T}(\mathbf{e}_2) = \mathbf{e}_2, \mathsf{T}(\mathbf{e}_3) = - \mathbf{e}_3$을 만족하는 선형변환 $\mathsf{T}$을 가져올 수 있고, 행렬식은 다음과 같이 계산된다.
 
 $$\det(T) = \det \begin{bmatrix}
 1 & 0 & 0 \\

@@ -1,0 +1,25 @@
+---
+title: "Orientation of Basis"
+author: "Youmin Chun"
+date: "2026-09-07 00:00:03"
+description: "벡터공간에서 기저의 방향에 대해서 설명한다."
+categories: 
+  - Math > Differential Geometry
+---
+
+# Definition
+Let $\beta = \{\mathbf{u}_1, \dots, \mathbf{u}_n \}$ and $\gamma = \{\mathbf{v}_1, \dots, \mathbf{v}_n \}$ be two ordered bases for a vector space $V$ of dimension $n$, and let $\mathsf{T} : V \to V$ be the linear transformation defined by $\mathsf{T}(\mathbf{u}_i) = \mathbf{v}_i$ for each $i = 1, \dots, n$. 
+
+If $\det(T) = \det([\mathsf{T}]_\alpha) > 0$ for the standard ordered basis $\alpha$, then $\beta$ and $\gamma$ are said to have the ***same orientation*** or $\mathsf{T}$ is said to be ***orientation preserving***. Otherwise, they are said to have ***opposite orientation***, or $\mathsf{T}$ is said to be ***orientation reversing***.
+
+## Example
+$\mathbb{R}^3$ 상에서의 두 순서기저 $\{ \mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3 \}$와 $\{ \mathbf{e}_1, \mathbf{e}_2, - \mathbf{e}_3 \}$는 서로 다른 방향을 가지는데, $\mathsf{T}(\mathbf{e}_1) = \mathbf{e}_1, \mathsf{T}(\mathbf{e}_2) = \mathbf{e}_2, \mathsf{T}(\mathbf{e}_3) = - \mathbf{e}_3$으로 정의되는 선형변환 $\mathsf{T}$를 가져오면 행렬식은 다음과 같이 주어진다.
+
+$$\det(T) = \det \begin{bmatrix}
+1 & 0 & 0 \\
+0 & 1 & 0 \\
+0 & 0 & -1
+\end{bmatrix} = -1 < 0$$
+
+# Reference
+- R. S. Millman and G. D. Parker, Elements of Differential Geometry, Prentice-Hall, 1977.

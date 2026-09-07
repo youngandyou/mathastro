@@ -1,0 +1,13 @@
+---
+title: "Bilinear Form"
+author: "Youmin Chun"
+date: "2026-09-07 00:00:00"
+description: "쌍선형형식(Bilinear Form)에 대해서 설명한다."
+categories: 
+  - Math > Matrix Algebra
+---
+
+# Definition
+
+# Reference
+- S. H. Friedberg, A. J. Insel, and L. E. Spence, Linear Algebra, 4th ed. (Pearson New International Edition), Pearson, 2013.

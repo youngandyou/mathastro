@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.css">
 <script src="https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.js"></script>
 <script>
@@ -44,13 +45,44 @@ document.addEventListener("DOMContentLoaded", function () {
 </script>
 <style>
 .ps-root {
-  font-family: inherit;
+  font-family: KaTeX_Main, "Times New Roman", Times, serif;
+  font-size: 1.02em;
+  font-weight: 400 !important;
+  color: var(--bs-body-color, #212529);
+}
+.ps-root .ps-line {
+  font-weight: 400;
+  line-height: 1.45;
+}
+.ps-root .ps-keyword {
+  font-weight: 700 !important;
+  color: var(--bs-body-color, #111);
+}
+.ps-root .ps-funcname {
+  font-weight: 600 !important;
+}
+.ps-root .ps-comment {
+  font-weight: 400;
+  color: var(--bs-secondary-color, #6c757d);
+}
+.ps-root .ps-linenum {
+  font-weight: 400;
+  color: var(--bs-secondary-color, #888);
 }
 .ps-root .ps-algorithm {
   border-top: 2px solid var(--bs-heading-color, #2f6f73);
   border-bottom: 2px solid var(--bs-heading-color, #2f6f73);
   margin: 1.25rem 0;
   padding: 0.5rem 0;
+}
+.ps-root .ps-algorithm.with-caption > .ps-line:first-child {
+  border-bottom: 1.5px solid var(--bs-border-color, #dee2e6);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.ps-root .ps-algorithm.with-caption > .ps-line:first-child .ps-keyword {
+  font-weight: 700 !important;
 }
 .pseudocode-container {
   text-align: left;

@@ -22,6 +22,9 @@ format:
       - brand
     css: styles.css
     html-math-method: mathjax
+    filters:
+      - pseudocode
     include-after-body:
       - assets/category-tree.html
+      - assets/pseudocode.html
 

@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.css">
+<script src="https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  function renderAllPseudocodes() {
+    if (typeof pseudocode === "undefined") return;
+    document.querySelectorAll(".pseudocode-container").forEach(function (el) {
+      if (el.dataset.rendered === "true") return;
+      var pre = el.querySelector(".pseudocode");
+      if (!pre) return;
+
+      var options = {
+        indentSize: el.dataset.indentSize || "1.2em",
+        commentDelimiter: " " + (el.dataset.commentDelimiter || "//") + " ",
+        lineNumber: el.dataset.lineNumber === "true",
+        lineNumberPunc: el.dataset.lineNumberPunc || ":",
+        noEnd: el.dataset.noEnd === "true",
+        scopeLines: el.dataset.indentLines === "true",
+        titlePrefix: el.dataset.captionPrefix || "Algorithm",
+      };
+
+      pseudocode.renderElement(pre, options);
+      el.dataset.rendered = "true";
+
+      var captionSpan = el.querySelector(".ps-root > .ps-algorithm > .ps-line > .ps-keyword");
+      if (captionSpan && el.dataset.pseudocodeNumber) {
+        captionSpan.innerHTML = (el.dataset.captionPrefix || "Algorithm") + " " + el.dataset.pseudocodeNumber + " ";
+      }
+    });
+  }
+
+  renderAllPseudocodes();
+
+  if (window.MathJax) {
+    if (window.MathJax.startup && window.MathJax.startup.promise) {
+      window.MathJax.startup.promise.then(function () {
+        if (window.MathJax.typesetPromise) {
+          window.MathJax.typesetPromise();
+        }
+      });
+    }
+  }
+});
+</script>
+<style>
+.ps-root {
+  font-family: inherit;
+}
+.ps-root .ps-algorithm {
+  border-top: 2px solid var(--bs-heading-color, #2f6f73);
+  border-bottom: 2px solid var(--bs-heading-color, #2f6f73);
+  margin: 1.25rem 0;
+  padding: 0.5rem 0;
+}
+.pseudocode-container {
+  text-align: left;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+</style>

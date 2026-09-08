@@ -1,0 +1,58 @@
+---
+title: "Horner's Method"
+author: "Youmin Chun"
+date: "2026-09-08 00:00:04"
+description: "다항식을 계산할 때 연산횟수를 줄일 수 있는 호너 방법(Horner's Method)에 대해서 살펴본다"
+categories: 
+  - Math > Numerical Analysis
+---
+
+# Horner's Method
+
+$$p_n(x) = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n$$
+
+위와 같이 주어진 $n$차 다항식에서 $a_kx^k$는 $\underbrace{a_k \ast x \ast x \ast \cdots \ast x}_{k \text{ times}}$으로 쓸 수 있으므로 총 $k$번의 곱셈이 필요하다. 이와 같이 "정직하게" 다항식 $p_n(x)$를 계산한다면 총 $\frac{n(n+1)}{2}$번의 곱셈이 필요하다.
+
+이번엔 다음과 같이 다항식을 정리해보자.
+
+$$\begin{align*}
+p_n(x) &= a_0 + a_1x + a_2x^2 + \cdots + a_nx^n \\
+&= a_0 + x(a_1 + x(a_2 + x(\cdots + x(a_{n-1} + xa_n)\cdots)))
+\end{align*}$$
+
+다시 곱셈 횟수를 세아려보면 총 $n$번의 곱셈이 필요함을 알 수 있다. 첫번째 방법이 $n^2$ 만큼의 연산이 필요했던 반면에 두 번째 방법은 $n$ 만큼의 연산만 필요하다. 즉 $n$이 커질수록 두 번째 방법이 훨씬 효율적임을 알 수 있고, 이와 같이 다항식을 계산하는 방법을 ***호너의 방법(Horner's method)***이라고 부른다.
+
+## Algorithm
+위 다항식에서 다음과 같이 계수 $b_k$를 정의하자.
+
+$$\begin{align*}
+b_0 &= a_n \\
+b_1 &= a_{n-1} + xb_0 \\
+b_2 &= a_{n-2} + xb_1 \\
+\vdots \\
+b_n &= a_0 + xb_{n-1}
+\end{align*}$$
+
+다시 말해 $b_0 = a_n$으로 초항이 주어지고 이후 항들은 $b_k = a_{n-k} + xb_{k-1}$이라는 점화식으로 주어진다. 그러면 기존의 다항식은 $p_n(x) = b_n$과 같이 나타낼 수 있다. 이를 알고리즘 유사코드로 표현하면 다음과 같다.
+
+```pseudocode
+#| label: alg-horner
+#| html-indent-size: "1.2em"
+#| html-line-number: true
+
+\begin{algorithm}
+\caption{Horner's Method}
+\begin{algorithmic}
+\INPUT Coefficients $a_0, a_1, \dots, a_n$, Evaluation point $x$
+\OUTPUT Value $b_n = p_n(x)$
+\STATE $b_0 \gets a_n$
+\FOR{$k = 1$ \TO $n$}
+    \STATE $b_k \gets a_{n-k} + x \cdot b_{k-1}$
+\ENDFOR
+\RETURN $b_n$
+\end{algorithmic}
+\end{algorithm}
+```
+
+# Reference
+- K. E. Atkinson and W. Han, Elementary Numerical Analysis, 3rd ed., John Wiley & Sons, 2004.

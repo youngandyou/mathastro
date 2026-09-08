@@ -23,17 +23,17 @@ p_n(x) &= a_0 + a_1x + a_2x^2 + \cdots + a_nx^n \\
 다시 곱셈 횟수를 세아려보면 총 $n$번의 곱셈이 필요함을 알 수 있다. 첫번째 방법이 $n^2$ 만큼의 연산이 필요했던 반면에 두 번째 방법은 $n$ 만큼의 연산만 필요하다. 즉 $n$이 커질수록 두 번째 방법이 훨씬 효율적임을 알 수 있고, 이와 같이 다항식을 계산하는 방법을 ***호너의 방법(Horner's method)***이라고 부른다.
 
 ## Algorithm
-위 다항식에서 다음과 같이 계수 $b_k$를 정의하자.
+특정한 점 $a$에 대하여, 위 다항식에서 다음과 같이 계수 $b_k$를 정의하자.
 
 $$\begin{align*}
 b_0 &= a_n \\
-b_1 &= a_{n-1} + xb_0 \\
-b_2 &= a_{n-2} + xb_1 \\
+b_1 &= a_{n-1} + b_0a \\
+b_2 &= a_{n-2} + b_1a \\
 \vdots \\
-b_n &= a_0 + xb_{n-1}
+b_n &= a_0 + b_{n-1}a
 \end{align*}$$
 
-다시 말해 $b_0 = a_n$으로 초항이 주어지고 이후 항들은 $b_k = a_{n-k} + xb_{k-1}$이라는 점화식으로 주어진다. 그러면 기존의 다항식은 $p_n(x) = b_n$과 같이 나타낼 수 있다. 이를 알고리즘 유사코드로 표현하면 다음과 같다.
+다시 말해 $b_0 = a_n$으로 초항이 주어지고 이후 항들은 $b_k = a_{n-k} + b_{k-1}a$이라는 점화식으로 주어진다. 그러면 기존의 다항식은 $p_n(a) = b_n$과 같이 나타낼 수 있다. 이를 알고리즘 유사코드로 표현하면 다음과 같다.
 
 ```pseudocode
 #| label: alg-horner
@@ -43,16 +43,27 @@ b_n &= a_0 + xb_{n-1}
 \begin{algorithm}
 \caption{Horner's Method}
 \begin{algorithmic}
-\INPUT Coefficients $a_0, a_1, \dots, a_n$, Evaluation point $x$
-\OUTPUT Value $b_n = p_n(x)$
+\INPUT Coefficients $a_0, a_1, \dots, a_n$, Evaluation point $a$
+\OUTPUT Value $b_n = p_n(a)$
 \STATE $b_0 \gets a_n$
 \FOR{$k = 1$ \TO $n$}
-    \STATE $b_k \gets a_{n-k} + x \cdot b_{k-1}$
+    \STATE $b_k \gets a_{n-k} + b_{k-1}a$
 \ENDFOR
 \RETURN $b_n$
 \end{algorithmic}
 \end{algorithm}
 ```
+
+## Remark
+호너의 방법은 조립제법(Synthetic Division)과도 연관이 있다. 다항식 $p(x) = a_0 + a_1x + a_2x^2 + \cdots + a_nx^n$에 대하여 위에서 정의한 계수 $b_k$를 이용해서 다항식 $q(x)$를
+
+$$q(x) = b_n + b_{n-1}x + b_{n-2}x^2 + \cdots + b_1x^{n-1}$$
+
+으로 정의하면 다음과 같은 관계가 성립한다.
+
+$$p(x) = (x-a)q(x) + b_n$$
+
+즉 $q(x)$는 $p(x)$를 $x-a$로 나눴을 때 몫이고, $b_n$은 나머지가 된다.
 
 # Reference
 - K. E. Atkinson and W. Han, Elementary Numerical Analysis, 3rd ed., John Wiley & Sons, 2004.

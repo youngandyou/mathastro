@@ -1,0 +1,44 @@
+---
+title: "Singular Point"
+author: "Youmin Chun"
+date: "2026-09-08 00:00:01"
+description: "복소해석학에서 특이점(Singular Point)에 대해서 소개한다."
+categories: 
+  - Math > Complex Analysis
+---
+
+# Definition
+Let $f$ be a complex function.
+
+**(i)** $f$ is said to be ***analytic*** at a point $z_0$ if it has a derivative on some open set containing $z_0$.
+
+**(ii)** If $f$ fails to be analytic at a point $z_0$ but is analytic at some point in every neightborhood of $z_0$, then $z_0$ is called a ***singular point*** of $f$.
+
+**(iii)** A singular point $z_0$ of $f$ is said to be ***isolated*** if there exists $\varepsilon > 0$ such that $f$ is analytic in $0 < \vert z - z_0 \vert < \varepsilon$.
+
+**(iv)** The function $f$ is said to be have an ***isolated singular point at $z_0 = \infty$*** if there exists $R > 0$ such that $f$ is analytic for $R < \vert z \vert < \infty$.
+
+## Example
+**(i)** The function
+
+$$f(z) = \frac{z-1}{z^5(z^2+9)}$$
+
+has three isolated singular points, namely $z = 0$ and $z = \pm 3i$.
+
+**(ii)** The origin $z = 0$ is a singular point of the principal branch of the logarithm, defined by
+
+$$F(z) = \mathrm{Log}z = \ln \vert z \vert + i \mathrm{Arg}(z).$$
+
+However, it is not isolated since every deleted neighborhood of it contains points on the negetive real axis.
+
+**(iii)** The function
+
+$$f(z) = \frac{1}{\sin \left( \frac{\pi}{z} \right)}$$
+
+has singular points $z_0 = 0$ and $z_n = \frac{1}{n}$ for each $n = \pm 1, \pm 2, \dots$. Although each $z_n = \frac{1}{n}$ is an isolated singular point, $z_0 = 0$ is not isolated.
+
+## Remark
+The singular points of a rational function of two polynomials without common factors are always isolated.
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

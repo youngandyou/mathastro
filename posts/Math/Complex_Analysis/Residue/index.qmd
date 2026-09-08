@@ -1,0 +1,34 @@
+---
+title: "Residue"
+author: "Youmin Chun"
+date: "2026-09-11 00:00:02"
+description: "복소해석학에서 유수(Residue)에 대해서 소개한다."
+categories: 
+  - Math > Complex Analysis
+---
+
+# Definitions
+Suppose that a complex function $f$ has an isolated singular point $z_0$. Then there exists $R > 0$ such that $f$ is analytic in $0 < \vert z - z_0 \vert < R$. By Laurent Series, $f$ can be expressed as
+
+$$\begin{align*}
+f(z) &= \sum_{n = 0}^\infty a_n (z - z_0)^n + \sum_{n = 1}^\infty \frac{b_n}{(z-z_0)^n} \\
+&= \cdots + \frac{b_{2}}{(z-z_0)^{2}} + \frac{b_{1}}{(z-z_0)^{1}} + a_0 + a_1 (z - z_0) + a_2 (z - z_0)^2 + \cdots
+\end{align*}$$
+
+where 
+
+$$\begin{align*}
+a_n &= \frac{1}{2\pi i} \int_C \frac{f(z)}{(z-z_0)^{n+1}} dz, \quad (n = 0, 1, 2, \dots) \\
+b_n &= \frac{1}{2\pi i} \int_C \frac{f(z)}{(z-z_0)^{-n+1}} dz \quad (n = 1, 2, 3, \dots)
+\end{align*}$$
+
+and $C$ is any positively oriented simple closed contour around $z_0$ that lies in $0 < \vert z - z_0 \vert < R$.
+
+The ***residue*** of $f$ at $z_0$ is the coefficient of $\frac{1}{z-z_0}$, that is,
+
+$$b_1 = \frac{1}{2\pi i} \int_C f(z) dz.$$
+
+We shall denote it by $b_1 = \displaystyle \operatorname*{Res}_{z = z_0} f(z)$.
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

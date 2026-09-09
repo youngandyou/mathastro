@@ -7,7 +7,103 @@ categories:
   - Math > Matrix Algebra
 ---
 
-# Definition
+# Definition 1
+Let $V$ be a vector space over a field $F$. A function $H : V \times V \to F$ is called a ***bilinear form*** on $V$ if $H$ is linear in each variable when the other variable is held fixed; that is, $H$ is a bilinear form on $V$ if
+
+**(i)** $H(ax_1 + x_2, y) = aH(x_1, y) + H(x_2, y)$ for all $x_1, x_2, y \in V$ and $a \in F$
+
+**(ii)** $H(x, ay_1 + y_2) = aH(x, y_1) + H(x, y_2)$ for all $x, y_1, y_2 \in V$ and $a \in F$.
+
+## Remark
+**(i)** We denote the set of all bilinear forms on $V$ by $\mathcal{B}(V)$.
+
+**(ii)** An inner product on a vector space is a bilinear form if the underlying field is real, but not. if the underlying field is complex. 
+
+## Properties
+**(i)** If, for any $x \in V$, the functions $L_x, R_x : V \to F$ are defined by
+$$L_x(y) = H(x, y) \quad \text{and} \quad R_x(y) = H(y, x) \quad \text{for all } y \in V,$$
+
+then $L_x$ and $R_x$ are linear.
+
+**(ii)** $H(0, x) = H(x, 0) = 0$ for all $x \in V$.
+
+**(iii)** For all $x, y, z, w \in V$,
+$$H(x + y, z + w) = H(x, z) + H(x, w) + H(y, z) + H(y, w).$$
+
+**(iv)** If $J : V \times V \to F$ is defined by $J(x, y) = H(y, x)$, then $J$ is a bilinear form.
+
+# Theorem 1
+For any vector space $V$, $\mathcal{B}(V)$ is a vector space with respect to operations defined by
+
+$$\begin{align*}
+(H_1 + H_2)(x, y) = H_1(x, y) + H_2(x, y), \\
+(aH_1)(x, y) = a(H_1(x, y)) \quad \forall x, y \in V, a \in F.
+\end{align*}$$
+
+# Definition 2
+Let $\beta = \{v_1, v_2, \dots, v_n\}$ be an ordered basis for an $n$-dimensional vector space $V$, and let $H \in \mathcal{B}(V)$. Define a matrix $A \in F^{n \times n}$ by the equation:
+
+$$A_{ij} = H(v_i, v_j) \quad \forall i, j = 1, 2, \dots, n$$
+
+The matrix $A$ is called the **matrix representation** of $H$ with respect to the ordered basis $\beta$ and is denoted by $\psi_\beta(H)$.
+
+# Theorem 2
+For any $n$-dimensional vector space $V$ over $F$ and any ordered basis $\beta$ for $V$, the function $\psi_\beta : \mathcal{B}(V) \to F^{n \times n}$ defined above is an isomorphism.
+
+## Corollay
+**(i)** Let $V$ be an $n$-dimensional vector space over $F$ with ordered basis $\beta$. If $H \in \mathcal{B}(V)$ and $A \in F^{n \times n}$, then $\psi_\beta(H) = A$ $\iff$ $H(x, y) = [x]_\beta^\top A [y]_\beta, \forall x, y \in V$.
+
+**(ii)** Let $F$ be a field, $n$ a positive integer, and $\beta$ be the standard ordered basis for $F^n$. Then for any $H \in \mathcal{B}(F^n)$, there exists a unique matrix $A \in F^{n \times n}$, namely, $A = \psi_\beta(H)$, such that
+$$H(x, y) = x^\top A y, \quad \forall x, y \in F^n.$$
+
+예컨대 유클리드 공간 $\mathbb{R}^3$에서 내적 $\langle \cdot, \cdot \rangle$을 정의하고 기저 $\beta = \{ \mathbf{u}_1, \mathbf{u}_2, \mathbf{u}_3 \}$를 주자. 이때 $\langle \cdot, \cdot \rangle$의 행렬 표현 $A$는 $A_{ij} = \langle \mathbf{u}_i, \mathbf{u}_j \rangle$ 이다. 그러면 위 따름정리에 의하여 내적 $\langle \cdot, \cdot \rangle$은 항상 
+
+$$\langle \mathbf{x}, \mathbf{y} \rangle = [\mathbf{x}]_\beta^\top A [\mathbf{y}]_\beta$$
+
+으로 쓸 수 있다. 특별히 기저 $\beta$가 정규직교기저라면 $A$는 단위행렬이 되고, 이는 내적 $\langle \mathbf{x}, \mathbf{y} \rangle$이 유클리드 내적 $\mathbf{x} \cdot \mathbf{y}$과 같음을 의미한다.
+
+# Theorem 3
+Let $V$ be a $n$-dimensional vector space over a field $F$, and let $\beta = \{ \mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_n \}$ be an ordered basis for $V$. Let $\mathcal{I}$ be the set of all inner products on $V$, and let $\mathcal{SPD}$ be the set of all symmetric positive definite $n \times n$ matrices over $F$. Then there exists a bijection $\Phi : \mathcal{I} \to \mathcal{SPD}$.
+
+다시 말해 내적과 대칭 양정부호 행렬은 일대일 대응이 된다.
+
+## Proof
+Define a function $\Phi : \mathcal{I} \to \mathcal{SPD}$ by $\Phi(\langle \cdot, \cdot \rangle) = A$ where $A_{ij} = \langle \mathbf{v}_i, \mathbf{v}_j \rangle$ for each $i, j = 1, \dots, n$. That is, $A = \psi_\beta(\langle \cdot, \cdot \rangle)$. 
+
+Since $A_{ij} = \langle \mathbf{v}_i, \mathbf{v}_j \rangle = \langle \mathbf{v}_j, \mathbf{v}_i \rangle = A_{ji}$ for each $i, j = 1, \dots, n$, $A$ is symmetric. 
+
+By Corollary (i), $\langle \mathbf{x}, \mathbf{y} \rangle = [\mathbf{x}]_\beta^\top A [\mathbf{y}]_\beta, \forall \mathbf{x}, \mathbf{y} \in V$. Let $\mathbf{0} \neq \mathbf{x} \in F^n$, and let $\mathbf{v} = \sum_{i=1}^n x_i \mathbf{v}_i$. Then $[\mathbf{v}]_\beta = \mathbf{x}$, and since $\mathbf{x} \neq \mathbf{0}$, we have $\mathbf{v} \neq \mathbf{0}$. Therefore, 
+
+$$\mathbf{x}^\top A \mathbf{x} = [\mathbf{v}]_\beta^\top A [\mathbf{v}]_\beta = \langle \mathbf{v}, \mathbf{v} \rangle > 0$$
+
+by the definition of an inner product. Hence, $A$ is positive definite, which assures that $\Phi(\langle \cdot, \cdot \rangle) \in \mathcal{SPD}$. Since $\psi_\beta$ is an isomorphism, the function $\Phi$ is well-defined.
+
+Define another function $\Psi : \mathcal{SPD} \to \mathcal{I}$ by $\Psi(A) = f_A$ where $f_A : V \times V \to F$ is defined by 
+
+$$f_A(\mathbf{x}, \mathbf{y}) = [\mathbf{x}]_\beta^{\top} A [\mathbf{y}]_\beta \quad \forall \mathbf{x}, \mathbf{y} \in V.$$
+
+Since $A$ is positive definite, we have $f_A(\mathbf{x}, \mathbf{x}) > 0$ for all $\mathbf{0} \neq \mathbf{x} \in V$. Clearly $f_A(\mathbf{x}, \mathbf{x}) = 0 \iff \mathbf{x} = \mathbf{0}$. Furthermore, since $A$ is symmetric, we have
+
+$$\begin{align*}
+f_A(\mathbf{x}, \mathbf{y}) &= [\mathbf{x}]_\beta^{\top} A [\mathbf{y}]_\beta \\ 
+&= ([\mathbf{x}]_\beta^{\top} A [\mathbf{y}]_\beta)^{\top} \\ 
+&= [\mathbf{y}]_\beta^{\top} A^{\top} [\mathbf{x}]_\beta \\ 
+&= [\mathbf{y}]_\beta^{\top} A [\mathbf{x}]_\beta \\ 
+&= f_A(\mathbf{y}, \mathbf{x}) 
+\end{align*}$$
+
+Clearly, $f_A$ is linear in each variable when the other variable is held fixed, so $f_A \in \mathcal{I}$. Finally, since $\psi_\beta$ is an isomorphism, $\Psi$ is well-defined.
+
+Let $f_A = \Psi(A)$ for some $A \in \mathcal{SPD}$. Then
+
+$$\begin{align*}
+[\psi_\beta(f_A)]_{ij} &= f_A(\mathbf{v}_i, \mathbf{v}_j) \\
+&= [\mathbf{v}_i]_\beta^\top A [\mathbf{v}_j]_\beta \\
+&= \mathbf{e}_i^\top A \mathbf{e}_j \\
+&= A_{ij}
+\end{align*}$$
+
+for each $i, j = 1, \dots, n$. Thus, $A$ is the matrix representation of the inner product $f_A$, i.e., $\psi_\beta(f_A) = A$. It follows that $\Psi \circ \Phi = \mathrm{id}_\mathcal{I}$ and $\Phi \circ \Psi = \mathrm{id}_\mathcal{SPD}$. Therefore, $\Psi$ is the inverse function of $\Phi$ and thus $\Psi$ is a bijection. $\blacksquare$
 
 # Reference
 - S. H. Friedberg, A. J. Insel, and L. E. Spence, Linear Algebra, 4th ed. (Pearson New International Edition), Pearson, 2013.

@@ -1,0 +1,27 @@
+---
+title: "Finite Intersection Property"
+author: "Youmin Chun"
+date: "2026-09-09 00:00:01"
+description: "유한 교집합 성질(Finite Intersection Property)에 대해서 설명한다."
+categories: 
+  - Math > Topology
+---
+
+# Definition
+A collection $\mathcal{C} \subset 2^X$ is said to have the ***finite intersection property*** if for every finite subcollection $\{ C_1, \dots, C_n \}$ of $\mathcal{C}$, the intersection $C_1 \cap \cdots \cap C_n$ is nonempty.
+
+정의에서 위상공간 따위의 언급은 하나도 없음을 주의하자. 즉 유한 교집합 성질은 아무런 집합이나 가져다놓아도 할 수 있는 이야기다.
+
+## Theorem
+Let $X$ be a topological space. Then $X$ is compact $\iff$ for every collection $\mathcal{C}$ of closed sets in $X$ having the finite intersection property, the intersection $\displaystyle \bigcap_{C \in \mathcal{C}} C$ is nonempty.
+
+### Proof
+
+## Corollary
+Let $\{ [a_n, b_n] \}_{n=1}^\infty$ be a nested sequence of closed intervals in $\mathbb{R}$. Then $\displaystyle \bigcap_{n=1}^\infty [a_n, b_n]$ is nonempty.
+
+### Proof
+It directly comes from the above theorem. $\blacksquare$
+
+# Reference
+- James R. Munkres. (2000). Topology (2nd ed.). Pearson.

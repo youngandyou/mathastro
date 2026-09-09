@@ -1,0 +1,77 @@
+---
+title: "Ring"
+author: "Youmin Chun"
+date: "2026-09-09 00:00:01"
+description: "추상대수학의 환(Ring)에 대해서 설명한다."
+categories: 
+  - Math > Abstract Algebra > Ring Theory
+---
+
+# Definition
+**(i)** A ***ring*** $\langle R, +, \cdot \rangle$ is a set $R$ together with two [binary operations](../binaryop/index.qmd#sec-1.1.-definition) $+$ and $\cdot$, which we call addition and multiplication, defined on $R$ such that
+
+- $\langle R, + \rangle$ is an [abelian group.](../group/index.qmd#sec-definition)
+
+- $\langle R, \cdot \rangle$ is a [semigroup.](../binaryop/index.qmd#sec-2.1.-definition)
+
+- $\forall a, b, c \in R, a \cdot (b + c) = (a \cdot b) + (a \cdot c)$ and $(a + b) \cdot c = (a \cdot c) + (b \cdot c)$.
+
+We denote $ab$ instead of $a \cdot b$ for simplicity.
+
+**(ii)** A ring is said to be ***abelian*** if the multiplication $\cdot$ is commutative.
+
+특별히 덧셈에 대해서는 군이 되기 때문에 항등원과 역원이 모두 존재하지만, 곱셈에 대해서는 반군만 되기 때문에 항등원과 역원이 없음을 주의하자.
+
+## Example
+**(i)** $\langle \mathbb{Z}, +, \cdot \rangle, \langle \mathbb{Q}, +, \cdot \rangle, \langle \mathbb{R}, +, \cdot \rangle, \langle \mathbb{C}, +, \cdot \rangle$ are abelian rings.
+
+**(ii)** Let $R$ be a ring. Then $\langle R^{n \times n}, +, \cdot \rangle$ is a ring but it is not abelian.
+
+**(iii)** $\langle \mathbb{R}^{\mathbb{R}}, +, \cdot \rangle$ is a ring.
+
+**(iv)** $\forall n \in \mathbb{Z}, \langle n\mathbb{Z}, +, \cdot \rangle$ is a ring. 
+
+**(v)** $\forall n \ge 2, \langle \mathbb{Z}_n, +, \cdot \rangle$ is a ring.
+
+**(vi)** Let $R_1, \dots, R_n$ be rings, and let $R = R_1 \times \cdot \times R_n$. Define $+$ and $\cdot$ on $R$ by
+
+$$\begin{align*}
+(a_1, \dots, a_n) + (b_1, \dots, b_n) = (a_1 + b_1, \dots, a_n + b_n) \quad \text{and} \\
+(a_1, \dots, a_n) \cdot (b_1, \dots, b_n) = (a_1 b_1, \dots, a_n b_n)
+\end{align*}$$
+
+Then $\langle R, +, \cdot \rangle$ is a ring which is called the ***direct product*** of $R_1, \cdots, R_n$.
+
+## Remark
+Let $R$ be a ring, and let $a \in R$.
+
+**(i)** The additive identity of $R$ is written as $0$, and the additive inverse of $a$ is denoted by $-a$.
+
+**(ii)** For $n \in \mathbb{N}$, $na = \underbrace{a + \cdots + a}_{n \text{ times}}$. 
+
+**(iii)** For $n \in \mathbb{Z} \setminus \mathbb{N}_0, na = \underbrace{(-a) + \cdots + (-a)}_{\vert n \vert \text{ times}}$
+
+**(iv)** For $0 \in \mathbb{Z}$, $0a = 0$.
+
+**(v)** For $a, b \in R$, $a - b := a + (-b)$.
+
+정수배의 $0$과 덧셈의 항등원 $0$을 헷갈리지 않도록 주의하자.
+
+# Theorem 1
+Let $R$ be a ring, and let $a, b \in R$.
+
+**(i)** $0a = 0 = a0$
+
+**(ii)** $a(-b) = -(ab) = (-a)b$
+
+**(iii)** $(-a)(-b) = ab$
+
+## Proof
+**(i)** Since $0a = (0 + 0)a = 0a + 0a$, we have $0a = 0$. Similarly, $a0 = 0$.
+
+**(ii)** Note that $ab + a(-b) = a(b + (-b)) = a0 = 0$ by (i). Similarly, $ab + (-a)b = 0$. Clearly, $ab + (-(ab)) = 0$. Since the additive inverse is unique, we have $a(-b) = -(ab) = (-a)b$.
+
+**(iii)** By (ii), we have $(-a)(-b) = -(a(-b)) = -(-(ab))$. Since $-(ab) + (-(-(ab))) = 0$ and $ab + (-(ab)) = 0$, it follows from the uniqueness of the additive inverse that $(-a)(-b) = ab$. $\blacksquare$
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

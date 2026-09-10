@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss  xmlns:atom="http://www.w3.org/2005/Atom" 
+      xmlns:media="http://search.yahoo.com/mrss/" 
+      xmlns:content="http://purl.org/rss/1.0/modules/content/" 
+      xmlns:dc="http://purl.org/dc/elements/1.1/" 
+      version="2.0">
+<channel>
+<title>MathAstro</title>
+<link>https://youngandyou.github.io/mathastro/</link>
+<atom:link href="https://youngandyou.github.io/mathastro/index.xml" rel="self" type="application/rss+xml"/>
+<description>A blog built with Quarto</description>
+<generator>quarto-1.9.38</generator>
+<lastBuildDate>Wed, 09 Sep 2026 15:00:03 GMT</lastBuildDate>
+<item>
+  <title>{B4F502887207:/posts/Math/Numerical_Analysis/Newton_Method/index.html}</title>
+  <dc:creator>Youmin Chun</dc:creator>
+  <link>https://youngandyou.github.io/mathastro/posts/Math/Numerical_Analysis/Newton_Method/</link>
+  <description>{B4F502887207:/posts/Math/Numerical_Analysis/Newton_Method/index.html}</description>
+  <category>Math &gt; Numerical Analysis</category>
+  <guid>https://youngandyou.github.io/mathastro/posts/Math/Numerical_Analysis/Newton_Method/</guid>
+  <pubDate>Wed, 09 Sep 2026 15:00:03 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/Math/Complex_Analysis/Residue/index.html}</title>
+  <dc:creator>Youmin Chun</dc:creator>
+  <link>https://youngandyou.github.io/mathastro/posts/Math/Complex_Analysis/Residue/</link>
+  <description>{B4F502887207:/posts/Math/Complex_Analysis/Residue/index.html}</description>
+  <category>Math &gt; Complex Analysis</category>
+  <guid>https://youngandyou.github.io/mathastro/posts/Math/Complex_Analysis/Residue/</guid>
+  <pubDate>Wed, 09 Sep 2026 15:00:02 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/Math/Abstract_Algebra/Ring_Theory/Ring/index.html}</title>
+  <dc:creator>Youmin Chun</dc:creator>
+  <link>https://youngandyou.github.io/mathastro/posts/Math/Abstract_Algebra/Ring_Theory/Ring/</link>
+  <description>{B4F502887207:/posts/Math/Abstract_Algebra/Ring_Theory/Ring/index.html}</description>
+  <category>Math &gt; Abstract Algebra &gt; Ring Theory</category>
+  <guid>https://youngandyou.github.io/mathastro/posts/Math/Abstract_Algebra/Ring_Theory/Ring/</guid>
+  <pubDate>Tue, 08 Sep 2026 15:00:01 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/Math/Topology/Finite_Intersection_Property/index.html}</title>
+  <dc:creator>Youmin Chun</dc:creator>
+  <link>https://youngandyou.github.io/mathastro/posts/Math/Topology/Finite_Intersection_Property/</link>
+  <description>{B4F502887207:/posts/Math/Topology/Finite_Intersection_Property/index.html}</description>
+  <category>Math &gt; Topology</category>
+  <guid>https://youngandyou.github.io/mathastro/posts/Math/Topology/Finite_Intersection_Property/</guid>
+  <pubDate>Tue, 08 Sep 2026 15:00:01 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/Math/Numerical_Analysis/Horner_Method/index.html}</title>
+  <dc:creator>Youmin Chun</dc:creator>
+  <link>https://youngandyou.github.io/mathastro/posts/Math/Numerical_Analysis/Horner_Method/</link>
+  <description>{B4F502887207:/posts/Math/Numerical_Analysis/Horner_Method/index.html}</description>
+  <category>Math &gt; Numerical Analysis</category>
+  <guid>https://youngandyou.github.io/mathastro/posts/Math/Numerical_Analysis/Horner_Method/</guid>
+  <pubDate>Mon, 07 Sep 2026 15:00:04 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/Math/Numerical_Analysis/Taylor_Polynomial/index.html}</title>
+  <dc:creator>Youmin Chun</dc:creator>
+  <link>https://youngandyou.github.io/mathastro/posts/Math/Numerical_Analysis/Taylor_Polynomial/</link>
+  <description>{B4F502887207:/posts/Math/Numerical_Analysis/Taylor_Polynomial/index.html}</description>
+  <category>Math &gt; Numerical Analysis</category>
+  <guid>https://youngandyou.github.io/mathastro/posts/Math/Numerical_Analysis/Taylor_Polynomial/</guid>
+  <pubDate>Mon, 07 Sep 2026 15:00:03 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/Math/Complex_Analysis/Singular_Point/index.html}</title>
+  <dc:creator>Youmin Chun</dc:creator>
+  <link>https://youngandyou.github.io/mathastro/posts/Math/Complex_Analysis/Singular_Point/</link>
+  <description>{B4F502887207:/posts/Math/Complex_Analysis/Singular_Point/index.html}</description>
+  <category>Math &gt; Complex Analysis</category>
+  <guid>https://youngandyou.github.io/mathastro/posts/Math/Complex_Analysis/Singular_Point/</guid>
+  <pubDate>Mon, 07 Sep 2026 15:00:01 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/Math/Diffenrential_Geometry/Basis_Orientation/index.html}</title>
+  <dc:creator>Youmin Chun</dc:creator>
+  <link>https://youngandyou.github.io/mathastro/posts/Math/Diffenrential_Geometry/Basis_Orientation/</link>
+  <description>{B4F502887207:/posts/Math/Diffenrential_Geometry/Basis_Orientation/index.html}</description>
+  <category>Math &gt; Differential Geometry</category>
+  <guid>https://youngandyou.github.io/mathastro/posts/Math/Diffenrential_Geometry/Basis_Orientation/</guid>
+  <pubDate>Sun, 06 Sep 2026 15:00:03 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/Math/Diffenrential_Geometry/Scalar_Triple_Product/index.html}</title>
+  <dc:creator>Youmin Chun</dc:creator>
+  <link>https://youngandyou.github.io/mathastro/posts/Math/Diffenrential_Geometry/Scalar_Triple_Product/</link>
+  <description>{B4F502887207:/posts/Math/Diffenrential_Geometry/Scalar_Triple_Product/index.html}</description>
+  <category>Math &gt; Differential Geometry</category>
+  <guid>https://youngandyou.github.io/mathastro/posts/Math/Diffenrential_Geometry/Scalar_Triple_Product/</guid>
+  <pubDate>Sun, 06 Sep 2026 15:00:02 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/Math/Diffenrential_Geometry/Cross_Product/index.html}</title>
+  <dc:creator>Youmin Chun</dc:creator>
+  <link>https://youngandyou.github.io/mathastro/posts/Math/Diffenrential_Geometry/Cross_Product/</link>
+  <description>{B4F502887207:/posts/Math/Diffenrential_Geometry/Cross_Product/index.html}</description>
+  <category>Math &gt; Differential Geometry</category>
+  <guid>https://youngandyou.github.io/mathastro/posts/Math/Diffenrential_Geometry/Cross_Product/</guid>
+  <pubDate>Sun, 06 Sep 2026 15:00:01 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/Math/Matrix_Algebra/Bilinear_Form/index.html}</title>
+  <dc:creator>Youmin Chun</dc:creator>
+  <link>https://youngandyou.github.io/mathastro/posts/Math/Matrix_Algebra/Bilinear_Form/</link>
+  <description>{B4F502887207:/posts/Math/Matrix_Algebra/Bilinear_Form/index.html}</description>
+  <category>Math &gt; Matrix Algebra</category>
+  <guid>https://youngandyou.github.io/mathastro/posts/Math/Matrix_Algebra/Bilinear_Form/</guid>
+  <pubDate>Sun, 06 Sep 2026 15:00:00 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/Math/Matrix_Algebra/Similar_Matrix/index.html}</title>
+  <dc:creator>Youmin Chun</dc:creator>
+  <link>https://youngandyou.github.io/mathastro/posts/Math/Matrix_Algebra/Similar_Matrix/</link>
+  <description>{B4F502887207:/posts/Math/Matrix_Algebra/Similar_Matrix/index.html}</description>
+  <category>Math &gt; Matrix Algebra</category>
+  <guid>https://youngandyou.github.io/mathastro/posts/Math/Matrix_Algebra/Similar_Matrix/</guid>
+  <pubDate>Fri, 04 Sep 2026 15:00:11 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/Math/Matrix_Algebra/Matrix_Multiplication/index.html}</title>
+  <dc:creator>Youmin Chun</dc:creator>
+  <link>https://youngandyou.github.io/mathastro/posts/Math/Matrix_Algebra/Matrix_Multiplication/</link>
+  <description>{B4F502887207:/posts/Math/Matrix_Algebra/Matrix_Multiplication/index.html}</description>
+  <category>Math &gt; Matrix Algebra</category>
+  <guid>https://youngandyou.github.io/mathastro/posts/Math/Matrix_Algebra/Matrix_Multiplication/</guid>
+  <pubDate>Fri, 04 Sep 2026 15:00:10 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/Math/Matrix_Algebra/Algorithm_Inverse_Triangular/index.html}</title>
+  <dc:creator>Youmin Chun</dc:creator>
+  <link>https://youngandyou.github.io/mathastro/posts/Math/Matrix_Algebra/Algorithm_Inverse_Triangular/</link>
+  <description>{B4F502887207:/posts/Math/Matrix_Algebra/Algorithm_Inverse_Triangular/index.html}</description>
+  <category>Math &gt; Matrix Algebra</category>
+  <guid>https://youngandyou.github.io/mathastro/posts/Math/Matrix_Algebra/Algorithm_Inverse_Triangular/</guid>
+  <pubDate>Fri, 04 Sep 2026 15:00:09 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/Math/Matrix_Algebra/Triangular/index.html}</title>
+  <dc:creator>Youmin Chun</dc:creator>
+  <link>https://youngandyou.github.io/mathastro/posts/Math/Matrix_Algebra/Triangular/</link>
+  <description>{B4F502887207:/posts/Math/Matrix_Algebra/Triangular/index.html}</description>
+  <category>Math &gt; Matrix Algebra</category>
+  <guid>https://youngandyou.github.io/mathastro/posts/Math/Matrix_Algebra/Triangular/</guid>
+  <pubDate>Fri, 04 Sep 2026 15:00:08 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/Math/Matrix_Algebra/Trace/index.html}</title>
+  <dc:creator>Youmin Chun</dc:creator>
+  <link>https://youngandyou.github.io/mathastro/posts/Math/Matrix_Algebra/Trace/</link>
+  <description>{B4F502887207:/posts/Math/Matrix_Algebra/Trace/index.html}</description>
+  <category>Math &gt; Matrix Algebra</category>
+  <guid>https://youngandyou.github.io/mathastro/posts/Math/Matrix_Algebra/Trace/</guid>
+  <pubDate>Fri, 04 Sep 2026 15:00:07 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/Math/Matrix_Algebra/Symmetric_Skew_Symmetric/index.html}</title>
+  <dc:creator>Youmin Chun</dc:creator>
+  <link>https://youngandyou.github.io/mathastro/posts/Math/Matrix_Algebra/Symmetric_Skew_Symmetric/</link>
+  <description>{B4F502887207:/posts/Math/Matrix_Algebra/Symmetric_Skew_Symmetric/index.html}</description>
+  <category>Math &gt; Matrix Algebra</category>
+  <guid>https://youngandyou.github.io/mathastro/posts/Math/Matrix_Algebra/Symmetric_Skew_Symmetric/</guid>
+  <pubDate>Fri, 04 Sep 2026 15:00:06 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/Math/Matrix_Algebra/Transpose/index.html}</title>
+  <dc:creator>Youmin Chun</dc:creator>
+  <link>https://youngandyou.github.io/mathastro/posts/Math/Matrix_Algebra/Transpose/</link>
+  <description>{B4F502887207:/posts/Math/Matrix_Algebra/Transpose/index.html}</description>
+  <category>Math &gt; Matrix Algebra</category>
+  <guid>https://youngandyou.github.io/mathastro/posts/Math/Matrix_Algebra/Transpose/</guid>
+  <pubDate>Fri, 04 Sep 2026 15:00:05 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/Math/Linear_Algebra/Replacement_Theorem/index.html}</title>
+  <dc:creator>Youmin Chun</dc:creator>
+  <link>https://youngandyou.github.io/mathastro/posts/Math/Linear_Algebra/Replacement_Theorem/</link>
+  <description>{B4F502887207:/posts/Math/Linear_Algebra/Replacement_Theorem/index.html}</description>
+  <category>Math &gt; Linear Algebra</category>
+  <guid>https://youngandyou.github.io/mathastro/posts/Math/Linear_Algebra/Replacement_Theorem/</guid>
+  <pubDate>Fri, 04 Sep 2026 15:00:04 GMT</pubDate>
+</item>
+<item>
+  <title>{B4F502887207:/posts/Math/Matrix_Algebra/Matrix/index.html}</title>
+  <dc:creator>Youmin Chun</dc:creator>
+  <link>https://youngandyou.github.io/mathastro/posts/Math/Matrix_Algebra/Matrix/</link>
+  <description>{B4F502887207:/posts/Math/Matrix_Algebra/Matrix/index.html}</description>
+  <category>Math &gt; Matrix Algebra</category>
+  <guid>https://youngandyou.github.io/mathastro/posts/Math/Matrix_Algebra/Matrix/</guid>
+  <pubDate>Fri, 04 Sep 2026 15:00:04 GMT</pubDate>
+</item>
+</channel>
+</rss>

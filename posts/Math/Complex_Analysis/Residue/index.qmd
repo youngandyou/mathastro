@@ -1,10 +1,11 @@
 ---
 title: "Residue"
 author: "Youmin Chun"
-date: "2026-09-11 00:00:02"
+date: "2026-09-10 00:00:02"
 description: "복소해석학에서 유수(Residue)에 대해서 소개한다."
 categories: 
   - Math > Complex Analysis
+draft: true
 ---
 
 # Definitions

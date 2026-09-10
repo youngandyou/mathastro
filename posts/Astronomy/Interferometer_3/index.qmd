@@ -142,6 +142,16 @@ $$
 - 식 (2.3)은 $(u,v,w)$ 좌표계에 대한 표현이며, 각 축은 **공간 주파수**에 해당한다. 
 - VLBI는 각 망원경 쌍이 측정한 complex visibility를 이용해 하늘 밝기 분포의 푸리에(Fourier) 정보를 모은다. uv-plane이 좋을수록 이미지가 개선된다.
 
+<div width=2rem></div> 
+
+- **uv distance**: 두 망원경의 baseline을 천구의 관측 방향에 수직인 평면에 투영한 길이를 파장 단위로 나타낸 값이다. 이는 다음과 같이 쓸 수 있다: 
+
+$$
+r_{\rm uv} = \sqrt{u^2 + v^2} \tag{2.4}
+$$
+
+- 관측 주파수가 고정되면 vu distance는 baseline 길이에 의존한다. 따라서 긴 baseline을 가질수록 uv distance 값은 커진다.
+
 ---
 
 # 3. Parallactic Angle

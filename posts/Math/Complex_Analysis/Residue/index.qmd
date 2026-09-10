@@ -30,5 +30,48 @@ $$b_1 = \frac{1}{2\pi i} \int_C f(z) dz.$$
 
 We shall denote it by $b_1 = \displaystyle \operatorname*{Res}_{z = z_0} f(z)$.
 
+함수 $f$가 $z_0$에서 고립특이점을 갖는다면 위 정의에 의해
+
+$$\int_C f(z) dz = 2\pi i \operatorname*{Res}_{z = z_0} f(z)$$
+
+가 성립한다. 다시 말해 함수의 선적분 값을 구하기 위해서 고립특이점에서의 유수(Residue)의 값만 알면 된다는 뜻이기도 하다. 유수는 정의상 고립특이점에서의 함수의 로랑 급수(Laurent Series)에서 $\frac{1}{z-z_0}$의 계수로 주어진다. 따라서 함수가 직접 적분하기 복잡한 경우 로랑 급수를 전개하는 것으로 적분값을 대신 구할 수 있게 된다.
+
+# Cauchy's Residue Theorem
+Let $C$ be a simple closed contour in the counterclockwise direction. If a function $f$ is analytic inside and on $C$ except for a finite number of isolated singular points $z_1, z_2, \dots, z_n$ inside $C$, then
+
+$$\int_C f(z) dz = 2\pi i \sum_{k = 1}^n \operatorname*{Res}_{z = z_k} f(z)$$
+
+## Proof
+Let each point $z_k$ be the center of a positively oriented circle $C_k$ which is small enough so that they are interior to $C$ and do not intersect each other. Then the circles $C_k$ and the simple closed contour $C$ form the boundary of a closed region throughout which $f$ is analytic and whose interior is a multiply connected domain consisiting of the points inside $C$ and exterior to each $C_k$. Thus, by the principle of deformation of paths, we have
+
+$$\int_C f(z) dz = \sum_{k=1}^n \int_{C_k} f(z) dz.$$
+
+Since $f$ is analytic inside and on each $C_k$ except at $z_k$, we have
+
+$$\int_{C_k} f(z) dz = 2\pi i \operatorname*{Res}_{z = z_k} f(z) \quad (k = 1, 2, \dots, n).$$ 
+
+Therefore, 
+
+$$\int_C f(z) dz = 2\pi i \sum_{k = 1}^n \operatorname*{Res}_{z = z_k} f(z). \blacksquare$$
+
+이처럼 각 유수의 값들만 알면 완벽하게 함수의 적분값을 구할 수 있다. 그런데 왜 하필 유수는 로랑 급수에서 $\frac{1}{z-z_0}$의 계수인 $b_1$일까? 다른 계수들과는 달리 $b_1$은 어디가 특별해서 이처럼 중요한 결과가 생기는 걸까?
+
+위에서 증명한 코시 유수 정리를 다른 방법으로 설명해보자. 각 $C_k$에서 함수 $f$를 로랑 급수로 표현해서 적분하면 다음과 같다.
+
+$$\int_{C_k} f(z) dz = \int_{C_k} \sum_{n=0}^\infty a_n^{(k)} (z - z_k)^n dz + \int_{C_k} \sum_{n=1}^\infty \frac{b_n^{(k)}}{(z - z_k)^n} dz$$
+
+이때 우변의 첫번째 항은 복소공간 전체에서 해석적인 함수이고, 따라서 코시-구르사 정리에 의해 적분값은 $0$이 된다. 즉,
+
+$$\int_{C_k} f(z) dz = \sum_{n=1}^\infty b_n^{(k)} \int_{C_k} \frac{1}{(z - z_k)^n} dz$$
+
+이다. 이때 코시 적분 공식에 의해
+
+$$\int_{C_k} \frac{1}{(z - z_k)^n} dz = \begin{cases}
+0, & (n \neq 1) \\
+2\pi i, & (n = 1)
+\end{cases}$$
+
+이 성립한다. 여기서 계수 $b_1$만 살아남게 되기 때문에 적분값을 결정하는 유수로 $b_1$을 정의하는 것이다. 따라서 전체 선적분의 값은 각 유수들의 합에 $2\pi i$를 곱한 값으로 주어진다.
+
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

@@ -1,0 +1,76 @@
+---
+title: "Integral Domain"
+author: "Youmin Chun"
+date: "2026-09-11 00:00:04"
+description: "추상대수학의 영인자(Zero Divisor)와 정역(Integral Domain)에 대해서 설명한다."
+categories: 
+  - Math > Abstract Algebra > Ring Theory
+---
+
+# Definition
+**(i)** A nonzero element $a$ of a [ring](../Ring/index.qmd#sec-definition) $R$ is called a ***zero divisor*** of $R$ if $ab = 0$ for some $0 \neq b \in R$. If $a$ is not a zero divisor of $R$, it is called a ***regular element***. For a ring $R$, we denoted $Z(R)$ the set of zero divisors of $R$.
+
+**(ii)** Let $R$ be a ring, and let $a, b, c \in R$. Then the ***cancellation laws*** hold in $R$ if $ab = ac$ with $a \neq 0$ implies $b = c$ and $ba = ca$ with $a \neq 0$ implies $b = c$.
+
+**(iii)** Let $R$ be a commutative [ring with identity](../Division_Ring/index.qmd#sec-definition). Then $R$ is called an ***integral domain*** if $R$ has no zero divisors.
+
+방정식 $x^2 - 5x + 6 = 0$을 생각해보자. 좌변은 $(x-2)(x-3)$으로 인수분해되므로 보통 방정식의 해는 $x = 2$ 혹은 $x = 3$이라고 말할 수 있다. 하지만 이는 어디까지나 방정식이 정의된 공간이 $\mathbb{Z}$이기 때문에 할 수 있는 답변이다. 전체 공간이 $\mathbb{Z}_{12}$로만 바뀌어도 $(x-2)(x-3) = 0$을 만족하는 $x$는 $x = 2, 3, 6, 11$ 정도로 늘어난다. 다시 말해, $(x-2)(x-3) = 0$에서 $x - 2 = 0$ 혹은 $x - 3 = 0$만이 해가 아니고, $0$이 아닌 두 수를 곱해서 $0$을 만들어내는 상황이 허용된다는 뜻이고, 바꿔 말하면 소거 법칙(cancellation law)이 성립하지 않는다는 뜻이다. 따라서 이러한 상황이 허용되지 않는 대수 구조인 정역(integral domain)은 상당히 좋은 가정을 가지고 있다고 보아도 좋다.
+
+정역이라는 이름은 정수 집합 $\mathbb{Z}$에서 따온 것이다. 대표적인 정역으로 $\mathbb{Z}$가 있는데, $0$이 아닌 임의의 정수와 곱해서 $0$을 만드는 정수는 존재하지 않기 때문이다.
+
+# Theorem 1
+Let $R$ be a ring. Then the cancellation laws hold in $R$ $\iff$ $R$ has no zero divisors.
+
+사실 소거 법칙은 [divison ring](../Division_Ring/index.qmd#sec-definition)이라면 자동으로 성립하는 결과이고, 따라서 모든 [체](../Field/index.qmd#sec-definition)는 소거 법칙이 성립하므로 정역이라는 사실을 미리 추론할 수 있다.
+
+## Proof
+$(\implies)$
+Suppose that the cancellation laws hold in $R$. If $R$ has a zero divisor $a$, then $ab = 0$ for some $b \neq 0$. Since $a \neq 0$, we have $ab = 0 = a0$, which implies that $b = 0$ by the cancellation laws. $\bigotimes$ Thus, $R$ has no zero divisors.
+
+$(\impliedby)$
+Let $a, b, c \in R$ with $a \neq 0$ and $ab = ac$. Then we have
+
+$$\begin{align*}
+ab = ac &\iff ab - ac = 0 \\
+&\iff a(b-c) = 0
+\end{align*}$$
+
+Since $R$ has no zero divisor, we must obtain $b-c = 0$, so $b = c$. Thus, the cancellation laws hold in $R$. $\blacksquare$
+
+# Theorem 2
+**(i)** $Z(\mathbb{Z}_n) = \{ a \in \mathbb{Z}_n \setminus \{ 0 \} \mid a \text{ is NOT relatively prime to } n \}$
+
+**(ii)** Every field is an integral domain.
+
+**(iii)** Every **finite** integral domain is a field.
+
+**(iv)** For a prime number $p$, $\mathbb{Z}_p$ is a field.
+
+## Proof
+**(i)**
+
+**(ii)** Let $F$ be a field, and let $a, b, c \in F$ with $a \neq 0$. Since $F$ is a field and $a \neq 0$, $a^{-1}$ exists in $F$. Then we have
+
+$$\begin{align*}
+ab = ac &\implies a^{-1}(ab) = a^{-1}(ac) \\
+&\implies (a^{-1}a)b = (a^{-1}a)c \\
+&\implies b = c,
+\end{align*}$$
+
+which means that the cancellation laws hold in $F$. By Theorem 1, $F$ has no zero divisor. Since $F$ is also commutative and it has identity, $F$ is an integral domain. 
+
+**(iii)**
+
+**(iv)** Let $p$ be a prime number. By (i), $Z(\mathbb{Z}_p) = \emptyset$, which means that $\mathbb{Z}_p$ has no zero divisors. Since $\mathbb{Z}_p$ is commutative and it has identity, $\mathbb{Z}_p$ is an integral domain. Clearly it is finite, so $\mathbb{Z}_p$ is a field by (iii).
+
+## Example
+(i)
+
+(ii)
+
+(iii)
+
+(iv)
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

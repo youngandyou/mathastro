@@ -7,7 +7,7 @@ categories:
   - Math > Abstract Algebra > Ring Theory
 ---
 
-# Definition 1
+# Definition
 **(i)** A ***ring*** $\langle R, +, \cdot \rangle$ is a set $R$ together with two [binary operations](../binaryop/index.qmd#sec-1.1.-definition) $+$ and $\cdot$, which we call addition and multiplication, defined on $R$ such that
 
 - $\langle R, + \rangle$ is an [abelian group.](../group/index.qmd#sec-definition)
@@ -18,9 +18,11 @@ categories:
 
 We denote $ab$ instead of $a \cdot b$ for simplicity. The ***additive identity*** of $R$ is written as $0$, and the ***additive inverse*** of $a$ is denoted by $-a$.
 
-**(ii)** A ring is said to be ***abelian*** if the multiplication $\cdot$ is commutative.
+**(ii)** A ring is said to be ***commutative*** or ***abelian*** if the multiplication $\cdot$ is commutative.
 
-특별히 덧셈에 대해서는 군이 되기 때문에 항등원과 역원이 모두 존재하지만, 곱셈에 대해서는 반군만 되기 때문에 항등원과 역원이 없음을 주의하자.
+**(iii)** Let $R$ be a ring. Then a subset $S$ of $R$ is called a ***subring*** of $R$, denoted by $S \le R$, if $E$ is a ring under the induced operations from $F$.
+
+특별히 덧셈에 대해서는 [군](../group/index.qmd#sec-definition)이 되기 때문에 항등원과 역원이 모두 유일하게 존재하지만, 곱셈에 대해서는 반군만 되기 때문에 일반적으로 항등원과 역원을 가지지 않음을 주의하자.
 
 ## Example
 **(i)** $\langle \mathbb{Z}, +, \cdot \rangle, \langle \mathbb{Q}, +, \cdot \rangle, \langle \mathbb{R}, +, \cdot \rangle, \langle \mathbb{C}, +, \cdot \rangle$ are abelian rings.
@@ -29,7 +31,7 @@ We denote $ab$ instead of $a \cdot b$ for simplicity. The ***additive identity**
 
 **(iii)** $\langle \mathbb{R}^{\mathbb{R}}, +, \cdot \rangle$ is a ring.
 
-**(iv)** $\forall n \in \mathbb{Z}, \langle n\mathbb{Z}, +, \cdot \rangle$ is a ring. 
+**(iv)** $\forall n \in \mathbb{Z}, \langle n\mathbb{Z}, +, \cdot \rangle$ is a ring, and it is a subring of $\mathbb{Z}$.
 
 **(v)** $\forall n \ge 2, \langle \mathbb{Z}_n, +, \cdot \rangle$ is a ring.
 
@@ -73,14 +75,23 @@ Let $R$ be a ring, and let $a, b \in R$.
 
 **(iii)** By (ii), we have $(-a)(-b) = -(a(-b)) = -(-(ab))$. Since $-(ab) + (-(-(ab))) = 0$ and $ab + (-(ab)) = 0$, it follows from the uniqueness of the additive inverse that $(-a)(-b) = ab$. $\blacksquare$
 
-# Definition 2
-Let $\langle R, +, \cdot \rangle$ be a ring.
+# Theorem 2
+Let $S$ be a nonempty subset of a ring $R$. Then $S \le R$ $\iff$ $a - b, ab \in S, \forall a, b \in S$.
 
-**(i)** $R$ is called a ***commutative ring*** if $\forall a, b \in R, ab = ba$.
+부분군 판정법과 유사하지만 환은 군과는 달리 곱셈이라는 연산이 추가되므로 곱셈에 대해서 닫혀있음도 보여야 한다.
 
-**(ii)** $R$ is called a ***ring with identity*** if $\exists 1 \in R$ such that $\forall a \in R, a1 = a = 1a$.
+## Proof
+$(\implies)$
 
-**(iii)** $R$ is called a ***commutative ring with identity*** if $R$ is a commutative ring and a ring with identity.
+Let $a, b \in S$. Since $S$ is a ring, the additive inverse of $b$ belongs to $S$, so $a - b \in S$. Clearly, $ab \in S$.
+
+$(\impliedby)$
+
+Let $a \in S$. Since $0 = a - a \in S$, $S$ contains the additive identity $0$. Furthermore, since $-a = 0 - a \in S$, it also contains the additive inverse of every element in $S$.
+
+Let $a, b \in S$. Since $S$ contains $-b$, we have $a + b = a - (-b) \in S$, which means that $S$ is closed with respect to addition. By assumption, $S$ is closed with respect to multiplication.
+
+Since $S \subset R$, the associativity and commutativity of the addition is clearly held, and so is the distributivity of the operations. Hence, $S$ is a subring of $R$. $\blacksquare$
 
 # Reference
 - John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

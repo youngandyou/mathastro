@@ -1,0 +1,37 @@
+---
+title: "Field"
+author: "Youmin Chun"
+date: "2026-09-11 00:00:03"
+description: "추상대수학의 체(Field)에 대해서 설명한다."
+categories: 
+  - Math > Abstract Algebra > Field Theory
+---
+
+# Definition
+**(i)** A [commutative division ring](../Division_Ring/index.qmd#sec-definition) $\langle F, +, \cdot \rangle$ is called a ***field***.
+
+**(ii)** Let $F$ be a field. Then a subset $K$ of $F$ is called a ***subfield*** of $F$, denoted by $K \le F$, if $K$ is a field under the induced operations from $F$.
+
+간단히 말해서 체(field)란 덧셈과 곱셈 각각에 대해서 [아벨군](../group/index.qmd#sec-definition)인 대수 구조라고 할 수 있다. 물론 곱셈의 역원에 대해서는 $0$을 제외하고 생각해야 하기에 정확한 정의는 아니다.
+
+# Theorem 1
+Let $K$ be a subset of a field $F$, and let $0, 1 \in K$. Then $K \le F$ $\iff$ $a-b \in K, \forall a, b \in K$ and $ab^{-1} \in K, \forall a, b (\neq 0) \in K$.
+
+부분군 판정법과는 달리 $K$는 기본적으로 덧셈과 곱셈의 항등원 $0, 1$을 가지고 있는 것으로 간주한다. 혹은 서로 다른 두 원소를 포함하고 있다는 것으로 가정을 바꿔도 되는데, 이러한 가정 없이 단지 공집합이 아닌 집합으로만 가정하면 $(\impliedby)$ 방향에서 곱셈의 항등원 $1$의 존재성을 보일 수 없기 때문이다.
+
+## Proof
+$(\implies)$
+
+Let $a, b \in K$. Since $K$ is a field, the additive inverse of $b$ belongs to $K$, so $a - b \in K$. Similarly, the multiplicative inverse of $b (\neq 0)$ belongs to $K$, so $ab^{-1} \in K$.
+
+$(\impliedby)$
+
+Let $a \in K$. Since $0 \in K$, $-a = 0 - a \in K$, so $K$ has the additive inverse of every element in $K$. Let $b (\neq 0) \in K$. Then $b^{-1} = 1 \cdot b^{-1} \in K$, so $K$ has the multiplicative inverse of every nonzero element in $K$. The associativity, distributivity and commutativity of operations is clearly held because $K \subset F$. 
+
+Let $a, b \in K$. Since $-b \in K$, we have $a + b = a - (-b) \in K$, which means that $K$ is closed under addition. Let $a, b (\neq 0) \in K$. Then $b^{-1} \in K$, so $ab = a(b^{-1})^{-1} \in K$, and clearly $a0 = 0 \in K$, which means that $K$ is closed under multiplication. Hence, $K \le F$. $\blacksquare$
+
+# Example
+**(i)** $\mathbb{Q} \le \mathbb{R} \le \mathbb{C}$
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

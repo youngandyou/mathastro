@@ -12,7 +12,7 @@ categories:
 
 **(ii)** Let $H \le G$. Then $H$ is called a ***proper subgroup*** of $G$ if $H \ne G$. In this case, we write $H \subsetneq G$.
 
-**(iii)** Let $H \le G$. Then $H$ is called the ***trivial subgroup*** of $G$ if $H = \\{ e \\}$, where $e$ is the identity element of $G$.
+**(iii)** Let $H \le G$. Then $H$ is called the ***trivial subgroup*** of $G$ if $H = \{ e \}$, where $e$ is the identity element of $G$.
 
 ## Example
 **(i)** Let $A = \{ (a_1, ..., a_{n-1}, 0) \mid a_i \in \mathbb{R} \}$. Then $A < \mathbb{R}^n$.

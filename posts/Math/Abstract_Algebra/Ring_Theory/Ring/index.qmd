@@ -7,7 +7,7 @@ categories:
   - Math > Abstract Algebra > Ring Theory
 ---
 
-# Definition
+# Definition 1
 **(i)** A ***ring*** $\langle R, +, \cdot \rangle$ is a set $R$ together with two [binary operations](../binaryop/index.qmd#sec-1.1.-definition) $+$ and $\cdot$, which we call addition and multiplication, defined on $R$ such that
 
 - $\langle R, + \rangle$ is an [abelian group.](../group/index.qmd#sec-definition)
@@ -16,7 +16,7 @@ categories:
 
 - $\forall a, b, c \in R, a \cdot (b + c) = (a \cdot b) + (a \cdot c)$ and $(a + b) \cdot c = (a \cdot c) + (b \cdot c)$.
 
-We denote $ab$ instead of $a \cdot b$ for simplicity.
+We denote $ab$ instead of $a \cdot b$ for simplicity. The ***additive identity*** of $R$ is written as $0$, and the ***additive inverse*** of $a$ is denoted by $-a$.
 
 **(ii)** A ring is said to be ***abelian*** if the multiplication $\cdot$ is commutative.
 
@@ -42,20 +42,20 @@ $$\begin{align*}
 
 Then $\langle R, +, \cdot \rangle$ is a ring which is called the ***direct product*** of $R_1, \cdots, R_n$.
 
-## Remark
+**(vii)** For $0 \in \mathbb{Z}$, $\langle \{ 0 \}, +, \cdot \rangle$ is a ring, called the ***zero ring***.
+
+## Notation
 Let $R$ be a ring, and let $a \in R$.
 
-**(i)** The additive identity of $R$ is written as $0$, and the additive inverse of $a$ is denoted by $-a$.
+**(i)** For $n \in \mathbb{N}$, $na = \underbrace{a + \cdots + a}_{n \text{ times}}$. 
 
-**(ii)** For $n \in \mathbb{N}$, $na = \underbrace{a + \cdots + a}_{n \text{ times}}$. 
+**(ii)** For $n \in \mathbb{Z} \setminus \mathbb{N}_0, na = \underbrace{(-a) + \cdots + (-a)}_{\vert n \vert \text{ times}}$
 
-**(iii)** For $n \in \mathbb{Z} \setminus \mathbb{N}_0, na = \underbrace{(-a) + \cdots + (-a)}_{\vert n \vert \text{ times}}$
+**(iii)** For $0 \in \mathbb{Z}$, $0a = 0$.
 
-**(iv)** For $0 \in \mathbb{Z}$, $0a = 0$.
+**(iv)** For $a, b \in R$, $a - b := a + (-b)$.
 
-**(v)** For $a, b \in R$, $a - b := a + (-b)$.
-
-정수배의 $0$과 덧셈의 항등원 $0$을 헷갈리지 않도록 주의하자.
+정수배의 $0$과 덧셈의 항등원 $0$을 헷갈리지 않도록 주의하자. 위 (iii)에서의 $0$은 정수 $0$이지만 아래 정리 (i)에서의 $0$은 덧셈의 항등원 $0$이다.
 
 # Theorem 1
 Let $R$ be a ring, and let $a, b \in R$.
@@ -67,11 +67,20 @@ Let $R$ be a ring, and let $a, b \in R$.
 **(iii)** $(-a)(-b) = ab$
 
 ## Proof
-**(i)** Since $0a = (0 + 0)a = 0a + 0a$, we have $0a = 0$. Similarly, $a0 = 0$.
+**(i)** Since $0a = (0 + 0)a = 0a + 0a$, we have $0a = 0$. Similarly, $a0 = 0$. 
 
 **(ii)** Note that $ab + a(-b) = a(b + (-b)) = a0 = 0$ by (i). Similarly, $ab + (-a)b = 0$. Clearly, $ab + (-(ab)) = 0$. Since the additive inverse is unique, we have $a(-b) = -(ab) = (-a)b$.
 
 **(iii)** By (ii), we have $(-a)(-b) = -(a(-b)) = -(-(ab))$. Since $-(ab) + (-(-(ab))) = 0$ and $ab + (-(ab)) = 0$, it follows from the uniqueness of the additive inverse that $(-a)(-b) = ab$. $\blacksquare$
+
+# Definition 2
+Let $\langle R, +, \cdot \rangle$ be a ring.
+
+**(i)** $R$ is called a ***commutative ring*** if $\forall a, b \in R, ab = ba$.
+
+**(ii)** $R$ is called a ***ring with identity*** if $\exists 1 \in R$ such that $\forall a \in R, a1 = a = 1a$.
+
+**(iii)** $R$ is called a ***commutative ring with identity*** if $R$ is a commutative ring and a ring with identity.
 
 # Reference
 - John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

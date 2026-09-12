@@ -1,0 +1,154 @@
+---
+title: "구경 합성(Aperture Synthesis) (2)"
+author: "Young Jeong Lee"
+date: "2026-09-12"
+description: "간섭계에서 얻어지는 visibility와 intensity 사이의 관계를 설명한다."
+categories: 
+  - Astronomy > Radio Astronomy
+---
+
+# 1. 구경 합성(Aperture Synthesis)
+
+- **구경 합성(Aperture Synthesis)**: 측정된 visibility 함수 $R(B)$ 로부터 전파 하늘(radio sky)의 일부에 대한 intensity 분포 $I_\nu(s)$ 를 구하는데 사용되는 방법들을 총칭하는 용어이다. 
+    - 구경 합성을 통해, 구경 내의 개별 위치에 대해서 복사장을 샘플링 할 수 있다. 그 결과, 전파 영상(image)에서 천체에 대한 세밀한 구조를 볼 수 있다.
+- $R(B)$ 와 $I_\nu(s)$ 사이에는 다음과 같은 관계가 성립한다:
+
+$$ 
+R(B) =  
+\iint_{\Omega}  
+A(s) I_\nu(s)  
+\exp\left[  
+i 2\pi \nu \left(\frac{1}{c} B \cdot s - \tau_i \right)  
+\right]  
+ d\Omega d\nu . \tag{1.1}  
+$$
+
+- $A(s)$: 개별 안테나의 power pattern 
+- $B$: baseline의 길이 
+- $s$: 천체의 방향을 향하는 방향 단위벡터 (unit direction vector)
+- $\tau_i$: 기기 지연
+- $I_\nu(s)$ 를 구하려면 식 (1.1)에 대해서 **역푸리에 변환**을 진행해야 함을 알 수 있다.
+- [Basic Interferometer(간섭계의 기초) (1) - 1.2.2. Instrumental delay](/posts/Astronomy/Interferometer_1/index.qmd#instrumental-delay)에서 다뤘듯이 순지연(net delay)는 기하학적 지연과 기기 지연의 차이로 나타낼 수 있었다:
+
+$$  
+\tau = \tau_g - \tau_i = \frac{1}{c} B \cdot s - \tau_i  \tag{1.2}
+$$
+
+- 우리는 이제 천체 영상의 중심을 "위상이 0인 기준 위치(zero phase)"로 설정한다. 
+- 기준 위치로 향하는 단위벡터를 $\mathbf{s}_0$ 라고 하자. 그리고 실제 관측 방향을 $\mathbf{s}$ 라고 하면 두 벡터 사이의 관계를 다음과 같이 정의할 수 있다: (아래 그림 참고)
+
+$$
+\mathbf{s}=\mathbf{s}_0+\boldsymbol{\sigma},  
+\qquad  
+|\boldsymbol{\sigma}|=1, \tag{1.3}
+$$
+
+![그림: 왼쪽 상단 intensity 영역에서 전파원 분포 중심을 향하는 방향이 기준 방향 $\mathbf{s_0}$ 이다. 이 방향은 $(u,v,w)$ 좌표계의 중심을 지나며 $w$ 축과 나란하다. 전파원의 intensity 분포는 $I(x,y)$ 로 나타나며, 이 영역이 영상 평면 $xy$ 평면이다. 그리고 영상 평면의 수직인 방향은 $z$ 방향이다. | 출처: [1]](image.png){width="60%"}
+
+- 식 (1.3)을 식 (1.1)에 대입하면 다음과 같이 나타낼 수 있다:
+
+$$
+R(\mathbf{B})
+=
+\exp\left[  
+i\omega  
+\left(  
+\frac{1}{c}\mathbf{B}\cdot\mathbf{s}_0-\tau_i  
+\right)  
+\right]  
+d\nu  
+\iint_S  
+A(\boldsymbol{\sigma})  
+I(\boldsymbol{\sigma})  
+\exp\left(  
+i\frac{\omega}{c}\mathbf{B}\cdot\boldsymbol{\sigma}  
+\right)  
+d\boldsymbol{\sigma}. \tag{1.4}
+$$
+
+- 적분 밖으로 분리된 지수 인자는 영상 중심에 대한 $R(\mathbf{B})$ 의 위상을 정의하는 평면파를 의미한다. 그리고 intensity 분포 $I(\boldsymbol{\sigma})$ 가 포함된 적분을 다음과 같이 정의한다:
+
+$$
+V(\mathbf{B})
+=
+\iint_S  
+A(\boldsymbol{\sigma})  
+I(\boldsymbol{\sigma})  
+\exp\left(  
+i\frac{\omega}{c}\mathbf{B}\cdot\boldsymbol{\sigma}  
+\right)  
+d\boldsymbol{\sigma}. \tag{1.5}
+$$
+
+- 상관된 신호의 위상은 영상 중심에서 delay가 0이 되도록 조정된다. 그러므로, 식 (1.4)의 지수항은 1이 되며, 식 (1.5)를 통해서 visibility를 정의할 수 있다.
+
+<div class="hight 2rem"></div> 
+
+- 위 그림의 상황에 대해서 $(u,v,w)$ 를 정의해보자. 중심 주파수를 $\nu_0$ 라고 하고, 상대적인 주파수 폭을 고려하면 band의 양 끝을 다음과 같이 나타낼 수 있다:
+
+$$
+(u_{\pm}, v_{\pm}, w_{\pm}) = (u_0, v_0, w_0)(1 \pm \frac{\Delta f}{f}) \tag{1.6}
+$$
+
+- 예를 들어, 방향 $(0,0,1)$ 은 $\mathbf{s}_0$ 와 평행하며 $u$ 축은 국소적인 동쪽(local east) 방향을, $v$ 축은 북쪽 방향을 가리킨다. 그리고 이 논의로부터 $(x,y,z)$ 는 $(u,v,w)$ 와 평행한 사실을 알 수 있다. 
+- $\boldsymbol{\sigma}=(x,y,z)$ 는 $x$ 와 $y$ 가 각각 $u$ 축과 $v$ 축에 대한 방향 코사인(direction cosines)이 되도록 정의된다. 
+- $xy$ 평면은 접점(원점) $\mathbf{s}_0$ 에서 천구를 tangent plane으로 투영한 결과라고 생각할 수 있다. 
+
+<div class="hight 2rem"></div> 
+
+- $(u,v,w)$ 좌표계를 이용하면, 식 (1.5)를 아래와 같이 쓸 수 있다:
+
+$$
+V(u,v,w)
+=
+\int_{-\infty}^{\infty}  
+\int_{-\infty}^{\infty}  
+A(x,y)  
+I(x,y)
+$$
+
+$$
+\times\exp\left[  
+i2\pi  
+\left(  
+ux+vy+w\sqrt{1-x^2-y^2}  
+\right)  
+\right]   
+\frac{dxdy}{\sqrt{1-x^2-y^2}}. \tag{1.7}
+$$
+
+- 적분 구간이 $x^2+y^2>l^2$ 인 영역에서 $A(x,y)=0$ 이라고 가정하여 형식적으로 적분 구간을 $\pm\infty$ 로 확장했다. 
+    - $l$: 망원경의 main beam의 전체 폭(full width)
+- 하늘의 작은 영역만을 영상화하는 경우에는 $\sqrt{1-x^2-y^2}\simeq \text{const}\simeq 1$ 라고 할 수 있다. 또한, $uv$ 평면에 안테나가 놓여있다면 $V(u,v,w)e^{-i2\pi w} \simeq  V(u,v,0)$ 이 성립한다. 이를 이용하여 식 (1.7)을 고쳐쓰면 다음과 같다: 
+    - 참고로 $w$ 까지 고려한 망원경 배열에서 $w = 0$ 으로 만들려면 $e^{-i2\pi w}$ 를 곱해줘야 한다. 
+
+$$ 
+V(u,v,0)
+=
+\int_{-\infty}^{\infty}  
+\int_{-\infty}^{\infty}  
+A(x,y)I(x,y)  
+e^{i2\pi(ux+vy)}  
+dxdy \tag{1.8}
+$$
+
+- 식 (1.8)을 역푸리에 변환하면 다음과 같다:
+
+$$
+I'(x,y)
+= A(x,y)I(x,y)
+=
+\int_{-\infty}^{\infty}  
+V(u,v,0)  
+e^{-i2\pi(ux+vy)}  
+dudv \tag{1.9}
+$$
+
+- $I'(x,y)$ 는 천체의 실제 intensity가 아닌 main beam의 형태 $A(x,y)$ 에 의해서 영향을 받은 intensity를 의미한다. 
+- 식 (1.9)에서 **$I'(x,y) / A(x,y)$ 를 통해, 천체의 실제 intensity $I(x,y)$ 를 얻을 수 있다.** 
+
+---
+
+# Reference 
+
+- $1.$ Tools of Radio Astronomy 5th T.L. Wilson et al. 

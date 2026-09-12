@@ -1,5 +1,5 @@
 ---
-title: "구경 합성(Aperture Synthesis) (2)"
+title: "구경 합성(Aperture Synthesis)"
 author: "Young Jeong Lee"
 date: "2026-09-12"
 description: "간섭계에서 얻어지는 visibility와 intensity 사이의 관계를 설명한다."

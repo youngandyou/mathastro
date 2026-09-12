@@ -1,5 +1,67 @@
 /* css styles */
 
+.post-likes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 2.5rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--bs-border-color, #dee2e6);
+}
+
+.post-like-button,
+.post-like-retry {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  border: 1px solid var(--bs-border-color, #dee2e6);
+  border-radius: 6px;
+  background: var(--bs-body-bg, #fff);
+  color: var(--bs-body-color, #343a40);
+  font: inherit;
+  cursor: pointer;
+}
+
+.post-like-button {
+  gap: 0.6rem;
+  min-width: 96px;
+  padding: 0.45rem 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.post-like-button i { font-size: 1.25rem; }
+.post-like-count { min-width: 2ch; }
+.post-like-retry { width: 44px; flex-shrink: 0; }
+.post-like-retry[hidden] { display: none; }
+
+.post-like-button[aria-pressed="true"] {
+  color: #b52d53;
+  border-color: #b52d53;
+  background: #fff4f6;
+}
+
+.post-like-button:hover:not(:disabled),
+.post-like-retry:hover { border-color: #b52d53; color: #b52d53; }
+
+.post-like-button:focus-visible,
+.post-like-retry:focus-visible {
+  outline: 2px solid #b52d53;
+  outline-offset: 3px;
+}
+
+.post-like-button:disabled { cursor: default; opacity: 0.65; }
+.post-like-status {
+  margin: 0;
+  max-width: 100%;
+  color: var(--bs-secondary-color, #6c757d);
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
+}
+.post-like-status:empty { display: none; }
+
 div.quarto-post .thumbnail {
   flex-basis: 18%;
   max-width: 180px;

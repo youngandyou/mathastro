@@ -1,0 +1,62 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /postLikes/{postId} {
+      function signedIn() {
+        return request.auth != null;
+      }
+      function ownVote() {
+        return /databases/$(database)/documents/postLikes/$(postId)/votes/$(request.auth.uid);
+      }
+      function validCounter() {
+        return request.resource.data.keys().hasOnly(['count', 'path'])
+          && request.resource.data.count is int
+          && request.resource.data.count >= 0
+          && request.resource.data.path is string
+          && request.resource.data.path.matches('posts/.*')
+          && postId.matches('[a-f0-9]{64}');
+      }
+      function previouslyLiked() {
+        return exists(ownVote()) && get(ownVote()).data.liked == true;
+      }
+
+      allow get: if true;
+      allow list, delete: if false;
+      allow create: if signedIn() && validCounter()
+        && request.resource.data.count == 1
+        && !exists(ownVote())
+        && getAfter(ownVote()).data.liked == true;
+      allow update: if signedIn() && validCounter()
+        && request.resource.data.path == resource.data.path
+        && ((!previouslyLiked() && getAfter(ownVote()).data.liked == true
+            && request.resource.data.count == resource.data.count + 1)
+          || (previouslyLiked() && getAfter(ownVote()).data.liked == false
+            && request.resource.data.count == resource.data.count - 1));
+
+      match /votes/{uid} {
+        function counterPath() {
+          return /databases/$(database)/documents/postLikes/$(postId);
+        }
+        function own() {
+          return request.auth != null && request.auth.uid == uid;
+        }
+        function validVote() {
+          return request.resource.data.keys().hasOnly(['liked'])
+            && request.resource.data.liked is bool;
+        }
+        function previousCount() {
+          return exists(counterPath()) ? get(counterPath()).data.count : 0;
+        }
+
+        allow get: if own();
+        allow list, delete: if false;
+        allow create: if own() && validVote() && request.resource.data.liked == true
+          && getAfter(counterPath()).data.count == previousCount() + 1;
+        allow update: if own() && validVote()
+          && request.resource.data.liked != resource.data.liked
+          && getAfter(counterPath()).data.count == previousCount()
+            + (request.resource.data.liked ? 1 : -1);
+      }
+    }
+  }
+}

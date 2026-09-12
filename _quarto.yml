@@ -2,6 +2,9 @@ project:
   type: website
   resources:
     - qna/questions.json
+    - assets/firebase-config.json
+    - assets/post-likes.js
+    - assets/likes-store.mjs
 
 website:
   description: "A blog built with Quarto"
@@ -27,4 +30,4 @@ format:
     include-after-body:
       - assets/category-tree.html
       - assets/pseudocode.html
-
+      - assets/post-likes.html

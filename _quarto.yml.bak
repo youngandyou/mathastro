@@ -11,7 +11,6 @@ website:
   site-url: https://youngandyou.github.io/mathastro/
   title: "MathAstro"
   navbar:
-    search: true
     right:
       - href: about.qmd
         text: "블로그 소개"
@@ -28,8 +27,6 @@ format:
     html-math-method: mathjax
     filters:
       - pseudocode
-    include-in-header:
-      - assets/magazine-header.html
     include-after-body:
       - assets/category-tree.html
       - assets/pseudocode.html

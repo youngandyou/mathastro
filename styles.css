@@ -1,5 +1,652 @@
 /* css styles */
 
+/* ==========================================================================
+   MathAstro Magazine Theme (Quanta Magazine & KIAS Horizon Inspired)
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&family=Pretendard:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
+
+:root {
+  --mag-font-serif: "Newsreader", "Playfair Display", "Batang", serif;
+  --mag-font-display: "Playfair Display", Georgia, serif;
+  --mag-font-sans: "Pretendard", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --mag-font-mono: "Fira Code", monospace;
+
+  --mag-bg-paper: #fcfbf9;
+  --mag-bg-card: #ffffff;
+  --mag-bg-subtle: #f6f4ee;
+  --mag-text-main: #181816;
+  --mag-text-muted: #57574e;
+  --mag-text-light: #7c7c72;
+  --mag-border: #e2ded6;
+  --mag-border-dark: #222220;
+  
+  --mag-navy: #0e2a47;
+  --mag-burgundy: #842029;
+  --mag-math: #0284c7;
+  --mag-astro: #7c3aed;
+  --mag-physics: #d97706;
+  --mag-cs: #0d9488;
+  
+  --mag-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
+  --mag-shadow-hover: 0 10px 22px rgba(0, 0, 0, 0.08);
+}
+
+/* Global Typography & Smoothing */
+body {
+  background-color: var(--mag-bg-paper);
+  color: var(--mag-text-main);
+  font-family: var(--mag-font-sans);
+  font-size: 1.02rem;
+  line-height: 1.72;
+  letter-spacing: -0.012em;
+  word-break: keep-all;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--mag-font-serif);
+  color: var(--mag-navy);
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+/* Suppress Quarto default title block header on index page */
+main.column-page-left > #title-block-header {
+  display: none !important;
+}
+
+/* Navbar Editorial Styling */
+.navbar {
+  background-color: #ffffff !important;
+  border-bottom: 1px solid var(--mag-border);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.03);
+  padding: 0.65rem 1rem;
+}
+
+.navbar-brand {
+  font-family: var(--mag-font-display);
+  font-size: 1.65rem;
+  font-weight: 900;
+  color: var(--mag-navy) !important;
+  letter-spacing: -0.02em;
+}
+
+.navbar-brand::after {
+  content: ".";
+  color: var(--mag-burgundy);
+}
+
+.navbar-nav .nav-link {
+  font-family: var(--mag-font-sans);
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--mag-text-main) !important;
+  padding: 0.45rem 0.85rem !important;
+  transition: color 0.2s ease;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus {
+  color: var(--mag-burgundy) !important;
+}
+
+/* 1. Top Utility Bar */
+.magazine-utility-bar {
+  border-bottom: 1px solid var(--mag-border);
+  background-color: #ffffff;
+  font-size: 0.82rem;
+  color: var(--mag-text-light);
+  padding: 0.4rem 0.5rem;
+  margin-top: -0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.magazine-utility-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.magazine-edition-badge {
+  display: inline-block;
+  background-color: var(--mag-burgundy);
+  color: #ffffff;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.15rem 0.5rem;
+  border-radius: 2px;
+  letter-spacing: 0.05em;
+  margin-right: 0.5rem;
+}
+
+.magazine-motto {
+  font-weight: 500;
+}
+
+/* 2. Masthead (KIAS Horizon & Quanta style) */
+.magazine-masthead {
+  text-align: center;
+  padding: 1.8rem 0 1rem;
+  margin-bottom: 2.2rem;
+}
+
+.masthead-brand-container {
+  margin-bottom: 0.8rem;
+}
+
+.masthead-main-title {
+  font-family: var(--mag-font-display);
+  font-size: 3.8rem;
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  line-height: 1.05;
+  color: var(--mag-navy);
+  margin-bottom: 0.35rem;
+}
+
+.masthead-main-title .title-accent {
+  color: var(--mag-burgundy);
+}
+
+.masthead-sub-title {
+  font-family: var(--mag-font-serif);
+  font-size: 1.15rem;
+  font-style: italic;
+  color: var(--mag-text-muted);
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.015em;
+}
+
+.masthead-desc {
+  font-size: 0.88rem;
+  color: var(--mag-text-light);
+  margin-bottom: 1.4rem;
+}
+
+.masthead-rule-line {
+  border-top: 3px double var(--mag-border-dark);
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+/* 3. Featured Cover Story (Quanta style) */
+.magazine-cover-story {
+  margin-bottom: 3.2rem;
+}
+
+.cover-story-card {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 2.2rem;
+  background-color: var(--mag-bg-card);
+  border: 1px solid var(--mag-border);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: var(--mag-shadow-sm);
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.cover-story-card:hover {
+  box-shadow: var(--mag-shadow-hover);
+  border-color: #cbcfd4;
+}
+
+.cover-story-media {
+  position: relative;
+  min-height: 380px;
+  background: #09131f;
+  overflow: hidden;
+  display: flex;
+}
+
+.cover-svg-art {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cover-badge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background-color: var(--mag-burgundy);
+  color: #ffffff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 0.25rem 0.65rem;
+  border-radius: 2px;
+  z-index: 2;
+}
+
+.cover-story-body {
+  padding: 2.2rem 2.2rem 2.2rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cover-kicker {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--mag-burgundy);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.5rem;
+}
+
+.cover-heading {
+  font-family: var(--mag-font-serif);
+  font-size: 1.95rem;
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 0.9rem;
+}
+
+.cover-heading a {
+  color: var(--mag-text-main);
+  text-decoration: none;
+}
+
+.cover-heading a:hover {
+  color: var(--mag-burgundy);
+}
+
+.cover-abstract {
+  font-size: 0.96rem;
+  color: var(--mag-text-muted);
+  line-height: 1.65;
+  margin-bottom: 1.3rem;
+}
+
+.cover-byline {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  font-size: 0.82rem;
+  color: var(--mag-text-light);
+  border-top: 1px solid var(--mag-border);
+  padding-top: 0.85rem;
+}
+
+.cover-author {
+  font-weight: 600;
+  color: var(--mag-text-main);
+}
+
+.byline-sep {
+  color: var(--mag-border);
+}
+
+/* 4. Section Divider */
+.magazine-section-divider {
+  border-bottom: 2px solid var(--mag-border-dark);
+  padding-bottom: 0.55rem;
+  margin: 3.2rem 0 1.8rem;
+}
+
+.magazine-section-title {
+  font-family: var(--mag-font-display);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--mag-navy);
+  margin-bottom: 0.2rem;
+}
+
+.magazine-section-sub {
+  font-size: 0.86rem;
+  color: var(--mag-text-light);
+}
+
+/* 5. Quarto Grid Listing Magazine Styles */
+.quarto-grid {
+  gap: 1.6rem !important;
+}
+
+.quarto-grid-item {
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+.quarto-grid-item:hover {
+  transform: translateY(-4px);
+}
+
+.quarto-grid-item .card {
+  background-color: var(--mag-bg-card);
+  border: 1px solid var(--mag-border);
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: var(--mag-shadow-sm);
+  transition: box-shadow 0.22s ease, border-color 0.22s ease;
+  height: 100%;
+}
+
+.quarto-grid-item .card:hover {
+  box-shadow: var(--mag-shadow-hover);
+  border-color: #cbd5e1;
+}
+
+.quarto-grid-item .card-img-top,
+.quarto-grid-item .card-img {
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--mag-border);
+}
+
+.quarto-grid-item .listing-item-img-placeholder {
+  height: 180px;
+  background: linear-gradient(135deg, #10233b 0%, #1c385c 50%, #29243d 100%);
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--mag-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quarto-grid-item .listing-item-img-placeholder::after {
+  content: "✦";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.2rem;
+  color: rgba(255, 255, 255, 0.25);
+  font-family: var(--mag-font-serif);
+}
+
+.g-col-1[data-categories*="TWF0a"] .listing-item-img-placeholder,
+.g-col-1[data-categories*="Math"] .listing-item-img-placeholder {
+  background: linear-gradient(135deg, #091a30 0%, #0d325c 60%, #0b4570 100%);
+}
+.g-col-1[data-categories*="TWF0a"] .listing-item-img-placeholder::after,
+.g-col-1[data-categories*="Math"] .listing-item-img-placeholder::after {
+  content: "∑";
+  font-size: 2.8rem;
+  color: rgba(56, 189, 248, 0.4);
+}
+
+.g-col-1[data-categories*="QXN0cm9ub215"] .listing-item-img-placeholder,
+.g-col-1[data-categories*="Astronomy"] .listing-item-img-placeholder {
+  background: linear-gradient(135deg, #0d1326 0%, #1e1b4b 60%, #31134a 100%);
+}
+.g-col-1[data-categories*="QXN0cm9ub215"] .listing-item-img-placeholder::after,
+.g-col-1[data-categories*="Astronomy"] .listing-item-img-placeholder::after {
+  content: "✦";
+  font-size: 2.4rem;
+  color: rgba(192, 132, 252, 0.45);
+}
+
+.g-col-1[data-categories*="UGh5c2ljcw"] .listing-item-img-placeholder,
+.g-col-1[data-categories*="Physics"] .listing-item-img-placeholder {
+  background: linear-gradient(135deg, #1f1207 0%, #3d240d 60%, #522504 100%);
+}
+.g-col-1[data-categories*="UGh5c2ljcw"] .listing-item-img-placeholder::after,
+.g-col-1[data-categories*="Physics"] .listing-item-img-placeholder::after {
+  content: "⚛";
+  font-size: 2.6rem;
+  color: rgba(251, 191, 36, 0.4);
+}
+
+.g-col-1[data-categories*="Q29tcHV0ZXI"] .listing-item-img-placeholder,
+.g-col-1[data-categories*="Computer"] .listing-item-img-placeholder {
+  background: linear-gradient(135deg, #041f1a 0%, #073b32 60%, #0c4a3e 100%);
+}
+.g-col-1[data-categories*="Q29tcHV0ZXI"] .listing-item-img-placeholder::after,
+.g-col-1[data-categories*="Computer"] .listing-item-img-placeholder::after {
+  content: "</>";
+  font-family: var(--mag-font-mono);
+  font-size: 1.8rem;
+  color: rgba(52, 211, 153, 0.4);
+}
+
+.quarto-grid-item .card-body {
+  padding: 1.25rem 1.25rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.quarto-grid-link {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.quarto-grid-item .listing-title,
+.quarto-grid-item .card-title {
+  font-family: var(--mag-font-serif) !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  line-height: 1.35 !important;
+  color: var(--mag-text-main) !important;
+  margin-bottom: 0.55rem;
+  margin-top: 0.2rem;
+  transition: color 0.2s ease;
+}
+
+.quarto-grid-item:hover .listing-title,
+.quarto-grid-item:hover .card-title,
+.quarto-grid-item .listing-title:hover {
+  color: var(--mag-burgundy) !important;
+}
+
+.quarto-grid-item .listing-description p {
+  margin: 0;
+}
+
+.quarto-grid-item .listing-categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 0.5rem;
+}
+
+.quarto-grid-item .listing-category {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+  background-color: #f1ede4;
+  color: var(--mag-text-main);
+  border-left: 3px solid var(--mag-navy);
+  text-decoration: none;
+}
+
+.quarto-grid-item .listing-description {
+  font-size: 0.88rem;
+  color: var(--mag-text-muted);
+  line-height: 1.58;
+  margin-bottom: 0.85rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.quarto-grid-item .card-footer {
+  background-color: transparent;
+  border-top: 1px solid var(--mag-border);
+  padding: 0.65rem 1.25rem;
+  font-size: 0.78rem;
+  color: var(--mag-text-light);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 6. Academic Pull Quote Section */
+.magazine-pull-quote-section {
+  margin: 3.8rem 0 3.2rem;
+  background: linear-gradient(135deg, #0f2742 0%, #17385c 100%);
+  color: #f8fafc;
+  padding: 3rem 2rem;
+  border-radius: 6px;
+  box-shadow: 0 4px 16px rgba(15, 39, 66, 0.12);
+}
+
+.pull-quote-box {
+  max-width: 860px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.pull-quote-text {
+  font-family: var(--mag-font-serif);
+  font-size: 1.55rem;
+  font-style: italic;
+  line-height: 1.5;
+  margin-bottom: 1.1rem;
+  color: #f1f5f9;
+}
+
+.pull-quote-author {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #93c5fd;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* 7. Knowledge Archive Hub */
+.magazine-archive-hub {
+  margin-bottom: 4rem;
+}
+
+.hub-header {
+  margin-bottom: 1.4rem;
+}
+
+.hub-main-title {
+  font-family: var(--mag-font-display);
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--mag-navy);
+  margin-bottom: 0.2rem;
+}
+
+.hub-sub-title {
+  font-size: 0.86rem;
+  color: var(--mag-text-light);
+}
+
+.hub-grid-columns {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.2rem;
+}
+
+.hub-col {
+  background-color: var(--mag-bg-card);
+  border: 1px solid var(--mag-border);
+  border-radius: 4px;
+  padding: 1.25rem 1.15rem;
+  box-shadow: var(--mag-shadow-sm);
+}
+
+.hub-col.math-col { border-top: 4px solid var(--mag-math); }
+.hub-col.astro-col { border-top: 4px solid var(--mag-astro); }
+.hub-col.physics-col { border-top: 4px solid var(--mag-physics); }
+.hub-col.cs-col { border-top: 4px solid var(--mag-cs); }
+
+.hub-col-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--mag-border);
+  padding-bottom: 0.6rem;
+  margin-bottom: 0.75rem;
+}
+
+.hub-col-header h4 {
+  font-size: 1.02rem;
+  margin: 0;
+  color: var(--mag-text-main);
+}
+
+.hub-col-count {
+  font-size: 0.74rem;
+  color: var(--mag-text-light);
+  background: var(--mag-bg-subtle);
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+}
+
+.hub-col-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.hub-col-list li {
+  padding: 0.4rem 0;
+  border-bottom: 1px dashed var(--mag-border);
+  font-size: 0.85rem;
+}
+
+.hub-col-list li:last-child {
+  border-bottom: none;
+}
+
+.hub-col-list a {
+  color: var(--mag-text-main);
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.hub-col-list a:hover {
+  color: var(--mag-burgundy);
+  text-decoration: underline;
+}
+
+/* Post Detail Enhancements */
+.quarto-title .title {
+  font-family: var(--mag-font-serif);
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--mag-navy);
+  line-height: 1.25;
+}
+
+/* Academic Callouts */
+.callout.callout-style-default {
+  border-left-width: 4px;
+  border-radius: 4px;
+  background-color: var(--mag-bg-card);
+  box-shadow: var(--mag-shadow-sm);
+}
+
+/* Responsive Media Queries */
+@media (max-width: 991.98px) {
+  .cover-story-card {
+    grid-template-columns: 1fr;
+  }
+  .cover-story-body {
+    padding: 1.8rem;
+  }
+  .hub-grid-columns {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .masthead-main-title {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .hub-grid-columns {
+    grid-template-columns: 1fr;
+  }
+  .masthead-main-title {
+    font-size: 2.3rem;
+  }
+  .cover-heading {
+    font-size: 1.5rem;
+  }
+}
+
 .post-likes {
   display: flex;
   align-items: center;

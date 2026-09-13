@@ -1,14 +1,199 @@
 ---
 title: "MathAstro"
+pagetitle: "MathAstro | 과학과 수학의 지평"
+description: "수학과 천문학을 중심으로 세상 모든 학문의 백과사전화를 추구하는 오픈 아카데믹 웹진"
+title-block-style: none
+title-block-banner: false
+page-layout: full
+toc: false
 listing:
+  id: sample-listings
   contents: posts
-  feed: true
   sort: "date desc"
-  type: default
+  type: grid
+  grid-columns: 3
+  grid-item-border: true
+  image-height: 180px
+  fields: [image, date, title, author, reading-time, description, categories]
   categories: true
   sort-ui: false
   filter-ui: false
-page-layout: full
-title-block-banner: true
+  feed: true
+  page-size: 24
 ---
 
+```{=html}
+<!-- Top Utility Bar (KIAS Horizon style) -->
+<div class="magazine-utility-bar">
+  <div class="magazine-utility-inner">
+    <div class="magazine-utility-left">
+      <span class="magazine-edition-badge">ACADEMIC WEBZINE</span>
+      <span class="magazine-motto">MathAstro · 세상 모든 학문의 백과사전화</span>
+    </div>
+    <div class="magazine-utility-right">
+      <span>공동 운영: 이영정 (천문학) · 천유민 (수학)</span>
+    </div>
+  </div>
+</div>
+
+<!-- Masthead (Quanta Magazine & KIAS Horizon style) -->
+<header class="magazine-masthead">
+  <div class="masthead-brand-container">
+    <div class="masthead-main-title" role="heading" aria-level="1">MathAstro<span class="title-accent">.</span></div>
+    <p class="masthead-sub-title">과학과 수학의 지평 — The Horizons of Science & Mathematics</p>
+    <p class="masthead-desc">대학교 및 대학원 수준의 전공 학술 지식을 친근하고 엄밀하게 전하는 오픈 백과사전 & 웹진</p>
+  </div>
+  <div class="masthead-rule-line"></div>
+</header>
+
+<!-- Featured Cover Story (Quanta Magazine style) -->
+<section class="magazine-cover-story">
+  <div class="cover-story-card">
+    <div class="cover-story-media">
+      <span class="cover-badge">FEATURED COVER STORY</span>
+      <svg class="cover-svg-art" viewBox="0 0 700 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="spaceGrad" cx="50%" cy="50%" r="60%">
+            <stop offset="0%" stop-color="#1b2d48"/>
+            <stop offset="60%" stop-color="#0b1424"/>
+            <stop offset="100%" stop-color="#040810"/>
+          </radialGradient>
+          <linearGradient id="jetBeam" x1="0" y1="1" x2="1" y2="0">
+            <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.95"/>
+            <stop offset="50%" stop-color="#a855f7" stop-opacity="0.8"/>
+            <stop offset="100%" stop-color="#f43f5e" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <rect width="700" height="420" fill="url(#spaceGrad)"/>
+        <!-- Starfield -->
+        <circle cx="90" cy="80" r="1.5" fill="#fff" opacity="0.8"/>
+        <circle cx="210" cy="50" r="1.2" fill="#fff" opacity="0.6"/>
+        <circle cx="590" cy="90" r="1.8" fill="#fff" opacity="0.9"/>
+        <circle cx="630" cy="220" r="1" fill="#fff" opacity="0.5"/>
+        <circle cx="340" cy="40" r="1" fill="#fff" opacity="0.7"/>
+        <circle cx="150" cy="260" r="1.2" fill="#fff" opacity="0.4"/>
+        <!-- Relativistic Jet Beam -->
+        <polygon points="460,210 680,30 695,50 470,220" fill="url(#jetBeam)"/>
+        <polygon points="460,210 240,390 225,370 450,200" fill="url(#jetBeam)" opacity="0.45"/>
+        <!-- Accretion Disk / Black Hole -->
+        <ellipse cx="460" cy="210" rx="95" ry="26" fill="#f97316" opacity="0.8" transform="rotate(-25 460 210)"/>
+        <circle cx="460" cy="210" r="28" fill="#020617"/>
+        <circle cx="460" cy="210" r="32" stroke="#fdba74" stroke-width="2" fill="none" opacity="0.9"/>
+        <!-- Radio Telescope VLBI Array -->
+        <path d="M110,360 L170,360 M140,360 L140,300 M105,280 Q140,320 175,280" stroke="#94a3b8" stroke-width="3.5" fill="none"/>
+        <line x1="140" y1="300" x2="140" y2="270" stroke="#38bdf8" stroke-width="2"/>
+        <path d="M230,380 L280,380 M255,380 L255,330 M225,315 Q255,345 285,315" stroke="#64748b" stroke-width="3" fill="none"/>
+        <!-- Mathematical Geometry Manifold -->
+        <path d="M510,320 C570,280 630,370 580,390 C530,410 490,340 510,320 Z" stroke="#38bdf8" stroke-width="1.4" stroke-dasharray="3,3" fill="none"/>
+        <path d="M530,310 C590,270 650,350 600,380" stroke="#c084fc" stroke-width="1.2" fill="none"/>
+      </svg>
+    </div>
+    <div class="cover-story-body">
+      <div class="cover-kicker">전파천문학 & 이론물리학 · 심층 탐구</div>
+      <h2 class="cover-heading">
+        <a href="posts/Astronomy/Interferometer_1/">전파간섭계와 초대질량 블랙홀: 지구 크기의 망원경으로 시공간을 관측하다</a>
+      </h2>
+      <p class="cover-abstract">
+        수천 킬로미터 떨어진 전파망원경들의 신호를 푸리에 변환으로 합성하는 초장기선 전파간섭계(VLBI). 사건의 지평선 너머 블랙홀 제트와 초광속 겉보기 운동의 신비를 밝혀내는 첨단 천문학과 기하학의 만남을 소개합니다.
+      </p>
+      <div class="cover-byline">
+        <span class="cover-author">이영정 (경북대학교 대학원 천문학과)</span>
+        <span class="byline-sep">·</span>
+        <span>Astro-Physics Series</span>
+        <span class="byline-sep">·</span>
+        <span class="cover-read-time">📖 약 9분 읽기</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section Header for Recent Articles -->
+<div class="magazine-section-divider">
+  <div class="section-title-wrap">
+    <h2 class="magazine-section-title">최신 아티클 & 학술 탐구 (Latest Articles)</h2>
+    <span class="magazine-section-sub">모든 학문 분야의 최신 연구 노트 및 개념 해설</span>
+  </div>
+</div>
+```
+
+::: {#sample-listings}
+:::
+
+```{=html}
+<!-- Academic Pull Quote Section (Quanta style) -->
+<section class="magazine-pull-quote-section">
+  <div class="pull-quote-box">
+    <blockquote class="pull-quote-text">
+      “자연이라는 위대한 책은 우리 눈앞에 펼쳐져 있으나,<br>그것은 수학이라는 언어로 쓰여 있기에 그 기호를 이해하지 못하면 단 한 단어도 해독할 수 없다.”
+    </blockquote>
+    <div class="pull-quote-author">— 갈릴레오 갈릴레이 (Galileo Galilei), 『황금측량자』</div>
+  </div>
+</section>
+
+<!-- Knowledge Archive Hub (KIAS Horizon Series style) -->
+<section class="magazine-archive-hub">
+  <div class="hub-header">
+    <h3 class="hub-main-title">학문 백과사전 아카이브 (Knowledge Archive)</h3>
+    <p class="hub-sub-title">체계적으로 분류된 전공 개념별 컬렉션을 탐색해보세요</p>
+  </div>
+  <div class="hub-grid-columns">
+    <!-- Mathematics -->
+    <div class="hub-col math-col">
+      <div class="hub-col-header">
+        <h4>📐 Mathematics (수학)</h4>
+        <span class="hub-col-count">40+ 글</span>
+      </div>
+      <ul class="hub-col-list">
+        <li><a href="posts/Math/Topology/Topology/">위상수학 (Topology) 전편</a></li>
+        <li><a href="posts/Math/Complex_Analysis/Cauchy_Riemann_Eq/">복소해석학 (Complex Analysis)</a></li>
+        <li><a href="posts/Math/Abstract_Algebra/Group_Theory/Group/">추상대수학 (군론 · 환론)</a></li>
+        <li><a href="posts/Math/Numerical_Analysis/">수치해석학 (반복법과 알고리즘)</a></li>
+        <li><a href="posts/Math/Graph_Theory/Tree/Tree_Isomorphism/">그래프 이론 (트리 동형사상)</a></li>
+      </ul>
+    </div>
+
+    <!-- Astronomy -->
+    <div class="hub-col astro-col">
+      <div class="hub-col-header">
+        <h4>🔭 Astronomy (천문학)</h4>
+        <span class="hub-col-count">15+ 글</span>
+      </div>
+      <ul class="hub-col-list">
+        <li><a href="posts/Astronomy/Basic_Radioastronomy0/">기초 전파천문학 시리즈 (0~5편)</a></li>
+        <li><a href="posts/Astronomy/Interferometer_1/">전파간섭계 (Interferometer 1, 2)</a></li>
+        <li><a href="posts/Astronomy/Astro_synchrotron_radiation/">싱크로트론 복사 이론</a></li>
+        <li><a href="posts/Astronomy/Astro_Superluminal-motion/">초광속 겉보기 운동</a></li>
+        <li><a href="posts/Astronomy/AIPS_1/">AIPS 천문 데이터 분석 실습</a></li>
+      </ul>
+    </div>
+
+    <!-- Physics -->
+    <div class="hub-col physics-col">
+      <div class="hub-col-header">
+        <h4>⚛️ Physics (물리학)</h4>
+        <span class="hub-col-count">연재 중</span>
+      </div>
+      <ul class="hub-col-list">
+        <li><a href="posts/Physics/Thermodynamics/Idealgas/">열역학: 이상기체 방정식의 미시적 기원</a></li>
+        <li><a href="posts/Astronomy/Astro_Equivalence-principle/">등가원리와 시공간의 기하학</a></li>
+        <li><a href="posts/Math/Topology/Metric_Topology/">거리 공간과 물리적 공간의 기하</a></li>
+        <li><a href="posts/Physics/Thermodynamics/Idealgas/">통계물리 및 상태방정식</a></li>
+      </ul>
+    </div>
+
+    <!-- Computer Science -->
+    <div class="hub-col cs-col">
+      <div class="hub-col-header">
+        <h4>💻 Computer Science</h4>
+        <span class="hub-col-count">연재 중</span>
+      </div>
+      <ul class="hub-col-list">
+        <li><a href="posts/Computer/Reinforcement%20Learning/">강화학습 (Reinforcement Learning) 기초</a></li>
+        <li><a href="posts/Math/Numerical_Analysis/">수치 반복 알고리즘과 수렴성</a></li>
+        <li><a href="posts/Math/Graph_Theory/Tree/Tree_Isomorphism/">트리 알고리즘과 그래프 탐색</a></li>
+        <li><a href="posts/Astronomy/AIPS_1/">AIPS 및 파이썬 천문 컴퓨팅</a></li>
+      </ul>
+    </div>
+  </div>
+</section>
+```

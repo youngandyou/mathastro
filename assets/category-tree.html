@@ -240,7 +240,7 @@
       : null;
     const posts = listing
       ? listing.items.map((item) => item.elm).filter(Boolean)
-      : Array.from(document.querySelectorAll(".quarto-post"));
+      : Array.from(document.querySelectorAll(".quarto-post, .quarto-grid-item"));
 
     if (!defaultCategories || posts.length === 0) {
       return;

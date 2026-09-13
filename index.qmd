@@ -14,7 +14,7 @@ listing:
   grid-columns: 3
   grid-item-border: true
   image-height: 180px
-  fields: [image, date, title, author, reading-time, description, categories]
+  fields: [image, date, title, author, description, categories]
   categories: false
   sort-ui: false
   filter-ui: false
@@ -47,25 +47,117 @@ listing:
 </header>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-  function applyHashCategory() {
-    var hash = window.location.hash;
-    if (!hash || hash.indexOf("category=") === -1) return;
-    var cat = decodeURIComponent(hash.split("category=")[1]);
-    var listingEl = document.querySelector('.quarto-listing[id]');
-    var listing = listingEl ? (window['quarto-listings'] ? window['quarto-listings'][listingEl.id] : null) : null;
-    if (!listing) return;
-    if (!cat || cat.toLowerCase() === "all") {
-      listing.filter();
-    } else {
-      listing.filter(function(item) {
-        var cats = (item.values && item.values()['listing-categories']) || '';
-        return cats.toLowerCase().indexOf(cat.toLowerCase()) !== -1;
-      });
+(function() {
+  if (window.location.hash && window.location.hash.indexOf('category=') !== -1) {
+    var raw = decodeURIComponent(window.location.hash.split('category=')[1] || '').trim();
+    if (raw && raw.toLowerCase() !== 'all') {
+      document.documentElement.classList.add('category-active');
     }
   }
-  window.addEventListener('hashchange', applyHashCategory);
-  setTimeout(applyHashCategory, 350);
+})();
+
+document.addEventListener("DOMContentLoaded", function() {
+  var catInfo = {
+    'math': { title: 'Mathematics (수학)', desc: '수학 분야의 엄밀한 연구 노트 및 학술 개념 아카이브' },
+    'astronomy': { title: 'Astronomy (천문학)', desc: '관측천문학, 전파천문학 및 천체물리학 연구 아티클' },
+    'physics': { title: 'Physics (물리학)', desc: '이론물리학, 열역학 및 시공간 기하학 탐구 아티클' },
+    'computer': { title: 'Computer Science', desc: '알고리즘, 수치해석 및 컴퓨터 과학 연구 노트' }
+  };
+
+  function updateView() {
+    var hash = window.location.hash || '';
+    var isCat = hash.indexOf("category=") !== -1;
+    var rawCat = isCat ? decodeURIComponent(hash.split("category=")[1] || '').trim() : "";
+    var catKey = rawCat.toLowerCase();
+    var isFiltered = isCat && catKey && catKey !== 'all';
+
+    var coverEl = document.querySelector('.magazine-cover-story');
+    var sectionTitleEl = document.querySelector('.magazine-section-title');
+    var sectionSubEl = document.querySelector('.magazine-section-sub');
+    var listingEl = document.querySelector('.quarto-listing[id]');
+    var listing = listingEl ? (window['quarto-listings'] ? window['quarto-listings'][listingEl.id] : null) : null;
+
+    if (isFiltered) {
+      document.documentElement.classList.add('category-active');
+      document.body.classList.add('category-active');
+      if (coverEl) coverEl.style.display = 'none';
+
+      var info = catInfo[catKey] || { title: rawCat + ' 아티클', desc: rawCat + ' 분야 탐구 아티클 및 연구 노트' };
+      if (sectionTitleEl) sectionTitleEl.textContent = info.title;
+      if (sectionSubEl) sectionSubEl.textContent = info.desc;
+
+      if (listing) {
+        listing.filter(function(item) {
+          var cats = (item.values && item.values()['listing-categories']) || '';
+          return cats.toLowerCase().indexOf(catKey) !== -1;
+        });
+      }
+    } else {
+      document.documentElement.classList.remove('category-active');
+      document.body.classList.remove('category-active');
+      if (coverEl) coverEl.style.display = '';
+
+      if (sectionTitleEl) sectionTitleEl.textContent = '최신 아티클 & 학술 탐구 (Latest Articles)';
+      if (sectionSubEl) sectionSubEl.textContent = '모든 학문 분야의 최신 연구 노트 및 개념 해설';
+
+      if (listing) {
+        listing.filter();
+      }
+    }
+
+    // Highlight active link in navbar
+    var navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    navLinks.forEach(function(link) {
+      var href = (link.getAttribute('href') || '').toLowerCase();
+      if (!isFiltered) {
+        if (href.indexOf('category=') === -1 && (href === './index.html' || href === 'index.html' || href.endsWith('/index.html') || href === '#')) {
+          link.classList.add('active');
+          link.setAttribute('aria-current', 'page');
+        } else if (href.indexOf('category=') !== -1) {
+          link.classList.remove('active');
+          link.removeAttribute('aria-current');
+        }
+      } else {
+        if (href.indexOf('category=' + catKey) !== -1) {
+          link.classList.add('active');
+          link.setAttribute('aria-current', 'page');
+        } else {
+          link.classList.remove('active');
+          link.removeAttribute('aria-current');
+        }
+      }
+    });
+  }
+
+  // Intercept navbar clicks for instantaneous SPA-like transition
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('.navbar-nav .nav-link, .navbar-brand');
+    if (!link) return;
+    var href = link.getAttribute('href') || '';
+    var isHome = href === './index.html' || href === 'index.html' || href === '/' || href.endsWith('/index.html') || link.classList.contains('navbar-brand');
+
+    if (isHome) {
+      if (window.location.hash) {
+        e.preventDefault();
+        history.pushState(null, null, window.location.pathname + window.location.search);
+        updateView();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+    } else if (href.indexOf('#category=') !== -1) {
+      var targetHash = href.substring(href.indexOf('#category='));
+      if (window.location.hash === targetHash) {
+        e.preventDefault();
+        updateView();
+      }
+    }
+  });
+
+  window.addEventListener('hashchange', updateView);
+  window.addEventListener('popstate', updateView);
+
+  updateView();
+  setTimeout(updateView, 150);
+  setTimeout(updateView, 400);
 });
 </script>
 

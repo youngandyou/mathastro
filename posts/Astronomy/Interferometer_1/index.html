@@ -1,0 +1,1716 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.38">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Young Jeong Lee">
+<meta name="dcterms.date" content="2026-07-17">
+<meta name="description" content="간섭계의 기초에 대해서 소개하는 첫 번째 글이다. 키워드: 기선(baseline), 프린지(fringe), 지연(delay)">
+
+<title>Basic Interferometer(간섭계의 기초) (1) – MathAstro</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap-a0f9fd0d421825b736dc1bbcbcba2219.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../../site_libs/quarto-contrib/pseudocode-2.4.1/pseudocode.min.js"></script>
+<link href="../../../site_libs/quarto-contrib/pseudocode-2.4.1/pseudocode.min.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<!-- Google Fonts: Editorial Serif & Pretendard Korean font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;0,6..72,700;1,6..72,400&amp;family=Playfair+Display:ital,wght@0,600;0,700;0,900;1,600&amp;family=Pretendard:wght@300;400;500;600;700&amp;family=Fira+Code:wght@400;500&amp;display=swap" rel="stylesheet">
+    <style type="text/css">
+    .ps-root .ps-algorithm {
+      border-top: 2px solid;
+      border-bottom: 2px solid;
+    }
+    .pseudocode-container {
+      text-align: left;
+    }
+    </style>
+  
+      <style type="text/css">
+      .ps-algorithm > .ps-line {
+        text-align: left;
+      }
+      </style>
+    
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../../index.html">
+    <span class="navbar-title">MathAstro</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html#category=Math"> 
+<span class="menu-text">Mathematics (수학)</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html#category=Astronomy"> 
+<span class="menu-text">Astronomy (천문학)</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html#category=Physics"> 
+<span class="menu-text">Physics (물리학)</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../../index.html#category=Computer"> 
+<span class="menu-text">Computer Science</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">관련 링크</span>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="nav-menu-">    
+        <li>
+    <a class="dropdown-item" href="https://www.kasi.re.kr/">
+ <span class="dropdown-text">🔭 한국천문연구원</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://www.kas.org/index.html">
+ <span class="dropdown-text">🌌 한국천문학회</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://terms.naver.com/~%EC%B2%9C%EB%AC%B8%ED%95%99%EB%B0%B1%EA%B3%BC-4jCeB76aXmnbp44IBL8pRW">
+ <span class="dropdown-text">📚 네이버 천문학백과</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="https://arxiv.org/archive/astro-ph">
+ <span class="dropdown-text">📄 Astrophysics arXiv</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../../qna/"> 
+<span class="menu-text">Q&amp;A</span></a>
+  </li>  
+  <li class="nav-item dropdown ">
+    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-about" role="link" data-bs-toggle="dropdown" aria-expanded="false">
+ <span class="menu-text">About</span>
+    </a>
+    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="nav-menu-about">    
+        <li>
+    <a class="dropdown-item" href="../../../about.html">
+ <span class="dropdown-text">블로그 소개</span></a>
+  </li>  
+        <li>
+    <a class="dropdown-item" href="../../../team.html">
+ <span class="dropdown-text">운영진 소개</span></a>
+  </li>  
+    </ul>
+  </li>
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Basic Interferometer(간섭계의 기초) (1)</h1>
+                  <div>
+        <div class="description">
+          간섭계의 기초에 대해서 소개하는 첫 번째 글이다. 키워드: 기선(baseline), 프린지(fringe), 지연(delay)
+        </div>
+      </div>
+                          <div class="quarto-categories">
+                <div class="quarto-category">Astronomy &gt; Radio Astronomy</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Author</div>
+      <div class="quarto-title-meta-contents">
+               <p>Young Jeong Lee </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">July 17, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active" data-toc-expanded="99">
+    <h2 id="toc-title">목차</h2>
+   
+  <ul>
+  <li><a href="#basic-interferometer" id="toc-basic-interferometer" class="nav-link active" data-scroll-target="#basic-interferometer">1. Basic Interferometer</a>
+  <ul>
+  <li><a href="#multipyling-interferometer" id="toc-multipyling-interferometer" class="nav-link" data-scroll-target="#multipyling-interferometer">1.1. Multipyling Interferometer</a></li>
+  <li><a href="#one-dimensional-source" id="toc-one-dimensional-source" class="nav-link" data-scroll-target="#one-dimensional-source">1.2. One-Dimensional Source</a>
+  <ul>
+  <li><a href="#fringe" id="toc-fringe" class="nav-link" data-scroll-target="#fringe">1.2.1. Fringe</a></li>
+  <li><a href="#instrumental-delay" id="toc-instrumental-delay" class="nav-link" data-scroll-target="#instrumental-delay">1.2.2. Instrumental delay</a></li>
+  </ul></li>
+  <li><a href="#projected-baseline-and-fringe-response" id="toc-projected-baseline-and-fringe-response" class="nav-link" data-scroll-target="#projected-baseline-and-fringe-response">1.3. Projected Baseline and Fringe Response</a></li>
+  <li><a href="#basic-interferometer-discussion" id="toc-basic-interferometer-discussion" class="nav-link" data-scroll-target="#basic-interferometer-discussion">1.4. Basic Interferometer Discussion</a></li>
+  </ul></li>
+  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference">Reference</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+
+<section id="basic-interferometer" class="level1">
+<h1>1. Basic Interferometer</h1>
+<ul>
+<li>한 망원경의 구경을 크게하는 데는 한계가 있어 여러 대의 전파 망원경을 이용하여 전파를 서로 간섭시켜 하나의 전파 망원경으로 작동하는 시스템을 <strong>전파 간섭계(Radio Interferometer)</strong> 라고 한다.
+<ul>
+<li>작은 전파 망원경들이 마치 큰 망원경처럼 기능하여 높은 분해능을 얻을 수 있다.</li>
+</ul></li>
+<li>간섭계를 이루는 망원경들은 서로 완전히 떨어져 있다. (예: VLBI, VLA, EHT, KVN, EAVN)</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="EHT.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>그림 1: EHT(Event Horizon Telescope)의 망원경들과 그 위치를 나타냈다. (1)</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>배열(Array)</strong>: 여러 대의 망원경이 지하의 케이블로 연결되어 있는 경우를 의미한다. 다른 표현으로 <strong>connected array</strong>라고 한다. (예: VLA, ALMA, LOFAR, SKA)
+<ul>
+<li><strong>Subarray</strong>: 관측 시간에 따른 각각의 배열을 부르는 말이다. 예를 들어, A 시간대에는 VLA만 이용하고 B 시간대에는 VLA, ALMA를 같이 이용한다.</li>
+</ul></li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="SKA.png" class="img-fluid figure-img" style="width:60.0%"></p>
+<figcaption>그림 2: SKA 건설 예상도. (2)</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>기선(Baseline)</strong>: 간섭계에서 두 안테나 사이의 거리를 의미한다.</li>
+<li>예를 들어, baseline이 10km인 2개의 전파 망원경을 고려하자. 두 망원경이 받는 신호가 동조화된다면, 각각은 마치 지름 10km의 단일 접시 안테나처럼 작동할 수 있으나, 단지 하늘을 가로지르는 좁은 영역에 국한된다.
+<ul>
+<li>이는 커다란 접시의 반대편 양 끝에 2개의 작은 조각처럼 작용하기 때문이다.</li>
+</ul></li>
+<li>즉, 두 망원경을 동조화하면, 해상도 마치 10km짜리 초거대 접시를 쓴 것처럼 매우 좋아지지만, 실제로는 접시 전체가 아니라 “양 끝 두 점”만 쓰는 것이기 때문에, 하늘에서 <strong>아주 좁은 방향 범위의 신호만 강하게 감지할 수 있다.</strong></li>
+</ul>
+<hr>
+<section id="multipyling-interferometer" class="level2">
+<h2 class="anchored" data-anchor-id="multipyling-interferometer">1.1. Multipyling Interferometer</h2>
+<ul>
+<li>간섭계에서는 전파 신호를 받아들이면 해당 신호를 원자 시계로 조정하여 모은 후, 데이터로 가공한다.<br>
+</li>
+<li>간섭계에서는 두 안테나가 받은 전기 신호를 단순히 서로 더하는 것이 아니라, 서로 곱한 뒤 시간 평균을 낸다. 이러한 계산 방식을 <strong>상관(correlation)</strong> 이라고 한다.</li>
+<li>데이터가 만들어지는 과정을 대략적으로 나타내면 다음 그림처럼 나타낼 수 있다.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="dataflow.png" class="img-fluid figure-img"></p>
+<figcaption>그림 3: 천체에서 오는 전파 신호를 두 안테나 A, B가 수신한다. 신호는 두 안테나에 서로 다른 시각에 도달하기 때문에 이를 보정해줘야 한다. 이후, 데이터 필터링, 상관기를 거쳐 complex visibility 형태의 데이터로 저장된다. (complex visibility 및 그림에서 나타나는 다양한 용어는 점차 알게될 것이다) 이미지 제작 - chatgpt</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="one-dimensional-source" class="level2">
+<h2 class="anchored" data-anchor-id="one-dimensional-source">1.2. One-Dimensional Source</h2>
+<ul>
+<li>간섭계의 본질은 하나의 단순 간섭계를 이루는 두 안테나에 도달하는 파면의 <strong>위상</strong>을 고려하는 것이다.</li>
+<li>한 전파원이 머리 바로 있으면 파동은 같은 위상으로 두 전파 망원경에 도달할 것이다.
+<ul>
+<li>이 경우, 신호들이 상관기에서 전기적으로 결합될 때, 이들은 합쳐져 보강되어 강한 신호를 검출할 것이다.</li>
+</ul></li>
+<li><strong>Phase reference position</strong>은 간섭계에서 신호의 위상이 0으로 맞춰지는 임의의 기준 방향을 의미한다. 즉, <strong>어떤 기준이 되는 방향</strong>을 말한다.</li>
+<li>다음 그림과 같은 상황을 고려해보자.</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="phase_reference_position.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>그림 4: 똑같은 두 안테나가 baseline <span class="math inline">\(D\)</span> 만큼 떨어져 있고 천체에서 오는 전파 신호가 안테나로 향하고 있다. 이때, <strong>천체 입장</strong> 에서 하나의 안테나는 가깝고 다른 하나의 안테나는 멀리 떨어져 있어서 경로차를 가지게 된다. 그 <strong>경로 차이 시간</strong>을 <span class="math inline">\(\tau_g\)</span> 라고 할 때, 이를 <strong>기하학적 지연(geometric delay)</strong> 이라고 한다. 그리고 이때의 <strong>projected baseline</strong>을 <span class="math inline">\(\Delta L\)</span>, <span class="math inline">\(D\)</span> 와 <span class="math inline">\(\Delta L\)</span> 이 이루는 각을 <span class="math inline">\(\theta\)</span> 로 두었다.</figcaption>
+</figure>
+</div>
+<ul>
+<li><strong>Projected baseline</strong>: 실제 두 안테나 사이의 baseline <span class="math inline">\(D\)</span> 를 전파 신호가 도달하는 방향에 수직인 평면에 투영한 길이를 의미한다.</li>
+<li>기하학적 지연 <span class="math inline">\(\tau_g\)</span> 는 “경로 길이 차이 / 전파 속도” 이므로 다음과 같이 나타낼 수 있다:</li>
+</ul>
+<p><span class="math display">\[
+\tau_g = \frac{D}{c}\sin \theta \tag{1.1}
+\]</span></p>
+<hr>
+<section id="fringe" class="level3">
+<h3 class="anchored" data-anchor-id="fringe">1.2.1. Fringe</h3>
+<ul>
+<li>전파 간섭계에서 수신한 데이터를 상관기에서 상관처리하여 얻어낸 패턴을 <strong>프린지(Fringe)</strong> 라고 한다. 이는 상관 결과가 시간, 주파수, 또는 delay/rate 공간에서 보이는 간섭무늬의 진동 패턴이다.
+<ul>
+<li>상관(correlation) 과정에서 천체가 가진 적색이동(redshift) 등의 정보는 모두 동일하기 때문에, 상관 시, 고려해야할 요인은 기하학적 지연(geometric delay)만 남게된다.</li>
+</ul></li>
+<li>그림 4에서 상관(correlation) 후의 출력값을 유도해보자.</li>
+<li>그림 4에서 왼쪽의 안테나로 오는 신호가 기하학적 지연을 겪는다고 가정하자. 이때, 각 안테나에서 수신되는 전압은 다음과 같다:</li>
+</ul>
+<p><span class="math display">\[
+V_1 = v_1 \cos(2\pi \nu(t -\tau_g)) \tag{1.2}
+\]</span></p>
+<p><span class="math display">\[
+V_2 = v_2 \cos(2\pi \nu t) \tag{1.3}
+\]</span></p>
+<ul>
+<li><span class="math inline">\(v_1\)</span>, <span class="math inline">\(v_2\)</span>: 관측된 전압의 진폭</li>
+<li><span class="math inline">\(\nu\)</span>: 관측 주파수</li>
+<li><span class="math inline">\(t\)</span>: 관측 시간</li>
+<li>식 (1.2), (1.3)을 서로 곱하고 평균하면 다음과 같다:</li>
+</ul>
+<p><span class="math display">\[
+r(\tau_g) = &lt;V_1 V_2&gt; = \frac{1}{2}v_1 v_2 \cos(2\pi \nu \tau_g) \tag{1.4}
+\]</span></p>
+<ul>
+<li>식 (1.4)를 얻기 위해 삼각함수의 곱을 합으로 바꾸는 공식을 이용했으며, 충분히 긴 시간 동안 평균했다고 가정했다.</li>
+<li>두 전파 망원경이 동일하다면 다음과 같이 식 (1.4)를 고쳐쓸 수 있다:</li>
+</ul>
+<p><span class="math display">\[
+r(\tau_g) = &lt;V_1 V_2&gt; = \frac{1}{2}V^2 \cos (2\pi \nu \tau_g) \approx P \cos (\omega \tau_g) \tag{1.5}
+\]</span></p>
+<ul>
+<li><p><span class="math inline">\(\omega = 2\pi \nu\)</span>: 각진동수</p></li>
+<li><p>식 (1.5)에서 상관기 출력은 <span class="math inline">\(\tau_g\)</span> 에 따라 <strong>사인형(sinusoidal)</strong> 으로 진동한다. 왜냐하면 <span class="math inline">\(\tau_g\)</span> 가 baseline 길이 <span class="math inline">\(D\)</span> 와 천체 방향 <span class="math inline">\(\theta\)</span> 에 의존하기 때문이다.</p>
+<ul>
+<li><span class="math inline">\(\theta\)</span> 는 관측 시간동안 지구가 자전함에 따라 천체의 고도가 달라지면서 같이 변화한다.</li>
+</ul></li>
+<li><p>여기서 <strong>사인형의 출력 <span class="math inline">\((\cos(2\pi \nu \tau_g\)</span> ))을 간섭계의 프린지(Fringe)</strong> 라고 한다.</p></li>
+</ul>
+<div style="height: 3rem;">
+
+</div>
+<ul>
+<li>식 (1.5)에서 <span class="math inline">\(l = \cos(\pi /2 - \theta) = \sin \theta\)</span> 라고 하고 <span class="math inline">\(u = D / \lambda\)</span> 라고 두면 상관기의 출력은 다음과 같다:</li>
+</ul>
+<p><span class="math display">\[
+r(\tau_g) \approx P \cos(2\pi ul) \tag{1.6}
+\]</span></p>
+<ul>
+<li>식 (1.6)은 <span class="math inline">\(u\)</span> 와 <span class="math inline">\(l\)</span> 의 변화에 따라 진동한다. 이를 그림으로 나타내면 다음과 같다:</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fringe.png" class="img-fluid figure-img" style="width:80.0%"></p>
+<figcaption>그림 5: 가로 축은 기준 방향(<span class="math inline">\(\theta = 0^{\circ}\)</span>) 으로부터 벗어난 작은 각도 offset을 의미한다. 세로 축은 이러한 offset에 따라서 정규화된 간섭계의 응답이다.</figcaption>
+</figure>
+</div>
+<ul>
+<li>위 그림에서 마루는 <span class="math inline">\(2\pi u l = 2\pi n\)</span> (단, <span class="math inline">\(n\)</span> 은 정수)을 만족해야 하므로 <span class="math inline">\(l = n /u\)</span> 이다. 이웃한 두 마루 사이의 간격은 다음과 같다:</li>
+</ul>
+<p><span class="math display">\[
+\Delta l = l_{n+1} - l_n = \frac{n+1}{u} - \frac{n}{u} = \frac{1}{u} \sim \frac{\lambda}{D} \tag{1.7}
+\]</span></p>
+<ul>
+<li>즉, 식 (1.7)에 따르면 그림 5의 두 마루 사이의 간격은 <strong>간섭계의 분해능</strong>을 의미한다!</li>
+<li>그림 5에서 <span class="math inline">\(u = 5\)</span>이므로 만약에 관측 파장이 10cm라고 하면, 이 간섭계의 baseline <span class="math inline">\(D\)</span> 는 50cm 임을 알 수 있다.
+<ul>
+<li>간섭계의 분해능을 알고 관측 파장이 주어지면 두 전파 망원경의 baseline의 길이를 계산할 수 있다.</li>
+</ul></li>
+<li><strong><span class="math inline">\(u\)</span> 가 더 커지면(분해능이 좋아지면) 프린지(fringe) 간격이 더 촘촘해지고 baseline 길이가 더 길다</strong>는 것을 알 수 있다.</li>
+<li>프린지(fringe)는 물결 모양을 가지고 있어 마루와 골이 있다. 그래서 양수와 음수 영역을 모두 가지는데, 만약, 양수 영역에 대한 정보만 얻고 싶다면 위상 변화를 주어 보강 간섭을 일으키면 된다.</li>
+</ul>
+<div style="height: 3rem;">
+
+</div>
+<ul>
+<li>종종 논문에서 <strong>Fringe spacing</strong>이라는 표현이 나오는데, 이는 <span class="math inline">\(\Delta l\)</span> 을 원의 형태로 나타낸 것을 의미한다. 예를 들어서 <span class="math inline">\(25{\rm \mu as}\)</span>, <span class="math inline">\(50{\rm \mu as}\)</span>인 Fringe spacing은 간섭계의 각분해능을 아래 이미지와 같이 원의 형태로 나타낸 것이다. (아래 사진 참고)</li>
+</ul>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="fringe_spacing.png" class="img-fluid figure-img"></p>
+<figcaption>그림 6: 위 그림에서 작은 원이 <span class="math inline">\(25{\rm \mu as}\)</span>, 큰 원이 <span class="math inline">\(50{\rm \mu as}\)</span> 인 fringe spacing을 나타낸다. (3)</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="instrumental-delay" class="level3">
+<h3 class="anchored" data-anchor-id="instrumental-delay">1.2.2. Instrumental delay</h3>
+<ul>
+<li><strong>기기 지연(Instrumental delay)</strong>은 phase reference position으로부터 오는 복사의 기하학적 지연과 같아지도록 지속적으로 조정된다.</li>
+<li>phase reference position의 방향을 <span class="math inline">\(\theta_0\)</span> 라고 하면, phase reference position에서 오는 기하학적 지연을 상쇄하기 위한 보상 지연 <span class="math inline">\(\tau_i\)</span> 는 다음과 같다:</li>
+</ul>
+<p><span class="math display">\[
+\tau_i=\frac{D}{c}\sin\theta_0 \tag{1.8}
+\]</span></p>
+<ul>
+<li>식 (1.8)은 식 (1.1)과 형태가 같은데, 이는 임의의 <span class="math inline">\(\theta\)</span> 에 대한 <strong>순 지연(net delay)</strong>는 “기하학적 지연 - 기기 지연”으로 주어기기 때문이다:</li>
+</ul>
+<p><span class="math display">\[
+\tau = \frac{D}{c}\sin \theta - \tau_i \tag{1.9}
+\]</span></p>
+<ul>
+<li>만약 <span class="math inline">\(\theta = \theta_0\)</span> 이면, <span class="math inline">\(\tau = 0\)</span> 이 되면서 phase reference position에서 오는 신호는 두 안테나 사이의 위상차가 제거되어 프린지 위상이 기준값으로 고정되는 것을 알 수 있다.</li>
+<li>작은 각도 <span class="math inline">\(\Delta \theta\)</span> 만큼 벗어난 방향에서 들어오는 기하학적 지연은 다음과 같이 나타낼 수 있다:</li>
+</ul>
+<p><span class="math display">\[
+\tau_g (\theta_0 -\Delta \theta) = \frac{D}{c}\sin (\theta_0 - \Delta \theta) \tag{1.10}
+\]</span></p>
+<ul>
+<li>기기는 phase reference position에 맞춰진 지연 <span class="math inline">\(\tau_i\)</span> 만 보상한다. 식 (1.10) 및 지구 자전까지 고려한 순 지연은 다음과 같다:</li>
+</ul>
+<p><span class="math display">\[
+\tau \simeq \frac{D}{c} \Delta \theta \cos \theta_0 \tag{1.11}
+\]</span></p>
+<ul>
+<li>지구 자전에 의해 <span class="math inline">\(\theta_0\)</span> 에 관한 기하학적 관계가 변하기 때문에 실제 관측에서는 <span class="math inline">\(\tau_i\)</span> 가 시간에 따라 계속 조정된다.</li>
+</ul>
+<div style="height: 2rem;">
+
+</div>
+<ul>
+<li>기하학적 지연은 저주파의 경우, 전리층(ionsphere)의 변동, 고주파의 경우, 수증기의 진동으로 인해 발생할 수 있다.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="projected-baseline-and-fringe-response" class="level2">
+<h2 class="anchored" data-anchor-id="projected-baseline-and-fringe-response">1.3. Projected Baseline and Fringe Response</h2>
+<ul>
+<li>하늘의 어느 위치에 있는 광원을 관측하더라도, 프린지의 각분해능은 광원 방향에 수직한 평면에 투영한 projected baseline 길이에 의해 결정된다.</li>
+<li>phase reference position <span class="math inline">\(\theta_0\)</span> 에 대해서 projected baseline을 파장 단위로 정규화한 양을 도입할 수 있는데, 이는 다음과 같이 나타난다:</li>
+</ul>
+<p><span class="math display">\[
+u =\frac{D\cos\theta_0}{\lambda} = \frac{\nu_0 D\cos\theta_0}{c} \tag{1.12}
+\]</span></p>
+<ul>
+<li>즉, <span class="math inline">\(u\)</span> 는 두 안테나 사이의 projected baseline을 파장 단위로 정규화해서 나타낸 무차원 단위의 길이를 의미한다.</li>
+<li>이후에 보겠지만, 양의 <span class="math inline">\(u\)</span> 값은 <strong>공간 주파수(spatial frequency)</strong> 로 해석된다.</li>
+<li>작은 각도 <span class="math inline">\(\Delta\theta\)</span> 에 대해 방향 <span class="math inline">\((\theta_0-\Delta\theta)\)</span> 에서 오는 프린지 응답은 다음과 같이 계산된다:</li>
+</ul>
+<p><span class="math display">\[
+\cos(2\pi\nu_0\tau)=\cos\{2\pi\nu_0 [\frac{D}{c}\sin(\theta_0-\Delta\theta)-\tau_i]\}
+\]</span></p>
+<p><span class="math display">\[
+\simeq  \cos\left[2\pi\nu_0(D/c)\sin\Delta\theta\cos\theta_0 \right] \tag{1.13}  
+\]</span></p>
+<ul>
+<li>식 (1.13)을 이용해서 프린지 응답을 나타내면 다음과 같다:</li>
+</ul>
+<p><span class="math display">\[
+F(l) = \cos(2\pi\nu_0\tau) = \cos(2\pi u l), \tag{1.14}
+\]</span></p>
+<ul>
+<li>단, <span class="math inline">\(l=\sin\Delta\theta\)</span> 이다.</li>
+<li>식 (1.14)는 <span class="math inline">\(\theta=\theta_0-\Delta\theta\)</span> 에 위치한 점광원에 대한 응답을 의미한다.</li>
+</ul>
+<hr>
+</section>
+<section id="basic-interferometer-discussion" class="level2">
+<h2 class="anchored" data-anchor-id="basic-interferometer-discussion">1.4. Basic Interferometer Discussion</h2>
+<ul>
+<li>간섭계의 분해능은 baseline 길이에만 의존하지 않는다. 시간 및 위도에 따라 변하는 물리량이 많기 때문이다. 따라서 다양한 요인에 의해서 간섭계 분해능은 달라진다.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="reference" class="level1">
+<h1>Reference</h1>
+<ul>
+<li><ol type="1">
+<li><a href="https://achael.github.io/_pages/imaging/">Andrew Chael, github</a></li>
+</ol></li>
+<li><ol start="2" type="1">
+<li><a href="https://www.hellodd.com/news/articleView.html?idxno=107214">“블랙홀도 선명하게” 韓 국제거대전파망원경 건설 참여, hellodd.com</a></li>
+</ol></li>
+<li><ol start="3" type="1">
+<li><a href="https://arxiv.org/abs/2501.05518">Röder, J., Wielgus, M., Lobanov, A. P., et al.&nbsp;2025, A multi-frequency study of sub-parsec jets with the Event Horizon Telescope, Astronomy &amp; Astrophysics</a></li>
+</ol></li>
+</ul>
+<style>
+h2 {
+border-bottom: none !important;
+}
+</style>
+
+
+</section>
+
+</main> <!-- /main -->
+<script>
+
+(function () {
+
+  const separators = /\s*(?:>|\/|::)\s*/;
+
+  const pathSeparator = " > ";
+
+  const relatedLinks = [
+
+    { emoji: "🔭", label: "한국천문연구원", url: "https://www.kasi.re.kr/" },
+
+    { emoji: "🌌", label: "한국천문학회", url: "https://www.kas.org/index.html" },
+
+    { emoji: "📚", label: "네이버 천문학백과", url: "https://terms.naver.com/~%EC%B2%9C%EB%AC%B8%ED%95%99%EB%B0%B1%EA%B3%BC-4jCeB76aXmnbp44IBL8pRW" },
+
+    { emoji: "📄", label: "Astrophysics arxiv", url: "https://arxiv.org/archive/astro-ph" },
+
+  ];
+
+
+
+  function createRelatedLinks() {
+
+    const navigation = document.createElement("nav");
+
+    navigation.className = "category-related-links";
+
+    navigation.setAttribute("aria-label", "관련 링크");
+
+
+
+    const heading = document.createElement("h2");
+
+    heading.textContent = "관련 링크";
+
+    const list = document.createElement("ul");
+
+
+
+    relatedLinks.forEach(({ emoji, label, url }) => {
+
+      const item = document.createElement("li");
+
+      const link = document.createElement("a");
+
+      link.href = url;
+
+      const icon = document.createElement("span");
+
+      icon.className = "related-link-emoji";
+
+      icon.setAttribute("aria-hidden", "true");
+
+      icon.textContent = emoji;
+
+      const name = document.createElement("span");
+
+      name.textContent = label;
+
+      link.append(icon, name);
+
+      item.appendChild(link);
+
+      list.appendChild(item);
+
+    });
+
+
+
+    navigation.append(heading, list);
+
+    return navigation;
+
+  }
+
+
+
+  function splitPath(category) {
+
+    return category
+
+      .split(separators)
+
+      .map((part) => part.trim())
+
+      .filter(Boolean);
+
+  }
+
+
+
+  function getPostCategories(post) {
+
+    return Array.from(post.querySelectorAll(".listing-category"))
+
+      .map((category) => category.textContent.trim())
+
+      .filter(Boolean);
+
+  }
+
+
+
+  function getPostPaths(post) {
+
+    return getPostCategories(post)
+
+      .map((category) => splitPath(category).join(pathSeparator))
+
+      .filter(Boolean);
+
+  }
+
+
+
+  function includesPath(paths, selectedPath) {
+
+    if (!selectedPath) {
+
+      return true;
+
+    }
+
+
+
+    return paths.some((path) =>
+
+      path === selectedPath || path.startsWith(selectedPath + pathSeparator)
+
+    );
+
+  }
+
+
+
+  function ensureNode(root, parts) {
+
+    let node = root;
+
+    let path = "";
+
+
+
+    for (const part of parts) {
+
+      path = path ? path + pathSeparator + part : part;
+
+
+
+      if (!node.children.has(part)) {
+
+        node.children.set(part, {
+
+          label: part,
+
+          path,
+
+          count: 0,
+
+          children: new Map(),
+
+        });
+
+      }
+
+
+
+      node = node.children.get(part);
+
+    }
+
+  }
+
+
+
+  function buildTree(posts) {
+
+    const root = { label: "All", path: "", count: posts.length, children: new Map() };
+
+    const counts = new Map();
+
+
+
+    posts.forEach((post) => {
+
+      const countedPaths = new Set();
+
+
+
+      getPostPaths(post).forEach((path) => {
+
+        const parts = splitPath(path);
+
+        ensureNode(root, parts);
+
+
+
+        parts.forEach((_part, index) => {
+
+          countedPaths.add(parts.slice(0, index + 1).join(pathSeparator));
+
+        });
+
+      });
+
+
+
+      countedPaths.forEach((path) => {
+
+        counts.set(path, (counts.get(path) || 0) + 1);
+
+      });
+
+    });
+
+
+
+    function applyCounts(node) {
+
+      node.children.forEach((child) => {
+
+        child.count = counts.get(child.path) || 0;
+
+        applyCounts(child);
+
+      });
+
+    }
+
+
+
+    applyCounts(root);
+
+    return root;
+
+  }
+
+
+
+  function createButton(node, state, onSelect) {
+
+    const button = document.createElement("button");
+
+    button.type = "button";
+
+    button.dataset.categoryPath = node.path;
+
+    button.setAttribute("aria-label", node.path || "All categories");
+
+
+
+    if (node.path && node.children && node.children.size) {
+
+      const toggle = document.createElement("span");
+
+      toggle.className = "category-toggle";
+
+      toggle.setAttribute("aria-hidden", "true");
+
+      toggle.textContent = state.expanded.has(node.path) ? "-" : "+";
+
+      button.appendChild(toggle);
+
+    }
+
+
+
+    const label = document.createElement("span");
+
+    label.textContent = node.label;
+
+    button.appendChild(label);
+
+
+
+    const count = document.createElement("span");
+
+    count.className = "category-count";
+
+    count.textContent = " (" + node.count + ")";
+
+    button.appendChild(count);
+
+
+
+    if (state.selectedPath === node.path) {
+
+      button.classList.add("active");
+
+    }
+
+
+
+    button.addEventListener("click", () => onSelect(node));
+
+    return button;
+
+  }
+
+
+
+  function renderNode(node, state, onSelect) {
+
+    const li = document.createElement("li");
+
+    const hasChildren = node.children && node.children.size > 0;
+
+
+
+    if (hasChildren && !state.expanded.has(node.path)) {
+
+      li.classList.add("is-collapsed");
+
+    }
+
+
+
+    li.appendChild(createButton(node, state, onSelect));
+
+
+
+    if (hasChildren) {
+
+      const ul = document.createElement("ul");
+
+
+
+      Array.from(node.children.values())
+
+        .sort((a, b) => a.label.localeCompare(b.label))
+
+        .forEach((child) => ul.appendChild(renderNode(child, state, onSelect)));
+
+
+
+      li.appendChild(ul);
+
+    }
+
+
+
+    return li;
+
+  }
+
+
+
+  function renderTree(container, tree, state, onSelect) {
+
+    container.innerHTML = "";
+
+    container.className = "category-tree";
+
+    container.appendChild(createButton(tree, state, onSelect));
+
+
+
+    const ul = document.createElement("ul");
+
+    Array.from(tree.children.values())
+
+      .sort((a, b) => a.label.localeCompare(b.label))
+
+      .forEach((child) => ul.appendChild(renderNode(child, state, onSelect)));
+
+    container.appendChild(ul);
+
+  }
+
+
+
+  function filterPosts(posts, selectedPath, listing) {
+
+    if (listing) {
+
+      listing.filter(
+
+        selectedPath
+
+          ? (item) =>
+
+              item.elm && includesPath(getPostPaths(item.elm), selectedPath)
+
+          : undefined
+
+      );
+
+      return;
+
+    }
+
+
+
+    let visibleCount = 0;
+
+
+
+    posts.forEach((post) => {
+
+      const visible = includesPath(getPostPaths(post), selectedPath);
+
+      post.classList.toggle("d-none", !visible);
+
+      visibleCount += visible ? 1 : 0;
+
+    });
+
+
+
+    const noMatch = document.querySelector(".listing-no-matching");
+
+    if (noMatch) {
+
+      noMatch.classList.toggle("d-none", visibleCount > 0);
+
+    }
+
+  }
+
+
+
+  function createMobileCategoryTree(listingElement) {
+
+    const main = listingElement?.closest("main");
+
+
+
+    if (!main) {
+
+      return null;
+
+    }
+
+
+
+    const panel = document.createElement("section");
+
+    panel.className = "mobile-category-panel";
+
+    panel.setAttribute("aria-label", "Categories");
+
+
+
+    const heading = document.createElement("h2");
+
+    heading.className = "mobile-category-title";
+
+    heading.textContent = "Categories";
+
+
+
+    const container = document.createElement("div");
+
+    panel.append(heading, container);
+
+    main.insertBefore(panel, listingElement);
+
+
+
+    return container;
+
+  }
+
+
+
+  function setupCategoryTree() {
+
+    const defaultCategories = document.querySelector(".quarto-listing-category");
+
+    const title = document.querySelector(".quarto-listing-category-title");
+
+    const listingElement = document.querySelector(".quarto-listing[id]");
+
+    const listing = listingElement
+
+      ? window["quarto-listings"]?.[listingElement.id]
+
+      : null;
+
+    const posts = listing
+
+      ? listing.items.map((item) => item.elm).filter(Boolean)
+
+      : Array.from(document.querySelectorAll(".quarto-post, .quarto-grid-item"));
+
+
+
+    if (!defaultCategories || posts.length === 0) {
+
+      return;
+
+    }
+
+
+
+    const tree = buildTree(posts);
+
+    const state = {
+
+      selectedPath: "",
+
+      expanded: new Set([""]),
+
+    };
+
+
+
+    const treeContainer = document.createElement("div");
+
+    defaultCategories.replaceWith(treeContainer);
+
+    const treeContainers = [treeContainer];
+
+    const mobileTreeContainer = createMobileCategoryTree(listingElement);
+
+
+
+    if (mobileTreeContainer) {
+
+      treeContainers.push(mobileTreeContainer);
+
+    }
+
+
+
+    treeContainers.forEach((container) => {
+
+      container.after(createRelatedLinks());
+
+    });
+
+
+
+    if (title) {
+
+      title.textContent = "Categories";
+
+    }
+
+
+
+    function renderCategoryTrees() {
+
+      treeContainers.forEach((container) => {
+
+        renderTree(container, tree, state, selectCategory);
+
+      });
+
+    }
+
+
+
+    function selectCategory(node) {
+
+      state.selectedPath = node.path;
+
+
+
+      if (node.children && node.children.size) {
+
+        if (state.expanded.has(node.path) && node.path) {
+
+          state.expanded.delete(node.path);
+
+        } else {
+
+          state.expanded.add(node.path);
+
+        }
+
+      }
+
+
+
+      filterPosts(posts, state.selectedPath, listing);
+
+      renderCategoryTrees();
+
+    }
+
+
+
+    posts.forEach((post) => {
+
+      post.querySelectorAll(".listing-category").forEach((category) => {
+
+        category.addEventListener("click", (event) => {
+
+          event.preventDefault();
+
+          event.stopPropagation();
+
+
+
+          state.selectedPath = splitPath(category.textContent.trim()).join(pathSeparator);
+
+          filterPosts(posts, state.selectedPath, listing);
+
+          renderCategoryTrees();
+
+        });
+
+      });
+
+    });
+
+
+
+    renderCategoryTrees();
+
+  }
+
+
+
+  if (document.readyState === "loading") {
+
+    document.addEventListener("DOMContentLoaded", setupCategoryTree);
+
+  } else {
+
+    setupCategoryTree();
+
+  }
+
+})();
+
+</script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.css">
+<script src="https://cdn.jsdelivr.net/npm/pseudocode@2.4.1/build/pseudocode.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  function renderAllPseudocodes() {
+    if (typeof pseudocode === "undefined") return;
+    document.querySelectorAll(".pseudocode-container").forEach(function (el) {
+      if (el.dataset.rendered === "true") return;
+      var pre = el.querySelector(".pseudocode");
+      if (!pre) return;
+
+      var options = {
+        indentSize: el.dataset.indentSize || "1.2em",
+        commentDelimiter: " " + (el.dataset.commentDelimiter || "//") + " ",
+        lineNumber: el.dataset.lineNumber === "true",
+        lineNumberPunc: el.dataset.lineNumberPunc || ":",
+        noEnd: el.dataset.noEnd === "true",
+        scopeLines: el.dataset.indentLines === "true",
+        titlePrefix: el.dataset.captionPrefix || "Algorithm",
+      };
+
+      pseudocode.renderElement(pre, options);
+      el.dataset.rendered = "true";
+
+      var captionSpan = el.querySelector(".ps-root > .ps-algorithm > .ps-line > .ps-keyword");
+      if (captionSpan && el.dataset.pseudocodeNumber) {
+        captionSpan.innerHTML = (el.dataset.captionPrefix || "Algorithm") + " " + el.dataset.pseudocodeNumber + " ";
+      }
+    });
+  }
+
+  renderAllPseudocodes();
+
+  if (window.MathJax) {
+    if (window.MathJax.startup && window.MathJax.startup.promise) {
+      window.MathJax.startup.promise.then(function () {
+        if (window.MathJax.typesetPromise) {
+          window.MathJax.typesetPromise();
+        }
+      });
+    }
+  }
+});
+</script>
+<style>
+.ps-root {
+  font-family: KaTeX_Main, "Times New Roman", Times, serif;
+  font-size: 1.02em;
+  font-weight: 400 !important;
+  color: var(--bs-body-color, #212529);
+}
+.ps-root .ps-line {
+  font-weight: 400;
+  line-height: 1.45;
+}
+.ps-root .ps-keyword {
+  font-weight: 700 !important;
+  color: var(--bs-body-color, #111);
+}
+.ps-root .ps-funcname {
+  font-weight: 600 !important;
+}
+.ps-root .ps-comment {
+  font-weight: 400;
+  color: var(--bs-secondary-color, #6c757d);
+}
+.ps-root .ps-linenum {
+  font-weight: 400;
+  color: var(--bs-secondary-color, #888);
+}
+.ps-root .ps-algorithm {
+  border-top: 2px solid var(--bs-heading-color, #2f6f73);
+  border-bottom: 2px solid var(--bs-heading-color, #2f6f73);
+  margin: 1.25rem 0;
+  padding: 0.5rem 0;
+}
+.ps-root .ps-algorithm.with-caption > .ps-line:first-child {
+  border-bottom: 1.5px solid var(--bs-border-color, #dee2e6);
+  padding-bottom: 0.4rem;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+.ps-root .ps-algorithm.with-caption > .ps-line:first-child .ps-keyword {
+  font-weight: 700 !important;
+}
+.pseudocode-container {
+  text-align: left;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+}
+</style>
+<script type="module" src="../../../assets/post-likes.js"></script>
+
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/youngandyou\.github\.io\/mathastro\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+    <script type="text/javascript">
+    (function(d) {
+      d.querySelectorAll(".pseudocode-container").forEach(function(el) {
+        let pseudocodeOptions = {
+          indentSize: el.dataset.indentSize,
+          commentDelimiter: " " + el.dataset.commentDelimiter + " ",
+          lineNumber: el.dataset.lineNumber.toLowerCase() === "true",
+          lineNumberPunc: el.dataset.lineNumberPunc,
+          noEnd: el.dataset.noEnd.toLowerCase() === "true",
+          scopeLines: el.dataset.indentLines.toLowerCase() === "true",
+          titlePrefix: el.dataset.captionPrefix,
+        };
+        pseudocode.renderElement(el.querySelector(".pseudocode"), pseudocodeOptions);
+      });
+    })(document);
+    (function(d) {
+      d.querySelectorAll(".pseudocode-container").forEach(function(el) {
+        let captionSpan = el.querySelector(".ps-root > .ps-algorithm > .ps-line > .ps-keyword")
+        if (captionSpan !== null) {
+          let captionPrefix = el.dataset.captionPrefix + " ";
+          let captionNumber = "";
+          if (el.dataset.pseudocodeNumber) {
+            captionNumber = el.dataset.pseudocodeNumber + " ";
+            if (el.dataset.chapterLevel) {
+              captionNumber = el.dataset.chapterLevel + "." + captionNumber;
+            }
+          }
+          captionSpan.innerHTML = captionPrefix + captionNumber;
+        }
+      });
+    })(document);
+    </script>
+  
+
+
+
+
+</body></html>

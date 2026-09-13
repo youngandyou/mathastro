@@ -204,6 +204,17 @@ main.column-page-left > #title-block-header,
   margin-bottom: 3.2rem;
 }
 
+/* Hide cover story when category filter is active */
+body.category-active .magazine-cover-story,
+html.category-active .magazine-cover-story {
+  display: none !important;
+}
+
+body.category-active .magazine-section-divider,
+html.category-active .magazine-section-divider {
+  margin-top: 1.2rem;
+}
+
 .cover-story-card {
   display: grid;
   grid-template-columns: 1.35fr 1fr;
@@ -331,6 +342,10 @@ main.column-page-left > #title-block-header,
 }
 
 /* 5. Quarto Grid Listing Magazine Styles */
+.listing-reading-time {
+  display: none !important;
+}
+
 .quarto-grid {
   gap: 1.6rem !important;
 }

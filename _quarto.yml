@@ -12,13 +12,37 @@ website:
   title: "MathAstro"
   navbar:
     search: true
+    collapse: true
+    left:
+      - href: index.qmd
+        text: "Home"
+      - href: index.qmd#category=Math
+        text: "Mathematics (수학)"
+      - href: index.qmd#category=Astronomy
+        text: "Astronomy (천문학)"
+      - href: index.qmd#category=Physics
+        text: "Physics (물리학)"
+      - href: index.qmd#category=Computer
+        text: "Computer Science"
+      - text: "관련 링크"
+        menu:
+          - href: https://www.kasi.re.kr/
+            text: "🔭 한국천문연구원"
+          - href: https://www.kas.org/index.html
+            text: "🌌 한국천문학회"
+          - href: https://terms.naver.com/~%EC%B2%9C%EB%AC%B8%ED%95%99%EB%B0%B1%EA%B3%BC-4jCeB76aXmnbp44IBL8pRW
+            text: "📚 네이버 천문학백과"
+          - href: https://arxiv.org/archive/astro-ph
+            text: "📄 Astrophysics arXiv"
     right:
-      - href: about.qmd
-        text: "블로그 소개"
-      - href: team.qmd
-        text: "운영진 소개"
       - href: qna/
         text: "Q&A"
+      - text: "About"
+        menu:
+          - href: about.qmd
+            text: "블로그 소개"
+          - href: team.qmd
+            text: "운영진 소개"
 format:
   html:
     theme:

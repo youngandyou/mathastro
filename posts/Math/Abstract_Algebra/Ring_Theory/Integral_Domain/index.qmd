@@ -5,6 +5,7 @@ date: "2026-09-11 00:00:04"
 description: "추상대수학의 영인자(Zero Divisor)와 정역(Integral Domain)에 대해서 설명한다."
 categories: 
   - Math > Abstract Algebra > Ring Theory
+draft: true
 ---
 
 # Definition

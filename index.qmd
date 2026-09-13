@@ -15,7 +15,7 @@ listing:
   grid-item-border: true
   image-height: 180px
   fields: [image, date, title, author, reading-time, description, categories]
-  categories: true
+  categories: false
   sort-ui: false
   filter-ui: false
   feed: true
@@ -45,6 +45,58 @@ listing:
   </div>
   <div class="masthead-rule-line"></div>
 </header>
+
+<!-- Magazine Menu Bar (Quanta & KIAS Horizon style) -->
+<nav class="magazine-nav-bar">
+  <div class="magazine-nav-inner">
+    <ul class="magazine-nav-links">
+      <li><a href="#" class="mag-link active" onclick="filterArticles('', this); return false;">HOME</a></li>
+      <li><a href="#category=Math" class="mag-link" onclick="filterArticles('Math', this); return false;">MATHEMATICS (수학)</a></li>
+      <li><a href="#category=Astronomy" class="mag-link" onclick="filterArticles('Astronomy', this); return false;">ASTRONOMY (천문학)</a></li>
+      <li><a href="#category=Physics" class="mag-link" onclick="filterArticles('Physics', this); return false;">PHYSICS (물리학)</a></li>
+      <li><a href="#category=Computer" class="mag-link" onclick="filterArticles('Computer', this); return false;">COMPUTER SCIENCE</a></li>
+      <li class="mag-nav-dropdown">
+        <a href="#" class="mag-link mag-dropdown-trigger" onclick="return false;">관련 링크 <span class="dropdown-caret">▾</span></a>
+        <ul class="mag-dropdown-content">
+          <li><a href="https://www.kasi.re.kr/" target="_blank" rel="noopener noreferrer">🔭 한국천문연구원</a></li>
+          <li><a href="https://www.kas.org/index.html" target="_blank" rel="noopener noreferrer">🌌 한국천문학회</a></li>
+          <li><a href="https://terms.naver.com/~%EC%B2%9C%EB%AC%B8%ED%95%99%EB%B0%B1%EA%B3%BC-4jCeB76aXmnbp44IBL8pRW" target="_blank" rel="noopener noreferrer">📚 네이버 천문학백과</a></li>
+          <li><a href="https://arxiv.org/archive/astro-ph" target="_blank" rel="noopener noreferrer">📄 Astrophysics arXiv</a></li>
+        </ul>
+      </li>
+      <li><a href="qna/" class="mag-link">Q&amp;A</a></li>
+      <li class="mag-nav-dropdown">
+        <a href="#" class="mag-link mag-dropdown-trigger" onclick="return false;">ABOUT <span class="dropdown-caret">▾</span></a>
+        <ul class="mag-dropdown-content">
+          <li><a href="about.html">📖 블로그 소개</a></li>
+          <li><a href="team.html">👥 운영진 소개</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+function filterArticles(category, el) {
+  if (el) {
+    document.querySelectorAll('.mag-link').forEach(function(link) {
+      link.classList.remove('active');
+    });
+    el.classList.add('active');
+  }
+  var listingEl = document.querySelector('.quarto-listing[id]');
+  var listing = listingEl ? (window['quarto-listings'] ? window['quarto-listings'][listingEl.id] : null) : null;
+  if (!listing) return;
+  if (!category) {
+    listing.filter();
+  } else {
+    listing.filter(function(item) {
+      var cats = (item.values && item.values()['listing-categories']) || '';
+      return cats.toLowerCase().indexOf(category.toLowerCase()) !== -1;
+    });
+  }
+}
+</script>
 
 <!-- Featured Cover Story (Quanta Magazine style) -->
 <section class="magazine-cover-story">

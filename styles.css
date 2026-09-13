@@ -213,6 +213,17 @@ html.category-active .magazine-cover-story {
 body.category-active .magazine-section-divider,
 html.category-active .magazine-section-divider {
   margin-top: 1.2rem;
+  padding-bottom: 0.35rem;
+}
+
+body.category-active .magazine-section-sub,
+html.category-active .magazine-section-sub {
+  display: none !important;
+}
+
+body.category-active .magazine-section-title,
+html.category-active .magazine-section-title {
+  margin-bottom: 0.15rem;
 }
 
 .cover-story-card {

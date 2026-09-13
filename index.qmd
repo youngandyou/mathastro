@@ -58,10 +58,10 @@ listing:
 
 document.addEventListener("DOMContentLoaded", function() {
   var catInfo = {
-    'math': { title: 'Mathematics (수학)', desc: '수학 분야의 엄밀한 연구 노트 및 학술 개념 아카이브' },
-    'astronomy': { title: 'Astronomy (천문학)', desc: '관측천문학, 전파천문학 및 천체물리학 연구 아티클' },
-    'physics': { title: 'Physics (물리학)', desc: '이론물리학, 열역학 및 시공간 기하학 탐구 아티클' },
-    'computer': { title: 'Computer Science', desc: '알고리즘, 수치해석 및 컴퓨터 과학 연구 노트' }
+    'math': { title: 'Mathematics (수학)' },
+    'astronomy': { title: 'Astronomy (천문학)' },
+    'physics': { title: 'Physics (물리학)' },
+    'computer': { title: 'Computer Science' }
   };
 
   function updateView() {
@@ -82,9 +82,12 @@ document.addEventListener("DOMContentLoaded", function() {
       document.body.classList.add('category-active');
       if (coverEl) coverEl.style.display = 'none';
 
-      var info = catInfo[catKey] || { title: rawCat + ' 아티클', desc: rawCat + ' 분야 탐구 아티클 및 연구 노트' };
+      var info = catInfo[catKey] || { title: rawCat };
       if (sectionTitleEl) sectionTitleEl.textContent = info.title;
-      if (sectionSubEl) sectionSubEl.textContent = info.desc;
+      if (sectionSubEl) {
+        sectionSubEl.textContent = '';
+        sectionSubEl.style.display = 'none';
+      }
 
       if (listing) {
         listing.filter(function(item) {
@@ -98,7 +101,10 @@ document.addEventListener("DOMContentLoaded", function() {
       if (coverEl) coverEl.style.display = '';
 
       if (sectionTitleEl) sectionTitleEl.textContent = '최신 아티클 & 학술 탐구 (Latest Articles)';
-      if (sectionSubEl) sectionSubEl.textContent = '모든 학문 분야의 최신 연구 노트 및 개념 해설';
+      if (sectionSubEl) {
+        sectionSubEl.textContent = '모든 학문 분야의 최신 연구 노트 및 개념 해설';
+        sectionSubEl.style.display = '';
+      }
 
       if (listing) {
         listing.filter();

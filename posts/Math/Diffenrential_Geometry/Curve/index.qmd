@@ -1,0 +1,32 @@
+---
+title: "Curve"
+author: "Youmin Chun"
+date: "2026-09-13 00:00:01"
+description: "미분기하학에서 다루는 곡선, 그리고 곡선과 관련된 여러 개념에 대해서 설명한다."
+categories: 
+  - Math > Differential Geometry
+---
+
+# Definition
+**(i)** A map $\alpha: (a, b) \to \mathbb{R}^3$ is called a ***curve***.
+
+**(ii)** A curve $\alpha: (a, b) \to \mathbb{R}^3$ is called a ***regular curve*** if $\alpha \in C^{\infty}$ and $\alpha'(t) \neq \mathbf{0}, \forall t \in (a, b)$.
+
+**(iii)** For a curve $\alpha: (a, b) \to \mathbb{R}^3$, the vector $\alpha'(t_0)$ is called the ***velocity vector*** at $t = t_0$, and the map $\alpha'$ is called the ***velocity vector field***.
+
+**(iv)** For a curve $\alpha: (a, b) \to \mathbb{R}^3$, the real number $\vert \alpha'(t_0) \vert$ is called the ***speed*** of $\alpha$ at $t = t_0$. If $\vert \alpha'(t) \vert = 1, \forall t \in (a, b)$, then $\alpha$ is called a ***unit speed curve***.
+
+**(v)** For a regular curve $\alpha: (a, b) \to \mathbb{R}^3$, the map $T(t) = \frac{\alpha'(t)}{\vert \alpha'(t) \vert}$ is called the ***tangent vector field***.
+
+**(vi)** For a regular curve $\alpha: (a, b) \to \mathbb{R}^3$, the set 
+
+$$l = \{ \mathbf{w} \in \mathbb{R}^3 \mid \mathbf{w} = \alpha(t_0) + \lambda T(t_0), \lambda \in \mathbb{R} \}$$
+
+is called the ***tangent line*** of $\alpha$ at $t = t_0$.
+
+그냥 함수이기만 하면 곡선(curve)이라고 정의해 놓았지만, 앞으로 우리가 다루게 될 곡선은 거의 모든 경우 정칙 곡선(regular curve) 뿐이다. 따라서 앞으로 별 말 없어도 곡선이라고 하면 정칙 곡선을 가져왔다고 생각한다.
+
+또한 벡터 필드(vector field)라고 하면 곡선 위의 점 $\alpha(t)$를 시점으로 하는 벡터를 의미한다. 따라서 탄젠트 벡터 필드는 특정 시점 $t$에서의 곡선 위의 점 $\alpha(t)$에서 곡선에 접하는 접선 벡터이다. 
+
+# Reference
+- R. S. Millman and G. D. Parker, Elements of Differential Geometry, Prentice-Hall, 1977.

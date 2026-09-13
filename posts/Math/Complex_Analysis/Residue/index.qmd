@@ -74,5 +74,87 @@ $$\int_{C_k} \frac{1}{(z - z_k)^n} dz = \begin{cases}
 
 이 성립한다. 여기서 계수 $b_1$만 살아남게 되기 때문에 적분값을 결정하는 유수로 $b_1$을 정의하는 것이다. 따라서 전체 선적분의 값은 각 유수들의 합에 $2\pi i$를 곱한 값으로 주어진다.
 
+## Example
+**(i)** Let $C: \vert z \vert = 1$, and let $\displaystyle f(z) = \frac{e^z-1}{z^4}$. Since $f$ is analytic in $\mathbb{C} \setminus \{ 0 \}$, $z = 0$ is an isolated singular point. By Cauchy's Residue Theorem,
+
+$$\int_C f(z) dz = 2\pi i \operatorname*{Res}_{z = 0} f(z).$$
+
+Note that $\displaystyle e^z = \sum_{n=0}^\infty \frac{z^n}{n!}$. Then we have 
+
+$$\begin{align*}
+f(z) &= \frac{e^z-1}{z^4} \\
+&= \frac{1}{z^4} \sum_{n=1}^\infty \frac{z^n}{n!} \\
+&= \sum_{n=1}^\infty \frac{z^{n-4}}{n!}
+\end{align*}$$
+
+Thus, the coefficient of $\frac{1}{z}$ is $\frac{1}{3!} = \frac{1}{6}$, and therefore
+
+$$\int_C f(z) dz = 2\pi i \cdot \frac{1}{6} = \frac{\pi i}{3}.$$
+
+**(ii)** Let $C: \vert z \vert = 1$, and let $\displaystyle f(z) = \cosh\left( \frac{1}{z^2} \right)$. Since $f$ is analytic in $\mathbb{C} \setminus \{ 0 \}$, $z = 0$ is an isolated singular point. By Cauchy's Residue Theorem,
+
+$$\int_C f(z) dz = 2\pi i \operatorname*{Res}_{z = 0} f(z).$$
+
+Note that $\displaystyle \cosh(z) = \sum_{n=0}^\infty \frac{z^{2n}}{(2n)!}$. Then we have 
+
+$$\cosh \left( \frac{1}{z^2} \right) = \sum_{n=0}^\infty \frac{1}{n!} \frac{1}{(z^2)^n} = \sum_{n=0}^\infty \frac{1}{n!} \frac{1}{z^{2n}}$$
+
+where $0 < \vert z \vert < \infty$. Thus, the coefficient of $\frac{1}{z}$ is $0$, and therefore
+
+$$\int_C f(z) dz = 2\pi i \cdot 0 = 0.$$
+
+**(iii)** Let $C: \vert z-2 \vert = 1$, and let $\displaystyle f(z) = \frac{1}{z(z-2)^5}$. Then $z=2$ is an isolated singular point inside of $C$. By Cauchy's Residue Theorem,
+
+$$\int_C f(z) dz = 2\pi i \operatorname*{Res}_{z = 2} f(z).$$
+
+Note that
+
+$$\begin{align*}
+\frac{1}{z} &= \frac{1}{2 + (z-2)} \\
+&= \frac{1}{2} \frac{1}{1 + \frac{z-2}{2}} \\
+&= \frac{1}{2} \sum_{n=0}^\infty \left(- \frac{z-2}{2} \right)^n
+\end{align*}$$
+
+where $0 < \vert z-2 \vert < 2$.
+
+Then we have
+
+$$\begin{align*}
+f(z) &= \frac{1}{z(z-2)^5} \\
+&= \frac{1}{(z-2)^5} \frac{1}{z} \\
+&= \frac{1}{(z-2)^5} \sum_{n=0}^\infty \frac{(-1)^n}{2^{n+1}} (z-2)^n \\
+&= \sum_{n=0}^\infty \frac{(-1)^n}{2^{n+1}} (z-2)^{n-5}
+\end{align*}$$
+
+where $0 < \vert z-2 \vert < 2$. Thus, the coefficient of $\frac{1}{z}$ is $\frac{(-1)^4}{2^5} = \frac{1}{32}$, and therefore
+
+$$\int_C f(z) dz = 2\pi i \cdot \frac{1}{32} = \frac{\pi i}{16}$$
+
+**(iv)** Let $C : \vert z \vert = 2$, and let $\displaystyle f(z) = \frac{4z-5}{z(z-1)}$. Since $f$ is analytic in $\mathbb{C} \setminus \{ 0, 1 \}$, $z = 0$ and $z = 1$ are isolated singular points inside of $C$. By Cauchy's Residue Theorem,
+
+$$\int_C f(z) dz = 2\pi i \left( \operatorname*{Res}_{z = 0} f(z) + \operatorname*{Res}_{z = 1} f(z) \right)$$
+
+Note that
+
+$$\begin{align*}
+\frac{4z-5}{z(z-1)} &= \frac{4z-5}{z} \cdot \frac{-1}{1-z} \\
+&= \left( 4 - \frac{5}{z} \right) \left( - \sum_{n=0}^\infty z^n \right) \\
+&= \sum_{n=0}^\infty -4 z^n + \sum_{n=0}^\infty 5z^{n-1}
+\end{align*}$$
+
+where $0 < \vert z \vert < 1$. Thus, the coefficient of $\frac{1}{z}$ is $5$, so $\displaystyle \operatorname*{Res}_{z = 0} f(z) = 5$. On the other hand,
+
+$$\begin{align*}
+\frac{4z-5}{z(z-1)} &= \frac{4z - 4 - 1}{z-1} \cdot \frac{1}{1 + (z-1)} \\
+&= \left( 4 - \frac{1}{z-1} \right) \sum_{n=0}^\infty (-(z-1))^n \\
+&= \sum_{n=0}^\infty 4 (-(z-1))^n - \sum_{n=0}^\infty (-(z-1))^{n-1}
+\end{align*}$$
+
+where $0 < \vert z - 1 \vert < 1$. Thus, the coefficient of $\frac{1}{z}$ is $-1$, so $\displaystyle \operatorname*{Res}_{z = 1} f(z) = -1$.
+
+Therefore,
+
+$$\int_C f(z) dz = 2\pi i (5 + (-1)) = 8\pi i$$
+
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

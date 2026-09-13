@@ -16,14 +16,62 @@ website:
     left:
       - href: index.qmd
         text: "Home"
-      - href: index.qmd#category=Math
-        text: "Mathematics (수학)"
-      - href: index.qmd#category=Astronomy
-        text: "Astronomy (천문학)"
-      - href: index.qmd#category=Physics
-        text: "Physics (물리학)"
-      - href: index.qmd#category=Computer
-        text: "Computer Science"
+      - text: "Mathematics (수학)"
+        menu:
+          - href: index.qmd#category=Math
+            text: "📐 수학 전체보기 (All Math)"
+          - text: "---"
+          - href: index.qmd#category=Abstract%20Algebra
+            text: "추상대수학 (Abstract Algebra)"
+          - href: index.qmd#category=Linear%20Algebra
+            text: "선형대수학 (Linear Algebra)"
+          - href: index.qmd#category=Matrix%20Algebra
+            text: "행렬대수학 (Matrix Algebra)"
+          - href: index.qmd#category=Complex%20Analysis
+            text: "복소해석학 (Complex Analysis)"
+          - href: index.qmd#category=Analysis
+            text: "해석학 (Analysis)"
+          - href: index.qmd#category=Topology
+            text: "위상수학 (Topology)"
+          - href: index.qmd#category=Differential%20Geometry
+            text: "미분기하학 (Differential Geometry)"
+          - href: index.qmd#category=Graph%20Theory
+            text: "그래프 이론 (Graph Theory)"
+          - href: index.qmd#category=Numerical%20Analysis
+            text: "수치해석학 (Numerical Analysis)"
+      - text: "Astronomy (천문학)"
+        menu:
+          - href: index.qmd#category=Astronomy
+            text: "🔭 천문학 전체보기 (All Astronomy)"
+          - text: "---"
+          - href: index.qmd#category=Radio%20Astronomy
+            text: "전파천문학 (Radio Astronomy)"
+          - href: index.qmd#category=AIPS
+            text: "전파 소프트웨어 (AIPS)"
+          - href: index.qmd#category=General%20Relativity
+            text: "일반상대론 & 등가원리"
+          - href: index.qmd#category=High%20Energy
+            text: "고에너지 천체물리학"
+          - href: index.qmd#category=Relativistic%20Jets
+            text: "상대론적 제트 (Jets)"
+      - text: "Physics (물리학)"
+        menu:
+          - href: index.qmd#category=Physics
+            text: "⚛️ 물리학 전체보기 (All Physics)"
+          - text: "---"
+          - href: index.qmd#category=Thermodynamics
+            text: "열역학 (Thermodynamics)"
+          - href: index.qmd#category=General%20Relativity
+            text: "일반상대성이론"
+      - text: "Computer Science"
+        menu:
+          - href: index.qmd#category=Computer
+            text: "💻 컴퓨터과학 전체보기 (All CS)"
+          - text: "---"
+          - href: index.qmd#category=Reinforcement%20Learning
+            text: "강화학습 (Reinforcement Learning)"
+          - href: index.qmd#category=Algorithm
+            text: "알고리즘 (Algorithms)"
       - text: "관련 링크"
         menu:
           - href: https://www.kasi.re.kr/

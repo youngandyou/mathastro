@@ -92,6 +92,64 @@ main.column-page-left > #title-block-header,
   color: var(--mag-burgundy) !important;
 }
 
+/* Navbar Dropdown on Hover & Editorial Styling */
+@media (min-width: 992px) {
+  .navbar-nav .nav-item.dropdown {
+    position: relative;
+  }
+
+  /* Reveal dropdown on hover */
+  .navbar-nav .nav-item.dropdown:hover > .dropdown-menu {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+  }
+
+  .navbar-nav .nav-item.dropdown > .dropdown-menu {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(6px);
+    transition: opacity 0.18s cubic-bezier(0.16, 1, 0.3, 1), transform 0.18s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.18s ease;
+    margin-top: 0;
+    top: 100%;
+    left: 0;
+  }
+}
+
+.navbar-nav .dropdown-menu {
+  background-color: #ffffff;
+  border: 1px solid var(--mag-border);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+  border-radius: 6px;
+  padding: 0.5rem 0;
+  min-width: 235px;
+}
+
+.navbar-nav .dropdown-menu .dropdown-item {
+  font-family: var(--mag-font-sans);
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--mag-text-main);
+  padding: 0.5rem 1.15rem;
+  transition: background-color 0.15s ease, color 0.15s ease, padding-left 0.15s ease;
+}
+
+.navbar-nav .dropdown-menu .dropdown-item:hover,
+.navbar-nav .dropdown-menu .dropdown-item:focus,
+.navbar-nav .dropdown-menu .dropdown-item.active {
+  background-color: var(--mag-bg-subtle);
+  color: var(--mag-burgundy);
+  padding-left: 1.35rem;
+}
+
+.navbar-nav .dropdown-menu .dropdown-divider {
+  border-top: 1px solid var(--mag-border);
+  margin: 0.4rem 0;
+}
+
 /* 1. Top Utility Bar */
 .magazine-utility-bar {
   border-bottom: 1px solid var(--mag-border);
@@ -204,26 +262,29 @@ main.column-page-left > #title-block-header,
   margin-bottom: 3.2rem;
 }
 
-/* Hide cover story when category filter is active */
+/* Hide cover story and masthead double rule line when category filter is active */
 body.category-active .magazine-cover-story,
-html.category-active .magazine-cover-story {
+html.category-active .magazine-cover-story,
+body.category-active .masthead-rule-line,
+html.category-active .masthead-rule-line {
   display: none !important;
+}
+
+body.category-active .magazine-masthead,
+html.category-active .magazine-masthead {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+body.category-active .masthead-desc,
+html.category-active .masthead-desc {
+  margin-bottom: 0 !important;
 }
 
 body.category-active .magazine-section-divider,
 html.category-active .magazine-section-divider {
-  margin-top: 1.2rem;
-  padding-bottom: 0.35rem;
-}
-
-body.category-active .magazine-section-sub,
-html.category-active .magazine-section-sub {
-  display: none !important;
-}
-
-body.category-active .magazine-section-title,
-html.category-active .magazine-section-title {
-  margin-bottom: 0.15rem;
+  margin-top: 1.4rem !important;
+  margin-bottom: 1.6rem !important;
 }
 
 .cover-story-card {
@@ -335,21 +396,24 @@ html.category-active .magazine-section-title {
 /* 4. Section Divider */
 .magazine-section-divider {
   border-bottom: 2px solid var(--mag-border-dark);
-  padding-bottom: 0.55rem;
+  padding-bottom: 0.45rem;
   margin: 3.2rem 0 1.8rem;
 }
 
-.magazine-section-title {
+.magazine-section-title,
+h2.magazine-section-title,
+.magazine-section-divider h2 {
   font-family: var(--mag-font-display);
   font-size: 1.55rem;
   font-weight: 700;
   color: var(--mag-navy);
-  margin-bottom: 0.2rem;
+  margin-bottom: 0 !important;
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
 }
 
 .magazine-section-sub {
-  font-size: 0.86rem;
-  color: var(--mag-text-light);
+  display: none !important;
 }
 
 /* 5. Quarto Grid Listing Magazine Styles */

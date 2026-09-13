@@ -59,9 +59,26 @@ listing:
 document.addEventListener("DOMContentLoaded", function() {
   var catInfo = {
     'math': { title: 'Mathematics (수학)' },
+    'abstract algebra': { title: 'Abstract Algebra (추상대수학)' },
+    'linear algebra': { title: 'Linear Algebra (선형대수학)' },
+    'matrix algebra': { title: 'Matrix Algebra (행렬대수학)' },
+    'complex analysis': { title: 'Complex Analysis (복소해석학)' },
+    'analysis': { title: 'Analysis (해석학)' },
+    'topology': { title: 'Topology (위상수학)' },
+    'differential geometry': { title: 'Differential Geometry (미분기하학)' },
+    'graph theory': { title: 'Graph Theory (그래프 이론)' },
+    'numerical analysis': { title: 'Numerical Analysis (수치해석학)' },
     'astronomy': { title: 'Astronomy (천문학)' },
+    'radio astronomy': { title: 'Radio Astronomy (전파천문학)' },
+    'aips': { title: 'Radio Software (AIPS)' },
+    'general relativity': { title: 'General Relativity & Equivalence Principle (일반상대론 & 등가원리)' },
+    'high energy': { title: 'High Energy Astrophysics (고에너지 천체물리학)' },
+    'relativistic jets': { title: 'Relativistic Jets (상대론적 제트)' },
     'physics': { title: 'Physics (물리학)' },
-    'computer': { title: 'Computer Science' }
+    'thermodynamics': { title: 'Thermodynamics (열역학)' },
+    'computer': { title: 'Computer Science' },
+    'reinforcement learning': { title: 'Reinforcement Learning (강화학습)' },
+    'algorithm': { title: 'Algorithms (알고리즘)' }
   };
 
   function updateView() {
@@ -100,10 +117,10 @@ document.addEventListener("DOMContentLoaded", function() {
       document.body.classList.remove('category-active');
       if (coverEl) coverEl.style.display = '';
 
-      if (sectionTitleEl) sectionTitleEl.textContent = '최신 아티클 & 학술 탐구 (Latest Articles)';
+      if (sectionTitleEl) sectionTitleEl.textContent = '최근 발행 글';
       if (sectionSubEl) {
-        sectionSubEl.textContent = '모든 학문 분야의 최신 연구 노트 및 개념 해설';
-        sectionSubEl.style.display = '';
+        sectionSubEl.textContent = '';
+        sectionSubEl.style.display = 'none';
       }
 
       if (listing) {
@@ -112,32 +129,36 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     // Highlight active link in navbar
-    var navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    updateNavbarActive(isFiltered ? catKey : '');
+  }
+
+  function updateNavbarActive(activeCatKey) {
+    var navLinks = document.querySelectorAll('.navbar-nav .nav-link, .navbar-nav .dropdown-item');
     navLinks.forEach(function(link) {
-      var href = (link.getAttribute('href') || '').toLowerCase();
-      if (!isFiltered) {
-        if (href.indexOf('category=') === -1 && (href === './index.html' || href === 'index.html' || href.endsWith('/index.html') || href === '#')) {
-          link.classList.add('active');
-          link.setAttribute('aria-current', 'page');
-        } else if (href.indexOf('category=') !== -1) {
-          link.classList.remove('active');
-          link.removeAttribute('aria-current');
-        }
-      } else {
-        if (href.indexOf('category=' + catKey) !== -1) {
-          link.classList.add('active');
-          link.setAttribute('aria-current', 'page');
-        } else {
-          link.classList.remove('active');
-          link.removeAttribute('aria-current');
-        }
-      }
+      link.classList.remove('active');
     });
+
+    if (!activeCatKey) {
+      var homeLinks = document.querySelectorAll('.navbar-nav a[href="./index.html"], .navbar-nav a[href="index.html"]');
+      homeLinks.forEach(function(h) { h.classList.add('active'); });
+    } else {
+      navLinks.forEach(function(link) {
+        var href = decodeURIComponent((link.getAttribute('href') || '').toLowerCase());
+        if (href.indexOf('category=' + activeCatKey) !== -1) {
+          link.classList.add('active');
+          var parentDropdown = link.closest('.nav-item.dropdown');
+          if (parentDropdown) {
+            var toggle = parentDropdown.querySelector('.nav-link.dropdown-toggle');
+            if (toggle) toggle.classList.add('active');
+          }
+        }
+      });
+    }
   }
 
   // Intercept navbar clicks for instantaneous SPA-like transition
   document.addEventListener('click', function(e) {
-    var link = e.target.closest('.navbar-nav .nav-link, .navbar-brand');
+    var link = e.target.closest('.navbar-nav .nav-link, .navbar-nav .dropdown-item, .navbar-brand');
     if (!link) return;
     var href = link.getAttribute('href') || '';
     var isHome = href === './index.html' || href === 'index.html' || href === '/' || href.endsWith('/index.html') || link.classList.contains('navbar-brand');
@@ -231,8 +252,7 @@ document.addEventListener("DOMContentLoaded", function() {
 <!-- Section Header for Recent Articles -->
 <div class="magazine-section-divider">
   <div class="section-title-wrap">
-    <h2 class="magazine-section-title">최신 아티클 & 학술 탐구 (Latest Articles)</h2>
-    <span class="magazine-section-sub">모든 학문 분야의 최신 연구 노트 및 개념 해설</span>
+    <h2 class="magazine-section-title">최근 발행 글</h2>
   </div>
 </div>
 ```

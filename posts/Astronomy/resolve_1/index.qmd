@@ -383,13 +383,14 @@ $$
 
 - 식 (1.20)의 정규화 계수(normalization factor) $\left|2\pi\widehat{\sigma}^{2}\right|^{-1}$ 는 실제 데이터 $d$ 를 두 개의 실수 확률변수 집합(two sets of real random variables)으로 이루어진 것으로 간주할 때, 식 (1.20)이 정규화되도록 선택되었다. 이는 다음의 조건을 만족할 때, $\left|2\pi\widehat{\sigma}^{2}\right|^{-1}$ 가 정규화 계수로 이용된다는 의미이다. 
 
-
-$$d=\Re(d)+i\Im(d),\qquad  
-\int \mathcal{P}(d\mid \xi) d\Re(d) d\Im(d)=1
+$$
+d=\Re(d)+i\Im(d),\qquad \int \mathcal{P}(d\mid \xi) d\Re(d) d\Im(d)=1
 $$
 
 - $\Re(d)$: 실수부 
-- $d\Im(d)$: 허수부
+- $\Im(d)$: 허수부
+
+<div style="hegiht" 3rem></div>
 
 - information Hamiltonian 정의에 따라 $\mathcal{H}\left(d \mid \sigma(\xi^{(\sigma)}), s(\xi^{(I)})\right)$ 이 작을수록 likelihood가 커지는 것을 알 수 있다. 즉, **information Hamiltonian의 값이 작을수록 likelihood가 커지며, likelihood가 크다는 것은 후보 영상이 실제 관측 데이터를 잘 설명한다는 뜻이다.** 
 

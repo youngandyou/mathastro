@@ -61,13 +61,13 @@ Suppose that the given condition holds. Let $\mathscr{U}$ be an open cover of $Y
 Every closed subspace of a compact space is compact.
 
 ## Proof
-Let $X$ be a compact space, and let $Y$ be a closed subspace of $X$. Let $\mathscr{U}$ be a collection of open subsets of $X$ such that $Y \subset \bigcup_{U \in \mathscr{U}} U$. Then $\mathscr{U} \cup \{ X - Y \}$ is an open cover of $X$. Since $X$ is compact, it has a finite subcover $\{ U_1, \dots, U_n, X - Y \}$. Since $\{ U_1, \dots, U_n \}$ covers $Y$, by Theorem 2, $Y$ is compact. $\blacksquare$
+Let $Y$ be a closed subspace of a compact space $X$. Let $\mathscr{U}$ be a collection of open subsets of $X$ such that $Y \subset \bigcup_{U \in \mathscr{U}} U$. Then $\mathscr{U} \cup \{ X - Y \}$ is an open cover of $X$. Since $X$ is compact, it has a finite subcover $\{ U_1, \dots, U_n, X - Y \}$. Since $\{ U_1, \dots, U_n \}$ covers $Y$, by Theorem 2, $Y$ is compact. $\blacksquare$
 
 # Theorem 4
 Every compact subspace of a Hausdorff space is closed.
 
 ## Proof
-Let $X$ be a Hausdorff space, and let $Y$ be a compact subspace of $X$. We will show that $X - Y$ is open, so $Y$ is closed.
+Let $Y$ be a compact subspace of a Hausdorff space $X$. We will show that $X - Y$ is open, so $Y$ is closed.
 
 Let $x \in X - Y$. Since $x \notin Y$ and $X$ is Hausdorff, for each $y \in Y$, there exist two disjoint open subsets $U_y, V_y$ of $X$ such that $x \in U_y$ and $y \in V_y$. Then the collection of such $V_y$ covers $Y$. Since $Y$ is compact, the finite subcollection $\{ V_{y_1}, \dots, V_{y_n} \}$ covers $Y$ by Theorem 2. That is, 
 
@@ -75,11 +75,11 @@ $$V := \bigcup_{i=1}^n V_{y_i} \supset Y.$$
 
 Note that 
 
-**(i)** $U := \bigcap_{i=1}^n U_{y_i}$ is open, 
+**(i)** $\displaystyle U := \bigcap_{i=1}^n U_{y_i}$ is open, 
 
 **(ii)** $U \cap V_i = \emptyset, \forall i \in \{ 1, \dots, n \}$, so 
 
-$$U \cap \bigcup_{i=1}^n V_{y_i} = U \cap V = \emptyset.$$
+$$\displaystyle U \cap \bigcup_{i=1}^n V_{y_i} = U \cap V = \emptyset.$$
 
 Since $V$ contains $Y$, we have $U \cap Y = \emptyset$, so $U \subset X - Y$. Since each $U_{y}$ contains $x$, we conclude that 
 
@@ -113,7 +113,7 @@ Let $f: X \to Y$ be a bijective continuous function. If $X$ is compact and $Y$ i
 We need to show that $f^{-1}: Y \to X$ is continuous. Let $C$ be a closed subset of $X$. Since $X$ is compact, $C$ is compact by Theorem 3. Since $f$ is continuous, $(f^{-1})^{-1}(C) = f(C)$ is compact by Theorem 5. Since $Y$ is Hausdorff, $f(C)$ is closed by Theorem 4. Thus, $f^{-1}$ is continuous. $\blacksquare$
 
 # Theorem 7
-The product of finitely many compact spaces is compact.
+$\displaystyle \prod_{i=1}^n X_i$ is compact $\iff X_i$ is compact for all $i = 1, \dots, n$.
 
 ## Proof
 

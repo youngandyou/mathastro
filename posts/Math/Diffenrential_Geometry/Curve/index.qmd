@@ -5,9 +5,10 @@ date: "2026-09-13 00:00:01"
 description: "미분기하학에서 다루는 곡선, 그리고 곡선과 관련된 여러 개념에 대해서 설명한다."
 categories: 
   - Math > Differential Geometry
+draft: true
 ---
 
-# Definition
+# Definition 1
 **(i)** A map $\alpha: (a, b) \to \mathbb{R}^3$ is called a ***curve***.
 
 **(ii)** A curve $\alpha: (a, b) \to \mathbb{R}^3$ is called a ***regular curve*** if $\alpha \in C^{\infty}$ and $\alpha'(t) \neq \mathbf{0}, \forall t \in (a, b)$.
@@ -24,9 +25,50 @@ $$l = \{ \mathbf{w} \in \mathbb{R}^3 \mid \mathbf{w} = \alpha(t_0) + \lambda T(t
 
 is called the ***tangent line*** of $\alpha$ at $t = t_0$.
 
-그냥 함수이기만 하면 곡선(curve)이라고 정의해 놓았지만, 앞으로 우리가 다루게 될 곡선은 거의 모든 경우 정칙 곡선(regular curve) 뿐이다. 따라서 앞으로 별 말 없어도 곡선이라고 하면 정칙 곡선을 가져왔다고 생각한다.
+벡터 필드(vector field)라고 하면 곡선 위의 점 $\alpha(t)$를 시점으로 하는 벡터를 의미한다. 따라서 탄젠트 벡터 필드는 특정 시점 $t$에서의 곡선 위의 점 $\alpha(t)$에서 곡선에 접하는 접선 벡터이다. 
 
-또한 벡터 필드(vector field)라고 하면 곡선 위의 점 $\alpha(t)$를 시점으로 하는 벡터를 의미한다. 따라서 탄젠트 벡터 필드는 특정 시점 $t$에서의 곡선 위의 점 $\alpha(t)$에서 곡선에 접하는 접선 벡터이다. 
+한편 정의역을 신경써야 하는데, 정의역에 따라서 정칙 곡선(regular curve)이 되는 여부가 달라진다. 
+
+# Definition 2
+A ***reparametrization*** of a curve $\alpha : (a, b) \to \mathbb{R}^3$ is a bijective function $g: (c, d) \to (a, b)$ such that $g, g^{-1} \in C^{\infty}$.
+
+# Theorem 1
+Let $\alpha : (a, b) \to \mathbb{R}^3$ be a regular curve, and let $g: (c, d) \to (a, b)$ be a reparametrization. Set $\beta = \alpha \circ g$.
+
+**(i)** $\beta : (c,d) \to \mathbb{R}^3$ is a regular curve.
+
+**(ii)** If $T$ is a tangent vector field of $\alpha$ at $t = t_0$ and $S$ is a tangent vector field of $\beta$ at $s_0 = g(t_0)$, then $S(s_0) = \pm T(t_0)$.
+
+즉 곡선의 정칙성(regularity)은 재매개변수화(reparametrization)에 대해서 보존되고, 재매개변수화는 오직 곡선의 방향만을 바꿀 뿐이다. 
+
+## Proof
+
+# Definition 3
+Let $\gamma : (c, d) \to \mathbb{R}^3$ be a regular curve.
+
+**(i)** A ***segment*** of $\gamma$ is a curve $\alpha : [a, b] \to \mathbb{R}^3$ such that $\alpha(t) = \gamma(t), \forall t \in [a, b]$
+
+**(ii)** The ***length*** of a segment $\alpha: [a, b] \to \mathbb{R}^3$, denoted by $l_{[a, b]}(\alpha)$, is defined as
+$$l_{[a, b]}(\alpha) = \int_a^b \| \alpha'(t) \| dt$$
+
+**(iii)** The ***arc length*** along a regular curve $\alpha : (a, b) \to \mathbb{R}^3$ is defined as 
+
+$$s = h(t) = \int_{t_0}^t \| \alpha'(u) \| du$$
+
+where $t_0 \in (a, b)$. 
+
+# Theorem 2
+Let $\alpha: [a, b] \to \mathbb{R}^3$ be a segment of a regular curve $\gamma$, and let $g: [c, d] \to [a, b]$ be a reparametrization restricted to $[c, d]$. Set $\beta = \alpha \circ g$. Then $l_{[a, b]}(\alpha) = l_{[c, d]}(\beta)$.
+
+## Proof
+
+# Theorem 3
+The ***arc length*** $s = h(t)$ along a regular curve $\alpha : (a, b) \to \mathbb{R}^3$ is a reparametrization $h: (a,b) \to (c,d)$ for some interval $(c, d)$.
+
+## Proof
+
+# Definition 4
+Let $h: (a,b) \to (c,d)$ be the arc length for a regular curve $\alpha : (a, b) \to \mathbb{R}^3$. The inverse function $g : (c, d) \to (a, b)$ of $h$, that is, $g = h^{-1}$, is called the ***arc length reparameterization***.
 
 # Reference
 - R. S. Millman and G. D. Parker, Elements of Differential Geometry, Prentice-Hall, 1977.

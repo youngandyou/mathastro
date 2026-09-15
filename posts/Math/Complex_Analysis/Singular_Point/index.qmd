@@ -7,7 +7,7 @@ categories:
   - Math > Complex Analysis
 ---
 
-# Definition
+# Definition 1
 Let $f$ be a complex function.
 
 **(i)** $f$ is said to be ***analytic*** at a point $z_0$ if it has a derivative on some open set containing $z_0$.
@@ -39,6 +39,54 @@ has singular points $z_0 = 0$ and $z_n = \frac{1}{n}$ for each $n = \pm 1, \pm 2
 
 ## Remark
 The singular points of a rational function of two polynomials without common factors are always isolated.
+
+# Definition 2
+Suppose that $f$ has an isolated singular point at $z_0$. Then $f$ can be represented by a Laurent series:
+
+$$f(z) = \sum_{n=0}^\infty a_n (z-z_0)^n + \sum_{n=1}^\infty \frac{b_n}{(z-z_0)^n}$$
+
+for $0 < \vert z-z_0 \vert < R$ for some $R > 0$.
+
+**(i)** $z_0$ is called a ***removable singular point*** of $f$ if $b_n = 0, \forall n \in \mathbb{N}$.
+
+**(ii)** $z_0$ is called an ***essential singular point*** of $f$ if there are infinitely many nonzero coefficients $b_n$.
+
+**(iii)** $z_0$ is called a ***pole of order $m$*** of $f$ if there exists $m \in \mathbb{N}$ such that $b_m \neq 0$ and $b_n = 0, \forall n > m$. If $m=1$, then $z_0$ is called a ***simple pole***. 
+
+## Example
+**(i)** Consider the function $\displaystyle f(z) = \frac{1 - \cosh z}{z^2}$. Then
+
+$$\begin{align*}
+f(z) &= \frac{1}{z^2} \left[ 1 - \sum_{n=0}^\infty \frac{z^{2n}}{(2n)!} \right] \\
+&= - \frac{1}{2!} - \frac{z^2}{4!} - \frac{z^4}{6!} - \cdots
+\end{align*}$$
+
+for $0 < \vert z \vert < \infty$.
+
+Since all of the coefficients $b_n$ are zero, $z = 0$ is a removable singularity. If we define $f(0) = -\frac{1}{2}$, then $f$ becomes an entire function.
+
+**(ii)** Consider the function $f(z) = e^{\frac{1}{z}}$. Then
+
+$$\begin{align*}
+f(z) &= \sum_{n=0}^\infty \frac{1}{n!} \frac{1}{z^n} \\
+&= 1 + \frac{1}{z} + \frac{1}{2!z^2} + \cdots \\
+\end{align*}$$ 
+
+for $0 < \vert z \vert < \infty$. Since there are infinitely many nonzero coefficients $b_n$, $z = 0$ is an essential singularity.
+
+**(iii)** Consider the function $\displaystyle f(z) = \frac{1}{z^2(1-z)}$. Then
+
+$$\begin{align*}
+f(z) &= \frac{1}{z^2} \sum_{n=0}^\infty z^n \\
+&= \sum_{n=0}^\infty z^{n-2} \\
+&= \frac{1}{z^2} + \frac{1}{z} + 1 + z + z^2 + \cdots
+\end{align*}$$
+
+for $0 < \vert z \vert < 1$. Thus, $z = 0$ is a pole of order 2. 
+
+Furthermore,
+
+
 
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

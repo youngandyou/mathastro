@@ -1,0 +1,30 @@
+---
+title: "Lebesgue Number"
+author: "Youmin Chun"
+date: "2026-09-15 00:00:01"
+description: "위상 수학에서의 르베그 수(Lebesgue Number)에 대해서 설명한다."
+categories: 
+  - Math > Topology
+---
+
+# Definition
+Let $A$ be a nonempty subset of a metric space $(X, d)$.
+
+**(i)** For each $x \in X$, we define the ***distance from $x$ to $A$*** by 
+
+$$d(x,A) = \inf_{a \in A} d(x,a).$$
+
+**(ii)** The ***diameter*** of $A$ is defined by 
+
+$$\mathrm{diam}(A) = \sup_{a, b \in A} d(a, b).$$
+
+**(iii)** A number $\delta$ is called a ***Lebesgue number*** for an open cover $\mathcal{U}$ of $X$ if every subset $A$ of $X$ with $\mathrm{diam}(A) < \delta$ is contained in some element of $\mathcal{U}$.
+
+# Lebesgue Number Lemma
+A compact metric space $(X, d)$ has a Lebesgue number for every open cover $\mathcal{U}$.
+
+## Proof
+
+
+# Reference
+- James R. Munkres. (2000). Topology (2nd ed.). Pearson.

@@ -5,10 +5,9 @@ date: "2026-09-10 00:00:02"
 description: "복소해석학에서 유수(Residue)에 대해서 소개한다."
 categories: 
   - Math > Complex Analysis
-draft: true
 ---
 
-# Definitions
+# Definitions 1
 Suppose that a complex function $f$ has an isolated singular point $z_0$. Then there exists $R > 0$ such that $f$ is analytic in $0 < \vert z - z_0 \vert < R$. By Laurent Series, $f$ can be expressed as
 
 $$\begin{align*}
@@ -74,7 +73,7 @@ $$\int_{C_k} \frac{1}{(z - z_k)^n} dz = \begin{cases}
 
 이 성립한다. 여기서 계수 $b_1$만 살아남게 되기 때문에 적분값을 결정하는 유수로 $b_1$을 정의하는 것이다. 따라서 전체 선적분의 값은 각 유수들의 합에 $2\pi i$를 곱한 값으로 주어진다.
 
-## Example
+## Example 1
 **(i)** Let $C: \vert z \vert = 1$, and let $\displaystyle f(z) = \frac{e^z-1}{z^4}$. Since $f$ is analytic in $\mathbb{C} \setminus \{ 0 \}$, $z = 0$ is an isolated singular point. By Cauchy's Residue Theorem,
 
 $$\int_C f(z) dz = 2\pi i \operatorname*{Res}_{z = 0} f(z).$$
@@ -155,6 +154,50 @@ where $0 < \vert z - 1 \vert < 1$. Thus, the coefficient of $\frac{1}{z}$ is $-1
 Therefore,
 
 $$\int_C f(z) dz = 2\pi i (5 + (-1)) = 8\pi i$$
+
+이와 같이 함수 $f$의 선적분을 유수를 이용해서 계산하려면 고립특이점 $z_0$ 주변에 대해서 함수의 로랑 급수를 전개해야 하고, 그 급수에서 $\frac{1}{z-z_0}$의 계수를 계산해주면 된다. 로랑 급수를 전개하는 과정에서 위와 같은 대수적인 조작들이 많이 필요하니 연습을 통해 익혀두도록 하자.
+
+# Definition 2
+Suppose that a function $f$ is analytic throughout $\mathbb{C}$ except for a finite number of singular points interior to a positively oriented simple closed contour $C$. Then $f$ is analytic throughout the region $R_1 < \vert z \vert < \infty$ for some $R_1 > 0$, that is, $f$ has an isolated singular point at infinity. Let $C_0$ be the circle $\vert z \vert = R_0$, oriented in the clockwise direction, where $R_0 > R_1$. The ***residue of $f$ at infinity*** is defined by means of the equation
+
+$$\int_{C_0} f(z) dz = 2 \pi i \operatorname*{Res}_{z = \infty} f(z)$$
+
+Since $f$ is analytic throughout the closed region bounded by $C_0$ and $C$, we have
+
+$$\int_C f(z) dz = \int_{-C_0} f(z) dz = - \int_{C_0} f(z) dz = - 2 \pi i \operatorname*{Res}_{z = \infty} f(z)$$
+
+by the principle of deformation of path, so
+
+$$\int_C f(z) dz = -2 \pi i \operatorname*{Res}_{z = \infty} f(z)$$
+
+반시계 방향의 곡선인 $C_0$을 따라 걸어갈 때 왼쪽에 무한히 뻗어나가는 평면이 위치한다. 즉, $z = \infty$는 $C_0$의 내부에 있는 점이라고 간주할 수 있고, $f$는 해석함수이므로 $z = \infty$는 고립특이점이다. 따라서 무한대에서도 유수를 정의할 수 있고, 이 값을 통해 우리는 $C$ 내부의 특이점들의 값을 일일이 계산하지 않고도 무한대에서의 유수 하나로 선적분을 계산할 수 있다.
+
+# Theorem 2
+If a function $f$ is analytic throughout $\mathbb{C}$ except for a finite number of singular points interior to a positively oriented simple closed contour $C$, then
+
+$$\int_C f(z) dz = 2 \pi i \operatorname*{Res}_{z = \infty} \left[ \frac{1}{z^2} f \left( \frac{1}{z} \right) \right] $$
+
+## Proof
+Let $R_1$ be a positive number such that $f$ is analytic throughout the region $R_1 < \vert z \vert < \infty$, and let $C_0$ be the circle $\vert z \vert = R_0$, oriented in the clockwise direction, where $R_0 > R_1$. Note that $f$ can be represented by a Laurent series:
+
+$$f(z) = \sum_{n= -\infty}^{\infty} c_n z^n$$
+
+for $R_1 < \vert z \vert < \infty$, where
+
+$$c_n = \frac{1}{2\pi i} \int_{-C_0} \frac{f(z)}{z^{n+1}} dz, \forall n \in \mathbb{Z}.$$
+
+Then we obtain
+
+$$\begin{align*}
+\frac{1}{z^2}f\left( \frac{1}{z} \right) &= \sum_{n=-\infty}^\infty \frac{c_n}{z^{n+2}} \\
+&= \sum_{n=-\infty}^\infty \frac{c_{n-2}}{z^n}
+\end{align*}$$
+
+where $\displaystyle 0 < \vert z \vert < \frac{1}{R_1}$. Thus, we have
+
+$$\operatorname*{Res}_{z=0} \left[ \frac{1}{z^2} f\left( \frac{1}{z} \right) \right] = c_{-1} = \frac{1}{2\pi i} \int_{-C_0} f(z) dz = \operatorname*{Res}_{z=\infty} f(z). \blacksquare$$
+
+## Example 2
 
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

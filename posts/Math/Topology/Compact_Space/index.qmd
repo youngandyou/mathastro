@@ -29,8 +29,7 @@ $\big[ (\because)$ The collection $\left \{ \left[ 0, 1 - \frac{1}{n} \right) \,
 
 $\big[ (\because)$ Let $\mathscr{U}$ be an open cover of $K$. Since $0 \in K$ and $\mathscr{U}$ is an open cover of $K$, $0 \in U$ for some $U \in \mathscr{U}$. Then $U$ contains all but finitely many of the points $\frac{1}{n}$. By choosing, for each point of $X$ not in $U$, an open set in $\mathscr{U}$ containing it, we obtain a finite subcover of $K$. $\big]$
 
-# Remark
-A closed interval $[a, b]$ is compact.
+**(v)** A closed interval $[a, b]$ is compact.
 
 $\big[ (\because)$ Suppose that $[a, b]$ is not compact. Then there is an open cover $\mathscr{U}$ of $[a, b]$ such that $\mathscr{U}$ does not have a finite subcover.
 
@@ -41,6 +40,8 @@ Again, note that $\left[ a_1, b_1 \right] = \left[ a_1, \frac{a_1 + b_1}{2} \rig
 Continuing the process, we can construct a sequence $\{ I_n \}_{n=1}^\infty$ of nested closed intervals $I_n = [a_n, b_n]$ of $[a, b]$ such that each $I_n$ cannot be covered by a finite subcover of $\mathscr{U}$, and $\vert x-y \vert \le \frac{b-a}{2^n} = \vert I_n \vert,\forall x, y \in I_n$.
 
 By the nested interval theorem, there exists $x^\ast \in \displaystyle \bigcap_{n=1}^\infty I_n$. Since $\mathscr{U}$ is an open cover of $[a, b]$ and $x^\ast \in [a, b]$, $x^\ast \in U$ for some $U \in \mathscr{U}$. Then there is $\delta > 0$ such that $(x^\ast - \delta, x^\ast + \delta) \subset U$. Choosing $n$ large enough such that $\vert I_n \vert = \frac{b-a}{2^n} < \delta$, we obtain that $I_n \subset (x^\ast - \delta, x^\ast + \delta) \subset U$. $\big[ (\because)$ If $y \in I_n$, then $\vert x^\ast - y \vert < \vert I_n \vert < \delta$, so $y \in (x^\ast - \delta, x^\ast + \delta)$.$\big]$ This contradicts that $\mathscr{U}$ does not have a finite subcover that covers $I_n$. Thus, $[a, b]$ is compact. $\blacksquare \big]$
+
+**(vi)** Since $S^n$ is a closed subspace of a compact space $[-1, 1]^{n+1}$, $S^n$ is compact. Similarly, $B^n$ is compact. 
 
 # Theorem
 **(i)** Let $Y$ be a subspace of $X$. Then $Y$ is compact $\iff$ every collection $\mathscr{U} = \{ U \subset X \mid U \text{ is open in } X \}$ such that $Y \subset \bigcup_{U \in \mathscr{U}} U$ has a finite subcollection that covers $Y$.
@@ -103,7 +104,25 @@ By **(i)**, $f(X)$ is compact.
 
 **(v)** We need to show that $f^{-1}: Y \to X$ is continuous. Let $C$ be a closed subset of $X$. Since $X$ is compact, $C$ is compact by **(ii)**. Since $f$ is continuous, $(f^{-1})^{-1}(C) = f(C)$ is compact by **(iv)**. Since $Y$ is Hausdorff, $f(C)$ is closed by **(iii)**. Thus, $f^{-1}$ is continuous.
 
-**(vi)**
+**(vi)** 
+
+$(\implies)$ Suppose that $\displaystyle \prod_{i=1}^n X_i$ is compact. Since $\pi_j : \displaystyle \prod_{i=1}^n X_i \to X_j$ is continuous for all $j = 1, \dots, n$, and $X_j$ is the image of $\pi_j$, $X_j$ is compact by **(iv)**.
+
+$(\Longleftarrow)$ We use induction on $n$.
+
+**Base Case:** Let $\mathcal{O}$ be an open cover of $X_1 \times X_2$. For each $(x, y) \in X_1 \times X_2$, there exists $O_{(x, y)} \in \mathcal{O}$ such that $(x, y) \in O_{(x, y)}$. Then $(x, y) \in U_{(x, y)} \times V_{(x, y)} \subset O_{(x, y)}$ for some open subsets $U_{(x, y)}$ of $X_1$ and $V_{(x, y)}$ of $X_2$. 
+
+Note that $\{ U_{(x, y)} \}_{x \in X_1}$ is an open cover of $X_1$. Since $X_1$ is compact, the finite subcover $\{ U_{(x_1, y)}, \dots, U_{(x_n, y)} \}$ exists. Set
+
+$$V_y := \bigcap_{i=1}^n V_{(x_i, y)}.$$
+
+Since $V_y$ is open in $X_2$, $\{ V_y \}_{y \in X_2}$ is an open cover of $X_2$. Since $X_2$ is compact, there exists a finite subcover $\{ V_{y_1}, \dots, V_{y_m} \}$ of $X_2$. Then $\{ O_{(x_i, y_j)} \}_{i=1, \dots, n, j = 1, \dots, m}$ is a finite subcollection of $\mathcal{O}$ that covers $X_1 \times X_2$, which means that $X_1 \times X_2$ is compact.
+
+**Inductive Step:** Suppose that $X_1, \dots, X_n$ are compact for some $n \in \mathbb{N}$, and $\prod_{i=1}^n X_i$ is compact. Let $X_{n+1}$ be a compact space. By the base case, we argue 
+
+$$\prod_{i=1}^{n+1} X_i = \left( \prod_{i=1}^n X_i \right) \times X_{n+1}$$
+
+is compact. Thus, we complete the proof. $\blacksquare$
 
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

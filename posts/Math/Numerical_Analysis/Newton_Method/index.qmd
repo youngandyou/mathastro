@@ -5,7 +5,6 @@ date: "2026-09-10 00:00:03"
 description: "수치해석학에서 뉴턴-랩슨 방법(Newton-Raphson Method)에 대해서 살펴본다"
 categories: 
   - Math > Numerical Analysis
-draft: true
 ---
 
 # Newton-Raphson Method

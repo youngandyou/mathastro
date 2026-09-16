@@ -1,0 +1,39 @@
+---
+title: "Fixed Point Iteration"
+author: "Youmin Chun"
+date: "2026-09-17 00:00:01"
+description: "수치해석학에서 고정점 반복법(Fixed Point Iteration)에 대해서 살펴본다"
+categories: 
+  - Math > Numerical Analysis
+---
+
+# Definition
+For a function $f: X \to X$, a point $\alpha \in X$ satisfying $\alpha = f(\alpha)$ is called a ***fixed point*** of $f$.
+
+# Lemma
+Let $g : [a, b] \to [a, b]$ be a continuous function. Then $g$ has a fixed point in $[a, b]$.
+
+## Proof
+Put $f(x) = x - g(x), \forall x \in [a, b]$. Then we have $f(a) = a - g(a) \le 0$ and $f(b) = b - g(b) \ge 0$. By the Intermediate Value Theorem, there exists $c \in [a, b]$ such that $f(c) = 0$. Thus $c - g(c) = 0$, which implies $c = g(c)$. Hence $c$ is a fixed point of $g$. $\blacksquare$
+
+# Theorem
+Let $g: [a, b] \to [a, b]$ be a function satisfying that $g$ and $g'$ is continuous on $[a, b]$. Assume that $\lambda = \max_{a \le x \le b} \vert g'(x) \vert < 1$. Then the followings hold:
+
+**(i)** $g$ has a unique fixed point $\alpha \in [a, b]$.
+
+**(ii)** For any initial estimate $x_0 \in [a, b]$, the iteration $x_{n+1} = g(x_n)$ converges to the unique fixed point $\alpha$.
+
+**(iii)**
+
+$$\vert \alpha - x_n \vert \le \frac{\lambda^n}{1 - \lambda} \vert x_0 - x_1 \verrt, \forall n = 0, 1, \dots$$
+
+**(iv)**
+
+$$\lim_{n \to \infty} \frac{\alpha - x_{n+1}}{\alpha - x_n} = g'(\alpha)$$
+
+Thus, $\vert \alpha - x_{n+1} \vert \le C \vert \alpha - x_n \vert$ for sufficiently large $n$ and for some constant $C \ge 0$ independent of $n$.
+
+## Proof
+
+# Reference
+- K. E. Atkinson and W. Han, Elementary Numerical Analysis, 3rd ed., John Wiley & Sons, 2004.

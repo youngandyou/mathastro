@@ -44,7 +44,7 @@ Since $R$ has no zero divisor, we must obtain $b-c = 0$, so $b = c$. Thus, the c
 
 **(iv)** For a prime number $p$, $\mathbb{Z}_p$ is a field.
 
-**(v)** An integral domain $D$ has the characteristic $0$ or a prime $p$.
+**(v)** An integral domain $D$ has the [characteristic](../Ring/index.qmd#sec-definition-2) $0$ or a prime $p$.
 
 모든 체가 정역이지만, $\mathbb{Z}$와 같은 반례가 있기 때문에 역으로 정역이라고 해서 항상 체라는 사실을 보장해 주지는 않는다.
 

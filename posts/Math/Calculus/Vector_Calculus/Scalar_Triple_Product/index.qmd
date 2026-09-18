@@ -4,7 +4,7 @@ author: "Youmin Chun"
 date: "2026-09-07 00:00:02"
 description: "벡터의 스칼라 삼중곱(Scalar Triple Product)에 대해서 설명한다."
 categories: 
-  - Math > Differential Geometry
+  - Math > Calculus > Vector Calculus
 ---
 
 # Definition

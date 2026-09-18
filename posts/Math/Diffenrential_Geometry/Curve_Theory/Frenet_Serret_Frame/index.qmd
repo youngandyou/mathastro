@@ -1,0 +1,72 @@
+---
+title: "Frenet-Serret Frame"
+author: "Youmin Chun"
+date: "2026-09-19 00:00:02"
+description: "프레네-세레 도구와 좌표계에 대해서 설명한다."
+categories: 
+  - Math > Differential Geometry > Curve Theory
+---
+
+# Definition
+Let $\alpha: (a, b) \to \mathbb{R}^3$ be a regular unit speed curve.
+
+**(i)** The ***tangent vector field*** is the map $T(s) = \alpha'(s)$.
+
+**(ii)** The ***curvature*** of $\alpha$ is the map $\kappa(s) = \| T'(s) \|$.
+
+**(iii)** The ***normal vector field*** is the map $N(s) = \frac{T'(s)}{\kappa(s)}$.
+
+**(iv)** The ***binormal vector field*** is the map $B(s) = T(s) \times N(s)$.
+
+**(v)** The ***torsion*** of $\alpha$ is the map $\tau(s) = - \langle B'(s), N(s) \rangle$.
+
+**(vi)** The ***Frenet-Serret appratus*** of $\alpha$ is the set $\{ T(s), N(s), B(s), \kappa(s), \tau(s) \}$.
+
+$T$는 말 그대로 각 점에서의 곡선에 접하는 접선 벡터다. 한편 곡률 $\kappa$는 $T$의 도함수의 크기로 정의되는데, 곡선이 **많이 굽어있을수록** $T$는 급격하게 변하고, 다시 말해 $T'$의 크기는 커진다. 반면 곡선이 **많이 굽어있지 않고 평평할수록** $T$는 별로 변하지 않고, 다시 말해 $T'$의 크기는 작아진다. 이렇듯 곡률, 즉 곡선이 굽어있는 정도는 접선벡터의 변화량의 크기로 정의하는 것이 직관적이라는 사실을 알 수 있다.
+
+다음과 같이 $xy$ 평면에 속하는 곡선 $\alpha(s) = (x(s), y(s)), \forall s \in (a,b)$을 고려하자. 만약 $\alpha$가 단위 속력 곡선이라면 $\{ x'(s) \}^2 + \{ y'(s) \}^2 = 1$이 성립하고, 따라서 $\alpha(s) = (\cos(\theta(s)), \sin(\theta(s)))$과 같이 표현할 수 있게 된다. 이때 곡률을 계산해보면
+
+$$\begin{align*}
+\kappa(s) &= \| T'(s) \| \\
+&= \| (-\sin(\theta)\\cdot \theta'(s), \cos(\theta)\\cdot \theta'(s)) \| \\
+&= \vert \theta'(s) \|
+\end{align*}$$
+
+을 얻는다. 즉 위와 같이 곡률을 정의하는 방법이 직관적임과 더불어 합리적이라는 사실을 알 수 있다.
+
+한편 $T$은 곡선에 접하는 방향을 가지는 벡터인 반면 $T'$은 $T$에 수직한 방향을 갖는다. 이해를 위해 평면 상에서 위로 볼록한 이차함수와 같은 꼴로 곡선이 놓여 있다고 생각해보자. 이때 접선 벡터 $T$가 변하는 방향을 생각하면 곡선의 "안쪽"으로 변하는 사실을 알 수 있다. 다시 말해 $T$가 변하는 방향은 늘 곡선의 "안쪽"을 가리키는 것이고, 때문에 $T'$은 $T$와 수직하되 곡선의 안쪽을 향하는 방향을 가진다. 이때 노말 벡터 $N$은 $T'$의 방향을 가지는 단위 벡터로 정의된다.
+
+좀 더 물리적인 센스로 생각해본다면, $N$은 일종의 "외력"의 방향을 가리킨다고 볼 수 있다. 곡선을 어떤 입자가 공간 상에서 이동해나가는 궤적, 혹은 경로라고 볼 때, 만약 입자가 어떠한 외력도 받지 않는다면 현재의 관성을 유지한 채 운동 상태를 유지할 것이고, 어떤 초기속도를 가지고 있었다면 그 초기속도를 따라 직선 궤도를 그리며 나아갈 것이다. 이는 다시 말해 전혀 굽어있지 않은 상태를 의미한다. 반면 입자가 어떤 외력을 받고 있다면 궤도가 외력이 가하는 방향으로 휘게 될 것이고, 이는 $T'$이 곡선의 안쪽 방향을 가진다는 사실과 일맥상통한다.
+
+그리고 $T$와 $N$의 외적으로 만들어지는 바이노말 벡터 $B$는 $T$와 $N$이 만드는 평면에 수직한 벡터인데, 물리적으로는 어떤 순간에 입자가 회전하는 회전축 방향을 가리킨다고 이해할 수 있다. 마지막으로 토리즌은 $B$의 $N$방향의 변화율이라고 볼 수 있는데, 직관적으로는 **곡선이 꼬여있는 정도**를 의미한다고 받아들일 수 있다. $\mathbb{R}^3$에서 $z$축을 향하여 일정하게 올라가는 나선(helix)을 생각해보자. $N$은 항상 $z$축을 향할 것이고, $B$는 시간이 지날수록 이리저리 흔들리며 뱅글뱅글 도는 방향으로 변하게 될 것이다. 직관적으로 $B'$의 $N$방향 성분을 측정하면 외력이 작용함에 따라 회전축이 얼마나 흔들리는지 측량할 수 있다. 곡선이 더 극단적으로 꼬여있을수록 그 변화율은 더욱 커질 것이고, 곡선이 흔들리지 않고 안정적으로 놓여있을수록 그 변화율은 더욱 적어진다. 만약 곡선이 한 평면 안에 완전히 속해 있다면, 다시 말해 입자가 일정한 회전축을 가진 채 운동한다면 곡선은 전혀 꼬여있지 않다고 이해할 수 있고, 실제로도 토리즌은 항상 $0$의 값을 갖는다.
+
+## Example
+**(i)** Consider the curve $\alpha(s) = \left(r \cos \frac{s}{r}, r \sin \frac{s}{r}, 0 \right), \forall s \in (a,b)$. Then $\alpha$ is a unit speed curve, and we have
+
+$$\begin{align*}
+\kappa(s) &= \| T'(s) \| \\
+&= \| \left( -\frac{1}{r} \sin \frac{s}{r}, \frac{1}{r} \cos \frac{s}{r}, 0 \right) \| \\
+&= \sqrt{\left( -\frac{1}{r} \sin \frac{s}{r} \right)^2 + \left( \frac{1}{r} \cos \frac{s}{r} \right)^2} \\
+&= \sqrt{\frac{1}{r^2} \left( \sin^2 \frac{s}{r} + \cos^2 \frac{s}{r} \right)} \\
+&= \frac{1}{r}. \end{align*}$$
+
+Furthermore, note that
+
+$$\begin{align*}
+N(s) &= \left( -\cos \frac{s}{r}, -\sin \frac{s}{r}, 0 \right), \\
+B(s) &= T(s) \times N(s) \\
+&= \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ -\sin \frac{s}{r} & \cos \frac{s}{r} & 0 \\ -\cos \frac{s}{r} & -\sin \frac{s}{r} & 0 \end{vmatrix} \\
+&= \mathbf{k}. 
+\end{align*}$$
+
+Thus, we have
+
+$$\begin{align*}
+\tau(s) &= - \langle B'(s), N(s) \rangle \\
+&= 0.
+\end{align*}$$
+
+즉 원의 경우 곡률은 모든 점에 대해서 반지름의 역수인 $\frac{1}{r}$로 일정하고, 한 평면에 완전히 속해 있으므로 토리즌은 $0$임을 알 수 있다.
+
+# Reference
+- R. S. Millman and G. D. Parker, Elements of Differential Geometry, Prentice-Hall, 1977.

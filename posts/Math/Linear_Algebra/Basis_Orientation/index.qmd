@@ -4,7 +4,7 @@ author: "Youmin Chun"
 date: "2026-09-07 00:00:03"
 description: "벡터공간에서 기저의 방향에 대해서 설명한다."
 categories: 
-  - Math > Differential Geometry
+  - Math > Linear Algebra
 ---
 
 # Definition

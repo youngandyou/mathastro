@@ -1,0 +1,133 @@
+---
+title: "Arc Length Reparametrization"
+author: "Youmin Chun"
+date: "2026-09-19 00:00:01"
+description: "곡선의 재매개변수화(Reparametrization)와 길이 재매개변수화(Arc Length Reparametrization)에 대해서 설명한다."
+categories: 
+  - Math > Differential Geometry > Curve Theory
+---
+
+# Definition 1
+A ***reparametrization*** of a [curve](../Curve/index.qmd#sec-definition-1) $\alpha : (a, b) \to \mathbb{R}^3$ is a bijective function $g: (c, d) \to (a, b)$ such that $g, g^{-1} \in C^{\infty}$.
+
+쉽게 말해서 변수 치환이다. 곡선을 매개변수화해서 표현할 경우 매개변수의 범위, 즉 정의역과 매개변수의 표현에 따라서 곡선의 정칙성 등이 달라지는 일이 생긴다. 따라서 주어진 곡선을 다루기 편하게끔 변수를 바꿔줘야 하고, 이러한 역할을 하는 것이 재매개변수화(reparametrization)이다.
+
+# Theorem 1
+Let $\alpha : (a, b) \to \mathbb{R}^3$ be a [regular curve](../Curve/index.qmd#sec-definition-1), and let $g: (c, d) \to (a, b)$ be a reparametrization. Set $\beta = \alpha \circ g$.
+
+**(i)** $g'(s) \neq 0, \forall s \in (c, d)$
+
+**(ii)** $\beta : (c,d) \to \mathbb{R}^3$ is a regular curve.
+
+**(iii)** If $T$ is a [tangent vector field](../Curve/index.qmd#sec-definition-1) of $\alpha$ at $t = t_0$ and $S$ is a tangent vector field of $\beta$ at $s_0 = g(t_0)$, then $S= \pm T$.
+
+후술하겠지만 재매개변수화는 곡선의 이미지, 정칙성(regularity), 길이 등의 값들을 보존하고, 오직 곡선의 방향과 속도만을 바꿀 뿐이다. 단순하게 말해서 재매개변수화는 변수와 변수의 정의역을 바꾸는 역할을 하는데, 여기서 변수가 변하는 방향이 기존 변수와 동일하게 바뀔 수도 있고, 거꾸로 바뀔 수도 있다. 동일하게 바뀌면 $g$는 증가함수이고, 거꾸로 바뀌면 $g$는 감소함수이다.
+
+한편 정의를 보면 재매개변수화 $g$는 항상 역함수 $g^{-1}$를 가지는데, $g^{-1}$ 또한 재매개변수화의 정의를 모두 만족함을 알 수 있다. 즉 재매개변수화의 역함수 또한 재매개변수화가 된다.
+
+## Proof
+**(i)** Let $t = g(s)$. Then
+
+$$\begin{align*}
+1 &= \frac{d}{ds}s \\
+&= \frac{d}{ds}(g^{-1} \circ g)(s) \\
+&= \frac{dg^{-1}}{dt}\Bigg|_{t=g(s)} \frac{dg}{ds},
+\end{align*}$$
+
+which implies that $g'(s) = \frac{dg}{ds} \neq 0$.
+
+**(ii)** Note that
+
+$$\begin{align*}
+\beta'(s) &= (\alpha \circ g)'(s) \\
+&= \alpha'(g(s)) \cdot g'(s).
+\end{align*}$$
+
+Since $\alpha$ is a regular curve, $\alpha'(t) \neq \mathbf{0}, \forall t \in (a, b)$. Also, by **(i)**, $g'(s) \neq 0$. Thus, $\beta'(s) \neq \mathbf{0}, \forall s \in (c, d)$, which means that $\beta$ is regular.
+
+**(iii)** By **(ii)**, $\beta$ is regular so that $S$ is well-defined. Note that
+
+$$T = \frac{\alpha'(t_0)}{\| \alpha'(t_0) \|} \quad \text{and} \quad S = \frac{\beta'(s_0)}{\| \beta'(s_0) \|}.$$
+
+Then we have
+
+$$\begin{align*}
+S &= \frac{\beta'(s_0)}{\| \beta'(s_0) \|} \\
+&= \frac{\alpha'(g(s_0)) \cdot g'(s_0)}{\| \alpha'(g(s_0)) \cdot g'(s_0) \|} \\
+&= \frac{\alpha'(t_0) \cdot g'(s_0)}{\| \alpha'(t_0) \| \cdot \vert g'(s_0) \vert} \\
+&= \pm \frac{\alpha'(t_0)}{\| \alpha'(t_0) \|} \\
+&= \pm T. \quad \blacksquare
+\end{align*}$$
+
+# Definition 2
+**(i)** The ***arc length*** along a regular curve $\alpha : (a, b) \to \mathbb{R}^3$ is defined as 
+
+$$s = h(t) = \int_{t_0}^t \| \alpha'(u) \| du$$
+
+where $t_0 \in (a, b)$. By the following theorem, $h$ is a reparametrization for some interval $(0, l)$.
+
+**(ii)** The inverse function $g : (0, l) \to (a, b)$ of $h$, that is, $g = h^{-1}$, is called the ***arc length reparameterization***.
+
+**(iii)** $\alpha$ is called a ***unit speed curve*** if $\| \alpha'(t) \| = 1, \forall t \in (a, b)$.
+
+길이 재매개변수화(arc length reparametrization)는 재매개변수화 중 특별한 위치를 차지하는 개념인데, 결론부터 말하면 임의의 정칙 곡선은 길이 재매개변수화를 거치면 속력이 항상 $1$의 크기를 갖는 곡선이 된다. 어떤 곡선이든 항상 속력을 $1$로 맞춘 상태에서 분석할 수 있다는 사실은 말로 표현할 수 없는 유용함을 가져다 준다. 구체적으로 $g$를 계산해내는 작업은 까다로울 수 있지만, 임의의 정칙 곡선에 대해서 이론을 전개할 때 단위 속력 곡선(unit speed curve)으로 가지고 와도 무방하다는 결론을 얻게 된다.
+
+# Theorem 2
+Let $\alpha : (a, b) \to \mathbb{R}^3$ be a regular curve.
+
+**(i)** The arc length $s = h(t)$ along $\alpha$ is a reparametrization $h: (a,b) \to (0, l)$ for some interval $(0, l)$. Furthermore, $h$ is increasing.
+
+**(ii)** Let $g: (0, l) \to (a, b)$ be the arc length reparametrization of $\alpha$. Set $\beta = \alpha \circ g$. Then $\beta$ is a unit speed curve.
+
+어떤 곡선의 속력이 $1$보다 큰 경우와 $1$보다 작은 경우를 비교했을 때, 같은 시간 동안 간 거리를 나타낸 구간 $(0, l)$은 속력이 큰 경우가 작은 경우보다 더 길다는 사실을 알 수 있다. 이때 길이 재매개변수화를 시켜주면 이전에는 빠른 속도로 갔던 동일한 길이를 변수가 $(0, l)$이라는 긴 구간 동안 변하면서 가야하므로, 상대적으로 느린 속력으로 이동해야 함을 알 수 있다. 반면 느린 속도로 가게 될 경우 구간 $(0, l)$이 짧게 되고, 이전에는 느린 속도로 갔던 동일한 길이를 변수가 $(0, l)$이라는 짧은 구간 동안 변하면서 가야하므로 상대적으로 빠른 속력으로 이동해야 함을 알 수 있다. 이러한 보정 효과를 길이 재매개변수화가 수행한다고 볼 수 있다.
+
+## Proof
+**(i)** Note that
+
+$$s = h(t) = \int_{t_0}^t \| \alpha'(u) \| du$$
+
+for some $t_0 \in (a,b)$. By the fundamental theorem of calculus, we have $h'(t) = \| \alpha'(t) \|$, so that $h$ is increasing. Thus, $h$ is one-to-one and onto for some interval $(0, l)$. Since $\alpha$ is a regular curve, $h \in C^{\infty}$. By the inverse function theorem, $h^{-1} = g \in C^{\infty}$, and therefore $h: (a, b) \to (0,l)$ is a reparametrization. Clearly $h$ is increasing.
+
+**(ii)** Note that $\beta(s) = \alpha(g(s)) \iff \alpha(t) = \beta(h(t))$. Then we have
+
+$$\begin{align*}
+s &= h(t) \\ 
+&= \int_{t_0}^t \| \alpha'(\tau) \| d\tau \\
+&= \int_{t_0}^{t} \| \beta'(h(\tau)) \cdot h'(\tau) \| d\tau
+\end{align*}$$
+
+Since $h$ is increasing, we have $h'(\tau) > 0$, so that $\vert h'(\tau) \vert = h'(\tau)$. We substitute $u = h(\tau)$. Then we have
+
+$$\begin{align*}
+s &= \int_{t_0}^{t} \| \beta'(h(\tau)) \| h'(\tau) d\tau \\
+&= \int_0^s \| \beta'(u) \| du.
+\end{align*}$$
+
+Thus, we obtain
+
+$$\begin{align*}
+1 &= \frac{ds}{ds} \\
+&= \frac{d}{ds} \int_0^s \| \beta'(u) \| du \\
+&= \| \beta'(s) \|,
+\end{align*}$$
+
+which means that $\beta$ is a unit speed curve. $\blacksquare$
+
+## Example
+Let $\alpha(t) = \mathbf{u} + t\mathbf{v}$ for some vectors $\mathbf{u}, \mathbf{v} \in \mathbb{R}^3$ and $t \in [0, \infty)$. Then $\alpha'(t) = \mathbf{v}$, so
+
+$$h(t) = \int_0^t \| \alpha'(u) \| du = \| \mathbf{v}\|t.$$
+
+Note that $h(t)$ has an inverse function $t = h^{-1}(s) = \frac{s}{\| \mathbf{v} \|}$. If we let $\beta = \alpha \circ h^{-1}$, then we have
+
+$$\begin{align*}
+\beta(s) &= (\alpha \circ h^{-1})(s) \\
+&= \alpha(h^{-1}(s)) \\
+&= \mathbf{u} + h^{-1}(s)\mathbf{v} \\
+&= \mathbf{u} + s\frac{\mathbf{v}}{\| \mathbf{v} \|}.
+\end{align*}$$
+
+단순한 예시이지만, 재매개변수화를 거친 후 속력이 $\| \mathbf{v} \|$에서 $\left\|\frac{\mathbf{v}}{\| \mathbf{v} \|}\right\| = 1$로 변했음을 직관적으로 확인할 수 있다.
+
+# Reference
+- R. S. Millman and G. D. Parker, Elements of Differential Geometry, Prentice-Hall, 1977.

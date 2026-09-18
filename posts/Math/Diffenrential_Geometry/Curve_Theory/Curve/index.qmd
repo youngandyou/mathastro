@@ -1,0 +1,83 @@
+---
+title: "Curve"
+author: "Youmin Chun"
+date: "2026-09-13 00:00:01"
+description: "미분기하학에서 다루는 곡선, 그리고 곡선과 관련된 여러 개념에 대해서 설명한다."
+categories: 
+  - Math > Differential Geometry > Curve Theory
+---
+
+# Definition 1
+**(i)** A map $\alpha: (a, b) \to \mathbb{R}^3$ is called a ***curve***.
+
+**(ii)** A curve $\alpha: (a, b) \to \mathbb{R}^3$ is called a ***regular curve*** if $\alpha \in C^{\infty}$ and $\alpha'(t) \neq \mathbf{0}, \forall t \in (a, b)$.
+
+**(iii)** For a curve $\alpha: (a, b) \to \mathbb{R}^3$, the vector $\alpha'(t_0)$ is called the ***velocity vector*** at $t = t_0$, and the map $\alpha'$ is called the ***velocity vector field***.
+
+**(iv)** For a curve $\alpha: (a, b) \to \mathbb{R}^3$, the real number $\| \alpha'(t_0) \|$ is called the ***speed*** of $\alpha$ at $t = t_0$. If $\| \alpha'(t) \| = 1, \forall t \in (a, b)$, then $\alpha$ is called a ***unit speed curve***.
+
+**(v)** For a regular curve $\alpha: (a, b) \to \mathbb{R}^3$, the map $T(t) = \frac{\alpha'(t)}{\| \alpha'(t) \|}$ is called the ***tangent vector field***.
+
+**(vi)** For a regular curve $\alpha: (a, b) \to \mathbb{R}^3$, the set 
+
+$$l = \{ \mathbf{w} \in \mathbb{R}^3 \mid \mathbf{w} = \alpha(t_0) + \lambda T(t_0), \lambda \in \mathbb{R} \}$$
+
+is called the ***tangent line*** of $\alpha$ at $t = t_0$.
+
+물리적인 직관을 가지고 있으면 정의를 받아들이기 더 쉬운데, 수학적으로는 곡선이라고 부르지만 물리학적으로는 어떤 입자가 이동하는 경로라고 봐도 무방하다. 때문에 그 도함수를 속도라고 부른다.
+
+벡터 필드(vector field)라고 하면 곡선 위의 점 $\alpha(t)$를 시점으로 하는 벡터를 의미한다. 따라서 탄젠트 벡터 필드는 특정 시점 $t$에서의 곡선 위의 점 $\alpha(t)$에서 곡선에 접하는 접선 벡터이다.
+
+한편 곡선을 다룰 때 어떤 기하학적인 대상, 다시 말해 $\mathbb{R}^3$의 점들을 모아놓은 집합으로 바라볼 수도 있지만, 위 정의와 같이 매개변수화된 벡터값 함수로 볼 수도 있다. 두 번째 관점이 우리가 주요하게 바라보는 관점인데, 이 경우 곡선을 표현하는 매개변수화는 하나로 유일하지 않다. 다시 말해 동일한 이미지를 갖는 곡선의 함수식이 여러 개가 존재할 수 있고, 이 중 어떤 함수는 정칙 곡선(regular curve)이 될 수도 있고 되지 않을 수도 있다. 함수가 정의된 식 자체에 문제가 있을 수도 있고, 정의역에 따라서도 여부가 달라진다. 이러한 사실들은 매개변수를 바꿔주는 재매개변수화(reparametrization)의 도입이 필요함을 시사한다.
+
+# Definition 2
+Let $\gamma : (c, d) \to \mathbb{R}^3$ be a regular curve.
+
+**(i)** A ***segment*** of $\gamma$ is a curve $\alpha : [a, b] \to \mathbb{R}^3$ such that $\alpha(t) = \gamma(t), \forall t \in [a, b]$
+
+**(ii)** The ***length*** of a segment $\alpha: [a, b] \to \mathbb{R}^3$, denoted by $l_{[a, b]}(\alpha)$, is defined as
+$$l_{[a, b]}(\alpha) = \int_a^b \| \alpha'(t) \| dt$$
+
+곡선을 정의할 때 정의역을 보면 모두 열린 구간인데, 곡선의 길이를 구하기 위해 적분을 하려면 정의역을 닫힌 구간으로 만들어줘야 할 필요성이 생기고, 세그먼트는 그러한 필요에 의해 정의된 개념이다.
+
+# Theorem
+Let $\alpha: [a, b] \to \mathbb{R}^3$ be a segment of a regular curve $\gamma$, and let $g: [c, d] \to [a, b]$ be a reparametrization restricted to $[c, d]$. Set $\beta = \alpha \circ g$. Then $l_{[a, b]}(\alpha) = l_{[c, d]}(\beta)$.
+
+다시 말해 곡선의 길이는 재매개변수화에 대해서 불변이다. 당연할 것이, 길이라 하면 곡선 그 자체의 특징이므로 변수를 바꿨다고 달라질리 없다.
+
+## Proof
+Let $t = g(s)$. Then we have
+
+$$\begin{align*}
+l_{[c, d]}(\beta) &= \int_c^d \| \beta'(s) \| ds \\
+&= \int_c^d \| \alpha'(g(s)) \cdot g'(s) \| ds \\
+&= \int_c^d \| \alpha'(t) \| \cdot \vert g'(s) \vert ds
+\end{align*}$$
+
+[Since $g'(s) \neq 0, \forall s \in [c,d]$ and $g$ is continuous,](../Arc_Length_Reparametrization/index.qmd#sec-theorem-1) $g'(s) > 0$ or $g'(s) < 0$ for all $s$ in $[c, d]$.
+
+**Case 1:** $g'(s) > 0, \forall s \in [c, d]$. 
+
+Then $a = g(c), b = g(d)$. Thus, we have
+
+$$\begin{align*}
+l_{[c, d]}(\beta) &= \int_c^d \| \alpha'(t) \| g'(s) ds \\
+&= \int_a^b \| \alpha'(t) \| dt \\
+&= l_{[a, b]}(\alpha).
+\end{align*}$$
+
+**Case 2:** $g'(s) < 0, \forall s \in [c, d]$. 
+
+Then $b = g(c)$ and $a = g(d)$. Thus, we have
+
+$$\begin{align*}
+l_{[c, d]}(\beta) &= \int_c^d \| \alpha'(t) \| \cdot (-g'(s)) ds \\
+&= -\int_b^a \| \alpha'(t) \| dt \\
+&= \int_a^b \| \alpha'(t) \| dt \\
+&= l_{[a, b]}(\alpha).
+\end{align*}$$
+
+In both cases, we have $l_{[a, b]}(\alpha) = l_{[c, d]}(\beta)$. $\blacksquare$
+
+# Reference
+- R. S. Millman and G. D. Parker, Elements of Differential Geometry, Prentice-Hall, 1977.

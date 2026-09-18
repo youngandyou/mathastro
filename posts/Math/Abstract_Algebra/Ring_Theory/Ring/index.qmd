@@ -7,7 +7,7 @@ categories:
   - Math > Abstract Algebra > Ring Theory
 ---
 
-# Definition
+# Definition 1
 **(i)** A ***ring*** $\langle R, +, \cdot \rangle$ is a set $R$ together with two [binary operations](../binaryop/index.qmd#sec-1.1.-definition) $+$ and $\cdot$, which we call addition and multiplication, defined on $R$ such that
 
 - $\langle R, + \rangle$ is an [abelian group.](../group/index.qmd#sec-definition)
@@ -59,7 +59,7 @@ Let $R$ be a ring, and let $a \in R$.
 
 정수배의 $0$과 덧셈의 항등원 $0$을 헷갈리지 않도록 주의하자. 위 (iii)에서의 $0$은 정수 $0$이지만 아래 정리 (i)에서의 $0$은 덧셈의 항등원 $0$이다.
 
-# Theorem 1
+# Properties
 Let $R$ be a ring, and let $a, b \in R$.
 
 **(i)** $0a = 0 = a0$
@@ -75,23 +75,48 @@ Let $R$ be a ring, and let $a, b \in R$.
 
 **(iii)** By (ii), we have $(-a)(-b) = -(a(-b)) = -(-(ab))$. Since $-(ab) + (-(-(ab))) = 0$ and $ab + (-(ab)) = 0$, it follows from the uniqueness of the additive inverse that $(-a)(-b) = ab$. $\blacksquare$
 
-# Theorem 2
+# Theorem
 Let $S$ be a nonempty subset of a ring $R$. Then $S \le R$ $\iff$ $a - b, ab \in S, \forall a, b \in S$.
 
 부분군 판정법과 유사하지만 환은 군과는 달리 곱셈이라는 연산이 추가되므로 곱셈에 대해서 닫혀있음도 보여야 한다.
 
 ## Proof
-$(\implies)$
+$(\implies)$ Let $a, b \in S$. Since $S$ is a ring, the additive inverse of $b$ belongs to $S$, so $a - b \in S$. Clearly, $ab \in S$.
 
-Let $a, b \in S$. Since $S$ is a ring, the additive inverse of $b$ belongs to $S$, so $a - b \in S$. Clearly, $ab \in S$.
-
-$(\impliedby)$
-
-Let $a \in S$. Since $0 = a - a \in S$, $S$ contains the additive identity $0$. Furthermore, since $-a = 0 - a \in S$, it also contains the additive inverse of every element in $S$.
+$(\impliedby)$ Let $a \in S$. Since $0 = a - a \in S$, $S$ contains the additive identity $0$. Furthermore, since $-a = 0 - a \in S$, it also contains the additive inverse of every element in $S$.
 
 Let $a, b \in S$. Since $S$ contains $-b$, we have $a + b = a - (-b) \in S$, which means that $S$ is closed with respect to addition. By assumption, $S$ is closed with respect to multiplication.
 
 Since $S \subset R$, the associativity and commutativity of the addition is clearly held, and so is the distributivity of the operations. Hence, $S$ is a subring of $R$. $\blacksquare$
+
+# Definition 2
+Let $R$ be a ring. If there exists an $n \in \mathbb{N}$ such that $na = 0, \forall a \in R$, then the least such positive integer is called the ***characteristic*** of $R$. If no such positive integer exists, then $R$ is of ***characteristic 0***. We denote the characteristic of $R$ $\mathrm{char}(R)$.
+
+한국어로는 표수, 특성 정도로 번역되는 듯하다. $\mathbb{Z}, \mathbb{R}$ 등의 집합은 당연하게 $0$의 표수를 가진다. 어떤 정수를 자연수 배를 한 결과가 항상 $0$이 나올 수는 없기 때문이다. 다르게 말하면 이를 만족하는 $n$은 오직 $0$ 뿐이다. 그러나 $\mathbb{Z}_n$과 같은 집합은 $n$의 배수는 모두 항등원인 $0$이 되기 때문에 $n$의 표수를 가지게 된다.
+
+# Remark
+**(i)** $\mathrm{char}(\mathbb{Z}_n) = n$
+
+**(ii)** $\mathrm{char}(\mathbb{Z}) = \mathrm{char}(\mathbb{Q}) = \mathrm{char}(\mathbb{R}) = \mathrm{char}(\mathbb{C}) = 0$.
+
+**(iii)** Let $R$ be a ring with identity. If $n \cdot 1 \neq 0, \forall n \in \mathbb{N}$, then $\mathrm{char}(R) = 0$. If $n \cdot 1 = 0$ for some $n \in \mathbb{N}$, then the smallest such integer $n$ is the characteristic of $R$.
+
+원래 표수를 찾으려면 환 $R$의 임의의 원소에 대해서 정의를 체크해야 하지만, 곱셈의 항등원 $1$에 대해서만 체크해도 충분하다는 사실을 얻는다.
+
+$\big[ (\because)$ If $n \cdot 1 \neq 0, \forall n \in \mathbb{N}$, then clearly $\mathrm{char}(R) = 0$.
+
+Suppose $n \cdot 1 = 0$ for some $n \in \mathbb{N}$. Let $a \in R$. Then we have
+
+$$\begin{align*}
+n \cdot a &= \underbrace{a + \cdots + a}_{n \text{ times}} \\
+&= \underbrace{a \cdot 1 + \cdots + a \cdot 1}_{n \text{ times}} \\
+&= a (\underbrace{1 + \cdots 1}_{n \text{ times}}) \\
+&= a \cdot (n \cdot 1) \\
+&= a \cdot 0 \\
+&= 0
+\end{align*}$$
+
+Thus, the smallest positive integer $n$ is the characteristic of $R$. $\blacksquare \big]$
 
 # Reference
 - John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

@@ -1,0 +1,70 @@
+---
+title: "Field of Quotients of an Integral Domain"
+author: "Youmin Chun"
+date: "2026-09-18 00:00:01"
+description: "주어진 정역(Integral Domain)을 가지고 분수체(Field of Quotients)를 구성하는 방법에 대해 설명한다."
+categories: 
+  - Math > Abstract Algebra > Ring Theory
+draft: true
+---
+
+# Motivation
+[정수 집합 $\mathbb{Z}$는 환이면서 동시에 정역이지만 일반적으로 체가 되지는 않는다.](../Integral_Domain/index.qmd#sec-theorem) 반면 $\mathbb{Z}$를 포함하는 체는 많이 찾을 수 있는데, $\mathbb{Q}, \mathbb{R}, \mathbb{C}$는 모두 체이면서 $\mathbb{Z}$를 포함한다. 이때 $\mathbb{Z}$를 포함하는 체 중에서 가장 작은 체가 존재할까? 존재한다면, 무엇일까?
+
+후술하겠지만, 답은 유리수 집합 $\mathbb{Q}$로 주어진다. 정수 집합은 그 자체만으로는 곱셈에 대한 역원을 보장할 수 없기 때문에 체가 되지 않지만, 유리수 범위 안에서 생각할 때는 체로 간주할 수 있다.
+
+이를 일반화하면, 어떤 정역 $D$가 주어졌을 때 $D$를 포함하는 체를 찾는 문제가 되고, 이러한 체를 $D$의 ***분수체(field of quotients)***라고 한다. 아래 설명한 방법을 사용했을 때 우리는 항상 분수체를 찾을 수 있고, 특별히 분수체는 $D$를 포함하는 체 중 가장 작은 체이면서 동형사상에 대해서 유일하다는 사실까지 얻게 된다.
+
+# Construction
+Let $D$ be an integral domain. We will construct the field of quotients $F$ of $D$ by following the below steps:
+
+**Step 1:** Define what the elements of $F$ are to be.
+
+**Step 2:** Define the binary operations of addition and multiplication on $F$.
+
+**Step 3:** Show that $F$ is a field under these operations.
+
+**Step 4:** Show that $F$ can be viewed as containing $D$ as an integral subdomain.
+
+## Step 1
+For an integral domain $D$, let 
+
+$$S = \{ (a, b) \mid a \in D \text{ and } b \in D \setminus \{ 0 \} \}.$$
+
+Two elements $(a, b)$ and $(c, d)$ of $S$ is said to be ***equivalent*** if $ad = bc$. In this case, we write $(a, b) \sim (c, d)$.
+
+Then $\sim$ is an equivalence relation on $S$.
+
+$\big[ (\because)$
+
+$\big]$
+
+For $(a, b) \in S$, $[(a, b)]$ denotes the equivalence class of $(a, b)$ in $S$ under $\sim$. We define $F = \{ [(a, b)] \mid (a, b) \in S \} = S/ \sim$, the quotient set of $S$ under $\sim$.
+
+## Step 2
+Define $+ : F \times F \to F$ by
+
+$$[(a, b)] + [(c, d)] = [(ad + bc, bd)]$$
+
+for all $[(a, b)], [(c, d)] \in F$.
+
+Define $\cdot: F \times F \to F$ by
+
+$$[(a, b)] \cdot [(c, d)] = [(ac, bd)]$$
+
+for all $[(a, b)], [(c, d)] \in F$.
+
+Then $+, \cdot$ are binary operations on $F$.
+
+$\big[ (\because)$
+
+$\big]$
+
+## Step 3
+Under these operations, $\langle F, +, \cdot \rangle$ is a field.
+
+## Step 4
+
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

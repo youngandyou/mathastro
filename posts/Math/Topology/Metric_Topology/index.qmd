@@ -22,6 +22,11 @@ Let $(X, d)$ be a metric space. The collection $\mathscr{B} = \{ B_d(x, \varepsi
 
 해석개론에서는 위상 얘기를 생략하고 바로 거리공간 위에서 오픈이니, 컴팩트이니 등등의 논의를 진행했었다. 위상수학에서는 이를 더 일반화해서 사실 거리공간도 위상공간의 한 종류로 이야기하고, 메트릭으로 만들어지는 오픈볼을 오픈셋으로 볼 수 있게 한다.
 
+$$\begin{align*}
+\text{A set } U \text{ is open in the metric topology induced by } d \\
+\iff \forall x \in U, \exists \delta > 0 \text{ such that } B_d(x, \delta) \subset U.
+\end{align*}$$
+
 # Proof
 Let $x \in X$. Since $d(x, x) = 0$, we have $x \in B_d(x, \varepsilon), \forall \varepsilon > 0$. Thus, there is $B \in \mathscr{B}$ such that $x \in B$.
 
@@ -33,24 +38,21 @@ $$d(y, x_1) \le d(y, x) + d(x, x_1) < \delta_1 \quad \text{and} \quad d(y, x_2) 
 
 so that $y \in B_d(x_1, \delta_1) \cap B_d(x_2, \delta_2) = B_1 \cap B_2$. Therefore, $B_d(x, \delta) \subset B_1 \cap B_2$. It follows that $\mathscr{B}$ is a basis for a topology on $X$. $\blacksquare$
 
-## Remark
-A set $U$ is open in the metric topology induced by $d$ $\iff$ $\forall x \in U, \exists \delta > 0$ such that $B_d(x, \delta) \subset U$.
-
 ## Example
 The following give the metrics on $\mathbb{R}^n$:
 
 **(i)** ***The Euclidean metric***: $\displaystyle d(x, y) = \sqrt{\sum_{i=1}^n (x_i - y_i)^2}$.
 
-**(ii)** ***The discrete metric***: 
+**(ii)** ***The taxicab metric***: $\displaystyle d(x, y) = \sum_{i=1}^n \vert x_i - y_i \vert$.
+
+**(iii)** ***The square metric***: $\displaystyle d(x, y) = \max _{1 \le i \le n} \{ \vert x_i - y_i \vert \}$.
+
+**(iv)** ***The discrete metric***: 
 
 $$d(x, y) = \begin{cases}
-1 & \text{if } x = y \\
-0 & \text{if } x \neq y.
+0 & \text{if } x = y \\
+1 & \text{if } x \neq y.
 \end{cases}$$
-
-**(iii)** ***The taxicab metric***: $\displaystyle d(x, y) = \sum_{i=1}^n \vert x_i - y_i \vert$.
-
-**(iv)** ***The square metric***: $\displaystyle d(x, y) = \max _{1 \le i \le n} \{ \vert x_i - y_i \vert \}$.
 
 # Definition
 Let $X$ be a topological space.
@@ -69,13 +71,15 @@ $(\Longrightarrow)$ Suppose that $\mathscr{T} _{d} \subset \mathscr{T} _{d'}$. L
 
 $(\Longleftarrow)$ Suppose that $\forall x \in X$ and $\forall \varepsilon > 0$, $\exists \delta > 0$ such that $B _{d'}(x, \delta) \subset B _d(x, \varepsilon)$. Let $B$ be a basis element of $\mathscr{T} _{d}$. Then $B = B _{d}(x, \varepsilon)$ for some $x \in X$ and $\varepsilon > 0$. By assumption, $\exists \delta > 0$ such that $B _{d'}(x, \delta) \subset B _d(x, \varepsilon)$. Since $B _{d'}(x, \delta)$ is a basis element of $\mathscr{T} _{d'}$ and it contains $x$, we conclude that $\mathscr{T} _{d} \subset \mathscr{T} _{d'}$. $\blacksquare$
 
-## Corollary 1
-Let $d, d', d''$ be the Euclidean metric, the taxicab metric, and the square metric, respectively, on $\mathbb{R}^n$. Then $\mathscr{T} _d = \mathscr{T} _{d'} = \mathscr{T} _{d''}$. Furthermore, these topologies are the same as the usual topology of $\mathbb{R}^n$.
+## Corollary
+**(i)** Let $d, d', d''$ be the Euclidean metric, the taxicab metric, and the square metric, respectively, on $\mathbb{R}^n$. Then $\mathscr{T} _d = \mathscr{T} _{d'} = \mathscr{T} _{d''}$. Furthermore, these topologies are the same as the usual topology of $\mathbb{R}^n$.
+
+**(ii)** Let $d$ be a discrete metric on a set $X$. Then the metric topology induced by $d$ is the discrete topology on $X$.
 
 ### Proof
-Let $x \in \mathbb{R}^n$ and $\varepsilon > 0$.
+**(i)** Let $x \in \mathbb{R}^n$ and $\varepsilon > 0$.
 
-**(i)** $\mathscr{T} _d \subset \mathscr{T} _{d'}$
+**1.** $\mathscr{T} _d \subset \mathscr{T} _{d'}$
 
 We claim that $B _{d'}(x, \varepsilon) \subset B _{d}(x, \varepsilon)$.
 
@@ -85,7 +89,7 @@ $$d(x, y) = \sqrt{\sum_{i=1}^n (x_i - y_i)^2} \le \sum_{i=1}^n \vert x_i - y_i \
 
 so that $y \in B_d(x, \varepsilon)$. Thus, we have $B _{d'}(x, \varepsilon) \subset B _{d}(x, \varepsilon)$, and therefore $\mathscr{T} _d \subset \mathscr{T} _{d'}$ by Theoerm 2.
 
-**(ii)** $\mathscr{T} _{d'} \subset \mathscr{T} _{d''}$
+**2.** $\mathscr{T} _{d'} \subset \mathscr{T} _{d''}$
 
 Take $\delta = \frac{\varepsilon}{n}$. We claim that $B _{d''}(x, \delta) \subset B _{d'}(x, \varepsilon)$.
 
@@ -99,7 +103,7 @@ $$d'(x, y) = \sum_{i=1}^n \vert x_i - y_i \vert < n \max_{1 \le i \le n} \vert x
 
 Hence, $y \in B_{d'}(x, \varepsilon)$, so that $B_{d''}(x, \delta) \subset B_{d'}(x, \varepsilon)$. Therefore, $\mathscr{T} _{d'} \subset \mathscr{T} _{d''}$ by Theoerm 2.
 
-**(iii)** $\mathscr{T} _{d''} \subset \mathscr{T} _{d}$
+**3.** $\mathscr{T} _{d''} \subset \mathscr{T} _{d}$
 
 Take $\delta = \varepsilon$. We claim that $B _{d}(x, \delta) \subset B _{d''}(x, \varepsilon)$.
 
@@ -137,13 +141,9 @@ $$\begin{align*}
 d(z, y) = \sqrt{\sum_{i=1}^n (z_i - y_i)^2} < \sqrt{n\left( \frac{\delta}{\sqrt{n}} \right)^2} = \delta,
 \end{align*}$$
 
-so that $z \in B_d(y, \delta)$. Thus, $B \subset B_d(y, \delta)$, and therefore $\mathscr{T}_d$ and the usual topology of $\mathbb{R}^n$ are the same. Hence, all of $\mathscr{T}_d, \mathscr{T}_{d'}, \mathscr{T}_{d''}$ and the usual topology are the same. $\blacksquare$
+so that $z \in B_d(y, \delta)$. Thus, $B \subset B_d(y, \delta)$, and therefore $\mathscr{T}_d$ and the usual topology of $\mathbb{R}^n$ are the same. Hence, all of $\mathscr{T}_d, \mathscr{T}_{d'}, \mathscr{T}_{d''}$ and the usual topology are the same. 
 
-## Corollary 2
-Let $d$ be a discrete metric on a set $X$. Then the metric topology induced by $d$ is the discrete topology on $X$.
-
-### Proof
-Let $U$ be an open set of the discrete topology on $X$, and let $x \in U$. Note that 
+**(ii)** Let $U$ be an open set of the discrete topology on $X$, and let $x \in U$. Note that 
 
 $$B_d(x, \varepsilon) = \begin{cases}
 \{ x \} & \text{if } \varepsilon \le 1 \\
@@ -153,54 +153,18 @@ X & \text{of } \varepsilon > 1
 by the definition of the discrete metric. [Thus, we always have $x \in B_d(x, 1) = \\{ x \\} \subset U$, and therefore, the discrete topology on $X$ is the metric topology induced by $d$.](../Basis_Topology/index.qmd#sec-theorem-3) $\blacksquare$
 
 # Theorem 3
-Every metric space is Hausdorff.
+**(i)** Every metric space is Hausdorff.
+
+**(ii)** Let $\mathbb{R}^n$ be the metric space with the Euclidean metric $d$. A subspace $A$ of $\mathbb{R}^n$ is [compact](../Compact_Space/index.qmd#sec-definition) $\iff$ $A$ is [closed](../Closed_Set/index.qmd#sec-definition) and bounded.
 
 ## Proof
-Let $X$ be a metric space with the metric $d$. Let $x, y \in X$ with $x \neq y$. Then $d(x, y) > 0$. Take $\varepsilon = \frac{1}{2}d(x, y)$. Since
+**(i)** Let $X$ be a metric space with the metric $d$. Let $x, y \in X$ with $x \neq y$. Then $d(x, y) > 0$. Take $\varepsilon = \frac{1}{2}d(x, y)$. Since
 
 $$B_d(x, \varepsilon) \cap B_d(y, \varepsilon) = \emptyset$$
 
-and each $B_d(x, \varepsilon), B_d(y, \varepsilon)$ is open in $X$, $X$ is Hausdorff. $\blacksquare$
+and each $B_d(x, \varepsilon), B_d(y, \varepsilon)$ is open in $X$, $X$ is Hausdorff. 
 
-# Theorem 4
-Let $X, Y$ be metrizble with metrics $d_X, d_Y$, respectively. Let $f: X \to Y$ be a function. Then 
-
-$$f \text{ is continuous } \iff \forall x \in X, \forall \varepsilon > 0, \exists \delta >0 \text{ such that } d_X(x, y) < \delta \implies d_Y(f(x), f(y)) < \varepsilon.$$
-
-## Proof
-$(\Longrightarrow)$ Suppose that $f$ is continuous. Let $x \in X$ and $\varepsilon > 0$. Note that $B _{d_Y}(f(x), \varepsilon)$ is open in $Y$ and $f(x) \in B _{d_Y}(f(x), \varepsilon)$. Since $f$ is continuous, there exists a neighborhood $U$ of $x$ such that $f(U) \subset B _{d_Y}(f(x), \varepsilon)$. Since $x \in U$, $x \in B _{d_X}(x, \delta) \subset U$ for some $\delta > 0$. If $y \in B _{d_X}(x, \delta) \subset U$, which implies that $d_X(x, y) < \delta$, then we have $f(y) \in f(U) \subset B _{d_Y}(f(x), \varepsilon)$, so that $d_Y(f(x), f(y)) < \varepsilon$. 
-
-$(\Longleftarrow)$ Suppose that the statement holds. Let $x \in X$ and let $V$ be a neighborhood of $f(x)$. Since $f(x) \in V$, $f(x) \in B _{d_Y}(f(x), \varepsilon) \subset V$ for some $\varepsilon > 0$. By assumtion, $\exists \delta > 0$ such that $d_X(x, y) < \delta \implies d_Y(f(x), f(y)) < \varepsilon.$ Take $U := B _{d_X}(x, \delta)$. Then $U$ is a neighborhood of $x$, and we have 
-
-$$f(U) \subset B _{d_Y}(f(x), \varepsilon) \subset V.$$
-
-Thus, $f$ is continuous. $\blacksquare$
-
-# Theorem 5
-**(i)** Let $A$ be a subset of a space $X$. If there exists a sequence of points of $A$ converging to $x \in X$, then $x \in \overline{A}$. Moreover, if $X$ is metrizable, then the converse holds.
-
-**(ii)** Let $f: X \to Y$ be a continuous function. Then for every sequence $\{ x_n \} _{n=1} ^{\infty}$ in $X$ with $\lim_{n \to \infty} x_n = x$, we have $\lim_{n \to \infty} f(x_n) = f(x)$. Moreover, if $X$ is metrizable, then the converse holds. 
-
-# Proof
-**(i)** 
-
-$(\Longrightarrow)$ Suppose that there exists a sequence $\{ x_n \}_{n=1}^\infty$ of points of $A$ converging to $x \in X$. Let $U$ be a neighborhood of $x$. Then there exists $N \in \mathbb{N}$ such that $x_n \in U, \forall n \ge N$. Then $A \cap U \neq \emptyset$, which means that $x \in \overline{A}$.
-
-$(\Longleftarrow)$ Let $X$ be a metric space with a metric $d$. Let $x \in \overline{A}$.  Then $A \cap U \neq \emptyset$ for each neighborhood $U$ of $x$. For each $n \in \mathbb{N}$, we choose an element $x_n$ in $A \cap B_d\left( x, \frac{1}{n} \right)$.
-
-Let $U$ be a neighborhood of $x$. Since $x \in U$, then $x \in B_d(x, \varepsilon) \subset U$ for some $\varepsilon > 0$. Note that $\frac{1}{N} < \varepsilon$ for some $N \in \mathbb{N}$. Then we have $x_n \in B_d\left(x, \frac{1}{n} \right) \subset B_d(x, \varepsilon) \subset U, \forall n \ge N$, and $x_n \in A, \forall n \in \mathbb{N}$. Thus, $\lim_{n \to \infty} x_n = x$. 
-
-**(ii)** 
-
-$(\Longrightarrow)$ Let $\{ x_n \}_{n=1}^\infty$ be a sequence such that $x_n \in X, \forall n \in \mathbb{N}$ and $\lim_{n \to \infty} x_n = x$. Let $V$ be a neighborhood of $f(x)$. Note that $x \in f^{-1}(V)$ and $f^{-1}(V)$ is open in $X$ because $f$ is continuous. Then $\exists N \in \mathbb{N}$ such that $x_n \in f^{-1}(V), \forall n \ge N$, which implies that $f(x_n) \in V, \forall n \ge N$. Thus, $\lim_{n \to \infty} f(x_n) = f(x)$.
-
-$(\Longleftarrow)$ Let $X$ be a metric space with a metric $d$. Suppose that the statement holds. Let $A \subset X$, and let $y \in f(\overline{A})$. Then $y = f(x)$ for some $x \in \overline{A}$. Then there exists a sequence $\{ x_n \}_{n=1}^\infty$ such that $x_n \in A, \forall n \in \mathbb{N}$ and $\lim_{n \to \infty} x_n = x \in X$ by the preceeding theorem. By assumption, we have $\lim_{n \to \infty} f(x_n) = f(x)$ and $f(x_n) \in f(A), \forall n \in \mathbb{N}$. By the preceeding theorem, we have $y = f(x) \in \overline{f(A)}$, which means that $f(\overline{A}) \subset \overline{f(A)}$. Hence, $f$ is continuous. $\blacksquare$ 
-
-# Theorem 6
-Let $\mathbb{R}^n$ be the metric space with the Euclidean metric $d$. A subspace $A$ of $\mathbb{R}^n$ is [compact](../Compact_Space/index.qmd#sec-definition) $\iff$ $A$ is [closed](../Closed_Set/index.qmd#sec-definition) and bounded.
-
-## Proof
-$(\implies)$ Suppose that $A$ is compact. [Since $(\mathbb{R}^n, d)$ is Hausdorff by Theorem 3, $A$ is closed.](../Compact_Space/index.qmd#sec-theorem) Consider the open cover $\{ B_d(\mathbf{0}, n) \mid n \in \mathbb{N} \}$ of $A$. Since $A$ is compact, there is a finite subcover $\{ B_d(\mathbf{0}, n_1), \dots, B_d(\mathbf{0}, n_k) \}$ of $A$ for some $n_1, \dots, n_k \in \mathbb{N}$. Let $M = max \{ n_1, \dots, n_k \}$. Then 
+**(ii)**$(\implies)$ Suppose that $A$ is compact. [Since $(\mathbb{R}^n, d)$ is Hausdorff by **(i)**, $A$ is closed.](../Compact_Space/index.qmd#sec-theorem) Consider the open cover $\{ B_d(\mathbf{0}, n) \mid n \in \mathbb{N} \}$ of $A$. Since $A$ is compact, there is a finite subcover $\{ B_d(\mathbf{0}, n_1), \dots, B_d(\mathbf{0}, n_k) \}$ of $A$ for some $n_1, \dots, n_k \in \mathbb{N}$. Let $M = max \{ n_1, \dots, n_k \}$. Then 
 
 $$A \subset \bigcup_{i=1}^k B_d(\mathbf{0}, n_i) \subset B_d(\mathbf{0}, M),$$
 
@@ -215,6 +179,50 @@ $(\impliedby)$ Suppose that $A$ is closed and bounded. Then $d(a, b) < M, \foral
 $$A \subset B_d(\mathbf{0}, N+M) \subset [-(N+M), N+M]^n.$$
 
 [Since $[-(N+M), N+M]^n$ is compact and $A$ is closed, $A$ is compact.](../Compact_Space/index.qmd#sec-theorem) $\blacksquare$
+
+# Theorem 4
+**(i)** Let $f: (X, d_X) \to (Y, d_Y)$ be a function. Then 
+
+$$f \text{ is continuous } \iff \forall x \in X, \forall \varepsilon > 0, \exists \delta >0 \text{ such that } d_X(x, y) < \delta \implies d_Y(f(x), f(y)) < \varepsilon.$$
+
+**(ii)** Let $A$ be a subset of a space $X$. If there exists a sequence of points of $A$ converging to $x \in X$, then $x \in \overline{A}$. Moreover, if $X$ is metrizable, then the converse holds.
+
+**(iii)** Let $f: X \to Y$ be a continuous function. Then for every sequence $\{ x_n \} _{n=1} ^{\infty}$ in $X$ with $\lim_{n \to \infty} x_n = x$, we have $\lim_{n \to \infty} f(x_n) = f(x)$. Moreover, if $X$ is metrizable, then the converse holds. 
+
+(iv) Let $f: (X, d_X) \to (Y, d_Y)$ be a continuous function such that $X$ is compact. Then $f$ is uniformly continuous, i.e. for any $\varepsilon >0$, there exists $\delta > 0$ such that $d_X(x, y) < \delta \implies d_Y(f(x), f(y)) < \varepsilon$. 
+
+## Proof
+**(i)**
+
+$(\Longrightarrow)$ Suppose that $f$ is continuous. Let $x \in X$ and $\varepsilon > 0$. Note that $B _{d_Y}(f(x), \varepsilon)$ is open in $Y$ and $f(x) \in B _{d_Y}(f(x), \varepsilon)$. Since $f$ is continuous, there exists a neighborhood $U$ of $x$ such that $f(U) \subset B _{d_Y}(f(x), \varepsilon)$. Since $x \in U$, $x \in B _{d_X}(x, \delta) \subset U$ for some $\delta > 0$. If $y \in B _{d_X}(x, \delta) \subset U$, which implies that $d_X(x, y) < \delta$, then we have $f(y) \in f(U) \subset B _{d_Y}(f(x), \varepsilon)$, so that $d_Y(f(x), f(y)) < \varepsilon$. 
+
+$(\Longleftarrow)$ Suppose that the statement holds. Let $x \in X$ and let $V$ be a neighborhood of $f(x)$. Since $f(x) \in V$, $f(x) \in B _{d_Y}(f(x), \varepsilon) \subset V$ for some $\varepsilon > 0$. By assumtion, $\exists \delta > 0$ such that $d_X(x, y) < \delta \implies d_Y(f(x), f(y)) < \varepsilon.$ Take $U := B _{d_X}(x, \delta)$. Then $U$ is a neighborhood of $x$, and we have 
+
+$$f(U) \subset B _{d_Y}(f(x), \varepsilon) \subset V.$$
+
+Thus, $f$ is continuous.
+
+**(ii)**
+
+$(\Longrightarrow)$ Suppose that there exists a sequence $\{ x_n \}_{n=1}^\infty$ of points of $A$ converging to $x \in X$. Let $U$ be a neighborhood of $x$. Then there exists $N \in \mathbb{N}$ such that $x_n \in U, \forall n \ge N$. Then $A \cap U \neq \emptyset$, which means that $x \in \overline{A}$.
+
+$(\Longleftarrow)$ Let $X$ be a metric space with a metric $d$. Let $x \in \overline{A}$.  Then $A \cap U \neq \emptyset$ for each neighborhood $U$ of $x$. For each $n \in \mathbb{N}$, we choose an element $x_n$ in $A \cap B_d\left( x, \frac{1}{n} \right)$.
+
+Let $U$ be a neighborhood of $x$. Since $x \in U$, then $x \in B_d(x, \varepsilon) \subset U$ for some $\varepsilon > 0$. Note that $\frac{1}{N} < \varepsilon$ for some $N \in \mathbb{N}$. Then we have $x_n \in B_d\left(x, \frac{1}{n} \right) \subset B_d(x, \varepsilon) \subset U, \forall n \ge N$, and $x_n \in A, \forall n \in \mathbb{N}$. Thus, $\lim_{n \to \infty} x_n = x$. 
+
+**(iii)** 
+
+$(\Longrightarrow)$ Let $\{ x_n \}_{n=1}^\infty$ be a sequence such that $x_n \in X, \forall n \in \mathbb{N}$ and $\lim_{n \to \infty} x_n = x$. Let $V$ be a neighborhood of $f(x)$. Note that $x \in f^{-1}(V)$ and $f^{-1}(V)$ is open in $X$ because $f$ is continuous. Then $\exists N \in \mathbb{N}$ such that $x_n \in f^{-1}(V), \forall n \ge N$, which implies that $f(x_n) \in V, \forall n \ge N$. Thus, $\lim_{n \to \infty} f(x_n) = f(x)$.
+
+$(\Longleftarrow)$ Let $X$ be a metric space with a metric $d$. Suppose that the statement holds. Let $A \subset X$, and let $y \in f(\overline{A})$. Then $y = f(x)$ for some $x \in \overline{A}$. Then there exists a sequence $\{ x_n \}_{n=1}^\infty$ such that $x_n \in A, \forall n \in \mathbb{N}$ and $\lim_{n \to \infty} x_n = x \in X$ by the preceeding theorem. By assumption, we have $\lim_{n \to \infty} f(x_n) = f(x)$ and $f(x_n) \in f(A), \forall n \in \mathbb{N}$. By the preceeding theorem, we have $y = f(x) \in \overline{f(A)}$, which means that $f(\overline{A}) \subset \overline{f(A)}$. Hence, $f$ is continuous. 
+
+**(iv)** Let $\varepsilon > 0$. Then $\left\{ B_d \left(y, \frac{\varepsilon}{2} \right) \,\, \Big \vert \,\, y \in Y \right\}$ is an [open cover](../Compact_Space/index.qmd#sec-definition) of $Y$. Since $f$ is continuous, the collection $\mathcal{U} = \left\{ f^{-1} \left( B_d \left(y, \frac{\varepsilon}{2} \right) \right) \,\, \Big \vert \,\, y \in Y \right\}$ is an open cover of $X$. Since $X$ is compact, it has a [Lebesgue number](../Lebesgue_Number/index.qmd#sec-definition) $\delta$ for $\mathcal{U}$.
+
+Let $x, y \in X$. If $d(x, y) < \delta$, then the subset $\{ x, y \}$ has the [diameter](../Lebesgue_Number/index.qmd#sec-definition) less than $\delta$, which implies that $\{ x, y \} \subset f^{-1} \left( B_d \left(z, \frac{\varepsilon}{2} \right) \right)$ for some $z \in Y$. Thus, $f(x), f(y) \in B_d \left(z, \frac{\varepsilon}{2} \right)$, so that
+
+$$d_Y(f(x), f(y)) \le d_Y(f(x), z) + d_Y(f(y), z) < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.$$
+
+Hence, $f$ is uniformly continuous. $\blacksquare$
 
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

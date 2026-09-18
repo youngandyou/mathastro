@@ -28,7 +28,7 @@ $T$는 말 그대로 각 점에서의 곡선에 접하는 접선 벡터다. 한�
 
 $$\begin{align*}
 \kappa(s) &= \| T'(s) \| \\
-&= \| (-\sin(\theta)\\cdot \theta'(s), \cos(\theta)\\cdot \theta'(s)) \| \\
+&= \| (-\sin(\theta(s)) \cdot \theta'(s), \cos(\theta(s)) \cdot \theta'(s)) \| \\
 &= \vert \theta'(s) \|
 \end{align*}$$
 
@@ -45,7 +45,7 @@ $$\begin{align*}
 
 $$\begin{align*}
 \kappa(s) &= \| T'(s) \| \\
-&= \| \left( -\frac{1}{r} \sin \frac{s}{r}, \frac{1}{r} \cos \frac{s}{r}, 0 \right) \| \\
+&= \left\| \left( -\frac{1}{r} \sin \frac{s}{r}, \frac{1}{r} \cos \frac{s}{r}, 0 \right) \right\| \\
 &= \sqrt{\left( -\frac{1}{r} \sin \frac{s}{r} \right)^2 + \left( \frac{1}{r} \cos \frac{s}{r} \right)^2} \\
 &= \sqrt{\frac{1}{r^2} \left( \sin^2 \frac{s}{r} + \cos^2 \frac{s}{r} \right)} \\
 &= \frac{1}{r}. \end{align*}$$
@@ -56,7 +56,7 @@ $$\begin{align*}
 N(s) &= \left( -\cos \frac{s}{r}, -\sin \frac{s}{r}, 0 \right), \\
 B(s) &= T(s) \times N(s) \\
 &= \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ -\sin \frac{s}{r} & \cos \frac{s}{r} & 0 \\ -\cos \frac{s}{r} & -\sin \frac{s}{r} & 0 \end{vmatrix} \\
-&= \mathbf{k}. 
+&= \mathbf{k} = (0, 0, 1). 
 \end{align*}$$
 
 Thus, we have

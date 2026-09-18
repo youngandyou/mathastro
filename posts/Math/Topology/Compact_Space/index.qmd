@@ -43,7 +43,7 @@ By the nested interval theorem, there exists $x^\ast \in \displaystyle \bigcap_{
 
 **(vi)** Since $S^n$ is a closed subspace of a compact space $[-1, 1]^{n+1}$, $S^n$ is compact. Similarly, $B^n$ is compact. 
 
-# Theorem
+# Theorem 1
 **(i)** Let $Y$ be a subspace of $X$. Then $Y$ is compact $\iff$ every collection $\mathscr{U} = \{ U \subset X \mid U \text{ is open in } X \}$ such that $Y \subset \bigcup_{U \in \mathscr{U}} U$ has a finite subcollection that covers $Y$.
 
 **(ii)** Every closed subspace of a compact space is compact.
@@ -123,6 +123,35 @@ Since $V_y$ is open in $X_2$, $\{ V_y \}_{y \in X_2}$ is an open cover of $X_2$.
 $$\prod_{i=1}^{n+1} X_i = \left( \prod_{i=1}^n X_i \right) \times X_{n+1}$$
 
 is compact. Thus, we complete the proof. $\blacksquare$
+
+# Definition 2
+A point $x$ of a space $X$ is called an isolated point of $X$ if $\{ x \}$ is open in $X$.
+
+## Example
+**(i)** $(\mathbb{R}, \mathscr{T}_{\text{usual}})$ has no isolated points.
+
+**(ii)** Every point in $(X, \mathscr{T}_\text{discrete})$ is an isolated point.
+
+**(iii)** A subspace $\{ 0 \} \cup [1, 2]$ of $(\mathbb{R}, \mathscr{T}_{\text{usual}})$ has an isolated point $0$.
+
+# Theorem 2
+Let $X$ be a nonempty compact Hausdorff space. If $X$ has no isolated points, then $X$ is uncountable.
+
+## Proof
+Let $U$ be a nonempty open subset of $X$, and let $x \in X$. Then there exists a nonempty open subset $V$ of $U$ such that $x \notin \overline{V}$.
+
+$\big[ (\because)$ If $U$ is a singleton, then $X$ has an isolated point, which is a contradiction. It implies that we can choose a point $y \in U$ with $x \neq y$. Since $X$ is Hausdorff, there are open sets $W_1, W_2$ such that $x \in W_1, y \in W_2$ and $W_1 \cap W_2 = \emptyset$. Let $V = U \cap W_2$. Then $V$ is nonempty open subset of $U$.
+
+If $z \in W_1$, then $z \in W \subset W_1$ for some basis element $W$. Since $W_1 \subset X \setminus W_2$, we have $z \in W \subset X \setminus W_2$, which means that $z \in \mathrm{int}(X \setminus W_2)$. This shows that $W_1 \subset \mathrm{int}(X \setminus W_2)$. Note that $V \subset W_2$, so $\overline{V} \subset \overline{W_2}$. Since $\mathrm{int}(X \setminus W_2) \cap \overline{W_2} = \emptyset$, we have $x \notin \overline{V}$.$\big]$
+
+Let $f:\mathbb{N} \to X$ be a map. We will show that $f$ cannot be surjective, which implies that $X$ is uncountable.
+
+$\big[ (\because)$  Let $x_1 = f(1) \in X$. By above assertation, there exists a nonempty open subset $V_1 \subset X$ such that $x_1 \notin \overline{V_1}$. Let $x_2 = f(2) \in X$. Again, there exists a nonempty open subset $V_2 \subset V_1$ such that $x_2 \notin \overline{V_2}$. Repeating this process, we can construct a sequence of nonempty open subsets $V_n$ such that $V_n \subset V_{n-1}$ and $x_n \notin \overline{V_n}$ for all $n \in \mathbb{N}$.
+
+[Since $X$ is compact, $\displaystyle \exists x \in \bigcap_{n=1}^\infty \overline{V_n}$.](../Finite_Intersection_Property/index.qmd#sec-theorem) Since $x \in \overline{V_n}, \forall n \in \mathbb{N}$, $x \neq x_n = f(n), \forall n \in \mathbb{N}$. Hence, $f$ is not surjective. $\blacksquare \big]$
+
+## Corollary
+Every nonempty closed interval in $\mathbb{R}$ is uncountable. Thus, $\mathbb{R}$ is uncountable.
 
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

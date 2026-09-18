@@ -35,9 +35,17 @@ Two elements $(a, b)$ and $(c, d)$ of $S$ is said to be ***equivalent*** if $ad 
 
 Then $\sim$ is an equivalence relation on $S$.
 
-$\big[ (\because)$
+::: {.callout-note collapse="true"}
+$\big[ (\because)$ Let $(a_1, b_1), (a_2, b_2), (a_3, b_3)$ be elements of $S$.
 
-$\big]$
+1. Since $a_1b_1 = b_1a_1$, we have $(a_1, b_1) \sim (a_1, b_1)$.
+
+2. If $(a_1, b_1) \sim (a_2, b_2)$, then $a_1b_2 = b_1a_2$. Since $a_2b_1 = b_2a_1$, we have $(a_2, b_2) \sim (a_1, b_1)$.
+
+3. If $(a_1, b_1) \sim (a_2, b_2)$ and $(a_2, b_2) \sim (a_3, b_3)$, then $a_1b_2 = b_1a_2$ and $a_2b_3 = b_2a_3$. Since $D$ is an integral domain, we have $a_1b_2b_3 = b_1a_2b_3 = b_1b_2a_3$. Thus $(a_1, b_1) \sim (a_3, b_3)$.
+
+Thus, $\sim$ is an equivalence relation on $S$.$\big]$
+:::
 
 For $(a, b) \in S$, $[(a, b)]$ denotes the equivalence class of $(a, b)$ in $S$ under $\sim$. We define $F = \{ [(a, b)] \mid (a, b) \in S \} = S/ \sim$, the quotient set of $S$ under $\sim$.
 
@@ -56,12 +64,123 @@ for all $[(a, b)], [(c, d)] \in F$.
 
 Then $+, \cdot$ are binary operations on $F$.
 
-$\big[ (\because)$
+::: {.callout-note collapse="true"}
+$\big[ (\because)$ Let $[(a_1, b_1)], [(a_2, b_2)], [(c_1, d_1)], [(c_2, d_2)]$ be elements of $F$. Since $b_1, d_1 \neq 0$ and $D$ is an integral domain, $b_1d_1 \neq 0$. Thus, $[(a_1, b_1)] + [(c_1, d_1)] = [(a_1d_1 + b_1c_1, b_1d_1)] \in F$ and $[(a_1, b_1)] \cdot [(c_1, d_1)] = [(a_1c_1, b_1d_1)] \in F$.
 
-$\big]$
+Suppose that $[(a_1, b_1)] = [(a_2, b_2)]$ and $[(c_1, d_1)] = [(c_2, d_2)]$. Then we have
+
+$$\begin{align*}
+& a_1b_2 = b_1a_2 \quad \text{and} \quad c_1d_2 = d_1c_2 \\
+\implies & a_1b_2d_1d_2 = b_1a_2d_1d_2 \quad \text{and} \quad c_1d_2b_1b_2 = d_1c_2b_1b_2 \\
+\implies & (a_1d_1 + b_1c_1)b_2d_2 = (a_2d_2 + b_2c_2)b_1d_1 \\
+\implies & [(a_1d_1 + b_1c_1, b_1d_1)] = [(a_2d_2 + b_2c_2, b_2d_2)] \\
+\implies & [(a_1, b_1)] + [(c_1, d_1)] = [(a_2, b_2)] + [(c_2, d_2)],
+\end{align*}$$
+
+and
+
+$$\begin{align*}
+a_1b_2 = b_1a_2 \quad \text{and} \quad c_1d_2 = d_1c_2 \\
+\implies & a_1b_2c_1d_2 = b_1a_2c_1d_2 = b_1a_2d_1c_2 \\
+\implies & (a_1c_1)b_2d_2 = (a_2c_2)b_1d_1 \\
+\implies & [(a_1c_1, b_1d_1)] = [(a_2c_2, b_2d_2)] \\
+\implies & [(a_1, b_1)] \cdot [(c_1, d_1)] = [(a_2, b_2)] \cdot [(c_2, d_2)].
+\end{align*}$$
+
+Hence, $+, \cdot$ are binary operation on $F$.$\big]$
+:::
 
 ## Step 3
 Under these operations, $\langle F, +, \cdot \rangle$ is a field.
+
+::: {.callout-note collapse="true"}
+$\big[ (\because)$ Note that for each $(a, b) \in F$, $(a, b) \sim (ax, bx)$ for any $x \in D \setminus \{ 0 \}$. It implies that we can choose arbitrary elements $(a, b), (c, d)$ of $F$ such that $[(a, b)] = [(a', x)]$ and $[(c, d)] = [(c', x)]$ for some $x \in D \setminus \{ 0 \}$.
+
+Let $(a, x), (b, x), (c, x) \in F$. 
+
+1. $+$ is associative.
+
+$$\begin{align*}
+([(a, x)] + [(b, x)]) + [(c, x)] &= [(ax + bx, x^2)] + [(c, x)] \\
+&= [(a+b, x)] + [(c, x)] \\
+&= [((a+b)x + cx, x^2)] \\
+&= [(ax + bx + cx, x^2)] \\
+&= [(a, x)] + [(b+c, x)] \\
+&= [(a, x)] + ([(b, x)] + [(c, x)]).
+\end{align*}$$
+
+2. For any $x \in D \setminus \{0\}$, $[(0, x)]$ is the additive identity in $F$.
+
+$$\begin{align*}
+[(a, x)] + [(0, x)] &= [(ax + x \cdot 0, x^2)] \\
+&= [(ax, x^2)] \\
+&= [(a, x)].
+\end{align*}$$
+
+3. For each $(a, x) \in F$, $[(-a, x)]$ is the additive inverse of $[(a, x)]$. 
+
+Since $a \in D$, we have $-a \in D$. Thus, $[(-a, x)] \in F$. Moreover, we have
+
+$$\begin{align*}
+[(a, x)] + [(-a, x)] &= [(ax + x(-a), x^2)] \\
+&= [(0, x^2)] \\
+&= [(0, x)].
+\end{align*}$$
+
+4. $+$ is commutative.
+
+$$\begin{align*}
+[(a, x)] + [(b, x)] &= [(ax + bx, x^2)] \\
+&= [(a+b, x)] \\
+&= [(b+a, x)] \\
+&= [(bx + ax, x^2)] \\
+&= [(b, x)] + [(a, x)].
+\end{align*}$$
+
+5. $\cdot$ is associative.
+
+$$\begin{align*}
+([(a, x)] \cdot [(b, x)]) \cdot [(c, x)] &= [(ab, x^2)] \cdot [(c, x)] \\
+&= [(abc, x^3)] \\
+&= [(a, x)] \cdot [(bc, x^2)] \\
+&= [(a, x)] \cdot ([(b, x)] \cdot [(c, x)]).
+\end{align*}$$
+
+6. $\cdot$ is commutative.
+
+$$\begin{align*}
+[(a, x)] \cdot [(b, x)] &= [(ab, x^2)] \\
+&= [(ba, x^2)] \\
+&= [(b, x)] \cdot [(a, x)].
+\end{align*}$$
+
+7. For any $x \in D \setminus \{0\}$, $[(x, x)]$ is the multiplicative identity in $F$.
+
+$$\begin{align*}
+[(a, x)] \cdot [(x, x)] &= [(a \cdot x, x \cdot x)] \\
+&= [(ax, x^2)] \\
+&= [(a, x)].
+\end{align*}$$
+
+8. For each $(a, x) \in F \setminus \{ [(0, x)] \}$, $[(x, a)]$ is the multiplicative inverse of $[(a, x)]$.
+
+$$\begin{align*}
+[(a, x)] \cdot [(x, a)] &= [(a \cdot x, x \cdot a)] \\
+&= [(ax, ax)] \\
+&= [(x, x)].
+\end{align*}$$
+
+9. $\cdot$ is distributive over $+$.
+
+$$\begin{align*}
+([(a, x)] + [(b, x)]) \cdot [(c, x)] &= [(a+b, x)] \cdot [(c, x)] \\
+&= [((a+b)c, x^2)] \\
+&= [(ac + bc, x^2)] \\
+&= [(a, x)] \cdot [(c, x)] + [(b, x)] \cdot [(c, x)].
+\end{align*}$$
+
+Thus, $\langle F, +, \cdot \rangle$ is a field.$\big]$
+:::
 
 ## Step 4
 

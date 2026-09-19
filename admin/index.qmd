@@ -54,13 +54,14 @@ format:
       <input id="task-input" type="text" maxlength="300" placeholder="예: Radio Astronomy 글 수정" required>
       <button id="start-button" type="submit">작업 시작</button>
     </form>
-    <aside id="work-git" class="work-guide" hidden>
+    <!-- Keep this in the card: Quarto places aside elements in the page margin. -->
+    <div id="work-git" class="work-guide" hidden>
       <h3>✅ 작업 권한을 획득했습니다.</h3>
       <p>작업을 시작하기 전에 로컬 저장소에서 최신 main을 받아주세요.</p>
       <pre><code>git pull origin main</code></pre>
       <button id="copy-git" class="work-secondary" type="button">명령 복사</button>
       <p>작업 완료 후 <code>git add</code> → <code>git commit</code> → <code>git push origin main</code>을 마친 다음 <strong>작업 종료</strong>를 눌러주세요. 로그아웃하거나 창을 닫아도 잠금은 유지됩니다.</p>
-    </aside>
+    </div>
   </section>
   <noscript>운영진 로그인과 작업 현황 확인에는 JavaScript가 필요합니다.</noscript>
 </div>

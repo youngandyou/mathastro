@@ -1,0 +1,32 @@
+.work-admin { max-width: 760px; margin: 1rem auto 3rem; }
+.work-admin [hidden] { display: none !important; }
+.work-intro, .work-card > p, .work-guide p { color: var(--mag-text-muted); }
+.work-card { padding: clamp(1.2rem, 4vw, 2.2rem); background: var(--mag-bg-card); border: 1px solid var(--mag-border); border-top: 4px solid var(--mag-navy); margin: 1.25rem 0; }
+.work-card[data-state="free"] { border-top-color: #21734b; }
+.work-card[data-state="locked"] { border-top-color: var(--mag-burgundy); }
+.work-admin .work-eyebrow { font: 600 .72rem var(--mag-font-sans); letter-spacing: .12em; color: var(--mag-text-muted); }
+.work-admin h2 { margin-top: .7rem; font-family: var(--mag-font-sans); font-size: 1.45rem; }
+.work-admin h3 { font-family: var(--mag-font-sans); font-size: 1.1rem; }
+.work-admin label { display: block; margin: .9rem 0 .35rem; font-weight: 600; }
+.work-admin input { width: 100%; min-height: 46px; padding: .65rem .8rem; border: 1px solid var(--mag-border); border-radius: 4px; background: var(--mag-bg-paper); color: var(--mag-text-main); font: inherit; }
+.work-admin button { min-height: 44px; padding: .55rem 1.1rem; border: 1px solid var(--mag-navy); border-radius: 4px; background: var(--mag-navy); color: #fff; font: 600 .92rem var(--mag-font-sans); cursor: pointer; }
+.work-admin button:disabled { opacity: .5; cursor: not-allowed; }
+.work-admin button:focus-visible, .work-admin input:focus-visible { outline: 3px solid #0284c7; outline-offset: 3px; }
+.work-admin form button { margin-top: 1.1rem; }
+.work-admin .work-secondary { background: transparent; color: var(--mag-navy); }
+.work-admin .work-danger { background: transparent; color: var(--mag-burgundy); border-color: var(--mag-burgundy); }
+.work-session, .work-actions { display: flex; gap: .8rem; align-items: center; flex-wrap: wrap; }
+.work-session { justify-content: space-between; }
+.work-admin dl { display: grid; grid-template-columns: 6rem minmax(0, 1fr); gap: .75rem 1rem; margin-top: 1.5rem; }
+.work-admin dt { color: var(--mag-text-muted); font-weight: 500; }
+.work-admin dd { margin: 0; overflow-wrap: anywhere; }
+.work-warning { padding: 1rem; background: #fff5dc; color: #6b4700; border-left: 3px solid #aa7200; }
+.work-guide { margin-top: 1.5rem; padding: 1.2rem; background: var(--mag-bg-subtle); }
+.work-guide pre { white-space: pre-wrap; }
+#admin-message:empty, #work-connection:empty { display: none; }
+#admin-message { overflow-wrap: anywhere; }
+@media (max-width: 480px) {
+  .work-admin dl { grid-template-columns: 1fr; gap: .25rem; }
+  .work-admin dd { margin-bottom: .75rem; }
+  .work-admin form button, .work-actions button { width: 100%; }
+}

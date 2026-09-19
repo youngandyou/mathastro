@@ -5,6 +5,11 @@ project:
     - assets/firebase-config.json
     - assets/post-likes.js
     - assets/likes-store.mjs
+    - assets/firebase-client.mjs
+    - assets/admin-auth.mjs
+    - assets/work-store.mjs
+    - assets/work-status.js
+    - assets/work-status.css
 
 website:
   description: "A blog built with Quarto"
@@ -91,6 +96,8 @@ website:
             text: "블로그 소개"
           - href: team.qmd
             text: "운영진 소개"
+          - href: admin/index.qmd
+            text: "운영진 전용 작업 현황"
 format:
   html:
     theme:

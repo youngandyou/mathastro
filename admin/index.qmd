@@ -1,0 +1,69 @@
+---
+title: "운영진 전용 작업 현황"
+description: "MathAstro 운영진의 공동 작업 현황"
+toc: false
+search: false
+page-layout: article
+format:
+  html:
+    css: ../assets/work-status.css
+---
+
+```{=html}
+<div id="work-admin" class="work-admin">
+  <p class="work-intro">작업 시작으로 잠금을 획득한 운영진만 Git 작업을 진행해주세요. 이 페이지는 Git 명령 자체를 차단하지 않습니다.</p>
+  <p id="admin-message" role="status" aria-live="polite">로그인 연결을 준비하고 있습니다…</p>
+  <button id="admin-retry" class="work-secondary" type="button" hidden>다시 연결</button>
+  <section id="admin-login" class="work-card">
+    <p class="work-eyebrow">MATHASTRO ADMIN</p>
+    <h2>운영진 로그인</h2>
+    <p>등록된 운영진 계정으로 로그인해주세요.</p>
+    <form id="login-form">
+      <label for="admin-email">이메일</label>
+      <input id="admin-email" type="email" autocomplete="username" required>
+      <label for="admin-password">비밀번호</label>
+      <input id="admin-password" type="password" autocomplete="current-password" required>
+      <button id="login-button" type="submit" disabled>로그인</button>
+    </form>
+  </section>
+  <div id="admin-session" class="work-session" hidden>
+    <span id="admin-identity"></span>
+    <button id="logout-button" class="work-secondary" type="button">로그아웃</button>
+  </div>
+  <section id="work-panel" class="work-card" hidden aria-labelledby="work-heading">
+    <p class="work-eyebrow">MAIN BRANCH · SHARED WORKSPACE</p>
+    <h2 id="work-heading" aria-live="polite">작업 상태 확인 중…</h2>
+    <p id="work-connection" role="status"></p>
+    <div id="work-details" hidden>
+      <dl>
+        <dt>작업자</dt><dd id="work-worker"></dd>
+        <dt>작업 내용</dt><dd id="work-task"></dd>
+        <dt>시작 시각</dt><dd id="work-started"></dd>
+        <dt>작업 시간</dt><dd id="work-elapsed"></dd>
+      </dl>
+      <p id="work-stale" class="work-warning" hidden>⚠️ 오래된 작업 상태: 이 작업은 3시간 이상 유지되고 있습니다. 실제로 작업 중인지 확인해주세요. 잠금은 자동 해제되지 않습니다.</p>
+      <p id="work-other">현재 다른 운영진이 작업하고 있습니다. 작업이 끝날 때까지 새로운 Git 작업을 시작하지 마세요.</p>
+      <div class="work-actions">
+        <button id="work-end" type="button" hidden>작업 종료</button>
+        <button id="work-force" class="work-danger" type="button" hidden>작업 상태 강제 해제</button>
+      </div>
+    </div>
+    <form id="work-start" hidden>
+      <p>현재 작업 중인 사람이 없습니다.</p>
+      <label for="task-input">작업 내용</label>
+      <input id="task-input" type="text" maxlength="300" placeholder="예: Radio Astronomy 글 수정" required>
+      <button id="start-button" type="submit">작업 시작</button>
+    </form>
+    <aside id="work-git" class="work-guide" hidden>
+      <h3>✅ 작업 권한을 획득했습니다.</h3>
+      <p>작업을 시작하기 전에 로컬 저장소에서 최신 main을 받아주세요.</p>
+      <pre><code>git switch main
+git pull origin main</code></pre>
+      <button id="copy-git" class="work-secondary" type="button">명령 복사</button>
+      <p>작업 완료 후 <code>git add</code> → <code>git commit</code> → <code>git push origin main</code>을 마친 다음 <strong>작업 종료</strong>를 눌러주세요. 로그아웃하거나 창을 닫아도 잠금은 유지됩니다.</p>
+    </aside>
+  </section>
+  <noscript>운영진 로그인과 작업 현황 확인에는 JavaScript가 필요합니다.</noscript>
+</div>
+<script type="module" src="../assets/work-status.js"></script>
+```

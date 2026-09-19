@@ -1,7 +1,9 @@
-# MathAstro 좋아요 설정
+# MathAstro Firebase 설정
 
 이 저장소는 운영진이 `git clone`으로 내려받아 함께 작업하는 Quarto 블로그입니다.
-Firebase는 좋아요 데이터만 저장하며, 블로그 배포는 기존 GitHub Pages를 사용합니다.
+Firebase는 좋아요와 운영진 작업 잠금 데이터를 저장하며, 블로그 배포는 기존 GitHub Pages를 사용합니다.
+
+운영진 로그인·작업 현황의 설정과 사용법은 [ADMIN.md](ADMIN.md)를 참고하세요.
 
 ## 처음 한 번 필요한 설정
 

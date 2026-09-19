@@ -444,6 +444,12 @@ $$
 - resolve의 결과물은 이미지 형태가 maximum entropy imaging과 유사하다.
 - resolve에서 얻어낸 결과로 픽셀 별 spectral index를 계산할 수 있다. 
 
+---
+
+# Reference 
+
+- Comparison of classical and Bayesian imaging in radio interferometry Cygnus A with CLEAN and resolve Philipp Arras et al. 2020
+- Bayesian self-calibration and imaging in very long baseline interferometry Jong-Seo kim et al. 2024
 
 <style>
 h2 {

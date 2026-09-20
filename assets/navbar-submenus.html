@@ -1,0 +1,209 @@
+<script>
+(function() {
+  // Category taxonomy with subcategories and verified post counts
+  const navSubmenuData = {
+    "abstract algebra": {
+      subcategories: [
+        { key: "Group Theory", name: "군론 (Group Theory)", count: 31 },
+        { key: "Ring Theory", name: "환론 (Ring Theory)", count: 4 },
+        { key: "Binary Algebraic Structure", name: "이항대수구조 (Binary Algebraic Structure)", count: 2 },
+        { key: "Field Theory", name: "체론 (Field Theory)", count: 1 }
+      ]
+    },
+    "calculus": {
+      subcategories: [
+        { key: "Vector Calculus", name: "벡터미적분학 (Vector Calculus)", count: 2 }
+      ]
+    },
+    "analysis": {
+      subcategories: [
+        { key: "Multivariable", name: "다변수해석학 (Multivariable Analysis)", count: 1 }
+      ]
+    },
+    "differential geometry": {
+      subcategories: [
+        { key: "Curve Theory", name: "곡선론 (Curve Theory)", count: 3 }
+      ]
+    },
+    "graph theory": {
+      subcategories: [
+        { key: "Graph", name: "그래프 (Graph)", count: 27 },
+        { key: "Network Analysis", name: "네트워크 분석 (Network Analysis)", count: 8 },
+        { key: "Algorithm", name: "알고리즘 (Algorithm)", count: 3 },
+        { key: "Tree", name: "트리 (Tree)", count: 3 }
+      ]
+    },
+    "radio astronomy": {
+      subcategories: [
+        {
+          key: "Radio Software",
+          name: "전파 소프트웨어 (Radio Software)",
+          count: 3,
+          subcategories: [
+            { key: "AIPS", name: "AIPS", count: 2 },
+            { key: "resolve", name: "resolve", count: 1 }
+          ]
+        }
+      ]
+    },
+    "general relativity": {
+      subcategories: [
+        { key: "Equivalence Principle", name: "등가원리 (Equivalence Principle)", count: 1 }
+      ]
+    }
+  };
+
+  function normalizeKey(str) {
+    return decodeURIComponent(str || "").trim().toLowerCase();
+  }
+
+  function getCategoryKeyFromHref(href) {
+    if (!href || href.indexOf("category=") === -1) return "";
+    var parts = href.split("category=");
+    return normalizeKey(parts[1] ? parts[1].split("&")[0] : "");
+  }
+
+  function formatCountBadges(rootEl) {
+    var items = rootEl.querySelectorAll(".dropdown-item .dropdown-text, .dropdown-item");
+    items.forEach(function(el) {
+      if (el.dataset.badgeProcessed) return;
+      if (el.children.length === 0 || (el.classList.contains("dropdown-text") && !el.querySelector(".nav-count-badge"))) {
+        var text = el.textContent || "";
+        var match = text.match(/^(.*?)(\s*\(\d+\))$/);
+        if (match) {
+          el.innerHTML = escapeHtml(match[1]) + ' <span class="nav-count-badge">' + escapeHtml(match[2].trim()) + '</span>';
+          el.dataset.badgeProcessed = "true";
+        }
+      }
+    });
+  }
+
+  function escapeHtml(str) {
+    return str
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  function attachSubmenuEvents(li) {
+    var timeout = null;
+    li.addEventListener("mouseenter", function() {
+      if (timeout) {
+        clearTimeout(timeout);
+        timeout = null;
+      }
+      // Close sibling submenus
+      var siblings = li.parentElement ? li.parentElement.querySelectorAll(".dropdown-submenu") : [];
+      siblings.forEach(function(sib) {
+        if (sib !== li) sib.classList.remove("is-open");
+      });
+      li.classList.add("is-open");
+    });
+
+    li.addEventListener("mouseleave", function() {
+      timeout = setTimeout(function() {
+        li.classList.remove("is-open");
+      }, 150);
+    });
+  }
+
+  function createSubmenuList(subcategories, parentHref, level) {
+    var ul = document.createElement("ul");
+    ul.className = "dropdown-menu dropdown-menu-sub dropdown-menu-level-" + (level || 1);
+
+    var basePath = parentHref ? parentHref.split("#")[0] : "./index.html";
+
+    subcategories.forEach(function(sub) {
+      var li = document.createElement("li");
+      var href = basePath + "#category=" + encodeURIComponent(sub.key);
+      var a = document.createElement("a");
+      a.className = "dropdown-item";
+      a.href = href;
+
+      var textSpan = document.createElement("span");
+      textSpan.className = "dropdown-text";
+      textSpan.textContent = sub.name;
+
+      var countSpan = document.createElement("span");
+      countSpan.className = "nav-count-badge";
+      countSpan.textContent = "(" + sub.count + ")";
+
+      a.appendChild(textSpan);
+      a.appendChild(document.createTextNode(" "));
+      a.appendChild(countSpan);
+      li.appendChild(a);
+
+      if (sub.subcategories && sub.subcategories.length > 0) {
+        li.classList.add("dropdown-submenu");
+        a.classList.add("has-submenu");
+        var childUl = createSubmenuList(sub.subcategories, parentHref, (level || 1) + 1);
+        li.appendChild(childUl);
+        attachSubmenuEvents(li);
+      }
+
+      ul.appendChild(li);
+    });
+
+    return ul;
+  }
+
+  function setupNavbarSubmenus() {
+    var navLinks = document.querySelectorAll(".navbar-nav .dropdown-menu a.dropdown-item");
+    if (!navLinks.length) return;
+
+    navLinks.forEach(function(link) {
+      var href = link.getAttribute("href") || "";
+      var catKey = getCategoryKeyFromHref(href);
+      if (!catKey) return;
+
+      var info = navSubmenuData[catKey];
+      if (info && info.subcategories && info.subcategories.length > 0) {
+        var parentLi = link.closest("li");
+        if (parentLi && !parentLi.classList.contains("dropdown-submenu")) {
+          parentLi.classList.add("dropdown-submenu");
+          link.classList.add("has-submenu");
+
+          var subMenu = createSubmenuList(info.subcategories, href, 1);
+          parentLi.appendChild(subMenu);
+          attachSubmenuEvents(parentLi);
+        }
+      }
+    });
+
+    // Style any count badges inside the navbar
+    var navContainer = document.querySelector(".navbar-nav");
+    if (navContainer) {
+      formatCountBadges(navContainer);
+    }
+
+    // Support touch devices / mobile accordion
+    var subToggles = document.querySelectorAll(".navbar-nav .dropdown-submenu > a.has-submenu");
+    subToggles.forEach(function(toggle) {
+      toggle.addEventListener("click", function(e) {
+        // If on small viewport, tapping submenu toggle can toggle the sub-menu
+        if (window.innerWidth < 992) {
+          var submenu = toggle.nextElementSibling;
+          if (submenu && submenu.classList.contains("dropdown-menu-sub")) {
+            // Check if user clicked the right edge (arrow) or want to expand
+            var rect = toggle.getBoundingClientRect();
+            var clickX = e.clientX - rect.left;
+            if (clickX > rect.width - 45) {
+              e.preventDefault();
+              e.stopPropagation();
+              submenu.classList.toggle("show");
+              toggle.classList.toggle("sub-expanded");
+            }
+          }
+        }
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupNavbarSubmenus);
+  } else {
+    setupNavbarSubmenus();
+  }
+})();
+</script>

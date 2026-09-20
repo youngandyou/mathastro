@@ -58,27 +58,52 @@ listing:
 
 document.addEventListener("DOMContentLoaded", function() {
   var catInfo = {
+    // Top-level sections
     'math': { title: 'Mathematics (수학)' },
+    'astronomy': { title: 'Astronomy (천문학)' },
+    'physics': { title: 'Physics (물리학)' },
+    'computer': { title: 'Computer Science' },
+
+    // Math fields & subfields
+    'calculus': { title: 'Calculus (미적분학)' },
+    'vector calculus': { title: 'Vector Calculus (벡터미적분학)' },
     'abstract algebra': { title: 'Abstract Algebra (추상대수학)' },
+    'group theory': { title: 'Group Theory (군론)' },
+    'ring theory': { title: 'Ring Theory (환론)' },
+    'binary algebraic structure': { title: 'Binary Algebraic Structure (이항대수구조)' },
+    'field theory': { title: 'Field Theory (체론)' },
     'linear algebra': { title: 'Linear Algebra (선형대수학)' },
     'matrix algebra': { title: 'Matrix Algebra (행렬대수학)' },
     'complex analysis': { title: 'Complex Analysis (복소해석학)' },
     'analysis': { title: 'Analysis (해석학)' },
+    'multivariable': { title: 'Multivariable Analysis (다변수해석학)' },
     'topology': { title: 'Topology (위상수학)' },
     'differential geometry': { title: 'Differential Geometry (미분기하학)' },
+    'curve theory': { title: 'Curve Theory (곡선론)' },
     'graph theory': { title: 'Graph Theory (그래프 이론)' },
+    'graph': { title: 'Graph (그래프)' },
+    'network analysis': { title: 'Network Analysis (네트워크 분석)' },
+    'tree': { title: 'Tree (트리)' },
+    'algorithm': { title: 'Algorithm (알고리즘)' },
     'numerical analysis': { title: 'Numerical Analysis (수치해석학)' },
-    'astronomy': { title: 'Astronomy (천문학)' },
+
+    // Astronomy fields & subfields
     'radio astronomy': { title: 'Radio Astronomy (전파천문학)' },
-    'aips': { title: 'Radio Software (AIPS)' },
+    'radio software': { title: 'Radio Software (전파 소프트웨어)' },
+    'aips': { title: 'AIPS (Astronomical Image Processing System)' },
+    'resolve': { title: 'resolve (Bayesian Radio Imaging)' },
     'general relativity': { title: 'General Relativity & Equivalence Principle (일반상대론 & 등가원리)' },
+    'equivalence principle': { title: 'Equivalence Principle (등가원리)' },
     'high energy': { title: 'High Energy Astrophysics (고에너지 천체물리학)' },
+    'high energy astrophysics': { title: 'High Energy Astrophysics (고에너지 천체물리학)' },
     'relativistic jets': { title: 'Relativistic Jets (상대론적 제트)' },
-    'physics': { title: 'Physics (물리학)' },
+
+    // Physics
     'thermodynamics': { title: 'Thermodynamics (열역학)' },
-    'computer': { title: 'Computer Science' },
-    'reinforcement learning': { title: 'Reinforcement Learning (강화학습)' },
-    'algorithm': { title: 'Algorithms (알고리즘)' }
+
+    // Computer Science
+    'machine learning': { title: 'Machine Learning (머신러닝)' },
+    'reinforcement learning': { title: 'Reinforcement Learning (강화학습)' }
   };
 
   function updateView() {
@@ -108,8 +133,32 @@ document.addEventListener("DOMContentLoaded", function() {
 
       if (listing) {
         listing.filter(function(item) {
-          var cats = (item.values && item.values()['listing-categories']) || '';
-          return cats.toLowerCase().indexOf(catKey) !== -1;
+          var rawCats = [];
+          if (item.values && item.values().categories) {
+            try {
+              rawCats.push(decodeURIComponent(atob(item.values().categories)));
+            } catch(e) {}
+          }
+          if (item.elm) {
+            item.elm.querySelectorAll('.listing-category').forEach(function(c) {
+              rawCats.push(c.textContent.trim());
+            });
+          }
+          if (item.values && item.values()['listing-categories']) {
+            rawCats.push(item.values()['listing-categories']);
+          }
+          var combined = rawCats.join(' > ');
+          if (!combined) return false;
+
+          var segments = combined
+            .replace(/&gt;/g, '>')
+            .split(/\s*(?:>|\/|,)\s*/)
+            .map(function(s) { return s.trim().toLowerCase(); })
+            .filter(Boolean);
+
+          return segments.some(function(seg) {
+            return seg === catKey || (catKey === 'high energy' && seg.indexOf('high energy') !== -1);
+          });
         });
       }
     } else {
@@ -150,6 +199,11 @@ document.addEventListener("DOMContentLoaded", function() {
           if (parentDropdown) {
             var toggle = parentDropdown.querySelector('.nav-link.dropdown-toggle');
             if (toggle) toggle.classList.add('active');
+          }
+          var parentSubmenu = link.closest('.dropdown-submenu');
+          if (parentSubmenu) {
+            var subToggle = parentSubmenu.querySelector('a.dropdown-item');
+            if (subToggle) subToggle.classList.add('active');
           }
         }
       });
@@ -282,12 +336,13 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="hub-col math-col">
       <div class="hub-col-header">
         <h4>📐 Mathematics (수학)</h4>
-        <span class="hub-col-count">40+ 글</span>
+        <span class="hub-col-count">174편</span>
       </div>
       <ul class="hub-col-list">
+        <li><a href="posts/Math/Calculus/Vector_Calculus/Cross_Product/">미적분학 (Calculus · 벡터미적분학)</a></li>
         <li><a href="posts/Math/Topology/Topology/">위상수학 (Topology) 전편</a></li>
         <li><a href="posts/Math/Complex_Analysis/Cauchy_Riemann_Eq/">복소해석학 (Complex Analysis)</a></li>
-        <li><a href="posts/Math/Abstract_Algebra/Group_Theory/Group/">추상대수학 (군론 · 환론)</a></li>
+        <li><a href="posts/Math/Abstract_Algebra/Group_Theory/group/">추상대수학 (군론 · 환론)</a></li>
         <li><a href="posts/Math/Numerical_Analysis/">수치해석학 (반복법과 알고리즘)</a></li>
         <li><a href="posts/Math/Graph_Theory/Tree/Tree_Isomorphism/">그래프 이론 (트리 동형사상)</a></li>
       </ul>
@@ -297,7 +352,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="hub-col astro-col">
       <div class="hub-col-header">
         <h4>🔭 Astronomy (천문학)</h4>
-        <span class="hub-col-count">15+ 글</span>
+        <span class="hub-col-count">16편</span>
       </div>
       <ul class="hub-col-list">
         <li><a href="posts/Astronomy/Basic_Radioastronomy0/">기초 전파천문학 시리즈 (0~5편)</a></li>

@@ -25,7 +25,7 @@ Let $g: [a, b] \to [a, b]$ be a function satisfying that $g$ and $g'$ is continu
 
 **(iii)**
 
-$$\vert \alpha - x_n \vert \le \frac{\lambda^n}{1 - \lambda} \vert x_0 - x_1 \verrt, \forall n = 0, 1, \dots$$
+$$\vert \alpha - x_n \vert \le \frac{\lambda^n}{1 - \lambda} \vert x_0 - x_1 \vert, \forall n = 0, 1, \dots$$
 
 **(iv)**
 

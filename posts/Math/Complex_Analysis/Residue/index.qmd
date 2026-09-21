@@ -199,5 +199,31 @@ $$\operatorname*{Res}_{z=0} \left[ \frac{1}{z^2} f\left( \frac{1}{z} \right) \ri
 
 ## Example 2
 
+# Theorem 3
+Let $z_0$ be an isolated singular point of a function $f$. TFAE.
+
+**(i)** $z_0$ is a pole of order $m$ of $f$.
+
+**(ii)** $f(z)$ can be written in the form
+
+$$f(z) = \frac{\phi(z)}{(z-z_0)^m}$$
+
+where $\phi(z)$ is analytic and nonzero at $z_0$.
+
+Moreover, if statements **(i)** and **(ii)** are true, then
+
+$$\operatorname*{Res}_{z=z_0}f(z) = \frac{\phi^{(m-1)}(z_0)}{(m-1)!}.$$
+
+지금까지의 방법에 의하면 유수를 구하기 위해서는 반드시 함수의 로랑 급수를 구해서 계수를 확인해야만 했다. 그러나 위 정리는 극점의 경우 반드시 위와 같이 어떤 함수 $\phi$와 $(z-z_0)^m$의 조합으로 생길 수 밖에 없음을 말해주고 있으므로, 위 표현과 같이 함수를 잘 나타낼 수만 있다면 굳이 함수의 로랑 급수를 찾지 않아도 간단한 계산으로 유수를 구할 수 있다. 물론 모든 경우에 위 정리를 사용하는 게 더 간편하다는 건 아니고, 함수의 모양에 따라서는 오히려 위 정리를 적용하는 게 더 힘들고 그냥 로랑 급수 전개하는 게 더 편한 경우도 있다. 또한 극점이 여러 개 있을 경우 함수 $\phi$의 개수 또한 여러 개가 존재하고, $f$ 또한 여러 방식으로 나타낼 수 있음을 주의하자.
+
+## Proof
+**(i)** $\implies$ **(ii)** 
+
+
+**(i)** $\impliedby$ **(ii)** 
+
+## Example 3
+
+
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

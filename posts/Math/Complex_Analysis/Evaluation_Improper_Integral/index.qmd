@@ -1,0 +1,144 @@
+---
+title: "Evaluation of Improper Integral using Residue"
+author: "Youmin Chun"
+date: "2026-09-22 00:00:02"
+description: "유수를 이용해 실함수의 이상적분을 구하는 여러 테크닉들을 소개한다."
+categories: 
+  - Math > Complex Analysis
+---
+
+# Definition
+Let $f : \mathbb{R} \to \mathbb{R}$ be a continuous function. 
+
+**(i)** The ***improper integral*** of $f(x)$ is defined as
+
+$$\begin{align*}
+\int_a^\infty f(x) dx &= \lim_{t \to \infty} \int_a^t f(x) dx \\
+\int_{-\infty}^\infty f(x) dx &= \lim_{s \to -\infty} \int_s^a f(x) dx + \lim_{t \to \infty} \int_a^t f(x) dx
+\end{align*}$$
+
+When the limit on the right-hand side exists, we say that the integral ***converges***.
+
+**(ii)** The ***Cauchy principle value*** of $f(x)$ is defined as
+
+$$\mathrm{P.V.} \int_{-\infty}^\infty f(x) dx = \lim_{t \to \infty} \int_{-t}^t f(x) dx$$
+
+적분의 위끝과 아래끝이 모두 무한대인 이상적분의 경우 하나의 극한으로 정의되지 않고, 각각에 대해서 극한을 적용해야 한다. 양쪽이 동시에 무한대로 뻗어나가는 극한은 코시 주요값이라는 이름으로 정의된다. 일반적으로 코시 주요값과 이상적분은 같을 필요도 없고, 존재성이 함께 보장될 필요도 없다. 딱봐도 알 수 있듯이 이상적분이 존재할 조건이 좀 더 강한 조건이고, 따라서 이상적분이 존재하면 코시 주요값도 존재하고, 그 값은 동일하게 계산된다.
+
+## Properties
+**(i)** If the integral $\int_{-\infty}^\infty f(x) dx$ exists, then the Cauchy principle value exists and
+
+$$\mathrm{P.V.} \int_{-\infty}^\infty f(x) dx = \int_{-\infty}^\infty f(x) dx$$
+
+**(ii)** If $f(x)$ is an even function, then
+
+$$\mathrm{P.V.} \int_{-\infty}^\infty f(x) dx = \lim_{t \to \infty} \int_{-t}^t f(x) dx = \lim_{t \to \infty} 2\int_0^t f(x) dx = 2\int_0^\infty f(x) dx$$
+
+이상적분과 코시 주요값은 동일한 개념이 아니지만, 주어진 함수 $f(x)$가 짝함수라면 존재성은 동치로 주어진다. 즉 $\int_a^\infty f(x) dx$가 존재하면 $\int_{-\infty}^\infty f(x) dx$도 존재하고, 코시 주요값도 존재한다.
+
+# Motivation
+이 포스트에서는 실함수의 이상적분
+
+$$\int_0^\infty f(x) dx, \quad \int_{-\infty}^\infty f(x) dx$$
+
+를 계산하는 것을 목표로 한다. 실함수를 적분하는데 복소해석학이 필요한 이유는, 공간을 복소평면으로 옮겨서 유수 정리를 사용하는 것을 목표로 하기 때문이다. 
+
+위와 같은 적분을 실수 안에서 여러 테크닉을 가지고 해결하려는 방법은 대게 복잡하고 많은 계산을 요구한다. 그러나 복소평면으로 정의역을 확장시켜보면, $-\infty$부터 $\infty$의 적분은 복소평면에서 실수축의 부분집합인 $[-R, R]$에서 $R \to \infty$인 상황에 해당한다. 따라서 우리는 아래와 같이 복소평면 위의 반원을 그린 뒤 $C_R$과 $[-R, R]$에서의 선적분을 계산해준뒤 $R \to \infty$의 극한을 취하고, 유수를 계산해서 이상적분을 계산하려고 한다.
+
+![](eval1.png)
+
+# Theorem 1
+For a function $f(z)$, suppose that  
+
+**(i)** $f$ is analytic on the upper half-plane except for finitely many isolated singular points $z_1, \dots, z_n$ with $\mathrm{Im}(z_i) > 0$,
+
+**(ii)** $f$ is continuous on the real axis,
+
+**(iii)** $\displaystyle \lim_{z \to \infty} z f(z) = 0$,
+
+**(iv)** $\displaystyle \int_{-\infty}^\infty f(x) dx$ exists.
+
+Then 
+
+$$\int_{-\infty}^\infty f(x) dx = 2\pi i \sum_{k=1}^n \operatorname*{Res}_{z=z_k} f(z)$$
+
+## Proof
+
+## Example 1
+이상적분 
+
+$$I = \int_0^\infty \frac{1}{x^6+1} dx$$
+
+를 위 정리를 이용해 계산해보자. $f(z) = \frac{1}{z^6+1}$로 두면 분모가 $0$이 되는 지점을 제외하고는 모든 곳에서 해석적이다. 이때 방정식 $z^6+1 = 0$은
+
+$$c_k = \exp \left[ i \left( \frac{\pi}{6} + \frac{2k\pi}{6} \right) \right], \quad k = 0, 1, \dots, 5$$
+
+의 해를 가지고, 이 중 상반평면에 있는 해는 $c_0, c_1, c_2$이므로 함수 $f$는 이 세 개의 고립특이점을 제외하고 항상 해석적이고 실근은 존재하지 않으므로 실수축에서 연속이다. 또한 자명하게
+
+$$\lim_{z \to \infty} zf(z) = \lim_{z \to \infty} \frac{z}{z^6+1} = 0$$
+
+이 성립한다. 마지막 가정은 수렴판정법에 의해 성립함이 확인된다. 자연수 $n$에 대해서 $\frac{1}{n^6+1} \le \frac{1}{n^6}$가 성립하고 $\displaystyle \sum_{n=1}^\infty \frac{1}{n^6}$는 $p$-판정법에 의해 수렴하므로 $\displaystyle \sum_{n=1}^\infty \frac{1}{n^6+1}$ 또한 수렴한다. 따라서 이상적분 $\displaystyle \int_{0}^\infty \frac{1}{x^6+1} dx$의 값이 존재함을 알 수 있다.
+
+한편 $f(x) = \frac{1}{x^6+1}$은 짝함수이고, 따라서 위의 성질 **(ii)**를 참고하면 다음의 결과가 성립한다.
+
+$$\begin{align*}
+\int_{-\infty}^\infty \frac{1}{x^6+1} dx = 2 \int_0^\infty \frac{1}{x^6+1} dx = 2I
+\end{align*}$$
+
+즉 이상적분 $\displaystyle \int_{-\infty}^\infty \frac{1}{x^6+1} dx$의 값 또한 존재하며, 구체적으로는 $2I$로 주어진다. 이제 위 정리를 적용하면 구하고자 하는 적분값 $I$는 다음과 같이 계산된다.
+
+$$\begin{align*}
+2I &= 2\pi i \sum_{k=0}^2 \operatorname*{Res}_{z=c_k} \frac{1}{z^6+1} \\
+\implies I &= \pi i \sum_{k=0}^2 \operatorname*{Res}_{z=c_k} \frac{1}{z^6+1}
+\end{align*}$$
+
+이제 각 유수의 값을 계산해보자. 각 $c_k$가 함수 $f$의 단순극점이라는 사실을 생각한다면 $f$는
+
+$$\frac{1}{z^6+1} = \frac{1}{(z-c_k)g_k(z)} = \frac{\frac{1}{g_k(z)}}{z-c_k}$$
+
+의 꼴로 항상 표현될 수 있고, 이때 $g_k$는 $g_k(c_k) \neq 0$을 만족하는 다항함수이다. 이때 유수의 값은
+
+$$\operatorname*{Res}_{z = c_k} f(z) = \frac{1}{g_k(c_k)}$$
+
+로 주어진다. 한편 
+
+$$6c_k^5 = \frac{d}{dz}(z^6+1) \Bigg \vert_{z = c_k} = \frac{d}{dz} [(z-c_k)g_k(z)] \Bigg \vert_{z = c_k} = g_k(c_k)$$
+
+으로 주어지므로,
+
+$$\operatorname*{Res}_{z = c_k} f(z) = \frac{1}{6c_k^5} = -\frac{c_k}{6}$$
+
+임을 얻는다. 따라서 최종적으로
+
+$$\begin{align*}
+I &= \pi i \sum_{k=0}^2 \operatorname*{Res}_{z=c_k} \frac{1}{z^6+1} \\
+&= \pi i \sum_{k=0}^2 \left( -\frac{c_k}{6} \right) \\
+&= -\frac{\pi i}{6} \left( c_0 + c_1 + c_2 \right) \\
+&= -\frac{\pi i}{6} \left( e^{\frac{\pi}{6}} + e^{\frac{3\pi}{6}} + e^{\frac{5\pi}{6}} \right) \\
+&= -\frac{\pi i}{6} \cdot 2i \\
+&= \frac{\pi}{3}
+\end{align*}$$
+
+임을 알 수 있다. 이와 같은 방법으로 실함수의 이상적분을 유수를 사용해 구할 수 있다.
+
+# Theorem 2
+For a function $f(z)$ and a real constant $a > 0$, suppose that  
+
+**(i)** $f$ is analytic on the upper half-plane except for finitely many isolated singular points $z_1, \dots, z_n$ with $\mathrm{Im}(z_i) > 0$,
+
+**(ii)** $f$ is continuous on the real axis,
+
+**(iii)** $\displaystyle \lim_{z \to \infty} z f(z) = 0$,
+
+**(iv)** $\displaystyle \int_{-\infty}^\infty f(x) e^{iax} dx$ exists.
+
+Then 
+
+$$\int_{-\infty}^\infty f(x) e^{iax} dx = 2\pi i \sum_{k=1}^n \operatorname*{Res}_{z=z_k} \left[ f(z) e^{iaz} \right]$$
+
+## Proof
+
+## Exmaple 2
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

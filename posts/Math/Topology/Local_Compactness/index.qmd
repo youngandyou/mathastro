@@ -1,0 +1,37 @@
+---
+title: "Local Compactness"
+author: "Youmin Chun"
+date: "2026-09-23 00:00:01"
+description: "국소 컴팩트 공간에 대해서 설명한다."
+categories: 
+  - Math > Topology
+---
+
+# Definition
+A space $X$ is said to be ***locally compact*** at $x$ if there is some neighborhood $U$ of $x$ and compact subspace $C$ of $X$ such that $U \subset C$. A space $X$ is said to be ***locally compact*** if it is locally compact at each of its points.
+
+표준 위상이 주어진 실수 공간 $\mathbb{R}$은 컴팩트가 아닌 대표적인 예시 중 하나이다. 실수 공간은 그 자체로는 컴팩트가 아니지만 임의의 닫힌 집합은 항상 컴팩트라거나, 연결 집합이라거나 하는 등의 좋은 성질들을 가지는 매우 좋은 위상 공간임은 틀림없다. 때문에 우리는 실수 공간을 그 자체로 컴팩트 공간으로 다룰 수는 없지만, 실수 공간을 포함하는 컴팩트한 집합을 찾고 그 집합의 부분 공간으로써 실수 공간을 다루는 방향으로 논의를 이어나가게 된다. 그러한 작업을 하기 위해 컴팩트에 준하는 성질 중 하나로 국소 컴팩트를 정의하게 된다. 당연히 $X$가 컴팩트하면 국소 컴팩트이기도 하지만, 일반적으로 역은 성립하지 않는다.
+
+## Example
+The Euclidean space $(\mathbb{R}^n, \mathscr{T}_{\text{usual}})$ is locally compact, but not compact. For a point $x = (x_1, \dots, x_n) \in \mathbb{R}^n$, there exists an open ball $B(x, \varepsilon)$ for some $\varepsilon > 0$ and closed box $\displaystyle \prod_{i=1}^n [x_i - \varepsilon, x_i + \varepsilon]$ such that 
+
+$$x \in B(x, \varepsilon) \subset \prod_{i=1}^n [x_i - \varepsilon, x_i + \varepsilon].$$
+
+위에서 언급한 것처럼, 우리는 국소 컴팩트 공간을 컴팩트한 공간 안으로 임베딩시키는 것을 목표로 한다. 다음의 정리는 그러한 공간이 존재할 조건이 구체적으로 무엇인지, 존재한다면 어떤 위상을 가진 공간인지 설명해준다.
+
+# Theorem
+A space $X$ is locally compact Hausdorff $\iff$ there exists a space $Y$ satisfying:
+
+**(i)** $X$ is a subspace of $Y$.
+
+**(ii)** $Y \setminus X$ is a singleton.
+
+**(iii)** $Y$ is compact Hausdorff.
+
+If such $Y$ exists, then it is unique up to homeomorphism.
+
+## Proof
+
+
+# Reference
+- James R. Munkres. (2000). Topology (2nd ed.). Pearson.

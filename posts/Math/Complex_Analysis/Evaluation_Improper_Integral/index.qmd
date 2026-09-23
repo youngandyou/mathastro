@@ -50,19 +50,52 @@ $$\int_0^\infty f(x) dx, \quad \int_{-\infty}^\infty f(x) dx$$
 # Theorem 1
 For a function $f(z)$, suppose that  
 
-**(i)** $f$ is analytic on the upper half-plane except for finitely many isolated singular points $z_1, \dots, z_n$ with $\mathrm{Im}(z_i) > 0$,
+**(i)** $f$ is analytic throughout a neighborhood of the upper half-plane except for finitely many isolated singular points $z_1, \dots, z_n$ with $\mathrm{Im}(z_i) > 0$,
 
-**(ii)** $f$ is continuous on the real axis,
+**(ii)** $\displaystyle \lim_{z \to \infty} z f(z) = 0$
 
-**(iii)** $\displaystyle \lim_{z \to \infty} z f(z) = 0$,
-
-**(iv)** $\displaystyle \int_{-\infty}^\infty f(x) dx$ exists.
+**(iii)** $\displaystyle \int_{-\infty}^\infty f(x) dx$ exists.
 
 Then 
 
 $$\int_{-\infty}^\infty f(x) dx = 2\pi i \sum_{k=1}^n \operatorname*{Res}_{z=z_k} f(z)$$
 
 ## Proof
+Let $C_{R_0}: \vert z \vert = R_0$ be a counterclockwise circle with a radius $R_0 > \max_{1 \le i \le n} \vert z_i \vert$. Set a closed contour $\Gamma_R = C_{R} \cup [-R, R]$ where $C_R: \vert z \vert = R$ is a counterclockwise circle with a radius $R > R_0$. Then all $z_i$'s are contained in $\Gamma_R$. By [Cauchy's Residue Theorem](../Residue/index.qmd#sec-cauchy's-residue-theorem) and the assumption **(i)**, we have
+
+$$\begin{align*}
+\int_{\Gamma_R} f(z) dz &= \int_{C_{R}} f(z) dz + \int_{-R}^{R} f(x) dx \\ 
+&= 2\pi i \sum_{i=1}^n \operatorname*{Res}_{z = z_i} f(z) \,\, \cdots \,\, (\ast)
+\end{align*}$$
+
+We claim that 
+
+$$\lim_{R \to \infty} \int_{C_R} f(z)dz = 0$$
+
+$\big[ (\because)$ Let $\varepsilon > 0$. Since $\displaystyle \lim_{z \to \infty} z f(z) = 0$, there exists $\delta > 0$ such that 
+
+$$\vert z \vert > \frac{1}{\delta} \implies \vert z f(z) \vert < \frac{\varepsilon}{\pi}.$$
+
+We will show that
+
+$$\vert R \vert > \frac{1}{\delta} \implies \left \vert \int_{C_R} f(z) dz \right \vert < \varepsilon.$$
+
+Suppose that $\vert R \vert > \frac{1}{\delta}$. For any $z$ in $C_R$, we have $\vert z \vert = R$ and 
+
+$$\vert f(z) \vert = \left \vert \frac{zf(z)}{z} \right \vert < \frac{\varepsilon}{\pi R}$$
+
+By [ML Lemma](../ML_Lemma/index.qmd#sec-theorem), we have
+
+$$\begin{align*}
+\left \vert \int_{C_R} f(z) dz \right \vert &\le \frac{\varepsilon}{\pi R} \cdot \pi R \\
+&= \varepsilon.
+\end{align*}$$
+
+Thus, $\displaystyle \lim_{R \to \infty} \int_{C_R} f(z) dz = 0$.$\big]$
+
+Since the improper integral $\displaystyle \int_{-\infty}^\infty f(x) dx$ exists, it is the same as the Cauchy principal value. By taking the limit $R \to \infty$ in the equation $(\ast)$, we have
+
+$$\int_{-\infty}^\infty f(x) dx = 2\pi i \sum_{i=1}^n \operatorname*{Res}_{z = z_i} f(z). \blacksquare$$
 
 ## Example 1
 이상적분 
@@ -73,7 +106,7 @@ $$I = \int_0^\infty \frac{1}{x^6+1} dx$$
 
 $$c_k = \exp \left[ i \left( \frac{\pi}{6} + \frac{2k\pi}{6} \right) \right], \quad k = 0, 1, \dots, 5$$
 
-의 해를 가지고, 이 중 상반평면에 있는 해는 $c_0, c_1, c_2$이므로 함수 $f$는 이 세 개의 고립특이점을 제외하고 항상 해석적이고 실근은 존재하지 않으므로 실수축에서 연속이다. 또한 자명하게
+의 해를 가지고, 이 중 상반평면에 있는 해는 $c_0, c_1, c_2$이므로 함수 $f$는 이 세 개의 고립특이점을 제외하고 항상 해석적이고, 또한 자명하게
 
 $$\lim_{z \to \infty} zf(z) = \lim_{z \to \infty} \frac{z}{z^6+1} = 0$$
 
@@ -82,7 +115,7 @@ $$\lim_{z \to \infty} zf(z) = \lim_{z \to \infty} \frac{z}{z^6+1} = 0$$
 한편 $f(x) = \frac{1}{x^6+1}$은 짝함수이고, 따라서 위의 성질 **(ii)**를 참고하면 다음의 결과가 성립한다.
 
 $$\begin{align*}
-\int_{-\infty}^\infty \frac{1}{x^6+1} dx = 2 \int_0^\infty \frac{1}{x^6+1} dx = 2I
+\int_{-\infty}^\infty \frac{1}{x^6+1} dx = 2bb \int_0^\infty \frac{1}{x^6+1} dx = 2I
 \end{align*}$$
 
 즉 이상적분 $\displaystyle \int_{-\infty}^\infty \frac{1}{x^6+1} dx$의 값 또한 존재하며, 구체적으로는 $2I$로 주어진다. 이제 위 정리를 적용하면 구하고자 하는 적분값 $I$는 다음과 같이 계산된다.
@@ -124,21 +157,92 @@ I &= \pi i \sum_{k=0}^2 \operatorname*{Res}_{z=c_k} \frac{1}{z^6+1} \\
 # Theorem 2
 For a function $f(z)$ and a real constant $a > 0$, suppose that  
 
-**(i)** $f$ is analytic on the upper half-plane except for finitely many isolated singular points $z_1, \dots, z_n$ with $\mathrm{Im}(z_i) > 0$,
+**(i)** $f$ is analytic throughout a neighborhood of the upper half-plane except for finitely many isolated singular points $z_1, \dots, z_n$ with $\mathrm{Im}(z_i) > 0$,
 
-**(ii)** $f$ is continuous on the real axis,
+**(ii)** $\displaystyle \lim_{z \to \infty} z f(z) = 0$,
 
-**(iii)** $\displaystyle \lim_{z \to \infty} z f(z) = 0$,
-
-**(iv)** $\displaystyle \int_{-\infty}^\infty f(x) e^{iax} dx$ exists.
+**(iii)** $\displaystyle \int_{-\infty}^\infty f(x) e^{iax} dx$ exists.
 
 Then 
 
 $$\int_{-\infty}^\infty f(x) e^{iax} dx = 2\pi i \sum_{k=1}^n \operatorname*{Res}_{z=z_k} \left[ f(z) e^{iaz} \right]$$
 
 ## Proof
+Since $e^{iaz}$ is an entire function, $f(z)e^{iaz}$ has the same singularities as $f(z)$. Let $C_{R_0}: \vert z \vert = R_0$ be a counterclockwise circle with a radius $R_0 > \max_{1 \le i \le n} \vert z_i \vert$. Set a closed contour $\Gamma_R = C_{R} \cup [-R, R]$ where $C_R: \vert z \vert = R$ is a counterclockwise circle with a radius $R > R_0$. Then all $z_i$'s are contained in $\Gamma_R$. By [Cauchy's Residue Theorem](../Residue/index.qmd#sec-cauchy's-residue-theorem) and the assumption **(i)**, we have
+
+$$\begin{align*}
+\int_{\Gamma_R} f(z)e^{iaz} dz &= \int_{C_{R}} f(z)e^{iaz} dz + \int_{-R}^{R} f(x)e^{iax} dx \\ 
+&= 2\pi i \sum_{i=1}^n \operatorname*{Res}_{z = z_i} f(z)e^{iaz} \,\, \cdots \,\, (\ast)
+\end{align*}$$
+
+We claim that 
+
+$$\lim_{R \to \infty} \int_{C_R} f(z)e^{iaz}dz = 0$$
+
+$\big[ (\because)$ Let $\varepsilon > 0$. Since $\displaystyle \lim_{z \to \infty} z f(z) = 0$, there exists $\delta > 0$ such that 
+
+$$\vert z \vert > \frac{1}{\delta} \implies \vert z f(z) \vert < \frac{\varepsilon}{\pi}.$$
+
+We will show that
+
+$$\vert R \vert > \frac{1}{\delta} \implies \left \vert \int_{C_R} f(z)e^{iaz} dz \right \vert < \varepsilon.$$
+
+Suppose that $\vert R \vert > \frac{1}{\delta}$. For any $z = x+iy$ in $C_R$, we have $\vert z \vert = R$ and $\mathrm{Im}(z) = y > 0$. Since
+
+$$\begin{align*}
+\vert e^{iaz} \vert &= \vert e^{ia(x+iy)} \vert \\
+&= \vert e^{iax} e^{-ay} \vert \\
+&= e^{-ay} \le 1,
+\end{align*}$$
+
+we have
+
+$$\begin{align*}
+\vert f(z) e^{iaz} \vert &\le \vert f(z) \vert \\
+&= \left \vert \frac{zf(z)}{z} \right \vert \\
+&< \frac{\varepsilon}{\pi R}
+\end{align*}$$
+
+By [ML Lemma](../ML_Lemma/index.qmd#sec-theorem), we have
+
+$$\begin{align*}
+\left \vert \int_{C_R} f(z)e^{iaz} dz \right \vert &\le \frac{\varepsilon}{\pi R} \cdot \pi R \\
+&= \varepsilon.
+\end{align*}$$
+
+Thus, $\displaystyle \lim_{R \to \infty} \int_{C_R} f(z)e^{iaz} dz = 0$.$\big]$
+
+Since the improper integral $\displaystyle \int_{-\infty}^\infty f(x)e^{iax} dx$ exists, it is the same as the Cauchy principal value. By taking the limit $R \to \infty$ in the equation $(\ast)$, we have
+
+$$\int_{-\infty}^\infty f(x)e^{iax} dx = 2\pi i \sum_{i=1}^n \operatorname*{Res}_{z = z_i} f(z)e^{iaz}. \blacksquare$$
 
 ## Exmaple 2
+::: {.content-hidden}
+$e^{iaz} = \cos (az) + i \sin (az)$이므로
+
+$$\int_{-\infty}^\infty f(x)e^{iax} dx = \int_{-\infty}^\infty f(x) \cos (ax) dx + i \int_{-\infty}^\infty f(x) \sin (ax) dx$$
+
+으로 쪼갤 수 있다. 따라서 위 정리는 적분
+
+$$\int_{-\infty}^\infty f(x) \sin ax dx, \quad \int_{-\infty}^\infty f(x) \cos ax dx$$
+
+을 계산하는데 사용될 수 있다.
+
+예컨대 적분
+
+$$\int_0^\infty \frac{\cos 2x}{(x^2+4)^2} dx$$
+
+을 계산해보자. 함수 $f(z) = \frac{1}{(z^2+4)^2}$로 두면 방정식 $z^2+4 = 0$은 $z = \pm 2i$의 해를 가진다. 이 중 상반평면에 있는 해는 $z_0 = 2i$로 유일하며, 함수 $f$는 $z_0$를 제외한 모든 점에서 해석적이다. 또한 자명하게
+
+$$\lim_{z \to \infty} z f(z) = \lim_{z \to \infty} \frac{z}{(z^2+4)^2} = 0$$
+
+이므로 위 정리의 조건 **(ii)**가 성립한다. 한편
+
+$$\int_{-\infty}^\infty f(x)e^{iax} dx = \int_{-\infty}^\infty \frac{\cos 2x}{(x^2+4)^2} dx + i \int_{-\infty}^\infty \frac{\sin 2x}{(x^2+4)^2} dx$$
+
+이므로
+:::
+
 
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

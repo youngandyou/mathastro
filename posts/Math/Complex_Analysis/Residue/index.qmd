@@ -198,6 +198,23 @@ where $\displaystyle 0 < \vert z \vert < \frac{1}{R_1}$. Thus, we have
 $$\operatorname*{Res}_{z=0} \left[ \frac{1}{z^2} f\left( \frac{1}{z} \right) \right] = c_{-1} = \frac{1}{2\pi i} \int_{-C_0} f(z) dz = \operatorname*{Res}_{z=\infty} f(z). \blacksquare$$
 
 ## Example 2
+Let $C: \vert z \vert = 3$ be a positively oriented circle, and let $\displaystyle f(z) = \frac{z^3(1-3z)}{(1+z)(1+2z^4)}$. Then the isolated singular points of $f$ lies inside $C$. Note that
+
+$$\begin{align*}
+\frac{1}{z^2} f\left( \frac{1}{z} \right) &= \frac{1}{z^2} \frac{\left( \frac{1}{z} \right)^3 \left( 1 - \frac{3}{z} \right)}{\left( 1 + \frac{1}{z} \right) \left( 1 + \frac{2}{z^4} \right)} \\
+&= \frac{1}{z} \cdot \frac{z-3}{(z+1)(z^4+2)}
+\end{align*}$$
+
+Since $\displaystyle \frac{z-3}{(z+1)(z^4+2)}$ is analytic at $z = 0$, it has the Maclaurin expasion, so that
+
+$$\begin{align*}
+\frac{1}{z} \cdot \frac{z-3}{(z+1)(z^4+2)} &= \frac{1}{z} \cdot \left( -\frac{3}{2} + a_1z + a_2z^2 + \cdots \right) \\
+&= -\frac{3}{2} \cdot \frac{1}{z} + a_1 + a_2 z + \cdots.
+\end{align*}$$
+
+Thus, $\displaystyle \operatorname*{Res}_{z=0} \left[ \frac{1}{z^2} f\left( \frac{1}{z} \right) \right] = -\frac{3}{2}$. By Theorem 2, we obtain
+
+$$\int_C f(z) dz = 2\pi i \left( -\frac{3}{2} \right) = -3\pi i.$$
 
 # Theorem 3
 Let $z_0$ be an isolated singular point of a function $f$. TFAE.
@@ -217,13 +234,45 @@ $$\operatorname*{Res}_{z=z_0}f(z) = \frac{\phi^{(m-1)}(z_0)}{(m-1)!}.$$
 지금까지의 방법에 의하면 유수를 구하기 위해서는 반드시 함수의 로랑 급수를 구해서 계수를 확인해야만 했다. 그러나 위 정리는 극점의 경우 반드시 위와 같이 어떤 함수 $\phi$와 $(z-z_0)^m$의 조합으로 생길 수 밖에 없음을 말해주고 있으므로, 위 표현과 같이 함수를 잘 나타낼 수만 있다면 굳이 함수의 로랑 급수를 찾지 않아도 간단한 계산으로 유수를 구할 수 있다. 물론 모든 경우에 위 정리를 사용하는 게 더 간편하다는 건 아니고, 함수의 모양에 따라서는 오히려 위 정리를 적용하는 게 더 힘들고 그냥 로랑 급수 전개하는 게 더 편한 경우도 있다. 또한 극점이 여러 개 있을 경우 함수 $\phi$의 개수 또한 여러 개가 존재하고, $f$ 또한 여러 방식으로 나타낼 수 있음을 주의하자.
 
 ## Proof
-**(i)** $\implies$ **(ii)** 
+**(i)** $\implies$ **(ii)** Suppose that $z_0$ is a pole of order $m$ of $f$. By definition, we have
 
+$$f(z) = \sum_{n=0}^\infty a_n(z-z_0)^n + \frac{b_1}{z-z_0} + \cdots + \frac{b_m}{(z-z_0)^m}$$
 
-**(i)** $\impliedby$ **(ii)** 
+where $b_m \neq 0$ and is valid for $0 < \vert z - z_0 \vert < R$ for some $R > 0$. Define the function $\phi: D(z_0, R) \to \mathbb{C}$ by
+
+$$\phi(z) = \begin{cases}
+(z-z_0)^m f(z), & z \neq z_0, \\
+b_m, & z = z_0.
+\end{cases}$$
+
+Then $\phi$ has the series expansion
+
+$$\phi(z) = b_m + b_{m-1}(z-z_0) + \cdots + b_1(z-z_0)^{m-1} + a_0 + a_1(z-z_0) + \cdots,$$
+
+and $\phi(z_0) = b_m \neq 0$. Thus, $\phi$ is analytic and nonzero at $z_0$, and
+
+$$f(z) = \frac{\phi(z)}{(z-z_0)^m}.$$
+
+**(i)** $\impliedby$ **(ii)** Suppose that $f$ is of the form
+
+$$f(z) = \frac{\phi(z)}{(z-z_0)^m}.$$
+
+Since $\phi$ is analytic at $z_0$, it has the Taylor expansion
+
+$$\phi(z) = \sum_{n=0}^\infty c_n(z-z_0)^n$$
+
+for $\vert z - z_0 \vert < R$ for some $R > 0$, and $c_0 = \phi(z_0) \neq 0$. Then we have
+
+$$\begin{align*}
+f(z) &= \frac{\phi(z)}{(z-z_0)^n} \\
+&= \sum_{n=0}^\infty c_n (z-z_0)^{n-m} \\
+&= \frac{c_0}{(z-z_0)^m} + \frac{c_1}{(z-z_0)^{m-1}} + \cdots + \frac{c_{m-1}}{z-z_0} + \sum_{n=m}^\infty c_n (z-z_0)^{n-m}
+\end{align*}$$
+
+for $0 < \vert z - z_0 \vert < R$, which is the Laurent expansion of $f$ around $z_0$. Since $c_0 \neq 0$, we conclude that $z_0$ is a pole of order $m$ of $f$. $\blacksquare$
 
 ## Example 3
-
+Section 81 Examples.
 
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

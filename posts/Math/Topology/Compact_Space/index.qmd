@@ -125,7 +125,7 @@ $$\prod_{i=1}^{n+1} X_i = \left( \prod_{i=1}^n X_i \right) \times X_{n+1}$$
 is compact. Thus, we complete the proof. $\blacksquare$
 
 # Definition 2
-A point $x$ of a space $X$ is called an isolated point of $X$ if $\{ x \}$ is open in $X$.
+A point $x$ of a space $X$ is called an ***isolated point*** of $X$ if $\{ x \}$ is open in $X$.
 
 ## Example
 **(i)** $(\mathbb{R}, \mathscr{T}_{\text{usual}})$ has no isolated points.

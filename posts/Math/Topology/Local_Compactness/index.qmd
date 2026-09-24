@@ -31,7 +31,78 @@ A space $X$ is locally compact Hausdorff $\iff$ there exists a space $Y$ satisfy
 If such $Y$ exists, then it is unique up to homeomorphism.
 
 ## Proof
+$(\implies)$ Let $Y := X \cup \{ \infty \}$ for an element $\infty \notin X$. Then $Y \setminus X = \{ \infty \}$ is a singleton. Define
 
+$$\mathscr{T}_Y = \mathscr{T}_X \cup \{Y - C \mid C \text{ is compact in } X \}.$$
+
+Then $\mathscr{T}_Y$ is a topological space.
+::: {.callout-note collapse="true"}
+$\big[ (\because)$ Since $\emptyset \in \mathscr{T}_X$ and it is compact in $X$, $\emptyset \in \mathscr{T}_Y$ and $Y = Y - \emptyset \in \mathscr{T}_Y$.
+
+Let $\{ V_\alpha \}$ be an arbitrary subcollection of $\mathscr{T}_Y$. 
+
+**Case 1:** If it consists of all open sets in $\mathscr{T}_X$, then clearly $\bigcup V_\alpha \in \mathscr{T}_Y$.
+
+**Case 2:** If it consists of all sets of the form $Y - C$ for a compact set $C$ in $X$, then we have $\displaystyle \bigcup_\alpha V_\alpha = \bigcup_\alpha (Y - C_\alpha) = Y - \bigcap_\alpha C_\alpha$. Since each $C$ is compact in a Hausdorff space $X$, it is closed, so $\bigcap_\alpha C_\alpha$ is closed in $X$, hence it is compact in $X$. Thus, $\displaystyle \bigcup_\alpha V_\alpha \in \mathscr{T}_Y$.
+
+**Case 3:** If it consists of some open sets in $\mathscr{T}_X$ and some sets of the form $Y - C$ for a compact set $C$ in $X$, then we have
+
+$$\begin{align*}
+\bigcup_\alpha V_\alpha &= \bigcup_{\beta} U_\beta \cup \bigcup_{\gamma} (Y - C_\gamma) \\
+&= U \cup (Y - C) \\
+&= Y - (C - U)
+\end{align*}$$
+
+where $U = \bigcup_{\beta} U_\beta \in \mathscr{T}_X$ and $C = \bigcap_{\gamma} C_\gamma$. Note that $U$ is open in $X$ and $C$ is closed in $X$. Since $C - U$ is closed in $X$, $C - U$ is compact in $X$, so that $\bigcup_\alpha V_\alpha \in \mathscr{T}_Y$.
+
+Let $\{ V_i \}$ be a finite subcollection of $\mathscr{T}_Y$. 
+
+**Case 1:** If it consists of all open sets in $\mathscr{T}_X$, then clearly $\bigcap V_i \in \mathscr{T}_Y$.
+
+**Case 2:** If it consists of all sets of the form $Y - C$ for a compact set $C$ in $X$, then we have $\displaystyle \bigcap V_i = \bigcap (Y - C_i) = Y - \bigcup C_i$. Since each $C$ is compact in a Hausdorff space $X$, it is closed, so $\bigcup C_i$ is closed in $X$, hence it is compact in $X$. Thus, $\displaystyle \bigcap V_i \in \mathscr{T}_Y$.
+
+**Case 3:** If it consists of some open sets in $\mathscr{T}_X$ and some sets of the form $Y - C$ for a compact set $C$ in $X$, then we have
+
+$$\begin{align*}
+\bigcap_i V_i &= \bigcap U_i \cap \bigcap (Y - C_j) \\
+&= U \cap (Y - C) \\
+&= U \cap (X - C)
+\end{align*}$$
+
+where $U = \bigcap U_i \in \mathscr{T}_X$ and $C = \bigcup C_j$. Note that $U$ is open in $X$ and $C$ is closed in $X$. Then $U \cap (X - C)$ is open in $X$, hence it is in $\mathscr{T}_Y$, so that $\bigcap_i V_i \in \mathscr{T}_Y$. Thus, $\mathscr{T}_Y$ is a topology.
+:::
+
+We will check that $X$ is a subspace of $Y$, that is, 
+
+$$\mathscr{T}_X = \{ X \cap V \mid V \in \mathscr{T}_Y \}.$$
+
+$\big[ (\because)$ $(\subset)$ is clear. Take $X \cap V$ for some $V \in \mathscr{T}_Y$. If $V$ is open in $X$, then $X \cap V \in \mathscr{T}_X$. If $V = Y - C$ for some compact set $C$ in $X$, then $X \cap V = X - C$. Since $C$ is closed in $X$, $X - C$ is open in $X$, so that $X \cap V \in \mathscr{T}_X$. Thus, $(\supset)$ holds, so $X$ is a subspace of $Y$. $\big]$
+
+Next, we will check that $Y$ is compact.
+
+$\big[ (\because)$ Let $\mathcal{U}$ be an open cover of $Y$. Since $X \subsetneq Y$, there exists $Y - C \in \mathcal{U}$ for some compact subset $C$ of $X$. Define
+
+$$\mathcal{U}^\ast = \{ X \cap V \mid V \in \mathcal{U} - \{Y - C\} \}$$
+
+Then $\mathcal{U}^\ast$ is a collection of open subsets of $X$ that covers $C$. To show this, let assume that there is a point $x \in C$ such that $x \notin X \cap V$ for all $V \in \mathcal{U} - \{Y - C\}$. Since $x \in Y$ and $\mathcal{U}$ is an open cover of $Y$, we have $x \in Y - C$, which means that $x \notin C. \bigotimes$ Thus, $\mathcal{U}^\ast$ covers $C$. 
+
+Since $C$ is compact, it has a finite subcollection $\{ X \cap V_1, \dots, X \cap V_n \}$ which covers $C$. Define $\mathcal{U}^{\ast \ast} = \{ V_1, \dots, V_n, Y - C \}$. Then it covers $Y$, and it is a finite subcollection of $\mathcal{U}$, so that $Y$ is compact.$\big]$
+
+Finally, we will check that $Y$ is Hausdorff.
+
+$\big[ (\because)$ Let $x, y \in Y$ with $x \neq y$. If $x, y \in X$, then we are done, because $X$ is Hausdorff. WLOG, we let $x \in X$ and $y = \infty$. Since $X$ is locally compact, there exist a neighborhood $U$ of $x$ and a compact subset $C$ of $X$ such that $U \subset C$. Since $Y - C$ is a neighborhood of $y$ and $U \cap Y - C = \emptyset$, we prove that $Y$ is Hausdorff.$\big]$
+
+$(\impliedby)$ Since $X$ is a subspace of a Hausdorff space $Y$, $X$ is Hausdorff. Let $x \in X$. Since $x \neq \infty$, there exist open subsets $U$ and $V$ of $Y$ such that $x \in U, \infty \in V$ and $U \cap V = \emptyset$. Since $Y$ is compact and $Y - V$ is closed in $Y$, $Y - V$ is compact. Since $U \cap V = \emptyset$, we have $U \subset Y - V$, which means that $X$ is locally compact. 
+
+Finally, we will show that such $Y$ is unique up to homeomorphism. 
+
+$\big[ (\because)$ Let $Y$ and $Y'$ be two spaces satisfying the conditions, and let $Y \setminus X = \{ \infty\}$ and $Y' \setminus X = \{ \infty' \}$. Define a function $f: Y \to Y'$ by $f(x) = x, \forall x \in X$ and $f(\infty) = \infty'$. Clearly $f$ is bijective. We will show that $f$ and $f^{-1}$ are open maps, so that $f$ is a homeomorphism.
+
+Let $U$ be an open set in $Y$. If $U$ does not contain $\infty$, then $f(U) = U$. Since $Y'$ is Hausdorff and $Y' \setminus X$ is finite, $X$ is open in $Y'$. Since $U = U \cap X$, by definition of a subspace, $U$ is open in $X$, so $U$ is open in $Y'$.
+
+Suppose that $U$ contains $\infty$. Let $C = Y - U$. Then $f(U) = Y' - C$. Note that $C$ is closed in $Y$, and it is compact because $Y$ is compact. Since $C$ is contained in $X$, it is a compact subspace of $X$. Since $X$ is a subspace of $Y'$, $C$ is a compact subspace of $Y'$. Since $Y'$ is Hausdorff, $C$ is closed in $Y'$. Thus, we have $f(U) = Y' - C$ is open in $Y'$, so $f$ is open map.
+
+Similarly, we can show that $f^{-1}$ is open map. Thus, $f$ is a homeomorphism, and therefore such space $Y$ is unique up to homeomorphism.$\blacksquare \big]$
 
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

@@ -5,7 +5,6 @@ date: "2026-09-18 00:00:01"
 description: "주어진 정역(Integral Domain)을 가지고 분수체(Field of Quotients)를 구성하는 방법에 대해 설명한다."
 categories: 
   - Math > Abstract Algebra > Ring Theory
-draft: true
 ---
 
 # Motivation
@@ -25,6 +24,8 @@ Let $D$ be an integral domain. We will construct the field of quotients $F$ of $
 **Step 3:** Show that $F$ is a field under these operations.
 
 **Step 4:** Show that $F$ can be viewed as containing $D$ as an integral subdomain.
+
+**Step 5:** Show that such $F$ is the smallest field containing $D$ as an integral subdomain.
 
 ## Step 1
 For an integral domain $D$, let 
@@ -183,7 +184,122 @@ Thus, $\langle F, +, \cdot \rangle$ is a field.$\big]$
 :::
 
 ## Step 4
+An integral domain $D$ can be embedded in a field $F$ such that every element of $F$ can be expressed as a quotient of two elments of $D$. This field $F$ is called a ***quotient field*** of $D$. For $[(a, b)] \in F$, we write $\frac{a}{b} \left( = \frac{a}{b}F \right)$ instead of $[(a, b)]$.
 
+::: {.callout-note collapse="true"}
+$\big[ (\because)$ First, we claim that the map $i: D \to F$ defined by $i(a) = [(a, 1)], \forall a \in D$ is a monomorphism. 
+
+Clearly, $i$ is well-defined. Suppose that $i(a) = i(b)$. Then 
+
+$$\begin{align*}
+&[(a, 1)] = [(b, 1)] \\
+\implies & (a, 1) \sim (b, 1) \\
+\implies & a = b,
+\end{align*}$$
+
+so $i$ is one-to-one.
+
+Let $a, b \in D$. Then we have
+
+$$\begin{align*}
+i(a + b) &= [(a + b, 1)] \\
+&= [(a, 1)] + [(b, 1)] \\
+&= i(a) + i(b)
+\end{align*}$$
+
+and
+
+$$
+\begin{align*}
+i(ab) &= [(ab, 1)] \\
+&= [(a, 1)] \cdot [(b, 1)] \\
+&= i(a) \cdot i(b).
+\end{align*}$
+
+Thus $i$ is a ring homomorphism, so $i$ is a monomorphism. This means that $D \cong i(D)$ is a subdomain of $F$. Let $[(a, b)] \in F$. Then we obtain
+
+$$\begin{align*}
+[(a, b)] &= [(a, 1)] \cdot [(1, b)] \\
+&= \frac{[(a, 1)]}{[(b, 1)]} \\
+&= \frac{i(a)}{i(b)} \\
+&= \frac{a}{b}. \blacksquare
+\end{align*}$$
+:::
+
+## Step 5
+Let $F$ be a quotient field of an integral domain $D$, and let $L$ be any field containing $D$. Then there exists a map $\psi: F \to L$ that gives an isomorphism of $F$ with a subfield of $L$ such that $\psi(a) = a, \forall a \in D$. Thus, $F$ can be embedded in $L$. In other words, a quotient field of $D$ is the smallest field containing $D$. It implies that any two quotient fields of $D$ are isomorphic.
+
+다시 말해 주어진 정역 $D$를 포함하는 어떤 필드 $F$를 가지고 와도 동형사상 $\psi$가 존재해서 $L$ 안에 $F$를 임베딩할 수 있으므로 동형사상의 관점에서 볼 때 분수체 $F$가 $D$를 포함하는 가장 작은 필드임을 알 수 있다. 또한 자연스럽게 분수체는 동형사상의 관점에서 유일함까지 알 수 있다.
+
+:::{.callout-note collapse="true"}
+$\big[ (\because)$ Let $i : D \to D$ be the identity map. Define the map $\psi : F \to L$ by
+
+$$\psi \left( \frac{a}{b}F \right) = \frac{i(a)}{i(b)}L = \frac{a}{b}L, \forall \frac{a}{b}F \in F.$$
+
+1. $\psi$ is well-defined.
+
+$\big[ (\because)$ Suppose that $\frac{a_1}{b_1}F = \frac{a_2}{b_2}F$. Then $a_1b_2 = a_2b_1$ in $D$, so we have
+
+$$\begin{align*}
+& i(a_1)i(b_2) = i(a_1b_2) = i(a_2b_1) = i(a_2)i(b_1) \\
+\implies & \psi \left( \frac{a_1}{b_1}F \right) = \frac{i(a_1)}{i(b_1)}L = \frac{i(a_2)}{i(b_2)}L = \psi \left( \frac{a_2}{b_2}F \right)
+\end{align*}$$
+
+Thus $\psi$ is well-defined on $F$.$\big]$
+
+2. $\psi$ is a ring isomorphism.
+
+$\big[ (\because)$ Let $\frac{a_1}{b_1}F, \frac{a_2}{b_2}F \in F$. Then we have
+
+$$\begin{align*}
+\psi \left( \frac{a_1}{b_1}F + \frac{a_2}{b_2}F \right) &= \psi \left( \frac{a_1b_2 + b_1a_2}{b_1b_2}F \right) \\
+&= \frac{i(a_1b_2 + b_1a_2)}{i(b_1b_2)}L \\
+&= \frac{i(a_1)i(b_2) + i(b_1)i(a_2)}{i(b_1)i(b_2)}L \\
+&= \frac{i(a_1)}{i(b_1)}L + \frac{i(a_2)}{i(b_2)}L \\
+&= \psi \left( \frac{a_1}{b_1}F \right) + \psi \left( \frac{a_2}{b_2}F \right),
+\end{align*}$$
+
+and
+
+$$\begin{align*}
+\psi \left( \frac{a_1}{b_1}F \cdot \frac{a_2}{b_2}F \right) &= \psi \left( \frac{a_1a_2}{b_1b_2}F \right) \\
+&= \frac{i(a_1a_2)}{i(b_1b_2)}L \\
+&= \frac{i(a_1)i(b_2)}{i(b_1)i(b_2)}L \\
+&= \frac{i(a_1)}{i(b_1)}L \cdot \frac{i(a_2)}{i(b_2)}L \\
+&= \psi \left( \frac{a_1}{b_1}F \right) \cdot \psi \left( \frac{a_2}{b_2}F \right).
+\end{align*}$$
+
+Thus, $\psi$ is a ring homomorphism.$\big]$
+
+3. $\psi$ is an isomorphism of $F$ with a subfield $\psi(F)$ of $L$ such that $\psi(a) = a, \forall a \in D$.
+
+$\big[ (\because)$ Suppose that $\psi\left( \frac{a_1}{b_1}F \right) = \psi \left( \frac{a_2}{b_2}F \right)$. Then 
+
+$$\begin{align*}
+& \psi \left( \frac{a_1}{b_1}F \right) = \psi \left( \frac{a_2}{b_2}F \right) \\
+\implies & \frac{i(a_1)}{i(b_1)}L = \frac{i(a_2)}{i(b_2)}L \\
+\implies & i(a_1)i(b_2) = i(a_2)i(b_1) \\
+\implies & a_1b_2 = a_2b_1 \\
+\implies & \frac{a_1}{b_1}F = \frac{a_2}{b_2}F.
+\end{align*}$$
+
+Thus $\psi$ is one-to-one.
+
+For $a \in D$, we have
+
+$$\begin{align*}
+\psi(a) &= \psi \left( \frac{a}{1}F \right) \\
+&= \frac{i(a)}{i(1)}L \\
+&= \frac{a}{1}L \\
+&= a.
+\end{align*}$$ 
+
+Thus $\psi(F)$ is a subfield of $L$ containing $D$, and $\psi(a) = a, \forall a \in D$.$\big]$
+
+Let $F$ and $L$ be quotient fields of $D$. By above claims, there exists a monomorphism $\psi: F \to L$ such that $\psi(a) = a, \forall a \in D$. We claim that $\psi$ is an isomorphism.
+
+Let $x \in L$. Then $x = \frac{a}{b}L$ for some $a, b \in D$, so we have $\psi\left( \frac{a}{b}F \right) = \frac{i(a)}{i(b)}L = \frac{a}{b}L = x$. Thus $\psi$ is onto. Hence, $\psi$ is an isomorphism, so $F \cong L$.$\blacksquare \big]$
+:::
 
 # Reference
 - John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

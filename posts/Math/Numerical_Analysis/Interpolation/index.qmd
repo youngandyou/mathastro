@@ -1,0 +1,67 @@
+---
+title: "Interpolation"
+author: "Youmin Chun"
+date: "2026-09-28 00:00:03"
+description: "수치해석학에서 보간법(Interpolation)에 대해서 살펴본다"
+categories: 
+  - Math > Numerical Analysis
+---
+
+# Introduction
+***보간법(Interpolation)***이란 데이터들의 집합 $\{ (x_0, y_0), (x_1, y_1), \dots, (x_n, y_n) \}$이 주어졌을 때 $f(x_i) = y_i$를 만족하면서 주어진 데이터들을 가장 잘 설명하는 함수 $f$를 찾는 과정 내지는 방법을 말한다. 이 포스트에서는 주로 ***다항식 보간법(Polynomial Interpolation)***, 즉 함수 $f$를 다항식으로 표현하는 방법에 대해서 다룬다. 
+
+# Motivation
+![](int1.png)
+
+간단한 경우부터 살펴보자. 단 두 개의 데이터 $(x_0, y_0), (x_1, y_1)$만 주어졌을 경우, 두 점을 지나는 직선이 데이터를 가장 잘 설명하는 함수일 것이다. 이때 방정식은 다음과 같이 주어진다.
+
+$$y = \frac{y_1 - y_0}{x_1 - x_0}(x - x_0) + y_0$$
+
+이러한 보간법을 ***선형 보간법(Linear Interpolation)***이라고 부른다. 한편, 이 직선은 각각 $(x_0, y_0), (x_1, y_1)$을 지나는 두 개의 직선으로 쪼개질 수 있다. 즉,
+
+$$\begin{align*}
+y &= \frac{y_1 - y_0}{x_1 - x_0}(x - x_0) + y_0 \\
+&= \left[ \frac{-y_0}{x_1 - x_0}(x-x_1) + y_1 \right] + \left[ \frac{y_1}{x_1 - x_0}(x-x_0) \right] 
+\end{align*}$$
+
+이고, $y = y_0L_0(x) + y_1L_1(x)$로 표현되도록 $L_0(x)$와 $L_1(x)$를 정의하면 다음과 같다.
+
+$$\begin{align*}
+L_0(x) &= \frac{x - x_1}{x_0 - x_1}
+L_1(x) &= \frac{x - x_0}{x_1 - x_0}
+\end{align*}$$
+
+이때 $L_0, L_1$의 특징을 살펴보면 다음과 같다.
+
+1. 다항식 공간 $P_1(\mathbb{R})$의 부분집합 $\{ L_0, L_1 \}$은 선형독립이다.
+
+2. $\deg L_0 = 1 = \deg L_1$
+
+3. $L_i(x_j) = \delta_{ij}$
+
+이 아이디어를 확장시키면 $n+1$ 개의 점들 $\{ (x_0, y_0), (x_1, y_1), \dots, (x_n, y_n) \}$이 주어졌을 때에도 같은 과정을 통해 주어진 점들을 지나는 다항식 $P_n$을 찾을 수 있다. 이러한 방법을 ***라그랑주 보간법(Lagrange Interpolation)***이라고 부르며 집합 $\{L_0, L_1, \dots, L_n\}$을 라그랑주 보간법의 ***기저 함수(basis functions)***라고 부른다.
+
+# Lagrange Interpolation
+The ***Lagrange interpolating polynomial*** for the $n+1$ points $\{ (x_0, y_0), (x_1, y_1), \dots, (x_n, y_n) \}$ is given by
+
+$$P_n(x) = y_0L_0(x) + y_1L_1(x) + \dots + y_nL_n(x)$$
+
+where
+
+$$L_i(x) = \prod_{1 \le k \neq i \le n} \frac{x-x_k}{x_i - x_k}.$$
+
+Note that
+
+1. The set $\{ L_0, L_1, \dots, L_n \}$ is a basis for the space $P_n(\mathbb{R})$.
+
+2. $\deg L_i = n, \forall i = 0, 1, \dots, n$.
+
+3. $L_i(x_j) = \delta_{ij}, \forall i, j = 0, 1, \dots, n$.
+
+# Theorem
+For points $(x_0, y_0), (x_1, y_1), \dots, (x_n, y_n)$ with distinct $x_i$'s, there exists a unique polynomial $P(x)$ with $\deg P \le n$ such that $P(x_i) = y_i$ for all $i = 0, 1, \dots, n$. 
+
+## Proof
+
+# Reference
+- K. E. Atkinson and W. Han, Elementary Numerical Analysis, 3rd ed., John Wiley & Sons, 2004.

@@ -104,5 +104,7 @@ Suppose that $U$ contains $\infty$. Let $C = Y - U$. Then $f(U) = Y' - C$. Note 
 
 Similarly, we can show that $f^{-1}$ is open map. Thus, $f$ is a homeomorphism, and therefore such space $Y$ is unique up to homeomorphism.$\blacksquare \big]$
 
+위 증명에서 $\infty$는 무한대가 아니고, 그냥 어떤 원소 하나를 가리킬 뿐이다. 그러나 하필이면 이렇게 쓴 이유가 있는데...
+
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

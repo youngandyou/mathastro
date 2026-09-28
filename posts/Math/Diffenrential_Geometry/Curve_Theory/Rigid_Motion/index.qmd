@@ -1,0 +1,80 @@
+---
+title: "Rigid Motion"
+author: "Youmin Chun"
+date: "2026-09-28 00:00:01"
+description: "곡선의 이동 불변 성질에 대해서 설명한다."
+categories: 
+  - Math > Differential Geometry > Curve Theory
+---
+
+# Definition
+A ***rigid motion*** (or ***rigid transformation***) is a function $T : \mathbb{R}^3 \to \mathbb{R}^3$ defined by $T(x) = Ax + b$ for some orthogonal matrix $A \in O(3)$ and vector $b \in \mathbb{R}^3$.
+
+유클리드 공간에서 벡터의 시점이 어디에 있든 간에 같은 벡터로 취급하듯이, 유클리드 공간에서 주어진 곡선 $\alpha: I \to \mathbb{R}^3$는 평행이동과 회전이동을 거치더라도 같은 곡선으로 취급한다. 다시 말해 두 곡선이 평행이동과 회전이동을 거쳐서 완전히 포개어질 수 있다면 두 곡선을 같은 곡선으로 보겠다는 말이다.
+
+그런 의미에서 위 정의의 강체 운동(rigid motion)은 평행이동과 회전이동을 아울러서 공간 상에서 벡터를 매핑하는 개념이다. 직교행렬 $A$는 회전 혹은 반전의 역할을 하며 상수 벡터 $b$는 평행이동의 역할을 한다. 이러한 변환은 두 벡터의 거리를 보존하고, $b = 0$이라면 $T$는 등거리사상(isometry)이 되므로 내적을 보존, 다시 말해 각도와 크기를 보존하는 함수가 된다. 보통 행렬 $A$는 $\det A = 1$인 $SO(3)$의 원소로 생각한다. 즉 반전을 제외하고, 회전과 평행이동만으로 곡선을 이동시켜도 여전히 동일한 곡선으로 보겠다는 것이다.
+
+따라서 어떤 곡선을 임의로 강체 운동을 취해서 우리가 원하는 위치로 옮겨놓아도 문제가 없으며, 이는 주어진 문제를 우리가 원하는 세팅, 예를 들어 $\alpha(0) = (0, 0, 0), \alpha'(0) = (1, 0, 0)$ 등으로 놓는다거나 평면에 속한 곡선이면 $\alpha(s) = (x(s), y(s), 0)$과 같이 두어도 된다는 뜻이다. 물론 이러한 경우 아래 정리와 같이 프레네-세레 도구를 계산하는데 약간의 차이가 생기긴 한다.
+
+# Theorem
+Let $\alpha$ be a unit speed curve, and let $\{ \kappa(s), \tau(s), T(s), N(s), B(s) \}$ be the Frenet-Serret apparatus of $\alpha$. Let
+$T : \mathbb{R}^3 \to \mathbb{R}^3$ be a rigid motion and let $\tilde{\alpha} = T \circ \alpha$. Then the followings hold:
+
+**(i)** $\tilde{\alpha}$ is a unit speed curve.
+
+**(ii)** Let $\{ \tilde{\kappa}(s), \tilde{\tau}(s), \tilde{T}(s), \tilde{N}(s), \tilde{B}(s) \}$ be the Frenet-Serret apparatus of $\tilde{\alpha}$. Then we have
+
+$$\begin{align*}
+\tilde{\kappa}(s) &= \kappa(s), \\
+\tilde{\tau}(s) &= \det(A) \tau(s), \\
+\tilde{T}(s) &= A T(s), \\
+\tilde{N}(s) &= A N(s), \\
+\tilde{B}(s) &= \det(A) A B(s)
+\end{align*}$$
+
+## Proof
+Since $T$ is a rigid motion, we have $T(x) = Ax + b$ for some orthogonal matrix $A \in O(3)$ and vector $b \in \mathbb{R}^3$. Then $\tilde{\alpha}(s) = T(\alpha(s)) = A\alpha(s) + b$.
+
+**(i)** Since $\tilde{\alpha}'(s) = A\alpha'(s)$, we have
+
+$$\begin{align*}
+\| \tilde{\alpha}'(s) \| &= \| A\alpha'(s) \| \\
+&= \langle A \alpha'(s), A \alpha'(s) \rangle \\
+&= \langle \alpha'(s), \alpha'(s) \rangle \\
+&= \| \alpha'(s) \| \\
+&= 1.
+\end{align*}$$
+
+Thus, $\tilde{\alpha}$ is a unit speed curve.
+
+**(ii)** Note that $\tilde{T}(s) = \tilde{\alpha}'(s) = A\alpha'(s) = A T(s)$, so that $\tilde{T}'(s) = A T'(s)$. Then we have
+
+$$\begin{align*}
+\tilde{\kappa}(s) &= \| \tilde{T}'(s) \| \\
+&= \| A T'(s) \| \\
+&= \| T'(s) \| \\
+&= \kappa(s)
+\end{align*}$$
+
+By Frenet-Serret equation,
+
+$$\tilde{N}(s) = \frac{\tilde{T}'(s)}{\tilde{\kappa}(s)} = \frac{A T'(s)}{\kappa(s)} = A N(s)$$
+
+By [the property of the cross product](../Cross_Product/index.qmd#sec-proposition), we have
+
+$$\begin{align*}
+\tilde{B}(s) &= \tilde{T}(s) \times \tilde{N}(s) \\
+&= A T(s) \times A N(s) \\
+&= \det(A) A(T(s) \times N(s)) \\
+&= \det(A) A B(s).
+\end{align*}$$
+
+Finally,
+
+$$\begin{align*}
+\tilde{\tau}(s) &= -\langle \tilde{B}'(s), \tilde{N}(s) \rangle \\
+&= -\langle \det(A) A B'(s), A N(s) \rangle \\
+&= -\det(A) \langle A B'(s), A N(s) \rangle \\
+&= -\det(A)\langle B'(s), N(s) \rangle \\
+&= \det(A) \tau(s). \blacksquare
+\end{align*}$$

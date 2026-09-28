@@ -28,6 +28,5 @@ $$x_2 = x_1 - f(x_1) \frac{x_1 - x_0}{f(x_1) - f(x_0)}$$
 
 뉴턴-랩슨 메소드에 비해 수렴속도가 느리고 두 개의 초기값을 요구한다는 단점이 있지만, 뉴턴-랩슨 메소드가 점화식에 도함수를 포함하기에 계산 비용이 상당히 높다는 점을 생각한다면 시컨트 메소드 또한 채택해 봄직한 방법이다.
 
-
 # Reference
 - K. E. Atkinson and W. Han, Elementary Numerical Analysis, 3rd ed., John Wiley & Sons, 2004.

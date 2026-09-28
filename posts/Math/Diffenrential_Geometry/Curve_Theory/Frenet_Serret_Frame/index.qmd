@@ -22,6 +22,8 @@ Let $\alpha: (a, b) \to \mathbb{R}^3$ be a regular unit speed curve.
 
 **(vi)** The ***Frenet-Serret appratus*** of $\alpha$ is the set $\{ T(s), N(s), B(s), \kappa(s), \tau(s) \}$.
 
+곡선 $\alpha$는 단위 스피드 곡선으로 들고 왔음을 유의하자. 단위 스피드가 아니라면 위와 같은 공식으로 계산할 수 없다.
+
 $T$는 말 그대로 각 점에서의 곡선에 접하는 접선 벡터다. 한편 곡률 $\kappa$는 $T$의 도함수의 크기로 정의되는데, 곡선이 **많이 굽어있을수록** $T$는 급격하게 변하고, 다시 말해 $T'$의 크기는 커진다. 반면 곡선이 **많이 굽어있지 않고 평평할수록** $T$는 별로 변하지 않고, 다시 말해 $T'$의 크기는 작아진다. 이렇듯 곡률, 즉 곡선이 굽어있는 정도는 접선벡터의 변화량의 크기로 정의하는 것이 직관적이라는 사실을 알 수 있다.
 
 다음과 같이 $xy$ 평면에 속하는 곡선 $\alpha(s) = (x(s), y(s)), \forall s \in (a,b)$을 고려하자. 만약 $\alpha$가 단위 속력 곡선이라면 $\{ x'(s) \}^2 + \{ y'(s) \}^2 = 1$이 성립하고, 따라서 $\alpha(s) = (\cos(\theta(s)), \sin(\theta(s)))$과 같이 표현할 수 있게 된다. 이때 곡률을 계산해보면
@@ -215,7 +217,19 @@ Let $\alpha(s)$ be a unit speed curve with $\kappa \not \equiv 0$. TFAE.
 **(iii)** $\tau \equiv 0$.
 
 ### Proof
+**(i)** $\implies$ **(ii)** Suppose that $\alpha$ is a plane curve. WLOG, we can assume that $\alpha$ lies in the $xy$-plane, i.e. $\alpha(s) = (x(s), y(s), 0)$ for some scalar functions $x(s), y(s)$. Then we have
 
+$$\begin{align*}
+T(s) &= (x'(s), y'(s), 0), \\
+N(s) &= \frac{T'(s)}{\kappa(s)} = \frac{(x''(s), y''(s), 0)}{\kappa(s)}, \\
+B(s) &= T(s) \times N(s) = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} \\ x'(s) & y'(s) & 0 \\ x''(s)/\kappa(s) & y''(s)/\kappa(s) & 0 \end{vmatrix} = \left(0, 0, \frac{x'y'' - y'x''}{\kappa(s)} \right).
+\end{align*}$$
+
+Since $\vert B(s) \vert = 1$ and $B$ is continuous, we obtain $\frac{x'y'' - y'x''}{\kappa(s)} = \pm 1$. Thus, $B$ is a constant vector.
+
+**(ii)** $\implies$ **(iii)** Suppose that $B$ is a constant vector. By the Frenet-Serret formula, we have $B' = \tau N = 0$. Since $N \neq 0$, we obtain $\tau = 0$.
+
+**(iii)** $\implies$ **(i)** Suppose that $\tau = 0$. By the Frenet-Serret formula, we have $B' = 0$, so $B(s) = B_0$ is a constant vector. Then we have $\langle B_0, \alpha'(s) \rangle = \langle B_0, T(s) \rangle = 0$. Integrating both sides of the equation, we obtain $\langle B_0, \alpha(s) \rangle = C$ for some constant $C$. Taking $s = s_0$, $C = \langle B_0, \alpha(s_0) \rangle$. Thus, $\langle B_0, \alpha(s) - \alpha(s_0) \rangle = 0$, which means that $\alpha(s)$ lies in the plane through $\alpha(s_0)$ and perpendicular to $B_0$. $\blacksquare$
 
 # Reference
 - R. S. Millman and G. D. Parker, Elements of Differential Geometry, Prentice-Hall, 1977.

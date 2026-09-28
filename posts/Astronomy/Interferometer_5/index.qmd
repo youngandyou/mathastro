@@ -1,0 +1,139 @@
+---
+title: "Closure phase and Closure amplitude"
+author: "Young Jeong Lee"
+date: "2026-09-27"
+description: "전파 간섭계에서 다뤄지는 closure phase와 closure amplitude에 대해서 설명한다."
+categories: 
+  - Astronomy > Radio Astronomy
+---
+
+# 1. Closure phase and Closure amplitude 
+
+- 이상적인 경우, 측정된 visibility $\widetilde{V}_{ik}$ 함수와 실제 visibility $V_{ik}$ 함수 사이의 관계는 다음과 같이 선형적인 형태로 간주할 수 있다: 
+
+$$
+\widetilde{V}_{ik}(t)=g_i(t)g_k^{*}(t)V_{ik}+\epsilon_{ik}(t).  \tag{1.1}
+$$
+
+- $g_{i,j}(t)$: gain 
+- $\epsilon_{ik}(t)$: 관측 잡음(noise)
+- 보다 엄밀한 표현을 위해 위상 $\varphi$, $\theta$, $\psi$ 를 도입하면 식 (1.1)에 있는 $\widetilde{V}_{ik}$, $G_{ik} = g_i g_k^*$, $V_{ik}$ 는 다음과 같이 나타낼 수 있다:
+
+$$
+\begin{aligned}  
+\widetilde{V}_{ik} &= |\widetilde{V}_{ik}|\exp(i\varphi_{ik}),\\  
+G_{ik} &= |g_i||g_k|\exp(i\theta_i)\exp(-i\theta_k),\\  
+V_{ik} &= |V_{ik}|\exp(i\psi_{ik}).  
+\end{aligned}  
+\tag{1.2}
+$$
+
+- $\varphi_{ik}$: 관측된 visibility phase 
+- $G_{ik}$: 각 안테나에서 진폭과 위상의 효과를 반영한 gain 
+- $\theta_{i,k}$: 각 안테나에서 측정된 phase 
+- $\psi_{ik}$: 실제 visibility phase 
+- 식(1.2)의 관계를 식(1.1)에 대입하면 baseline $ik$ 에서의 위상 $\psi_{ik}$ 는 관측 위상 $\varphi_{ik}$ 와 다음의 관계를 가진다:
+
+$$ 
+\varphi_{ik}=\psi_{ik}+\theta_i-\theta_k+\epsilon_{ik}, \tag{1.3}
+$$
+
+- $\epsilon_{ik}$: 위상 잡음 
+- 그러면 baseline $ik$, $kl$, $li$ 로 이루어진 닫힌 삼각형을 따라 정의되는 **closure phase** $\Psi_{ikl}$ 는 다음과 같다: 
+
+$$
+\Psi_{ikl} = \varphi_{ik}+\varphi_{kl}+\varphi_{li} = \psi_{ik}+\psi_{kl}+\psi_{li} +\epsilon_{ik}+\epsilon_{kl}+\epsilon_{li} \tag{1.4}
+$$
+
+- 식 (1.4)는 $\theta$ 가 시간에 따라 아무리 변하더라도, 같은 시각에 세 baseline으로 삼각형을 만들면 antenna-based phase가 정확히 상쇄되는 것을 알려준다. 
+
+<div style="height: 2rem"></div>
+
+- 마찬가지로 **closure amplitude**를 구성할 수 있는데, 이는 4개 이상의 안테나를 동시에 사용하면 다음과 같은 비율을 얻을 수 있다: 
+
+$$
+A_{klmn} =  \frac{|V_{kl}||V_{mn}|}{|V_{km}||V_{ln}|}= \frac{|I_{kl}||I_{mn}|}{|I_{km}||I_{ln}|}. \tag{1.5}
+$$
+
+- 식 (1.5)의 값들은 안테나 gain factor에 무관한 것을 알 수 있다.
+
+<div style="height: 2rem"></div>
+
+- 관측에서 나타나는 오차를 보정하기 위해 개별 안테나의 gain 값을 이용한다. 만약, 10개의 망원경이 있다면 우리는 각 안테나에 대한 gain 값을 결정해야하므로 총 10개의 gain 값을 추정해야 한다. 
+- 식 (1.4)에서 잡음을 제외하고 closure phase를 이용하면 개별 안테나의 위상을 몰라도 source 구조에 대한 phase 조합을 얻을 수 있다. 즉, closure phase는 천체의 intrinsic visibility phase 정보를 제공한다. 
+- 식 (1.5)는 안테나가 4개 이상있다면 개별 gain factor를 몰라도 visibility 정보를 통해서 source 구조에 대한 amplitude 조합을 얻을 수 있다. 즉, closure amplitude는 천체의 intrinsic visibility amplitude 정보를 제공한다. 
+
+<div style="height: 2rem"></div>
+
+- closure phase에서는 각 안테나에서 생긴 대기, 기기 위상 오차는 고려하지 않아도 된다. 따라서 closure phase는 천체의 고유한 밝기분포 구조에 따라 변한다. 
+    - 분해되지 않는 점공원이라면 보통 0도, 중심 대칭적인 구조는 보통 0도, 180도의 값을 가진다. 이외의 비대칭적인 복수 성분 구조는 일반적으로 0도, 180도 이외의 값을 가지게 된다.
+    - 단, closure phase를 나타낸 그래프에서 일부 측정값이 우연히 0도를 지나간다고 해서 그 순간 천체가 대칭이라는 의미는 아니다. 왜냐하면 closure phase는 안테나 삼각형과 관측 시간에 따른 $(u,v)$ sample의 위치에 따라 달라지기 때문이다. 
+
+---
+
+# 2. Closure Quantities statistic 
+
+- closure phase 에러는 가우시안으로 근사되며, 세 성분의 S/N 값($S$)에 의존한다: 
+
+$$
+\sigma_{\psi_c,ijk} \approx \sqrt{S^{-2}_{ij} + S^{-2}_{jk} + S^{-2}_{ki}} \tag{2.1}
+$$
+
+- $S_{\rm ij} = \left| V_{\rm ij} \right| / \sigma_{\rm ij}$ 
+- $\psi_{C,ijk}$: closure phase 
+- $\sigma_{\psi_C}$: closure phase 표준편차, rad 단위를 이용함. 
+
+<div style="height: 2rem"></div>
+
+- 어떠한 모델 이미지의 closure phase와 실제 데이터의 closure phase 사이의 일치 정도를 분석하기 위해서 다음과 같은 통계량을 이용할 수 있다: 
+
+$$ 
+\chi^2_{\rm CP} (I) = \frac{1}{N_{\psi_C}} \sum \frac{|e^{i\hat{\psi}_C} - e^{i \psi_C}|^2}{\sigma^2_{\psi_C}} \tag{2.2}
+$$
+
+- $\hat{\psi}_C$: 모델 이미지의 model closure phase
+- ${\psi_C}$: 관측 데이터로 얻어지는 임의의 closure phase
+- $N_{\psi_C}$: closure phase의 총 개수 
+- $\sum$ 는 서로 다른 삼각형, 시간, 주파수를 모두 고려한다는 뜻이다. 
+- closure amplitude에 대해서도 다음과 같은 통계량을 이용할 수 있다: 
+
+$$ 
+\chi_{\text{log CA}}^2 (I) = \frac{1}{N_{\mathrm{ln}\,A_C}} \sum \frac{| \ln \hat{A}_C - \ln A_C|^2}{\sigma_{\text{ln A}_C}^2} \tag{2.3}
+$$
+
+
+- $\hat{A}_C$: 모델 이미지의 model closure amplitude 
+- $A_C$: 관측 데이터로 얻어지는 임의의 closure amplitude 
+- ${\sigma_{\text{ln A}_C}}$ 은 다음과 같이 정의된다: 
+
+$$ 
+\sigma_{\text{ln A}_C,ijkl} \approx \sqrt{S^{-2}_{ij} + S^{-2}_{kl} + S^{-2}_{ik}+S^{-2}_{jl}} \tag{2.4}
+$$
+
+--- 
+
+# 3. Discussion 
+
+- 다중 안테나 배열에서 고려할 수 있는 또 다른 형태는 **Triple Product**, 또는 **Bispectrum**이다. 이는 삼각형을 이루는 세 baseline에 대한 complex visibility들의 곱이다: 
+
+$$ 
+P_3 = |Z_{12}||Z_{23}||Z_{31}|e^{j(\tilde{{\phi}}_{12}+\tilde{{\phi}}_{23}+\tilde{{\phi}}_{31})}= |Z_{12}||Z_{23}||Z_{31}|e^{j\phi_c} \tag{3.1}
+$$
+
+- $Z_{ij}$: 측정된 visibility amplitude 
+- $\tilde{\phi}_{ij}$: 측정된 visibility phase 
+- $\phi_c$: closure phase 
+
+<div style="height: 2rem"></div> 
+
+- closure phase, closure amplitude를 측정하면 배열(array) 내의 미지수의 수를 줄일 수 있다. 예를 들어보자. 
+    - 10개의 안테나가 있다면 baseline의 수는 45개로 총 구해야하는 미지수는 amplitude 45개, phase 45개이다. 기준이 되는 phase를 두면 각 안테나에 대해서 고려해야하는 위상은 9개, 진폭은 10개가 된다. 
+    - 식 (1.3)에 따라, 관측된 visibility phase는 각 안테나의 phase에 영향을 받게 된다. 그러면 안테나 phase 때문에 잃어버리는 9개의 자유도를 제외하면 36개의 자유도는 closure phase 조합으로 보존될 수 있다. 따라서 전체 위상 데이터 중 36/45 = 80%를 각 안테나 phase 오차에 영향을 받지 않고 사용할 수 있다. 
+    - 이를 진폭에 적용하면 전체 진폭 데이터 중 35/45 = 78%를 각 안테나 amplitude gain factor에 무관하게 진폭 정보를 얻을 수 있다. 
+
+<div style="height: 2rem"></div>
+
+- closure quantities를 그린 그림에서 데이터가 비어 있다면, 다음의 요인들을 의심할 수 있다. 
+- $1.$ 특정 baseline에서 visibility가 없다. 
+- $2.$ fringe solution이 도출되지 못했다. 
+- $3.$ S/N이 너무 낮아 유효한 phase가 만들어지지 않는다. 

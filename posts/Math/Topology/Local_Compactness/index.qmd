@@ -1,25 +1,27 @@
 ---
-title: "Local Compactness"
+title: "Local Compactness and One-Point Compactification"
 author: "Youmin Chun"
 date: "2026-09-23 00:00:01"
-description: "국소 컴팩트 공간에 대해서 설명한다."
+description: "국소 컴팩트 공간(Locally Compact Space)과 한 점 컴팩트화(One-Point Compactification)에 대해서 설명한다."
 categories: 
   - Math > Topology
 ---
 
-# Definition
+# Definition 1
 A space $X$ is said to be ***locally compact*** at $x$ if there is some neighborhood $U$ of $x$ and compact subspace $C$ of $X$ such that $U \subset C$. A space $X$ is said to be ***locally compact*** if it is locally compact at each of its points.
+
+Munkres 책에서는 점 $x$의 근방(neighborhood)을 단순히 $x$를 포함하는 열린 집합으로 정의하고 있다. 만약 근방을 $x$를 포함하는 열린 집합이 존재해서 그 열린 집합을 포함하는 집합으로 정의한다면, $x$에서 국소 컴팩트라는 말은 $x$의 컴팩트 근방이라는 말로 이해할 수도 있다.
 
 표준 위상이 주어진 실수 공간 $\mathbb{R}$은 컴팩트가 아닌 대표적인 예시 중 하나이다. 실수 공간은 그 자체로는 컴팩트가 아니지만 임의의 닫힌 집합은 항상 컴팩트라거나, 연결 집합이라거나 하는 등의 좋은 성질들을 가지는 매우 좋은 위상 공간임은 틀림없다. 때문에 우리는 실수 공간을 그 자체로 컴팩트 공간으로 다룰 수는 없지만, 실수 공간을 포함하는 컴팩트한 집합을 찾고 그 집합의 부분 공간으로써 실수 공간을 다루는 방향으로 논의를 이어나가게 된다. 그러한 작업을 하기 위해 컴팩트에 준하는 성질 중 하나로 국소 컴팩트를 정의하게 된다. 당연히 $X$가 컴팩트하면 국소 컴팩트이기도 하지만, 일반적으로 역은 성립하지 않는다.
 
-## Example
+## Example 1
 The Euclidean space $(\mathbb{R}^n, \mathscr{T}_{\text{usual}})$ is locally compact, but not compact. For a point $x = (x_1, \dots, x_n) \in \mathbb{R}^n$, there exists an open ball $B(x, \varepsilon)$ for some $\varepsilon > 0$ and closed box $\displaystyle \prod_{i=1}^n [x_i - \varepsilon, x_i + \varepsilon]$ such that 
 
 $$x \in B(x, \varepsilon) \subset \prod_{i=1}^n [x_i - \varepsilon, x_i + \varepsilon].$$
 
 위에서 언급한 것처럼, 우리는 국소 컴팩트 공간을 컴팩트한 공간 안으로 임베딩시키는 것을 목표로 한다. 다음의 정리는 그러한 공간이 존재할 조건이 구체적으로 무엇인지, 존재한다면 어떤 위상을 가진 공간인지 설명해준다.
 
-# Theorem
+# Theorem 1
 A space $X$ is locally compact Hausdorff $\iff$ there exists a space $Y$ satisfying:
 
 **(i)** $X$ is a subspace of $Y$.
@@ -36,6 +38,7 @@ $(\implies)$ Let $Y := X \cup \{ \infty \}$ for an element $\infty \notin X$. Th
 $$\mathscr{T}_Y = \mathscr{T}_X \cup \{Y - C \mid C \text{ is compact in } X \}.$$
 
 Then $\mathscr{T}_Y$ is a topological space.
+
 ::: {.callout-note collapse="true"}
 $\big[ (\because)$ Since $\emptyset \in \mathscr{T}_X$ and it is compact in $X$, $\emptyset \in \mathscr{T}_Y$ and $Y = Y - \emptyset \in \mathscr{T}_Y$.
 
@@ -104,7 +107,65 @@ Suppose that $U$ contains $\infty$. Let $C = Y - U$. Then $f(U) = Y' - C$. Note 
 
 Similarly, we can show that $f^{-1}$ is open map. Thus, $f$ is a homeomorphism, and therefore such space $Y$ is unique up to homeomorphism.$\blacksquare \big]$
 
-위 증명에서 $\infty$는 무한대가 아니고, 그냥 어떤 원소 하나를 가리킬 뿐이다. 그러나 하필이면 이렇게 쓴 이유가 있는데...
+위 증명에서 가져온 $\infty$는 무한대가 아니고 그냥 어떤 원소 하나를 가리킬 뿐이지만, 실수 집합의 경우를 생각해보면 자연스러운 노테이션이다. 위 정리에서 $X = \mathbb{R}$로 두고 $\infty$를 실수에서의 그 무한대로 생각하면 위 정리에서 $Y$라는 집합은 $\mathbb{R} \cup \{ \infty \}$가 되고 컴팩트 하우스도르프 공간임을 알 수 있다. 그리고 $Y$는 다름 아닌 $S^1$과 위상동형임이 잘 알려져 있다. 같은 방법으로 $\mathbb{R}^2$에 $\infty$를 추가하면 $S^2$와 위상동형인 공간이 얻어지고, 마찬가지로 컴팩트 하우스도르프 공간이다.
+
+이러한 논의를 좀 더 일반화해보면 $X$로부터 $Y$를 구성하는 방법을, 다시 말해 $\infty$라는 원소를 어떻게 잡아야 하는지 대략적으로 파악할 수 있다. 우리는 실수 집합과 같이 그 자체로는 컴팩트가 되지 못하고 국소 컴팩트만 되는 공간을 살짝 넓혀서 컴팩트 공간의 부분공간으로 다루고 싶었다. 그런데 만약 $X$가 그 자체로 컴팩트라면 사실상 $Y$를 구성할 필요가 없기도 하지만, 굳이굳이 만들려고 한다면 $X$에 속하지 않는 고립점(isolated point) 하나를 가지고 와서 합쳐주면 된다. 고립점은 그 자체로 오픈셋이기 때문에 오픈 커버를 구성할 때도 별 문제가 없이 $Y$가 컴팩트 하우스도르프 공간임을 보일 수 있다.
+
+더 의미가 있는 경우는 $X$가 컴팩트가 아닌, 국소 컴팩트 공간인 경우이다. $X$가 컴팩트가 아니면 닫힌 집합도 아닌데, 만약 닫힌 집합이면 $X$는 하우스도르프 공간이므로 컴팩트 공간임이 보장되어서 모순이다. 닫힌 집합이 아니기 때문에 $X \subsetneq \overline{X}$이고, 다시 말해 $X$에 속하지 않는 $X$의 극한점 $\infty$가 존재한다. 따라서 $Y$는 $X \cup \{ \infty \}$로 주어짐을 알 수 있고, 다르게 말하면 $\overline{X} = Y$가 성립한다. 극한점이 $\infty$ 말고도 여러 개가 존재할 수 있지만 위에서 보였듯이 다른 극한점으로 $Y$를 구성해도 모두 위상동형이므로 이러한 센스에서 $Y$는 유일하다고 할 수 있다. 이렇게 구성된 $Y$를 $X$의 ***한 점 컴팩트화(one-point compactification)***라고 부른다.
+
+# Definition 2
+If $Y$ is a compact Hausdorff space, and let $X$ be a proper subspace of $Y$.
+
+**(i)** If $\overline{X} = Y$, then $Y$ is called a ***compactification*** of $X$.
+
+**(ii)** If $\overline{X} = Y$ and $Y - X$ is a singleton set, then $Y$ is called the ***one-point compactification*** of $X$.
+
+앞서 설명했듯이 $Y$는 위상동형의 관점에서 유일하므로 정관사 "the"를 붙인다. 반면 한 점이 아닌 그냥 컴팩트화 자체는 여러 개가 존재할 수 있다. 당장 실수 집합만 보아도 $\mathbb{R} \cup \{ +\infty, -\infty \}$과 $\mathbb{R} \cup \{ +\infty\}$은 모두 $\mathbb{R}$의 컴팩트화이지만 각각 $[0,1]$과 $S^1$에 위상동형이므로 서로 위상동형이 아닌 컴팩트화이다.
+
+## Example 2
+$S^n$ is the one-point compactification of $\mathbb{R}^n$. Since the map $\pi_n: S^n - \{ \infty \} \to \mathbb{R}^n$ is homeomorphism, which means that $\mathbb{R}^n$ can be embedded in $S^n$ as a subspace.
+
+![](one1.png){fig-align="center"}
+
+# Theorem 2
+Let $X$ be a topological space.
+
+**(i)** Let $X$ be a Hausdorff space. Then $X$ is locally compact $\iff$ for any point $x \in X$ and a neighborhood $U$ of $x$, there exists a neighborhood $V$ of $x$ such that $\overline{V}$ is compact and $\overline{V} \subset U$.
+
+**(ii)** Let $A$ be a subspace of a locally compact Hausdorff space $X$. If $A$ is either open or closed, then $A$ is locally compact.
+
+**(iii)** $X$ is locally compact Hausdorff $\iff$ $X$ is homeomorphic to an open subspace of a compact Hausdorff space.
+
+**(ii)**는 다시 말해 국소 컴팩트 공간의 부분공간은 일반적으로 국소 컴팩트 공간이 되지 않음을 의미한다. 단적인 예로 $\mathbb{R}$의 부분공간 $\mathbb Q$는 국소 컴팩트가 아니다.
+
+## Proof
+**(i)** $(\implies)$ Suppose that $X$ is locally compact. Let $x \in X$ and let $U$ be a neighborhood of $x$. Let $Y$ be the one-point compactification of $X$. Since $X$ is open in $Y$, $U$ is open in $Y$. Let $C := Y - U$. Since $C$ is closed in $Y$ and $Y$ is compact, $C$ is compact.
+
+::: {.callout-note icon=false}
+## Lemma
+If $Y$ is a compact subspace of the Hausdorff space $X$ and $x_0 \in X - Y$, then there exist disjoint open sets $V$ and $W$ in $X$ such that $x_0 \in V$ and $Y \subset W$.
+:::
+
+By the above lemma, there exists disjoint open sets $V$ and $W$ in $Y$ such that $x \in V$ and $C \subset W$. Since $\overline{V}$ is closed in $Y$, $\overline{V}$ is compact. Since $V \cap W = \emptyset$, $V \subset Y - W$. Since $Y - W$ is closed in $Y$ and $\overline{V}$ is the smallest closed set containing $V$, we obtain $\overline{V} \subset Y - W$, which means that $\overline{V} \cap W = \emptyset$. Since $C \subset W$, we have $\overline{V} \cap C = \emptyset$. Finally, $\overline{V} \subset Y - C = U$.
+
+$(\impliedby)$ Suppose the condition. Let $x \in X$. Then there exists a neighborhood $V$ of $x$ such that $\overline{V}$ is compact. Since $V$ is open in $X$, it contains an open set $U$ such that $x \in U \subset V \subset \overline{V}$. Thus, $X$ is locally compact. 
+
+**(ii)** Suppose that $A$ is closed in $X$. Let $x \in A$. Since $X$ is locally compact, there is a neighborhood $U$ of $x$ and a compact subset $C$ of $X$ such that $x \in U \subset C$. Then we have $x \in U \cap A \subset C \cap A$. Note that $U \cap A$ is open in $A$ and $C \cap A$ is closed in $C$ since $A$ is closed in $X$. Since $C$ is compact, $C \cap A$ is compact. Hence, $A$ is locally compact.
+
+Suppose that $A$ is open in $X$. Let $x \in A$, and let $U$ be a neighborhood of $x$ in $A$. Since $A$ is open in $X$, $U$ is a neighborhood of $x$ in $X$. Since $X$ is locally compact, there is a neighborhood $V$ of $x$ in $X$ such that $\overline{V}$ is compact and $\overline{V} \subset U$. Since $V$ is a neighborhood of $x$ in $A$, $A$ is locally compact.
+
+**(iii)** Suppose that $X$ is locally compact Hausdorff and $Y$ is the one-point compactification of $X$. Since $Y - X$ is a singleton and $Y$ is Hausdorff, $Y - X$ is closed, which means that $X$ is open in $Y$. Conversely, suppose that $X$ is homeomorphic to an open subspace $A$ of a compact Hausdorff space $Y$. Take a homeomorphism $f:X \to A$. Since $A$ is Hausdorff, so is $X$. Let $x \in X$. Since $A$ is locally compact and $f(x) \in A$, there are some neighborhood $U$ of $x$ and compact subset $C$ of $A$ such that $f(x) \in U \subset C$. Then we have $x \in f^{-1}(U) \subset f^{-1}(C)$, $f^{-1}(U)$ is open in $X$, and $f^{-1}(C)$ is compact in $X$. Thus, $X$ is locally compact. $\blacksquare$
+
+## Example 3
+**(i)** $\mathbb{Q}$ is NOT locally compact.
+
+$\big[ (\because)$ Consider $\mathbb Q$ as a subspace of $\mathbb{R}$. Suppose that $\mathbb Q$ is locally compact. Let $x \in \mathbb{Q}$. Then there exists an open neighborhood $U$ of $x$ and a compact subset $C$ of $\mathbb Q$ such that $x \in U \subset C$. Then we have $x \in (x - \varepsilon, x + \varepsilon) \cap \mathbb Q \subset U \subset C$ for some $\varepsilon > 0$. Since $C$ is compact not only in $\mathbb Q$, but also in $\mathbb{R}$, we consider the closures in $\mathbb{R}$:
+
+$$[x - \varepsilon, x + \varepsilon] = \overline{(x - \varepsilon, x + \varepsilon) \cap \mathbb Q} \subset \overline{C} = C$$
+
+It contradicts the fact that $C$ is a subset of $\mathbb{Q}$. Hence, $\mathbb{Q}$ is not locally compact.$\big]$
+
+**(ii)** Every $n$-dimensional open ball $B(x, \varepsilon)$ is locally compact Hausdorff because $B(x, \varepsilon) \cong \mathbb{R}^n \subset S^n$ and $S^n$ is compact Hausdorff.
 
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

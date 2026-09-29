@@ -31,6 +31,7 @@ $\big[ (\because)$ Let $\mathscr{U}$ be an open cover of $K$. Since $0 \in K$ an
 
 **(v)** A closed interval $[a, b]$ is compact.
 
+::: {.callout-note collapse="true"}
 $\big[ (\because)$ Suppose that $[a, b]$ is not compact. Then there is an open cover $\mathscr{U}$ of $[a, b]$ such that $\mathscr{U}$ does not have a finite subcover.
 
 Note that $\displaystyle [a, b] = \left[ a, \frac{a+b}{2} \right] \cup \left[ \frac{a+b}{2}, b \right]$. Then $\mathscr{U}$ has no finite subcover that covers one of $\left[ a, \frac{a+b}{2} \right]$ and $\left[ \frac{a+b}{2}, b \right]$, say $I_1 = [a_1, b_1]$. 
@@ -40,6 +41,7 @@ Again, note that $\left[ a_1, b_1 \right] = \left[ a_1, \frac{a_1 + b_1}{2} \rig
 Continuing the process, we can construct a sequence $\{ I_n \}_{n=1}^\infty$ of nested closed intervals $I_n = [a_n, b_n]$ of $[a, b]$ such that each $I_n$ cannot be covered by a finite subcover of $\mathscr{U}$, and $\vert x-y \vert \le \frac{b-a}{2^n} = \vert I_n \vert,\forall x, y \in I_n$.
 
 By the nested interval theorem, there exists $x^\ast \in \displaystyle \bigcap_{n=1}^\infty I_n$. Since $\mathscr{U}$ is an open cover of $[a, b]$ and $x^\ast \in [a, b]$, $x^\ast \in U$ for some $U \in \mathscr{U}$. Then there is $\delta > 0$ such that $(x^\ast - \delta, x^\ast + \delta) \subset U$. Choosing $n$ large enough such that $\vert I_n \vert = \frac{b-a}{2^n} < \delta$, we obtain that $I_n \subset (x^\ast - \delta, x^\ast + \delta) \subset U$. $\big[ (\because)$ If $y \in I_n$, then $\vert x^\ast - y \vert < \vert I_n \vert < \delta$, so $y \in (x^\ast - \delta, x^\ast + \delta)$.$\big]$ This contradicts that $\mathscr{U}$ does not have a finite subcover that covers $I_n$. Thus, $[a, b]$ is compact. $\blacksquare \big]$
+:::
 
 **(vi)** Since $S^n$ is a closed subspace of a compact space $[-1, 1]^{n+1}$, $S^n$ is compact. Similarly, $B^n$ is compact. 
 
@@ -56,7 +58,11 @@ By the nested interval theorem, there exists $x^\ast \in \displaystyle \bigcap_{
 
 **(vi)** $\displaystyle \prod_{i=1}^n X_i$ is compact $\iff X_i$ is compact for all $i = 1, \dots, n$.
 
-본디 부분공간 $Y$의 오픈 커버는 $Y$의 오픈셋들로 구성되어야 한다. 이는 부분공간의 정의상 오픈셋의 모양이 조금 지저분해질 수 밖에 없는데, 위 정리는 그러한 불편함을 없애고 $X$의 오픈셋들만 가지고도 부분공간의 컴팩터성을 논할 수 있게 해준다는 점을 시사한다.
+**(vii)** Let $K \subset Y \subset X$. Then $K$ is compact in $Y$ $\iff$ $K$ is compact in $X$.
+
+본디 부분공간 $Y$의 오픈 커버는 $Y$의 오픈셋들로 구성되어야 한다. 이는 부분공간의 정의상 오픈셋의 모양이 조금 지저분해질 수 밖에 없는데, 정리 **(i)**은 그러한 불편함을 없애고 $X$의 오픈셋들만 가지고도 부분공간의 컴팩터성을 논할 수 있게 해준다는 점을 시사한다.
+
+집합이 열려있거나 닫혀있는 성질은 전체 공간에 따라 달라지지만, **(vii)**는 컴팩트란 개념이 전체 공간에 따라 달라지는 것이 아니라 집합 그 자체의 성질임을 말해준다.
 
 ## Proof
 **(i)**
@@ -122,7 +128,9 @@ Since $V_y$ is open in $X_2$, $\{ V_y \}_{y \in X_2}$ is an open cover of $X_2$.
 
 $$\prod_{i=1}^{n+1} X_i = \left( \prod_{i=1}^n X_i \right) \times X_{n+1}$$
 
-is compact. Thus, we complete the proof. $\blacksquare$
+is compact. Thus, we complete the proof. 
+
+**(vii)** Suppose that $K$ is compact in $Y$. Let $j: K \to X$ be an [inclusion map](../Continuous_Function/index.qmd#sec-theorem-3). By **(iv)**, $j(K) = K$ is a compact subspace of $X$. Conversely, if $K$ is compact in $X$ and $j: K \to Y$ is an inclusion map, then $j(K) = K$ is a compact subspace of $Y$. $\blacksquare$
 
 # Definition 2
 A point $x$ of a space $X$ is called an ***isolated point*** of $X$ if $\{ x \}$ is open in $X$.

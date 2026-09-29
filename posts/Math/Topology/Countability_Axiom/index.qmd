@@ -1,0 +1,22 @@
+---
+title: "Countability Axioms"
+author: "Youmin Chun"
+date: "2026-09-30 00:00:01"
+description: "가산 공리(Countability Axiom)에 대해서 설명한다."
+categories: 
+  - Math > Topology
+---
+
+# Definition
+**(i)** A space $(X, \mathscr{T})$ is said to have a ***countable basis*** at $x$ if there is a collection $\mathcal{B}_x \subset \mathcal{U}_x = \{ U \in \mathscr{T} \mid x \in U \}$ such that 
+
+1. $\mathcal{B}_x$ is countable
+
+2. $\forall U \in \mathcal{U}_x, \exists B \in \mathcal{B}_x$ such that $x \in B \subset U$.
+
+**(ii)** A space $X$ is said to be ***first-countable*** if $X$ has a countable basis at every $x \in X$.
+
+**(iii)** A space $X$ is said to be ***second-countable*** if $X$ has a countable basis for $\mathscr{T}$.
+
+# Reference
+- James R. Munkres. (2000). Topology (2nd ed.). Pearson.

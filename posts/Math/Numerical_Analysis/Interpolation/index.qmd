@@ -8,7 +8,12 @@ categories:
 ---
 
 # Introduction
-***보간법(Interpolation)***이란 데이터들의 집합 $\{ (x_0, y_0), (x_1, y_1), \dots, (x_n, y_n) \}$이 주어졌을 때 $f(x_i) = y_i$를 만족하면서 주어진 데이터들을 가장 잘 설명하는 함수 $f$를 찾는 과정 내지는 방법을 말한다. 이 포스트에서는 주로 ***다항식 보간법(Polynomial Interpolation)***, 즉 함수 $f$를 다항식으로 표현하는 방법에 대해서 다룬다. 
+***보간법(Interpolation)***이란 데이터들의 집합 $\{ (x_0, y_0), (x_1, y_1), \dots, (x_n, y_n) \}$이 주어졌을 때 $f(x_i) = y_i$를 만족하면서 주어진 데이터들을 가장 잘 설명하는 함수 $f$를 찾는 과정 내지는 방법을 말한다. 이 포스트에서는 주로 ***다항식 보간법(Polynomial Interpolation)***, 즉 함수 $f$를 다항식으로 표현하는 방법에 대해서 다룬다. 아래 정리에서 볼 수 있듯이 이미 주어진 데이터들로 계산되는 다항식은 유일하게 존재함을 알 수 있는데, 그렇다면 남은 것은 존재하는 여러 표현 중에 계산 비용이 더 적은 것은 무엇인지 파악하는 것이다.
+
+# Theorem
+For points $(x_0, y_0), (x_1, y_1), \dots, (x_n, y_n)$ with distinct $x_i$'s, there exists a unique polynomial $P(x)$ with $\deg P \le n$ such that $P(x_i) = y_i$ for all $i = 0, 1, \dots, n$. 
+
+## Proof
 
 # Motivation
 ![](int1.png)
@@ -58,10 +63,19 @@ Note that
 
 3. $L_i(x_j) = \delta_{ij}, \forall i, j = 0, 1, \dots, n$.
 
-# Theorem
-For points $(x_0, y_0), (x_1, y_1), \dots, (x_n, y_n)$ with distinct $x_i$'s, there exists a unique polynomial $P(x)$ with $\deg P \le n$ such that $P(x_i) = y_i$ for all $i = 0, 1, \dots, n$. 
+# Newton's Divided Difference Interpolation
+라그랑주 보간법은 다항식 공간 $P_n$의 기저를 제시하고 단순한 선형결합으로 다항식을 표현하게 만들어 줄 수 있다는 점에서 유용하나, 계산 코스트는 $\mathcal{O}(n^2)$ 정도로 다소 높다고 할 수 있다. 아래에서 설명할 뉴턴 계차상 보간법(Newton's Divided Difference Interpolation)은 라그랑주 보간법과 동일한 결과를 제공하면서도 $\mathcal{O}(n)$의 계산 코스트로 다항식을 구성할 수 있다.
 
-## Proof
+# Definition
+Let $f: \mathbb{R} \to \mathbb{R}$ be a function, and let $x_0, x_1, \dots, x_n$ be $n+1$ distinct points. Define the ***first divided difference*** of $f$ as
+
+$$\begin{align*}
+f[x_0] &:= f(x_0)\\
+f[x_0, x_1] &:= \frac{f(x_0) - f(x_1)}{x_0 - x_1}\\
+f[x_0, x_1, x_2] &:= \frac{f[x_0, x_1] - f[x_1, x_2]}{x_0 - x_2}\\
+\vdots\\
+f[x_0, x_1, \dots, x_n] &:= \frac{f[x_0, x_1, \dots, x_{n-1}] - f[x_1, x_2, \dots, x_n]}{x_0 - x_n}
+\end{align*}$$
 
 # Reference
 - K. E. Atkinson and W. Han, Elementary Numerical Analysis, 3rd ed., John Wiley & Sons, 2004.

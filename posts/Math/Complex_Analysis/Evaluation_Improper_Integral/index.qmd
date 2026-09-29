@@ -50,7 +50,7 @@ $$\int_0^\infty f(x) dx, \quad \int_{-\infty}^\infty f(x) dx$$
 # Theorem 1
 For a function $f(z)$, suppose that  
 
-**(i)** $f$ is analytic throughout a neighborhood of the upper half-plane except for finitely many isolated singular points $z_1, \dots, z_n$ with $\mathrm{Im}(z_i) > 0$,
+**(i)** $f$ is analytic throughout a neighborhood of the closed upper half-plane $y \ge 0$ except for finitely many isolated singular points $z_1, \dots, z_n$ with $\mathrm{Im}(z_i) > 0$,
 
 **(ii)** $\displaystyle \lim_{z \to \infty} z f(z) = 0$
 
@@ -154,12 +154,49 @@ I &= \pi i \sum_{k=0}^2 \operatorname*{Res}_{z=c_k} \frac{1}{z^6+1} \\
 
 임을 알 수 있다. 이와 같은 방법으로 실함수의 이상적분을 유수를 사용해 구할 수 있다.
 
+# Jordan's Lemma
+Let $a > 0$ and let $C_R: z = Re^{i \theta} (0 \le \theta \le \pi)$ for $R > 0$. Suppose that $f$ is continuous on $C_R$ and $\displaystyle \lim_{z \to \infty} f(z) = 0$.
+
+Then $\displaystyle \lim_{R \to \infty} \int_{C_R} f(z) e^{iaz} dz = 0$.
+
+## Proof
+We first estimate the integral $\displaystyle \int_0^\pi e^{-R \sin \theta} d\theta$. Note that for $0 \le \theta \le \frac{\pi}{2}$, we have 
+
+$$\begin{align*}
+&\sin \theta \ge \frac{2}{\pi} \theta \\
+\implies &-R \sin \theta \le -\frac{2R}{\pi} \theta \\
+\implies &e^{-R \sin \theta} \le e^{-\frac{2R}{\pi} \theta} \\
+\implies & \frac{1}{2} \int_0^\pi e^{-R \sin \theta} d\theta = \int_0^{\pi / 2} e^{-R \sin \theta} d\theta \\
+& \le \int_0^{\pi / 2} e^{-\frac{2R}{\pi} \theta} d\theta \\
+& = \frac{\pi}{2R}(1-e^{-R}) \\
+& < \frac{\pi}{2R},
+\end{align*}$$
+
+so that $\displaystyle \int_0^\pi e^{-R \sin \theta} d\theta < \frac{\pi}{R}$. Since $\displaystyle \lim_{z \to \infty} f(z) = 0$, for each $\varepsilon > 0$, there exists $\delta > 0$ such that 
+
+$$\left \vert \frac{1}{z} \right \vert < \delta \implies \vert f(z) \vert < \frac{a \varepsilon}{\pi}.$$
+
+Then for all $R > 0$ such that $\displaystyle \frac{1}{\delta} < \vert z \vert = R$, we have
+
+$$\begin{align*}
+\left \vert \int_{C_R} f(z) e^{iaz} dz \right \vert &= \left \vert \int_0^\pi f(Re^{i \theta}) e^{iaRe^{i \theta}} \cdot Rie^{i\theta} d\theta \right \vert \\
+& \le \int_0^\pi \left \vert f(Re^{i \theta}) e^{iaRe^{i \theta}} \cdot Rie^{i\theta} \right \vert d\theta \\
+& = R \int_0^\pi \left \vert f(Re^{i \theta}) \right \vert e^{-aR \sin \theta}d \theta \\
+& \le \frac{a \varepsilon}{\pi} R \int_0^\pi e^{-aR \sin \theta}d \theta \\
+& < \frac{a \varepsilon}{\pi} R \cdot \frac{\pi}{aR} \\
+&= \varepsilon.
+\end{align*}$$
+
+Hence, we conclude that 
+
+$$\lim_{R \to \infty} \int_{C_R} f(z) e^{iaz} dz = 0. \blacksquare$$
+
 # Theorem 2
 For a function $f(z)$ and a real constant $a > 0$, suppose that  
 
-**(i)** $f$ is analytic throughout a neighborhood of the upper half-plane except for finitely many isolated singular points $z_1, \dots, z_n$ with $\mathrm{Im}(z_i) > 0$,
+**(i)** $f$ is analytic throughout a neighborhood of the closed upper half-plane $y \ge 0$ except for finitely many isolated singular points $z_1, \dots, z_n$ with $\mathrm{Im}(z_i) > 0$,
 
-**(ii)** $\displaystyle \lim_{z \to \infty} z f(z) = 0$,
+**(ii)** $\displaystyle \lim_{z \to \infty} f(z) = 0$,
 
 **(iii)** $\displaystyle \int_{-\infty}^\infty f(x) e^{iax} dx$ exists.
 
@@ -175,49 +212,11 @@ $$\begin{align*}
 &= 2\pi i \sum_{i=1}^n \operatorname*{Res}_{z = z_i} f(z)e^{iaz} \,\, \cdots \,\, (\ast)
 \end{align*}$$
 
-We claim that 
-
-$$\lim_{R \to \infty} \int_{C_R} f(z)e^{iaz}dz = 0$$
-
-$\big[ (\because)$ Let $\varepsilon > 0$. Since $\displaystyle \lim_{z \to \infty} z f(z) = 0$, there exists $\delta > 0$ such that 
-
-$$\vert z \vert > \frac{1}{\delta} \implies \vert z f(z) \vert < \frac{\varepsilon}{\pi}.$$
-
-We will show that
-
-$$\vert R \vert > \frac{1}{\delta} \implies \left \vert \int_{C_R} f(z)e^{iaz} dz \right \vert < \varepsilon.$$
-
-Suppose that $\vert R \vert > \frac{1}{\delta}$. For any $z = x+iy$ in $C_R$, we have $\vert z \vert = R$ and $\mathrm{Im}(z) = y > 0$. Since
-
-$$\begin{align*}
-\vert e^{iaz} \vert &= \vert e^{ia(x+iy)} \vert \\
-&= \vert e^{iax} e^{-ay} \vert \\
-&= e^{-ay} \le 1,
-\end{align*}$$
-
-we have
-
-$$\begin{align*}
-\vert f(z) e^{iaz} \vert &\le \vert f(z) \vert \\
-&= \left \vert \frac{zf(z)}{z} \right \vert \\
-&< \frac{\varepsilon}{\pi R}
-\end{align*}$$
-
-By [ML Lemma](../ML_Lemma/index.qmd#sec-theorem), we have
-
-$$\begin{align*}
-\left \vert \int_{C_R} f(z)e^{iaz} dz \right \vert &\le \frac{\varepsilon}{\pi R} \cdot \pi R \\
-&= \varepsilon.
-\end{align*}$$
-
-Thus, $\displaystyle \lim_{R \to \infty} \int_{C_R} f(z)e^{iaz} dz = 0$.$\big]$
-
-Since the improper integral $\displaystyle \int_{-\infty}^\infty f(x)e^{iax} dx$ exists, it is the same as the Cauchy principal value. By taking the limit $R \to \infty$ in the equation $(\ast)$, we have
+By the Jordan's Lemma, we obtain $\displaystyle \lim_{R \to \infty} \int_{C_R} f(z)e^{iaz}dz = 0$. Since the improper integral $\displaystyle \int_{-\infty}^\infty f(x)e^{iax} dx$ exists, it is the same as the Cauchy principal value. By taking the limit $R \to \infty$ in the equation $(\ast)$, we have
 
 $$\int_{-\infty}^\infty f(x)e^{iax} dx = 2\pi i \sum_{i=1}^n \operatorname*{Res}_{z = z_i} f(z)e^{iaz}. \blacksquare$$
 
 ## Exmaple 2
-::: {.content-hidden}
 $e^{iaz} = \cos (az) + i \sin (az)$이므로
 
 $$\int_{-\infty}^\infty f(x)e^{iax} dx = \int_{-\infty}^\infty f(x) \cos (ax) dx + i \int_{-\infty}^\infty f(x) \sin (ax) dx$$
@@ -232,17 +231,34 @@ $$\int_{-\infty}^\infty f(x) \sin ax dx, \quad \int_{-\infty}^\infty f(x) \cos a
 
 $$\int_0^\infty \frac{\cos 2x}{(x^2+4)^2} dx$$
 
-을 계산해보자. 함수 $f(z) = \frac{1}{(z^2+4)^2}$로 두면 방정식 $z^2+4 = 0$은 $z = \pm 2i$의 해를 가진다. 이 중 상반평면에 있는 해는 $z_0 = 2i$로 유일하며, 함수 $f$는 $z_0$를 제외한 모든 점에서 해석적이다. 또한 자명하게
+을 계산해보자. 함수 $f(z) = \frac{1}{(z^2+4)^2}$로 두면 방정식 $z^2+4 = 0$은 $z = \pm 2i$의 해를 가진다. 이 중 상반평면에 있는 해는 $z_0 = 2i$로 유일하며, 함수 $f$는 $z_0$를 제외한 모든 점에서 해석적이다. 이때 유수를 구하면 $\displaystyle \frac{5}{32e^4 i}$를 얻는다.
 
-$$\lim_{z \to \infty} z f(z) = \lim_{z \to \infty} \frac{z}{(z^2+4)^2} = 0$$
+또한 자명하게
 
-이므로 위 정리의 조건 **(ii)**가 성립한다. 한편
+$$\lim_{z \to \infty} f(z) = \lim_{z \to \infty} \frac{1}{(z^2+4)^2} = 0$$
+
+이므로 위 정리의 조건 **(ii)**가 성립한다. 한편 **(iii)**에 의해 이상적분의 값이 존재하고
 
 $$\int_{-\infty}^\infty f(x)e^{iax} dx = \int_{-\infty}^\infty \frac{\cos 2x}{(x^2+4)^2} dx + i \int_{-\infty}^\infty \frac{\sin 2x}{(x^2+4)^2} dx$$
 
-이므로
-:::
+이다. 또한 우함수의 성질에 의해 $\displaystyle \int_{-\infty}^\infty \frac{\sin 2x}{(x^2+4)^2} dx = 0$이므로, 위 정리에 의해 다음의 결론을 얻는다.
 
+$$\int_0^\infty \frac{\cos 2x}{(x^2+4)^2} dx = 2\pi i \left( \frac{5}{32e^4i} \right) = \frac{5\pi}{16e^4}.$$
+
+# Theorem 3
+Suppose that 
+
+**(i)** a function $f(z)$ is analytic at all points in the upper half-plane $y \geq 0$ except for finitely many simple poles $z_1, \dots, z_n$,
+
+**(ii)** $\displaystyle \lim_{z \to \infty} f(z) = 0$,
+
+**(iii)** $\displaystyle \int_{-\infty}^\infty f(x) dx$ exists.
+
+Then
+
+$$\int_{-\infty}^\infty f(x)e^{iax} dx = \pi i \sum_{k=1}^n \operatorname*{Res}_{z = z_k} \left[ f(z)e^{iaz} \right].$$
+
+## Proof
 
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

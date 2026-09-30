@@ -7,7 +7,7 @@ categories:
   - Math > Abstract Algebra > Group Theory
 ---
 
-## Definition 1
+# Definition 1
 A ***permutation*** of a set $A$ is a bijection $\sigma: A \to A$. We write the permutation $\sigma$ as 
 
 $$
@@ -36,10 +36,10 @@ $$\sigma = \begin{pmatrix} 1 & 2 & \cdots & n-1 & n \\ 2 & 3 & \cdots & n & 1 \e
 
 Then $(\sigma \tau)(1) = 3 \neq 1 = (\tau \sigma)(1)$. Thus $S_A$ is non-abelian.
 
-## Theorem 1
+# Theorem 1
 Let $A$ be a nonempty set. Then $S_A$ is a group under permutation multiplication.
 
-### Proof
+## Proof
 By Remark 1 (i), $S_A$ is closed under permutation multiplication. 
 
 Since the composition of functions is associative, $S_A$ is associative. 
@@ -50,7 +50,7 @@ For each $\sigma \in S_A$, $\exists \sigma^{-1} \in S_A$ such that $\sigma \sigm
 
 Thus $S_A$ is a group under permutation multiplication. $\blacksquare$
 
-## Definition 2
+# Definition 2
 Let $A = \{ 1, 2, ..., n \}$. Then the group of permutations of $A$ is called the ***symmetric group*** on $n$ letters and is denoted by $S_n$.
 
 ## Remark 2

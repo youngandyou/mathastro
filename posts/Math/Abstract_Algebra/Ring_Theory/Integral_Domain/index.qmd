@@ -44,7 +44,11 @@ Since $R$ has no zero divisor, we must obtain $b-c = 0$, so $b = c$. Thus, the c
 
 **(iv)** For a prime number $p$, $\mathbb{Z}_p$ is a field.
 
-**(v)** An integral domain $D$ has the [characteristic](../Ring/index.qmd#sec-definition-2) $0$ or a prime $p$.
+**(v)** An intersection of subdomains of an integral domain $D$ is a subdomain of $D$.
+
+**(vi)** An integral domain $D$ has the [characteristic](../Ring/index.qmd#sec-definition-2) $0$ or a prime $p$. Furthermore, an integral domain with the zero characteristic is infinite.
+
+**(vii)** Let $S$ be a subdomain of an integral domain $D$. Then $\mathrm{char}(S) = \mathrm{char}(D)$.
 
 모든 체가 정역이지만, $\mathbb{Z}$와 같은 반례가 있기 때문에 역으로 정역이라고 해서 항상 체라는 사실을 보장해 주지는 않는다.
 
@@ -69,9 +73,15 @@ Suppose that $a \neq 1$. Note that $aa_i \neq 0$ for each $i = 1, \dots, n$, bec
 
 **(iv)** Let $p$ be a prime number. By **(i)**, $Z(\mathbb{Z}_p) = \emptyset$, which means that $\mathbb{Z}_p$ has no zero divisors. Since $\mathbb{Z}_p$ is commutative and it has identity, $\mathbb{Z}_p$ is an integral domain. Clearly it is finite, so $\mathbb{Z}_p$ is a field by **(iii)**. 
 
-**(v)**
+**(v)** Let $\{ D_\alpha \}$ be a collection of subdomains of $D$, and let $\displaystyle D^\ast = \bigcap_\alpha D_\alpha$. Since $1 \in D^\ast$, it is nonemtpy. Since [an intersection of subrings of a ring is a subring](../ring/index.qmd#sec-theorem), $D^\ast$ is a commutative subring with unity of $D$. Since $D^\ast \subset D$, $D^\ast$ cannot have a zero divisor. If not, $D$ has a zero divisor, so $D$ is not an integral domain. $\bigotimes$ Thus, $D^\ast$ has no zero divisor, so $D^\ast$ is a subdomain of $D$.
 
-$\blacksquare$
+**(vi)** Let $\mathrm{char}(D) = n$. If $n = 0$, then we are done. Suppose that $1 \le n$. Since $1 \neq 0$, clearly $1 < n$. If $n$ is a prime, there is nothing to prove, so we suppose that $n$ is a composite. Then $n = ab$ for some integers $a, b$ with $1 < a < n$ and $1 < b < n$. Note that $n \cdot 1 = (ab)1 = (a \cdot 1)(b \cdot 1) = 0$. However, it contradicts that $D$ is an integral domain and $a \cdot 1, b \cdot 1 \neq 0$. Hence, $n$ is either zero or a prime. 
+
+Suppose that $\mathrm{char}(D) = 0$. We claim that $0, 1 \cdot 1_D, 2 \cdot 1_D, \dots$ are distinct in $D$. If $r \cdot 1_D = s \cdot 1_D$ for some integers $r > s \ge 0$, then we have $(r-s) \cdot 1_D = 0$. Since $\mathrm{char}(D) = 0$, we obtain $r-s = 0$, i.e. $r = s$, which contradicts $r > s$. Thus, $0, 1 \cdot 1_D, 2 \cdot 1_D, \dots$ are distinct in $D$, so $D$ is infinite.
+
+**(vii)** Let $\mathrm{char}(D) = n$ and let $\mathrm{char}(S) = m$. Since $S \le D$, $S$ contains the unity $1$ which is the same as $D$. If $n = 0$, then there is no positive integer $\alpha$ such that $\alpha \cdot 1 = 0$ in both $S$ and $D$, which means that $m = 0$. Thus, $n = m$. Similarly, if $m = 0$, then $n = 0.$
+
+Suppose that $m$ and $n$ are not zero. Then $m$ is the smallest positive integer such that $m \cdot 1 = 0$ in $S$. Since $m \cdot 1 = 0$ in $D$, we have $m \ge n$ by the definition of characteristic of $D$. Similarly, $n$ is the smallest positive integer such that $n \cdot 1 = 0$ in $D$, which implies $n \cdot 1 = 0$ in $S$. Thus, $n \ge m$, so we have $n = m$. $\blacksquare$
 
 ## Example
 **(i)** $\mathbb{R}^{n \times n}$ is NOT an integral domain:

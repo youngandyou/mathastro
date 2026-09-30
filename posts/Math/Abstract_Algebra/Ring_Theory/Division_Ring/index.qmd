@@ -26,6 +26,15 @@ a &= 1a \\
 
 따라서 $0 \neq 1$이라는 가정은 사실상 환이 zero ring이 아니라는 가정과 동일하다.
 
+또한 주의해야 할 점은, 벡터 공간이나 군에서와 마찬가지로 덧셈의 항등원 $0$은 환이나 부분환이나 동일한 $0$을 가지지만 곱셈의 항등원 $1$은 일반적으로 같을 필요가 없다. 예컨대 환 $R = \mathbb{Z} \times \mathbb{Z}$와 부분환 $S = \mathbb{Z} \times \{ 0 \}$을 생각해보자. $R$의 곱셈의 항등원은 $1_R = (1, 1)$이지만 $S$는 $1_S = (1, 0)$이므로 서로 다르다. 즉 $S$는 곱셈의 항등원을 가지면서 원래 환 $R$과는 다른 항등원을 가진다. 이러한 긴장이 해소되는 조건은 환 $R$이 [정역(integral domain)](../Integral_Domain/index.qmd#sec-definition)이면 해결된다. 
+
+$$\begin{align*}
+1_S \cdot 1_S = 1_S = 1_S \cdot 1_D \\
+\implies 1_S \cdot (1_S - 1_D) = 0
+\end{align*}$$
+
+$R$이 정역이고 $1_S, 1_D \neq 0$이므로 $1_S = 1_D$라는 결론을 얻는다. 또한 모든 [체(field)](../Field/index.qmd#sec-definition)는 정역이므로, 체와 그 부분체는 덧셈과 곱셈에 대해서 모두 동일한 항등원을 가짐을 알 수 있다. 
+
 ## Example
 **(i)** In $\mathbb{Z}_{14}$, $\{ 1, 3, 5, 9, 11, 13 \}$ is the set of units. In fact, these numbers are relatively prime to $14$.
 

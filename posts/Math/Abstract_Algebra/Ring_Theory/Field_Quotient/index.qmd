@@ -36,7 +36,7 @@ Two elements $(a, b)$ and $(c, d)$ of $S$ is said to be ***equivalent*** if $ad 
 
 Then $\sim$ is an equivalence relation on $S$.
 
-::: {.callout-note collapse="true"}
+::: {.callout-note title="Proof" collapse="true"}
 $\big[ (\because)$ Let $(a_1, b_1), (a_2, b_2), (a_3, b_3)$ be elements of $S$.
 
 1. Since $a_1b_1 = b_1a_1$, we have $(a_1, b_1) \sim (a_1, b_1)$.
@@ -65,7 +65,7 @@ for all $[(a, b)], [(c, d)] \in F$.
 
 Then $+, \cdot$ are binary operations on $F$.
 
-::: {.callout-note collapse="true"}
+::: {.callout-note title="Proof" collapse="true"}
 $\big[ (\because)$ Let $[(a_1, b_1)], [(a_2, b_2)], [(c_1, d_1)], [(c_2, d_2)]$ be elements of $F$. Since $b_1, d_1 \neq 0$ and $D$ is an integral domain, $b_1d_1 \neq 0$. Thus, $[(a_1, b_1)] + [(c_1, d_1)] = [(a_1d_1 + b_1c_1, b_1d_1)] \in F$ and $[(a_1, b_1)] \cdot [(c_1, d_1)] = [(a_1c_1, b_1d_1)] \in F$.
 
 Suppose that $[(a_1, b_1)] = [(a_2, b_2)]$ and $[(c_1, d_1)] = [(c_2, d_2)]$. Then we have
@@ -81,7 +81,7 @@ $$\begin{align*}
 and
 
 $$\begin{align*}
-a_1b_2 = b_1a_2 \quad \text{and} \quad c_1d_2 = d_1c_2 \\
+& a_1b_2 = b_1a_2 \quad \text{and} \quad c_1d_2 = d_1c_2 \\
 \implies & a_1b_2c_1d_2 = b_1a_2c_1d_2 = b_1a_2d_1c_2 \\
 \implies & (a_1c_1)b_2d_2 = (a_2c_2)b_1d_1 \\
 \implies & [(a_1c_1, b_1d_1)] = [(a_2c_2, b_2d_2)] \\
@@ -186,7 +186,7 @@ Thus, $\langle F, +, \cdot \rangle$ is a field.$\big]$
 ## Step 4
 An integral domain $D$ can be embedded in a field $F$ such that every element of $F$ can be expressed as a quotient of two elments of $D$. This field $F$ is called a ***quotient field*** of $D$. For $[(a, b)] \in F$, we write $\frac{a}{b} \left( = \frac{a}{b}F \right)$ instead of $[(a, b)]$.
 
-::: {.callout-note collapse="true"}
+::: {.callout-note title="Proof" collapse="true"}
 $\big[ (\because)$ First, we claim that the map $i: D \to F$ defined by $i(a) = [(a, 1)], \forall a \in D$ is a monomorphism. 
 
 Clearly, $i$ is well-defined. Suppose that $i(a) = i(b)$. Then 
@@ -209,12 +209,11 @@ i(a + b) &= [(a + b, 1)] \\
 
 and
 
-$$
-\begin{align*}
+$$\begin{align*}
 i(ab) &= [(ab, 1)] \\
 &= [(a, 1)] \cdot [(b, 1)] \\
 &= i(a) \cdot i(b).
-\end{align*}$
+\end{align*}$$
 
 Thus $i$ is a ring homomorphism, so $i$ is a monomorphism. This means that $D \cong i(D)$ is a subdomain of $F$. Let $[(a, b)] \in F$. Then we obtain
 
@@ -231,7 +230,7 @@ Let $F$ be a quotient field of an integral domain $D$, and let $L$ be any field 
 
 다시 말해 주어진 정역 $D$를 포함하는 어떤 필드 $F$를 가지고 와도 동형사상 $\psi$가 존재해서 $L$ 안에 $F$를 임베딩할 수 있으므로 동형사상의 관점에서 볼 때 분수체 $F$가 $D$를 포함하는 가장 작은 필드임을 알 수 있다. 또한 자연스럽게 분수체는 동형사상의 관점에서 유일함까지 알 수 있다.
 
-:::{.callout-note collapse="true"}
+:::{.callout-note title="Proof" collapse="true"}
 $\big[ (\because)$ Let $i : D \to D$ be the identity map. Define the map $\psi : F \to L$ by
 
 $$\psi \left( \frac{a}{b}F \right) = \frac{i(a)}{i(b)}L = \frac{a}{b}L, \forall \frac{a}{b}F \in F.$$
@@ -300,6 +299,51 @@ Let $F$ and $L$ be quotient fields of $D$. By above claims, there exists a monom
 
 Let $x \in L$. Then $x = \frac{a}{b}L$ for some $a, b \in D$, so we have $\psi\left( \frac{a}{b}F \right) = \frac{i(a)}{i(b)}L = \frac{a}{b}L = x$. Thus $\psi$ is onto. Hence, $\psi$ is an isomorphism, so $F \cong L$.$\blacksquare \big]$
 :::
+
+# Remark
+Let $F$ be a field, and let $K$ be a quotient field of $F$. Then $F \cong K$.
+
+::: {.callout-note title="Proof" collapse="true"}
+$\big[ (\because)$ Let $\phi: K \to F$ be a function defined by $\phi([(x, y)]) = xy^{-1}, \forall [(x, y)] \in K$. If $[(x, y)] = [(a, b)]$, then $(x, y) \sim (a, b)$, so $xb = ay$. Since $F$ is a field, $b^{-1}$ and $y^{-1}$ exist. Then we have
+
+$$\begin{align*}
+\phi([(x, y)]) &= xy^{-1} \\
+= x(bb^{-1})y^{-1} \\
+&= (xb)(b^{-1}y^{-1}) \\
+&= ay(y^{-1}b^{-1}) \\
+&= ab^{-1} \\
+&= \phi([(a, b)]),
+\end{align*}$$ 
+
+so $\phi$ is well-defined.
+
+Note that
+
+$$\begin{align*}
+\phi([(x, y)] + [(a, b)]) &= \phi([(xb + ay, yb)]) \\
+&= (xb+ay)(yb)^{-1} \\
+&= xy^{-1} + ab^{-1} \\
+&= \phi([(x, y)]) + \phi([(a, b)]).
+\end{align*}$$
+
+and
+
+$$\begin{align*}
+\phi([(x, y)] \cdot [(a, b)]) &= \phi([(xa, yb)]) \\
+&= (xa)(yb)^{-1} \\
+&= xa y^{-1} b^{-1} \\
+&= xy^{-1} ab^{-1} \\
+&= \phi([(x, y)]) \cdot \phi([(a, b)]).
+\end{align*}$$
+
+Thus $\phi$ is a ring homomorphism.
+
+If $\phi([(x, y)]) = \phi([(a, b)])$, then $xy^{-1} = ab^{-1}$, so $xb = ay$. Then $(x,y) \sim (a,b)$, so $[(x, y)] = [(a, b)]$. Thus $\phi$ is one-to-one.
+
+Let $x \in F$. Since $F$ is a field, $x = x \cdot 1 = x \cdot 1^{-1} = \phi([(x, 1)])$. Thus $\phi$ is onto. Hence $\phi$ is an isomorphism, and $F \cong K$. $\blacksquare$ $\big]$
+:::
+
+한편 모든 체는 정역이므로 체에 대해서도 분수체를 생각할 수 있다. 그런데 애초에 분수체를 도입한 이유 자체가 정역 자체만으로는 체가 되기 충분하지 않았기 때문이었는데, 체에 대해서는 굳이 이러한 이유를 생각할 필요가 없다. 이러한 직관과 잘 들어맞게도 체의 분수체는 자기 자신과 동형이다.
 
 # Reference
 - John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

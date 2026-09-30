@@ -76,18 +76,24 @@ Let $R$ be a ring, and let $a, b \in R$.
 **(iii)** By (ii), we have $(-a)(-b) = -(a(-b)) = -(-(ab))$. Since $-(ab) + (-(-(ab))) = 0$ and $ab + (-(ab)) = 0$, it follows from the uniqueness of the additive inverse that $(-a)(-b) = ab$. $\blacksquare$
 
 # Theorem
-Let $S$ be a nonempty subset of a ring $R$. Then $S \le R$ $\iff$ $a - b, ab \in S, \forall a, b \in S$.
+**(i)** Let $S$ be a nonempty subset of a ring $R$. Then $S \le R$ $\iff$ $a - b, ab \in S, \forall a, b \in S$.
+
+**(ii)** An intersection of subrings of a ring $R$ is a subring of $R$.
 
 부분군 판정법과 유사하지만 환은 군과는 달리 곱셈이라는 연산이 추가되므로 곱셈에 대해서 닫혀있음도 보여야 한다.
 
 ## Proof
-$(\implies)$ Let $a, b \in S$. Since $S$ is a ring, the additive inverse of $b$ belongs to $S$, so $a - b \in S$. Clearly, $ab \in S$.
+**(i)** $(\implies)$ Let $a, b \in S$. Since $S$ is a ring, the additive inverse of $b$ belongs to $S$, so $a - b \in S$. Clearly, $ab \in S$.
 
 $(\impliedby)$ Let $a \in S$. Since $0 = a - a \in S$, $S$ contains the additive identity $0$. Furthermore, since $-a = 0 - a \in S$, it also contains the additive inverse of every element in $S$.
 
 Let $a, b \in S$. Since $S$ contains $-b$, we have $a + b = a - (-b) \in S$, which means that $S$ is closed with respect to addition. By assumption, $S$ is closed with respect to multiplication.
 
-Since $S \subset R$, the associativity and commutativity of the addition is clearly held, and so is the distributivity of the operations. Hence, $S$ is a subring of $R$. $\blacksquare$
+Since $S \subset R$, the associativity and commutativity of the addition is clearly held, and so is the distributivity of the operations. Hence, $S$ is a subring of $R$. 
+
+**(ii)** Let $\{ R_\alpha \}$ be a collection of subrings of $R$, and let $\displaystyle R^\ast = \bigcap_\alpha R_\alpha$. Since $0 \in R_\alpha, \forall \alpha$, we have $0 \in R^\ast$, so $R^\ast \neq \emptyset$. 
+
+Let $a, b \in R^\ast$. Then $a, b \in R_\alpha, \forall \alpha$. Since $R_\alpha$ is a subring, we have $a - b, ab \in R_\alpha, \forall \alpha$, which implies that $a-b, ab \in R^\ast$. Hence, $R^\ast \le R$ by **(i)**. $\blacksquare$
 
 # Definition 2
 Let $R$ be a ring. If there exists an $n \in \mathbb{N}$ such that $na = 0, \forall a \in R$, then the least such positive integer is called the ***characteristic*** of $R$. If no such positive integer exists, then $R$ is of ***characteristic 0***. We denote the characteristic of $R$ $\mathrm{char}(R)$.

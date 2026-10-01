@@ -2,21 +2,54 @@
 title: "Countability Axioms"
 author: "Youmin Chun"
 date: "2026-09-30 00:00:01"
-description: "가산 공리(Countability Axiom)에 대해서 설명한다."
+description: "가산 공리(Countability Axiom)와 조밀성(Dense)에 대해서 설명한다."
 categories: 
   - Math > Topology
 ---
 
-# Definition
-**(i)** A space $(X, \mathscr{T})$ is said to have a ***countable basis*** at $x$ if there is a collection $\mathcal{B}_x \subset \mathcal{U}_x = \{ U \in \mathscr{T} \mid x \in U \}$ such that 
+# Definition 1
+**(i)** A space $X$ is said to be ***first-countable*** if it has a countable [local basis](../Basis_Topology/index.qmd#sec-definition-3) at every $x \in X$.
 
-1. $\mathcal{B}_x$ is countable
+**(ii)** A space $X$ is said to be ***second-countable*** if it has a countable [basis](../Basis_Topology/index.qmd#sec-definition-1).
 
-2. $\forall U \in \mathcal{U}_x, \exists B \in \mathcal{B}_x$ such that $x \in B \subset U$.
+## Remark
+**(i)** Every metrizable space is first-countable.
 
-**(ii)** A space $X$ is said to be ***first-countable*** if $X$ has a countable basis at every $x \in X$.
+**(ii)** Every second-countable space is first-countable.
 
-**(iii)** A space $X$ is said to be ***second-countable*** if $X$ has a countable basis for $\mathscr{T}$.
+## Example
+
+# Theorem 1
+Let $X$ be a first-countable space.
+
+**(i)** Let $A \subset X$. Then there exists a sequence $\{ x_n \}$ in $A$ such that $\displaystyle \lim_{n \to \infty} x_n = x$ $\iff$ $x \in \bar{A}$.
+
+**(ii)** Let $f: X \to Y$ be a function. Then $f$ is continuous $\iff$ for any sequence $\{ x_n \}$ in $X$ such that $\displaystyle \lim_{n \to \infty} x_n = x$, we have $\displaystyle \lim_{n \to \infty} f(x_n) = f(x)$.
+
+거리 공간에서 성립하는 정리로 등장했지만, 실은 거리 공간이 제1 가산 공간이다보니 성립하는 내용이었다. 국소기저의 정의를 잘 생각해보면 굳이 외우지 않아도 자연스럽게 납득되는 내용들이다.
+
+# Theorem 2
+**(i)** A subspace of a first-countable (second-countable) space is first-countable (second-countable).
+
+**(ii)** A countable product of first-countable (second-countable) spaces is first-countable (second-countable).
+
+## Proof
+
+# Definition 2
+Let $X$ be a topological space.
+
+**(i)** A subset $S$ of $X$ is said to be ***dense*** if $\overline{S} = X$.
+
+**(ii)** $X$ is called a ***Lindelöf space*** if every open cover of $X$ has a countable subcover.
+
+**(iii)** $X$ is said to be ***separable*** if it has a countable dense subset.
+
+# Theorem 3
+**(i)** A second-countable space is a Lindelöf space.
+
+**(ii)** A second-countable space is separable.
+
+## Proof
 
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

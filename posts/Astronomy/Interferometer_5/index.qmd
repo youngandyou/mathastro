@@ -137,3 +137,9 @@ $$
 - $1.$ 특정 baseline에서 visibility가 없다. 
 - $2.$ fringe solution이 도출되지 못했다. 
 - $3.$ S/N이 너무 낮아 유효한 phase가 만들어지지 않는다. 
+
+<div style="height: 2rem"></div>
+
+- 만약 closure quantities 데이터를 보았을 때, 전반적으로 짧은 baseline을 포함한 데이터에서 모델과 관측이 서로 어긋날 수 있다.
+- 이 경우, 대체로 분해능이 높은 구조는 관측 데이터와 모델이 잘 맞지만, 분해능 낮은 제트 components 쪽은 관측 데이터와 모델이 잘 맞지 않다고 볼 수 있다.
+- 그러므로, 제트 components 영역에 대해서 CLEAN을 다시 수행해야겠다고 판단할 수 있다.

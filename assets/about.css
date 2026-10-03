@@ -1,0 +1,83 @@
+/* Keep the introduction layout scoped to the About page. */
+body.about-page main#quarto-document-content {
+  padding-top: 2.5rem;
+  padding-bottom: 3rem;
+  text-align: left;
+  letter-spacing: 0;
+  overflow-wrap: anywhere;
+}
+
+body.about-page #title-block-header {
+  margin-bottom: 1.75rem;
+  text-align: left;
+}
+
+body.about-page #title-block-header .title {
+  margin: 0;
+  font-size: 2.4rem;
+  line-height: 1.3;
+}
+
+body.about-page main h2 {
+  margin-top: 0;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0;
+  border-bottom: 0;
+  font-size: 1.65rem;
+}
+
+body.about-page main p {
+  margin-bottom: 1.25rem;
+  line-height: 1.85;
+}
+
+body.about-page main hr {
+  margin: 2.5rem 0;
+  border: 0;
+  border-top: 1px solid var(--mag-border);
+  opacity: 1;
+}
+
+body.about-page .about-mission-lead p {
+  color: var(--mag-navy);
+  font-size: 1.15rem;
+}
+
+body.about-page main ul {
+  padding-left: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+body.about-page main li + li {
+  margin-top: 0.75rem;
+}
+
+body.about-page main a:not(.anchorjs-link) {
+  color: var(--mag-burgundy);
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+
+body.about-page main a:hover,
+body.about-page main a:focus-visible {
+  color: var(--mag-navy);
+}
+
+@media (max-width: 575.98px) {
+  body.about-page main#quarto-document-content {
+    padding-top: 1.5rem;
+    padding-bottom: 2rem;
+  }
+
+  body.about-page #title-block-header .title {
+    font-size: 2rem;
+  }
+
+  body.about-page main h2 {
+    font-size: 1.5rem;
+  }
+
+  body.about-page main hr {
+    margin: 2rem 0;
+  }
+}

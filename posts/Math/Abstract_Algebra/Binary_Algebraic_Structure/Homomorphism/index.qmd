@@ -14,13 +14,15 @@ categories:
 
 $$\phi(x \ast y) = \phi(x) \ast' \phi(y), \forall x, y \in S.$$
 
-**(ii)** If $\phi$ is injective, then $\phi$ is called a ***monomorphism***.
+**(ii)** An ***endomorphism*** of $S$ is a homomorphism of $S$ with $S$.
 
-**(iii)** If $\phi$ is surjective, then $\phi$ is called an ***epimorphism***.
+**(iii)** If $\phi$ is injective, then $\phi$ is called a ***monomorphism***.
 
-**(iv)** If $\phi$ is bijective, then $\phi$ is called an ***isomorphism***. If an isomorphism $\phi : S \to T$ of $S$ with $T$ exists, then $S$ and $T$ are said to be ***isomorphic*** binary structures and we denote by $S \cong T$ (or $S \simeq T$).
+**(iv)** If $\phi$ is surjective, then $\phi$ is called an ***epimorphism***.
 
-**(v)** If $\phi$ is an isomorphism and $S = T$, then $\phi$ is called an ***automorphism***.
+**(v)** If $\phi$ is bijective, then $\phi$ is called an ***isomorphism***. If an isomorphism $\phi : S \to T$ of $S$ with $T$ exists, then $S$ and $T$ are said to be ***isomorphic*** binary structures and we denote by $S \cong T$ (or $S \simeq T$).
+
+**(vi)** If $\phi$ is an isomorphism and $S = T$, then $\phi$ is called an ***automorphism***.
 
 ## Theorem
 Let $\phi : \langle S, \ast \rangle \to \langle T, \ast' \rangle$ be an epimorphism of $S$ with $T$. If $e$ is the identity element of $\langle S, \ast \rangle$, then $\phi(e)$ is the identity element of $\langle T, \ast' \rangle$.

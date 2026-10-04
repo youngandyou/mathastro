@@ -7,7 +7,7 @@ categories:
   - Math > Differential Geometry > Curve Theory
 ---
 
-# Definition
+# Definition 1
 Let $\alpha: (a, b) \to \mathbb{R}^3$ be a regular unit speed curve.
 
 **(i)** The ***tangent vector field*** is the map $T(s) = \alpha'(s)$.
@@ -207,7 +207,7 @@ $$\begin{align*}
 
 Since $B' = \langle B', T \rangle T + \langle B', N \rangle N + \langle B', B \rangle B = \tau N$, we have $B' = \tau N$. $\blacksquare$
 
-## Corollary
+## Corollary 1
 Let $\alpha(s)$ be a unit speed curve with $\kappa \not \equiv 0$. TFAE.
 
 **(i)** $\alpha$ is a plane curve.
@@ -230,6 +230,35 @@ Since $\vert B(s) \vert = 1$ and $B$ is continuous, we obtain $\frac{x'y'' - y'x
 **(ii)** $\implies$ **(iii)** Suppose that $B$ is a constant vector. By the Frenet-Serret formula, we have $B' = \tau N = 0$. Since $N \neq 0$, we obtain $\tau = 0$.
 
 **(iii)** $\implies$ **(i)** Suppose that $\tau = 0$. By the Frenet-Serret formula, we have $B' = 0$, so $B(s) = B_0$ is a constant vector. Then we have $\langle B_0, \alpha'(s) \rangle = \langle B_0, T(s) \rangle = 0$. Integrating both sides of the equation, we obtain $\langle B_0, \alpha(s) \rangle = C$ for some constant $C$. Taking $s = s_0$, $C = \langle B_0, \alpha(s_0) \rangle$. Thus, $\langle B_0, \alpha(s) - \alpha(s_0) \rangle = 0$, which means that $\alpha(s)$ lies in the plane through $\alpha(s_0)$ and perpendicular to $B_0$. $\blacksquare$
+
+# Definition 2
+Let $\alpha(s)$ be a unit speed curve, and let $\{ T(s), N(s), B(s) \}$ be a Frenet-Serret frame of $\alpha$.
+
+**(i)** The ***osculating plane*** to $\alpha$ at the point $\alpha(s)$ is the plane through $\alpha(s)$ spanned by $T(s)$ and $N(s)$ (and hence perpendicular to $B(s)$).
+
+**(ii)** The ***normal plane*** to $\alpha$ at the point $\alpha(s)$ is the plane through $\alpha(s)$ spanned by $N(s)$ and $B(s)$ (and hence perpendicular to $T(s)$).
+
+**(iii)** The ***rectifying plane*** to $\alpha$ at the point $\alpha(s)$ is the plane through $\alpha(s)$ spanned by $T(s)$ and $B(s)$ (and hence perpendicular to $N(s)$).
+
+## Corollary 2
+Let $\alpha(s): (a, b) \to \mathbb{R}^3$ be a unit speed curve, and let $\{ \kappa(s), \tau(s), T(s), N(s), B(s) \}$ be a Frenet-Serret apparatus of $\alpha$.
+
+**(i)**  $\alpha(s)$ is a straight line $\iff$ $\exists x_0 \in \mathbb{R}^3$ such that every tangent line to $\alpha$ passes through $x_0$.
+
+**(ii)** $\alpha$ is a part of circle of radius $\frac{1}{\kappa}$ $\iff$ $\kappa \equiv C$ for some positive constant $C$ and $\tau \equiv 0$.
+
+**(iii)** Every normal plane to $\alpha$ passes through a fixed point $\iff$ the image $\alpha((a, b))$ of $\alpha$ lies on a sphere.
+
+**(iv)** Every osculating plane to $\alpha$ is parallel $\iff$ $\tau \neq 0$, that is, $\alpha$ is a plane curve.
+
+**(v)** Suppose that the image $\alpha((a,b))$ of $\alpha$ lies on a sphere of radius $r$ and center $m$. Then $\kappa \neq 0$. If $\tau \neq 0$, then
+
+$$\alpha - m = - \rho N - \rho'\sigma B$$
+
+where $\displaystyle \rho = \frac{1}{\kappa}$ and $\sigma = \frac{1}{\tau}$.
+
+### Proof
+
 
 # Reference
 - R. S. Millman and G. D. Parker, Elements of Differential Geometry, Prentice-Hall, 1977.

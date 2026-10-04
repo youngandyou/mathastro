@@ -1,6 +1,9 @@
 project:
   type: website
+  pre-render:
+    - scripts/update_category_counts.js
   resources:
+    - assets/category-counts.json
     - qna/questions.json
     - assets/firebase-config.json
     - assets/post-likes.js
@@ -24,35 +27,35 @@ website:
       - text: "Mathematics (수학)"
         menu:
           - href: index.qmd#category=Math
-            text: "📐 수학 전체보기 (All Math) (174)"
+            text: "📐 수학 전체보기 (All Math) (180)"
           - text: "---"
           - href: index.qmd#category=Calculus
             text: "미적분학 (Calculus) (2)"
           - href: index.qmd#category=Abstract%20Algebra
-            text: "추상대수학 (Abstract Algebra) (38)"
+            text: "추상대수학 (Abstract Algebra) (39)"
           - href: index.qmd#category=Linear%20Algebra
             text: "선형대수학 (Linear Algebra) (7)"
           - href: index.qmd#category=Matrix%20Algebra
             text: "행렬대수학 (Matrix Algebra) (9)"
           - href: index.qmd#category=Complex%20Analysis
-            text: "복소해석학 (Complex Analysis) (36)"
+            text: "복소해석학 (Complex Analysis) (37)"
           - href: index.qmd#category=Analysis
             text: "해석학 (Analysis) (2)"
           - href: index.qmd#category=Topology
-            text: "위상수학 (Topology) (31)"
+            text: "위상수학 (Topology) (32)"
           - href: index.qmd#category=Differential%20Geometry
-            text: "미분기하학 (Differential Geometry) (3)"
+            text: "미분기하학 (Differential Geometry) (5)"
           - href: index.qmd#category=Graph%20Theory
             text: "그래프 이론 (Graph Theory) (41)"
           - href: index.qmd#category=Numerical%20Analysis
-            text: "수치해석학 (Numerical Analysis) (5)"
+            text: "수치해석학 (Numerical Analysis) (6)"
       - text: "Astronomy (천문학)"
         menu:
           - href: index.qmd#category=Astronomy
-            text: "🔭 천문학 전체보기 (All Astronomy) (16)"
+            text: "🔭 천문학 전체보기 (All Astronomy) (18)"
           - text: "---"
           - href: index.qmd#category=Radio%20Astronomy
-            text: "전파천문학 (Radio Astronomy) (13)"
+            text: "전파천문학 (Radio Astronomy) (15)"
           - href: index.qmd#category=General%20Relativity
             text: "일반상대론 & 등가원리 (General Relativity) (1)"
           - href: index.qmd#category=High%20Energy
@@ -75,14 +78,31 @@ website:
             text: "강화학습 (Reinforcement Learning) (5)"
       - text: "관련 링크"
         menu:
+          - text: "🔭 천문학 (Astronomy)"
           - href: https://www.kasi.re.kr/
-            text: "🔭 한국천문연구원"
+            text: "🔭 한국천문연구원 (KASI)"
           - href: https://www.kas.org/index.html
-            text: "🌌 한국천문학회"
+            text: "🌌 한국천문학회 (KAS)"
           - href: https://terms.naver.com/~%EC%B2%9C%EB%AC%B8%ED%95%99%EB%B0%B1%EA%B3%BC-4jCeB76aXmnbp44IBL8pRW
             text: "📚 네이버 천문학백과"
           - href: https://arxiv.org/archive/astro-ph
             text: "📄 Astrophysics arXiv"
+          - href: https://ui.adsabs.harvard.edu/
+            text: "🪐 NASA ADS (논문 DB)"
+          - text: "---"
+          - text: "📐 수학 (Mathematics)"
+          - href: https://www.kms.or.kr/
+            text: "🏛️ 대한수학회 (KMS)"
+          - href: https://www.nims.re.kr/
+            text: "🔬 국가수리과학연구소 (NIMS)"
+          - href: https://horizon.kias.re.kr/
+            text: "🌅 고등과학원 HORIZON"
+          - href: https://arxiv.org/archive/math
+            text: "📑 Mathematics arXiv"
+          - href: https://mathworld.wolfram.com/
+            text: "🌐 Wolfram MathWorld"
+          - href: https://oeis.org/
+            text: "🔢 OEIS (정수열 백과)"
     right:
       - href: qna/
         text: "Q&A"

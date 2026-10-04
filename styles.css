@@ -1059,16 +1059,33 @@ div.quarto-post .listing-description > a {
 .category-related-links {
   margin-top: 1.5rem;
   padding-top: 1.25rem;
-  border-top: 1px solid var(--bs-border-color, #dee2e6);
+  border-top: 1px solid var(--mag-border, #e2ded6);
 }
 
+.category-related-links .related-links-heading,
 .category-related-links h2 {
-  margin: 0 0 0.65rem;
+  margin: 0 0 0.85rem;
   padding: 0;
   border: 0;
-  font-size: 1em;
+  font-size: 1.05rem;
   font-weight: 700;
   line-height: 1.4;
+  color: var(--mag-navy, #0e2a47);
+  letter-spacing: -0.01em;
+}
+
+.related-links-section + .related-links-section {
+  margin-top: 1rem;
+  padding-top: 0.85rem;
+  border-top: 1px dashed var(--mag-border, #e2ded6);
+}
+
+.related-links-group-title {
+  margin: 0 0 0.45rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--mag-navy, #0e2a47);
+  letter-spacing: -0.01em;
 }
 
 .category-related-links ul {
@@ -1078,34 +1095,51 @@ div.quarto-post .listing-description > a {
 }
 
 .category-related-links li + li {
-  margin-top: 0.45rem;
+  margin-top: 0.35rem;
 }
 
 .category-related-links a {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 0.5rem;
-  padding: 0.15rem 0;
-  color: var(--bs-body-color, #212529);
-  line-height: 1.5;
+  padding: 0.2rem 0.35rem;
+  color: var(--mag-text-main, #181816);
+  font-size: 0.88rem;
+  line-height: 1.45;
   text-decoration: none;
-  overflow-wrap: anywhere;
+  border-radius: 4px;
+  transition: all 0.15s ease-in-out;
 }
 
 .category-related-links a:hover,
 .category-related-links a:focus-visible {
-  color: var(--bs-link-color, #0d6efd);
-  text-decoration: underline;
+  color: var(--mag-math, #0284c7);
+  background-color: var(--mag-bg-subtle, #f6f4ee);
+  text-decoration: none;
+  transform: translateX(2px);
 }
 
 .category-related-links a:focus-visible {
   outline: 2px solid currentColor;
-  outline-offset: 3px;
+  outline-offset: 2px;
 }
 
 .related-link-emoji {
   flex: 0 0 1.25em;
   text-align: center;
+}
+
+/* Navbar dropdown header for categorized related links */
+.navbar .dropdown-menu .dropdown-header {
+  font-family: var(--mag-font-sans);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--mag-navy, #0e2a47);
+  letter-spacing: 0.02em;
+  padding: 0.45rem 0.85rem 0.3rem;
+  margin: 0.25rem 0.4rem;
+  background-color: var(--mag-bg-subtle, #f6f4ee);
+  border-radius: 4px;
 }
 
 @media (max-width: 991.98px) {

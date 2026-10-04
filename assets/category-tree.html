@@ -2,11 +2,28 @@
 (function () {
   const separators = /\s*(?:>|\/|::)\s*/;
   const pathSeparator = " > ";
-  const relatedLinks = [
-    { emoji: "🔭", label: "한국천문연구원", url: "https://www.kasi.re.kr/" },
-    { emoji: "🌌", label: "한국천문학회", url: "https://www.kas.org/index.html" },
-    { emoji: "📚", label: "네이버 천문학백과", url: "https://terms.naver.com/~%EC%B2%9C%EB%AC%B8%ED%95%99%EB%B0%B1%EA%B3%BC-4jCeB76aXmnbp44IBL8pRW" },
-    { emoji: "📄", label: "Astrophysics arxiv", url: "https://arxiv.org/archive/astro-ph" },
+  const relatedLinkSections = [
+    {
+      title: "🔭 천문학 (Astronomy)",
+      links: [
+        { emoji: "🔭", label: "한국천문연구원 (KASI)", url: "https://www.kasi.re.kr/" },
+        { emoji: "🌌", label: "한국천문학회 (KAS)", url: "https://www.kas.org/index.html" },
+        { emoji: "📚", label: "네이버 천문학백과", url: "https://terms.naver.com/~%EC%B2%9C%EB%AC%B8%ED%95%99%EB%B0%B1%EA%B3%BC-4jCeB76aXmnbp44IBL8pRW" },
+        { emoji: "📄", label: "Astrophysics arXiv", url: "https://arxiv.org/archive/astro-ph" },
+        { emoji: "🪐", label: "NASA ADS (논문 DB)", url: "https://ui.adsabs.harvard.edu/" }
+      ]
+    },
+    {
+      title: "📐 수학 (Mathematics)",
+      links: [
+        { emoji: "🏛️", label: "대한수학회 (KMS)", url: "https://www.kms.or.kr/" },
+        { emoji: "🔬", label: "국가수리과학연구소 (NIMS)", url: "https://www.nims.re.kr/" },
+        { emoji: "🌅", label: "고등과학원 HORIZON", url: "https://horizon.kias.re.kr/" },
+        { emoji: "📑", label: "Mathematics arXiv", url: "https://arxiv.org/archive/math" },
+        { emoji: "🌐", label: "Wolfram MathWorld", url: "https://mathworld.wolfram.com/" },
+        { emoji: "🔢", label: "OEIS (온라인 정수열 백과)", url: "https://oeis.org/" }
+      ]
+    }
   ];
 
   function createRelatedLinks() {
@@ -15,25 +32,44 @@
     navigation.setAttribute("aria-label", "관련 링크");
 
     const heading = document.createElement("h2");
+    heading.className = "related-links-heading";
     heading.textContent = "관련 링크";
-    const list = document.createElement("ul");
+    navigation.appendChild(heading);
 
-    relatedLinks.forEach(({ emoji, label, url }) => {
-      const item = document.createElement("li");
-      const link = document.createElement("a");
-      link.href = url;
-      const icon = document.createElement("span");
-      icon.className = "related-link-emoji";
-      icon.setAttribute("aria-hidden", "true");
-      icon.textContent = emoji;
-      const name = document.createElement("span");
-      name.textContent = label;
-      link.append(icon, name);
-      item.appendChild(link);
-      list.appendChild(item);
+    relatedLinkSections.forEach((sec) => {
+      const sectionEl = document.createElement("div");
+      sectionEl.className = "related-links-section";
+
+      const sectionTitle = document.createElement("h3");
+      sectionTitle.className = "related-links-group-title";
+      sectionTitle.textContent = sec.title;
+      sectionEl.appendChild(sectionTitle);
+
+      const list = document.createElement("ul");
+      sec.links.forEach(({ emoji, label, url }) => {
+        const item = document.createElement("li");
+        const link = document.createElement("a");
+        link.href = url;
+        link.target = "_blank";
+        link.rel = "noopener noreferrer";
+
+        const icon = document.createElement("span");
+        icon.className = "related-link-emoji";
+        icon.setAttribute("aria-hidden", "true");
+        icon.textContent = emoji;
+
+        const name = document.createElement("span");
+        name.textContent = label;
+
+        link.append(icon, name);
+        item.appendChild(link);
+        list.appendChild(item);
+      });
+
+      sectionEl.appendChild(list);
+      navigation.appendChild(sectionEl);
     });
 
-    navigation.append(heading, list);
     return navigation;
   }
 
@@ -115,6 +151,15 @@
     }
 
     applyCounts(root);
+
+    // Broadcast category counts for navbar synchronization
+    try {
+      const countsMap = {};
+      counts.forEach((val, key) => { countsMap[key] = val; });
+      window.__categoryCounts = countsMap;
+      window.dispatchEvent(new CustomEvent("blogCategoryCountsReady", { detail: countsMap }));
+    } catch (e) {}
+
     return root;
   }
 

@@ -5,7 +5,7 @@
     "abstract algebra": {
       subcategories: [
         { key: "Group Theory", name: "군론 (Group Theory)", count: 31 },
-        { key: "Ring Theory", name: "환론 (Ring Theory)", count: 4 },
+        { key: "Ring Theory", name: "환론 (Ring Theory)", count: 5 },
         { key: "Binary Algebraic Structure", name: "이항대수구조 (Binary Algebraic Structure)", count: 2 },
         { key: "Field Theory", name: "체론 (Field Theory)", count: 1 }
       ]
@@ -22,7 +22,7 @@
     },
     "differential geometry": {
       subcategories: [
-        { key: "Curve Theory", name: "곡선론 (Curve Theory)", count: 3 }
+        { key: "Curve Theory", name: "곡선론 (Curve Theory)", count: 5 }
       ]
     },
     "graph theory": {
@@ -148,6 +148,122 @@
     return ul;
   }
 
+  function applyCategoryCounts(counts) {
+    if (!counts) return;
+
+    function getCountFor(key) {
+      if (!key) return null;
+      var clean = key.trim();
+      if (counts[clean] !== undefined) return counts[clean];
+
+      var variations = [
+        clean,
+        "Math > " + clean,
+        "Astronomy > " + clean,
+        "Physics > " + clean,
+        "Computer > " + clean,
+        "Math > Abstract Algebra > " + clean,
+        "Math > Differential Geometry > " + clean,
+        "Math > Graph Theory > " + clean,
+        "Math > Calculus > " + clean,
+        "Math > Analysis > " + clean,
+        "Astronomy > Radio Astronomy > " + clean,
+        "Astronomy > Radio Astronomy > Radio Software > " + clean,
+        "Astronomy > General Relativity > " + clean
+      ];
+      for (var i = 0; i < variations.length; i++) {
+        if (counts[variations[i]] !== undefined) return counts[variations[i]];
+      }
+
+      var lower = clean.toLowerCase();
+      for (var k in counts) {
+        var kLower = k.toLowerCase();
+        if (kLower === lower || kLower.endsWith(" > " + lower)) {
+          return counts[k];
+        }
+      }
+      return null;
+    }
+
+    var items = document.querySelectorAll(".navbar-nav .dropdown-item");
+    items.forEach(function(item) {
+      var href = item.getAttribute("href") || "";
+      if (href.indexOf("category=") === -1) return;
+
+      var rawKey = decodeURIComponent(href.split("category=")[1].split("&")[0]).trim();
+      var count = getCountFor(rawKey);
+
+      if (count !== null) {
+        var badge = item.querySelector(".nav-count-badge");
+        if (badge) {
+          badge.textContent = "(" + count + ")";
+        } else {
+          var textSpan = item.querySelector(".dropdown-text") || item;
+          var text = textSpan.textContent || "";
+          var match = text.match(/^(.*?)(\s*\(\d+\))?$/);
+          if (match) {
+            textSpan.innerHTML = escapeHtml(match[1].trim()) + ' <span class="nav-count-badge">(' + count + ')</span>';
+            textSpan.dataset.badgeProcessed = "true";
+          }
+        }
+      }
+    });
+
+    // Update submenu items as well
+    var subItems = document.querySelectorAll(".dropdown-menu-sub .dropdown-item");
+    subItems.forEach(function(subItem) {
+      var href = subItem.getAttribute("href") || "";
+      if (href.indexOf("category=") === -1) return;
+      var rawKey = decodeURIComponent(href.split("category=")[1].split("&")[0]).trim();
+      var count = getCountFor(rawKey);
+      if (count !== null) {
+        var badge = subItem.querySelector(".nav-count-badge");
+        if (badge) {
+          badge.textContent = "(" + count + ")";
+        }
+      }
+    });
+  }
+
+  function fetchCategoryCounts() {
+    if (window.__categoryCounts) {
+      applyCategoryCounts(window.__categoryCounts);
+      return;
+    }
+
+    var candidateUrls = [
+      "./assets/category-counts.json",
+      "../assets/category-counts.json",
+      "../../assets/category-counts.json",
+      "../../../assets/category-counts.json",
+      "../../../../assets/category-counts.json",
+      "/mathastro/assets/category-counts.json",
+      "/assets/category-counts.json"
+    ];
+
+    var found = false;
+    function tryFetch(idx) {
+      if (idx >= candidateUrls.length || found) return;
+      fetch(candidateUrls[idx])
+        .then(function(res) {
+          if (!res.ok) throw new Error("HTTP error " + res.status);
+          return res.json();
+        })
+        .then(function(data) {
+          if (data && data.counts && !found) {
+            found = true;
+            window.__categoryCounts = data.counts;
+            applyCategoryCounts(data.counts);
+          }
+        })
+        .catch(function() {
+          tryFetch(idx + 1);
+        });
+    }
+
+    tryFetch(0);
+  }
+
   function setupNavbarSubmenus() {
     var navLinks = document.querySelectorAll(".navbar-nav .dropdown-menu a.dropdown-item");
     if (!navLinks.length) return;
@@ -176,6 +292,16 @@
     if (navContainer) {
       formatCountBadges(navContainer);
     }
+
+    // Apply live or fetched counts
+    fetchCategoryCounts();
+
+    // Listen for live counts from category-tree on index.qmd
+    window.addEventListener("blogCategoryCountsReady", function(e) {
+      if (e && e.detail) {
+        applyCategoryCounts(e.detail);
+      }
+    });
 
     // Support touch devices / mobile accordion
     var subToggles = document.querySelectorAll(".navbar-nav .dropdown-submenu > a.has-submenu");

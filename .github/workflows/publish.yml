@@ -41,6 +41,9 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
+      - name: Update category counts
+        run: python3 scripts/update_category_counts.py
+
       - name: Render site
         run: quarto render
 

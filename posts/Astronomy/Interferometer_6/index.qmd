@@ -1,0 +1,92 @@
+---
+title: "간섭계 감도(Interferometer Sensitivity)"
+author: "Young Jeong Lee"
+date: "2026-10-03"
+description: "기존의 감도 개념을 간섭계로 확장하여 살펴본다."
+categories: 
+  - Astronomy > Radio Astronomy
+---
+
+# 1. 간섭계 감도(Interferometer Sensitivity)
+
+- 간섭계 시스템의 random noise 한계(limit)는 단일 망원경에 사용된 방법을 따라 계산된다.
+- 안테나 온도의 RMS 변동(fluctuation)은 다음과 같다: 
+
+$$ 
+\Delta T_A = \frac{M T_{\mathrm{sys}}}{\sqrt{t\Delta \nu}}  \tag{1.1}
+$$
+
+- $\Delta T_A$: 안테나 온도의 RMS 변동
+- $M$: 아날로그-디지털 변환, 디지털 클리핑 등에서 발생하는 추가 잡음을 고려하기 위해 사용되는 대략 1정도 크기의 계수
+- $T_{\rm sys}$: 시스템 온도
+- $t$: 데이터 적분 시간
+- $\Delta \nu$: bandwidth 
+- 그리고 단순히 안테나 2개로 이루어진 간섭계 시스템에 대해 안테나 온도로 표현된 $S_{\nu}$ 는 다음과 같다: 
+
+$$ 
+\Delta S_\nu=2k \frac{T_{\mathrm{sys}} e^\tau}{A_e \sqrt{2 t \Delta \nu}}  \tag{1.2}
+$$
+
+- $\Delta S_\nu$: Jy 단위로 표현된Jy 단위의 RMS noise
+- $k$: 볼츠만 상수
+- $\tau$: 대기의 optical depth 
+- $A_e$: 지름 $D$ 를 갖는 단일 망원경의 유효 구경 
+- 식 (1.2)에서 분모의 $\sqrt{2}$ 는 다중 간섭계가 수신하는 모든 정보를 처리하지 않아서 생기는 항이다. 
+- 편의를 위해서 $T'_{\mathrm{sys}} = T_{\mathrm{sys}} \exp \tau$ 으로 두자. 그리고 간섭계에서 $n$ 개의 동일한 망원경이 존재할 때, 가능한 baseline의 조합 수는 다음과 같다: 
+
+$$ 
+N = \frac{n(n-1)}{2} \tag{1.3}
+$$ 
+
+- 위 식들을 잘 조합하면 $S_{\nu}$ 는 다음과 같이 쓸 수 있다: 
+
+$$ 
+\Delta S_\nu=\frac{2 M k T'_{\mathrm{sys}}}  {A_e \sqrt{2 N t \Delta \nu}}=1.02 \frac{M T'_{\mathrm{sys}}}  {A_e \sqrt{N t \Delta \nu}}     \tag{1.4}
+$$
+
+그리고 레일리-진스 관계식은 다음과 같고, 
+
+$$ 
+S =  2k   \frac{T_b \Omega_b}{\lambda^2}
+$$ 
+
+이를 이용하면, 구경 합성 이미지에서 random noise에 의한 RMS brightness temperature는 다음과 같다: 
+
+$$ 
+\Delta T_b
+=
+\frac{2 M k \lambda^2 T'_{\mathrm{sys}}}  
+{A_e \Omega_b \sqrt{2 N t \Delta \nu}} =13.58  
+\frac{M \lambda^2 T'_{\mathrm{sys}}}  
+{A_e \theta^2 \sqrt{N t \Delta \nu}} \tag{1.5}
+$$
+
+- 위 식에서 $\lambda$ 는 mm, $\theta$ 는 arcsec, 그리고 $\Delta \nu$ 는 kHz 단위를 가진다. 
+- 식 (1.5)는 3가지 시사점을 준다: 
+- $1.$ 짧은 파장에서 RMS brightness temperature는 작아진다. 그러므로, 동일한 $A_e$ 와 시스템 잡음을 가지고, 기상 변화가 중요하지 않다면, mm 영상은 cm 영상보다 더 좋은 감도를 가진다. 
+- $2.$ $A_e$ 가 일정할 때, main beam이 커지면, RMS brightness temperature는 감소한다. 이로 인해, 영상을 smoothing하면 영상의 RMS noise가 감소한다. 그러나, 지나친 smoothing은 $A_e$ 감소로 이어져 감도의 추가적인 향상을 얻기 어렵다. 
+- $3.$ 다중 간섭계 시스템은 단일 전파 망원경보다 더 빠르게 영상을 생성할 수 있는데, 이는 간섭계 시스템에 $n$ 개의 수신기가 존재하기 때문이다. 
+
+---
+
+# 2. Baseline Sensitivity 
+
+- **Baseline sensitivity**: 해당 baseline에서 측정된 visibilitydml thermal-noise 불확실성이 몇 Jy인가?를 설명한다. 다음과 같이 나타낼 수 있다: 
+
+$$ 
+\Delta S_{ij}
+=
+\frac{1}{\eta_s}  
+\sqrt{  
+\frac{SEFD_i SEFD_j}  
+{2 \Delta\nu \tau_{\mathrm{acc}}}  
+} \tag{2.1}
+$$ 
+
+- $\eta_s$: 전기적인 요인 및 디지털 기기에 의한 손실 보정 계수 
+- ${\rm SEFD}_i$: 안테나 $i$ 의 SEFD 
+- $\tau_{\rm acc}$: 데이터 적분 시간
+- 예를 들어, 측정된 visibility가 100mJy이고, $\Delta S_{ij} = 10{\rm mJy}$ 라면, 실제로는 visibility는 $\pm 10{\rm mJy}$ 의 오차를 수반한다는 뜻이다. 
+    - SNR의 경우, $S / \Delta S_{ij}$ 이므로 이 예시에서는 10으로 볼 수 있다. 
+- 따라서 $\Delta S_{ij}$ 가 작을수록 SNR이 향상된다. 
+- status report 등과 같은 문서에서 $\Delta S$ 를 알고 과거 천체의 신호($S$)를 알면, SNR을 계산할 수 있으므로 해당 천체가 실제 관측으로 detection될 수 있을지 판단할 수 있다.

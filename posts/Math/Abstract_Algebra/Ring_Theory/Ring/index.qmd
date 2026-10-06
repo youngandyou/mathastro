@@ -199,9 +199,46 @@ $$\begin{align*}
 (r_1g_1 + r_3g_3) + (s_2g_2 + s_3g_3) = (r_1g_1 + 0g_2 + r_3g_3) + (0g_1 + s_2g_2 + s_3g_3)
 \end{align*}$$
 
-이러한 컨벤션 하에서 우리는 항상 인덱스를 동일하게 가져올 수 있다. 참고로 $R$은 환이어서 덧셈이 정의되어 있으므로 $r_i$끼리의 덧셈은 $R$에서의 덧셈이다. 이러한 연산 하에서 $RG$는 항상 환이 되는데, 곱셈의 정의를 보면 당연하게도 $R$과 $G$가 가환이 되어야만 $RG$도 가환이 됨을 쉽게 파악할 수 있다.
+이러한 컨벤션 하에서 우리는 항상 인덱스를 동일하게 가져올 수 있다. 참고로 $R$은 환이어서 덧셈이 정의되어 있으므로 $r_i$끼리의 덧셈은 $R$에서의 덧셈이다. 이러한 연산 하에서 $RG$는 항상 환이 되는데, 곱셈의 정의를 보면 당연하게도 $R$과 $G$가 가환이 되어야만 $RG$도 가환이 됨을 쉽게 파악할 수 있다. 구체적인 예시로 $R = \mathbb{Z}_2, G = \{ e, a \}$로 두면 
 
-한편, $RG$를 정의할 때 $G$를 군으로 들고 왔는데, 실은 [모노이드(monoid)](../Binary_Algebraic_Structure/Homomorphism/index.qmd#sec-definition)만 되어도 동일하게 $RG$가 환이 됨을 보일 수 있다. 
+$$\mathbb{Z}_2G = \{ 0e + 0a, 0e + 1a, 1e + 0a, 1e + 1a \}$$
+
+이고, 각 원소를 축약해서
+
+$$\mathbb{Z}_2G = \{ 0, a, e, e+a \}$$
+
+로 쓰자. 그러면 연산 결과는 다음과 같이 테이블로 나타낼 수 있다.
+
+![](ring1.png)
+
+한편, $RG$를 정의할 때 $G$를 군으로 들고 왔는데, 실은 [모노이드(monoid)](../Binary_Algebraic_Structure/Homomorphism/index.qmd#sec-definition)만 되어도 동일하게 $RG$가 환이 됨을 보일 수 있다. 오히려 이 경우가 더 유의미한데, 예컨대 $G = \mathbb{N}_0$로 가지고 오면 $R\mathbb{N}_0 = R[x]$이 성립한다. 이 경우 $R\mathbb{N}_0$에서 연산은 $rn + sn = (r+s)n$, $(rm)(sn) = (rs)(m+n)$과 같이 계산되는데, 이는 다름아닌 $R[x]$에서의 연산인 $rx^n + sx^n = (r + s)x^n$, $(rx^m)(sx^n) = (rs)x^{m+n}$과 정확히 대응된다. 즉 $R$은 다항식의 계수 역할을 하고, $\mathbb{N}_0$는 다항식의 차수 역할을 하는 것이다. 더 나아가 $G$를 정수에서의 순환군 $\langle x \rangle$으로 두면 $RG = R[x, x^{-1}]$, 다시 말해 ***로랑 다항식환(Laurent Polynomial Ring)***이 된다.
+
+**(v)** 집합 $\mathbb{H} = \mathbb{R}^4$의 원소를 다음과 같이 표기하자.
+
+$$\mathbb{H} = \{ a_1 1 + a_2i + a_3j + a_4k \mid a_1, a_2, a_3, a_4 \in \mathbb{R} \}$$
+
+이때
+
+$$\begin{align*}
+1 = (1, 0, 0, 0) \\
+i = (0, 1, 0, 0) \\
+j = (0, 0, 1, 0) \\
+k = (0, 0, 0, 1)
+\end{align*}$$
+
+이다. 또한 $\mathbb{H}$의 연산 $+, \cdot: \mathbb{H} \times \mathbb{H} \to \mathbb{H}$을 다음과 같이 정의하자.
+
+$$\begin{align*}
+& (a_1 1+a_2i+a_3j+a_4k)+(b_1 1+b_2i+b_3j+b_4k) = (a_1+b_1)1+(a_2+b_2)i+(a_3+b_3)j+(a_4+b_4)k
+\end{align*}$$
+
+$$\begin{aligned}
+& (a_1 1+a_2i+a_3j+a_4k)(b_1 1+b_2i+b_3j+b_4k) \\
+= &(a_1b_1-a_2b_2-a_3b_3-a_4b_4)1 + (a_1b_2+a_2b_1+a_3b_4-a_4b_3)i \\
++ & (a_1b_3-a_2b_4+a_3b_1+a_4b_2)j + (a_1b_4+a_2b_3-a_3b_2+a_4b_1)k.
+\end{aligned}$$
+
+이때 $\langle H, +, \cdot \rangle$은 상환(division ring)이 되고, 특별히 ***사원수환(quaternion ring)***이라고 부른다. 사원수환은 복소공간 $\mathbb{C}$를 부분환으로 가지며, 자명하게 비가환환이다.
 
 # Reference
 - John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

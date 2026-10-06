@@ -27,7 +27,7 @@ website:
       - text: "Mathematics (수학)"
         menu:
           - href: index.qmd#category=Math
-            text: "📐 수학 전체보기 (All Math) (180)"
+            text: "📐 수학 전체보기 (All Math) (181)"
           - text: "---"
           - href: index.qmd#category=Calculus
             text: "미적분학 (Calculus) (2)"
@@ -38,7 +38,7 @@ website:
           - href: index.qmd#category=Matrix%20Algebra
             text: "행렬대수학 (Matrix Algebra) (9)"
           - href: index.qmd#category=Complex%20Analysis
-            text: "복소해석학 (Complex Analysis) (37)"
+            text: "복소해석학 (Complex Analysis) (38)"
           - href: index.qmd#category=Analysis
             text: "해석학 (Analysis) (2)"
           - href: index.qmd#category=Topology

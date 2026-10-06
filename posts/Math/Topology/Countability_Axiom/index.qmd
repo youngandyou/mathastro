@@ -18,6 +18,17 @@ categories:
 **(ii)** Every second-countable space is first-countable.
 
 ## Example
+**(i)** $(\mathbb{R}, \mathscr{T}_{f})$ is neither first-countable nor second-countable.
+
+$\big[ (\because)$ $\big]$
+
+**(ii)** $(\mathbb{R}, \mathscr{T}_{\text{discrete}})$ is first-countable, but not second-countable.
+
+$\big[ (\because)$ For $x \in \mathbb{R}$, the set $\{ \{ x \} \}$ is a countable local basis, so $(\mathbb{R}, \mathscr{T}_{\text{discrete}})$ is first-countable. On the other hand, suppose that there is a countable basis $\mathscr{B}$. For an open set $\{ x \}$, there is a basis element $B \in \mathscr{B}$ such that $x \in B \subset \{ x \}$. That is, $B$ must contain every singleton $\{ x \}$ in $\mathbb{R}$. Then $B$ contains an uncountable number of sets, which is a contradiction. Thus, $(\mathbb{R}, \mathscr{T}_{\text{discrete}})$ is not second-countable. $\big]$
+
+**(iii)** $(\mathbb{R}, \mathscr{T}_{\text{usual}})$ is second-countable.
+
+$\big[ (\because)$ $\{ (a, b) \mid a, b \in \mathbb{Q}, a < b \}$ is a countable basis.$\big]$
 
 # Theorem 1
 Let $X$ be a first-countable space.

@@ -7,17 +7,18 @@ categories:
   - Math > Topology
 ---
 
-# Definition 1
+# Countability Axioms
+## Definition 1
 **(i)** A space $X$ is said to be ***first-countable*** if it has a countable [local basis](../Basis_Topology/index.qmd#sec-definition-3) at every $x \in X$.
 
 **(ii)** A space $X$ is said to be ***second-countable*** if it has a countable [basis](../Basis_Topology/index.qmd#sec-definition-1).
 
-## Remark
+### Remark 1
 **(i)** Every metrizable space is first-countable.
 
 **(ii)** Every second-countable space is first-countable.
 
-## Example
+### Example 1
 **(i)** $(\mathbb{R}, \mathscr{T}_{f})$ is neither first-countable nor second-countable.
 
 $\big[ (\because)$ $\big]$
@@ -30,7 +31,7 @@ $\big[ (\because)$ For $x \in \mathbb{R}$, the set $\{ \{ x \} \}$ is a countabl
 
 $\big[ (\because)$ $\{ (a, b) \mid a, b \in \mathbb{Q}, a < b \}$ is a countable basis.$\big]$
 
-# Theorem 1
+## Theorem 1
 Let $X$ be a first-countable space.
 
 **(i)** Let $A \subset X$. Then there exists a sequence $\{ x_n \}$ in $A$ such that $\displaystyle \lim_{n \to \infty} x_n = x$ $\iff$ $x \in \bar{A}$.
@@ -39,14 +40,48 @@ Let $X$ be a first-countable space.
 
 거리 공간에서 성립하는 정리로 등장했지만, 실은 거리 공간이 제1 가산 공간이다보니 성립하는 내용이었다. 국소기저의 정의를 잘 생각해보면 굳이 외우지 않아도 자연스럽게 납득되는 내용들이다.
 
-# Theorem 2
+## Theorem 2
 **(i)** A subspace of a first-countable (second-countable) space is first-countable (second-countable).
 
 **(ii)** A countable product of first-countable (second-countable) spaces is first-countable (second-countable).
 
-## Proof
+### Proof
+**(i)** Let $A$ be a subspace of a space $X$. Suppose that $X$ is fisrt-countable. Let $x \in A$. Since $x \in X$, there is a countable local basis $\mathscr{B}_x$ at $x$. We claim that the set $\mathscr{U}_x = \{ B \cap A \mid B \in \mathscr{B}_x \}$ is a countable local basis for $A$ at $x$, so $A$ is first-countable.
 
-# Definition 2
+$\big[ (\because)$ Since each $B$ in $\mathscr{B}_x$ contains $x$, each so does $B \cap A$. Let $U$ be an open subset of $A$ containing $x$. Then $U = V \cap A$ for some open subset $V$ of $X$. Since $V$ contains $x$, we have $x \in B \subset V$ for some $B \in \mathscr{B}_x$, which implies that $x \in B \cap A \subset V \cap A = U$. Hence, $\mathscr{U}_x$ is a local basis for $A$ at $x$. Since $\mathscr{B}_x$ is countable, so is $\mathscr{U}_x. \big]$
+
+In this case, suppose that $X$ is second-countable, which means that there is a countable basis $\mathscr{B}$. Then $\mathscr{B}' = \{ B \cap A \mid B \in \mathscr{B} \}$ is a countable basis for $A$, which means that $A$ is second-countable.
+
+**(ii)** Let $\{ X_\alpha \}_{\alpha \in J}$ be a countable collection of spaces $X_\alpha$. Note that $\displaystyle X := \prod_{\alpha \in J} X_\alpha$ is equipped with the product topology. Suppose that each $X_\alpha$ is first-countable.
+
+Let $x = (x_\alpha)_{\alpha \in J} \in X$. Since each $X_\alpha$ is first-countable, there is a countable local basis $\mathscr{B}_\alpha$ for $X_\alpha$ at $x_\alpha$. For a finite subset $I$ of the index set $J$, we define
+
+$$C^I_x = \left\{ B_x = \prod_{\alpha \in J} B_\alpha \,\, \Bigg \vert \,\, \begin{cases} B_\alpha \in \mathscr{B}_\alpha & \text{if } \alpha \in I \\ B_\alpha = X_\alpha & \text{otherwise} \end{cases} \right\}.$$
+
+Since $I$ is finite and each $\mathscr{B}_\alpha$ is countable, each $C^I_x$ is countable. Then the set
+
+$$\mathscr{B}_x = \bigcup_{I \subset J, \vert I \vert < \infty} C^I_x$$
+
+is also countable, because the number of $I$ is countable. We will show that $\mathscr{B}_x$ is a local basis for $X$ at $x$.
+
+Note that each $B_x \in C^I_x$ is an open subset of $X$ containing $x$. Let $U$ be an open subset of $X$ containing $x$. Then $x \in B \subset U$ for some basis element $B = \prod_{\alpha \in J} U_\alpha$ of $X$ where $U_\alpha$ is an open subset of $X_\alpha$ if $\alpha \in I^\ast$ and $U_\alpha = X_\alpha$ if $\alpha \in J \setminus I^\ast$, for some finite set $I^\ast \subset J$. For each $\alpha \in I^\ast$, we have that $x_\alpha \in B_\alpha \subset U_\alpha$ for some $B_\alpha \in \mathscr{B}_\alpha$. Then the element
+
+$$B_x = \prod_{\alpha \in J} C_\alpha$$
+
+where $C_\alpha = B_\alpha$ if $\alpha \in I^\ast$ and $C_\alpha = X_\alpha$ if $\alpha \in J \setminus I^\ast$ belongs to $C^{I^\ast}_x$, which means $B_x \in \mathscr{B}_x$ and $x \in B_x \subset U$. Hence, $\mathscr{B}_x$ is a local basis for $X$ at $x$, so $X$ is first-countable.
+
+On the other hand, we suppose that each $X_\alpha$ is second-countable, so there is a countable basis $\mathscr{B}_\alpha$ for each $X_\alpha$. For a finite subset $I$ of the index set $J$, we define
+
+$$C_I = \left\{ \prod_{\alpha \in J} B_\alpha \,\, \Bigg \vert \,\, \begin{cases} B_\alpha \in \mathscr{B}_\alpha & \text{if } \alpha \in I \\ B_\alpha = X_\alpha & \text{otherwise} \end{cases} \right\}.$$
+
+Since $I$ is finite and each $\mathscr{B}_\alpha$ is countable, each $C_I$ is countable. Then the set
+
+$$\mathscr{B} = \bigcup_{I \subset J, \vert I \vert < \infty} C_I$$
+
+is a countable basis for $X$, because the number of $I$ is countable. Hence, $X$ is second-countable. $\blacksquare$
+
+# Dense, Lindelöf, and Separable
+## Definition 2
 Let $X$ be a topological space.
 
 **(i)** A subset $S$ of $X$ is said to be ***dense*** if $\overline{S} = X$.
@@ -55,12 +90,53 @@ Let $X$ be a topological space.
 
 **(iii)** $X$ is said to be ***separable*** if it has a countable dense subset.
 
-# Theorem 3
+### Example 2
+**(i)** $(\mathbb{R}, \mathscr{T}_{\text{usual}})$ is NOT compact, but is Lindelöf and separable.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+
+:::
+
+**(ii)** $(\mathbb{R}, \mathscr{T}_{\text{discrete}})$ is neither Lindelöf nor separable.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+
+:::
+
+**(iii)** $(\mathbb{R}, \mathscr{T}_{\text{usual}}) \times (\mathbb{R}, \mathscr{T}_{\text{usual}})$ is Lindelöf.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+
+:::
+
+## Remark 2
+**(i)** The product of Lindelöf spaces is not necessarily Lindelöf.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+
+:::
+
+**(ii)** The subspace of a Lindelöf space is not necessarily Lindelöf.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+
+:::
+
+## Theorem 3
 **(i)** A second-countable space is a Lindelöf space.
 
 **(ii)** A second-countable space is separable.
 
-## Proof
+### Proof
+Let $X$ be a second-countable space. Then $X$ has a countable basis $\mathscr{B}$. Since $\mathscr{B}$ is countable, we can denote $\mathscr{B} = \{ B_n \}_{n \in \Lambda}$ for some subset $\Lambda$ of $\mathbb{N}$.
+
+**(i)** Let $\mathcal{U}$ be an open cover of $X$. For each $n \in \Lambda$ for which it is possible, we choose an open set $U_n \in \mathcal{U}$ such that $B_n \subset U_n$. We denote the collection of the chosen sets $U_n$ by $\mathcal{U}^\ast$. Note that we can choose at least one $U_n$ because each open set $U \in \mathcal{U}$ contains a basis element $B_n \in \mathscr{B}$. Since $\Lambda$ is countable, so is $\mathcal{U}^\ast$. We will show that $\mathcal{U}^\ast$ covers $X$.
+
+Let $x \in X$. Then $x \in U$ for some $U \in \mathcal{U}$, and $x \in B_n \subset U$ for some $B_n \in \mathscr{B}$. Then there is an element $U_n \in \mathcal{U}^\ast$ such that $x \in B_n \subset U_n$, which means that $\mathcal{U}^\ast$ covers $X$. Hence, $\mathcal{U}$ has a countable subcover $\mathcal{U}^\ast$, so $X$ is a Lindelöf space.
+
+**(ii)** For each nonempty $B_n \in \mathscr{B}$, we choose $x_n \in B_n$ and construct $D = \{ x_n \}$. Since $\Lambda$ is countable, so is $D$. We claim that $\overline{D} = X$.
+
+Let $x \in X$, and let $B$ be a basis element of $\mathscr{B}$ containing $x$. Then $B \cap D$ contains $x_n$, so it is nonempty. Thus, $x \in \overline{D}$, which means $\overline{D} = X$, so $D$ is a countable dense subset of $X$. $\blacksquare$
 
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

@@ -71,9 +71,9 @@ Let $H \le G,$ and let $N \lhd G.$ If $N \le H,$ then $N \lhd H.$
 
 그러면 $H \lhd G$로 가져오면 $N \lhd G$가 될까? 이는 다른 말로 표현하면 normality는 transitive한가? 라는 질문으로 바꿀 수 있다. 그리고 ***그렇지 않다***라는 게 답이다. 구체적인 예시는 다음과 같다.
 
-$\big[(\because)$ Let $G = D_4,$ and let $H = \\{ \rho_0, \rho_2, \mu_1, \mu_2 \\}, N = \\{ \rho_0, \mu_1 \\}.$ Actually, $H = \langle \mu_1 \rangle \langle \mu_2 \rangle.$ Since $\langle \mu_1 \rangle \langle \mu_2 \rangle = \langle \mu_2 \rangle \langle \mu_1 \rangle,$ $H \le G.$ Actually, $H \cong V,$ so $N \lhd H.$
+$\big[(\because)$ Let $G = D_4,$ and let $H = \{ \rho_0, \rho_2, \mu_1, \mu_2 \}, N = \{ \rho_0, \mu_1 \}.$ Actually, $H = \langle \mu_1 \rangle \langle \mu_2 \rangle.$ Since $\langle \mu_1 \rangle \langle \mu_2 \rangle = \langle \mu_2 \rangle \langle \mu_1 \rangle,$ $H \le G.$ Actually, $H \cong V,$ so $N \lhd H.$
 
-However, $N \not \lhd G.$ Note that $\rho_1 \mu_1 = \delta_2 \neq \delta_1 = \mu_1 \rho_1.$$\big]$
+However, $N \not \lhd G.$ Note that $\rho_1 \mu_1 = \delta_2 \neq \delta_1 = \mu_1 \rho_1.\big]$
 
 ### Proof
 Since $N \lhd G,$ we have $gNg^{-1} \subset N, \forall g \in G$ by Theorem 1. It follows that $hNh^{-1} \subset N, \forall h \in H,$ which means that $N \lhd H.$ $\blacksquare$

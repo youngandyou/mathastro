@@ -14,7 +14,7 @@ categories:
 
 $$\phi(x \ast y) = \phi(x) \ast' \phi(y), \forall x, y \in S.$$
 
-**(ii)** An ***endomorphism*** of $S$ is a homomorphism of $S$ with $S$.
+**(ii)** If $\phi$ is a homomorphism and $S = T$, then $\phi$ is called an ***endomorphism***.
 
 **(iii)** If $\phi$ is injective, then $\phi$ is called a ***monomorphism***.
 

@@ -27,12 +27,12 @@ website:
       - text: "Mathematics (수학)"
         menu:
           - href: index.qmd#category=Math
-            text: "📐 수학 전체보기 (All Math) (181)"
+            text: "📐 수학 전체보기 (All Math) (183)"
           - text: "---"
           - href: index.qmd#category=Calculus
             text: "미적분학 (Calculus) (2)"
           - href: index.qmd#category=Abstract%20Algebra
-            text: "추상대수학 (Abstract Algebra) (39)"
+            text: "추상대수학 (Abstract Algebra) (40)"
           - href: index.qmd#category=Linear%20Algebra
             text: "선형대수학 (Linear Algebra) (7)"
           - href: index.qmd#category=Matrix%20Algebra
@@ -48,7 +48,7 @@ website:
           - href: index.qmd#category=Graph%20Theory
             text: "그래프 이론 (Graph Theory) (41)"
           - href: index.qmd#category=Numerical%20Analysis
-            text: "수치해석학 (Numerical Analysis) (6)"
+            text: "수치해석학 (Numerical Analysis) (7)"
       - text: "Astronomy (천문학)"
         menu:
           - href: index.qmd#category=Astronomy
@@ -80,15 +80,13 @@ website:
         menu:
           - text: "🔭 천문학 (Astronomy)"
           - href: https://www.kasi.re.kr/
-            text: "🔭 한국천문연구원 (KASI)"
+            text: "🔭 한국천문연구원"
           - href: https://www.kas.org/index.html
-            text: "🌌 한국천문학회 (KAS)"
+            text: "🌌 한국천문학회"
           - href: https://terms.naver.com/~%EC%B2%9C%EB%AC%B8%ED%95%99%EB%B0%B1%EA%B3%BC-4jCeB76aXmnbp44IBL8pRW
             text: "📚 네이버 천문학백과"
           - href: https://arxiv.org/archive/astro-ph
             text: "📄 Astrophysics arXiv"
-          - href: https://ui.adsabs.harvard.edu/
-            text: "🪐 NASA ADS (논문 DB)"
           - text: "---"
           - text: "📐 수학 (Mathematics)"
           - href: https://www.kms.or.kr/
@@ -99,10 +97,6 @@ website:
             text: "🌅 고등과학원 HORIZON"
           - href: https://arxiv.org/archive/math
             text: "📑 Mathematics arXiv"
-          - href: https://mathworld.wolfram.com/
-            text: "🌐 Wolfram MathWorld"
-          - href: https://oeis.org/
-            text: "🔢 OEIS (정수열 백과)"
     right:
       - href: qna/
         text: "Q&A"

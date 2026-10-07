@@ -1,0 +1,58 @@
+---
+title: "Ideal"
+author: "Youmin Chun"
+date: "2026-10-07 00:00:02"
+description: "추상대수학의 이데알(Ideal)에 대해서 설명한다."
+categories: 
+  - Math > Abstract Algebra > Ring Theory
+---
+
+# Definition
+Let $\langle R, +, \cdot \rangle$ be a ring, and let $\emptyset \neq N \subset R$. Then $N$ is called an ***ideal*** of $R$, denoted by $N \lhd R$, if 
+
+**(i)** $\langle N, + \rangle \le \langle R, + \rangle$.
+
+**(ii)** $\forall r \in R, rN \subset N$ and $Nr \subset N$.
+
+군론에서 잉여류와 같이 $rN = \{ rn \mid n \in N \}$으로 정의되고, 반대쪽도 마찬가지이다. 정의만으로 바로 짐작하기는 어렵지만, 군론에서 정규부분군(Normal subgroup)과 매우 유사한 역할을 하는 개념이다. 몫군 $G / H$가 $G$의 정규부분군 $H$에 대해서만 정의되었듯이, 환에 대해서도 몫환 $R / N$을 잘 정의하려면 $N$이 마치 정규부분군과 같은 조건을 가지는 집합으로 가지고 와야 하고, 환에 대해서 그러한 역할을 수행하는 개념이 바로 아이디얼이다. 때문에 표기법 또한 정규부분군과 마찬가지로 $N \lhd R$과 같이 쓴다.
+
+## Remark
+**(i)** If $N$ is an ideal of a ring $R$, then $N$ is a subring of $R$. However, the converse is not true.
+
+::: {.callout-note title="Proof" collapse="true" icon=false}
+$\big[ (\because)$ Note that $N$ is nonempty. For $a, b \in N$, we have $ab \in N$ since $N$ is an ideal of $R$. Also, $a - b \in N$ since $\langle N, + \rangle \le \langle R, + \rangle$. Thus, $N$ is a subring of $R$.
+
+On the other hand, $\mathbb{Z}$ is a subring of $\mathbb{Q}$, but $\mathbb{Z}$ is not an ideal of $\mathbb{Q}$, because $\frac{1}{2} \cdot 1 \notin \mathbb{Z}$. $\big]$
+:::
+
+**(ii)** $\{ 0 \}$ and $R$ are ideals of $R$, and $\{ 0 \}$ is called the trivial ideal and $R$ is called the improper ideal.
+
+**(iii)** Let $a \in R$. Note that $aR = \{ ar \mid r \in R \}$ and $Ra = \{ ra \mid r \in R \}$. If $R$ is commutative, then $aR = Ra$. In this case, we write $(a)$ instead of $aR$ or $Ra$.
+
+## Example
+**(i)** For all $n \in \mathbb{N}_0$, $n\mathbb{Z}$ is an ideal of $\mathbb{Z}$.
+
+::: {.callout-note title="Proof" collapse="true" icon=false}
+$\big[ (\because)$ Clearly, $\langle n\mathbb{Z}, + \rangle \le \langle \mathbb{Z}, + \rangle$. For $m \in \mathbb{Z}$ and $nr \in n\mathbb{Z}$, we have $m(nr) = n(mr) \in n \mathbb{Z}$ and $(nr)m = n(rm) \in n \mathbb{Z}$. Thus, $n\mathbb{Z}$ is an ideal of $\mathbb{Z}$. $\big]$
+:::
+
+**(ii)** For a ring homomorphism $\phi: R \to R'$, $\ker(\phi)$ is an ideal of $R$.
+
+::: {.callout-note title="Proof" collapse="true" icon=false}
+$\big[ (\because)$ Clearly, $\langle \ker(\phi), + \rangle \le \langle R, + \rangle$. For $r \in R$ and $x \in \ker(\phi)$, we have $\phi(rx) = \phi(r) \phi(x) = 0$, so that $rx \in \ker(\phi)$. Similarly, $\phi(xr) = \phi(x) \phi(r) = 0$, so that $xr \in \ker(\phi)$. Hence, $\ker(\phi)$ is an ideal of $R$. $\big]$
+:::
+
+**(iii)** Let $F = \mathbb{R}^\mathbb{R}$, and let $C = \{ f \in F \mid f \text{ is a constant function} \}$ and $N = \{ f \in F \mid f(3) = 0 \}$. Then $C$ is a subring of $F$ but is not an ideal of $F$. However, $N$ is an ideal of $F$.
+
+::: {.callout-note title="Proof" collapse="true" icon=false}
+$\big[ (\because)$ Clearly, $C \neq \emptyset$. For $f, g \in C$, $f - g$ and $fg$ are constant functions, so $f-g, fg \in C$. Then $C$ is a subring of of $F$. 
+
+Let $f(x) = \sin x \in F$ and let $g(x) = 1 \in C$. Then $(fg)(x) = f(x)g(x) = \sin x \notin C$, so that $C$ is not an ideal of $F$.
+
+Next, we show that $N$ is an ideal of $F$. Clearly, $N \neq \emptyset$. For $f, g \in N$, we have $(f - g)(3) = f(3) - g(3) = 0$ and $(fg)(3) = f(3)g(3) = 0$, so $f-g, fg \in N$. Thus, $N$ is a subring of $F$.
+
+Let $f \in F$ and $g \in N$. Then we have $f(3)g(3) = 0$ and $g(3)f(3) = 0$, so that $fg, gf \in N$. Hence, $N$ is an ideal of $F$. $\big]$
+:::
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

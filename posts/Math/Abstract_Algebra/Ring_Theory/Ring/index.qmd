@@ -7,7 +7,8 @@ categories:
   - Math > Abstract Algebra > Ring Theory
 ---
 
-# Definition 1
+# Ring
+## Definition 1
 **(i)** A ***ring*** $\langle R, +, \cdot \rangle$ is a set $R$ together with two [binary operations](../binaryop/index.qmd#sec-1.1.-definition) $+$ and $\cdot$, which we call addition and multiplication, defined on $R$ such that
 
 - $\langle R, + \rangle$ is an [abelian group.](../group/index.qmd#sec-definition)
@@ -24,7 +25,7 @@ We denote $ab$ instead of $a \cdot b$ for simplicity. The ***additive identity**
 
 특별히 덧셈에 대해서는 [군](../group/index.qmd#sec-definition)이 되기 때문에 항등원과 역원이 모두 유일하게 존재하지만, 곱셈에 대해서는 반군만 되기 때문에 일반적으로 항등원과 역원을 가지지 않음을 주의하자.
 
-## Example
+### Example
 **(i)** $\langle \mathbb{Z}, +, \cdot \rangle, \langle \mathbb{Q}, +, \cdot \rangle, \langle \mathbb{R}, +, \cdot \rangle, \langle \mathbb{C}, +, \cdot \rangle$ are abelian rings.
 
 **(ii)** Let $R$ be a ring. Then $\langle R^{n \times n}, +, \cdot \rangle$ is a ring but it is not abelian.
@@ -46,7 +47,7 @@ Then $\langle R, +, \cdot \rangle$ is a ring which is called the ***direct produ
 
 **(vii)** For $0 \in \mathbb{Z}$, $\langle \{ 0 \}, +, \cdot \rangle$ is a ring, called the ***zero ring***.
 
-## Notation
+### Notation
 Let $R$ be a ring, and let $a \in R$.
 
 **(i)** For $n \in \mathbb{N}$, $na = \underbrace{a + \cdots + a}_{n \text{ times}}$. 
@@ -59,7 +60,7 @@ Let $R$ be a ring, and let $a \in R$.
 
 정수배의 $0$과 덧셈의 항등원 $0$을 헷갈리지 않도록 주의하자. 위 (iii)에서의 $0$은 정수 $0$이지만 아래 정리 (i)에서의 $0$은 덧셈의 항등원 $0$이다.
 
-# Properties
+## Properties
 Let $R$ be a ring, and let $a, b \in R$.
 
 **(i)** $0a = 0 = a0$
@@ -68,21 +69,21 @@ Let $R$ be a ring, and let $a, b \in R$.
 
 **(iii)** $(-a)(-b) = ab$
 
-## Proof
+### Proof
 **(i)** Since $0a = (0 + 0)a = 0a + 0a$, we have $0a = 0$. Similarly, $a0 = 0$. 
 
 **(ii)** Note that $ab + a(-b) = a(b + (-b)) = a0 = 0$ by (i). Similarly, $ab + (-a)b = 0$. Clearly, $ab + (-(ab)) = 0$. Since the additive inverse is unique, we have $a(-b) = -(ab) = (-a)b$.
 
 **(iii)** By (ii), we have $(-a)(-b) = -(a(-b)) = -(-(ab))$. Since $-(ab) + (-(-(ab))) = 0$ and $ab + (-(ab)) = 0$, it follows from the uniqueness of the additive inverse that $(-a)(-b) = ab$. $\blacksquare$
 
-# Theorem
+## Theorem 1
 **(i)** Let $S$ be a nonempty subset of a ring $R$. Then $S \le R$ $\iff$ $a - b, ab \in S, \forall a, b \in S$.
 
 **(ii)** An intersection of subrings of a ring $R$ is a subring of $R$.
 
 부분군 판정법과 유사하지만 환은 군과는 달리 곱셈이라는 연산이 추가되므로 곱셈에 대해서 닫혀있음도 보여야 한다.
 
-## Proof
+### Proof
 **(i)** $(\implies)$ Let $a, b \in S$. Since $S$ is a ring, the additive inverse of $b$ belongs to $S$, so $a - b \in S$. Clearly, $ab \in S$.
 
 $(\impliedby)$ Let $a \in S$. Since $0 = a - a \in S$, $S$ contains the additive identity $0$. Furthermore, since $-a = 0 - a \in S$, it also contains the additive inverse of every element in $S$.
@@ -95,12 +96,13 @@ Since $S \subset R$, the associativity and commutativity of the addition is clea
 
 Let $a, b \in R^\ast$. Then $a, b \in R_\alpha, \forall \alpha$. Since $R_\alpha$ is a subring, we have $a - b, ab \in R_\alpha, \forall \alpha$, which implies that $a-b, ab \in R^\ast$. Hence, $R^\ast \le R$ by **(i)**. $\blacksquare$
 
-# Definition 2
+# Characteristic
+## Definition 2
 Let $R$ be a ring. If there exists an $n \in \mathbb{N}$ such that $na = 0, \forall a \in R$, then the least such positive integer is called the ***characteristic*** of $R$. If no such positive integer exists, then $R$ is of ***characteristic 0***. We denote the characteristic of $R$ $\mathrm{char}(R)$.
 
 한국어로는 표수, 특성 정도로 번역되는 듯하다. $\mathbb{Z}, \mathbb{R}$ 등의 집합은 당연하게 $0$의 표수를 가진다. 어떤 정수를 자연수 배를 한 결과가 항상 $0$이 나올 수는 없기 때문이다. 다르게 말하면 이를 만족하는 $n$은 오직 $0$ 뿐이다. 그러나 $\mathbb{Z}_n$과 같은 집합은 $n$의 배수는 모두 항등원인 $0$이 되기 때문에 $n$의 표수를 가지게 된다.
 
-# Remark
+## Remark
 **(i)** $\mathrm{char}(\mathbb{Z}_n) = n$
 
 **(ii)** $\mathrm{char}(\mathbb{Z}) = \mathrm{char}(\mathbb{Q}) = \mathrm{char}(\mathbb{R}) = \mathrm{char}(\mathbb{C}) = 0$.
@@ -238,7 +240,40 @@ $$\begin{aligned}
 + & (a_1b_3-a_2b_4+a_3b_1+a_4b_2)j + (a_1b_4+a_2b_3-a_3b_2+a_4b_1)k.
 \end{aligned}$$
 
-이때 $\langle H, +, \cdot \rangle$은 상환(division ring)이 되고, 특별히 ***사원수환(quaternion ring)***이라고 부른다. 사원수환은 복소공간 $\mathbb{C}$를 부분환으로 가지며, 자명하게 비가환환이다.
+이때 $\langle \mathbb{H}, +, \cdot \rangle$은 상환(division ring)이 되고, 특별히 ***사원수환(quaternion ring)***이라고 부른다. 사원수환은 복소공간 $\mathbb{C}$를 부분환으로 가지며, 자명하게 비가환환이다.
+
+# Ring Homomorphism
+## Definition 3
+**(i)** For rings $R$ and $R'$, a map $\phi: R \to R'$ is called a ***homomorphism*** if
+
+$$\phi(a+b) = \phi(a) + \phi(b) \quad \text{and} \quad \phi(ab) = \phi(a)\phi(b)$$
+
+for all $a, b \in R$. 
+
+**(ii)** The set
+
+$$\phi^{-1}(\{ 0 \}) = \{ a \in R \mid \phi(a) = 0 \}$$
+
+is called the ***kernel*** of $\phi$, denoted by $\ker(\phi)$.
+
+## Theorem 2
+Let $\phi: R \to R'$ be a ring homomorphism.
+
+**(i)** $\phi(0) = 0$.
+
+**(ii)** $\phi(-a) = -\phi(a), \forall a \in R$.
+
+**(iii)** $S \le R \implies \phi(S) \le \phi(R) \le R'$.
+
+**(iv)** $S' \le R' \implies \phi^{-1}(S') \le R$.
+
+**(v)** If $R$ contains the unity $1$, then $\phi(1)$ is the unity of $\phi(R)$.
+
+**(vi)** For $a \in R$, $a + \ker(\phi) = \phi^{-1}(\{ \phi(a) \}) = \ker(\phi) + a$.
+
+**(vii)** $\phi$ is one-to-one $\iff$ $\ker(\phi) = \{ 0 \}$.
+
+**(v)**에서 $\phi(1)$은 $R'$이 아닌 $\phi(R)$의 항등원임을 주의해야 한다. 단적인 예로 함수 $\phi : \mathbb{Z} \to \mathbb{Z} \times \mathbb{Z}$를 $\phi(n) = (n, 0)$과 같이 정의하면 $\phi$는 준동형사상이 된다. 이때 $\phi(1) = (1, 0)$인데, $(1, 0)$은 $\mathbb{Z} \times \{ 0 \}$의 항등원이지만 $\mathbb{Z} \times \mathbb{Z}$의 항등원은 아니다. 환은 부분환에 대해서 반드시 같은 곱셈 항등원을 가질 필요가 없음을 주의하자.
 
 # Reference
 - John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

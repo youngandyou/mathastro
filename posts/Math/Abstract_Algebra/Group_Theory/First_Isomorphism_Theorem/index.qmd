@@ -8,7 +8,7 @@ categories:
 ---
 
 ## Theorem 1
-Let $H \lhd G$. The map $\gamma: G \to G/H$ defined by $\gamma(g) = gH, \forall g \in G$ is an epimorphism with $\ker(\phi) = H$. We call $\gamma$ the ***canonical epimorphism***.
+Let $H \lhd G$. The map $\gamma: G \to G/H$ defined by $\gamma(g) = gH, \forall g \in G$ is an epimorphism with $\ker(\gamma) = H$. We call $\gamma$ the ***canonical epimorphism***.
 
 ### Proof
 Clearly, $\gamma$ is well-defined. 
@@ -23,9 +23,9 @@ $$\begin{align*}
 
 so that $\gamma$ is a homomorphism.
 
-Let $gH \in G/H$. Then $g \in H$ and $\gamma(g) = gH$. Hence $\gamma$ is an epimorphism.
+Let $gH \in G/H$. Then $g \in G$ and $\gamma(g) = gH$. Hence $\gamma$ is an epimorphism.
 
-Let $g \in \ker(\phi)$. Then $gH = \phi(g) = H$, which means that $g \in H$. If $g \in H$, then $\gamma(g) = gH = H$, which means that $g \in \ker(\phi)$. Thus, $\ker(\phi) = H$. $\blacksquare$
+Let $g \in \ker(\gamma)$. Then $H = \gamma(g) = gH$, which means that $g \in H$. If $g \in H$, then $\gamma(g) = gH = H$, which means that $g \in \ker(\gamma)$. Thus, $\ker(\gamma) = H$. $\blacksquare$
 
 ## First Isomorphism Theorem
 Let $\phi: G \to G'$ be a group homomorphism.
@@ -36,12 +36,12 @@ $$\mu(g\ker(\phi)) = \phi(g)$$
 
 for all $g\ker(\phi) \in G/\ker(\phi)$ is an isomorphism, and therefore $G/\ker(\phi) \cong \mathrm{Im}(\phi)$.
 
-**(ii)** If $\gamma: G \to G/\ker(\phi)$ is the epimorphism in Theorem 1, then $\phi = \mu \circ \gamma$.
+**(ii)** If $\gamma: G \to G/\ker(\phi)$ is the canonical epimorphism, then $\phi = \mu \circ \gamma$.
 
 ![](thm1.png)
 
 ### Proof
-(i) Let $x, y \in G$. If $x\ker(\phi) = y\ker(\phi)$, then we have $x^{-1}y \in \ker(\phi)$. Then 
+**(i)** Let $x, y \in G$. If $x\ker(\phi) = y\ker(\phi)$, then we have $x^{-1}y \in \ker(\phi)$. Then 
 
 $$\begin{align*} 
 e' &= \phi(x^{-1}y) \\ 
@@ -66,7 +66,7 @@ $$\begin{align*}
 
 Hence, $\mu$ is an isomorphism.
 
-(ii) Let $g \in G$. Then we have
+**(ii)** Let $g \in G$. Then we have
 
 $$\begin{align*}
 (\mu \circ \gamma)(g) &= \mu(\gamma(g)) \\

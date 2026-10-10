@@ -2,7 +2,7 @@
 title: "Ideal"
 author: "Youmin Chun"
 date: "2026-10-07 00:00:02"
-description: "추상대수학의 이데알(Ideal)에 대해서 설명한다."
+description: "추상대수학의 아이디얼(Ideal)에 대해서 설명한다."
 categories: 
   - Math > Abstract Algebra > Ring Theory
 ---
@@ -14,10 +14,21 @@ Let $\langle R, +, \cdot \rangle$ be a ring, and let $\emptyset \neq N \subset R
 
 **(ii)** $\forall r \in R, rN \subset N$ and $Nr \subset N$.
 
-군론에서 잉여류와 같이 $rN = \{ rn \mid n \in N \}$으로 정의되고, 반대쪽도 마찬가지이다. 정의만으로 바로 짐작하기는 어렵지만, 군론에서 정규부분군(Normal subgroup)과 매우 유사한 역할을 하는 개념이다. 몫군 $G / H$가 $G$의 정규부분군 $H$에 대해서만 정의되었듯이, 환에 대해서도 몫환 $R / N$을 잘 정의하려면 $N$이 마치 정규부분군과 같은 조건을 가지는 집합으로 가지고 와야 하고, 환에 대해서 그러한 역할을 수행하는 개념이 바로 아이디얼이다. 때문에 표기법 또한 정규부분군과 마찬가지로 $N \lhd R$과 같이 쓴다.
+군론에서 잉여류와 같이 $rN = \{ rn \mid n \in N \}$으로 정의되고, 반대쪽도 마찬가지이다. 정의만으로 바로 짐작하기는 어렵지만, 군론에서 정규부분군(Normal subgroup)과 매우 유사한 역할을 하는 개념이다. 몫군 $G / H$가 $G$의 정규부분군 $H$에 대해서만 정의되었듯이, 환에 대해서도 몫환 $R / N$을 잘 정의하려면 $N$이 마치 정규부분군과 같은 조건을 가지는 집합으로 가지고 와야 하고, 환에 대해서 그러한 역할을 수행하는 개념이 바로 아이디얼이다. 때문에 표기법 또한 정규부분군과 마찬가지로 $N \lhd R$과 같이 쓰고, 실제로도 덧셈만 생각했을 때 아이디얼 $N$은 $R$의 정규부분군이 된다.
+
+# Theorem 1
+Let $\phi: R \to R'$ be a ring homomorphism.
+
+**(i)** $N \lhd R \implies \phi(N) \lhd \phi(R)$.
+
+**(ii)** $N' \lhd R' \implies \phi^{-1}(N') \lhd R$.
+
+**(iii)** $N' \lhd \phi(R) \implies \phi^{-1}(N') \lhd R$.
 
 ## Remark
-**(i)** If $N$ is an ideal of a ring $R$, then $N$ is a subring of $R$. However, the converse is not true.
+**(i)** If $N$ is an ideal of a ring $R$, then $\langle N, + \rangle$ is a normal subgroup of $\langle R, + \rangle$.
+
+**(ii)** If $N$ is an ideal of a ring $R$, then $N$ is a subring of $R$. However, the converse is not true.
 
 ::: {.callout-note title="Proof" collapse="true" icon=false}
 $\big[ (\because)$ Note that $N$ is nonempty. For $a, b \in N$, we have $ab \in N$ since $N$ is an ideal of $R$. Also, $a - b \in N$ since $\langle N, + \rangle \le \langle R, + \rangle$. Thus, $N$ is a subring of $R$.
@@ -25,9 +36,11 @@ $\big[ (\because)$ Note that $N$ is nonempty. For $a, b \in N$, we have $ab \in 
 On the other hand, $\mathbb{Z}$ is a subring of $\mathbb{Q}$, but $\mathbb{Z}$ is not an ideal of $\mathbb{Q}$, because $\frac{1}{2} \cdot 1 \notin \mathbb{Z}$. $\big]$
 :::
 
-**(ii)** $\{ 0 \}$ and $R$ are ideals of $R$, and $\{ 0 \}$ is called the trivial ideal and $R$ is called the improper ideal.
+**(iii)** If $N$ is an ideal of a ring $R$, then $\phi(N)$ need not be an ideal of $R'$ for a ring homomorphism $\phi: R \to R'$.
 
-**(iii)** Let $a \in R$. Note that $aR = \{ ar \mid r \in R \}$ and $Ra = \{ ra \mid r \in R \}$. If $R$ is commutative, then $aR = Ra$. In this case, we write $(a)$ instead of $aR$ or $Ra$.
+**(iv)** $\{ 0 \}$ and $R$ are ideals of $R$, and $\{ 0 \}$ is called the trivial ideal and $R$ is called the improper ideal.
+
+**(v)** Let $a \in R$. Note that $aR = \{ ar \mid r \in R \}$ and $Ra = \{ ra \mid r \in R \}$. If $R$ is commutative, then $aR = Ra$. In this case, we write $(a)$ instead of $aR$ or $Ra$.
 
 ## Example
 **(i)** For all $n \in \mathbb{N}_0$, $n\mathbb{Z}$ is an ideal of $\mathbb{Z}$.

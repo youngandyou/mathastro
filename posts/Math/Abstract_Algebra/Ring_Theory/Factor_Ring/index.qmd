@@ -1,0 +1,73 @@
+---
+title: "Factor Ring"
+author: "Youmin Chun"
+date: "2026-10-10 00:00:01"
+description: "추상대수학의 몫환(Factor Ring)에 대해서 설명한다."
+categories: 
+  - Math > Abstract Algebra > Ring Theory
+---
+
+# Theorem 1
+**(i)** Let $N$ be a subring of a ring $R$. Then the operation $\cdot: R/N \times R/N \to R/N$ defined by
+
+$$(a+N) \cdot (b+N) = ab + N$$
+
+is well-defined $\iff$ $N$ is an ideal of $R$.
+
+**(ii)** Let $N$ be an ideal of a ring $R$. Then $R/N$ is a ring under the operations defiend by
+
+$$\begin{align*}
+(a+N) + (b+N) &= (a + b) + N \\
+(a+N)(b+N) &= ab + N.
+\end{align*}$$
+
+for all $a, b \in R$. The ring $R/N$ is called the ***factor ring*** of $R$ by $N$.
+
+군론에서 다뤘던 몫군(Factor Group)의 환론 버전이다. 연산히 하나 추가된 것 빼고는 특별히 다를 것은 없는데, 몫군이 잘 정의되기 위해서는 반드시 정규부분군을 들고와야 했던 것과 유사하게 몫환에서는 아이디얼(Ideal)이 정규부분군의 역할을 하여 연산을 잘 정의되게끔 해주는 역할을 한다. 환은 덧셈에 대해서는 가환군이므로 모든 부분환은 덧셈에 대해서 정규부분군이 된다. 따라서 애초에 환에서 부분환을 얘기하는 순간 몫군은 자동으로 잘 정의되기 때문에 곱셈에 대해서만 새롭게 체크해주면 된다. 또한 몫군을 정의한 뒤 이어지는 동형 정리 또한 자동으로 환론 버전으로 동일하게 얘기할 수 있게 된다.
+
+## Proof
+**(i)** $(\implies)$ Suppose that the operation $\cdot$ is well-defined. Note that $N$ is an additive subgroup of $R$.
+
+Let $r \in R$ and $x \in N$. Then we have
+
+$$\begin{align*}
+rx + N &= (r+N)(x + N) \\
+&=(r+N)(0+N) \\
+&=0+N \\
+&=N.
+\end{align*}$$
+
+Hence $rx \in N$, which means that $rN \subset N, \forall r \in R$. Similarly, we can show that $Nr \subset N, \forall r \in R$. Thus, $N$ is an ideal of $R$.
+
+$(\impliedby)$ Suppose that $N$ is an ideal of $R$. Assume that $a_1 + N = a_2 + N$ and $b_1 + N = b_2 + N$ for $a_1,a_2, b_1, b_2 \in R$. Then we have $a_1 - a_2, b_1 - b_2 \in N$. Thus, we have
+
+$$\begin{align*}
+a_1b_1 - a_2b_2 &= a_1b_1 - a_1b_2 + a_1b_2 - a_2b_2 \\
+&= a_1(b_1 - b_2) + (a_1 - a_2)b_2 \\
+&\in N
+\end{align*}$$
+
+because $a_1(b_1 - b_2) \in a_1N \subset N$ and $(a_1 - a_2)b_2 \in Nb_2 \subset N$. Thus, $a_1b_1 - a_2b_2 \in N$, which means that $a_1b_1 + N = a_2b_2 + N$. Hence, the operation $\cdot$ is well-defined. $\blacksquare$
+
+# Theorem 2
+**(i)** Let $N$ be an ideal of a ring $R$. Then the map $\gamma : R \to R/N$ defined by $\gamma(a) = a + N$ is a ring epimorphism with $\ker(\gamma) = N$. We call $\gamma$ the ***canonical epimorphism*** of $R$ onto $R/N$.
+
+**(ii)** Let $\phi : R \to R'$ be a ring homomorphism with $\ker(\phi) = N$. Then the map $\mu: R/N \to \mathrm{Im}(\phi)$ defined by 
+
+$$\mu(a + N) = \phi(a)$$
+
+is an isomorphism, and therefore $R/N \cong \mathrm{Im}(\phi)$. Furthermore, if $\gamma: R \to R/N$ is the canonical epimorphism, then $\phi = \mu \circ \gamma$.
+
+## Proof
+
+## Example
+Let $n$ be an integer with $n \ge 2$. Define $\phi: \mathbb{Z} \to \mathbb{Z}_n$ by
+
+$$\phi(a) = \text{ the remainder of } a \text{ modulo } n.$$
+
+Then $\phi$ is an epimorphism with $\ker(\phi) = n \mathbb{Z}$. By the above theorem, the map $\mu: \mathbb{Z}/n\mathbb{Z} \to \mathbb{Z}_n$ defined by $\mu(a + n\mathbb{Z}) = \phi(a)$ is an isomorphism, and therefore
+
+$$\mathbb{Z}/n\mathbb{Z} \cong \mathbb{Z}_n.$$
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

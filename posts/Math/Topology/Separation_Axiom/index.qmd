@@ -1,42 +1,45 @@
 ---
 title: "Separation Axiom"
 author: "Youmin Chun"
-date: "2026-07-10 00:00:08"
+date: "2026-10-07 00:00:08"
 description: "위상공간의 분리 공리(Separation Axiom)에 대해서 설명한다."
 categories: 
   - Math > Topology
 ---
 
+$$\newcommand{\nimplies}{\mathrel{\rlap{\mkern 20mu /}\implies}}$$
+
+# Separation Axiom
 ## Definition
 Let $(X, \mathscr{T})$ be a topological space. 
 
-- Let $x, y \in X$ with $x \neq y$.
+**(i)** $X$ is called a ***$T_0$-space*** if for all $x, y \in X$ with $x \neq y$, $\exists U \in \mathscr{T}$ such that $x \in U$ and $y \notin U$.
 
-**(i)** $X$ is called a ***$T_0$-space*** if $\exists U \in \mathscr{T}$ such that $x \in U$ and $y \notin U$.
+**(ii)** $X$ is called a ***$T_1$-space*** if for all $x, y \in X$ with $x \neq y$, $\exists U, V \in \mathscr{T}$ such that $x \in U, y \notin U$ and $y \in V, x \notin V$.
 
-**(ii)** $X$ is called a ***$T_1$-space*** if $\exists U, V \in \mathscr{T}$ such that $x \in U, y \notin U$ and $y \in V, x \notin V$.
+**(iii)** $X$ is called a ***$T_2$-space*** or ***Hausdorff space*** if for all $x, y \in X$ with $x \neq y$, $\exists U, V \in \mathscr{T}$ such that $x \in U, y \in V$ and $U \cap V = \emptyset$.
 
-**(iii)** $X$ is called a ***$T_2$-space*** or ***Hausdorff space*** if $\exists U, V \in \mathscr{T}$ such that $x \in U, y \in V$ and $U \cap V = \emptyset$.
-
-- Let $C$ be a closed set in $X$, and let $x \notin C$.
-
-**(iv)** $X$ is called a ***regular space*** if $\exists U, V \in \mathscr{T}$ such that $x \in U, C \subset V$ and $U \cap V = \emptyset$.
+**(iv)** $X$ is called a ***regular space*** if for a closed subset $C$ of $X$ and $x \notin C$, $\exists U, V \in \mathscr{T}$ such that $x \in U, C \subset V$ and $U \cap V = \emptyset$.
 
 **(v)** $X$ is called a ***$T_3$-space*** or ***regular Hausdorff*** if $X$ is regular and $T_1$.
 
-- Let $C, D$ be closed sets in $X$ with $C \cap D = \emptyset$.
-
-**(vi)** $X$ is called a ***normal space*** if $\exists U, V \in \mathscr{T}$ such that $C \subset U, D \subset V$ and $U \cap V = \emptyset$.
+**(vi)** $X$ is called a ***normal space*** if for closed subsets $C, D$ of $X$ with $C \cap D = \emptyset$, $\exists U, V \in \mathscr{T}$ such that $C \subset U, D \subset V$ and $U \cap V = \emptyset$.
 
 **(vii)** $X$ is called a ***$T_4$-space*** or ***normal Hausdorff*** if $X$ is normal and $T_1$.
 
+### Remark
+**(i)** $T_4 \implies T_3 \implies T_2 \implies T_1 \implies T_0$
+
+**(ii)** "Regular" $\nimplies$ "Hausdorff"
+
+$\big[ (\because)$ Let $X = \{1, 2, 3, 4\}$ and $\mathscr{T} = \{ \emptyset, \{ 1, 2 \}, \{ 3, 4 \}, X \}$. Then $(X, \mathscr{T})$ is regular, but it is not Hausdorff. For $1 \neq 2$, there are no open sets $U, V \in \mathscr{T}$ such that $1 \in U, 2 \in V$ and $U \cap V = \emptyset$. $\big]$
+
+**(iii)** "Normal" $\nimplies$ "Regular"
+
+$\big[ (\because)$ Let $X = \{1, 2\}$ and $\mathscr{T} = \{ \emptyset, \{ 1 \}, X \}$. Then $(X, \mathscr{T})$ is normal, but it is not regular. For $1 \in X$ and closed set $\{ 2 \}$, there are no open sets $U, V \in \mathscr{T}$ such that $1 \in U, \{ 2 \} \subset V$ and $U \cap V = \emptyset$. $\big]$
+
 ## Theorem 1
-$$T_4 \implies T_3 \implies T_2 \implies T_1 \implies T_0$$
-
-### Proof
-
-## Theorem 2
-Let $\mathscr{T}$ and $\mathscr{T}'$ be two topological space on a set $X$. Suppose that $\mathscr{T}'$ is finer than $\mathscr{T}$, i.e., $\mathscr{T} \subset \mathscr{T}'$. 
+Let $\mathscr{T}$ and $\mathscr{T}'$ be two topological space on a set $X$. Suppose that $\mathscr{T} \subset \mathscr{T}'$. 
 
 **(i)** If $\mathscr{T}$ is $T_0$, then $\mathscr{T}'$ is $T_0$.
 
@@ -47,7 +50,7 @@ Let $\mathscr{T}$ and $\mathscr{T}'$ be two topological space on a set $X$. Supp
 ### Proof
 
 ## Example
-**(i)** $(\mathbb{R}^n, \mathscr{T} _ {\text{usual}})$ is a $T_4$-space. 
+**(i)** $(\mathbb{R}^n, \mathscr{T}_{\text{usual}})$ is a $T_4$-space. 
 
 **(ii)** $(\mathbb{R}, \mathscr{T}_c)$ is a $T_1$-space, but not a $T_2$-space.
 

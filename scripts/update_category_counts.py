@@ -152,9 +152,8 @@ def update_quarto_yml(path_counts, leaf_counts):
             if re.search(r'text:\s*"?[^"]*\(\d+\)"?', next_line):
                 lines[i + 1] = re.sub(r"\(\d+\)", f"({count})", next_line)
 
-    with open(QUARTO_YML, "w", encoding="utf-8") as f:
-        f.write("\n".join(lines) + "\n")
-    print("✓ Updated _quarto.yml navbar counts")
+    if write_if_changed(QUARTO_YML, "\n".join(lines) + "\n"):
+        print("✓ Updated _quarto.yml navbar counts")
 
 def update_navbar_submenus(path_counts):
     if not os.path.exists(NAVBAR_SUBMENUS):
@@ -186,9 +185,8 @@ def update_navbar_submenus(path_counts):
         pattern = rf'(key:\s*["\']{re.escape(key)}["\'][\s\S]*?count:\s*)\d+'
         content = re.sub(pattern, rf'\g<1>{count}', content)
 
-    with open(NAVBAR_SUBMENUS, "w", encoding="utf-8") as f:
-        f.write(content)
-    print("✓ Updated assets/navbar-submenus.html counts")
+    if write_if_changed(NAVBAR_SUBMENUS, content):
+        print("✓ Updated assets/navbar-submenus.html counts")
 
 def update_index_qmd(path_counts):
     if not os.path.exists(INDEX_QMD):
@@ -203,13 +201,11 @@ def update_index_qmd(path_counts):
     content = re.sub(r"(Mathematics\s*\(수학\)\s*</div>\s*<div[^>]*>)\d+편", rf"\g<1>{math_count}편", content)
     content = re.sub(r"(Astronomy\s*\(천문학\)\s*</div>\s*<div[^>]*>)\d+편", rf"\g<1>{astro_count}편", content)
 
-    with open(INDEX_QMD, "w", encoding="utf-8") as f:
-        f.write(content)
-    print(f"✓ Updated index.qmd archive cards (Math: {math_count}편, Astronomy: {astro_count}편)")
+    if write_if_changed(INDEX_QMD, content):
+        print(f"✓ Updated index.qmd archive cards (Math: {math_count}편, Astronomy: {astro_count}편)")
 
 def write_category_json(total_posts, path_counts, leaf_counts):
     data = {
-        "updatedAt": datetime.utcnow().isoformat() + "Z",
         "totalPosts": total_posts,
         "counts": path_counts,
         "leafCounts": leaf_counts,
@@ -220,9 +216,29 @@ def write_category_json(total_posts, path_counts, leaf_counts):
             "Computer": path_counts.get("Computer", 0),
         }
     }
-    with open(CATEGORY_JSON, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+    # Compare data, not serialization order or generation time. The JS hook and
+    # this CI entry point must leave unchanged files alone during preview.
+    if os.path.exists(CATEGORY_JSON):
+        try:
+            with open(CATEGORY_JSON, "r", encoding="utf-8") as f:
+                previous = json.load(f)
+            if isinstance(previous, dict) and all(previous.get(key) == value for key, value in data.items()):
+                return
+        except json.JSONDecodeError:
+            pass
+
+    output = {"updatedAt": datetime.utcnow().isoformat() + "Z", **data}
+    write_if_changed(CATEGORY_JSON, json.dumps(output, ensure_ascii=False, indent=2))
     print(f"✓ Saved {CATEGORY_JSON} (Total: {total_posts} posts)")
+
+def write_if_changed(file_path, content):
+    if os.path.exists(file_path):
+        with open(file_path, "r", encoding="utf-8") as f:
+            if f.read() == content:
+                return False
+    with open(file_path, "w", encoding="utf-8") as f:
+        f.write(content)
+    return True
 
 def main():
     print("Scanning posts and updating category counts...")

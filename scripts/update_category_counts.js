@@ -7,9 +7,10 @@
 //
 // Can be run with: quarto run scripts/update_category_counts.js
 
-import * as path from "https://deno.land/std@0.208.0/path/mod.ts";
+import * as path from "node:path";
+import { fileURLToPath } from "node:url";
 
-const ROOT_DIR = Deno.cwd();
+const ROOT_DIR = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const POSTS_DIR = path.join(ROOT_DIR, "posts");
 const QUARTO_YML = path.join(ROOT_DIR, "_quarto.yml");
 const NAVBAR_SUBMENUS = path.join(ROOT_DIR, "assets", "navbar-submenus.html");
@@ -167,8 +168,9 @@ function updateQuartoYml(pathCounts, leafCounts) {
     }
   }
 
-  Deno.writeTextFileSync(QUARTO_YML, lines.join("\n"));
-  console.log("✓ Updated _quarto.yml navbar counts");
+  if (writeIfChanged(QUARTO_YML, lines.join("\n"))) {
+    console.log("✓ Updated _quarto.yml navbar counts");
+  }
 }
 
 function updateNavbarSubmenus(pathCounts) {
@@ -201,8 +203,9 @@ function updateNavbarSubmenus(pathCounts) {
     content = content.replace(reg, `$1${count}`);
   }
 
-  Deno.writeTextFileSync(NAVBAR_SUBMENUS, content);
-  console.log("✓ Updated assets/navbar-submenus.html counts");
+  if (writeIfChanged(NAVBAR_SUBMENUS, content)) {
+    console.log("✓ Updated assets/navbar-submenus.html counts");
+  }
 }
 
 function updateIndexQmd(pathCounts) {
@@ -216,13 +219,13 @@ function updateIndexQmd(pathCounts) {
   content = content.replace(/(Mathematics\s*\(수학\)\s*<\/div>\s*<div[^>]*>)\d+편/, `$1${mathCount}편`);
   content = content.replace(/(Astronomy\s*\(천문학\)\s*<\/div>\s*<div[^>]*>)\d+편/, `$1${astroCount}편`);
 
-  Deno.writeTextFileSync(INDEX_QMD, content);
-  console.log(`✓ Updated index.qmd archive cards (Math: ${mathCount}편, Astronomy: ${astroCount}편)`);
+  if (writeIfChanged(INDEX_QMD, content)) {
+    console.log(`✓ Updated index.qmd archive cards (Math: ${mathCount}편, Astronomy: ${astroCount}편)`);
+  }
 }
 
 function writeCategoryJson(data) {
   const output = {
-    updatedAt: new Date().toISOString(),
     totalPosts: data.totalPosts,
     counts: data.pathCounts,
     leafCounts: data.leafCounts,
@@ -234,8 +237,36 @@ function writeCategoryJson(data) {
     }
   };
 
-  Deno.writeTextFileSync(CATEGORY_JSON, JSON.stringify(output, null, 2));
+  // Preserve the timestamp and mtime when counts have not changed. Preview
+  // watches these files; rewriting identical data triggers unnecessary work.
+  if (tryExists(CATEGORY_JSON)) {
+    try {
+      const previous = JSON.parse(Deno.readTextFileSync(CATEGORY_JSON));
+      if (previous && previous.totalPosts === output.totalPosts &&
+          ["counts", "leafCounts", "topCategories"].every(key =>
+            sameCounts(previous[key], output[key]))) return;
+    } catch (error) {
+      if (!(error instanceof SyntaxError)) throw error;
+    }
+  }
+
+  writeIfChanged(CATEGORY_JSON, JSON.stringify({
+    updatedAt: new Date().toISOString(),
+    ...output,
+  }, null, 2));
   console.log(`✓ Saved ${CATEGORY_JSON} (Total: ${data.totalPosts} posts)`);
+}
+
+function sameCounts(left, right) {
+  return left && typeof left === "object" &&
+    Object.keys(left).length === Object.keys(right).length &&
+    Object.entries(right).every(([key, count]) => left[key] === count);
+}
+
+function writeIfChanged(file, content) {
+  if (tryExists(file) && Deno.readTextFileSync(file) === content) return false;
+  Deno.writeTextFileSync(file, content);
+  return true;
 }
 
 function escapeRegex(str) {

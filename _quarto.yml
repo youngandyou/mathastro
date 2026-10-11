@@ -27,12 +27,12 @@ website:
       - text: "Mathematics (수학)"
         menu:
           - href: index.qmd#category=Math
-            text: "📐 수학 전체보기 (All Math) (183)"
+            text: "📐 수학 전체보기 (All Math) (184)"
           - text: "---"
           - href: index.qmd#category=Calculus
             text: "미적분학 (Calculus) (2)"
           - href: index.qmd#category=Abstract%20Algebra
-            text: "추상대수학 (Abstract Algebra) (40)"
+            text: "추상대수학 (Abstract Algebra) (41)"
           - href: index.qmd#category=Linear%20Algebra
             text: "선형대수학 (Linear Algebra) (7)"
           - href: index.qmd#category=Matrix%20Algebra
@@ -52,14 +52,14 @@ website:
       - text: "Astronomy (천문학)"
         menu:
           - href: index.qmd#category=Astronomy
-            text: "🔭 천문학 전체보기 (All Astronomy) (18)"
+            text: "🔭 천문학 전체보기 (All Astronomy) (19)"
           - text: "---"
           - href: index.qmd#category=Radio%20Astronomy
             text: "전파천문학 (Radio Astronomy) (15)"
           - href: index.qmd#category=General%20Relativity
             text: "일반상대론 & 등가원리 (General Relativity) (1)"
           - href: index.qmd#category=High%20Energy
-            text: "고에너지 천체물리학 (High Energy) (1)"
+            text: "고에너지 천체물리학 (High Energy) (2)"
           - href: index.qmd#category=Relativistic%20Jets
             text: "상대론적 제트 (Jets) (1)"
       - text: "Physics (물리학)"

@@ -38,6 +38,9 @@ jobs:
       - name: Set up Quarto
         uses: quarto-dev/quarto-actions/setup@v2
 
+      - name: Test preview helpers
+        run: quarto run tests/test_preview.js
+
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 

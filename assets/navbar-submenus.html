@@ -5,7 +5,7 @@
     "abstract algebra": {
       subcategories: [
         { key: "Group Theory", name: "군론 (Group Theory)", count: 31 },
-        { key: "Ring Theory", name: "환론 (Ring Theory)", count: 6 },
+        { key: "Ring Theory", name: "환론 (Ring Theory)", count: 7 },
         { key: "Binary Algebraic Structure", name: "이항대수구조 (Binary Algebraic Structure)", count: 2 },
         { key: "Field Theory", name: "체론 (Field Theory)", count: 1 }
       ]
@@ -231,37 +231,27 @@
       return;
     }
 
-    var candidateUrls = [
-      "./assets/category-counts.json",
-      "../assets/category-counts.json",
-      "../../assets/category-counts.json",
-      "../../../assets/category-counts.json",
-      "../../../../assets/category-counts.json",
-      "/mathastro/assets/category-counts.json",
-      "/assets/category-counts.json"
-    ];
+    // Quarto supplies the path to the site root for every rendered page.
+    // Resolve it once, including GitHub Pages' /mathastro/ prefix, instead of
+    // probing parent directories and generating a series of 404 responses.
+    var offset = document.querySelector('meta[name="quarto:offset"]');
+    var siteRoot = new URL(offset ? offset.content : "./", document.baseURI);
+    var countsUrl = new URL("assets/category-counts.json", siteRoot);
 
-    var found = false;
-    function tryFetch(idx) {
-      if (idx >= candidateUrls.length || found) return;
-      fetch(candidateUrls[idx])
-        .then(function(res) {
-          if (!res.ok) throw new Error("HTTP error " + res.status);
-          return res.json();
-        })
-        .then(function(data) {
-          if (data && data.counts && !found) {
-            found = true;
-            window.__categoryCounts = data.counts;
-            applyCategoryCounts(data.counts);
-          }
-        })
-        .catch(function() {
-          tryFetch(idx + 1);
-        });
-    }
-
-    tryFetch(0);
+    fetch(countsUrl)
+      .then(function(res) {
+        if (!res.ok) throw new Error("HTTP error " + res.status);
+        return res.json();
+      })
+      .then(function(data) {
+        if (data && data.counts) {
+          window.__categoryCounts = data.counts;
+          applyCategoryCounts(data.counts);
+        }
+      })
+      .catch(function() {
+        // Keep the counts embedded at render time if the resource is offline.
+      });
   }
 
   function setupNavbarSubmenus() {

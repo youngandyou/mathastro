@@ -7,7 +7,8 @@ categories:
   - Math > Differential Geometry > Curve Theory
 ---
 
-# Definition 1
+# Unit Speed Curves
+## Definition 1
 Let $\alpha: (a, b) \to \mathbb{R}^3$ be a regular unit speed curve.
 
 **(i)** The ***tangent vector field*** is the map $T(s) = \alpha'(s)$.
@@ -22,7 +23,7 @@ Let $\alpha: (a, b) \to \mathbb{R}^3$ be a regular unit speed curve.
 
 **(vi)** The ***Frenet-Serret appratus*** of $\alpha$ is the set $\{ T(s), N(s), B(s), \kappa(s), \tau(s) \}$.
 
-곡선 $\alpha$는 단위 스피드 곡선으로 들고 왔음을 유의하자. 단위 스피드가 아니라면 위와 같은 공식으로 계산할 수 없다.
+곡선 $\alpha$는 단위 스피드 곡선으로 들고 왔음을 유의하자. 단위 스피드가 아니라면 위와 같은 공식으로 계산할 수 없다. 또한 곡률은 항상 $0$ 이상의 값을 갖는데, 만약 곡률이 $0$이라면 그 곡선은 사실상 직선이 되고, $N, B, \tau$가 모두 정의되지 않음을 기억하자.
 
 $T$는 말 그대로 각 점에서의 곡선에 접하는 접선 벡터다. 한편 곡률 $\kappa$는 $T$의 도함수의 크기로 정의되는데, 곡선이 **많이 굽어있을수록** $T$는 급격하게 변하고, 다시 말해 $T'$의 크기는 커진다. 반면 곡선이 **많이 굽어있지 않고 평평할수록** $T$는 별로 변하지 않고, 다시 말해 $T'$의 크기는 작아진다. 이렇듯 곡률, 즉 곡선이 굽어있는 정도는 접선벡터의 변화량의 크기로 정의하는 것이 직관적이라는 사실을 알 수 있다.
 
@@ -44,7 +45,7 @@ $$\begin{align*}
 
 한편, 이렇게 정의한 세 개의 벡터 $T(s), N(s), B(s)$는 각각 단위벡터이면서 서로 직교한다. 또한 전체 공간이 $\mathbb{R}^3$이므로 집합 $\{ T(s), N(s), B(s) \}$는 $\mathbb{R}^3$의 기저를 이룬다. 다시 말해 곡선 위의 점 $s$이 주어질 때마다 그 점에 의존하는 $\mathbb{R}^3$의 정규직교기저가 주어지는 것이다. 
 
-## Example
+### Example
 **(i)** Consider the curve $\alpha(s) = \left(r \cos \frac{s}{r}, r \sin \frac{s}{r}, 0 \right), \forall s \in (a,b)$. Then $\alpha$ is a unit speed curve, and we have
 
 $$\begin{align*}
@@ -72,14 +73,12 @@ $$\begin{align*}
 
 즉 원의 경우 곡률은 모든 점에 대해서 반지름의 역수인 $\frac{1}{r}$로 일정하고, 한 평면에 완전히 속해 있으므로 토션은 $0$임을 알 수 있다.
 
-## Properties
+## Theorem 1
 Let $\alpha(s)$ be a unit speed curve.
 
-**(i)** For each $s$ such that $\kappa(s) \neq 0$, the set $\{ T(s), N(s), B(s) \}$ is an orthonormal basis of $\mathbb{R}^3$.
+**(i)** For each $s$ such that $\kappa(s) \neq 0$, the set $\{ T(s), N(s), B(s) \}$ is an orthonormal basis of $\mathbb{R}^3$, called the ***Frenet-Serret frame***.
 
-**(ii)** If $\kappa \equiv 0$ on an interval $[a, b]$, then the curve segment $\alpha: [a, b] \to \mathbb{R}^3$ is a straight line.
-
-**(iii)** Suppose that $\kappa \not \equiv 0$. If $\tau \equiv 0$, then $\alpha$ is a plane curve.
+**(ii)** $\kappa \equiv 0$ $\iff$ $\alpha$ is a straight line $\iff$ $\exists x_0 \in \mathbb{R}^3$ such that every tangent line to $\alpha$ passes through $x_0$.
 
 ### Proof
 **(i)** By construction, we have that $\| T(s) \| = 1 = \| N(s) \|$, $B(s) \perp T(s)$ and $B(s) \perp N(s)$. Note that
@@ -96,7 +95,7 @@ so $T(s) \perp N(s)$.
 
 Note that $\| B(s) \| = \| T(s) \| \| N(s) \| = 1$ since $B(s)$ is defined as $T(s) \times N(s)$. Thus $\{ T(s), N(s), B(s) \}$ is an orthonormal basis of $\mathbb{R}^3$.
 
-**(ii)** Since $\kappa(s) = \| T'(s) \| = 0$, we have $T'(s) = 0$, so $T(s) = c$ for some constant vector $c$. By the fundamental theorem of calculus, we have
+**(ii)** Since $\kappa(s) = \| T'(s) \| = 0$, we have $T'(s) = 0$, so $T(s) = c$ for some constant vector $c \in \mathbb{R}^3$. By the fundamental theorem of calculus, we have
 
 $$\begin{align*}
 \alpha(s) &= \int_a^s \alpha'(u) du + \alpha(a) \\
@@ -106,17 +105,24 @@ $$\begin{align*}
 
 which is the equation of a straight line.
 
-**(iii)** Suppose that $\tau \equiv 0$. By the Frenet-Serret formula, $B' \equiv 0$, so $B$ is a constant vector. We claim that $\langle \alpha(s) - \alpha(s_0), B(s) \rangle = 0$ for any $s, s_0$.
+Suppose that $\alpha$ is a straight line. Note that each tangent line to $\alpha$ is the same as $\alpha$. If we choose any point $x_0$ on $\alpha$, then every tangent line to $\alpha$ passes through $x_0$.
+
+Suppose that every tangent line to $\alpha$ passes through some point $x_0$. Then we have
+
+$$\alpha(s) - x_0 = \lambda(s)T(s)$$
+
+for some scalar function $\lambda(s)$. Since $\langle \alpha(s) - x_0, T(s) \rangle = \lambda(s)$ and $\alpha(s)$ and $T(s)$ are differentiable on $(a,b)$, $\lambda(s)$ is differentiable on $(a,b)$. 
+
+If $\kappa \equiv 0$, then we are done. If we assume $\kappa \not \equiv 0$, then there is some interval such that the normal vector $N(s)$ is defined. Then 
 
 $$\begin{align*}
-\frac{d}{ds} \langle \alpha(s) - \alpha(s_0), B(s) \rangle &= \langle \alpha'(s), B(s) \rangle + \langle \alpha(s) - \alpha(s_0), B'(s) \rangle \\
-&= \langle T(s), B(s) \rangle + \langle \alpha(s) - \alpha(s_0), 0 \rangle \\
-&= 0,
+T(s) &= \lambda'(s)T(s) + \lambda(s)T'(s) \\
+&= \lambda'(s)T(s) + \lambda(s)\kappa(s)N(s).
 \end{align*}$$
 
-so we have $\langle \alpha(s) - \alpha(s_0), B(s) \rangle = c$ for some constant $c$. Taking $s = s_0$, we obtain $c = 0$. Thus, $\langle \alpha(s) - \alpha(s_0), B(s) \rangle = 0$, which means that $\alpha(s)$ lies in the plane through $\alpha(s_0)$ and perpendicular to $B(s)$. $\blacksquare$
+Hence $(\lambda'(s) - 1)T(s) + \lambda(s)\kappa(s)N(s) = 0$, which implies that $\lambda'(s) = 1$ and $\lambda(s)\kappa(s) = 0$. These two condition contradicts each other, so we must have that $\kappa \equiv 0$. $\blacksquare$
 
-# Frenet-Serret Formula
+## Frenet-Serret Formula
 Let $\alpha(s)$ be a unit speed curve with $\kappa \not \equiv 0$, and let $\{ T(s), N(s), B(s), \kappa(s), \tau(s) \}$ be a Frenet-Serret appartus of $\alpha$ at $s$. Then we have:
 
 **(i)** $T'(s) = \kappa(s) N(s)$
@@ -143,7 +149,7 @@ B
 
 $B'$을 잘 보면 오직 $N$에만 의존하는 걸 알 수 있는데, 다시 말해 바이노말 벡터는 $T$나 그 자신 $B$ 방향으로 변하지 않고 오직 $N$ 방향으로만 변한다는 것이다. 또한 그 비례 상수가 토션으로 주어지는데, 토션의 정의 자체가 $B'$의 $N$ 방향 변화량으로 정의되었기 때문에 자연스럽게 이해할 수 있다. 뒤집어서 말하면, 토션이 $0$이면 $B$는 변하지 않고, 이는 주어진 커브가 어떤 한 평면에 완전히 속하게 됨을 알 수 있다.
 
-## Proof
+::: {.callout-note title="Proof" collapse="true" icon=false}
 Note that each vector $v$ in $\mathbb{R}^3$ can be expressed as:
 
 $$v = \langle v, T \rangle T + \langle v, N \rangle N + \langle v, B \rangle B.$$
@@ -206,18 +212,46 @@ $$\begin{align*}
 \end{align*}$$
 
 Since $B' = \langle B', T \rangle T + \langle B', N \rangle N + \langle B', B \rangle B = \tau N$, we have $B' = \tau N$. $\blacksquare$
+:::
 
-## Corollary 1
-Let $\alpha(s)$ be a unit speed curve with $\kappa \not \equiv 0$. TFAE.
+## Definition 2
+Let $\alpha(s)$ be a unit speed curve, and let $\{ T(s), N(s), B(s) \}$ be a Frenet-Serret frame of $\alpha$.
 
-**(i)** $\alpha$ is a plane curve.
+**(i)** The ***osculating plane*** to $\alpha$ at the point $\alpha(s)$ is the plane through $\alpha(s)$ spanned by $T(s)$ and $N(s)$ (and hence perpendicular to $B(s)$).
 
-**(ii)** $B$ is a constant vector.
+**(ii)** The ***normal plane*** to $\alpha$ at the point $\alpha(s)$ is the plane through $\alpha(s)$ spanned by $N(s)$ and $B(s)$ (and hence perpendicular to $T(s)$).
 
-**(iii)** $\tau \equiv 0$.
+**(iii)** The ***rectifying plane*** to $\alpha$ at the point $\alpha(s)$ is the plane through $\alpha(s)$ spanned by $T(s)$ and $B(s)$ (and hence perpendicular to $N(s)$).
+
+## Theorem 2
+Let $\alpha(s): (a, b) \to \mathbb{R}^3$ be a unit speed curve, and let $\{ \kappa(s), \tau(s), T(s), N(s), B(s) \}$ be a Frenet-Serret apparatus of $\alpha$ where $\kappa \not \equiv 0$.
+
+**(i)** $\tau \equiv 0$ $\iff$ $\alpha$ is a plane curve $\iff$ $B(s)$ is a constant vector.
+
+**(ii)** $\alpha$ is a part of circle of radius $\frac{1}{\kappa}$ $\iff$ $\kappa \equiv C$ for some positive constant $C > 0$ and $\tau \equiv 0$.
+
+**(iii)** Every normal plane to $\alpha$ passes through a fixed point $\iff$ $\alpha$ lies on a sphere.
+
+**(iv)** Every osculating plane to $\alpha$ is parallel $\iff$ $\tau \not \equiv 0$.
+
+**(v)** Suppose that $\alpha$ lies on a sphere of radius $r$ and center $m$. If $\tau \not \equiv 0$, then
+
+$$\alpha - m = - \rho N - \rho'\sigma B$$
+
+where $\displaystyle \rho = \frac{1}{\kappa}$ and $\sigma = \frac{1}{\tau}$.
 
 ### Proof
-**(i)** $\implies$ **(ii)** Suppose that $\alpha$ is a plane curve. WLOG, we can assume that $\alpha$ lies in the $xy$-plane, i.e. $\alpha(s) = (x(s), y(s), 0)$ for some scalar functions $x(s), y(s)$. Then we have
+**(i)** Suppose that $\tau \equiv 0$. By the Frenet-Serret formula, $B' \equiv 0$, so $B$ is a constant vector. We claim that $\langle \alpha(s) - \alpha(s_0), B(s) \rangle = 0$ for any $s, s_0$.
+
+$$\begin{align*}
+\frac{d}{ds} \langle \alpha(s) - \alpha(s_0), B(s) \rangle &= \langle \alpha'(s), B(s) \rangle + \langle \alpha(s) - \alpha(s_0), B'(s) \rangle \\
+&= \langle T(s), B(s) \rangle + \langle \alpha(s) - \alpha(s_0), 0 \rangle \\
+&= 0,
+\end{align*}$$
+
+so we have $\langle \alpha(s) - \alpha(s_0), B(s) \rangle = c$ for some constant $c$. Taking $s = s_0$, we obtain $c = 0$. Thus, $\langle \alpha(s) - \alpha(s_0), B(s) \rangle = 0$, which means that $\alpha(s)$ lies in the plane through $\alpha(s_0)$ and perpendicular to $B(s)$. 
+
+Suppose that $\alpha$ is a plane curve. WLOG, we can assume that $\alpha$ lies in the $xy$-plane, i.e. $\alpha(s) = (x(s), y(s), 0)$ for some scalar functions $x(s), y(s)$. Then we have
 
 $$\begin{align*}
 T(s) &= (x'(s), y'(s), 0), \\
@@ -227,38 +261,132 @@ B(s) &= T(s) \times N(s) = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} 
 
 Since $\vert B(s) \vert = 1$ and $B$ is continuous, we obtain $\frac{x'y'' - y'x''}{\kappa(s)} = \pm 1$. Thus, $B$ is a constant vector.
 
-**(ii)** $\implies$ **(iii)** Suppose that $B$ is a constant vector. By the Frenet-Serret formula, we have $B' = \tau N = 0$. Since $N \neq 0$, we obtain $\tau = 0$.
+Suppose that $B$ is a constant vector. By the Frenet-Serret formula, we have $B' = \tau N = 0$. Since $N \neq 0$, we obtain $\tau = 0$.
 
-**(iii)** $\implies$ **(i)** Suppose that $\tau = 0$. By the Frenet-Serret formula, we have $B' = 0$, so $B(s) = B_0$ is a constant vector. Then we have $\langle B_0, \alpha'(s) \rangle = \langle B_0, T(s) \rangle = 0$. Integrating both sides of the equation, we obtain $\langle B_0, \alpha(s) \rangle = C$ for some constant $C$. Taking $s = s_0$, $C = \langle B_0, \alpha(s_0) \rangle$. Thus, $\langle B_0, \alpha(s) - \alpha(s_0) \rangle = 0$, which means that $\alpha(s)$ lies in the plane through $\alpha(s_0)$ and perpendicular to $B_0$. $\blacksquare$
+# Non-unit Speed Curves
 
-# Definition 2
-Let $\alpha(s)$ be a unit speed curve, and let $\{ T(s), N(s), B(s) \}$ be a Frenet-Serret frame of $\alpha$.
+## Definition 3
+Let $\beta: [a, b] \to \mathbb{R}^3$ be a regular curve, and let $t = t(s)$ be the arc length reparametrization where $s(t) = \int_a^t \| \beta'(u) \| du$. Then $\alpha(s) := \beta(t(s))$ is a unit speed curve. For the Frenet-Serret apparatus $\{\kappa(s), \tau(s), T(s), N(s), B(s)\}$ of $\alpha$, we define ***the Frenet-Serret apparatus of $\beta$*** by
 
-**(i)** The ***osculating plane*** to $\alpha$ at the point $\alpha(s)$ is the plane through $\alpha(s)$ spanned by $T(s)$ and $N(s)$ (and hence perpendicular to $B(s)$).
+$$\begin{align*}
+\kappa_{\beta}(t) &= \kappa(s(t)), \\
+\tau_{\beta}(t) &= \tau(s(t)), \\
+T_{\beta}(t) &= T(s(t)), \\
+N_{\beta}(t) &= N(s(t)), \\
+B_{\beta}(t) &= B(s(t)).
+\end{align*}$$
 
-**(ii)** The ***normal plane*** to $\alpha$ at the point $\alpha(s)$ is the plane through $\alpha(s)$ spanned by $N(s)$ and $B(s)$ (and hence perpendicular to $T(s)$).
+본래 프레네-세레 도구는 단위 스피드 곡선에 대해서만 정의했지만, 여기서는 단위 스피드가 아닌 정칙 곡선에 대해서도 정의한다. 정칙 곡선은 항상 길이 재매개변수화를 통해 단위 스피드 곡선으로 나타낼 수 있고, 여기서 프레네-세레 도구를 정의한 뒤 거꾸로 재매개변수화를 적용시켜서 정의해준다. 그러면 각 도구들을 계산하는 방법 또한 달라질 것이고, 구체적인 공식은 아래와 같이 주어진다.
 
-**(iii)** The ***rectifying plane*** to $\alpha$ at the point $\alpha(s)$ is the plane through $\alpha(s)$ spanned by $T(s)$ and $B(s)$ (and hence perpendicular to $N(s)$).
+## Theorem 3
+Let $\beta$ be a regular curve, and let $\{ \kappa, \tau, T, N, B \}$ be the Frenet-Serret apparatus of $\beta$. Then 
 
-## Corollary 2
-Let $\alpha(s): (a, b) \to \mathbb{R}^3$ be a unit speed curve, and let $\{ \kappa(s), \tau(s), T(s), N(s), B(s) \}$ be a Frenet-Serret apparatus of $\alpha$.
+**(i)** $T = \frac{\dot{\beta}}{\| \dot{\beta} \|}$
 
-**(i)**  $\alpha(s)$ is a straight line $\iff$ $\exists x_0 \in \mathbb{R}^3$ such that every tangent line to $\alpha$ passes through $x_0$.
+**(ii)** $B = \frac{\dot{\beta} \times \ddot{\beta}}{\| \dot{\beta} \times \ddot{\beta} \|}$
 
-**(ii)** $\alpha$ is a part of circle of radius $\frac{1}{\kappa}$ $\iff$ $\kappa \equiv C$ for some positive constant $C$ and $\tau \equiv 0$.
+**(iii)** $N = T \times B$
 
-**(iii)** Every normal plane to $\alpha$ passes through a fixed point $\iff$ the image $\alpha((a, b))$ of $\alpha$ lies on a sphere.
+**(iv)** $\kappa = \frac{\| \dot{\beta} \times \ddot{\beta} \|}{\| \dot{\beta} \|^3}$
 
-**(iv)** Every osculating plane to $\alpha$ is parallel $\iff$ $\tau \neq 0$, that is, $\alpha$ is a plane curve.
+**(v)** $\tau = \frac{\big[\dot{\beta}, \ddot{\beta}, \dddot{\beta}\big]}{\| \dot{\beta} \times \ddot{\beta} \|^2}$
 
-**(v)** Suppose that the image $\alpha((a,b))$ of $\alpha$ lies on a sphere of radius $r$ and center $m$. Then $\kappa \neq 0$. If $\tau \neq 0$, then
+$\dot{\beta}, \ddot{\beta}, \dddot{\beta}$는 각각 $\beta$를 $t$에 대해서 한 번 미분, 두 번 미분, 세 번 미분한 기호이다. $\alpha$는 $s$를 변수로 가지고 $\beta$는 $t$를 변수로 가지기 때문에 어떤 변수로 미분했는지 구분해줄 필요가 있다. $s$로 미분했을 경우 $\alpha'$, $t$로 미분했을 경우 $\dot{\beta}$와 같이 쓴다.
 
-$$\alpha - m = - \rho N - \rho'\sigma B$$
+::: {.callout-note title="Proof" collapse="true" icon=false}
+Let $\{ \kappa_\alpha, \tau_\alpha, T_\alpha, N_\alpha, B_\alpha \}$ and $\{ \kappa_\beta, \tau_\beta, T_\beta, N_\beta, B_\beta \}$ be the Frenet-Serret apparatus of $\alpha$ and $\beta$ respectively.
 
-where $\displaystyle \rho = \frac{1}{\kappa}$ and $\sigma = \frac{1}{\tau}$.
+**(i)** Note that $\dot{s}(t) = \| \dot{\beta}(t) \|$. Since $\beta(t) = \alpha(s(t))$, we have 
 
-### Proof
+$$\begin{align*}
+dot{\beta}(t) &= \alpha'(s(t)) \dot{s}(t) \\
+&= T_\alpha(s(t)) \| \dot{\beta}(t) \| \\
+&= T_\beta(t) \| \dot{\beta}(t) \|.
+\end{align*}$$
 
+Hence, $T_\beta(t) = \frac{\dot{\beta}(t)}{\| \dot{\beta}(t) \|}$.
+
+**(iv)** From **(i)** and the Frenet-Serret formula, we have
+
+$$\begin{align*}
+\ddot{\beta}(t) &= \frac{d}{dt} \left( T_\alpha(s(t)) \dot{s}(t) \right) \\
+&= T'_\alpha(s(t)) \dot{s}(t)^2 + T_\alpha(s(t)) \ddot{s}(t) \\
+&= \kappa_\alpha(s(t)) N_\alpha(s(t)) \dot{s}(t)^2 + T_\alpha(s(t)) \ddot{s}(t).
+\end{align*}$$
+
+Then
+
+$$\begin{align*}
+\dot{\beta}(t) \times \ddot{\beta}(t) &= (T_\alpha(s(t)) \| \dot{\beta}(t) \|) \times (\kappa_\alpha(s(t)) N_\alpha(s(t)) \dot{s}(t)^2 + T_\alpha(s(t)) \ddot{s}(t)) \\
+&= \kappa_\alpha(s(t)) \dot{s}^3(t) B_\alpha(s(t)) \\
+&= \kappa_\beta(t) \| \dot{\beta}(t) \|^3 B_\beta(t).
+\end{align*}$$
+
+Hence, $\kappa_\beta(t) = \frac{\| \dot{\beta}(t) \times \ddot{\beta}(t) \|}{\| \dot{\beta}(t) \|^3}$.
+
+**(ii)** Suppose that $\| \dot{\beta} \times \ddot{\beta} \| \neq 0$. From **(iv)**, we have $\| \dot{\beta}(t) \times \ddot{\beta}(t) \| = \kappa_\beta(t) \| \dot{\beta}(t) \|^3$. Thus,
+
+$$\begin{align*}
+B_\beta(t) &= \frac{\dot{\beta}(t) \times \ddot{\beta}(t)}{\| \kappa_\beta(t) \| \| \dot{\beta}(t) \|^3} \\
+&= \frac{\dot{\beta}(t) \times \ddot{\beta}(t)}{\kappa_\beta(t) \| \dot{\beta}(t) \|^3}.
+\end{align*}$$
+
+**(iii)** 
+
+$$\begin{align*}
+N_\beta(t) &= N_\alpha(s(t)) \\
+&= B_\alpha(s(t)) \times T_\alpha(s(t)) \\
+&= B_\beta(t) \times T_\beta(t).
+\end{align*}$$
+
+**(v)** From (iv) and the Frenet-Serret formula, we have
+
+$$\begin{align*}
+\dddot{\beta}(t) &= \frac{d}{dt}(\kappa_\alpha(s(t)) \dot{s}(t)^2 \\
+&= \frac{d}{dt}(\kappa_\alpha(s(t)) \dot{s}(t)^2 N_\alpha(s(t)) + T_\alpha(s(t)) \ddot{s}(t)) \\
+&= \frac{d}{dt}(\kappa_\alpha(s(t))\dot{s}(t)^2) N_\alpha(s(t)) + \kappa_\alpha(s(t))\dot{s}(t)^3 N'_\alpha(s(t)) + \dddot{s}(t) T_\alpha(s(t)) + \ddot{s}(t) T'_\alpha(s(t)) \dot{s}(t) \\
+&= \frac{d}{dt}(\kappa_\alpha(s(t))\dot{s}(t)^2) N_\alpha(s(t)) + \kappa_\alpha(s(t))\dot{s}(t)^3 (-\kappa_\alpha(s(t)) T_\alpha(s(t)) + \tau_\alpha(s(t)) B_\alpha(s(t))) \\
+& \quad + \dddot{s}(t) T_\alpha(s(t)) + \ddot{s}(t) (\kappa_\alpha(s(t)) N_\alpha(s(t)) \dot{s}(t)) \\
+&= (\dddot{s}(T) - \kappa_\alpha^2\dot{s}^3)T_\alpha(s(t)) + (\ddot{s}(t)\dot{s}(t)\kappa_\alpha(s(t)) + \frac{d}{dt}(\kappa_\alpha(s(t)))N_\alpha(s(t)) + \kappa_\alpha\dot{s}^3\tau_\alpha(s(t)) B_\alpha(s(t)).
+\end{align*}$$
+
+Hence,
+
+$$\begin{align*}
+\big[\dot{\beta}, \ddot{\beta}, \dddot{\beta}\big] &= \langle \kappa_\beta(t) \dot{s}^3(t) B_\beta(t), \kappa_\beta(t)\dot{s}^3(t)\tau_\beta(t) B_\beta(t) \rangle \\
+&= \kappa^2_\beta(t) \tau_\beta(t) \dot{s}^6(t) \\
+&= (\kappa_\beta(t) \| \dot{\beta}(t) \|^3)^2 \tau_\beta(t).
+\end{align*}$$
+
+Since $\| \dot{\beta}(t) \times \ddot{\beta}(t) \| = \kappa_\beta(t) \| \dot{\beta}(t) \|^3$, we have
+
+$$\tau_\beta(t) = \frac{\big[\dot{\beta}, \ddot{\beta}, \dddot{\beta}\big]}{\| \dot{\beta}(t) \times \ddot{\beta}(t) \|^2}. \blacksquare$$
+:::
+
+## Frenet-Serret Formula
+Let $\beta$ be a regular curve, and let $\{ \kappa, \tau, T, N, B \}$ be the Frenet-Serret apparatus of $\beta$. Then
+
+**(i)** $T'(s) = \kappa(s) \| \dot{\beta} \| N(s)$
+
+**(ii)** $N'(s) = -\kappa(s) \| \dot{\beta} \| T(s) + \tau(s) \| \dot{\beta} \| B(s)$
+
+**(iii)** $B'(s) = -\tau(s) \| \dot{\beta} \| N(s)$
+
+In matrix form,
+
+$$\begin{bmatrix}
+T' \\
+N' \\
+B'
+\end{bmatrix} = \begin{bmatrix}
+0 & \kappa \| \dot{\beta} \| & 0 \\
+-\kappa \| \dot{\beta} \| & 0 & \tau \| \dot{\beta} \| \\
+0 & -\tau \| \dot{\beta} \| & 0
+\end{bmatrix} \begin{bmatrix}
+T \\
+N \\
+B
+\end{bmatrix}.$$
 
 # Reference
 - R. S. Millman and G. D. Parker, Elements of Differential Geometry, Prentice-Hall, 1977.

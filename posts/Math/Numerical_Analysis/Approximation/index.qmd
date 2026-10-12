@@ -10,7 +10,7 @@ categories:
 # Best Approximation
 구간 $[a, b]$에서 정의된 연속함수 $f$가 주어졌을 때 우리는 $f$를 최대한 잘 근사하는 다항식을 찾으려고 한다. 다시 말해 다항식
 
-$$p^\ast(x) = \argmin_{p \in \mathcal{P}_n} \| f(x) - p(x) \|$$
+$$p^\ast(x) = \operatorname*{argmin}_{p \in \mathcal{P}_n} \| f(x) - p(x) \|$$
 
 를 찾으려고 하고, 이러한 $n$차 다항식 $p^\ast$를 **최적근사다항식(best approximation polynomial)**이라고 부른다. 놈은 $L_2$ 놈이 주어진 것으로 간주한다. 이러한 $p^\ast$가 존재함은 이미 증명되어 있으므로, 이 포스트에서는 $p^\ast$를 어떻게 계산할 수 있는지에 대한 방법을 다룬다. 편의를 위해 간단하게 구간을 $[0, 1]$로 두자.
 

@@ -1,0 +1,89 @@
+---
+title: "Numerical Integration"
+author: "Youmin Chun"
+date: "2026-10-12 00:00:01"
+description: "수치해석학에서 수치적분법(Numerical Integration)에 대해서 살펴본다"
+categories: 
+  - Math > Numerical Analysis
+---
+
+# Introduction
+이 포스트에서는 정적분
+
+$$I(f) = \int_a^b f(x) dx$$
+
+를 수치적으로 계산하는 여러 방법에 대해서 다룬다. 적분값을 계산하는 일은 적분이라는 테마 그 자체만으로도 충분히 가치가 있지만, 함수를 근사할 때 $L^2$ 놈을 사용하는 일에 있어서도 적분을 계산해야 하는 일이 생기는 등 다양한 상황에서 복잡한 함수의 적분을 계산하는 일을 필요로 한다. 특별히 우리는 정적분을 리만합 $\sum_{i=1}^n f(x_i^*)\Delta x$의 극한으로 취급하고 함수 $f$를 다항식으로 근사하여 구체적인 값을 계산하고, 오차를 추정하는 방법을 다룬다.
+
+# Trapezoidal Rule
+함수 $f$가 구간 $[a, b]$에서 주어졌다고 하자. 이때 $[a, b]$에서 $f$를 근사하는 일차식을 $p$라고 두면 적분값은
+
+$$T(f) = \int_a^b p(x) dx = \frac{b-a}{2}(f(a) + f(b))$$
+
+으로 주어지고, 보다시피 사다리꼴의 넓이다.
+
+![](int1.png)
+
+한편 뉴턴 계차상 정리에 의해 $f(x) - p(x) = (x-a)(x-b)f[a, b, x]$가 성립하고, 따라서 적분값의 오차는 다음과 같이 주어진다.
+
+:::: {.callout-note icon=false}
+## Lemma
+Let $f: [a, b] \to \mathbb{R}$ be a continuous function, and let $g: [a, b] \to \mathbb{R}$ be an integrable function with $g(x) \ge 0, \forall x \in [a, b]$. Then there exists $c \in [a, b]$ such that
+
+$$\int_a^b f(x) g(x) dx = f(c) \int_a^b g(x) dx$$
+::::
+
+$$\begin{align*}
+E(f) &= I(f) - T(f) \\
+&= \int_a^b (f(x) - p(x)) dx \\
+&= \int_a^b (x-a)(x-b)f[a, b, x] dx \\
+&= f[a, b, c] \int_a^b (x-a)(x-b) dx \\
+&= \frac{f''(\xi)}{2} \cdot \left( - \frac{(b-a)^3}{6} \right) \\
+&= -\frac{f''(\xi)}{12}(b-a)^3 \\
+\end{align*}$$
+
+이제 구간 $[a, b]$를 등간격으로 분할해보자. 즉 $a = x_0 < x_1 < \dots < x_n = b$이고 점들 사이의 간격을 $h = \frac{b-a}{n}$으로 두는 것이다. 그러면 $I(f)$를 다음과 같이 개선할 수 있다.
+
+$$\begin{align*}
+I(f) &= \sum_{i=0}^{n-1} \int_{x_i}^{x_{i+1}} f(x) dx \\
+&= \sum_{i=0}^{n-1} \left[ \frac{f(x_i) + f(x_{i+1})}{2} h - \frac{f''(\xi_i)}{12} h^3 \right] \\
+&= h \left[\frac{1}{2}f(x_0) + f(x_1) + \dots + f(x_{n-1}) + \frac{1}{2}f(x_n)\right] - \frac{h^3}{12} \sum_{i=0}^{n-1} f''(\xi_i) \\
+&= T_n(f) + E^T_n(f)
+\end{align*}$$
+
+이때 $\xi_i \in [x_i, x_{i+1}]$로 주어지고,
+
+$$\begin{align*}
+T_n(f) &:= h\left[\frac{1}{2}f(x_0) + f(x_1) + \dots + f(x_{n-1}) + \frac{1}{2}f(x_n)\right] \\
+E^T_n(f) &:= - \frac{h^3}{12} \sum_{i=0}^{n-1} f''(\xi_i)
+\end{align*}$$
+
+로 정의한다. 특별히 $T_n(f)$를 ***trapezoidal numerical integration rule*** 혹은 ***composite trapezoid rule***이라고 부른다.
+
+한편 오차 $E^T_n(f)$는 다음과 같이 개선할 수 있다.
+
+$$\begin{align*}
+E^T_n(f) &= - \frac{h^3}{12} \sum_{i=0}^{n-1} f''(\xi_i) \\
+&= - \frac{nh^3}{12} \left[ \frac{1}{n} \sum_{i=0}^{n-1} f''(\xi_i) \right] \\
+&= - \frac{nh^3}{12} f''(c) \\
+&= - h^2 \frac{b-a}{12} f''(c)
+\end{align*}$$
+
+이때 $c \in [a, b]$인 상수이고, 사잇값 정리로부터 그 존재성이 보장된다. 또한
+
+$$\begin{align*}
+\lim_{h \to 0} \frac{E^T_n(f)}{h^2} &= \lim_{h \to 0} \left( - \frac{b-a}{12} f''(c) \right) \\
+&= \lim_{n \to \infty} \left( - \frac{b-a}{12n} \sum_{i=1}^n f''(\xi_i) \right) \\
+&= - \frac{1}{12} \int_a^b f''(x) dx \\
+&= - \frac{1}{12} (f'(b) - f'(a)) =: \frac{\tilde{E}^T_n(f)}{h^2}
+\end{align*}$$
+
+임을 알 수 있고, $\tilde{E}^T_n(f)$을 오차 $E^T_n(f)$의 ***asymptotic estimate***이라고 부른다. 따라서 충분히 작은 $h$에 대해서 $I(f) \approx T_n(f) + \tilde{E}^T_n(f)$가 성립하고, 이때의 $I_f$를 특별히 $CT_n(f)$라고 두면
+
+$$\begin{align*}
+CT_n(f) &= T_n(f) - \tilde{E}^T_n(f)
+\end{align*}$$
+
+이 성립한다. $CT_n(f)$를 ***corrected trapezoidal rule***이라고 부른다.
+
+# Reference
+- K. E. Atkinson and W. Han, Elementary Numerical Analysis, 3rd ed., John Wiley & Sons, 2004.

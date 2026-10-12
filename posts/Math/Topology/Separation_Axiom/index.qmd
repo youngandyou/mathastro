@@ -27,7 +27,14 @@ Let $(X, \mathscr{T})$ be a topological space.
 
 **(vii)** $X$ is called a ***$T_4$-space*** or ***normal Hausdorff*** if $X$ is normal and $T_1$.
 
-### Remark
+## Example
+**(i)** $(\mathbb{R}^n, \mathscr{T}_{\text{usual}})$ is a $T_4$-space. 
+
+**(ii)** $(\mathbb{R}, \mathscr{T}_c)$ is a $T_1$-space, but not a $T_2$-space.
+
+**(iii)** $(\mathbb{R}, \mathscr{T}_K)$ is a $T_2$-space, but not a $T_3$-space.
+
+## Remark 1
 **(i)** $T_4 \implies T_3 \implies T_2 \implies T_1 \implies T_0$
 
 **(ii)** "Regular" $\nimplies$ "Hausdorff"
@@ -49,12 +56,36 @@ Let $\mathscr{T}$ and $\mathscr{T}'$ be two topological space on a set $X$. Supp
 
 ### Proof
 
-## Example
-**(i)** $(\mathbb{R}^n, \mathscr{T}_{\text{usual}})$ is a $T_4$-space. 
+## Lemma
+Let $X$ be a $T_1$ space.
 
-**(ii)** $(\mathbb{R}, \mathscr{T}_c)$ is a $T_1$-space, but not a $T_2$-space.
+**(i)** $X$ is regular $\iff$ for each $x \in X$ and an open set $U$ with $x \in U$, there exists an open set $V$ in $X$ such that $x \in V$ and $\overline{V} \subset U$.
 
-**(iii)** $(\mathbb{R}, \mathscr{T}_K)$ is a $T_2$-space, but not a $T_3$-space.
+**(ii)** $X$ is normal $\iff$ for each closed set $C$ of $X$ and an open set $U$ in $X$ with $C \subset U$, there exists an open set $V$ in $X$ such that $C \subset V$ and $\overline{V} \subset U$.
+
+### Proof
+
+## Theorem 2
+**(i)** A subspace of a $T_3$ space is $T_3$.
+
+**(ii)** The product space of $T_3$ spaces is $T_3$.
+
+### Proof
+
+## Remark 2
+We cannot generalize this theorem to $T_4$ spaces. That is,
+
+**(i)** A subspace of a $T_4$ space is not necessarily $T_4$.
+
+::: {.callout-note title="Proof" collapse="true" icon=false}
+
+:::
+
+**(ii)** The product space of $T_4$ spaces is not necessarily $T_4$.
+
+::: {.callout-note title="Proof" collapse="true" icon=false}
+
+:::
 
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

@@ -13,7 +13,7 @@ $$\newcommand{\nimplies}{\mathrel{\rlap{\mkern 20mu /}\implies}}$$
 ## Definition
 Let $(X, \mathscr{T})$ be a topological space. 
 
-**(i)** $X$ is called a ***$T_0$-space*** if for all $x, y \in X$ with $x \neq y$, $\exists U \in \mathscr{T}$ such that $x \in U$ and $y \notin U$.
+**(i)** $X$ is called a ***$T_0$-space*** if for all $x, y \in X$ with $x \neq y$, $\exists U \in \mathscr{T}$ such that $x \in U$ and $y \notin U$ or $x \notin U$ and $y \in U$.
 
 **(ii)** $X$ is called a ***$T_1$-space*** if for all $x, y \in X$ with $x \neq y$, $\exists U, V \in \mathscr{T}$ such that $x \in U, y \notin U$ and $y \in V, x \notin V$.
 
@@ -54,27 +54,121 @@ Let $\mathscr{T}$ and $\mathscr{T}'$ be two topological space on a set $X$. Supp
 
 **(iii)** If $\mathscr{T}$ is $T_2$, then $\mathscr{T}'$ is $T_2$.
 
-### Proof
-
-## Lemma
-Let $X$ be a $T_1$ space.
-
-**(i)** $X$ is regular $\iff$ for each $x \in X$ and an open set $U$ with $x \in U$, there exists an open set $V$ in $X$ such that $x \in V$ and $\overline{V} \subset U$.
-
-**(ii)** $X$ is normal $\iff$ for each closed set $C$ of $X$ and an open set $U$ in $X$ with $C \subset U$, there exists an open set $V$ in $X$ such that $C \subset V$ and $\overline{V} \subset U$.
-
-### Proof
-
+# $T_1$ Space
 ## Theorem 2
-**(i)** A subspace of a $T_3$ space is $T_3$.
+**(i)** $X$ is a $T_1$-space $\iff$ Every finite subset of $X$ is closed.
 
-**(ii)** The product space of $T_3$ spaces is $T_3$.
+**(ii)** Let $X$ be a $T_1$-space, and let $A \subset X$. Then $x \in A'$ $\iff$ every neighborhood of $x$ contains infinitely many points of $A$.
 
 ### Proof
+**(i)** $(\Longrightarrow)$ Suppose that $X$ is a $T_1$-space. To show that every finite subset of $X$ is closed, it suffices to show that the singleton set $\{ x \}$ is closed, because any finite set is a union of singleton sets.
+
+We consider the set $\{ x \}.$ Let $y \in \overline{\{x \}},$ and suppose that $y \notin \{ x \},$ so $y \neq x.$ Then there exist two open set $U$ and $V$ of $X$ such that $x \in U, y \notin U$ and $y \in V, x \notin U.$ Since $V$ is a neighborhood of $y$, $\{ x\} \cap V \neq \emptyset.$ If $z \in \{ x\} \cap V,$ then $z = x$ and $z \in V.$ But $x \notin V,$ which is a contradiction. Thus, $y \in \{ x \},$ which means that $\overline{\{x\}} = \{ x\}.$ Hence, a singleton is closed, and therefore any finite subset of $X$ is closed.
+
+$(\Longleftarrow)$ Suppose that every finite subset of $X$ is closed. Let $x, y \in X$ with $x \neq y$. Since $\{x \}$ and $\{ y\}$ are closed, $X - \{ x\}$ and $X - \{ y\}$ are open, and $y \notin X - \{ y \}$, $x \notin X - \{x\}$. Thus $X$ is a $T_1$-space.
+
+**(ii)** $(\Longrightarrow)$ Let $x \in A'$. Then for any neighborhood $U$ of $x$, we have $A \cap (U - \{x\}) \neq \emptyset$. Suppose that there is some neighborhood $U$ of $x$ such that $U \cap A$ is finite. Then $U \cap (A - \{ x \})$ is also finite, and we denote $U \cap (A - \{ x \}) = \{ x_1, ..., x_n \}$. 
+
+Since $X$ is a $T_1$ space, $\{ x_1, ..., x_n \}$ is closed in $X$, so that $X - \{ x_1, ..., x_n \}$ is open in $X$. Then $U \cap (X - \{ x_1, ..., x_n \}) = U - \{ x_1, ..., x_n \}$ is also open in $X$. Since $x \notin U \cap (A - \{ x \}) = \{ x_1, ..., x_n \}$, we have that $x \in U - \{ x_1, ..., x_n \}$, which means that $U - \{ x_1, ..., x_n \}$ is a neighborhood of $x$.
+
+Then 
+
+$$(U - \{ x_1, ..., x_n \}) \cap (A - \{ x \}) \neq \emptyset$$
+
+by assumption. But $U \cap (A - \{ x \}) = \{ x_1, ..., x_n \}$, so that
+
+$$(U - \{ x_1, ..., x_n \}) \cap (A - \{ x \}) = \emptyset. \bigotimes$$
+
+Thus, every neighborhood of $x$ contains infinitely many points of $A$. 
+
+$(\Longleftarrow)$ Let $U$ be a neighborhood of $x$. Then $U$ contains infinitely many points of $A$. Then $A \cap (U - \{ x \})$ also contains infinitely many points of $A$, which means that it is not empty. Thus $x \in A'$. $\blacksquare$
+
+# $T_2$ Space
+## Theorem 3
+**(i)** Let $X$ be a Hausdorff space. Then every sequence in $X$ has either a unique limit or no limit.
+
+**(ii)** The product of two Hausdorff spaces is a Hausdorff space. 
+
+**(iii)** A subspace of a Hausdorff space is a Hausdorff space.
+
+### Proof
+(i) Let $\{ x_n \}$ be a sequence of points of $X$. If $\{ x_n \}$ does not converge to some point of $X$, then we are done. Suppose that $\{ x_n \}$ converges to two distinct points $x$ and $y$ of $X$. Since $X$ is Hausdorff, there are neighborhoods $U$ and $V$ of $x$ and $y$, respectively, such that $U \cap V = \emptyset$. Since $\{ x_n \}$ converges to both $x$ and $y$, there exist positive integers $N_1$ and $N_2$ such that $x_n \in U, \forall n \ge N_1$ and $x_n \in V, \forall n \ge N_2$. Take $N = \max \{ N_1, N_2 \}$. Then we have that $x_n \in U \cap V, \forall n \ge N$. $\bigotimes$ Thus, if $\{ x_n \}$ converges to some point of $X$, then it is unique.
+
+**(ii)** Let $(x_1, y_1)$ and $(x_2, y_2)$ be two distinct points in $X \times Y$. Then $x_1 \neq x_2$ or $y_1 \neq y_2$. WLOG, assume $x_1 \neq x_2$. Since $X$ is Hausdorff, there exist neighborhoods $U$ and $V$ of $x_1$ and $x_2$, respectively, such that $U \cap V = \emptyset$. Since $(x_1, y_1) \in U \times Y$ and $U \times Y$ is open in $X \times Y$, $U \times Y$ is a neighborhood of $(x_1, y_1)$. Similarly, $V \times Y$ is a neighborhood of $(x_2, y_2)$. Note that 
+
+$$(U \times Y) \cap (V \times Y) = (U \cap V) \times Y = \emptyset.$$
+
+Thus, $X \times Y$ is a Hausdorff space.
+
+**(iii)** Let $Y$ be a subspace of a Hausdorff space $X$. Let $x, y \in Y$ with $x \neq y$. Since $x, y \in X$ and $X$ is Hausdorff, there exist neighborhoods $U$ and $V$ of $x$ and $y$, respectively, such that $U \cap V = \emptyset$. Note that $Y \cap U$ and $Y \cap V$ are neighborhoods of $x$ and $y$ in $Y$, respectively, and that
+
+$$(Y \cap U) \cap (Y \cap V) = Y \cap (U \cap V) = \emptyset.$$
+
+Thus, $Y$ is a Hausdorff space. $\blacksquare$
+
+# $T_3$ Space
+## Theorem 4
+**(i)** Let $X$ be a $T_1$ space. Then $X$ is regular $\iff$ for each $x \in X$ and an open set $U$ with $x \in U$, there exists an open set $V$ in $X$ such that $x \in V$ and $\overline{V} \subset U$.
+
+**(ii)** A subspace of a $T_3$ space is $T_3$.
+
+**(iii)** The product space of $T_3$ spaces is $T_3$.
+
+### Proof
+**(i)**
+
+**(ii)**
+
+**(iii)**
+
+# $T_4$ Space
+## Theorem 5
+**(i)** Let $X$ be a $T_1$ space. Then $X$ is normal $\iff$ for each closed set $C$ of $X$ and an open set $U$ in $X$ with $C \subset U$, there exists an open set $V$ in $X$ such that $C \subset V$ and $\overline{V} \subset U$.
+
+**(ii)** Every second-countable $T_3$ space is a $T_4$ space.
+
+**(iii)** Every metrizable space is $T_4$. Hence, every metric space is $T_4$.
+
+**(iv)** Every compact Hausdorff space is $T_4$.
+
+### Proof
+**(i)**
+
+**(ii)** Let $X$ be a second-countable $T_3$ space. We need to prove that $X$ is normal. Let $A$ and $B$ be closed sets in $X$ such that $A \cap B = \emptyset$. Since $B$ is closed, for each $x \in A$, there exists an open set $U_x$ in $X$ such that $x \in U_x$ and $U_x \cap B = \emptyset$. (If not, there exists $x \in A$ such that $x \in \overline{B} = B$, so $x \in A \cap B = \emptyset$). By Theorem 4 **(i)**, there exists an open set $V_x$ in $X$ such that $x \in V_x$ and $\overline{V_x} \subset U_x$. 
+
+Since $X$ is second-countable, there is a countable basis $\mathscr{B}$. For each $V_x$, there exists $B_x \in \mathscr{B}$ such that $x \in B_x \subset V_x$. If we define $\mathcal{U}_A = \{ B_x \in \mathscr{B} \mid x \in A \}$, then $\mathcal{U}_A$ is a countable open covering of $X$ such that $\overline{B}_x \cap B = \emptyset, \forall x \in A$ because $U_x \cap B = \emptyset$. Since it is countable, we denote $\mathcal{U}_A = \{ U_n \mid n \in \mathbb{N} \}$. (If $\mathcal{U}_A$ is finite, WLOG, we may assume that for some $N \in \mathbb{N}$, $U_n = \emptyset, \forall n > N$.) 
+
+In a similar way, we can construct an countable open covering $\mathcal{V}_B = \{ V_n \mid n \in \mathbb{N} \}$ of $B$ such that $\overline{V}_n \cap A = \emptyset, \forall n \in \mathbb{N}$. 
+
+For each $n \in \mathbb{N}$, we define
+
+$$U_n' := U_n - \bigcup_{i=1}^n \overline{V}_i \quad \text{and} \quad V_n' := V_n - \bigcup_{i=1}^n \overline{U}_i.$$
+
+Since each $U_n'$ and $V_n'$ is open in $X$ and $\overline{U}_n \cap B = \emptyset, \overline{V}_n \cap A = \emptyset, \forall n \in \mathbb{N}$, we obtain
+
+$$U' := \bigcup_{n \in \mathbb{N}} U_n' \supset A \quad \text{and} \quad V' := \bigcup_{n \in \mathbb{N}} V_n' \supset B$$
+
+and $U', V'$ are open in $X$.
+
+If $x \in U' \cap V'$, then $x \in U_n'$ and $x \in V_m'$ for some $n, m \in \mathbb{N}$, WLOG, with $n \le m$. Then $x \in U_n \subset \overline{U}_n$ but $x \notin \overline{U}_i$ for each $i = 1, \dots, n, \dots, m$. $\bigotimes$ Hence, $U' \cap V' = \emptyset$, and therefore $X$ is normal. $\blacksquare$
+
+**(iii)** Let $X$ be a metrizable space with a metric $d$. We have already shown that a metric space is $T_2$. We need to show that $X$ is normal.
+
+Let $A, B$ be closed sets in $X$ with $A \cap B = \emptyset$. Since $B$ is closed, for each $x \in A$, there exists $\varepsilon_x > 0$ such that $B_d(x, \varepsilon_x) \cap B = \emptyset$. Similarly, for each $y \in B$, there exists $\varepsilon_y > 0$ such that $B_d(y, \varepsilon_y) \cap A = \emptyset$.
+
+Let
+
+$$U := \bigcup_{x \in A} B_d \left(x, \frac{\varepsilon_x}{2} \right) \quad \text{and} \quad V := \bigcup_{y \in B} B_d \left(y, \frac{\varepsilon_y}{2} \right).$$
+
+Then $U$ and $V$ are open sets in $X$ such that $A \subset U$ and $B \subset V$. If $z \in U \cap V$, then $z \in B_d \left(x, \frac{\varepsilon_x}{2} \right)$ and $z \in B_d \left(y, \frac{\varepsilon_y}{2} \right)$ for some $x \in A$ and $y \in B$. If we assume $\varepsilon_x \le \varepsilon_y$, WLOG, then
+
+$$d(x, y) \le d(x, z) + d(z, y) < \frac{\varepsilon_x + \varepsilon_y}{2} \le \varepsilon_y,$$ 
+
+which implies that $x \in B_d(y, \varepsilon_y)$. But we know that $A \cap B_d(y, \varepsilon_y) = \emptyset$. $\bigotimes$ Hence, $U \cap V = \emptyset$, and therefore $X$ is normal.
+
+**(iv)** Let $X$ be a compact Hausdorff space.
 
 ## Remark 2
-We cannot generalize this theorem to $T_4$ spaces. That is,
-
 **(i)** A subspace of a $T_4$ space is not necessarily $T_4$.
 
 ::: {.callout-note title="Proof" collapse="true" icon=false}

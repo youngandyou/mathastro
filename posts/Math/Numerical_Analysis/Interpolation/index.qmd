@@ -203,7 +203,9 @@ $$f[x_0, x_1, \dots, x_n] = \frac{1}{n!}f^{(n)}(c)$$
 
 for some $c \in H(x_0, \dots, x_n)$.
 
-마지막 결과를 자연스럽게 확장해서 $x_i$들이 모두 같은 계차상을 다음과 같이 정의한다.
+**(iv)** ***(Hermite-Genocchi Formula)*** $\frac{d}{dx}f[x_0, x_1, \dots, x_n, x] = f[x_0, x_1, \dots, x_n, x, x]$
+
+**(iii)**를 자연스럽게 확장해서 $x_i$들이 모두 같은 계차상을 다음과 같이 정의한다.
 
 $$f[\underbrace{x_0, x_0, \dots, x_0}_{(n+1) \text{ times}}] = \frac{f^{(n)}(x_0)}{n!}.$$
 

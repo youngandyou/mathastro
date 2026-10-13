@@ -63,16 +63,18 @@ Let $X$ be a topological space.
 
 **(iii)** A subset $A$ of a metric space $(X, d)$ is said to be ***bounded*** if there is some positive number $M$ such that $d(a, b) \le M, \forall a, b \in A$. If $A$ is bounded and nonempty, then the ***diameter*** of $A$ is defined to be the number $\mathrm{diam}(A) = \sup_{a, b \in A} d(a, b)$.
 
+유클리드 공간 $(\mathbb{R}, \mathscr{T}_{\text{usual}})$에 거리 $d(x, y) = \vert x - y \vert$를 부여할 수 있고, 이 거리가 만들어내는 위상은 기존의 유클리드 공간과 정확히 동일하다. 이렇게 기존의 위상 $(X, \mathscr{T})$와 정확히 동일한 위상을 만들어낼 수 있도록 거리 $d$를 잡아올 수 있을 때 $X$를 거리화가능하다고 부르고, 어떤 특정한 거리 $d$가 $X$에 만들어내는 위상공간 $(X, \mathscr{T}_d)$를 거리 공간이라고 부른다. 다시 말해 $(X, \mathscr{T})$가 거리화가능하고, 이에 대응되는 거리 $d$가 존재하면 $(X, \mathscr{T}) = (X, \mathscr{T}_d)$이다. 한편 애초에 처음부터 위상이 존재하고 이 위상을 유도하는 거리가 존재한다는 맥락이 아니라, 처음부터 거리가 주어져서 이 거리가 어떤 위상을 생성할 수도 있고, 이러한 맥락의 정의를 거리공간이라고 부른다.
+
 # Theorem 2
-Let $d, d'$ be two metrics on a set $X$, and let $\mathscr{T} _d, \mathscr{T} _{d'}$ be two topologies induced by $d, d'$, respectively. Then $\mathscr{T} _{d'}$ is finer than $\mathscr{T} _d$ $\iff$ $\forall x \in X$ and $\forall \varepsilon > 0$, $\exists \delta > 0$ such that $B _{d'}(x, \delta) \subset B _d(x, \varepsilon)$.
+Let $d, d'$ be two metrics on a set $X$, and let $\mathscr{T}_d, \mathscr{T}_{d'}$ be two topologies induced by $d, d'$, respectively. Then $\mathscr{T}_{d'}$ is finer than $\mathscr{T}_d$ $\iff$ $\forall x \in X$ and $\forall \varepsilon > 0$, $\exists \delta > 0$ such that $B_{d'}(x, \delta) \subset B_d(x, \varepsilon)$.
 
 ## Proof
-$(\Longrightarrow)$ Suppose that $\mathscr{T} _{d} \subset \mathscr{T} _{d'}$. Let $x \in X$ and $\varepsilon > 0$. Since $B _d(x, \varepsilon)$ is a basis element of $\mathscr{T} _{d}$, [there exists a basis element $B'$ of $\mathscr{T} _{d'}$ such that $x \in B' \subset B _d(x, \varepsilon)$.](../Basis_Topology/index.qmd#sec-theorem-4) Then $B' = B _{d'}(x, \delta)$ for some $\delta > 0$. Thus, we have $B _{d'}(x, \delta) \subset B _d(x, \varepsilon)$.
+$(\Longrightarrow)$ Suppose that $\mathscr{T}_{d} \subset \mathscr{T}_{d'}$. Let $x \in X$ and $\varepsilon > 0$. Since $B _d(x, \varepsilon)$ is a basis element of $\mathscr{T}_{d}$, [there exists a basis element $B'$ of $\mathscr{T}_{d'}$ such that $x \in B' \subset B _d(x, \varepsilon)$.](../Basis_Topology/index.qmd#sec-theorem-4) Then $B' = B_{d'}(x, \delta)$ for some $\delta > 0$. Thus, we have $B_{d'}(x, \delta) \subset B_d(x, \varepsilon)$.
 
-$(\Longleftarrow)$ Suppose that $\forall x \in X$ and $\forall \varepsilon > 0$, $\exists \delta > 0$ such that $B _{d'}(x, \delta) \subset B _d(x, \varepsilon)$. Let $B$ be a basis element of $\mathscr{T} _{d}$. Then $B = B _{d}(x, \varepsilon)$ for some $x \in X$ and $\varepsilon > 0$. By assumption, $\exists \delta > 0$ such that $B _{d'}(x, \delta) \subset B _d(x, \varepsilon)$. Since $B _{d'}(x, \delta)$ is a basis element of $\mathscr{T} _{d'}$ and it contains $x$, we conclude that $\mathscr{T} _{d} \subset \mathscr{T} _{d'}$. $\blacksquare$
+$(\Longleftarrow)$ Suppose that $\forall x \in X$ and $\forall \varepsilon > 0$, $\exists \delta > 0$ such that $B_{d'}(x, \delta) \subset B _d(x, \varepsilon)$. Let $B$ be a basis element of $\mathscr{T}_{d}$. Then $B = B_{d}(x, \varepsilon)$ for some $x \in X$ and $\varepsilon > 0$. By assumption, $\exists \delta > 0$ such that $B_{d'}(x, \delta) \subset B_d(x, \varepsilon)$. Since $B_{d'}(x, \delta)$ is a basis element of $\mathscr{T}_{d'}$ and it contains $x$, we conclude that $\mathscr{T}_{d} \subset \mathscr{T}_{d'}$. $\blacksquare$
 
 ## Corollary
-**(i)** Let $d, d', d''$ be the Euclidean metric, the taxicab metric, and the square metric, respectively, on $\mathbb{R}^n$. Then $\mathscr{T} _d = \mathscr{T} _{d'} = \mathscr{T} _{d''}$. Furthermore, these topologies are the same as the usual topology of $\mathbb{R}^n$.
+**(i)** Let $d, d', d''$ be the Euclidean metric, the taxicab metric, and the square metric, respectively, on $\mathbb{R}^n$. Then $\mathscr{T}_d = \mathscr{T}_{d'} = \mathscr{T}_{d''}$. Furthermore, these topologies are the same as the usual topology of $\mathbb{R}^n$.
 
 **(ii)** Let $d$ be a discrete metric on a set $X$. Then the metric topology induced by $d$ is the discrete topology on $X$.
 

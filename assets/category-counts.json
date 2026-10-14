@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-10-13T03:26:39.646Z",
-  "totalPosts": 211,
+  "updatedAt": "2026-10-14T07:03:37.102Z",
+  "totalPosts": 209,
   "counts": {
     "Astronomy": 19,
     "Astronomy > Radio Astronomy": 15,
@@ -14,7 +14,7 @@
     "Computer": 5,
     "Computer > Machine Learning": 5,
     "Computer > Machine Learning > Reinforcement Learning": 5,
-    "Math": 186,
+    "Math": 184,
     "Math > Abstract Algebra": 41,
     "Math > Abstract Algebra > Binary Algebraic Structure": 2,
     "Math > Abstract Algebra > Field Theory": 1,
@@ -35,7 +35,7 @@
     "Math > Linear Algebra": 7,
     "Math > Matrix Algebra": 9,
     "Math > Numerical Analysis": 8,
-    "Math > Topology": 32,
+    "Math > Topology": 30,
     "Physics": 1,
     "Physics > Thermodynamics": 1
   },
@@ -63,8 +63,8 @@
     "machine learning": 5,
     "Reinforcement Learning": 5,
     "reinforcement learning": 5,
-    "Math": 186,
-    "math": 186,
+    "Math": 184,
+    "math": 184,
     "Abstract Algebra": 41,
     "abstract algebra": 41,
     "Binary Algebraic Structure": 2,
@@ -105,15 +105,15 @@
     "matrix algebra": 9,
     "Numerical Analysis": 8,
     "numerical analysis": 8,
-    "Topology": 32,
-    "topology": 32,
+    "Topology": 30,
+    "topology": 30,
     "Physics": 1,
     "physics": 1,
     "Thermodynamics": 1,
     "thermodynamics": 1
   },
   "topCategories": {
-    "Math": 186,
+    "Math": 184,
     "Astronomy": 19,
     "Physics": 1,
     "Computer": 5

@@ -7,7 +7,10 @@ categories:
   - Math > Abstract Algebra > Ring Theory
 ---
 
-# Definition
+$$\newcommand{\lhdneq}{\mathrel{\rlap{\trianglelefteq}\kern.30em\lower.28ex{\scriptscriptstyle/}\kern.20em}}$$
+
+# Ideal
+## Definition 1
 Let $\langle R, +, \cdot \rangle$ be a ring, and let $\emptyset \neq N \subset R$. Then $N$ is called an ***ideal*** of $R$, denoted by $N \lhd R$, if 
 
 **(i)** $\langle N, + \rangle \le \langle R, + \rangle$.
@@ -16,7 +19,7 @@ Let $\langle R, +, \cdot \rangle$ be a ring, and let $\emptyset \neq N \subset R
 
 군론에서 잉여류와 같이 $rN = \{ rn \mid n \in N \}$으로 정의되고, 반대쪽도 마찬가지이다. 정의만으로 바로 짐작하기는 어렵지만, 군론에서 정규부분군(Normal subgroup)과 매우 유사한 역할을 하는 개념이다. 몫군 $G / H$가 $G$의 정규부분군 $H$에 대해서만 정의되었듯이, 환에 대해서도 몫환 $R / N$을 잘 정의하려면 $N$이 마치 정규부분군과 같은 조건을 가지는 집합으로 가지고 와야 하고, 환에 대해서 그러한 역할을 수행하는 개념이 바로 아이디얼이다. 때문에 표기법 또한 정규부분군과 마찬가지로 $N \lhd R$과 같이 쓰고, 실제로도 덧셈만 생각했을 때 아이디얼 $N$은 $R$의 정규부분군이 된다.
 
-# Theorem 1
+## Theorem 1
 Let $\phi: R \to R'$ be a ring homomorphism.
 
 **(i)** $N \lhd R \implies \phi(N) \lhd \phi(R)$.
@@ -25,10 +28,23 @@ Let $\phi: R \to R'$ be a ring homomorphism.
 
 **(iii)** $N' \lhd \phi(R) \implies \phi^{-1}(N') \lhd R$.
 
-## Remark
+### Proof
+**(i)** Suppose that $N \lhd R$. Let $y \in \phi(R)$ and $b \in \phi(N)$. Then $y = \phi(x)$ and $b = \phi(a)$ for some $x \in R$ and $a \in N$. Since $N \lhd R$, $xa \in N$. Then
+
+$$yb = \phi(x)\phi(a) = \phi(xa) \in \phi(N)$$
+
+Similarly, $by \in \phi(N)$. Hence, $\phi(N)$ is an ideal of $\phi(R)$.
+
+**(ii)** 
+
+**(iii)**  
+
+## Remark 1
 **(i)** If $N$ is an ideal of a ring $R$, then $\langle N, + \rangle$ is a normal subgroup of $\langle R, + \rangle$.
 
-**(ii)** If $N$ is an ideal of a ring $R$, then $N$ is a subring of $R$. However, the converse is not true.
+**(ii)** Every ideal of a ring $R$ contains the additive identity $0$ of $R$.
+
+**(iii)** If $N$ is an ideal of a ring $R$, then $N$ is a subring of $R$. However, the converse is not true.
 
 ::: {.callout-note title="Proof" collapse="true" icon=false}
 $\big[ (\because)$ Note that $N$ is nonempty. For $a, b \in N$, we have $ab \in N$ since $N$ is an ideal of $R$. Also, $a - b \in N$ since $\langle N, + \rangle \le \langle R, + \rangle$. Thus, $N$ is a subring of $R$.
@@ -36,36 +52,240 @@ $\big[ (\because)$ Note that $N$ is nonempty. For $a, b \in N$, we have $ab \in 
 On the other hand, $\mathbb{Z}$ is a subring of $\mathbb{Q}$, but $\mathbb{Z}$ is not an ideal of $\mathbb{Q}$, because $\frac{1}{2} \cdot 1 \notin \mathbb{Z}$. $\big]$
 :::
 
-**(iii)** If $N$ is an ideal of a ring $R$, then $\phi(N)$ need not be an ideal of $R'$ for a ring homomorphism $\phi: R \to R'$.
-
-**(iv)** $\{ 0 \}$ and $R$ are ideals of $R$, and $\{ 0 \}$ is called the trivial ideal and $R$ is called the improper ideal.
-
-**(v)** Let $a \in R$. Note that $aR = \{ ar \mid r \in R \}$ and $Ra = \{ ra \mid r \in R \}$. If $R$ is commutative, then $aR = Ra$. In this case, we write $(a)$ instead of $aR$ or $Ra$.
-
-## Example
-**(i)** For all $n \in \mathbb{N}_0$, $n\mathbb{Z}$ is an ideal of $\mathbb{Z}$.
+**(iv)** If $N$ is an ideal of a ring $R$, then $\phi(N)$ need not be an ideal of $R'$ for a ring homomorphism $\phi: R \to R'$.
 
 ::: {.callout-note title="Proof" collapse="true" icon=false}
-$\big[ (\because)$ Clearly, $\langle n\mathbb{Z}, + \rangle \le \langle \mathbb{Z}, + \rangle$. For $m \in \mathbb{Z}$ and $nr \in n\mathbb{Z}$, we have $m(nr) = n(mr) \in n \mathbb{Z}$ and $(nr)m = n(rm) \in n \mathbb{Z}$. Thus, $n\mathbb{Z}$ is an ideal of $\mathbb{Z}$. $\big]$
+Consider a map $\phi: \mathbb{Z} \times \mathbb{Z} \to \mathsf{M}_2(\mathbb{Z})$ given by 
+
+$$\phi(m, n) = \begin{bmatrix} m & 0 \\ 0 & m \end{bmatrix}, \forall (m, n) \in \mathbb{Z} \times \mathbb{Z}$$
+
+Then $\phi$ is a ring homomorphism. Note that $\phi(\mathbb{Z} \times \mathbb{Z}) = (\mathsf{I}_2) = \{ m \mathsf{I}_2 \mid m \in \mathbb{Z} \}$. Then $\phi(\mathbb{Z} \times \mathbb{Z}) = (\mathsf{I}_2) \not \lhd \mathsf{M}_2(\mathbb{Z})$ because
+
+$$\begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \cdot \begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix} = \begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix} \notin (\mathsf{I}_2).$$
+:::
+
+**(v)** $\{ 0 \}$ and $R$ are ideals of $R$, and $\{ 0 \}$ is called the ***trivial ideal*** and $R$ is called the ***improper ideal***.
+
+## Example 1
+**(i)** $I \lhd \mathbb{Z} \iff I = n\mathbb{Z}$ for some $n \in \mathbb{N}_0$.
+
+즉 정수환 $\mathbb{Z}$의 아이디얼은 오직 $n\mathbb{Z}$의 형태만을 가질 수 있음을 말해준다.
+
+::: {.callout-note title="Proof" collapse="true" icon=false}
+$(\implies)$ Let $I \lhd \mathbb{Z}$. If $I = \{ 0 \}$, then $I = 0\mathbb{Z}$. Suppose that $I \neq \{ 0 \}$. Then $I \cap \mathbb{N}$ is a nonempty subste of $\mathbb{N}$, so the smallest element $n$ of $I \cap \mathbb{N}$ exists. For any $a \in I$, we obtain that $a = qn + r$ for some unique $q, r \in \mathbb{Z}$ with $0 \le r < n$ by the division algorithm. Since $a, qn \in I$ and $a - qn = r$, $r \in I$. Since $r$ is a non-negative integer smaller than $n$, we must have $r = 0$. Thus, $a = qn \in n\mathbb{Z}$, which means that $I \subset n\mathbb{Z}$. Since $n \in I$ and $nm \in I, \forall m \in \mathbb{Z}$, we have $n\mathbb{Z} \subset I$. Hence, $I = n\mathbb{Z}$.
+
+$(\impliedby)$ Clearly, $\langle n\mathbb{Z}, + \rangle \le \langle \mathbb{Z}, + \rangle$. For $m \in \mathbb{Z}$ and $nr \in n\mathbb{Z}$, we have $m(nr) = n(mr) \in n \mathbb{Z}$ and $(nr)m = n(rm) \in n \mathbb{Z}$. Thus, $I = n\mathbb{Z}$ is an ideal of $\mathbb{Z}$.
 :::
 
 **(ii)** For a ring homomorphism $\phi: R \to R'$, $\ker(\phi)$ is an ideal of $R$.
 
 ::: {.callout-note title="Proof" collapse="true" icon=false}
-$\big[ (\because)$ Clearly, $\langle \ker(\phi), + \rangle \le \langle R, + \rangle$. For $r \in R$ and $x \in \ker(\phi)$, we have $\phi(rx) = \phi(r) \phi(x) = 0$, so that $rx \in \ker(\phi)$. Similarly, $\phi(xr) = \phi(x) \phi(r) = 0$, so that $xr \in \ker(\phi)$. Hence, $\ker(\phi)$ is an ideal of $R$. $\big]$
+Clearly, $\langle \ker(\phi), + \rangle \le \langle R, + \rangle$. For $r \in R$ and $x \in \ker(\phi)$, we have $\phi(rx) = \phi(r) \phi(x) = 0$, so that $rx \in \ker(\phi)$. Similarly, $\phi(xr) = \phi(x) \phi(r) = 0$, so that $xr \in \ker(\phi)$. Hence, $\ker(\phi)$ is an ideal of $R$.
 :::
 
 **(iii)** Let $F = \mathbb{R}^\mathbb{R}$, and let $C = \{ f \in F \mid f \text{ is a constant function} \}$ and $N = \{ f \in F \mid f(3) = 0 \}$. Then $C$ is a subring of $F$ but is not an ideal of $F$. However, $N$ is an ideal of $F$.
 
 ::: {.callout-note title="Proof" collapse="true" icon=false}
-$\big[ (\because)$ Clearly, $C \neq \emptyset$. For $f, g \in C$, $f - g$ and $fg$ are constant functions, so $f-g, fg \in C$. Then $C$ is a subring of of $F$. 
+Clearly, $C \neq \emptyset$. For $f, g \in C$, $f - g$ and $fg$ are constant functions, so $f-g, fg \in C$. Then $C$ is a subring of of $F$. 
 
 Let $f(x) = \sin x \in F$ and let $g(x) = 1 \in C$. Then $(fg)(x) = f(x)g(x) = \sin x \notin C$, so that $C$ is not an ideal of $F$.
 
 Next, we show that $N$ is an ideal of $F$. Clearly, $N \neq \emptyset$. For $f, g \in N$, we have $(f - g)(3) = f(3) - g(3) = 0$ and $(fg)(3) = f(3)g(3) = 0$, so $f-g, fg \in N$. Thus, $N$ is a subring of $F$.
 
-Let $f \in F$ and $g \in N$. Then we have $f(3)g(3) = 0$ and $g(3)f(3) = 0$, so that $fg, gf \in N$. Hence, $N$ is an ideal of $F$. $\big]$
+Let $f \in F$ and $g \in N$. Then we have $f(3)g(3) = 0$ and $g(3)f(3) = 0$, so that $fg, gf \in N$. Hence, $N$ is an ideal of $F$.
 :::
+
+# Sum, Product, and Quotient
+## Theorem 2
+**(i)** Let $A_1, \dots, A_n$ be ideals of a ring $R$. The ***sum*** of $A_1, \dots, A_n$ is defined by
+
+$$A_1 + \cdots + A_n := \{ a_1 + \cdots + a_n \mid a_i \in A_i, \forall i \in \{ 1, \dots, n \} \}$$
+
+Then $A_1 + \cdots + A_n$ is an ideal of $R$ containing $A_1, \dots, A_n$.
+
+**(ii)** The ***product*** of $A_1, \dots, A_n$ is defined by
+
+$$A_1 \cdots A_n := \{ \sum_{j=1}^k a_{j, 1} \cdots a_{j, n} \mid a_{j, i} \in A_i, \forall j \in \{ 1, \dots, k \}, \forall i \in \{ 1, \dots, n \}, \forall k \in \mathbb{N} \}$$
+
+Then $A_1 \cdots A_n$ is an ideal of $R$.
+
+**(iii)** Let $A, B$ be ideals of a commutative ring $R$. The ***quotient*** of $A$ by $B$ is defined by
+
+$$A : B := \{ r \in R \mid rb \in A, \forall b \in B \}$$
+
+Then $A : B$ is an ideal of $R$.
+
+::: {.callout-note title="Proof" collapse="true" icon=false}
+:::
+
+# Principal Ideal
+## Definition 2
+Let $R$ be a commutative ring with unity.
+
+**(i)** For $a \in R$, $aR = \{ ar \mid r \in R \} = \{ ra \mid r \in R \} = Ra$ is an ideal of $R$. It is called the ***principal ideal generated by $a$***, denoted by $(a)$.
+
+**(ii)** An ideal $N$ of $R$ is called a ***principal ideal*** if $N = (a)$ for some $a \in R$.
+
+**(iii)** For $a_1, \dots, a_n \in R$, the sum $(a_1) + \cdots + (a_n)$ is simply written as $(a_1, \dots, a_n)$. An ideal $N$ of $R$ is said  to be ***finitely generated*** if $N = (a_1, \dots, a_n)$ for some $a_1, \dots, a_n \in R$.
+
+군론의 순환군(Cyclic Group)과 유사한 개념이다.
+
+# Maximal Ideal
+군에서 정규부분군이 중요한 역할을 차지했듯이 환에서 아이디얼 또한 중요한 개념이고, 특별히 몫군과 몫환이 정의되려면 정규부분군과 아이디얼이라는 개념이 반드시 필요했었다. 한편 기존 대수 구조가 어떤 성질을 가지면 그 대수 구조의 부분구조나 그 대수 구조들을 여러 개 곱해서 만든 곱구조가 기존 구조와 유사한 성질을 가진 반면에 몫구조는 일반적으로 기존 구조의 성질을 반드시 물려받지는 않는다. 다음의 네 가지 예시는 몫구조가 갖는 성질들이 기존 구조에 크게 의존하지 않음을 보여준다.
+
+## Example 2
+**(i)** ***(A factor ring of a integral domain may be a field)***
+Note that $\mathbb{Z}$ is an integral domain. Let $p$ be a prime. Then $\mathbb{Z}/ p\mathbb{Z} \cong \mathbb{Z}_p$ and $\mathbb{Z}_p$ is a field.
+
+**(ii)** ***(A factor ring of a non-integral domain may be a field)***
+Note that $\mathbb{Z}_6$ is not an integral domain and $N = \{ 0, 3\} \lhd \mathbb{Z}_6$. Then $\mathbb{Z}_6 / N = \{ 0 + N, 1 + N, 2 + N \} \cong \mathbb{Z}_3$, which is a field.
+
+**(iii)** ***(A factor ring of a non-integral domain may be an integral domain)***
+Note that $\mathbb{Z} \times \mathbb{Z}$ is not an integral domain, and $\{ 0 \} \times \mathbb{Z} \lhd \mathbb{Z} \times \mathbb{Z}$. Then $(\mathbb{Z} \times \mathbb{Z})/ (\{ 0 \} \times \mathbb{Z}) \cong \mathbb{Z}$, which is an integral domain.
+
+**(iv)** ***(A factor ring of an integral domain may not be an integral domain)***
+Note that $\mathbb{Z}$ is an integral domain and $6\mathbb{Z} \lhd \mathbb{Z}$. Then $\mathbb{Z}/6\mathbb{Z} \cong \mathbb{Z}_6$, which is not an integral domain.
+
+위 예시들로 보았을 때 몫환은 기존 환에 비해 더 좋은 성질을 가질수도, 더 나쁜 성질을 가질수도 있고, 이는 기존 환의 구조가 아니라 어떤 아이디얼로 자르는지에 달려있다. 단적인 예로 예시 **(i)**과 **(iv)**는 모두 정수환 $\mathbb{Z}$의 몫군이지만, $\mathbb{Z}_p$로 자르냐 $\mathbb{Z}_6$로 자르느냐에 따라 몫환이 체가 될수도, 정역조차 되지 못할수도 있다. 이러한 논의는 아이디얼 중에서도 더 강한 조건을 갖는 ***극대 아이디얼(Maximal Ideal)***과 ***소 아이디얼(Prime Ideal)***의 연구로 이어진다. 군론에서 극대 정규부분군(Maximal Normal Subgroup)과 단순군(Simple Group)과의 관계를 다루던 맥락과 정확히 동일하다.
+
+## Definition 2
+Let $R$ be a ring, and let $M \lhd R$. Then $M$ is a ***maximal ideal*** of $R$ if
+
+**(i)** $M \neq R$.
+
+**(ii)** If $N \lhd R$ with $M \subset N \subset R$, then $N = M$ or $N = R$.
+
+## Theorem 3
+Let $R$ be a commutative ring with unity, and let $N \lhdneq R$. Then $N$ is contained in a maximal ideal of $R$.
+
+극대 정규부분군에서와 마찬가지로, 조른의 보조정리를 이용하면 극대 아이디얼은 항상 존재함을 보일 수 있다.
+
+### Proof
+Let $\mathcal{S} = \{ I \mid I \lhdneq R \text{ and } N \subset I \}$. Since $N \in \mathcal{S}$, $\mathcal{S} \neq \emptyset$. Define an order $\le$ on $\mathcal{S}$ by 
+
+$$I_\alpha \le I_\beta \iff I_\alpha \subset I_\beta$$
+
+Then $(\mathcal{S}, \le)$ is a partially ordered set.
+
+::: {.callout-note title="Proof" collapse="true" icon=false}
+Let $I_\alpha, I_\beta, I_\gamma \in \mathcal{S}$.
+
+1. Since $I_\alpha \subset I_\alpha$, we have $I_\alpha \le I_\alpha$.
+
+2. If $I_\alpha \le I_\beta$ and $I_\beta \le I_\alpha$, then $I_\alpha \subset I_\beta$ and $I_\beta \subset I_\alpha$. Hence, $I_\alpha = I_\beta$.
+
+3. If $I_\alpha \le I_\beta$ and $I_\beta \le I_\gamma$, then $I_\alpha \subset I_\beta \subset I_\gamma$. Hence, $I_\alpha \subset I_\gamma$, so $I_\alpha \le I_\gamma$.
+
+Thus, $(\mathcal{S}, \le)$ is a partially ordered set.
+:::
+
+Let $\mathcal{C}$ be a chain in $\mathcal{S}$, and set $\displaystyle J := \bigcup_{I \in \mathcal{C}} I$. Then $I \subset J, \forall I \in \mathcal{C}$ and $J$ is a nonempty subset of $R$. To show that $J$ is an upper boud of $\mathcal{C}$, we need to show that $J \in \mathcal{S}$.
+
+For $a, b \in J$, $a \in I_\alpha$ and $b \in I_\beta$ for some $I_\alpha, I_\beta \in \mathcal{C}$. WLOG, $I_\alpha \subset I_\beta$. Then $a, b \in I_\beta$ and since $I_\beta$ is an additive subgroup of $R$, $a-b \in I_\beta \subset J$. Hence, $J$ is an additive subgroup of $R$.
+
+Let $r \in R$. For each $a \in J$, $a \in I_\alpha$ for some $I_\alpha \in \mathcal{C}$. Then $ra \in rI_\alpha \subset I_\alpha \subset J$, so $ra \in J$. Similarly, $ar \in J$. Hence, $J \lhd R$.
+
+If $J = R$, then $1 \in J$, so $1 \in I_\alpha$ for some $I_\alpha \in \mathcal{C}$. By Theorem 4 **(i)**, $I_\alpha = R$, which contradicts the fact that $I_\alpha \lhdneq R$. Thus, $J \lhdneq R$.
+
+Since $N \subset I_\alpha, \forall I_\alpha \in \mathcal{C}$, we obtain that $N \subset J$. Thus, $J \in \mathcal{S}$.
+
+Thus, any chain $\mathcal{C}$ in $\mathcal{S}$ has an upper bound in $\mathcal{S}$. By Zorn's lemma, $\mathcal{S}$ has a maximal element $M$. We will show that $M$ is a maximal ideal of $R$ containing $N$.
+
+Since $M \in \mathcal{S}$, $M \lhdneq R$ and $N \subset M$. Suppose that $M$ is not a maximal ideal of $R$. Then there exists $I \lhd R$ such that $M \subsetneq I \subsetneq R$. Since $I \lhdneq R$ and $I$ contains $N$, $I \in \mathcal{S}$. Thus, $M \lneq I$, which contradicts the fact that $M$ is a maximal element of $\mathcal{S}$. Hence, $M$ is a maximal ideal of $R$ containing $N$. $\blacksquare$
+
+## Remark 2
+$M$ is a maximal ideal of $\mathbb{Z}$ $\iff M = p\mathbb{Z}$ for some prime $p$.
+
+즉 정수환의 극대 아이디얼은 오직 $p\mathbb{Z}$의 형태만 가질 수 있음을 말해준다.
+
+::: {.callout-note title="Proof" collapse="true" icon=false}
+$(\implies)$ Let $M$ be a maximal ideal of $\mathbb{Z}$. By Example **(i)**, $M = n\mathbb{Z}$ for some $n \in \mathbb{N}_0$. If $n = 0$ or $n = 1$, then $M = \{ 0 \}$ or $M = \mathbb{Z}$, which are not maximal ideals. 
+
+Suppose $n > 1$. If $n$ is a composite, then $n = ab$ for some $a, b \in \mathbb{Z}$ such that $1 < a, b < n$. Then $M = (ab)\mathbb{Z} \subsetneq a\mathbb{Z} \subsetneq \mathbb{Z}$, which means that $M$ is not a maximal ideal. Hence, $n$ must be a prime number.
+
+$(\impliedby)$ For a prime $p$, $\mathbb{Z}_p$ is a simple group. Since $\mathbb{Z} / p\mathbb{Z} \cong \mathbb{Z}_p$, $p\mathbb{Z}$ is a maximal normal subgroup of $\mathbb{Z}$. Since $\mathbb{Z}$ is abelian, $p\mathbb{Z}$ is a maximal proper subgroup of $\mathbb{Z}$. Since $p\mathbb{Z}$ is an ideal of $\mathbb{Z}$, it is a maximal ideal of $\mathbb{Z}$.
+:::
+
+## Theorem 4
+**(i)** Let $R$ be a ring with identity, and let $N \lhd R$. Then $N$ contains a unit $\iff$ $N = R$.
+
+**(ii)** A commutative ring with unity is a field $\iff$ it has no proper nontrivial ideals.
+
+본래 환 $R$이 체가 되기 위해서는 $0$을 제외한 모든 원소가 곱셈의 역원을 가져야 했었다. 위 정리는 이 조건이 곧 $R$이 $\{ 0\}$ 혹은 $R$만을 아이디얼로 가진다는 조건과 동치임을 보여준다. 곱셈의 역원을 가지기만 하면 아이디얼의 조건에 의해 환 그 자체가 되어버리기 때문이다.
+
+### Proof
+**(i)** $(\implies)$ Suppose that $N$ contains a unit $u$. Since $N$ is an ideal, $1 = u^{-1}u \in N$. Let $r \in R$. Then
+
+$$r = r \cdot 1 \in N$$
+
+because $N$ is an ideal of $R$. Hence, $N = R$.
+
+$(\impliedby)$ Suppose that $N = R$. Since $1 \in R$ and $1$ is a unit, $N$ contains a unit.
+
+**(ii)** $(\implies)$ Let $F$ be a field, and let $I \lhd F$. If $I = \{ 0 \}$, then we are done. If $I \neq \{ 0 \}$, then $I$ contains a nonzero element $x$. Since $F$ is a field, $x$ is a unit. By **(i)**, $I = F$. Hence, $F$ has no proper nontrivial ideals.
+
+$(\impliedby)$ Let $F$ be a commutative ring with unity such that it has no proper nontrivial ideals. Then $\{ 0 \}$ is the maximal ideal of $F$. By Theorem 5, $F / \{ 0\} \cong F$ is a field. $\blacksquare$
+
+## Theorem 5
+Let $R$ be a commutative ring with unity, and let $M \lhd R$. Then $M$ is a maximal ideal of $R$ $\iff$ $R/M$ is a field.
+
+이 정리를 통해 위 정리 3의 **(ii)**를 증명할 수 있다. 직관적으로도 자명한데, $M$을 아이디얼 중에서 포함 관계에 있어서 가장 큰 집합으로 가지고 와서 $R$을 자르면 $R/M$은 더이상 남아있는 아이디얼이 없으리라 생각할 수 있고, 이는 다름아닌 체가 될 조건이 된다. 즉 극대 아이디얼이란 몫환이 언제 체가 되는지 결정짓는 개념임을 알 수 있다.
+
+### Proof
+$(\implies)$ Suppose that $M$ is a maximal ideal of $R$. Since $R$ is a commutative ring with unity $1$, $R/M$ is also a commutative ring with unity $1 + M$. We will prove that every nonzero element of $R/M$ is a unit. Let $a + M$ be a nonzero element of $R/M$, so $a \notin M$. 
+
+Note that $M \subsetneq M + (a)$ because the sum $M+ (a)$ contains $M$ and $a \in M + (a)$ but $a \notin M$. Since $M + (a)$ is an ideal and $M$ is a maximal ideal of $R$, $M + (a) = R$.
+
+Since $1 \in R$, $1 = m + ab$ for some $m \in M$ and $b \in R$. Since $1 - ab = m \in M$, we obtain 
+
+$$1 + M = ab + M = (a+M)(b+M)$$
+
+Note that $b+M \neq 0 + M$ because if $b + M = 0$, then $1 \in M$, which implies that $M = R$ by Theorem 4 and it is contradiction to the fact that $M$ is a maximal ideal of $R$. Thus, $a+M$ is a unit in $R/M$ and therefore $R/M$ is a field.
+
+$(\impliedby)$ Suppose that $R/M$ is a field. Let $N \lhd R$ with $M \subset N \subset R$. If $N = M$, then there is nothing to prove. If $M \subsetneq N$, then there is an element $a \in N \setminus M$. Since $a \notin M$, $a + M \neq 0 + M$. Since $R/M$ is a field, $a + M$ has a unit $b + M$ in $R/M$ for some $b \in R$. Then $1 + M = (a+M)(b+M) = ab + M$, so $1 - ab \in M \subset N$. Since $N$ is an ideal, $ab \in N$, which implies $1 = (1 - ab) + ab \in N$. By Theorem 4, $N = R$. Hence, $M$ is a maximal ideal of $R$. $\blacksquare$
+
+# Prime Ideal
+앞서 극대 아이디얼은 몫환이 언제 체가 되는지 결정하는 지표가 되었다면, 몫환이 언제 정역이 되는지 결정하는 지표도 생각할 수 있고, 그렇게 해서 나온 개념이 바로 ***소 아이디얼(Prime Ideal)***이다.
+
+## Definition 3
+Let $R$ be a commutative ring, and let $N \lhd R$. Then $N$ is called a ***prime ideal*** of $R$ if 
+
+**(i)** $N \neq R$
+
+**(ii)** For $a, b \in R$, $ab \in N \implies a\in N \vee b \in N$. 
+소수 $p$에 대하여 $p \vert ab$이면 $p \vert a$ 혹은 $p \vert b$가 성립한다. 한편 $p \vert ab$는 $ab$가 $p$의 배수라는 의미이고, $ab \in (p)$로 쓸 수도 있다. 마찬가지로 $a \in (p)$ 혹은 $b \in (p)$ 둘 중의 하나가 성립하게 되고, 위 정의의 **(ii)**번은 이러한 맥락에서 나왔다고 이해할 수 있다. 즉 소 아이디얼은 정수론에서의 소수와 비슷한 역할을 한다고 볼 수 있고, 당연하게도 환을 연구할 때 중요하게 다뤄지는 대상 중 하나이다.
+
+## Example 3
+**(i)** $\{ 0\}$ is a prime ideal of an integral domain $R$.
+
+::: {.callout-note title="Proof" collapse="true" icon=false}
+For $a, b \in R$, if $ab \in \{ 0 \}$, then $ab = 0$. Since $R$ is an integral domain, $a = 0$ or $b = 0$, which means that $a \in \{ 0 \}$ or $b \in \{ 0 \}$. Hence, $\{ 0 \}$ is a prime ideal of $R$.
+:::
+
+**(ii)** $\mathbb{Z} \times \{ 0 \}$ is a prime ideal of $\mathbb{Z} \times \mathbb{Z}$
+
+::: {.callout-note title="Proof" collapse="true" icon=false}
+For $(a, b), (c,d) \in \mathbb{Z} \times \mathbb{Z}$, if $(a, b)(c,d) = (ac, bd) \in \mathbb{Z} \times \{ 0\}$, then $bd = 0$. Since $\mathbb{Z}$ is an integral domain, $b = 0$ or $d = 0$, which means that $(a, b) \in \mathbb{Z} \times \{ 0 \}$ or $(c, d) \in \mathbb{Z} \times \{ 0 \}$. Hence, $\mathbb{Z} \times \{ 0 \}$ is a prime ideal of $\mathbb{Z} \times \mathbb{Z}$.
+:::
+
+## Theorem 6
+Let $R$ be a commutative ring with unity.
+**(i)** Let $N \lhd R$. Then $N$ is a prime ideal of $R$ $\iff$ $R/N$ is an integral domain.
+
+**(ii)** Every maximal ideal of $R$ is a prime ideal.
+
+**(iii)** There always exists a prime ideal of $R$.
+
+위에서 설명했듯이, 몫환이 정역이 되기 위한 필요충분조건은 소 아이디얼로 나누는 것으로 주어짐을 알 수 있다. 또한 체이면 정역이듯이, 극대 아이디얼이면 소 아이디얼이 성립한다.
+
+### Proof
+**(i)** $(\implies)$ Suppose that $N$ is a prime ideal of $R$. Suppose that $(a+N)(b+N) = 0+N$ for some $a, b \in R$. Then $ab \in N$, which implies that $a \in N$ or $b \in N$ because $N$ is a prime ideal. Thus, $a+N = 0 + N$ or $b+N = 0 + N$ and therefore $R/N$ is an integral domain. 
+
+$(\impliedby)$ Suppose that $R/N$ is an integral domain. If $N = R$, then $R/N \cong \{ 0\}$, which is not an integral domain, so $N \neq R$. For $a, b \in R$, if $ab \in N$, then $(a+N)(b+N) = ab + N = 0 + N$. Since $R/N$ is an integral domain, $a+N = 0 + N$ or $b + N = 0 + N$, which means that $a \in N$ or $b \in N$. Hence, $N$ is a prime ideal of $R$.
+
+**(ii)** Let $M$ be a maximal ideal of $R$. By Theorem 5, $R/M$ is a field, so $R/M$ is an integral domain. By **(i)**, $M$ is a prime ideal.
+
+**(iii)** Since there always exists a maximal ideal of $R$, so does a prime ideal of $R$. $\blacksquare$
 
 # Reference
 - John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

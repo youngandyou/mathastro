@@ -27,7 +27,7 @@ website:
       - text: "Mathematics (수학)"
         menu:
           - href: index.qmd#category=Math
-            text: "📐 수학 전체보기 (All Math) (186)"
+            text: "📐 수학 전체보기 (All Math) (184)"
           - text: "---"
           - href: index.qmd#category=Calculus
             text: "미적분학 (Calculus) (2)"
@@ -42,7 +42,7 @@ website:
           - href: index.qmd#category=Analysis
             text: "해석학 (Analysis) (2)"
           - href: index.qmd#category=Topology
-            text: "위상수학 (Topology) (32)"
+            text: "위상수학 (Topology) (30)"
           - href: index.qmd#category=Differential%20Geometry
             text: "미분기하학 (Differential Geometry) (5)"
           - href: index.qmd#category=Graph%20Theory

@@ -15,13 +15,17 @@ Let $H$ be a subgroup of a group $G$. Then $H$ is called a ***normal subgroup***
 
 **(ii)** Every subgroup of an abelian group is normal.
 
+::: {.callout-note title="Proof" collapse="true" icon=false}
 $\big[(\because)$ Let $G$ be an abelian group and $H \le G$. Let $a \in G$. Then $ah = ha, \forall h \in H$, which means that $aH = Ha$. Thus $H \lhd G.\big]$
+:::
 
 **(iii)** Every group has trivial normal subgroups $\{ e\}$ and $G$.
 
+::: {.callout-note title="Proof" collapse="true" icon=false}
 $\big[(\because)$ Let $a \in G$. Then $ae = ea = a$, so $a\{e\} = \{a\} = \{e\}a$. Thus $\{e\} \lhd G$. 
 
 Let $a \in G$. Then for each $g \in G$, $a = a(a^{-1}g) \in aG$ and $a = (ga^{-1})a \in Ga$. Thus $aG = Ga$, which means that $G \lhd G.\big]$
+:::
 
 ## Example
 **(i)** For $n \ge 3,$ the map $\mathrm{sgn}_n: S_n \to \{ 1, -1 \}$ defined by 
@@ -71,9 +75,11 @@ Let $H \le G,$ and let $N \lhd G.$ If $N \le H,$ then $N \lhd H.$
 
 그러면 $H \lhd G$로 가져오면 $N \lhd G$가 될까? 이는 다른 말로 표현하면 normality는 transitive한가? 라는 질문으로 바꿀 수 있다. 그리고 ***그렇지 않다***라는 게 답이다. 구체적인 예시는 다음과 같다.
 
-$\big[(\because)$ Let $G = D_4,$ and let $H = \{ \rho_0, \rho_2, \mu_1, \mu_2 \}, N = \{ \rho_0, \mu_1 \}.$ Actually, $H = \langle \mu_1 \rangle \langle \mu_2 \rangle.$ Since $\langle \mu_1 \rangle \langle \mu_2 \rangle = \langle \mu_2 \rangle \langle \mu_1 \rangle,$ $H \le G.$ Actually, $H \cong V,$ so $N \lhd H.$
+::: {.callout-note title="Example" collapse="true" icon=false}
+Let $G = D_4,$ and let $H = \{ \rho_0, \rho_2, \mu_1, \mu_2 \}$ and $N = \{ \rho_0, \mu_1 \}.$ Actually, $H = \langle \mu_1 \rangle \langle \mu_2 \rangle.$ Since $\langle \mu_1 \rangle \langle \mu_2 \rangle = \langle \mu_2 \rangle \langle \mu_1 \rangle,$ $H \le G.$ Actually, $H \cong V,$ so $N \lhd H.$
 
-However, $N \not \lhd G.$ Note that $\rho_1 \mu_1 = \delta_2 \neq \delta_1 = \mu_1 \rho_1.\big]$
+However, $N \not \lhd G.$ Note that $\rho_1 \mu_1 = \delta_2 \neq \delta_1 = \mu_1 \rho_1.
+:::
 
 ### Proof
 Since $N \lhd G,$ we have $gNg^{-1} \subset N, \forall g \in G$ by Theorem 1. It follows that $hNh^{-1} \subset N, \forall h \in H,$ which means that $N \lhd H.$ $\blacksquare$
@@ -129,13 +135,17 @@ Thus, $x = gx'g^{-1} \in \phi^{-1}(N')$, and therefore $g\phi^{-1}(N')g^{-1} \su
 ## Remark
 **(i)** In the above theorem, $\phi(N)$ need NOT to be normal in $G'$ if $N \lhd G.$
 
-$\big[(\because)$ Consider a map $\phi: \mathbb{Z}_2 \to S_3$ given by $\phi(0) = \rho_0$ and $\phi(1) = \mu_1$. Note that $\mathbb{Z}_2 \le \mathbb{Z}_2.$ However, $\phi(\mathbb{Z}_2) = \{ \rho_0, \mu_1 \} \ntriangleleft S_3,$ because 
+::: {.callout-note title="Proof" collapse="true" icon=false}
+Consider a map $\phi: \mathbb{Z}_2 \to S_3$ given by $\phi(0) = \rho_0$ and $\phi(1) = \mu_1$. Note that $\mathbb{Z}_2 \le \mathbb{Z}_2.$ However, $\phi(\mathbb{Z}_2) = \{ \rho_0, \mu_1 \} \ntriangleleft S_3,$ because 
 
-$$\rho_1 \phi(\mathbb{Z}_2) = \{ \rho_1, \mu_3 \} \neq \{ \rho_1, \mu_2 \} = \phi(\mathbb{Z}_2) \rho_1. \big]$$
+$$\rho_1 \phi(\mathbb{Z}_2) = \{ \rho_1, \mu_3 \} \neq \{ \rho_1, \mu_2 \} = \phi(\mathbb{Z}_2) \rho_1.$$
+:::
 
 **(ii)** A union of normal subgroups of a group need NOT be a normal subgroup.
 
-$\big[(\because)$ Consider the Klein-$4$ group $V = \{e, a, b, c \}$. Since $V$ is abelian, $\{ e, a \}$ and $\{ e, b \}$ are normal subgroups of $V$. But $\{ e, a\} \cup \{ e, b \} = \{ e, a, b \}$ is not closed under the operation of $V$ because $ab = c$. Thus, $\{ e, a\} \cup \{ e, b \} = \{ e, a, b \}$ is not a subgroup of $G$, so is not a normal subgroup of $G$. $\big]$
+::: {.callout-note title="Proof" collapse="true" icon=false}
+Consider the Klein-$4$ group $V = \{e, a, b, c \}$. Since $V$ is abelian, $\{ e, a \}$ and $\{ e, b \}$ are normal subgroups of $V$. But $\{ e, a\} \cup \{ e, b \} = \{ e, a, b \}$ is not closed under the operation of $V$ because $ab = c$. Thus, $\{ e, a\} \cup \{ e, b \} = \{ e, a, b \}$ is not a subgroup of $G$, so is not a normal subgroup of $G$.
+:::
 
 # Reference
 - John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

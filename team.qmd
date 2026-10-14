@@ -81,10 +81,6 @@ style="color: black;">
               물리학 부전공
             </dd>
           </div>
-          <div>
-            <dt>연구 분야</dt>
-            <dd>비선형 동역학(Nonlinear Dynamics)</dd>
-          </div>
           <div class="staff-bio">
             <dt>자기 소개</dt>
             <dd>

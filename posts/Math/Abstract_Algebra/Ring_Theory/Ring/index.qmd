@@ -127,7 +127,7 @@ n \cdot a &= \underbrace{a + \cdots + a}_{n \text{ times}} \\
 Thus, the smallest positive integer $n$ is the characteristic of $R$. $\blacksquare \big]$
 
 # Noncommutative Examples
-여기서는 비가환환, 즉 곱셈에 대해서 가환법칙이 성립하지 않는 몇 가지 환의 예시를 소개한다. 정역(Integral Domain)이 그렇듯이 가환환이라는 조건이 워낙에 좋다보니 학부 현대대수학은 가환환을 중심으로 내용이 전개가 되지만 그렇다고 대수학이라는 넓은 분야에서 가환환만 다루지는 않는다.
+여기서는 비가환환, 즉 곱셈에 대해서 가환법칙이 성립하지 않는 몇 가지 환의 예시를 소개한다. 온갖 곳에 가환환이라는 조건이 쓰이다보니 학부 현대대수학은 가환환을 중심으로 내용이 전개되지만, 그렇다고 대수학이라는 넓은 분야에서 가환환만 다루지는 않는다.
 
 **(i)** For $n \ge 2$, the ring $M_{n}(\mathbb{R})$ of $n \times n$ matrices with entries in $\mathbb{R}$ is a noncommutative ring with unity.
 
@@ -166,7 +166,7 @@ $$\begin{align*}
 
 $$\begin{align*}
 \mathbb{X}(a_0 + a_1X + \cdots + a_nX^n) &= a_0X + a_1X^2 + \cdots + a_nX^{n+1} \\
-\mathbb{Y}(a_0 + a_1X + \cdots + a_nX^n) &= a_0 + 2a_2X + 3a_3X^2 + \cdots + (n+1)a_{n+1}X^n,
+\mathbb{Y}(a_0 + a_1X + \cdots + a_nX^n) &= a_1 + 2a_2X + 3a_3X^2 + \cdots + (n+1)a_{n+1}X^n,
 \end{align*}$$
 
 for all $a_0 + a_1X + \cdots + a_nX^n \in F[X]$. Then we can easily verify $\mathbb{Y}\mathbb{X} - \mathbb{X} \mathbb{Y} = \mathrm{id}_{F[X]}$, which means that $\mathbb{Y}\mathbb{X} \neq \mathbb{X} \mathbb{Y}$ in general. 
@@ -185,7 +185,7 @@ and $\cdot: RG \times RG \to RG$ by
 
 $$\left( \sum_{i=1}^n r_ig_i \right) \left( \sum_{j=1}^m s_jh_j \right) = \sum_{i=1}^n \sum_{j=1}^m (r_is_j) (g_ih_j).$$
 
-Then $\langle RG, +, \cdot \rangle$ is a ring, and it is called the ***group ring*** of $G$ over $R$. 
+Then $\langle RG, +, \cdot \rangle$ is a ring, and it is called the ***group ring*** of $G$ over $R$. If $F$ is a field, $\langle FG, +, \cdot \rangle$ is called the ***group algebra*** of $G$ over $F$.
 
 Note that
 

@@ -6,9 +6,7 @@ description: "추상대수학의 아이디얼(Ideal)에 대해서 설명한다."
 categories: 
   - Math > Abstract Algebra > Ring Theory
 ---
-
 $$\newcommand{\lhdneq}{\mathrel{\rlap{\trianglelefteq}\kern.30em\lower.28ex{\scriptscriptstyle/}\kern.20em}}$$
-
 # Ideal
 ## Definition 1
 Let $\langle R, +, \cdot \rangle$ be a ring, and let $\emptyset \neq N \subset R$. Then $N$ is called an ***ideal*** of $R$, denoted by $N \lhd R$, if 
@@ -27,6 +25,10 @@ Let $\phi: R \to R'$ be a ring homomorphism.
 **(ii)** $N' \lhd R' \implies \phi^{-1}(N') \lhd R$.
 
 **(iii)** $N' \lhd \phi(R) \implies \phi^{-1}(N') \lhd R$.
+
+**(iv)** Let $S \le R$ and let $N \lhd R$. If $N \le S$, then $N \lhd S$.
+
+**(v)** An intersection of ideals of a ring $R$ is an ideal of $R$.
 
 ### Proof
 **(i)** Suppose that $N \lhd R$. Let $y \in \phi(R)$ and $b \in \phi(N)$. Then $y = \phi(x)$ and $b = \phi(a)$ for some $x \in R$ and $a \in N$. Since $N \lhd R$, $xa \in N$. Then
@@ -59,7 +61,7 @@ Consider a map $\phi: \mathbb{Z} \times \mathbb{Z} \to \mathsf{M}_2(\mathbb{Z})$
 
 $$\phi(m, n) = \begin{bmatrix} m & 0 \\ 0 & m \end{bmatrix}, \forall (m, n) \in \mathbb{Z} \times \mathbb{Z}$$
 
-Then $\phi$ is a ring homomorphism. Note that $\phi(\mathbb{Z} \times \mathbb{Z}) = (\mathsf{I}_2) = \{ m \mathsf{I}_2 \mid m \in \mathbb{Z} \}$. Then $\phi(\mathbb{Z} \times \mathbb{Z}) = (\mathsf{I}_2) \not \lhd \mathsf{M}_2(\mathbb{Z})$ because
+Then $\phi$ is a ring homomorphism. Note that $\phi(\mathbb{Z} \times \mathbb{Z}) = (\mathsf{I}_2) = \{ m \mathsf{I}_2 \mid m \in \mathbb{Z} \}$ and $\mathbb{Z} \times \mathbb{Z} \lhd \mathbb{Z} \times \mathbb{Z}$. Then $\phi(\mathbb{Z} \times \mathbb{Z}) = (\mathsf{I}_2) \not \lhd \mathsf{M}_2(\mathbb{Z})$ because
 
 $$\begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} \cdot \begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix} = \begin{bmatrix} 1 & 1 \\ 1 & 1 \end{bmatrix} \notin (\mathsf{I}_2).$$
 :::
@@ -135,15 +137,19 @@ Let $R$ be a commutative ring with unity.
 
 ## Example 2
 **(i)** ***(A factor ring of a integral domain may be a field)***
+
 Note that $\mathbb{Z}$ is an integral domain. Let $p$ be a prime. Then $\mathbb{Z}/ p\mathbb{Z} \cong \mathbb{Z}_p$ and $\mathbb{Z}_p$ is a field.
 
 **(ii)** ***(A factor ring of a non-integral domain may be a field)***
+
 Note that $\mathbb{Z}_6$ is not an integral domain and $N = \{ 0, 3\} \lhd \mathbb{Z}_6$. Then $\mathbb{Z}_6 / N = \{ 0 + N, 1 + N, 2 + N \} \cong \mathbb{Z}_3$, which is a field.
 
 **(iii)** ***(A factor ring of a non-integral domain may be an integral domain)***
+
 Note that $\mathbb{Z} \times \mathbb{Z}$ is not an integral domain, and $\{ 0 \} \times \mathbb{Z} \lhd \mathbb{Z} \times \mathbb{Z}$. Then $(\mathbb{Z} \times \mathbb{Z})/ (\{ 0 \} \times \mathbb{Z}) \cong \mathbb{Z}$, which is an integral domain.
 
 **(iv)** ***(A factor ring of an integral domain may not be an integral domain)***
+
 Note that $\mathbb{Z}$ is an integral domain and $6\mathbb{Z} \lhd \mathbb{Z}$. Then $\mathbb{Z}/6\mathbb{Z} \cong \mathbb{Z}_6$, which is not an integral domain.
 
 위 예시들로 보았을 때 몫환은 기존 환에 비해 더 좋은 성질을 가질수도, 더 나쁜 성질을 가질수도 있고, 이는 기존 환의 구조가 아니라 어떤 아이디얼로 자르는지에 달려있다. 단적인 예로 예시 **(i)**과 **(iv)**는 모두 정수환 $\mathbb{Z}$의 몫군이지만, $\mathbb{Z}_p$로 자르냐 $\mathbb{Z}_6$로 자르느냐에 따라 몫환이 체가 될수도, 정역조차 되지 못할수도 있다. 이러한 논의는 아이디얼 중에서도 더 강한 조건을 갖는 ***극대 아이디얼(Maximal Ideal)***과 ***소 아이디얼(Prime Ideal)***의 연구로 이어진다. 군론에서 극대 정규부분군(Maximal Normal Subgroup)과 단순군(Simple Group)과의 관계를 다루던 맥락과 정확히 동일하다.
@@ -253,6 +259,7 @@ Let $R$ be a commutative ring, and let $N \lhd R$. Then $N$ is called a ***prime
 **(i)** $N \neq R$
 
 **(ii)** For $a, b \in R$, $ab \in N \implies a\in N \vee b \in N$. 
+
 소수 $p$에 대하여 $p \vert ab$이면 $p \vert a$ 혹은 $p \vert b$가 성립한다. 한편 $p \vert ab$는 $ab$가 $p$의 배수라는 의미이고, $ab \in (p)$로 쓸 수도 있다. 마찬가지로 $a \in (p)$ 혹은 $b \in (p)$ 둘 중의 하나가 성립하게 되고, 위 정의의 **(ii)**번은 이러한 맥락에서 나왔다고 이해할 수 있다. 즉 소 아이디얼은 정수론에서의 소수와 비슷한 역할을 한다고 볼 수 있고, 당연하게도 환을 연구할 때 중요하게 다뤄지는 대상 중 하나이다.
 
 ## Example 3

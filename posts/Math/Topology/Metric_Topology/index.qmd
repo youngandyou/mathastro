@@ -7,8 +7,9 @@ categories:
   - Math > Topology
 ---
 
-# Theorem 1
-Let $(X, d)$ be a metric space. The collection $\mathscr{B} = \{ B_d(x, \varepsilon) \mid x \in X, \varepsilon > 0 \}$ is a basis for a topology on $X$, called ***the metric topology induced by $d$.***
+# Metric Topology
+## Theorem 1
+**(i)** If $d$ is a metric on a set $X$, then the collection $\mathscr{B} = \{ B_d(x, \varepsilon) \mid x \in X, \varepsilon > 0 \}$ is a basis for a topology $\mathscr{T}_d$ on $X$, called ***the metric topology induced by $d$.*** We call $(X, \mathscr{T}_d)$ a ***metric space***.
 
 > A function $d : X \times X \to \mathbb{R}$ is said to be a ***metric*** on $X$ if it satisfies the following conditions:
 > 
@@ -23,11 +24,21 @@ Let $(X, d)$ be a metric space. The collection $\mathscr{B} = \{ B_d(x, \varepsi
 해석개론에서는 위상 얘기를 생략하고 바로 거리공간 위에서 오픈이니, 컴팩트이니 등등의 논의를 진행했었다. 위상수학에서는 이를 더 일반화해서 사실 거리공간도 위상공간의 한 종류로 이야기하고, 메트릭으로 만들어지는 오픈볼을 오픈셋으로 볼 수 있게 한다.
 
 $$\begin{align*}
-\text{A set } U \text{ is open in the metric topology induced by } d \\
-\iff \forall x \in U, \exists \delta > 0 \text{ such that } B_d(x, \delta) \subset U.
+U \in \mathscr{T}_d \iff \forall x \in U, \exists \delta > 0 \text{ such that } B_d(x, \delta) \subset U.
 \end{align*}$$
 
-# Proof
+## Definition 1
+**(i)** A space $X$ is said to be ***metrizable*** if there exists a metric $d: X \times X \to \mathbb{R}$ that induces the topology of $X$. 
+
+Let $A$ be a subset of a metric space $(X, d)$.
+
+**(ii)** $A$ is said to be ***bounded*** if there is some positive number $M$ such that $d(a, b) \le M, \forall a, b \in A$. 
+
+**(iii)** If $A$ is bounded and nonempty, then the ***diameter*** of $A$ is defined to be the number $\mathrm{diam}(A) = \sup_{a, b \in A} d(a, b)$.
+
+유클리드 공간 $(\mathbb{R}, \mathscr{T}_{\text{usual}})$에 거리 $d(x, y) = \vert x - y \vert$를 부여할 수 있고, 이 거리가 만들어내는 위상은 기존의 유클리드 공간과 정확히 동일하다. 이렇게 기존의 위상 $(X, \mathscr{T})$와 정확히 동일한 위상을 만들어낼 수 있도록 거리 $d$를 잡아올 수 있을 때 $X$를 거리화가능하다고 부르고, 어떤 특정한 거리 $d$가 $X$에 만들어내는 위상공간 $(X, \mathscr{T}_d)$를 거리 공간이라고 부른다. 다시 말해 $(X, \mathscr{T})$가 거리화가능하고, 이에 대응되는 거리 $d$가 존재하면 $(X, \mathscr{T}) = (X, \mathscr{T}_d)$이다. 한편 애초에 처음부터 위상이 존재하고 이 위상을 유도하는 거리가 존재한다는 맥락이 아니라, 처음부터 거리가 주어져서 이 거리가 어떤 위상을 생성할 수도 있고, 이러한 맥락의 정의를 거리공간이라고 부른다.
+
+### Proof
 Let $x \in X$. Since $d(x, x) = 0$, we have $x \in B_d(x, \varepsilon), \forall \varepsilon > 0$. Thus, there is $B \in \mathscr{B}$ such that $x \in B$.
 
 Let $x \in B_1 \cap B_2$ for some $B_1, B_2 \in \mathscr{B}$. Then $B_1 = B_d(x_1, \delta_1)$ and $B_2 = B_d(x_2, \delta_2)$ for some $x_1, x_2 \in X$ and $\delta_1, \delta_2 > 0$. Then we see that $x \in B_d(x_1, \delta_1)$ and $x \in B_d(x_2, \delta_2)$, which means that $d(x, x_1) < \delta_1$ and $d(x, x_2) < \delta_2$. Let $\delta = \min \{ \delta_1 - d(x, x_1), \delta_2 - d(x, x_2) \}$. Clearly $\delta > 0$. Then we must have $x \in B_d(x, \delta) \subset B_1 \cap B_2$.
@@ -39,7 +50,7 @@ $$d(y, x_1) \le d(y, x) + d(x, x_1) < \delta_1 \quad \text{and} \quad d(y, x_2) 
 so that $y \in B_d(x_1, \delta_1) \cap B_d(x_2, \delta_2) = B_1 \cap B_2$. Therefore, $B_d(x, \delta) \subset B_1 \cap B_2$. It follows that $\mathscr{B}$ is a basis for a topology on $X$. $\blacksquare$
 
 ## Example
-The following give the metrics on $\mathbb{R}^n$:
+The followings give the metrics on $\mathbb{R}^n$:
 
 **(i)** ***The Euclidean metric***: $\displaystyle d(x, y) = \sqrt{\sum_{i=1}^n (x_i - y_i)^2}$.
 
@@ -54,21 +65,10 @@ $$d(x, y) = \begin{cases}
 1 & \text{if } x \neq y.
 \end{cases}$$
 
-# Definition
-Let $X$ be a topological space.
-
-**(i)** $X$ is said to be ***metrizable*** if there exists a metric $d: X \times X \to \mathbb{R}$ that induces the topology of $X$. 
-
-**(ii)** Let $\mathscr{T}_d$ be the metric topology induced by $d$. We call $(X, \mathscr{T}_d)$ a ***metric space***.
-
-**(iii)** A subset $A$ of a metric space $(X, d)$ is said to be ***bounded*** if there is some positive number $M$ such that $d(a, b) \le M, \forall a, b \in A$. If $A$ is bounded and nonempty, then the ***diameter*** of $A$ is defined to be the number $\mathrm{diam}(A) = \sup_{a, b \in A} d(a, b)$.
-
-유클리드 공간 $(\mathbb{R}, \mathscr{T}_{\text{usual}})$에 거리 $d(x, y) = \vert x - y \vert$를 부여할 수 있고, 이 거리가 만들어내는 위상은 기존의 유클리드 공간과 정확히 동일하다. 이렇게 기존의 위상 $(X, \mathscr{T})$와 정확히 동일한 위상을 만들어낼 수 있도록 거리 $d$를 잡아올 수 있을 때 $X$를 거리화가능하다고 부르고, 어떤 특정한 거리 $d$가 $X$에 만들어내는 위상공간 $(X, \mathscr{T}_d)$를 거리 공간이라고 부른다. 다시 말해 $(X, \mathscr{T})$가 거리화가능하고, 이에 대응되는 거리 $d$가 존재하면 $(X, \mathscr{T}) = (X, \mathscr{T}_d)$이다. 한편 애초에 처음부터 위상이 존재하고 이 위상을 유도하는 거리가 존재한다는 맥락이 아니라, 처음부터 거리가 주어져서 이 거리가 어떤 위상을 생성할 수도 있고, 이러한 맥락의 정의를 거리공간이라고 부른다.
-
-# Theorem 2
+## Theorem 2
 Let $d, d'$ be two metrics on a set $X$, and let $\mathscr{T}_d, \mathscr{T}_{d'}$ be two topologies induced by $d, d'$, respectively. Then $\mathscr{T}_{d'}$ is finer than $\mathscr{T}_d$ $\iff$ $\forall x \in X$ and $\forall \varepsilon > 0$, $\exists \delta > 0$ such that $B_{d'}(x, \delta) \subset B_d(x, \varepsilon)$.
 
-## Proof
+### Proof
 $(\Longrightarrow)$ Suppose that $\mathscr{T}_{d} \subset \mathscr{T}_{d'}$. Let $x \in X$ and $\varepsilon > 0$. Since $B _d(x, \varepsilon)$ is a basis element of $\mathscr{T}_{d}$, [there exists a basis element $B'$ of $\mathscr{T}_{d'}$ such that $x \in B' \subset B _d(x, \varepsilon)$.](../Basis_Topology/index.qmd#sec-theorem-4) Then $B' = B_{d'}(x, \delta)$ for some $\delta > 0$. Thus, we have $B_{d'}(x, \delta) \subset B_d(x, \varepsilon)$.
 
 $(\Longleftarrow)$ Suppose that $\forall x \in X$ and $\forall \varepsilon > 0$, $\exists \delta > 0$ such that $B_{d'}(x, \delta) \subset B _d(x, \varepsilon)$. Let $B$ be a basis element of $\mathscr{T}_{d}$. Then $B = B_{d}(x, \varepsilon)$ for some $x \in X$ and $\varepsilon > 0$. By assumption, $\exists \delta > 0$ such that $B_{d'}(x, \delta) \subset B_d(x, \varepsilon)$. Since $B_{d'}(x, \delta)$ is a basis element of $\mathscr{T}_{d'}$ and it contains $x$, we conclude that $\mathscr{T}_{d} \subset \mathscr{T}_{d'}$. $\blacksquare$
@@ -78,7 +78,7 @@ $(\Longleftarrow)$ Suppose that $\forall x \in X$ and $\forall \varepsilon > 0$,
 
 **(ii)** Let $d$ be a discrete metric on a set $X$. Then the metric topology induced by $d$ is the discrete topology on $X$.
 
-### Proof
+::: {.callout-note title="Proof" collapse="true" icon=false}
 **(i)** Let $x \in \mathbb{R}^n$ and $\varepsilon > 0$.
 
 **1.** $\mathscr{T} _d \subset \mathscr{T} _{d'}$
@@ -153,13 +153,14 @@ X & \text{of } \varepsilon > 1
 \end{cases}$$
 
 by the definition of the discrete metric. [Thus, we always have $x \in B_d(x, 1) = \\{ x \\} \subset U$, and therefore, the discrete topology on $X$ is the metric topology induced by $d$.](../Basis_Topology/index.qmd#sec-theorem-3) $\blacksquare$
+:::
 
-# Theorem 3
+## Theorem 3
 **(i)** Every metric space is Hausdorff.
 
 **(ii)** Let $\mathbb{R}^n$ be the metric space with the Euclidean metric $d$. A subspace $A$ of $\mathbb{R}^n$ is [compact](../Compact_Space/index.qmd#sec-definition) $\iff$ $A$ is [closed](../Closed_Set/index.qmd#sec-definition) and bounded.
 
-## Proof
+### Proof
 **(i)** Let $X$ be a metric space with the metric $d$. Let $x, y \in X$ with $x \neq y$. Then $d(x, y) > 0$. Take $\varepsilon = \frac{1}{2}d(x, y)$. Since
 
 $$B_d(x, \varepsilon) \cap B_d(y, \varepsilon) = \emptyset$$
@@ -182,7 +183,7 @@ $$A \subset B_d(\mathbf{0}, N+M) \subset [-(N+M), N+M]^n.$$
 
 [Since $[-(N+M), N+M]^n$ is compact and $A$ is closed, $A$ is compact.](../Compact_Space/index.qmd#sec-theorem) $\blacksquare$
 
-# Theorem 4
+## Theorem 4
 **(i)** Let $f: (X, d_X) \to (Y, d_Y)$ be a function. Then 
 
 $$f \text{ is continuous } \iff \forall x \in X, \forall \varepsilon > 0, \exists \delta >0 \text{ such that } d_X(x, y) < \delta \implies d_Y(f(x), f(y)) < \varepsilon.$$
@@ -191,9 +192,9 @@ $$f \text{ is continuous } \iff \forall x \in X, \forall \varepsilon > 0, \exist
 
 **(iii)** Let $f: X \to Y$ be a continuous function. Then for every sequence $\{ x_n \} _{n=1} ^{\infty}$ in $X$ with $\lim_{n \to \infty} x_n = x$, we have $\lim_{n \to \infty} f(x_n) = f(x)$. Moreover, if $X$ is metrizable, then the converse holds. 
 
-(iv) Let $f: (X, d_X) \to (Y, d_Y)$ be a continuous function such that $X$ is compact. Then $f$ is uniformly continuous, i.e. for any $\varepsilon >0$, there exists $\delta > 0$ such that $d_X(x, y) < \delta \implies d_Y(f(x), f(y)) < \varepsilon$. 
+**(iv)** Let $f: (X, d_X) \to (Y, d_Y)$ be a continuous function such that $X$ is compact. Then $f$ is uniformly continuous, i.e. for any $\varepsilon >0$, there exists $\delta > 0$ such that $d_X(x, y) < \delta \implies d_Y(f(x), f(y)) < \varepsilon$. 
 
-## Proof
+### Proof
 **(i)**
 
 $(\Longrightarrow)$ Suppose that $f$ is continuous. Let $x \in X$ and $\varepsilon > 0$. Note that $B _{d_Y}(f(x), \varepsilon)$ is open in $Y$ and $f(x) \in B _{d_Y}(f(x), \varepsilon)$. Since $f$ is continuous, there exists a neighborhood $U$ of $x$ such that $f(U) \subset B _{d_Y}(f(x), \varepsilon)$. Since $x \in U$, $x \in B _{d_X}(x, \delta) \subset U$ for some $\delta > 0$. If $y \in B _{d_X}(x, \delta) \subset U$, which implies that $d_X(x, y) < \delta$, then we have $f(y) \in f(U) \subset B _{d_Y}(f(x), \varepsilon)$, so that $d_Y(f(x), f(y)) < \varepsilon$. 
@@ -225,6 +226,59 @@ Let $x, y \in X$. If $d(x, y) < \delta$, then the subset $\{ x, y \}$ has the [d
 $$d_Y(f(x), f(y)) \le d_Y(f(x), z) + d_Y(f(y), z) < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon.$$
 
 Hence, $f$ is uniformly continuous. $\blacksquare$
+
+# Complete Space
+## Definition 2
+Let $(X, d)$ be a metric space.
+
+**(i)** A sequence $\{ x_n \}$ in $X$ is called a ***Cauchy sequence*** in $(X, d)$ if $\forall \varepsilon > 0, \exists N \in \mathbb{N}$ such that $d(x_n, x_m) < \varepsilon, \forall n, m \ge N$.
+
+**(ii)** $(X, d)$ is said to be ***complete*** if every Cauchy sequence in $X$ converges.
+
+## Remark
+**(i)** Every convergent sequence in $X$ is a Cauchy sequence. However, the converse does not hold in general.
+
+::: {.callout-note title="Example" collapse="true" icon=false}
+1. The sequence $x_n = \left( 1 + \frac{1}{n} \right)^n$ is a Cauchy sequence in $(\mathbb{Q}, d_{\text{Euclidean}})$ but it does not converge in $(\mathbb{Q}, d_{\text{Euclidean}})$.
+
+2. The sequence $x_n = \frac{1}{n}$ is a Cauchy sequence in $((0, 2), d_{\text{Euclidean}})$ but it does not converge in $((0, 2), d_{\text{Euclidean}})$.
+:::
+
+**(ii)** If $(X, d)$ is complete, then a sequence $\{ x_n \}$ is Cauchy $\iff$ $\{ x_n \}$ is convergent.
+
+**(iii)** $(\mathbb{R}^n, d)$ is not complete in general.
+
+::: {.callout-note title="Example" collapse="true" icon=false}
+
+:::
+
+## Theorem 5
+Let $(X, d)$ be a metric space.
+
+**(i)** Every closed subset of a complete metric space if complete.
+
+**(ii)** $(X, d)$ is complete $\iff$ $(X, \overline{d})$ is complete, where $\overline{d}(x, y) = \min \{ d(x, y), 1 \}$.
+
+**(iii)** $(X, d)$ is complete if every Cauchy sequence in $X$ has a convergent subsequence.
+
+**(iv)** $(\mathbb{R}^n, d_{\text{Euclidean}})$ is complete.
+
+**(v)** There is a metric $D$ for $\mathbb{R}^\omega$ such that $(\mathbb{R}^\omega, D)$ is complete.
+
+### Proof
+**(i)** Let $C$ be a closed subset of a complete metric space $X$, and let $\{ x_n \}$ be a Cauchy sequence in $C$. Since $X$ is complete, $\{ x_n \}$ converges to $x \in X$. By Theorem 4 **(ii)**, $x \in \overline{C} = C$. Thus, $C$ is complete.
+
+**(ii)**
+
+**(iii)** Suppose that a Cauchy sequence $\{ x_n \}$ in $X$ has a convergent subsequence $\{ x_{n_k} \}$ with $x_{n_k} \to x$. Let $\varepsilon > 0$. Then there exists $N \in \mathbb{N}$ such that $d(x_n, x_m) < \frac{\varepsilon}{2}$ and $d(x_n, x) < \frac{\varepsilon}{2}$ for all $n, m \ge N$. Then we have 
+
+$$d(x_n, x) \le d(x_n, x_{n_k}) + d(x_{n_k}, x) < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon, \forall n \ge N.$$
+
+Thus, $\lim_{n \to \infty} x_n = x$, and therefore $(X, d)$ is complete.
+
+**(iv)** Let $\{ x_n \}$ be a Cauchy sequence of $(\mathbb{R}^n, d_{\text{Euclidean}})$. Then there exists $N \in \mathbb{N}$ such that $\vert x_n, x_m \vert < 1, \forall n, m \ge N$. Let $M := \max \{ \vert x_1 \vert, \dots, \vert x_N \vert \}$, and let $C := \{ x \in \mathbb{R}^n \mid \vert x vert \le M + 1 \}$. Since $1 > \vert x_n, x_N \vert \ge \vert x_n \vert - \vert x_N \vert, \forall n \ge N$, we have $\vert x_n \vert < \vert x_N \vert + 1, \forall n \ge N$. Thus, $x_n \in C, \forall n \in \mathbb{N}$. Since $C$ is closed and bounded, $C$ is compact, which means that $\{ x_n \}$ has a convergent subsequence. By **(iii)**, $(\mathbb{R}^n, d_{\text{Euclidean}})$ is complete.
+
+**(v)** $\blacksquare$
 
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

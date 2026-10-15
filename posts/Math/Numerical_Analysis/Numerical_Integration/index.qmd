@@ -218,5 +218,29 @@ CS_n(f) &= S_n(f) + \tilde{E}^S_n(f)
 
 이 성립한다. $CS_n(f)$를 ***corrected Simpson's rule***이라고 부르고, 이는 우리가 원하는 정적분값의 근사값이 된다.
 
+# Richardson's Extrapolation
+사다리꼴 규칙과 심프슨 규칙은 모두
+
+$$I(f) - I_n(f) \approx \frac{c}{n^p}$$
+
+꼴의 형태를 가졌다. $c$와 $p$는 사용한 규칙에 의존하는 값들이고, 사다리꼴의 경우 $p = 2$, 심프슨의 경우 $p = 4$였다. $I_n(f)$는 각 규칙의 방법에 의해 구간을 $n$등분하여 얻은 근사값인데, $n$등분이 아닌 $2n$등분을 하게 되면 더 정확한 근사값을 얻게 되고 구체적으로는 다음과 같이 주어진다.
+
+$$\begin{align*}
+I(f) - I_{2n}(f) &\approx \frac{c}{(2n)^p} \\
+&= \frac{c}{2^p n^p} \\
+&= \frac{1}{2^p} (I(f) - I_n(f))
+\end{align*}$$
+
+이 값을 $I(f)$에 대해서 정리하면 다음과 같다.
+
+$$I(f) \approx \frac{1}{2^p}(2^pI_{2n}(f) - I_n(f)) =: R_{2n}$$
+
+위 수식으로 정의되는 $R_{2n}$을 ***Richardson's extrapolation***이라고 부른다. 기존의 $n$등분보다 더 많은 점들을 추가해서 적분값을 더 정확하게 근사했으므로 extrapolation이라고 부르고, 일반적으로 $I_{2n}$보다 더 정확한 근사값을 준다. $I_{2n}$과의 오차는 다음과 같이 주어지고, 이 오차를 ***Richardson's error estimate***이라고 부른다.
+
+$$\begin{align*}
+R_{2n} - I_{2n} &= \frac{1}{2^p}(2^pI_{2n}(f) - I_n(f)) - I_{2n} \\
+&= \frac{1}{2^p} (I_{2n}(f) - I_n(f))
+\end{align*}$$
+
 # Reference
 - K. E. Atkinson and W. Han, Elementary Numerical Analysis, 3rd ed., John Wiley & Sons, 2004.

@@ -91,6 +91,8 @@ $(\Longleftarrow)$ Let $U$ be a neighborhood of $x$. Then $U$ contains infinitel
 
 **(iii)** A subspace of a Hausdorff space is a Hausdorff space.
 
+**(iv)** Let $Y$ be a compact subspace of a Hausdorff space $X$, and let $x_0 \notin Y$. Then there exist open sets $U, V \subset X$ such that $x_0 \in U, Y \subset V$ and $U \cap V = \emptyset$.
+
 ### Proof
 (i) Let $\{ x_n \}$ be a sequence of points of $X$. If $\{ x_n \}$ does not converge to some point of $X$, then we are done. Suppose that $\{ x_n \}$ converges to two distinct points $x$ and $y$ of $X$. Since $X$ is Hausdorff, there are neighborhoods $U$ and $V$ of $x$ and $y$, respectively, such that $U \cap V = \emptyset$. Since $\{ x_n \}$ converges to both $x$ and $y$, there exist positive integers $N_1$ and $N_2$ such that $x_n \in U, \forall n \ge N_1$ and $x_n \in V, \forall n \ge N_2$. Take $N = \max \{ N_1, N_2 \}$. Then we have that $x_n \in U \cap V, \forall n \ge N$. $\bigotimes$ Thus, if $\{ x_n \}$ converges to some point of $X$, then it is unique.
 
@@ -104,7 +106,13 @@ Thus, $X \times Y$ is a Hausdorff space.
 
 $$(Y \cap U) \cap (Y \cap V) = Y \cap (U \cap V) = \emptyset.$$
 
-Thus, $Y$ is a Hausdorff space. $\blacksquare$
+Thus, $Y$ is a Hausdorff space. 
+
+**(iv)** Since $X$ is Hausdorff and $Y$ is compact, $Y$ is closed in $X$. Since $x_0 \notin Y$, for each $y \in Y$, there exist open subsets $U_y$ and $V_y$ in of $X$ such thath $x_0 \in U_y, y \in V_y$ and $U_y \cap V_y \neq \emptyset$. Then $\mathcal{U} = \{ V_y \mid y \in Y \}$ is an open cover of $Y$, and it has a finite subcover $\{ V_{y_1}, \dots, V_{y_n} \}$. Let 
+
+$$U := \bigcap_{i=1}^n U_{y_i} \quad \text{and} \quad V := \bigcup_{i=1}^n V_{y_i}.$$
+
+Then $U$ and $V$ are open subsets of $X$ such that $x_0 \in U, Y \subset Y$ and $U \cap Y = \emptyset$. $\blacksquare$
 
 # $T_3$ Space
 ## Theorem 4
@@ -166,7 +174,13 @@ $$d(x, y) \le d(x, z) + d(z, y) < \frac{\varepsilon_x + \varepsilon_y}{2} \le \v
 
 which implies that $x \in B_d(y, \varepsilon_y)$. But we know that $A \cap B_d(y, \varepsilon_y) = \emptyset$. $\bigotimes$ Hence, $U \cap V = \emptyset$, and therefore $X$ is normal.
 
-**(iv)** Let $X$ be a compact Hausdorff space.
+**(iv)** Let $X$ be a compact Hausdorff space. Let $x \in X$, and let $C$ be a closed subset of $X$ with $x \notin C$. Since $X$ is compact, so is $C$. By Theorem 3 **(iv)**, there exist open subsets $U$ and $V$ of $X$ such that $x \in U, C \subset V$ and $U \cap V = \emptyset$, which means that $X$ is regular.
+
+Let $A$ and $B$ be closed subsets of $X$ with $A \cap B = \emptyset$. For each $a \in A$, there exist open subsets $U_a, V_a$ of $X$ such that $a \in U_a, B \subset V_a$ and $U_a \cap V_a = \emptyset$. Then $\mathcal{U} = \{ U_a \mid a \in A \}$ is an open cover of $A$. Since $X$ is compact and $A$ is closed, $A$ is compact, which means that there is a finite subcover $\{ U_{a_1}, \dots, U_{a_n} \}$ of $\mathcal{U}$. Let
+
+$$U: = \bigcup_{i=1}^n U_{a_i} \quad \text{and} \quad V: = \bigcap_{i=1}^n V_{a_i}.$$
+
+Then $A \subset U, B \subset V$ and $U \cap V = \emptyset$. Thus, $X$ is $T_4$. $\blacksquare$
 
 ## Remark 2
 **(i)** A subspace of a $T_4$ space is not necessarily $T_4$.

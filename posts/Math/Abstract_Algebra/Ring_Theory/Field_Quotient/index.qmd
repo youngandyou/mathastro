@@ -301,10 +301,12 @@ Let $x \in L$. Then $x = \frac{a}{b}L$ for some $a, b \in D$, so we have $\psi\l
 :::
 
 # Remark
-Let $F$ be a field, and let $K$ be a quotient field of $F$. Then $F \cong K$.
+**(i)** Let $F$ be a field, and let $K$ be a quotient field of $F$. Then $F \cong K$.
+
+**(ii)** Let $D$ and $S$ be two integral domains with $D \cong S$. Then the quotient fields of $D$ and $K$ are isomorphic.
 
 ::: {.callout-note title="Proof" collapse="true"}
-$\big[ (\because)$ Let $\phi: K \to F$ be a function defined by $\phi([(x, y)]) = xy^{-1}, \forall [(x, y)] \in K$. If $[(x, y)] = [(a, b)]$, then $(x, y) \sim (a, b)$, so $xb = ay$. Since $F$ is a field, $b^{-1}$ and $y^{-1}$ exist. Then we have
+**(i)** Let $\phi: K \to F$ be a function defined by $\phi([(x, y)]) = xy^{-1}, \forall [(x, y)] \in K$. If $[(x, y)] = [(a, b)]$, then $(x, y) \sim (a, b)$, so $xb = ay$. Since $F$ is a field, $b^{-1}$ and $y^{-1}$ exist. Then we have
 
 $$\begin{align*}
 \phi([(x, y)]) &= xy^{-1} \\
@@ -340,7 +342,9 @@ Thus $\phi$ is a ring homomorphism.
 
 If $\phi([(x, y)]) = \phi([(a, b)])$, then $xy^{-1} = ab^{-1}$, so $xb = ay$. Then $(x,y) \sim (a,b)$, so $[(x, y)] = [(a, b)]$. Thus $\phi$ is one-to-one.
 
-Let $x \in F$. Since $F$ is a field, $x = x \cdot 1 = x \cdot 1^{-1} = \phi([(x, 1)])$. Thus $\phi$ is onto. Hence $\phi$ is an isomorphism, and $F \cong K$. $\blacksquare$ $\big]$
+Let $x \in F$. Since $F$ is a field, $x = x \cdot 1 = x \cdot 1^{-1} = \phi([(x, 1)])$. Thus $\phi$ is onto. Hence $\phi$ is an isomorphism, and $F \cong K$. 
+
+**(ii)** Let $F$ and $K$ be the quotient fields of $D$ and $S$, respectively. Let $\Phi: D \to S$ be an isomorphism, and let $\phi: D \to F, \psi: S \to K$ be the embeddings described in the proof of step 4, that is, $\phi(a) = [(a, 1)], \forall a \in D$ and $\psi(a) = [(a, 1)], \forall a \in S$. Then $\psi \circ \Phi : D \to K$ is the embedding of $D$ into $K$, which means that $K$ is the quotient field of $D$. By step 5, we obtain $F \cong K$. $\blacksquare$
 :::
 
 한편 모든 체는 정역이므로 체에 대해서도 분수체를 생각할 수 있다. 그런데 애초에 분수체를 도입한 이유 자체가 정역 자체만으로는 체가 되기 충분하지 않았기 때문이었는데, 체에 대해서는 굳이 이러한 이유를 생각할 필요가 없다. 이러한 직관과 잘 들어맞게도 체의 분수체는 자기 자신과 동형이다.

@@ -109,9 +109,10 @@ Let $R$ be a ring. If there exists an $n \in \mathbb{N}$ such that $na = 0, \for
 
 **(iii)** Let $R$ be a ring with identity. If $n \cdot 1 \neq 0, \forall n \in \mathbb{N}$, then $\mathrm{char}(R) = 0$. If $n \cdot 1 = 0$ for some $n \in \mathbb{N}$, then the smallest such integer $n$ is the characteristic of $R$.
 
-원래 표수를 찾으려면 환 $R$의 임의의 원소에 대해서 정의를 체크해야 하지만, 곱셈의 항등원 $1$에 대해서만 체크해도 충분하다는 사실을 얻는다.
+다시 말해 표수를 찾기 위해 $R$의 임의의 원소에 대해서 정의를 체크하는 대신 곱셈의 항등원 $1$에 대해서만 체크해도 충분하다는 사실을 얻는다.
 
-$\big[ (\because)$ If $n \cdot 1 \neq 0, \forall n \in \mathbb{N}$, then clearly $\mathrm{char}(R) = 0$.
+::: {.callout-note title="Proof" collapse="true" icon=false}
+If $n \cdot 1 \neq 0, \forall n \in \mathbb{N}$, then clearly $\mathrm{char}(R) = 0$.
 
 Suppose $n \cdot 1 = 0$ for some $n \in \mathbb{N}$. Let $a \in R$. Then we have
 
@@ -124,7 +125,52 @@ n \cdot a &= \underbrace{a + \cdots + a}_{n \text{ times}} \\
 &= 0
 \end{align*}$$
 
-Thus, the smallest positive integer $n$ is the characteristic of $R$. $\blacksquare \big]$
+Thus, the smallest positive integer $n$ is the characteristic of $R$.
+:::
+
+# Prime Ring
+## Definition 3
+Let $R$ be a ring with identity.
+
+**(i)** $R$ is called a ***prime ring*** if it has no proper subrings containing the identity. 
+
+**(ii)** The smallest subring of $R$ containing the identity of $R$ is called the ***prime subring*** of $R$.
+
+정의상 $R$이 소환(prime ring)이면 $R$은 자기 자신을 소부분환(prime subring)으로 가진다. 정의에서 반드시 부분환들은 $R$의 곱셈의 항등원을 포함하는 부분환들로 제한되는데, 일반적으로 부분환은 기존 환의 곱셈 항등원을 가질 필요가 없기 때문이다. 따라서 이 조건을 빼버리면 소부분환은 항상 $\{ 0 \}$이 되어버리기 때문에 소부분환이라는 정의가 무의미해진다.
+
+소부분환은 말그대로 어떤 환의 부분환 중 가장 작은 부분환을 의미하고, 존재성은 임의의 부분환의 교집합을 취함으로써 얻어진다. 즉,
+
+$$R_0 = \bigcap_{1 \in S \le R} S$$
+
+이다.
+
+한편 부분환이라면 반드시 $0$과 위 조건에 의해서 기존 환의 곱셈 항등원 $1$을 반드시 포함해야 하고, 연산에 대해 닫혀있기 때문에 이들을 가지고 생성되는 다른 원소들도 반드시 포함해야 한다. $0$은 생성해봤자 자기 자신이고, $1$은 자신의 정수배에 해당하는 모든 원소들을 생성하기 때문에 소부분환은 $1$로 생성되는 환이라고도 볼 수 있다. 이때 환의 표수의 정의에 의해 표수가 $0$인지, $0$보다 큰 어떤 정수인지에 따라 그 모양이 달라질 것이다. 이 내용을 정리한 게 아래 정리이다.
+
+## Theorem 2
+**(i)** Every ring $R$ with identity has the prime subring $R_0 = \{ m \cdot 1 \mid m \in \mathbb{Z} \}$. If $\mathrm{char}(R) = 0$, then $R_0 \cong \mathbb{Z}$. If $\mathrm{char}(R) = n > 1$, then $R_0 \cong \mathbb{Z}_n$.
+
+**(ii)** Prime rings are only $\mathbb{Z}$ or $\mathbb{Z}_n (n \ge 2)$ up to isomorphism.
+
+### Proof
+**(i)** Define
+
+$$R_0 = \bigcap_{1 \in S \le R} S.$$
+
+Since a intersection of subrings is again a subring, $R_0 \le R$ and $1 \in R_0$. Clearly, it is the smallest subring of $R$ containing $1$. Thus $R_0$ is the prime subring of $R$.
+
+Define $\phi: \mathbb{Z} \to R$ by $\phi(m) = m \cdot 1, \forall m \in \mathbb{Z}$. Clearly $\phi$ is a ring homomorphism. Note that 
+
+$$\mathrm{Im}(\phi) = \phi(\mathbb{Z}) = \{ m \cdot 1 \mid m \in \mathbb{Z} \} =: R_0.$$
+
+If $\mathrm{char}(R) = 0$, then $\ker(\phi) = \{ 0 \}$. By First isomorphism theorem, $\mathbb{Z} / \ker(\phi) \cong \phi(\mathbb{Z})$. On the other hands, $\mathbb{Z} / \{ 0 \} \cong \mathbb{Z}$. Hence, we obtain
+
+$$R_0 = \{ m \cdot 1 \mid m \in \mathbb{Z} \} \cong \mathbb{Z}.$$
+
+If $\mathrm{char}(R) = n > 1$, then $\ker(\phi) = \{ k \in \mathbb{Z} \mid k \cdot 1 = 0 \} = n\mathbb{Z}$. By First isomorphism theorem, $\mathbb{Z} / \ker(\phi) \cong \phi(\mathbb{Z})$. On the other hands, $\mathbb{Z} / n\mathbb{Z} \cong \mathbb{Z}_n$. Hence, we obtain
+
+$$R_0 = \{ m \cdot 1 \mid m \in \mathbb{Z} \} \cong \mathbb{Z}_n.$$
+
+**(ii)** Let $R$ be a prime ring. Since $R$ is the prime subring of itself, $\mathbb{Z} \cong R$ or $\mathbb{Z}_n \cong R$ for some $n > 1$. $\blacksquare$
 
 # Noncommutative Examples
 여기서는 비가환환, 즉 곱셈에 대해서 가환법칙이 성립하지 않는 몇 가지 환의 예시를 소개한다. 온갖 곳에 가환환이라는 조건이 쓰이다보니 학부 현대대수학은 가환환을 중심으로 내용이 전개되지만, 그렇다고 대수학이라는 넓은 분야에서 가환환만 다루지는 않는다.

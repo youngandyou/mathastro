@@ -190,6 +190,9 @@ $$\mathscr{B}^\ast_0 = \{ (- \varepsilon, \varepsilon) \mid \varepsilon > 0 \}$$
 **(ii)** If $X$ is a $T_1$ space and $\mathscr{B}_x$ is a local basis for $x \in X$, then $\bigcap \mathscr{B}_x = \{ x \}$.
 
 ## Proof
+**(i)**
+
+**(ii)** Since $X$ is $T_1$, a singleton $\{ y \}$ is closed in $X$ for each $y \in Y$. Then $X \setminus \{ y \}$ is open in $X$. If $x \neq y$, then $x \in X \setminus \{ y\}$, so that $x \in B_x \subset X \setminus \{ y \}$ for some $B_x \in \mathscr{B}_x$. Thus, $y \notin B_x, \forall y \neq x$, which means that $\bigcap \mathscr{B}_x \subset \{ x \}$. On the other hand, $x \in B_x$ for all $B_x \in \mathscr{B}_x$, so that $x \in \bigcap \mathscr{B}_x$. Thus, $\bigcap \mathscr{B}_x = \{ x \}$. $\blacksquare$
 
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

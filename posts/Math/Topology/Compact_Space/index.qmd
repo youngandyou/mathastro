@@ -60,6 +60,10 @@ By the nested interval theorem, there exists $x^\ast \in \displaystyle \bigcap_{
 
 **(vii)** Let $K \subset Y \subset X$. Then $K$ is compact in $Y$ $\iff$ $K$ is compact in $X$.
 
+**(viii)** Let $Y$ be a compact subspace of a Hausdorff space $X$, and let $x_0 \notin Y$. Then there exist open subsets $U$ and $V$ of $X$ such that $x_0 \in U, Y \subset V$ and $U \cap V = \emptyset$.
+
+**(ix)** **(Tube Lemma)** Let $X \times Y$ be a space where $Y$ is compact. If $O$ is an open subset of $X \times Y$ containing $\{ x_0 \} \times Y$ for some $x_0 \in X$, then there exists an open subset $U$ of $X$ containing $x_0$ such that $U \times Y \subset O$.
+
 본디 부분공간 $Y$의 오픈 커버는 $Y$의 오픈셋들로 구성되어야 한다. 이는 부분공간의 정의상 오픈셋의 모양이 조금 지저분해질 수 밖에 없는데, 정리 **(i)**은 그러한 불편함을 없애고 $X$의 오픈셋들만 가지고도 부분공간의 컴팩터성을 논할 수 있게 해준다는 점을 시사한다.
 
 집합이 열려있거나 닫혀있는 성질은 전체 공간에 따라 달라지지만, **(vii)**는 컴팩트란 개념이 전체 공간에 따라 달라지는 것이 아니라 집합 그 자체의 성질임을 말해준다.
@@ -118,11 +122,13 @@ $(\Longleftarrow)$ We use induction on $n$.
 
 **Base Case:** Let $\mathcal{O}$ be an open cover of $X_1 \times X_2$. For each $(x, y) \in X_1 \times X_2$, there exists $O_{(x, y)} \in \mathcal{O}$ such that $(x, y) \in O_{(x, y)}$. Then $(x, y) \in U_{(x, y)} \times V_{(x, y)} \subset O_{(x, y)}$ for some open subsets $U_{(x, y)}$ of $X_1$ and $V_{(x, y)}$ of $X_2$. 
 
-Note that $\{ U_{(x, y)} \}_{x \in X_1}$ is an open cover of $X_1$. Since $X_1$ is compact, the finite subcover $\{ U_{(x_1, y)}, \dots, U_{(x_n, y)} \}$ exists. Set
+Note that for a fixed $y \in X_2$, $\{ U_{(x, y)} \}_{x \in X_1}$ is an open cover of $X_1$. Since $X_1$ is compact, the finite subcover $\{ U_{(x_1, y)}, \dots, U_{(x_n, y)} \}$ exists. Set
 
 $$V_y := \bigcap_{i=1}^n V_{(x_i, y)}.$$
 
 Since $V_y$ is open in $X_2$, $\{ V_y \}_{y \in X_2}$ is an open cover of $X_2$. Since $X_2$ is compact, there exists a finite subcover $\{ V_{y_1}, \dots, V_{y_m} \}$ of $X_2$. Then $\{ O_{(x_i, y_j)} \}_{i=1, \dots, n, j = 1, \dots, m}$ is a finite subcollection of $\mathcal{O}$ that covers $X_1 \times X_2$, which means that $X_1 \times X_2$ is compact.
+
+$\big[ (\because)$ Let $(x, y) \in X_1 \times X_2$. Then $y \in V_{y_j}$ for some $j \in \{ 1, \dots, m\}$, so that $y \in V_{(x_i, y_j)}$ for all $i = 1, \dots, n$. Moreover, $x \in U_{(x_i, y_j)}$ for some $i = 1, \dots, n$. Hence, $(x, y) \in U_{(x_i, y_j)} \times V_{(x_i, y_j)} \subset O_{(x_i, y_j)}$. $\big]$
 
 **Inductive Step:** Suppose that $X_1, \dots, X_n$ are compact for some $n \in \mathbb{N}$, and $\prod_{i=1}^n X_i$ is compact. Let $X_{n+1}$ be a compact space. By the base case, we argue 
 

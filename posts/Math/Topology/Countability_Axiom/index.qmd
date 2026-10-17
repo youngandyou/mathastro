@@ -16,20 +16,42 @@ categories:
 ### Remark 1
 **(i)** Every metrizable space is first-countable.
 
+::: {.callout-note title="Proof" icon=false collapse="true"}
+Let $X$ be a metrizable space with a metric $d$ inducing the topology of $X$. For $x \in X$, define $\mathscr{B}_x := \left\{ B_d \left(x, \frac{1}{n} \right) \,\, \Bigg \vert \,\, n \in \mathbb{N} \right\}$. For an open set $U$ containing $x$, there exists $\delta > 0$ such that $B_d(x, \delta) \subset U$. Choosing $n \in \mathbb{N}$ such that $\frac{1}{n} < \delta$, we have
+
+$$x \in B_d \left( x, \frac{1}{n} \right) \subset B_d(x, \delta) \subset U.$$
+
+Hence, $\mathscr{B}_x$ is a countable local basis at $x$, so $X$ is first-countable. $\blacksquare$
+:::
+
 **(ii)** Every second-countable space is first-countable.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+Let $X$ be a second-countable space with a countable basis $\mathscr{B}$. Since $\mathscr{B}_x := \{ B_x \in \mathscr{B} \mid x \in B_x \}$ is a local basis at each point $x \in X$ and $\mathscr{B}_x$ is countable, $X$ has a countable local basis at each point $x \in X$, so $X$ is first-countable. $\blacksquare$
+:::
 
 ### Example 1
 **(i)** $(\mathbb{R}, \mathscr{T}_{f})$ is neither first-countable nor second-countable.
 
-$\big[ (\because)$ $\big]$
+::: {.callout-note title="Proof" icon=false collapse="true"}
+Suppose that it is first-countable. Let $\mathscr{B}_x = \{ B_n \}_{n=1}^\infty$ be a countable local basis at $x$. (If $\mathscr{B}_x$ is finite, so $\mathscr{B}_x = \{ B_1, B_2, \dots, B_n \}$, then we let $B_n = B_{n+1} = B_{n+2} = \cdots$.) Since $(\mathbb{R}, \mathscr{T}_{f})$ is $T_1$, $\displaystyle \bigcap_{n=1}^\infty B_n = \{ x \}$. Note that
+
+$$\mathbb{R} \setminus \{ x \} = \mathbb{R} \setminus \bigcap_{n=1}^\infty B_n = \bigcup_{n=1}^\infty (\mathbb{R} \setminus B_n).$$
+
+Since each $B_n$ is open in $(\mathbb{R}, \mathscr{T}_{f})$, $\mathbb{R} \setminus B_n$ is a finite subset of $\mathbb{R}$. Thus, $\mathbb{R} \setminus \{ x \}$ is a countable union of finite sets, which is impossible. Hence, $(\mathbb{R}, \mathscr{T}_{f})$ is not first-countable, and hence not second-countable.
+:::
 
 **(ii)** $(\mathbb{R}, \mathscr{T}_{\text{discrete}})$ is first-countable, but not second-countable.
 
-$\big[ (\because)$ For $x \in \mathbb{R}$, the set $\{ \{ x \} \}$ is a countable local basis, so $(\mathbb{R}, \mathscr{T}_{\text{discrete}})$ is first-countable. On the other hand, suppose that there is a countable basis $\mathscr{B}$. For an open set $\{ x \}$, there is a basis element $B \in \mathscr{B}$ such that $x \in B \subset \{ x \}$. That is, $B$ must contain every singleton $\{ x \}$ in $\mathbb{R}$. Then $B$ contains an uncountable number of sets, which is a contradiction. Thus, $(\mathbb{R}, \mathscr{T}_{\text{discrete}})$ is not second-countable. $\big]$
+::: {.callout-note title="Proof" icon=false collapse="true"}
+For $x \in \mathbb{R}$, the set $\{ \{ x \} \}$ is a countable local basis, so $(\mathbb{R}, \mathscr{T}_{\text{discrete}})$ is first-countable. On the other hand, suppose that there is a countable basis $\mathscr{B}$. For an open set $\{ x \}$, there is a basis element $B \in \mathscr{B}$ such that $x \in B \subset \{ x \}$. That is, $B$ must contain every singleton $\{ x \}$ in $\mathbb{R}$. Then $B$ contains an uncountable number of sets, which is a contradiction. Thus, $(\mathbb{R}, \mathscr{T}_{\text{discrete}})$ is not second-countable.
+:::
 
 **(iii)** $(\mathbb{R}, \mathscr{T}_{\text{usual}})$ is second-countable.
 
+::: {.callout-note title="Proof" icon=false collapse="true"}
 $\big[ (\because)$ $\{ (a, b) \mid a, b \in \mathbb{Q}, a < b \}$ is a countable basis.$\big]$
+:::
 
 ## Theorem 1
 Let $X$ be a first-countable space.
@@ -94,32 +116,50 @@ Let $X$ be a topological space.
 **(i)** $(\mathbb{R}, \mathscr{T}_{\text{usual}})$ is NOT compact, but is Lindelöf and separable.
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
-
+Since $\mathscr{B} = \{ (a, b) \mid a < b, a, b \in \mathbb{Q} \}$ is a countable basis, $(\mathbb{R}, \mathscr{T}_{\text{usual}})$ is second-countable, so it is Lindelöf and separable.
 :::
 
 **(ii)** $(\mathbb{R}, \mathscr{T}_{\text{discrete}})$ is neither Lindelöf nor separable.
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
+Since the open cover $\{ \{x \} \mid x \in \mathbb{R} \}$ does not have a countable subcover, $(\mathbb{R}, \mathscr{T}_{\text{discrete}})$ is not Lindelöf.
 
+Suppose that $(\mathbb{R}, \mathscr{T}_{\text{discrete}})$ has a countable dense subset $S$. Since $S$ is closed, $S = \overline{S}$. However, we have $S = \overline{S} = \mathbb{R}$. Thus, $\vert S \vert = \vert \mathbb{R} \vert$, which contradicts that $S$ is countable. Hence, $(\mathbb{R}, \mathscr{T}_{\text{discrete}})$ is not separable.
 :::
 
 **(iii)** $(\mathbb{R}, \mathscr{T}_{\text{usual}}) \times (\mathbb{R}, \mathscr{T}_{\text{usual}})$ is Lindelöf.
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
+Note that 
 
+$$\bigcup_{n=1}^\infty ([-n, n] \times [-n, n]) = \mathbb{R}^2.$$
+
+Let $\mathcal{U}$ be an open cover of $\mathbb{R}^2$. Since $[-n, n] \times [-n, n]$ is covered by $\mathcal U$, there is a subcollection $\mathcal{U}_n$ of $\mathcal{U}$ that covers $[-n, n] \times [-n, n]$. Since $[-n, n] \times [-n, n]$ is compact, there is a finite subcover $\mathcal{U}_n^\ast$. Let $\mathcal{U}^\ast = \bigcup_{n=1}^\infty \mathcal{U}_n^\ast$. Then we have
+
+$$\mathbb{R}^2 = \bigcup_{n=1}^\infty ([-n, n] \times [-n, n]) = \bigcup_{U \in \mathcal{U}^\ast} U.$$
+
+Thus $\mathcal{U}$ has a countable subcover, so $\mathbb{R}^2$ is Lindelöf.
 :::
 
 ## Remark 2
 **(i)** The product of Lindelöf spaces is not necessarily Lindelöf.
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
+Note that $\mathbb{R}_\ell$ is second-countable because $\mathscr{B} = \{ [a, b) \mid a, b \in \mathbb{Q} \}$ is a countable basis. Hence $\mathbb{R}_\ell$ is Lindelöf.
 
+Consider $\mathbb{R}_\ell \times \mathbb{R}_\ell = \mathbb{R}_\ell^2$, called the ***Sorgenfrey plane***. The space $\mathbb{R}_\ell^2$ has a basis of the form $[a, b) \times [c, d)$.
+
+Note that $L := \{ (x, -x) \mid x \in \mathbb{R} \}$ is a closed subset of $\mathbb{R}_\ell^2$, because $\mathbb{R}_\ell^2 - L$ is open. Then $\mathcal{U} = \{ \mathbb{R}_\ell^2 - L \} \cup \{ [a, b) \times [-a, c) \mid a, b, c \in \mathbb{R}\}$ is an open cover of $\mathbb{R}_\ell^2$. Since $L$ is uncountable and each $[a, b) \times [-a, c)$ has at most one element of $L$, $\mathcal{U}$ cannot have a finite subcover. Thus, $\mathbb{R}_\ell^2$ is not Lindelöf.
 :::
 
 **(ii)** The subspace of a Lindelöf space is not necessarily Lindelöf.
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
+Consider $\mathscr{T} = \{ U \subset \mathbb{R} \mid U = \mathbb{R} \text{ or } 0 \notin U \}$. Then $\mathscr{T}$ is a topology on $X$.
 
+Let $\mathcal{U}$ be an open cover of $(\mathbb{R}, \mathscr{T})$. Since $0$ should be convered by $\mathcal{U}$, $\mathbb{R} \in \mathcal{U}$, which means that $\{ \mathbb{R} \}$ is a finite subcover of $\mathcal{U}$. Hence $(\mathbb{R}, \mathscr{T})$ is compact, so is Lindelöf.
+
+Let $Y = \mathbb{R} \setminus \{ 0 \}$ be a subspace of $(\mathbb{R}, \mathscr{T})$. Since any subset $S$ of $Y$ does not contain $0$, $S$ is open in $Y$, which means that the topology of $Y$ is a discrete topology. Hence, $Y$ is not Lindelöf.
 :::
 
 ## Theorem 3

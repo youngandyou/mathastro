@@ -102,6 +102,7 @@ so $B \cap D = \emptyset. \bigotimes$ Thus, $B$ is connected. $\blacksquare$
 The image of a connected space under a continuous map is connected.
 
 한마디로 요약해서, 연속함수는 연결성을 보존한다.
+
 ### Proof
 Let $f: X \to Y$ be a continuous map, and let $A$ be a connected subspace of $X$. Suppose that $f(A)$ is not connected. Then $f(A)$ has a separation $(C, D).$ 
 

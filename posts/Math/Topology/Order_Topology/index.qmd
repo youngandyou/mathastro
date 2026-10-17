@@ -7,6 +7,7 @@ categories:
   - Math > Topology
 ---
 
+# Order Topology
 ## Theorem 1
 Let $X$ be a set with a simple order relation, and let assume that $X$ has more than one element. Let $\mathscr{B}$ be the collection of all sets of the following types:
 
@@ -25,17 +26,10 @@ Let $x \in X.$ If $x$ is the smallest or the largest element of $X$, then the in
 
 Suppose that $x \in B_1 \cap B_2$ for $B_1, B_2 \in \mathscr{B}$. Note that $B_1$ is of the form $(a_1, b_1)$ or $[a_1, b_1)$ or $(a_1, b_1]$, and $B_2$ is of the form $(a_2, b_2)$ or $[a_2, b_2)$ or $(a_2, b_2].$ We can easily verify that there exists $B_3 \in \mathscr{B}$ such that $x \in B_3 \subset B_1 \cap B_2$ by considering each case. $\blacksquare$
 
-## Example 1
-**(i)** The standard topology on $\mathbb{R}$ is the order topology derived from the usual order on $\mathbb{R}.$
-
-**(ii)** Consider the set $\mathbb{R} \times \mathbb{R}$ in the dictionary order. Since $\mathbb{R} \times \mathbb{R}$ has neither a largest nor a smallest element, so the order topology of $\mathbb{R} \times \mathbb{R}$ has the basis as the collection of all open intervals of the form $((a,b), (c, d))$ for $a < c,$ and for $a = c$ and $b < d.$ 
-
-![](ordertop.png)
-
-The subcollection consisting of only intervals of the seconed type is also a basis for the order topology on $\mathbb{R} \times \mathbb{R}.$
-
 ## Definition 1
-If $X$ is an ordered set, and $a \in X$, there are four subsets of $X$ that are called the ***rays*** determined by $a$. They are the following:
+Let $X$ be an ordered set.
+
+**(i)** For $a \in X$, there are four subsets of $X$ that are called the ***rays*** determined by $a$. They are the following:
 $$
 \begin{align*}
 (a, +\infty) &= \{x \in X \mid x > a\}, \\
@@ -47,19 +41,25 @@ $$
 
 Sets of the first two types are called ***open rays***, and sets of the last two types are called ***closed rays***.
 
-## Remark 1
+**(ii)** A subset $Y$ of $X$ is said to be ***convex*** in $X$ if for each pair of points $a < b$ in $Y$, the entire interval $(a, b)$ of points of $X$ lies in $Y$. 
+
+## Remark
 **(i)** Open rays in $X$ are open sets in the order topology.
 
 **(ii)** Open rays form a subbasis for the order topology on $X$.
 
-## Remark 2
-Let $X$ be an ordered set in the order topology, and let $Y$ be a subset of $X.$ The order relation on $X$, when restricted to $Y$, makes $Y$ into an ordered set. However, the resulting order topology on $Y$ need **NOT** be the same as the topology that $Y$ inherits as
-a subspace of $X$. Here are the examples:
+**(iii)** All intervals and rays are convex.
 
-두 위상 $X, Y$에서 취한 부분공간 $A, B$가 있을 때, $A \times B$를 $X \times Y$의 부분공간으로 보든지, $A \times B$ 자체를 곱공간으로 보든지 두 위상은 같은 위상공간임을 보인 바 있다. 그러나 순서 위상으로 오게 되면 이러한 성질이 성립하지 않는데, 위 진술에서 볼 수 있는 것처럼 $Y$를 $X$의 부분 공간으로 보고 만든 위상공간과 $Y$ 자체를 $X$에서의 순서를 제한해서 위상을 준 위상공간은 일반적으로 같을 필요가 없다.
+## Example 1
+**(i)** The standard topology on $\mathbb{R}$ is the order topology derived from the usual order on $\mathbb{R}.$
 
-## Example 2
-**(i)** Consider the subset $Y = [0, 1]$ of the real line $\mathbb{R}$, in the subspace topology. The subspace topology has as basis all sets of the form $(a, b) \cap Y$, where $(a, b)$ is an open interval in $\mathbb{R}$. Such a set is of one of the following types:
+**(ii)** Consider the set $\mathbb{R} \times \mathbb{R}$ in the dictionary order. Since $\mathbb{R} \times \mathbb{R}$ has neither a largest nor a smallest element, so the order topology of $\mathbb{R} \times \mathbb{R}$ has the basis as the collection of all open intervals of the form $((a,b), (c, d))$ for $a < c,$ and for $a = c$ and $b < d.$ 
+
+![](ordertop.png)
+
+The subcollection consisting of only intervals of the seconed type is also a basis for the order topology on $\mathbb{R} \times \mathbb{R}.$
+
+**(iii)** Consider the subset $Y = [0, 1]$ of the real line $\mathbb{R}$, in the subspace topology. The subspace topology has as basis all sets of the form $(a, b) \cap Y$, where $(a, b)$ is an open interval in $\mathbb{R}$. Such a set is of one of the following types:
 $$
 (a, b) \cap Y =
 \begin{cases}
@@ -72,26 +72,25 @@ $$
 
 Note that these sets form a basis for the order topology on $Y$. Thus, we see that in the case of the set $Y = [0, 1]$, its subspace topology (as a subspace of $\mathbb{R}$) and its order topology are the same.
 
-**(ii)** Let $Y = [0, 1) \cup \{2\}$ be a subset of $\mathbb{R}$. In the subspace topology on $Y$, the singleton $\{2\}$ is open, because $\{ 2 \} = (\frac{3}{2}, \frac{5}{2}) \cap Y$. But in the order topology on $Y$, the set $\{2\}$ is not open. Any basis element for the order topology on $Y$ that contains $2$ is of the form
+**(iv)** Let $Y = [0, 1) \cup \{2\}$ be a subset of $\mathbb{R}$. In the subspace topology on $Y$, the singleton $\{2\}$ is open, because $\{ 2 \} = (\frac{3}{2}, \frac{5}{2}) \cap Y$. But in the order topology on $Y$, the set $\{2\}$ is not open. Any basis element for the order topology on $Y$ that contains $2$ is of the form
 $$ \{x \mid x \in Y \text{ and } a < x \le 2\} $$
 
 for some $a \in Y$, such a set necessarily contains points of $Y$ less than $2$, which means that it is not a singleton.
 
-**(iii)** Let $I = [0, 1]$. The dictionary order on $I \times I$ is just the restriction to $I \times I$ of the dictionary order on the plane $\mathbb{R} \times \mathbb{R}$. However, the dictionary order topology on $I \times I$ is not the same as the subspace topology on $I \times I$ obtained from the dictionary order topology on $\mathbb{R} \times \mathbb{R}$. For example, the set $\left\{\frac{1}{2} \right\} \times \left( \frac{1}{2}, 1 \right]$ is open in $I \times I$ in the subspace topology, but not in the order topology, as you can check in the following figure.
+**(v)** Let $X$ be an ordered set in the order topology, and let $Y$ be a subset of $X.$ The order relation on $X$, when restricted to $Y$, makes $Y$ into an ordered set. However, the resulting order topology on $Y$ need **NOT** be the same as the topology that $Y$ inherits as a subspace of $X$. Here are the examples:
+
+Let $I = [0, 1]$. The dictionary order on $I \times I$ is just the restriction to $I \times I$ of the dictionary order on the plane $\mathbb{R} \times \mathbb{R}$. However, the dictionary order topology on $I \times I$ is not the same as the subspace topology on $I \times I$ obtained from the dictionary order topology on $\mathbb{R} \times \mathbb{R}$. For example, the set $\left\{\frac{1}{2} \right\} \times \left( \frac{1}{2}, 1 \right]$ is open in $I \times I$ in the subspace topology, but not in the order topology, as you can check in the following figure.
 
 ![](ordertop2.png)
+
+두 위상 $X, Y$에서 취한 부분공간 $A, B$가 있을 때, $A \times B$를 $X \times Y$의 부분공간으로 보든지, $A \times B$ 자체를 곱공간으로 보든지 두 위상은 같은 위상공간임을 보인 바 있다. 그러나 순서 위상으로 오게 되면 이러한 성질이 성립하지 않는데, 위 진술에서 볼 수 있는 것처럼 $Y$를 $X$의 부분 공간으로 보고 만든 위상공간과 $Y$ 자체를 $X$에서의 순서를 제한해서 위상을 준 위상공간은 일반적으로 같을 필요가 없다.
 
 $\left\{\frac{1}{2} \right\} \times \left( \frac{1}{2}, 1 \right]$를 $\mathbb{R} \times \mathbb{R}$에서의 open ray들의 합집합과 $I \times I$의 교집합으로 나타낼 수 있음을 생각한다면 이 집합은 부분공간 $I \times I$에서 오픈 셋이다. 그러나 $I \times I$ 자체를 순서 위상으로 보게 된다면 자명하게 오픈 셋이 될 수 없다. 즉, 위상에 따라서 오픈 셋의 여부가 달라지므로 두 위상은 같은 위상이 아님을 알 수 있다. 참고로 사전식 순서가 주어진 공간 $I \times I$을 ***ordered square***라고 부르고 $I_o^2$로 적는다.
 
 이와 같이 순서 위상에서는 부분 공간과 엮어서 생각했을 때 일반적으로 순서를 뒤집을 수 없음을 확인했다. 그러면 자연스럽게 언제 뒤집는 일이 가능한지, 그 조건을 찾아야 할 것이고, $Y$가 컨벡스 셋이면 가능하다는 게 결론이다.
 
-## Definition 2
-Given an ordered set $X$, let us say that a subset $Y$ of $X$ is ***convex*** in $X$ if for each pair of points $a < b$ of $Y$, the entire interval $(a, b)$ of points of $X$ lies in $Y$. 
-
-자명하게 interval들이나 ray들은 모두 컨벡스 셋이다. 
-
 ## Theorem 2
-Let $X$ be an ordered set in the order topology, and let $Y$ be a subset of $X$ that is convex in $X$ Then the order topology on $Y$ is the same as the topology $Y$ inherits as a subspace of $X$.
+Let $X$ be an ordered set in the order topology, and let $Y$ be a subset of $X$ that is convex in $X$. Then the order topology on $Y$ is the same as the topology $Y$ inherits as a subspace of $X$.
 
 ### Proof
 Let $\mathscr{T}, \mathscr{T}'$ be the order topology on $Y$, and the subspace topology on $Y$ inherited from $X$, respectively.
@@ -103,6 +102,58 @@ Consider the ray $(a, \infty)$ in $X$. If $a \in Y,$ then $(a, \infty) \cap Y$ i
 **(ii)** $\mathscr{T} \subset \mathscr{T}'$
 
 Consider the ray $(a, \infty)$ of $\mathscr{T}$. Clearly, $(a, \infty)$ is the intersection of the ray in $X$ with $Y.$ Since each ray is open in the order topology, and since each ray is a basis element of the order topology on $X$, we have that $(a, \infty)$ is open in $Y$ with the subspace topology. Similarly, $(-\infty, a)$ is open in $Y$ with the subspace topology. Since these sets form a subbasis for $\mathscr{T}$, we have $\mathscr{T} \subset \mathscr{T}'$. Hence, $\mathscr{T} = \mathscr{T}'. \blacksquare$
+
+# Intermediate Value Theorem
+## Definition 2
+A simply ordered set $L$ having more than one element is called a ***linear continuum*** if the following hold: 
+
+**(i)** $L$ has the least upper bound property. 
+
+**(ii)** If $x < y$, there exists $z$ such that $x < z < y$.
+
+## Theorem 3
+**(i)** If $L$ is a linear continuum in the order topology, then $L$ is connected, and so are intervals and rays in $L$.
+
+**(ii)** The real line $\mathbb{R}$ is connected and so are intervals and rays in $\mathbb{R}$.
+
+### Proof
+**(i)** We prove that if $Y$ is a convex subspace of $L$, then $Y$ is connected. Since $L$ is a convex subspace of $L$, $L$ is connected, and since the intervals and rays in $L$ are convex, they are connected.
+
+Let $Y$ be a convex subspace of $L$, and let assume that $Y$ is disconnected. Then $Y$ has a separation $(A, B)$, which means that $Y$ is the union of the disjoint nonempty sets $A$ and $B$, each of which is open in $Y.$ Choose $a \in A$ and $b \in B$. WLOG, we suppose that $a < b.$ 
+
+Since $Y$ is convex and $a, b \in Y,$ we have that $[a, b] \subset Y.$ Hence $[a, b]$ is the union of the disjoint sets 
+
+$$A_0 := A \cap [a, b] \quad \text{and} \quad B_0 := B \cap [a, b],$$
+
+each of which is open in $[a, b]$ in the subspace topology of $Y$. Since $Y$ is convex, the subspace topology of $Y$ is the same as the order topology itself, which means that $A_0$ and $B_0$ are open in $[a, b]$ in the order topology. 
+
+The sets $A_0$ and $B_0$ are nonempty because $a \in A_0$ and $b \in B_0.$ Thus, $(A_0, B_0)$ is a separation of $[a, b],$ so $[a, b]$ is disconnected. 
+
+Note that $[a, b]$ has the maximum $b,$ so the subset $A_0$ of $[a, b]$ is bounded above. Since $A_0$ is nonempty and $L$ has the least upper bound property, $A_0$ has the supremum, says $c$. We show that $c$ belongs neither to $A_0$ nor to $B_0$, which contradicts that $[a, b]$ is the union of $A_0$ and $B_0$. (Note that $c$ is the supremum of $A_0$ and $b$ is an upper bound of $A_0$, so $a \le c \le b$.)
+
+$\big[(\because)$ First, assume that $c \in B_0.$ Then $c \neq a,$ so either $c = b$ or $a < c < b.$ Note that $B_0$ is open in $[a, b]$ in the order topology. If $c = b,$ then there is some interval of the form $(d, c]$ contained in $B_0$ by definition of the order topology. Since $c = b,$ we have that $(d, c] \cap A_0 = \emptyset$, which means that $d$ is an upper bound of $A_0$ which is smaller than $c. \bigotimes$ 
+
+If $a < c < b,$ then, similarly, there is some interval containing $c$ of the form $(d, d')$ contained in $B_0$ by definition of the order topology. Since $(d, c] \subset (d, d')$, the interval $(d, c]$ is also contained in $B_0.$ Note that $(c, b] \cap A_0 = \emptyset$ because $c$ is an upper bound of $A_0.$ Then $(d, b] \cap A_0 = \emptyset$, which means that $d$ is an upper bound of $A_0$ which is smaller than $c. \bigotimes$ Thus, $c \notin B_0.$
+
+Next, we assume that $c \in A_0.$ Then $c \neq b,$ so either $c = a$ or $a < c < b.$ Note that $A_0$ is open in $[a, b]$ in ther order topology. If $c = a,$ then there is some interval of the form $[c, e)$ contained in $A_0$. Similarly, if $a < c < b,$ then there is some interval of the form $[c, e)$ contained in $A_0.$ Since $L$ is a linear continuum, there exists a point $z \in L$ such that $c < z < e.$ It follows that $z \in A_0,$ which contradicts that $c$ is an upper bound of $A_0.$ Thus, $c$ belongs neither to $A_0$ nor to $B_0$.$\big]$ 
+
+**(ii)** Since $\mathbb{R}$ and intervals and rays in $\mathbb{R}$ are linear continua, they are connected by **(i)**.$\blacksquare$
+
+## Theorem 4 (Intermediate Value Theorem)
+Let $f : X \to Y$ be a continuous map, where $X$ is a connected space and $Y$ is an ordered set in the order topology. If $a$ and $b$ are two points of $X$ and if $r$ is a point of $Y$ lying between $f(a)$ and $f(b)$, then there exists a point $c$ of $X$ such that $f(c) = r$.
+
+### Proof
+Note that the sets 
+
+$$A := f(X) \cap (-\infty, r) \quad \text{and} \quad B := f(X) \cap (r, \infty)$$
+
+are disjoint, and they are nonempty because one containes $f(a)$ and the other contains $f(b)$. Furthermore, they are open in $f(X).$ If there were no point $c$ of $X$ such that $f(c) = r$, then $f(X) = A \cup B,$ which means that $(A, B)$ is a separation of $f(X).$ However, $f(X)$ is connected since $X$ is connected and $f$ is continuous. Thus, there exists a point $c$ of $X$ such that $f(c) = r.$ $\blacksquare$
+
+# Extreme Value Theorem
+Let $f: X \to Y$ be a continuous function, where $Y$ is an ordered set in the order topology. If $X$ is compact, then there exist points $c, d \in X$ such that $f(c) \le f(x) \le f(d), \forall x \in X$.
+
+## Proof
+Since $f$ is continuous and $X$ is compact, $f(X)$ is compact. If $f(X)$ has no largest element, then $\{ (-\infty, f(x)) \mid x \in X \}$ is an open cover of $f(X)$. Since $f(X)$ is compact, it has a finite subcovoer $\{ (-\infty, f(x_1)), \dots, (-\infty, f(x_n)) \}$. However, $f(x_m) = \max_{1 \le i \le n} f(x_i)$ is not contained in any of these sets. $\bigotimes$ Therefore, $f(X)$ has a largest element $d,$ so $f(d) \le f(x), \forall x \in X$. Similarly, $f(X)$ must have the smallest element $c,$ so $f(c) \le f(x), \forall x \in X$. $\blacksquare$
 
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

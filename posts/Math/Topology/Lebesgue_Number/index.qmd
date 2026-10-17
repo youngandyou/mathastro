@@ -25,7 +25,8 @@ $$\mathrm{diam}(A) = \sup_{a, b \in A} d(a, b).$$
 
 **(ii)** The function $d(x, A)$ is continuous.
 
-$\big[ (\because)$ Let $x, y \in X$. Then we have
+::: {.callout-note title="Proof" icon=false collapse="true"}
+Let $x, y \in X$. Then we have
 
 $$\begin{align*}
 &d(x, A) \le d(x, a) \le d(x, y) + d(y, a), \forall a \in A \\
@@ -38,17 +39,20 @@ Similarly, we have $d(y, A) - d(x, A) \le d(y, x)$, which implies that $\vert d(
 
 $$\vert d(x, A) - d(y, A) \vert \le d(x, y) < \delta = \varepsilon.$$
 
-Thus, $d(x, A)$ is uniformly continuous on $X$, so it is continuous.$\big]$
+Thus, $d(x, A)$ is uniformly continuous on $X$, so it is continuous.
+:::
 
-**(iii)** If $x \in A$, then $d(x, A) = 0$, but the converse is not true. Actually, if $d(x, A) = 0$, then $x \in \overline{A}$. That is, if $A$ is closed, then $x \in A \iff d(x, A) = 0$.
+**(iii)** $d(x, A) = 0 \iff x \in \overline{A}$
 
-$\big[ (\because)$ Suppose that $x \in A$. Since $d(x, a) \ge 0, \forall a \in A$ and $d(a, a) = 0, \forall a \in A$, we obtain $d(x, A) = 0$.
-
-Suppose that $d(x, A) = 0$. By definition of the infimum, for every $\epsilon > 0$, there exists $a \in A$ such that $d(x, a) < \epsilon$. Then we construct a sequence $\{ a_n \}$ such that $d(x, a_n) < \frac{1}{n}, \forall n \in \mathbb{N}$. Let $\varepsilon > 0$. Then there exists $N \in \mathbb{N}$ such that $\frac{1}{N} < \varepsilon$. For all $n \ge N$, we have
+::: {.callout-note title="Proof" icon=false collapse="true"}
+$(\implies)$ Suppose that $d(x, A) = 0$. By definition of the infimum, for every $\epsilon > 0$, there exists $a \in A$ such that $d(x, a) < \epsilon$. Then we construct a sequence $\{ a_n \}$ such that $d(x, a_n) < \frac{1}{n}, \forall n \in \mathbb{N}$. Let $\varepsilon > 0$. Then there exists $N \in \mathbb{N}$ such that $\frac{1}{N} < \varepsilon$. For all $n \ge N$, we have
 
 $$d(x, a_n) < \frac{1}{n} \le \frac{1}{N} < \varepsilon,$$ 
 
-which means that $\lim_{n \to \infty} a_n = x$. [Thus $x \in \overline{A}$.](../Metric_Space/index.qmd#sec-theorem-5) $\big]$ 
+which means that $\lim_{n \to \infty} a_n = x$. [Thus $x \in \overline{A}$.](../Metric_Space/index.qmd#sec-theorem-5)
+
+Suppose that $x \in \overline{A}$. Then there exists a sequence $\{ x_n \}$ in $A$ such that $\lim_{n \to \infty} x_n = x$. If we assume that $d(x, A) > 0$, then $\exists N \in \mathbb{N}$ such that $d(x_n, x) < d(x, A), \forall n \ge N$. Since $d(x, A)$ is a lower bound for $\{ d(x, a) \mid a \in A \}$, we have $d(x, A) \le d(x_n, x) < d(x, A), \forall n \ge N$, which is a contradiction. Thus $d(x, A) = 0$.
+:::
 
 # Lebesgue Number Lemma
 A compact metric space $(X, d)$ has a Lebesgue number for every open cover $\mathcal{U}$.
@@ -62,7 +66,7 @@ $$f(x) = \frac{1}{n} \sum_{i=1}^n d(x, C_i), \forall x \in X.$$
 
 Clearly $f(x) \ge 0, \forall x \in X$. Moreover, $f(x) > 0, \forall x \in X$.
 
-$\big[ (\because)$ Suppose that $f(x) = 0$ for some $x \in X$. It implies that $d(x, C_i) = 0, \forall i \in \{ 1, \dots, n\}$. By remark **(iii)**, $x \in C_i = X - U_i, \forall i \in \{ 1, \dots, n \}$. Then $x \notin U_i, \forall i \in \{ 1, \dots, n \}$. So $x \notin \bigcup_{i=1}^n U_i = X$, which is a contradiction $\big]$.
+$\big[ (\because)$ Suppose that $f(x) = 0$ for some $x \in X$. It implies that $d(x, C_i) = 0, \forall i \in \{ 1, \dots, n\}$. By remark **(iii)**, $x \in \overline{C_i} = C_i = X - U_i, \forall i \in \{ 1, \dots, n \}$. Then $x \notin U_i, \forall i \in \{ 1, \dots, n \}$. So $x \notin \bigcup_{i=1}^n U_i = X$, which is a contradiction $\big]$.
 
 By remark **(ii)**, $f$ is continuous. Since $X$ is compact, $f(X)$ is a compact subset of $\mathbb{R}$. Then [$f(X)$ is closed and bounded](../Metric_Space/index.qmd#sec-theorem-6), so there exists $\delta = \inf f(X)$ and $\delta \in f(X)$. Since $f(x) > 0, \forall x \in X$, we have $\delta > 0$. We claim that $\delta$ is a Lebesgue number for $\mathcal{U}$.
 
@@ -70,7 +74,9 @@ Let $A$ be a subset of $X$ with $\mathrm{diam}(A) < \delta$. Choose $a_0 \in A$.
 
 Let $C_m$ be a set such that $d(a_0, C_m) = \max_{1 \le i \le n} d(a_0, C_i)$. Then we have $\delta \le f(a_0) \le d(a_0, C_m)$.
 
-Let $y \in B_d(a_0, \delta)$. Then $d(a_0, y) < \delta$. If $y \in C_m$, then $\delta \le d(a_0, C_m) \le d(a_0, y) < \delta$, which is a contradiction. Thus, $y \notin C_m$, so that $A \subset B_d(a_0, \delta) \subset X - C_m = O_m \in \mathcal{U}$. This shows that $\delta$ is a Lebesgue number for $\mathcal{U}$. $\blacksquare$
+Let $y \in B_d(a_0, \delta)$. Then $d(a_0, y) < \delta$. If $y \in C_m$, then $\delta \le d(a_0, C_m) \le d(a_0, y) < \delta$, which is a contradiction. Thus, $y \notin C_m$, so that $A \subset B_d(a_0, \delta) \subset X - C_m = U_m \in \mathcal{U}$. This shows that $\delta$ is a Lebesgue number for $\mathcal{U}$. $\blacksquare$
+
+증명을 자세히 뜯어보면, $d(x, C_i)$는 $x$가 $U_i$에 속하지 않으면 $0$이고, $U_i$에 속해있으면 $0$이 아닌 양의 값을 갖는다. 이때 이 값은 직관적으로 $x$에서 $U_i$의 경계까지의 최단 거리를 의미한다고 볼 수 있다. 즉 함수값 $f(x)$는 $x$가 주어졌을 때 이 점이 속한 오픈 셋들 안에서의 거리를 측정한 값이다. 그러면 $f$가 연속이면서 컴팩트이므로 최소값 $\delta$가 존재하고, 이 값이 우리가 원하는 르베그 수가 된다. 구체적으로 $\mathrm{diam}(A) < \delta$를 만족하는 부분집합 $A$가 주어졌을 때, $A$에서 어떻게 $\delta$-볼을 잡아도 $A$를 항상 포함하게 된다. 이때 그 $\delta$-볼의 중심을 포함하는 여러 $U_i$들이 있을텐데, 특별히 중심과 경계까지의 거리가 가장 먼 $U$, 즉 $d(a_0, C)$가 가장 큰 값을 선택하면 자연스럽게 $A$는 $U$에 포함되게 된다.
 
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

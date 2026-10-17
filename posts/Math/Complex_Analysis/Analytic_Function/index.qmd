@@ -18,10 +18,26 @@ Let $f$ be a complex function.
 
 **(iv)** If $f$ fails to be analytic at a point $z_0$ but is analytic at some point in every neightborhood of $z_0$, then $z_0$ is called a ***singular point*** of $f$.
 
+(v) $f$ is said to be ***meromorphic*** in a domain $D$ if it is analytic throughout $D$ except for poles.
+
 ## Example
 **(i)** Let $f(z) = \frac{1}{z}$. Since $f$ has a derivative at each nonzero point in $\mathbb{C}$, $f$ is analytic on $\mathbb{C} \setminus \{ 0 \}$ and $f$ is NOT analyic at $0$. Thus $z_0 = 0$ is a singular point of $f$.
 
 **(ii)** Let $f(z) = \vert z \vert^2$. Since $f$ has a derivative at only $z = 0$, $f$ is NOT analytic anywhere. Thus $f$ has no singular points.
+
+**(iii)** Every analytic function in a domain $D$ is meromorphic in $D$.
+
+**(iv)** Let
+
+$$f(z) = \frac{z^2 + 1}{(z - 1)^2}$$
+
+in $\mathbb{C}$. Since $f(z)$ has a pole of order $2$ at $z = 1$ and analytic elsewhere, $f$ is meromorphic in $\mathbb{C}$.
+
+**(v)** Let 
+
+$$f(z) = e^{1/z}$$
+
+in $\mathbb{C}$. Since $f(z)$ has an essential singularity at $z = 0$ and is analytic elsewhere, $f$ is not meromorphic in $\mathbb{C}$.
 
 ## Remark
 Let $f$ and $g$ be analytic functions in $D \subset \mathbb{C}$. Then $f + g$, $f - g$, $f g$, $f / g$ (where $g(z) \neq 0$), and $f \circ g$ are analytic in $D$. 

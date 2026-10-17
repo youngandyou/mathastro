@@ -1,0 +1,123 @@
+---
+title: "Winding Number"
+author: "Youmin Chun"
+date: "2026-10-17 00:00:01"
+description: "감김수(Winding Number)와 편각 원리(Argument Principle)를 소개한다."
+categories:
+  - Math > Complex Analysis
+---
+
+# Winding Number
+## Definition 1
+Let $\Gamma$ be a closed contour in $\mathbb{C} \setminus \{0\}$, parametrized by $w(t) = \rho(t)e^{i\phi(t)}$ for $a \leq t \leq b$ where $w(a) = w(b), \rho(t) = \vert w(t) \vert > 0$ and $\phi: [a,b] \to \mathbb{R}$ is continuous. The ***winding number*** of $\Gamma$ with respect to the origin is defined by
+
+$$W(\Gamma,0) = \frac{\phi(b) - \phi(a)}{2\pi}$$
+
+In particular, let $C$ be a simple closed contour parametrized by $z = z(t), a \leq t \leq b$, and suppose that $f$ is analytic and nonzero on $C$. Let $\Gamma$ be the image curve of $C$ under $f$, with the parametrization $w(t) = f(z(t)) = \rho(t)e^{i\phi(t)}$.
+
+We denote the total change of argument of $f$ along $C$ by
+
+$$\Delta_C\arg f(z) := \phi(b) - \phi(a)$$
+
+so that
+
+$$W(\Gamma,0) = \frac{1}{2\pi}\Delta_C\arg f(z).$$
+
+More generally, let $\Gamma$ be any closed contour in $\mathbb C$, parametrized by $w=w(t)$, and let $w_0\notin\Gamma$. The ***winding number*** of $\Gamma$ with respect to $w_0$ is defined by
+
+$$W(\Gamma,w_0) := W(\Gamma-w_0,0),$$
+
+where $\Gamma-w_0$ is the translated contour parametrized by $\Omega(t) = w(t) - w_0$.
+
+$\Gamma$가 닫힌 곡선이므로 $w(a) = w(b)$이고, 또한 $\rho(a) = \rho(b)$이므로 $e^{i\phi(a)} = e^{i\phi(b)}$이다. 즉 $\phi(b) - \phi(a) \in 2\pi\mathbb{Z}$이므로 감김수 $W$는 항상 정수값을 갖는다.
+
+감김수는 이름에서도 짐작할 수 있듯이 어떤 점 주위의 곡선 $\Gamma$의 회전수를 방향을 고려하여 센 값이다. 즉 반시계방향으로 한 바퀴 돌면 $+1$, 시계방향으로 한 바퀴 돌면 $-1$이 추가된다. 양방향 회전이 섞여 있을 때는 그 기여를 합한 값이므로, $W = 0$이라고 해서 원점 주위를 도는 움직임이 전혀 없었다는 뜻은 아니다.
+
+# Argument Principle
+## Lemma
+Let $R$ denote a domain interior to a simple closed contour $C$. Suppose that
+
+**(i)** A function $f(z)$ is meromorphic in a domain $R$.
+
+**(ii)** $f(z)$ is analytic and nonzero on $C$.
+
+**(iii)** $f \not \equiv 0$ in $R$
+
+Then the set of zeros and poles of $f$ in $R$ is finite in number.
+
+## Theorem (Argument Principle)
+Let $R$ denote a domain interior to a positively oriented simple closed contour $C$. Suppose that
+
+**(i)** A function $f(z)$ is meromorphic in $R$.
+
+**(ii)** $f(z)$ is analytic and nonzero on $C$.
+
+Let $Z$ and $P$ denote the numbers of zeros and poles of $f(z)$ in $R$, respectively, counted with multiplicities. Then
+
+$$W(f(C), 0) = \frac{1}{2\pi}\Delta_C \arg f(z) = Z - P = \frac{1}{2\pi i}\int_C \frac{f'(z)}{f(z)}\,dz$$
+
+특별히 극점이 없을 때 위 적분은 $f(z)$의 영점의 개수 $Z$를 찾는데 사용될 수도 있다.
+
+### Proof
+We evaluate the integral
+
+$$\int_C \frac{f'(z)}{f(z)}\,dz$$
+
+in two different ways.
+
+First, we evaluate the integral directly. Let $z : [a,b] \to \mathbb{C}$ parametrize $C$ once in the positive direction. Choose a partition $a = t_0 < t_1 < \cdots < t_n = b$ such that the restriction $z|_{[t_{j-1},t_j]}$ is smooth on each subinterval. Since $f$ is nonzero on $C$, we write $f(z(t)) = \rho(t)e^{i\phi(t)},$ where $\rho(t) > 0$ and $\phi$ are continuous. Along each of the subintervals, we have
+
+$$\begin{align*}
+f'(z(t)) \cdot z'(t) &= \frac{d}{dt} f(z(t)) \\
+&= \frac{d}{dt}(\rho(t) e^{i \phi(t)}) \\
+&= \rho'(t) e^{i \phi(t)} + i \rho(t) e^{i \phi(t)} \phi'(t)
+\end{align*}$$
+
+Then we have
+
+$$\begin{align*}
+\int_C \frac{f'(z)}{f(z)} dz &= \int_a^b \frac{f'(z(t))}{f(z(t))}z'(t) dt \\
+&= \sum_{j=1}^n \int_{t_{j-1}}^{t_j} \frac{f'(z(t))}{f(z(t))}z'(t) dt \\
+&= \sum_{j=1}^n \int_{t_{j-1}}^{t_j} \frac{\rho'(t) e^{i \phi(t)} + i \rho(t) e^{i \phi(t)} \phi'(t)}{\rho(t) e^{i \phi(t)}} dt \\
+&= \sum_{j=1}^n \int_{t_{j-1}}^{t_j} \left( \frac{\rho'(t)}{\rho(t)} + i\phi'(t) \right) dt \\
+&= \sum_{j=1}^n \left[ \ln \rho(t) + i\phi(t) \right]_{t_{j-1}}^{t_j} \\
+&= \ln \rho(b) - \ln \rho(a) + i(\phi(b) - \phi(a))
+\end{align*}$$
+
+Since $C$ is closed, we have $f(z(b)) = f(z(a))$, so that $\rho(b) = \rho(a)$ and $\phi(b) - \phi(a) = \Delta_C \arg f(z)$. Thus
+
+$$\int_C \frac{f'(z)}{f(z)} dz = i\Delta_C \arg f(z).$$ 
+
+Next, we will use the Cauchy residue theorem. Note that the function $\frac{f'(z)}{f(z)}$ is analytic inside and on $C$ except at the points inside $C$ at which the zeros and poles of $f$ occur.
+
+If $f$ has zero of order $m_0$ at $z_0$, then $f(z) = (z-z_0)^{m_0}g(z)$ for some function $g(z)$ such that $g(z)$ is analytic and nonzero at $z_0$. Hence $f'(z) = m_0(z-z_0)^{m_0-1}g(z) + (z-z_0)^{m_0}g'(z)$, so that 
+
+$$\frac{f'(z)}{f(z)} = \frac{m_0}{z-z_0} + \frac{g'(z)}{g(z)}.$$
+
+Since $\frac{g'(z)}{g(z)}$ is analytic at $z_0$, $\frac{f'(z)}{f(z)}$ has a simple pole at $z_0$ with residue $m_0$.
+
+On the other hand, if $f$ has pole of order $m_p$ at $z_0$, then $f(z) = (z-z_0)^{-m_p}\phi(z)$ for some function $\phi(z)$ such that $\phi(z)$ is analytic and nonzero at $z_0$. Hence $f'(z) = -m_p(z-z_0)^{-m_p-1}\phi(z) + (z-z_0)^{-m_p}\phi'(z)$, so that 
+
+$$\frac{f'(z)}{f(z)} = -\frac{m_p}{z-z_0} + \frac{\phi'(z)}{\phi(z)}.$$
+
+Since $\frac{\phi'(z)}{\phi(z)}$ is analytic at $z_0$, $\frac{f'(z)}{f(z)}$ has a simple pole at $z_0$ with residue $-m_p$.
+
+Since $f(z)$ has $Z$ zeros and $P$ poles inside $C$, by Cauchy Residue Theorem, we obtain
+
+$$\int_C \frac{f'(z)}{f(z)} dz = 2\pi i (Z - P).$$
+
+Hence, we have
+
+$$W(f(C), 0) = \frac{1}{2\pi}\Delta_C \arg f(z) = Z-P = \frac{1}{2\pi i}\int_C \frac{f'(z)}{f(z)} dz. \blacksquare$$
+
+## Example
+Consider
+
+$$f(z) = \frac{z^3+2}{z}$$
+
+and let $C$ be the positively oriented unit circle $|z| = 1$.
+
+The zeros of $f$ satisfy $z^3 = -2$, so every zero has modulus $2^{1/3} > 1$. Thus $f$ has no zeros inside $C$. Since the numerator is nonzero at $z = 0$, the origin is a simple pole. Therefore, $Z = 0$ and $P = 1$, and the argument principle gives $W(f(C), 0) = Z-P = -1.$
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

@@ -1,0 +1,81 @@
+---
+title: "Rouché's Theorem"
+author: "Youmin Chun"
+date: "2026-10-17 00:00:02"
+description: "루셰의 정리(Rouché's Theorem)를 설명하고 이를 이용한 대수학의 기본정리(Fundamental Theorem of Algebra) 증명을 소개한다."
+categories:
+  - Math > Complex Analysis
+---
+
+# Theorem (Rouché's Theorem)
+Let $C$ be a simple closed contour. Suppose that
+
+**(i)** Two functions $f(z)$ and $g(z)$ are analytic inside and on $C$.
+
+**(ii)** $|g(z)| < |f(z)|, \forall z \in C$.
+
+Then $f$ and $f+g$ have the same number of zeros inside $C$, counted with multiplicities.
+
+보통 $f+g$를 해의 개수를 알고 싶은 함수로 두고, $f$를 개수를 찾기 쉬운 함수로 두었을 때 쉽게 해의 개수를 찾을 수 있다. 관점을 바꿔서 보면 $f$에 비해 충분히 작은 함수 $g$를 더하는 행위는 해의 개수를 바꾸지 않는다고 볼 수도 있다.
+
+### Proof
+The conclusion is independent of the orientation of $C$, so we may orient $C$ positively.
+
+Note that neither $f(z)$ nor $f(z)+g(z)$ has zeros on $C$ because $\vert f(z) \vert > \vert g(z) \vert \ge 0$ and $\vert f(z) + g(z) \vert \ge \vert \vert f(z) \vert - \vert g(z) \vert \vert > 0$ hold for all $z \in C$.
+
+Let $Z_f$ and $Z_{f+g}$ denote the numbers of zeros of $f$ and $f+g$ inside $C$, counted with multiplicities. Both functions are analytic inside and on $C$, so they have no poles there. By the argument principle,
+
+$$Z_f = \frac{1}{2\pi}\Delta_C\arg f(z) \quad \text{and} \quad Z_{f+g} = \frac{1}{2\pi}\Delta_C\arg\bigl(f(z)+g(z)\bigr).$$
+
+Note that
+
+$$\begin{align*}
+\Delta_C \arg [f(z) + g(z)] &= \Delta_C \arg \left\{ f(z) \left[ 1 + \frac{g(z)}{f(z)} \right] \right\} \\
+&= \Delta_C \arg f(z) + \Delta_C \arg \left[ 1 + \frac{g(z)}{f(z)} \right].
+\end{align*}$$
+
+Thus, $Z_{f+g} = Z_f + \frac{1}{2\pi} \Delta_C \arg F(z)$ where $F(z) = 1 + \frac{g(z)}{f(z)}$.
+
+Note that $\vert F(z) - 1 \vert = \frac{|g(z)|}{|f(z)|} < 1$ on $C$, which means that the image of $C$ under $F(z)$ is contained in the open disk $\vert w - 1 \vert < 1$. Since it does not enclose the origin, we must have $\Delta_C \arg F(z) = 0$. Hence, $Z_{f+g} = Z_f$. $\blacksquare$
+
+## Example
+**(i)** Consider the equation $z^4+3z^3+6=0$ inside the circle $|z|=2$, counting multiplicities. Let $f(z)=3z^3$ and $g(z)=z^4+6.$. Both functions are entire. On $|z|=2$, we have 
+
+$$|f(z)|=3|z|^3=24 \quad \text{and} \quad |g(z)|=|z^4+6| \leq |z|^4+6 = 22 < 24 = |f(z)|.$$
+
+By Rouché's theorem, $3z^3$ and $z^4+3z^3+6$ have the same number of zeros inside $|z|=2$, counting multiplicities. Since $3z^3$ has a zero of order $3$ at the origin and no other zeros, the given equation has exactly $3$ roots in $|z|<2$, counting multiplicities.
+
+**(ii)** **(Fundamental Theorem of Algebra)** Every polynomial
+
+$$P(z)=a_0+a_1z+\cdots+a_nz^n, \quad a_n\neq 0, \quad n\geq 1,$$
+
+has exactly $n$ zeros in $\mathbb{C}$, counted with multiplicities.
+
+::: {.callout-note title="Proof" collapse="true" icon=false}
+Let
+
+$$f(z)=a_nz^n, \quad \text{and} \quad g(z)=a_0+a_1z+\cdots+a_{n-1}z^{n-1},$$
+
+so that $P=f+g$. Choose a positive number $R$ with 
+
+$$R > \max \left \{ 1, \frac{\vert a_0 \vert + \cdots + \vert a_{n-1} \vert}{\vert a_n \vert} \right \}.$$
+
+Then we have $\vert f(z) \vert = \vert a_n \vert R^n$ and
+
+$$\begin{align*}
+\vert g(z) \vert & \le \vert a_0 \vert + \cdots + \vert a_{n-1} \vert R^{n-1} \\
+& \le \vert a_0 \vert R^{n-1} + \cdots + \vert a_{n-1} \vert R^{n-1} \\
+& = \left( \vert a_0 \vert + \cdots + \vert a_{n-1} \vert \right) R^{n-1},
+\end{align*}$$
+
+so that
+
+$$\frac{\vert g(z) \vert}{\vert f(z) \vert} \le \frac{\vert a_0 \vert + \cdots + \vert a_{n-1} \vert}{\vert a_n \vert R} < 1.$$ 
+
+Hence, $\vert f(z) \vert > \vert g(z) \vert$ on $|z| = R$.
+
+By Rouché's theorem, $P(z)$ and $f(z)$ have the same number of zeros inside $|z| = R$. Since $f(z)$ has exactly $n$ zeros inside $|z| = R$, $P(z)$ has exactly $n$ zeros inside $|z| = R$. $\blacksquare$
+:::
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

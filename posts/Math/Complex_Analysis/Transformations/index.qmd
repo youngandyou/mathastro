@@ -69,7 +69,7 @@ $$Azw + Bz + Cw + D = 0$$
 
 의 꼴을 얻고, 이 식이 $z$와 $w$에 대해서 일차식이므로 이러한 변환을 ***쌍선형변환(Bilinear Transformation)***이라고 부르기도 한다.
 
-## Theorem
+## Theorem 1
 **(i)** The linear fractional transformation
 
 $$w = \frac{az + b}{cz + d}, \quad ad - bc \neq 0$$
@@ -201,6 +201,98 @@ $$\lim_{z_1 \to 0} \frac{\left( z - \frac{1}{z_1} \right)(z_2 - z_3)}{(z-z_3)\le
 $$\frac{(w - w_1)(w_2 - w_3)}{(w - w_3)(w_2 - w_1)} = \frac{z_2-z_3}{z-z_3}$$
 
 형태를 자세히 보면 $z_1$이 들어있던 부분이 지워진 꼴이다. 따라서 다른 $z_k$나 $w_k$가 무한대로 주어졌다고 하면 해당하는 부분을 지우고 암시적 폼을 작성하면 된다.
+
+## Mappings of The Upper Half Plane
+### Theorem 2
+Let $U := \{ z \in \mathbb{C} \mid \mathrm{Im}(z) > 0 \}$, and let $D := \{ w \in \mathbb{C} \mid \vert w \vert < 1 \}$. Let $T: \overline{C} \to \overline{C}$ be a linear fractional transformation. The following are equivalent:
+
+**(i)** $T(U) = D, T(\partial U \cup \{\infty\}) = \partial D$.
+
+**(ii)** $T$ is of the form
+
+$$T(z) = e^{i \alpha} \frac{z - z_0}{z - \overline{z_0}}$$
+
+for some $\alpha \in \mathbb{R}$ and $z_0 \in U$.
+
+#### Proof
+**(i)** $\implies$ **(ii)** Let $T = \frac{az + b}{cz + d}$ with $ad - bc \neq 0$.
+
+First, we note that $c, d \neq 0$. Since $T(\infty) \in \partial D$, it must have the finite value, which is the case when only $c \neq 0$. If $d = 0$, then $c \neq 0$, so $T(0) = T\left( - \frac{d}{c} \right) = \infty$, which is impossible since $T(0) \in \partial D$. Hence $c, d \neq 0$.
+
+Then we have $1 = \vert T(0) \vert = \left \vert \frac{b}{d} \right \vert$ and $1 = \vert T(\infty) \vert = \left \vert \frac{a}{c} \right \vert$, which implies that $\vert b \vert = \vert d \vert \neq 0$ and $\vert a \vert = \vert c \vert \neq 0$
+
+Since $\vert \frac{a}{c} \vert = 1$, we let $\frac{a}{c} = e^{i \alpha}$ for some $\alpha \in \mathbb{R}$. Then we have
+$$\begin{align*}
+T(z) &= \frac{az + b}{cz + d} \\
+&= \frac{a}{c} \cdot \frac{z + \frac{b}{a}}{z + \frac{d}{c}} \\
+&= e^{i \alpha} \frac{z + \frac{b}{a}}{z + \frac{d}{c}}.
+\end{align*}$$
+
+Since $\left \vert \frac{b}{d} \right \vert = 1 = \left \vert \frac{a}{c} \right \vert$, we have $\left \vert \frac{b}{a} \right \vert = \left \vert \frac{d}{c} \right \vert$. If we let $z_0 = \frac{b}{a}$ and $z_1 = \frac{d}{c}$, then
+
+$$T(z) = e^{i \alpha} \frac{z + z_0}{z + z_1}.$$
+
+Since $T(1) \in \partial D$,
+
+$$1 = \vert T(1) \vert = \left \vert e^{i \alpha} \frac{1 + z_0}{1 + z_1} \right \vert = \frac{\vert 1 + z_0 \vert}{\vert 1 + z_1 \vert},$$
+
+which implies that $\vert 1 + z_0 \vert^2 = \vert 1 + z_1 \vert^2$. Then we obtain
+
+$$\begin{align*}
+&\vert 1 + z_0 \vert^2 = \vert 1 + z_1 \vert^2 \\
+\implies &(1 + z_0)(1 + \overline{z_0}) = (1 + z_1)(1 + \overline{z_1}) \\
+\implies &1 + z_0 + \overline{z_0} + \vert z_0 \vert^2 = 1 + z_1 + \overline{z_1} + \vert z_1 \vert^2 \\
+\implies &\mathrm{Re}(z_0) = \mathrm{Re}(z_1).
+\end{align*}$$
+
+Because $z_0, z_1 \in \partial D$, we obtain $z_1 = \overline{z_0}$.
+
+Since $ad \neq bc$, $z_0 = \frac{b}{a} \neq \frac{d}{c} = z_1$, which implies that $z_0, z_1$ are not real numbers, i.e., $\mathrm{Im}(z_0), \mathrm{Im}(z_1) \neq 0$.
+
+We claim that $\mathrm{Im}(z_0) < 0$, so that
+
+$$\begin{align*}
+T(z)& = e^{i \alpha} \frac{z + z_0}{z + \overline{z_0}} \\
+&= e^{i \alpha} \frac{z - z'_0}{z - \overline{z'_0}}
+\end{align*}$$
+
+where $z'_0 = - z_0$ with $\mathrm{Im}(z'_0) > 0$, and the statement **(ii)** is proved.
+
+If $\mathrm{Im}(z_0) > 0$, then $z_0 \in U$. Then $T(z_0) \in D$, i.e., $\vert T(z_0) < 1$. However, we have
+
+$$\begin{align*}
+\vert T(z_0) \vert &= \left \vert e^{i \alpha} \frac{z_0 + z_0}{z_0 + \overline{z_0}} \right \vert \\
+&= \left \vert \frac{2 z_0}{2\mathrm{Re}(z_0)} \right \vert \\
+&= \frac{\vert z_0 \vert}{\vert \mathrm{Re}(z_0) \vert} < 1,
+end{align*}$$
+
+which means that $\vert z_0 \vert < \mathrm{Re}(z_0). \bigotimes$ Hence $\mathrm{Im}(z_0) < 0$, which completes the proof.
+
+**(ii)** $\implies$ **(i)** First, we show that $T(U) = D$. Let $z \in U$. Then
+
+$$\begin{align*}
+\vert T(z) \vert &= \left \vert e^{i \alpha} \frac{z - z_0}{z - \overline{z_0}} \right \vert \\
+&= \frac{\vert z - z_0 \vert}{\vert z - \overline{z_0} \vert} < 1
+\end{align*}$$
+
+because $\mathrm{Im}(z) > 0$ and $\mathrm{Im}(\overline{z_0}) < 0$, so $\vert z - z_0 \vert < \vert z - \overline{z_0} \vert$. Hence $T(U) \subset D$.
+
+Let $w \in D$. By Theorem 1 **(i)**, $T$ is onto, so $w = T(z)$ for some $z \in \overline{\mathbb{C}}$. Then
+
+$$\begin{align*}
+1 &> \vert w \vert \\
+&= \vert T(z) \vert \\
+&= \left \vert e^{i \alpha} \frac{z - z_0}{z - \overline{z_0}} \right \vert \\
+&= \frac{\vert z - z_0 \vert}{\vert z - \overline{z_0} \vert},
+\end{align*}$$
+
+which implies that $\vert z - z_0 \vert < \vert z - \overline{z_0} \vert$. This occurs when only $\mathrm{Im}(z) > 0$, so $z \in U$. Hence $T(U) = D$.
+
+Next, we show that $T(\partial U \cup \{\infty\}) = \partial D$. Since
+
+$$T(z) = e^{i \alpha} \frac{z - z_0}{z - \overline{z_0}} = \frac{e^{i\alpha} z - e^{i\alpha}z_0}{z - \overline{z_0}},$$
+
+we have $T(\infty) = \frac{e^{i\alpha}}{1} = e^{i\alpha} \in \partial D$. In the similar manner above, we can show that $T(\partial U) = \partial D \setminus \{ e^{i \alpha} \}$. Thus, $T(\partial U \cup \{\infty\}) = \partial D. \blacksquare$
 
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

@@ -112,5 +112,10 @@ $z(t)$와 $Z(\tau)$는 모두 같은 곡선을 나타내는 parametrization이�
 
 **(ii)** If only the initial and final values of $z(t)$ are the same, a contour is called a ***simple closed contour***. 
 
+## Theorem 4
+Let $C$ be a contour parametrized by $z(t)$ for $a \le t \le b$. If $C \subset \mathbb{C} \setminus \{0\}$, then $z(t) = \rho(t) e^{i \phi(t)}, \forall t \in [a, b]$ for some continuous functions $\rho: [a, b] \to \mathbb{R}^+$ and $\phi: [a, b] \to \mathbb{R}$.
+
+즉 원점을 지나지 않는 경로라면 매개변수식을 극좌표 형식으로 쓸 수 있고, 더욱이 각 함수 $\rho, \phi$가 연속으로 주어진다. 원점을 지난다면 일반적으로 $\phi$가 연속이 되지 않을 수도 있는데, $z(t) = t, \forall t \in [-1, 1]$과 같은 경로를 생각하면 원점을 지나갈 때 $\phi(t)$가 불연속이 됨을 자명하게 알 수 있다.
+
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

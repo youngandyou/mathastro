@@ -67,6 +67,11 @@ $$
 - $2.$ $A_e$ 가 일정할 때, main beam이 커지면, RMS brightness temperature는 감소한다. 이로 인해, 영상을 smoothing하면 영상의 RMS noise가 감소한다. 그러나, 지나친 smoothing은 $A_e$ 감소로 이어져 감도의 추가적인 향상을 얻기 어렵다. 
 - $3.$ 다중 간섭계 시스템은 단일 전파 망원경보다 더 빠르게 영상을 생성할 수 있는데, 이는 간섭계 시스템에 $n$ 개의 수신기가 존재하기 때문이다. 
 
+<div style="height: 2rem;"></div>
+
+- $n_a$ 개의 VLBI 안테나로 이루어진 배열은 주어진 시간 동안 수집되는 정보량이 단일 안테나 쌍에 비해 $n_a (n_a - 1)/2$ 배 더 많다. 따라서 배열은 감도를 약 $\left[{n_a(n_a-1)} / {2}\right]^{1/2}$ 배 향상시킬 수 있다.
+- 그러나, 안테나 수가 증가하면 탐색해야 할 parameter space도 크게 증가한다. 그러므로, 이 parameter space 내에서 noise를 식별할 확률도 증가한다. 이를 방지하기 위해서 검출 임계값을 설정해야 한다.
+
 ---
 
 # 2. Baseline Sensitivity 
@@ -90,3 +95,26 @@ $$
     - SNR의 경우, $S / \Delta S_{ij}$ 이므로 이 예시에서는 10으로 볼 수 있다. 
 - 따라서 $\Delta S_{ij}$ 가 작을수록 SNR이 향상된다. 
 - status report 등과 같은 문서에서 $\Delta S$ 를 알고 과거 천체의 신호($S$)를 알면, SNR을 계산할 수 있으므로 해당 천체가 실제 관측으로 detection될 수 있을지 판단할 수 있다.
+
+---
+
+# 3. Detection and Antenna Temperature 
+
+- S/N = 4에서 detection 되었다고 가정하면, detection을 위한 최소 안테나 온도는 다음과 같다: 
+
+$$
+(T_A)_{\text{min}} = \frac{2T_s}{\eta N^{1/4} \sqrt{\Delta \nu \tau_c}} \tag{3.1}
+$$
+
+- $\eta$: 데이터 손실을 고려한 보정 상수
+- $N$: 데이터의 시간 구간 
+- $\tau_c$: coherence time 
+- 식 (3.1)은 데이터 시간 구간 $N$ 개를 incoherent averaging하면 검출 가능한 신호 수준이 $N^{-1/4}$ 에 비례하는 것을 보여준다.
+
+---
+
+# 4. Interferometer Sensitivity Discussion 
+
+- 다중 간섭계 시스템은 단일 전파 망원경보다 더 빠르게 영상을 생성할 수 있는데, 이는 간섭계 시스템에 $n$ 개의 수신기가 존재하기 때문이다. 
+- 더 짧은 파장에서 $\Delta T_b$ 가 커지는 것은 비열적 복사 과정으로 복사하는 source에서는 문제가 되지 않는다. 왜냐하면 비열적 복사로 인한 온도 자체가 너무 높기 때문이다. 반면, 거대한 별을 둘러싼 이온화 가스 영역($2 \times 10^4\mathrm{K}$), 태양 코로나($10^6\mathrm{K}$)와 같은 열적 복사원에서는 $\Delta T_b$ 의 증가가 SNR 감소로 이어지는 문제가 발생할 수 있다.
+- 단순히 uv 데이터를 푸리에 변환하여 얻은 영상의 잡음은 이론적인 값보다 크게 나타난다. 그 이유는 다음과 같다: 대기, LO(Local Oscillator) 불안정성, 기기적 영향에 의한 위상 변동(phase fluctuation), uv-coverage의 불완전한 샘플링, 강한 신호원 주변에 생기는 회절 고리(grating ring)

@@ -152,6 +152,11 @@ $$
 
 - 관측 주파수가 고정되면 vu distance는 baseline 길이에 의존한다. 따라서 긴 baseline을 가질수록 uv distance 값은 커진다.
 
+<div style="height: 2rem;"></div>
+
+- 즉, uv-plane을 결정하는 요인에는 (1) 망원경 위치, (2) 관측 시간, (3) 천체의 위치, (4) 관측 파장(scale)이 있다. 
+
+
 ---
 
 # 3. Parallactic Angle

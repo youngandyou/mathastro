@@ -52,10 +52,10 @@ website:
       - text: "Astronomy (천문학)"
         menu:
           - href: index.qmd#category=Astronomy
-            text: "🔭 천문학 전체보기 (All Astronomy) (19)"
+            text: "🔭 천문학 전체보기 (All Astronomy) (20)"
           - text: "---"
           - href: index.qmd#category=Radio%20Astronomy
-            text: "전파천문학 (Radio Astronomy) (15)"
+            text: "전파천문학 (Radio Astronomy) (16)"
           - href: index.qmd#category=General%20Relativity
             text: "일반상대론 & 등가원리 (General Relativity) (1)"
           - href: index.qmd#category=High%20Energy

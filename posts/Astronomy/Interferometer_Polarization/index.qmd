@@ -1,0 +1,26 @@
+---
+title: "간섭계와 편광(Polarization)"
+author: "Young Jeong Lee"
+date: "2026-10-18"
+description: "간섭계에서 편광이 어떻게 다뤄지는지 소개한다."
+categories: 
+  - Astronomy > Radio Astronomy
+---
+
+# 1. 간섭계에서 편광(Polarization in Interferometer)
+
+- 간섭계 배열(array) 내의 모든 안테나 $i$ 는 우주에서 오는 복소(complex) 전기장을 시간, 주파수, 편광의 함수로 수신한다:
+
+$$
+E_i(t, \nu, P) \tag{1.1}
+$$
+
+- 그리고 모든 망원경 배열의 쌍 $(i,j)$ 는 간섭계의 visibility를 만들 수 있는데, 이는 기록된 전기장들의 **complex cross-correlation**으로 계산된다:
+
+$$
+V_{ij} (t,\nu ,P_1, P_2) = \left \langle E_i (t,\nu, P_1) E_j^* (t,\nu, P_2) \right\rangle \tag{1.2}
+$$
+
+- 전파 망원경은 dual circular feeds에 데이터를 기록한다. 각 feed에 기록되는 데이터는 **right circular polarization (RCP)**, **left circular polarization (LCP)** 또는 linear basis orthogonal 성분이다.
+  - 하나의 전기장 벡터를 우리가 선택한 두 직교 축에 대해 성분 분해하여 측정할 수 있다. 그렇다면 어떠한 수직 축에 대해서 안테나 $i,j$ 가 각각 $X$, $Y$ 성분을 기록한다면, 편광 성분은 크게 XX, YY, XY, YX의 조합을 형성할 수 있다. 이것을 원형 feed에 대응시키면 RR, LL, RL, LR에 해당한다.
+

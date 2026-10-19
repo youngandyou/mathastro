@@ -18,6 +18,7 @@ website:
   description: "A blog built with Quarto"
   site-url: https://youngandyou.github.io/mathastro/
   title: "MathAstro"
+  google-analytics: "G-Q8DT9CBS02"
   navbar:
     search: true
     collapse: true

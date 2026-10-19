@@ -388,5 +388,114 @@ N \\
 B
 \end{bmatrix}.$$
 
+# Fundamental Theorem of Curve
+Let $(a, b)$ be an open interval containing zero. Let $\overline{\kappa}(s) > 0$ be a $C^1$ function on $(a, b)$, and let $\overline{\tau}(s)$ be a continuous function on $(a, b)$. Let $x_0 \in \mathbb{R}^3$, and let $\{ D, E, F \}$ be a right handed orthonormal basis of $\mathbb{R}^3$. Then there exists a unique $C^3$ regular curve $\alpha: (a, b) \to \mathbb{R}^3$ with the arc length parameter from $\alpha(0)$ such that
+
+$$\begin{align*}
+\alpha(0) &= x_0 \\
+T(0) &= D \\
+N(0) &= E \\
+B(0) &= F \\
+\kappa(s) &= \overline{\kappa}(s) \\
+\tau(s) &= \overline{\tau}(s)
+\end{align*}$$
+
+## Proof
+::: {.callout-note icon=false}
+## Picard's Theorem
+Let each of the $n$ functions $F_1, \ldots, F_n$ and the $n^2$ first partial derivatives $\frac{\partial F_1}{\partial x_1}, \ldots, \frac{\partial F_1}{\partial x_n}, \ldots, \frac{\partial F_n}{\partial x_1}, \ldots, \frac{\partial F_n}{\partial x_n}$ be continuous in a region $R$ of $t x_1 x_2 \cdots x_n$-space defined by 
+
+$$\alpha < t < \beta, \quad \alpha_1 < x_1 < \beta_1, \quad \ldots, \quad \alpha_n < x_n < \beta_n,$$
+
+and let the point $(t_0, x_1^0, x_2^0, \ldots, x_n^0) \in R$.
+
+Then there is an interval $|t - t_0| < h$ in which there exists a unique solution
+
+$$ x_1 = \phi_1(t), \quad \ldots, \quad x_n = \phi_n(t) $$
+
+of the system of differential equations
+
+$$x_1' = F_1(t, x_1, x_2, \ldots, x_n), \\ x_2' = F_2(t, x_1, x_2, \ldots, x_n), \\ \vdots \\ x_n' = F_n(t, x_1, x_2, \ldots, x_n)$$
+
+that also satisfies the initial conditions
+
+$$x_1(t_0) = x_1^0, \quad x_2(t_0) = x_2^0, \quad \ldots, \quad x_n(t_0) = x_n^0.$$
+:::
+
+Consider the following ODE:
+
+$$\begin{bmatrix}
+u_1' \\
+u_2' \\
+u_3'
+\end{bmatrix} = \begin{bmatrix}
+0 & \overline{\kappa} & 0 \\
+-\overline{\kappa} & 0 & \overline{\tau} \\
+0 & -\overline{\tau} & 0
+\end{bmatrix} \begin{bmatrix}
+u_1 \\
+u_2 \\
+u_3
+\end{bmatrix}$$
+
+By Picard's theorem, there uniquely exists the solution $\{ u_1(s), u_2(s), u_3(s) \}$ of the above ODE satisfying $u_1(0) = D, u_2(0) = E, u_3(0) = F$. Denote
+
+$$[a_{ij}] = \begin{bmatrix}
+0 & \overline{\kappa} & 0 \\
+-\overline{\kappa} & 0 & \overline{\tau} \\
+0 & -\overline{\tau} & 0
+\end{bmatrix}$$
+
+1.  $\{ u_1, u_2, u_3 \}$ is orthonormal.
+
+Let $g_{ij} = \langle u_i, u_j \rangle$. Then we have
+
+$$\begin{align*}
+g'_{ij} &= \langle u'_i, u_j \rangle + \langle u_i, u'_j \rangle \\
+&= \left\langle \sum_{k=1}^3 a_{ik} u_k, u_j \right\rangle + \left\langle u_i, \sum_{k=1}^3 a_{jk} u_k \right\rangle \\
+&= \sum_{k=1}^3 (a_{ik} g_{jk} + a_{jk} g_{ik})
+\end{align*}$$
+
+By Picard's theorem, there uniquely exists the solution $g_{ij}$ of the above ODE satisfying $g_{ij}(0) = \delta_{ij}$.
+
+If $g_{ij} = \delta_{ij}$, then
+
+$$\begin{align*}
+\sum_{k=1}^3 (a_{ik} \delta_{jk} + a_{jk} \delta_{ik}) &= a_{ij} + a_{ji} \\
+&= 0 \\
+&= \delta'_{ij},
+\end{align*}$$
+
+which means that $\delta_{ij}$ is the unique solution. Hence, $\{ u_1, u_2, u_3 \}$ is orthonormal.
+
+2. Let $\displaystyle \alpha(s) := \int_0^s u_1(\sigma) d \sigma + x_0$. Then $\alpha$ is $C^3$ and unit speed.
+
+Since $\alpha'(s) = u_1(s)$ by the fundamental theorem of calculus and $u_1$ is a normal vector, $\alpha$ is unit speed.
+
+Note that 
+
+$$\begin{align*}
+\alpha''(s) &= u_1'(s) = \overline{\kappa}(s) u_2(s) \\
+\alpha'''(s) &= \overline{\kappa}'(s) u_2(s) + \overline{\kappa}(s) u_2'(s) \\
+&= \overline{\kappa}'(s) u_2(s) + \overline{\kappa}(s)(-\overline{\kappa}(s)u_1(s) + \overline{\tau}(s) u_3(s)) \\
+&= -\overline{\kappa}^2(s) u_1(s) + \overline{\kappa}'(s) u_2(s) + \overline{\kappa}(s)\overline{\tau}(s) u_3(s).
+\end{align*}$$
+
+Hence, $\alpha$ is $C^3$.
+
+3. $\alpha(0) = x_0, T = u_1, N = u_2, B = u_3, \kappa = \overline{\kappa}, \tau = \overline{\tau}$.
+
+By definition, $\alpha(0) = x_0$.
+
+Since $T(s) = \alpha'(s) = u_1(s)$, we have $T = u_1$.
+
+Since $\kappa(s) N(s) = T'(s) = u_1'(s) = \overline{\kappa}(s) u_2(s)$, we have $\| \kappa(s) N(s) \| = \| \overline{\kappa}(s) u_2(s) \|$, which gives that $\kappa(s) = \overline{\kappa}(s)$.
+
+Since $\{ u_1, u_2, u_3 \}$ is orthonormal, we have $[u_1, u_2, u_3] = \pm 1$. Since $[u_1, u_2, u_3] = [D, E, F] = 1$ at $s = 0$ and $[u_1, u_2, u_3]$ is continuous, we have $[u_1, u_2, u_3] = 1$ for all $s$, which means that $\{ u_1, u_2, u_3 \}$ is a right handed orthonormal basis for $\mathbb{R}^3$.
+
+Since $B(s) = T(s) \times N(s) = u_1(s) \times u_2(s) = u_3(s)$, we have $B = u_3$.
+
+Since $-\tau(s) N(s) = B'(s) = u'_3(s) = -\overline{\tau}(s) u_2(s)$, we have $\tau(s) = \overline{\tau}(s)$. $\blacksquare$
+
 # Reference
 - R. S. Millman and G. D. Parker, Elements of Differential Geometry, Prentice-Hall, 1977.

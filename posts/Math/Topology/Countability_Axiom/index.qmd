@@ -67,6 +67,8 @@ Let $X$ be a first-countable space.
 
 **(ii)** A countable product of first-countable (second-countable) spaces is first-countable (second-countable).
 
+**(iii)** Let $f: X \to Y$ be a continuous open map. If $X$ is first-countable (second-countable), then $Y$ is first-countable (second-countable).
+
 ### Proof
 **(i)** Let $A$ be a subspace of a space $X$. Suppose that $X$ is fisrt-countable. Let $x \in A$. Since $x \in X$, there is a countable local basis $\mathscr{B}_x$ at $x$. We claim that the set $\mathscr{U}_x = \{ B \cap A \mid B \in \mathscr{B}_x \}$ is a countable local basis for $A$ at $x$, so $A$ is first-countable.
 
@@ -162,10 +164,18 @@ Let $\mathcal{U}$ be an open cover of $(\mathbb{R}, \mathscr{T})$. Since $0$ sho
 Let $Y = \mathbb{R} \setminus \{ 0 \}$ be a subspace of $(\mathbb{R}, \mathscr{T})$. Since any subset $S$ of $Y$ does not contain $0$, $S$ is open in $Y$, which means that the topology of $Y$ is a discrete topology. Hence, $Y$ is not Lindelöf.
 :::
 
+**(iii)** The subspace of a separable space is not necessarily separable.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+
+:::
+
 ## Theorem 3
 **(i)** A second-countable space is a Lindelöf space.
 
 **(ii)** A second-countable space is separable.
+
+**(iii)** Let $f: X \to Y$ be a continuous function. If $X$ is Lindelöf (separable), then $Y$ is Lindelöf (separable).
 
 ### Proof
 Let $X$ be a second-countable space. Then $X$ has a countable basis $\mathscr{B}$. Since $\mathscr{B}$ is countable, we can denote $\mathscr{B} = \{ B_n \}_{n \in \Lambda}$ for some subset $\Lambda$ of $\mathbb{N}$.

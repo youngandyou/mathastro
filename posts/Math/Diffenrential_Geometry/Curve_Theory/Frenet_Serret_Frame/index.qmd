@@ -232,7 +232,7 @@ Let $\alpha(s): (a, b) \to \mathbb{R}^3$ be a unit speed curve, and let $\{ \kap
 
 **(iii)** Every normal plane to $\alpha$ passes through a fixed point $\iff$ $\alpha$ lies on a sphere.
 
-**(iv)** Every osculating plane to $\alpha$ is parallel $\iff$ $\tau \not \equiv 0$.
+**(iv)** Every osculating plane to $\alpha$ is parallel $\iff$ $\tau \equiv 0$.
 
 **(v)** Suppose that $\alpha$ lies on a sphere of radius $r$ and center $m$. If $\tau \not \equiv 0$, then
 
@@ -262,6 +262,70 @@ B(s) &= T(s) \times N(s) = \begin{vmatrix} \mathbf{i} & \mathbf{j} & \mathbf{k} 
 Since $\vert B(s) \vert = 1$ and $B$ is continuous, we obtain $\frac{x'y'' - y'x''}{\kappa(s)} = \pm 1$. Thus, $B$ is a constant vector.
 
 Suppose that $B$ is a constant vector. By the Frenet-Serret formula, we have $B' = \tau N = 0$. Since $N \neq 0$, we obtain $\tau = 0$.
+
+**(ii)** $(\implies)$ Suppose that $\alpha$ is a part of circle of radius $\frac{1}{\kappa}$. Then $\kappa$ is a positive constant and it is a plane curve, so $\tau \equiv 0$ by **(i)**. 
+
+$(\impliedby)$ Suppose that $\kappa \equiv C > 0$ and $\tau \equiv 0$. Let $r(s) = \alpha(s) + \frac{1}{\kappa}N(s)$. Then 
+
+$$\begin{align*}
+r'(s) &= \alpha'(s) + \frac{1}{\kappa}N'(s) \\
+&= T(s) + \frac{1}{\kappa}(-\kappa T(s)) \\
+&= 0,
+\end{align*}$$
+
+so that $r(s) = C$ for some constant vector $C$. Then
+
+$$\begin{align*}
+\| r(s) - \alpha(s) \| &= \| \frac{1}{\kappa} N(s) \| \\
+&= \frac{1}{\kappa}.
+\end{align*}$$
+
+which means that $\alpha$ is a part of circle of radius $\frac{1}{\kappa}$. 
+
+**(iii)** $(\implies)$ Suppose that every normal plane to $\alpha$ passes through a fixed point $m$. Note that $\alpha(s) - m$ lies in a normal plane at $\alpha(s)$, which means that $\langle \alpha(s) - m, T(s) \rangle = 0$. Then 
+
+$$\begin{align*}
+\frac{d}{ds} \langle \alpha(s) - m, \alpha(s) - m \rangle &= 2 \langle \alpha(s) - m, T(s) \rangle = 0,
+\end{align*}$$
+
+so that $\| \alpha(s) - m \| = \langle \alpha(s) - m, \alpha(s) - m \rangle$ is a constant. Hence $\alpha$ lies in a sphere.
+
+$(\impliedby)$ Suppose that $\alpha$ lies in a sphere of radius $r$ centered at $m$. Then $\| \alpha(s) - m \|^2 = r^2$. Differentiating, $\langle \alpha(s) - m, T(s) \rangle = 0$. Note that the equation of a normal plane at $\alpha(s)$ is $\langle x - \alpha(s), T(s) \rangle = 0$. Since the center $m$ always satisfies $\langle m - \alpha(s), T(s) \rangle = 0$, $m$ is on every normal plane.
+
+**(iv)** $(\implies)$ Suppose that every osculating plane to $\alpha$ is parallel. Then $B(s)$ at any two points are parallel, which implies that $B(s)$ is a constant. Hence, $\tau \equiv 0$.
+
+$(\impliedby)$ Suppose that $\tau \equiv 0$. Then $\alpha$ is a plane curve, which means that every osculating plane to $\alpha$ is parallel.
+
+**(v)** Suppose that $\alpha$ lies in a sphere of radius $r$ centered at $m$ and $\tau \not \equiv 0$. Then $\| \alpha(s) - m \|^2 = r^2$. Differentiating, we have $\langle \alpha(s) - m, T(s) \rangle = 0$. Differentiating again,
+
+$$\begin{align*}
+0 &= \langle \alpha(s) - m, T'(s) \rangle + \langle T(s), T(s) \rangle \\
+&= \langle \alpha(s) - m, \kappa(s)N(s) \rangle + 1,
+\end{align*}$$
+
+which implies that $\kappa(s) \neq 0$ and $\langle \alpha(s) - m, N(s) \rangle = -\frac{1}{\kappa(s)}$.
+
+Note that
+
+$$\begin{align*}
+\alpha(s) - m &= \langle \alpha(s) - m, T(s) \rangle T(s) + \langle \alpha(s) - m, N(s) \rangle N(s) + \langle \alpha(s) - m, B(s) \rangle B(s) \\
+&= - \frac{1}{\kappa(s)} N(s) + \langle \alpha(s) - m, B(s) \rangle B(s) \\
+&= - \rho(s) N(s) + \langle \alpha(s) - m, B(s) \rangle B(s)
+\end{align*}$$
+
+Differentiating $\langle \alpha(s) - m, N(s) \rangle = - \rho(s)$, we have
+
+$$\begin{align*}
+-\rho'(s) &= \langle T(s), N(s) \rangle + \langle \alpha(s) - m, N'(s) \rangle \\
+&= \langle \alpha(s) - m, - \kappa(s) T(s) + \tau(s) B(s) \rangle \\
+&= \tau(s) \langle \alpha(s) - m, B(s) \rangle, 
+\end{align*}$$
+
+so that $\langle \alpha(s) - m, B(s) \rangle = -\frac{\rho'(s)}{\tau(s)} = - \rho'(s) \sigma(s)$.
+
+Hence, we obtain
+
+$$\alpha(s) - m = - \rho N - \rho' \sigma B. \blacksquare$$
 
 # Non-unit Speed Curves
 

@@ -122,6 +122,8 @@ Then $U$ and $V$ are open subsets of $X$ such that $x_0 \in U, Y \subset Y$ and 
 
 **(iii)** The product space of $T_3$ spaces is $T_3$.
 
+**(iv)** Every locally compact Hausdorff space is $T_3$.
+
 ### Proof
 **(i)**
 
@@ -138,6 +140,10 @@ Then $U$ and $V$ are open subsets of $X$ such that $x_0 \in U, Y \subset Y$ and 
 **(iii)** Every metrizable space is $T_4$. Hence, every metric space is $T_4$.
 
 **(iv)** Every compact Hausdorff space is $T_4$.
+
+**(v)** Every closed subspace of a $T_4$ space is $T_4$.
+
+**(vi)** Every Lindelof $T_3$ space is $T_4$.
 
 ### Proof
 **(i)**

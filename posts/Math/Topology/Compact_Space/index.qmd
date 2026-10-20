@@ -64,6 +64,8 @@ By the nested interval theorem, there exists $x^\ast \in \displaystyle \bigcap_{
 
 **(ix)** **(Tube Lemma)** Let $X \times Y$ be a space where $Y$ is compact. If $O$ is an open subset of $X \times Y$ containing $\{ x_0 \} \times Y$ for some $x_0 \in X$, then there exists an open subset $U$ of $X$ containing $x_0$ such that $U \times Y \subset O$.
 
+**(x)** A intersection of compact subspaces of a Hausdorff space is compact.
+
 본디 부분공간 $Y$의 오픈 커버는 $Y$의 오픈셋들로 구성되어야 한다. 이는 부분공간의 정의상 오픈셋의 모양이 조금 지저분해질 수 밖에 없는데, 정리 **(i)**은 그러한 불편함을 없애고 $X$의 오픈셋들만 가지고도 부분공간의 컴팩터성을 논할 수 있게 해준다는 점을 시사한다.
 
 집합이 열려있거나 닫혀있는 성질은 전체 공간에 따라 달라지지만, **(vii)**는 컴팩트란 개념이 전체 공간에 따라 달라지는 것이 아니라 집합 그 자체의 성질임을 말해준다.

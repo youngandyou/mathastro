@@ -69,6 +69,8 @@ Let $X$ be a first-countable space.
 
 **(iii)** Let $f: X \to Y$ be a continuous open map. If $X$ is first-countable (second-countable), then $Y$ is first-countable (second-countable).
 
+**(iv)** Every compact metrizable space is second-countable.
+
 ### Proof
 **(i)** Let $A$ be a subspace of a space $X$. Suppose that $X$ is fisrt-countable. Let $x \in A$. Since $x \in X$, there is a countable local basis $\mathscr{B}_x$ at $x$. We claim that the set $\mathscr{U}_x = \{ B \cap A \mid B \in \mathscr{B}_x \}$ is a countable local basis for $A$ at $x$, so $A$ is first-countable.
 
@@ -175,7 +177,9 @@ Let $Y = \mathbb{R} \setminus \{ 0 \}$ be a subspace of $(\mathbb{R}, \mathscr{T
 
 **(ii)** A second-countable space is separable.
 
-**(iii)** Let $f: X \to Y$ be a continuous function. If $X$ is Lindelöf (separable), then $Y$ is Lindelöf (separable).
+**(iii)** Let $f: X \to Y$ be a continuous function. If $X$ is Lindelöf (separable), then $f(X)$ is Lindelöf (separable).
+
+**(iv)** Every closed subspace of a Lindelöf space is Lindelöf.
 
 ### Proof
 Let $X$ be a second-countable space. Then $X$ has a countable basis $\mathscr{B}$. Since $\mathscr{B}$ is countable, we can denote $\mathscr{B} = \{ B_n \}_{n \in \Lambda}$ for some subset $\Lambda$ of $\mathbb{N}$.

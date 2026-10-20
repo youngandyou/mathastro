@@ -278,7 +278,29 @@ Thus, $\lim_{n \to \infty} x_n = x$, and therefore $(X, d)$ is complete.
 
 **(iv)** Let $\{ x_n \}$ be a Cauchy sequence of $(\mathbb{R}^n, d_{\text{Euclidean}})$. Then there exists $N \in \mathbb{N}$ such that $\vert x_n, x_m \vert < 1, \forall n, m \ge N$. Let $M := \max \{ \vert x_1 \vert, \dots, \vert x_N \vert \}$, and let $C := \{ x \in \mathbb{R}^n \mid \vert x vert \le M + 1 \}$. Since $1 > \vert x_n, x_N \vert \ge \vert x_n \vert - \vert x_N \vert, \forall n \ge N$, we have $\vert x_n \vert < \vert x_N \vert + 1, \forall n \ge N$. Thus, $x_n \in C, \forall n \in \mathbb{N}$. Since $C$ is closed and bounded, $C$ is compact, which means that $\{ x_n \}$ has a convergent subsequence. By **(iii)**, $(\mathbb{R}^n, d_{\text{Euclidean}})$ is complete.
 
-**(v)** $\blacksquare$
+**(v)** Let $\bar{d}(a, b) := \min \{ d(a, b), 1 \}$ be the standard bounded metric on $\mathbb{R}$, where $d(a, b) = \vert a - b \vert$. Since $(\mathbb{R}, d)$ is complete, so is $(\mathbb{R}, \bar{d})$ by **(ii)**.
+
+Let $D$ be the metric on $\mathbb{R}^\omega$ defined by 
+
+$$D(\mathbf{x}, \mathbf{y}) = \sup_{n \in \mathbb{N}} \left \{ \frac{\bar{d}(x_n, y_n)}{n} \right \}.$$
+
+Since $\frac{\bar{d}(x_n, y_n)}{n} \le \frac{1}{n} \le 1, \forall n \in \mathbb{N}$, $D$ is well-defined. Note that the metric $D$ induces the product space $\mathbb{R}^\omega$.
+
+Let $\{ \mathbf{x}_n \}$ be a Cauchy sequence in $(\mathbb{R}^\omega, D)$. Consider the sequence $\{ \pi_{n_0}(\mathbf{x}_n) \}_{n=1}^\infty$ in $(\mathbb{R}, \bar{d})$ for some fixed $n_0 \in \mathbb{N}$. Let $\varepsilon > 0$. Since $\{ \mathbf{x}_n \}$ is a Cauchy sequence, there exists $N \in \mathbb{N}$ such that $D(\mathbf{x}_n, \mathbf{x}_m) < \frac{\varepsilon}{n_0}, \forall n, m \ge N$. Then for all $n, m \ge N$, we have
+
+$$\bar{d}(\pi_{n_0}(\mathbf{x}_n), \pi_{n_0}(\mathbf{x}_m)) \le D(\mathbf{x}_n, \mathbf{x}_m) \cdot n_0 < \frac{\varepsilon}{n_0} \cdot n_0 = \varepsilon,$$
+
+which means that the sequence $\{ \pi_{n_0}(\mathbf{x}_n) \}_{n=1}^\infty$ is a Cauchy sequence in $(\mathbb{R}, \bar{d})$.
+
+Since $(\mathbb{R}, \bar{d})$ is complete, $\{ \pi_{n_0}(\mathbf{x}_n) \}_{n=1}^\infty$ converges.
+
+Suppose that $\{ \pi_{i}(\mathbf{x}_n) \}_{n=1}^\infty$ converges to $a_i \in \mathbb{R}$ for each $i \in \mathbb{N}$, and let $\mathbf{a} = (a_1, a_2, a_3, \dots) \in \mathbb{R}^\omega$.
+
+Let $U = \prod_{i \in \mathbb{N}} U_i$ be a basis element of $(\mathbb{R}^\omega, D)$ containing $\mathbf{a}$, where each $U_i$ is an open subset of $\mathbb{R}$ containing $\pi_i(\mathbf{a})$. Then there exist finitely many indices $i_1, \dots, i_k$ such that $U_{i_j} \subsetneq \mathbb{R}$. For each $j = 1, \dots, k$, there exists $N_{i_j} \in \mathbb{N}$ such that $\pi_{i_j}(\mathbf{x}_n) \in U_{i_j}, \forall n \ge N_{i_j}$. Let $N = \max \{ N_{i_1}, \dots, N_{i_k} \}$. Then 
+
+$$\mathbf{x}_n \in U, \forall n \ge N,$$
+
+which means that $\mathbf{x}_n \to \mathbf{a}$. Hence, $(\mathbb{R}^\omega, D)$ is complete. $\blacksquare$
 
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

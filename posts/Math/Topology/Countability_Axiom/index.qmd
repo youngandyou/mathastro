@@ -149,11 +149,23 @@ Thus $\mathcal{U}$ has a countable subcover, so $\mathbb{R}^2$ is Lindelöf.
 **(i)** The product of Lindelöf spaces is not necessarily Lindelöf.
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
-Note that $\mathbb{R}_\ell$ is second-countable because $\mathscr{B} = \{ [a, b) \mid a, b \in \mathbb{Q} \}$ is a countable basis. Hence $\mathbb{R}_\ell$ is Lindelöf.
+We will show that $\mathbb{R}_\ell$ is Lindelöf. Let $\mathcal{U}$ be an open cover of $\mathbb{R}_\ell$. For each $x \in \mathbb{R}$, $x \in U_x$ for some $U_x \in \mathcal{U}$. Then $x \in [x, b_x) \subset U_x$ for some $b_x > x$. Let
+
+$$V := \bigcup_{x \in \mathbb{R}} (x, b_x) \quad \text{and} \quad E := \mathbb{R} \setminus V.$$
+
+If we regard $V$ as a subspace of $\mathbb{R}$, then $V$ is Lindelof because $\mathbb{R}$ is second-countable, and so is every subspace of it. Since $\{ (x, b_x) \mid x \in \mathbb{R} \}$ is an open cover of $V$, $\{ (x_i, b_{x_i}) \mid x_i \in C \}$ is a countable open cover of $V$ for some countable subset $C$ of $\mathbb{R}$.
+
+Let $x, y \in E$ with $x < y$. Since $y \notin V$, in particular, $y \notin (x, b_x)$, which means that $b_x \le y$. Then $(x, b_x) \cap (y, b_y) = \emptyset$, so $\{ (x, b_x) \mid x \in E \}$ is the collection of pairwise disjoint nonempty open sets. If we choose $q_x \in (x, b_x) \cap \mathbb{Q}$, then all $q_x$'s are distinct. That is, the map from $E$ to $\mathbb{Q}$ given by $x \mapsto q_x$ is one-to-one, which means that $E$ is countable.
+
+Hence,
+
+$$\mathcal{U}^\ast = \{ U_x \mid x \in C \} \cup \{ U_x \mid x \in E \}$$
+
+is a countable subcollection of $\mathcal{U}$. If $x \in V$, then $x \in (y, b_y) \subset U_y$ for some $y \in C$. If $x \notin V$, then $x \in E$, which implies that $x \in [x, b_x) \subset U_x$. Hence, $\mathcal{U}^\ast$ is a countable subcover of $\mathcal{U}$, and therefore $\mathbb{R}_\ell$ is Lindelöf.
 
 Consider $\mathbb{R}_\ell \times \mathbb{R}_\ell = \mathbb{R}_\ell^2$, called the ***Sorgenfrey plane***. The space $\mathbb{R}_\ell^2$ has a basis of the form $[a, b) \times [c, d)$.
 
-Note that $L := \{ (x, -x) \mid x \in \mathbb{R} \}$ is a closed subset of $\mathbb{R}_\ell^2$, because $\mathbb{R}_\ell^2 - L$ is open. Then $\mathcal{U} = \{ \mathbb{R}_\ell^2 - L \} \cup \{ [a, b) \times [-a, c) \mid a, b, c \in \mathbb{R}\}$ is an open cover of $\mathbb{R}_\ell^2$. Since $L$ is uncountable and each $[a, b) \times [-a, c)$ has at most one element of $L$, $\mathcal{U}$ cannot have a finite subcover. Thus, $\mathbb{R}_\ell^2$ is not Lindelöf.
+Note that $L := \{ (x, -x) \mid x \in \mathbb{R} \}$ is a closed subset of $\mathbb{R}_\ell^2$, because $\mathbb{R}_\ell^2 - L$ is open. Then $\mathcal{U} = \{ \mathbb{R}_\ell^2 - L \} \cup \{ [a, b) \times [-a, c) \mid a, b, c \in \mathbb{R}\}$ is an open cover of $\mathbb{R}_\ell^2$. Since $L$ is uncountable and each $[a, b) \times [-a, c)$ has at most one element of $L$, $\mathcal{U}$ cannot have a countable subcover. Thus, $\mathbb{R}_\ell^2$ is not Lindelöf.
 :::
 
 **(ii)** The subspace of a Lindelöf space is not necessarily Lindelöf.

@@ -7,6 +7,7 @@ categories:
   - Math > Abstract Algebra > Ring Theory
 ---
 $$\newcommand{\lhdneq}{\mathrel{\rlap{\trianglelefteq}\kern.30em\lower.28ex{\scriptscriptstyle/}\kern.20em}}$$
+
 # Ideal
 ## Definition 1
 Let $\langle R, +, \cdot \rangle$ be a ring, and let $\emptyset \neq N \subset R$. Then $N$ is called an ***ideal*** of $R$, denoted by $N \lhd R$, if 
@@ -277,6 +278,7 @@ For $(a, b), (c,d) \in \mathbb{Z} \times \mathbb{Z}$, if $(a, b)(c,d) = (ac, bd)
 
 ## Theorem 6
 Let $R$ be a commutative ring with unity.
+
 **(i)** Let $N \lhd R$. Then $N$ is a prime ideal of $R$ $\iff$ $R/N$ is an integral domain.
 
 **(ii)** Every maximal ideal of $R$ is a prime ideal.

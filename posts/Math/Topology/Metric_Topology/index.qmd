@@ -228,7 +228,6 @@ $$d_Y(f(x), f(y)) \le d_Y(f(x), z) + d_Y(f(y), z) < \frac{\varepsilon}{2} + \fra
 Hence, $f$ is uniformly continuous. $\blacksquare$
 
 # Complete Space
-## Definition 2
 Let $(X, d)$ be a metric space.
 
 **(i)** A sequence $\{ x_n \}$ in $X$ is called a ***Cauchy sequence*** in $(X, d)$ if $\forall \varepsilon > 0, \exists N \in \mathbb{N}$ such that $d(x_n, x_m) < \varepsilon, \forall n, m \ge N$.

@@ -10,7 +10,6 @@ categories:
 $$\newcommand{\nimplies}{\mathrel{\rlap{\mkern 20mu /}\implies}}$$
 
 # Separation Axiom
-## Definition
 Let $(X, \mathscr{T})$ be a topological space. 
 
 **(i)** $X$ is called a ***$T_0$-space*** if for all $x, y \in X$ with $x \neq y$, $\exists U \in \mathscr{T}$ such that $x \in U$ and $y \notin U$ or $x \notin U$ and $y \in U$.
@@ -55,7 +54,6 @@ Let $\mathscr{T}$ and $\mathscr{T}'$ be two topological space on a set $X$. Supp
 **(iii)** If $\mathscr{T}$ is $T_2$, then $\mathscr{T}'$ is $T_2$.
 
 # $T_1$ Space
-## Theorem 2
 **(i)** $X$ is a $T_1$-space $\iff$ Every finite subset of $X$ is closed.
 
 **(ii)** Let $X$ be a $T_1$-space, and let $A \subset X$. Then $x \in A'$ $\iff$ every neighborhood of $x$ contains infinitely many points of $A$.
@@ -84,7 +82,6 @@ Thus, every neighborhood of $x$ contains infinitely many points of $A$.
 $(\Longleftarrow)$ Let $U$ be a neighborhood of $x$. Then $U$ contains infinitely many points of $A$. Then $A \cap (U - \{ x \})$ also contains infinitely many points of $A$, which means that it is not empty. Thus $x \in A'$. $\blacksquare$
 
 # $T_2$ Space
-## Theorem 3
 **(i)** Let $X$ be a Hausdorff space. Then every sequence in $X$ has either a unique limit or no limit.
 
 **(ii)** The product of two Hausdorff spaces is a Hausdorff space. 
@@ -94,7 +91,7 @@ $(\Longleftarrow)$ Let $U$ be a neighborhood of $x$. Then $U$ contains infinitel
 **(iv)** Let $Y$ be a compact subspace of a Hausdorff space $X$, and let $x_0 \notin Y$. Then there exist open sets $U, V \subset X$ such that $x_0 \in U, Y \subset V$ and $U \cap V = \emptyset$.
 
 ### Proof
-(i) Let $\{ x_n \}$ be a sequence of points of $X$. If $\{ x_n \}$ does not converge to some point of $X$, then we are done. Suppose that $\{ x_n \}$ converges to two distinct points $x$ and $y$ of $X$. Since $X$ is Hausdorff, there are neighborhoods $U$ and $V$ of $x$ and $y$, respectively, such that $U \cap V = \emptyset$. Since $\{ x_n \}$ converges to both $x$ and $y$, there exist positive integers $N_1$ and $N_2$ such that $x_n \in U, \forall n \ge N_1$ and $x_n \in V, \forall n \ge N_2$. Take $N = \max \{ N_1, N_2 \}$. Then we have that $x_n \in U \cap V, \forall n \ge N$. $\bigotimes$ Thus, if $\{ x_n \}$ converges to some point of $X$, then it is unique.
+**(i)** Let $\{ x_n \}$ be a sequence of points of $X$. If $\{ x_n \}$ does not converge to some point of $X$, then we are done. Suppose that $\{ x_n \}$ converges to two distinct points $x$ and $y$ of $X$. Since $X$ is Hausdorff, there are neighborhoods $U$ and $V$ of $x$ and $y$, respectively, such that $U \cap V = \emptyset$. Since $\{ x_n \}$ converges to both $x$ and $y$, there exist positive integers $N_1$ and $N_2$ such that $x_n \in U, \forall n \ge N_1$ and $x_n \in V, \forall n \ge N_2$. Take $N = \max \{ N_1, N_2 \}$. Then we have that $x_n \in U \cap V, \forall n \ge N$. $\bigotimes$ Thus, if $\{ x_n \}$ converges to some point of $X$, then it is unique.
 
 **(ii)** Let $(x_1, y_1)$ and $(x_2, y_2)$ be two distinct points in $X \times Y$. Then $x_1 \neq x_2$ or $y_1 \neq y_2$. WLOG, assume $x_1 \neq x_2$. Since $X$ is Hausdorff, there exist neighborhoods $U$ and $V$ of $x_1$ and $x_2$, respectively, such that $U \cap V = \emptyset$. Since $(x_1, y_1) \in U \times Y$ and $U \times Y$ is open in $X \times Y$, $U \times Y$ is a neighborhood of $(x_1, y_1)$. Similarly, $V \times Y$ is a neighborhood of $(x_2, y_2)$. Note that 
 
@@ -115,7 +112,6 @@ $$U := \bigcap_{i=1}^n U_{y_i} \quad \text{and} \quad V := \bigcup_{i=1}^n V_{y_
 Then $U$ and $V$ are open subsets of $X$ such that $x_0 \in U, Y \subset Y$ and $U \cap Y = \emptyset$. $\blacksquare$
 
 # $T_3$ Space
-## Theorem 4
 **(i)** Let $X$ be a $T_1$ space. Then $X$ is regular $\iff$ for each $x \in X$ and an open set $U$ with $x \in U$, there exists an open set $V$ in $X$ such that $x \in V$ and $\overline{V} \subset U$.
 
 **(ii)** A subspace of a $T_3$ space is $T_3$.
@@ -132,7 +128,6 @@ Then $U$ and $V$ are open subsets of $X$ such that $x_0 \in U, Y \subset Y$ and 
 **(iii)**
 
 # $T_4$ Space
-## Theorem 5
 **(i)** Let $X$ be a $T_1$ space. Then $X$ is normal $\iff$ for each closed set $C$ of $X$ and an open set $U$ in $X$ with $C \subset U$, there exists an open set $V$ in $X$ such that $C \subset V$ and $\overline{V} \subset U$.
 
 **(ii)** Every second-countable $T_3$ space is a $T_4$ space.

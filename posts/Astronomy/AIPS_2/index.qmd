@@ -18,7 +18,7 @@ categories:
 
 ---
 
-# 2. Data get in AIPS (AIPS 안으로 데이터 불러오기)
+# 2. Data get in AIPS (AIPS 안으로 데이터 불러오기){#AIPS_Data_get}
 
 - 관측 데이터를 AIPS 안으로 가져와서 데이터 처리를 수행하게 된다.
 - AIPS는 원본 데이터를 수정하지 않고 보정을 마친 후, 얻어낸 새로운 파일을 저장하는 방식으로 데이터를 처리한다.
@@ -26,35 +26,86 @@ categories:
 
 ```AIPS 
 default fitld 
-  # task 앞에 default를 붙이면, 이전에 작업했던 input parameter를 모두 초기화한다. 
+  # task 앞에 default를 붙이면, 이전에 작업했던 input parameter를 모두 초기화함. 
 task 'fitld'
 datain 'DATA:a25h3a.fits
-  # AIPS 안에서 데이터 처리를 수행할 파일 이름을 적는다. 
-  # AIPS는 사용자 끝에 따옴표(')를 사용하지 않으면, 대소문자를 구분한다. 'DATA:a25h3a.fits'처럼 양 끝에 따옴표를 모두 붙이면, 대소문자를 구분하지 않는다.
+  # AIPS 안에서 데이터 처리를 수행할 파일 이름을 적음.
+  # AIPS는 사용자 끝에 따옴표(')를 사용하지 않으면, 대소문자를 구분한다. 'DATA:a25h3a.fits'처럼 양 끝에 따옴표를 모두 붙이면, 대소문자를 구분하지 않음.
 bif 0 
-  # Beginning IF로 사용할 첫 번째 IF 번호를 의미한다. 0을 주면 모든 IF를 사용한다.
+  # Beginning IF로 사용할 첫 번째 IF 번호를 의미하며, 0을 주면 모든 IF를 사용함.
 eif 0 
-  # Ending IF로 사용할 마지막 IF 번호를 의미한다. 0을 주면 모든 IF를 사용한다.
+  # Ending IF로 사용할 마지막 IF 번호를 의미하며, 0을 주면 모든 IF를 사용함.
 bchan 0
-  # Beginnig Channel의 약자로 사용할 첫 번째 Channel 번호를 의미한다. 0이면 각 IF의 모든 Channel을 사용한다.
+  # Beginnig Channel의 약자로 사용할 첫 번째 Channel 번호를 의미하며, 0을 주면 각 IF의 모든 Channel을 사용함.
 echan 0
-  # Ending Channel의 약자로 사용할 마지막 Channel 번호를 의미한다. 0이면 각 IF의 모든 Channel을 사용한다.
+  # Ending Channel의 약자로 사용할 마지막 Channel 번호를 의미하며, 0을 주면 각 IF의 모든 Channel을 사용함.
 clint 0.05 
-  # CL table의 시간 샘플링(sampling) 간격으로 '분' 단위를 가진다. 보통 3초(0.05분)를 준다.
+  # CL table의 시간 샘플링(sampling) 간격으로 '분' 단위를 가지며, 보통 3초(0.05분)를 줌.
 douvcomp 1
-  # uv 데이터를 AIPS로 저장한다는 의미를 담고 있다. 
+  # uv 데이터를 AIPS로 저장한다는 의미를 담고 있음.
 digicor 1 
-  # 디지털 보정(digital correction)을 적용한다.
+  # 디지털 보정(digital correction)을 적용함.
 outdisk 1
-  # AIPS disk 1번에 불러온 데이터를 저장한다.
+  # AIPS disk 1번에 불러온 데이터를 저장함.
+outname 'a25h3a'
+	# AIPS 카탈로그에서 사용할 이름을 설정함.
 inp 
-  # 입력 parameter를 확인한다.
+  # 입력 parameter를 확인함.
 go 
-  # task 'fitld'를 수행한다. 
+  # task 'fitld'를 수행함.
 ```
 
 <div height="2rem"></div> 
 
 - `fitld`를 수행할 때, 특별한 용도가 아니라면, bif, eif, bchan, echan은 모두 0으로 둔다. 
 - AIPS에 익숙하지 않다면 task를 수행할 때, `inp`를 항상 수행하여, 입력 parameter에 대해서 익숙해지는 것을 권장한다. 반면, 익숙하다면 `inp`를 하지 않아도 된다. 
+
+---
+
+## 2.1. 자주 사용하는 AIPS 명령어 정리
+
+- 본격적인 데이터 처리 단계로 넘어가기 전에 자주 사용하는 명령어를 정리하고 가자.
+- 본격적인 데이터 처리 단계로 넘어가기 전에 자주 사용하는 명령어를 정리하고 가자. 
+- `kleenex`: AIPS 종료
+- `pca`: 현재 AIPS 내부에 있는 데이터 카탈로그를 모두 보여주는 코드
+- `abort`: 특정 AIPS task를 중단하는 코드
+	- 예: `abort fitld`
+- `getn m`: 현재 AIPS의 `indisk`에 있는 catalog 번호 `m`번 파일을 첫 번째 입력 파일로 선택하는 코드
+- `zap`: 선택한 카탈로그 파일을 제거하는 코드
+	- 예: 만약에 `getn 1` 
+- `help taskmane`: AIPS task에 대한 도움말을 보여주는 코드
+	- 에: `help fitld`
+- `starttv`: AIPS를 이루는 창 중 하나가 닫혔을 때, 복원할 수 있는 코드
+- `clrmsg`: AIPS에서 사용하는 메모리에서 메시지를 초기화하는 코드
+
+---
+
+## 2.2. Data check
+
+- 이제 [2. Data get in AIPS (AIPS 안으로 데이터 불러오기){#AIPS_Data_get}] 에서 불러온 데이터의 구조를 확인해보자. 이를 위해서 다음과 같이 수행한다.
+
+```aips 
+pca 
+	# disk 안에 있는 카탈로그 번호 확인
+getn 1
+	# 확인할 데이터의 카탈로그 번호 선택
+imhe
+	# 데이터 header 정보를 확인함
+```
+
+
+
+
+
+
+
+
+
+
+
+<style>
+h2 {
+border-bottom: none !important;
+}
+</style>
 

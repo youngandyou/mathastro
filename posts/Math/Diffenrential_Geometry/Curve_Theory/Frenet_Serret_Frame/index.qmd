@@ -123,7 +123,7 @@ T(s) &= \lambda'(s)T(s) + \lambda(s)T'(s) \\
 Hence $(\lambda'(s) - 1)T(s) + \lambda(s)\kappa(s)N(s) = 0$, which implies that $\lambda'(s) = 1$ and $\lambda(s)\kappa(s) = 0$. These two condition contradicts each other, so we must have that $\kappa \equiv 0$. $\blacksquare$
 
 ## Frenet-Serret Formula
-Let $\alpha(s)$ be a unit speed curve with $\kappa \not \equiv 0$, and let $\{ T(s), N(s), B(s), \kappa(s), \tau(s) \}$ be a Frenet-Serret appartus of $\alpha$ at $s$. Then we have:
+Let $\alpha(s)$ be a unit speed curve with $\kappa \neq 0$, and let $\{ T(s), N(s), B(s), \kappa(s), \tau(s) \}$ be a Frenet-Serret appartus of $\alpha$ at $s$. Then we have:
 
 **(i)** $T'(s) = \kappa(s) N(s)$
 
@@ -349,7 +349,7 @@ Let $\beta$ be a regular curve, and let $\{ \kappa, \tau, T, N, B \}$ be the Fre
 
 **(ii)** $B = \frac{\dot{\beta} \times \ddot{\beta}}{\| \dot{\beta} \times \ddot{\beta} \|}$
 
-**(iii)** $N = T \times B$
+**(iii)** $N = B \times T$
 
 **(iv)** $\kappa = \frac{\| \dot{\beta} \times \ddot{\beta} \|}{\| \dot{\beta} \|^3}$
 

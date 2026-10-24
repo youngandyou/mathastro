@@ -77,9 +77,24 @@ where either $r(x) = 0$ or [$r(x) \neq 0$ and $\deg(r(x)) < m$.]
 
 **(iii)** If $f(x)$ is of degree $n \ge 1$, then $f(x)$ can have at most $n$ zeros in $F$.
 
-**(iv)** Note that if $F^\ast = F \setminus \{ 0 \}$, then $\langle F^\ast, \cdot \rangle$ is a abelian group. If $G$ is a finite subgroup of $\langle F^\ast, \cdot \rangle$, then $G$ is cyclic. In particular, if $F$ is finite, then $\langle F^\ast, \cdot \rangle$ is a cyclic group.
+**(iv)** Let $f(x)$ be an irreducible polynomial in $F[x]$. If $f(x)$ divides $r_1(x) \cdots r_n(x)$ for $r_1(x), \dots, r_n(x) \in F[x]$, then $f(x)$ divides $r_i(x)$ for some $i \in \{ 1, \dots, n \}$.
 
-**(v)** The units in $F[x]$ are precisely the nonzero elements of $F$.
+**(v)** Let $f(x) \in F[x]$ with $\deg(f(x)) \ge 1$. Then $f(x)$ can be uniquely factorized as a product of irrducible polynomials up to orders and unit factors.
+
+**(vi)** Note that if $F^\ast = F \setminus \{ 0 \}$, then $\langle F^\ast, \cdot \rangle$ is a abelian group. If $G$ is a finite subgroup of $\langle F^\ast, \cdot \rangle$, then $G$ is cyclic. In particular, if $F$ is finite, then $\langle F^\ast, \cdot \rangle$ is a cyclic group.
+
+**(vii)** The units in $F[x]$ are precisely the nonzero elements of $F$.
+
+**(v)**는 다항식에 대해서도 소인수분해가 유일하게 존재함을 보장해준다. 이때 순서와 항등원을 곱하는 것에 대해서 다른 형태는 동일한 것으로 간주하는데, 예컨대 $x^4+3x^3 + 2x + 4 \in \mathbb{Z}_5[x]$는 $(x-1)^3(x+1)$로 인수분해되지만
+
+$$\begin{align*}
+x^4+3x^3 + 2x + 4 &= (x-1)^3(x+1) \\
+&= (x-1)^2(x-1)(x+1) \cdot 1 \\
+&= (x-1)^2(x-1)(x+1) \cdot 2 \cdot 3 \\
+&= (x-1)^2(2x-2)(3x+3)
+\end{align*}$$
+
+과 같이 순서를 바꾸고 항등원 $1$을 곱해서 식을 조작해도 동일한 인수분해로 간주한다.
 
 ### Proof
 **(i)** First, we will show that such expression always exists.
@@ -169,7 +184,43 @@ for some $q_r(x) \in F[x]$ where $q_r(x)$ does not have zeros in $F$. Since $\de
 
 Let $b \in F \setminus \{a_1, \dots, a_r \}$. Then $b - a-i \neq 0, \forall i \in \{1, \dots, r \}$ and $q_r(b) \neq 0$. Hence $f(n) = (b-a_1) \cdots (b-a_r)q_r(b) \neq 0$, and therefore $f(x)$ has $r$ zeros in $F$. $\blacksquare$
 
-**(iv)** Let $G$ be a finite subgroup of $\langle F^\ast, \cdot \rangle$. Since $F^\ast$ is abelian and $G$ is finite, $G$ is a finitely generated abelian group. By the fundamental theorem of finitely generated abelian group, we have
+**(iv)** We use induction on $n$. 
+
+Suppose that $p(x)$ divides $r_1(x)r_2(x)$ for $r_1(x), r_2(x) \in F[x]$. Then $r_1(x)r_2(x) \in (p(x))$. Since $p(x)$ is irreducible over $F$, $(p(x))$ is a maximal ideal of $F[x]$, so it is a prime ideal of $F[x]$. Hence, $r_1(x) \in (p(x))$ or $r_2(x) \in (p(x))$, which means that $p(x)$ divides $r_1(x)$ or $p(x)$ divides $r_2(x)$.
+
+Suppose that if $p(x)$ divides $r_1(x) \cdots r_n(x)$ for $r_1(x), \dots, r_n(x) \in F[x]$, then $p(x)$ divides some $r_i(x)$ for some $i \in \{1, \dots, n \}$. If $p(x)$ divides $r_1(x) \cdots r_n(x) r_{n+1}(x)$ for $r_1(x), \dots, r_{n+1}(x) \in F[x]$, then $p(x)$ divides $(r_1(x) \cdots r_n(x))$ or $p(x)$ divides $r_{n+1}(x)$ by the base case. If $p(x)$ divides $r_1(x) \cdots r_n(x)$, then $p(x)$ divides some $r_i(x)$ for some $i \in \{1, \dots, n \}$ by induction hypothesis. Thus, $p(x)$ divides some $r_i(x)$ for some $i \in \{1, \dots, n+1 \}$. Hence, the induction is completed.
+
+**(v)** Let $f(x) \in F[x]$ with $\deg(f(x)) \ge 1$. If $f(x)$ is irreducible over $F$, then there is nothing to prove.
+
+If $f(x)$ is reducible over $F$, then $f(x) = g(x)h(x)$ for some $g(x), h(x) \in F[x]$ with $\deg(g(x)), \deg(h(x)) < \deg(f(x))$. If $g(x)$ and $h(x)$ are irreducible over $F$, then we stop the process.
+
+If not, then at lest one of them factors into polynomials of lower degree. By continuing this process in the finite step, we must obtain $f(x) = p_1(x) \cdots p_r(x) where $p_1(x), \dots, p_r(x)$ are irreducible polynomials over $F$.
+
+Now, we will show that such expression is unique. Suppose that
+
+$$p_1(x) \cdots p_r(x) = f(x) = q_1(x) \cdots q_s(x)$$
+
+where $r \le s$ and $p_1(x), \dots, p_r(x), q_1(x), \dots, q_s(x)$ are irreducible polynomials over $F$. Since $p_1(x)$ is irreducible over $F$ and $p_1(x)$ divides $q_1(x) \cdots q_s(x)$, $p_1(x)$ divides some $q_j(x)$ by **(iv)**. After reordering if necessary, we may assume that $p_1(x)$ divides $q_1(x)$. Then $q_1(x) = p_1(x)t_1(x)$ for some $t_1(x) \in F[x]$. Since $q_1(x)$ is irreducible over $F$, $t_1(x) \in F$. Note that $t_1(x)$ is a unit, and we write $t_1(x) = u_1$. 
+
+Then we have
+
+$$p_1(x) \cdots p_r(x) = u_1p_1(x) q_2(x) \cdots q_s(x).$$
+
+Since $F[x]$ is an integral domain, we have
+
+$$p_2(x) \cdots p_r(x) = u_1 q_2(x) \cdots q_s(x).$$
+
+By a similar argument, $q_2(x) = p_2(x) u_2$ for some $u_2 \in F$. Then we have
+
+$$p_3(x) \cdots p_r(x) = u_1 u_2 q_3(x) \cdots q_s(x).$$
+
+By continuing the same process, we obtain
+
+$$1 = u_1u_2 \cdots u_r q_{r+1}(x) \cdots q_s(x)$$
+
+Hence $r = s$ and $q_i(x) = p_i(x) u_i$ for all $i \in \{ 1, \dots, r \}$, which means that the factorization is unique up to orders and unit factors.
+
+**(vi)** Let $G$ be a finite subgroup of $\langle F^\ast, \cdot \rangle$. Since $F^\ast$ is abelian and $G$ is finite, $G$ is a finitely generated abelian group. By the fundamental theorem of finitely generated abelian group, we have
 
 $$G \cong \mathbb{Z}_{d_1} \times \cdots \times \mathbb{Z}_{d_r}$$
 
@@ -183,7 +234,7 @@ Note that $\vert G \vert = d_1 \cdots d_r$. By **(iii)** $x^m - 1$ has at most $
 
 Since $m = \mathrm{lcm}(d_1, \dots, d_r)$, $d_1, \dots, d_r$ are pairwise relatively prime, which means that $G \cong \mathbb{Z}_m$. 
 
-**(v)** Note that any nonzero elements of $F$ are units of $F[x]$. 
+**(vii)** Note that any nonzero elements of $F$ are units of $F[x]$. 
 
 Let $f(x)$ be a unit in $F[x]$. If $\deg(f(x)) = 0$, say $f(x) = a_0 \in F \setminus \{0\}$, then $f(x)$ is a unit in $F[x]$. 
 

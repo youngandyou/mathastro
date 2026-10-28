@@ -212,7 +212,7 @@ $$\begin{align*}
 
 $$\begin{align*}
 \mathbb{X}(a_0 + a_1X + \cdots + a_nX^n) &= a_0X + a_1X^2 + \cdots + a_nX^{n+1} \\
-\mathbb{Y}(a_0 + a_1X + \cdots + a_nX^n) &= a_1 + 2a_2X + 3a_3X^2 + \cdots + (n+1)a_{n+1}X^n,
+\mathbb{Y}(a_0 + a_1X + \cdots + a_nX^n) &= a_1 + 2a_2X + 3a_3X^2 + \cdots + na_{n}X^{n-1},
 \end{align*}$$
 
 for all $a_0 + a_1X + \cdots + a_nX^n \in F[X]$. Then we can easily verify $\mathbb{Y}\mathbb{X} - \mathbb{X} \mathbb{Y} = \mathrm{id}_{F[X]}$, which means that $\mathbb{Y}\mathbb{X} \neq \mathbb{X} \mathbb{Y}$ in general. 

@@ -194,7 +194,7 @@ Suppose that if $p(x)$ divides $r_1(x) \cdots r_n(x)$ for $r_1(x), \dots, r_n(x)
 
 If $f(x)$ is reducible over $F$, then $f(x) = g(x)h(x)$ for some $g(x), h(x) \in F[x]$ with $\deg(g(x)), \deg(h(x)) < \deg(f(x))$. If $g(x)$ and $h(x)$ are irreducible over $F$, then we stop the process.
 
-If not, then at lest one of them factors into polynomials of lower degree. By continuing this process in the finite step, we must obtain $f(x) = p_1(x) \cdots p_r(x) where $p_1(x), \dots, p_r(x)$ are irreducible polynomials over $F$.
+If not, then at lest one of them factors into polynomials of lower degree. By continuing this process in the finite step, we must obtain $f(x) = p_1(x) \cdots p_r(x)$, where $p_1(x), \dots, p_r(x)$ are irreducible polynomials over $F$.
 
 Now, we will show that such expression is unique. Suppose that
 

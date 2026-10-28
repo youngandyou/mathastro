@@ -801,6 +801,16 @@ h2.magazine-section-title,
   color: var(--mag-text-main);
 }
 
+.hub-col-header h4 a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.18s ease;
+}
+
+.hub-col-header h4 a:hover {
+  color: var(--mag-burgundy);
+}
+
 .hub-col-count {
   font-size: 0.74rem;
   color: var(--mag-text-light);
@@ -967,12 +977,22 @@ div.quarto-post .listing-description > a {
   padding-left: 0.85rem;
 }
 
+#TOC #toc-title {
+  color: #1f3a3d;
+  font-weight: 700;
+  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+  letter-spacing: -0.01em;
+}
+
 #TOC .nav-link {
   border-left: 3px solid transparent;
   color: var(--bs-secondary-color, #6c757d);
   line-height: 1.35;
   margin-left: -1rem;
   padding: 0.25rem 0.7rem;
+  position: relative;
+  transition: all 0.15s ease;
 }
 
 #TOC .nav-link:hover,
@@ -985,6 +1005,109 @@ div.quarto-post .listing-description > a {
   border-left-color: #2f6f73;
   color: #2f6f73 !important;
   font-weight: 600;
+}
+
+/* TOC Level 1 (# 대주제) */
+#TOC > ul > li > a.nav-link {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--bs-body-color, #212529);
+  padding-left: 0.7rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.25rem;
+  margin-top: 0.2rem;
+}
+
+#TOC > ul > li > a.nav-link.active {
+  font-weight: 700;
+}
+
+/* TOC Level 2 (## 세부주제: 우측 들여쓰기 + 불릿 점) */
+#TOC ul ul > li > a.nav-link {
+  font-size: 0.82rem;
+  font-weight: 400;
+  color: var(--bs-secondary-color, #6c757d);
+  padding-left: 1.65rem;
+  padding-top: 0.2rem;
+  padding-bottom: 0.2rem;
+  margin-top: 0;
+}
+
+#TOC ul ul > li > a.nav-link::before {
+  content: "•";
+  position: absolute;
+  left: 0.85rem;
+  top: 0.18rem;
+  font-size: 0.75rem;
+  color: #adb5bd;
+  transition: color 0.15s ease;
+}
+
+#TOC ul ul > li > a.nav-link:hover::before,
+#TOC ul ul > li > a.nav-link:focus::before {
+  color: #2f6f73;
+}
+
+#TOC ul ul > li > a.nav-link.active::before {
+  color: #2f6f73;
+}
+
+/* TOC Level 3 (### 하위 세부주제: 추가 들여쓰기 + 대시 기호) */
+#TOC ul ul ul > li > a.nav-link {
+  font-size: 0.77rem;
+  font-weight: 400;
+  color: #868e96;
+  padding-left: 2.45rem;
+  padding-top: 0.15rem;
+  padding-bottom: 0.15rem;
+}
+
+#TOC ul ul ul > li > a.nav-link::before {
+  content: "–";
+  position: absolute;
+  left: 1.7rem;
+  top: 0.15rem;
+  font-size: 0.75rem;
+  color: #ced4da;
+  transition: color 0.15s ease;
+}
+
+#TOC ul ul ul > li > a.nav-link:hover::before,
+#TOC ul ul ul > li > a.nav-link:focus::before {
+  color: #2f6f73;
+}
+
+#TOC ul ul ul > li > a.nav-link.active::before {
+  color: #2f6f73;
+}
+
+/* TOC Level 4 (#### 세부 항목: 추가 들여쓰기 + 작은 점) */
+#TOC ul ul ul ul > li > a.nav-link {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: #adb5bd;
+  padding-left: 3.25rem;
+  padding-top: 0.12rem;
+  padding-bottom: 0.12rem;
+}
+
+#TOC ul ul ul ul > li > a.nav-link::before {
+  content: "·";
+  position: absolute;
+  left: 2.5rem;
+  top: 0.12rem;
+  font-size: 0.75rem;
+  color: #dee2e6;
+  transition: color 0.15s ease;
+}
+
+#TOC ul ul ul ul > li > a.nav-link:hover::before,
+#TOC ul ul ul ul > li > a.nav-link:focus::before {
+  color: #2f6f73;
+}
+
+#TOC ul ul ul ul > li > a.nav-link.active::before {
+  color: #2f6f73;
 }
 
 @media (max-width: 767.98px) {

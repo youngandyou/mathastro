@@ -233,6 +233,19 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
+  // Intercept archive hub clicks for smooth scrolling and view updates
+  document.addEventListener('click', function(e) {
+    var hubLink = e.target.closest('.magazine-archive-hub a[href*="#category="]');
+    if (!hubLink) return;
+    var href = hubLink.getAttribute('href') || '';
+    var targetHash = href.substring(href.indexOf('#category='));
+    if (window.location.hash === targetHash) {
+      e.preventDefault();
+      updateView();
+    }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
   window.addEventListener('hashchange', updateView);
   window.addEventListener('popstate', updateView);
 
@@ -335,59 +348,59 @@ document.addEventListener("DOMContentLoaded", function() {
     <!-- Mathematics -->
     <div class="hub-col math-col">
       <div class="hub-col-header">
-        <h4>📐 Mathematics (수학)</h4>
-        <span class="hub-col-count">174편</span>
+        <h4><a href="#category=Math" class="hub-header-link">📐 Mathematics (수학)</a></h4>
+        <span class="hub-col-count">185편</span>
       </div>
       <ul class="hub-col-list">
-        <li><a href="posts/Math/Calculus/Vector_Calculus/Cross_Product/">미적분학 (Calculus · 벡터미적분학)</a></li>
-        <li><a href="posts/Math/Topology/Topology/">위상수학 (Topology) 전편</a></li>
-        <li><a href="posts/Math/Complex_Analysis/Cauchy_Riemann_Eq/">복소해석학 (Complex Analysis)</a></li>
-        <li><a href="posts/Math/Abstract_Algebra/Group_Theory/group/">추상대수학 (군론 · 환론)</a></li>
-        <li><a href="posts/Math/Numerical_Analysis/">수치해석학 (반복법과 알고리즘)</a></li>
-        <li><a href="posts/Math/Graph_Theory/Tree/Tree_Isomorphism/">그래프 이론 (트리 동형사상)</a></li>
+        <li><a href="#category=Calculus">미적분학 (Calculus · 벡터미적분학)</a></li>
+        <li><a href="#category=Topology">위상수학 (Topology) 전편</a></li>
+        <li><a href="#category=Complex%20Analysis">복소해석학 (Complex Analysis)</a></li>
+        <li><a href="#category=Abstract%20Algebra">추상대수학 (군론 · 환론)</a></li>
+        <li><a href="#category=Numerical%20Analysis">수치해석학 (반복법과 알고리즘)</a></li>
+        <li><a href="#category=Graph%20Theory">그래프 이론 (트리 동형사상)</a></li>
       </ul>
     </div>
 
     <!-- Astronomy -->
     <div class="hub-col astro-col">
       <div class="hub-col-header">
-        <h4>🔭 Astronomy (천문학)</h4>
-        <span class="hub-col-count">16편</span>
+        <h4><a href="#category=Astronomy" class="hub-header-link">🔭 Astronomy (천문학)</a></h4>
+        <span class="hub-col-count">20편</span>
       </div>
       <ul class="hub-col-list">
-        <li><a href="posts/Astronomy/Basic_Radioastronomy0/">기초 전파천문학 시리즈 (0~5편)</a></li>
-        <li><a href="posts/Astronomy/Interferometer_1/">전파간섭계 (Interferometer 1, 2)</a></li>
-        <li><a href="posts/Astronomy/Astro_synchrotron_radiation/">싱크로트론 복사 이론</a></li>
-        <li><a href="posts/Astronomy/Astro_Superluminal-motion/">초광속 겉보기 운동</a></li>
-        <li><a href="posts/Astronomy/AIPS_1/">AIPS 천문 데이터 분석 실습</a></li>
+        <li><a href="#category=Radio%20Astronomy">기초 전파천문학 시리즈 (0~5편)</a></li>
+        <li><a href="#category=Radio%20Astronomy">전파간섭계 (Interferometer 1, 2)</a></li>
+        <li><a href="#category=High%20Energy">싱크로트론 복사 이론</a></li>
+        <li><a href="#category=Relativistic%20Jets">초광속 겉보기 운동</a></li>
+        <li><a href="#category=AIPS">AIPS 천문 데이터 분석 실습</a></li>
       </ul>
     </div>
 
     <!-- Physics -->
     <div class="hub-col physics-col">
       <div class="hub-col-header">
-        <h4>⚛️ Physics (물리학)</h4>
+        <h4><a href="#category=Physics" class="hub-header-link">⚛️ Physics (물리학)</a></h4>
         <span class="hub-col-count">연재 중</span>
       </div>
       <ul class="hub-col-list">
-        <li><a href="posts/Physics/Thermodynamics/Idealgas/">열역학: 이상기체 방정식의 미시적 기원</a></li>
-        <li><a href="posts/Astronomy/Astro_Equivalence-principle/">등가원리와 시공간의 기하학</a></li>
-        <li><a href="posts/Math/Topology/Metric_Topology/">거리 공간과 물리적 공간의 기하</a></li>
-        <li><a href="posts/Physics/Thermodynamics/Idealgas/">통계물리 및 상태방정식</a></li>
+        <li><a href="#category=Thermodynamics">열역학: 이상기체 방정식의 미시적 기원</a></li>
+        <li><a href="#category=General%20Relativity">등가원리와 시공간의 기하학</a></li>
+        <li><a href="#category=Topology">거리 공간과 물리적 공간의 기하</a></li>
+        <li><a href="#category=Physics">통계물리 및 상태방정식</a></li>
       </ul>
     </div>
 
     <!-- Computer Science -->
     <div class="hub-col cs-col">
       <div class="hub-col-header">
-        <h4>💻 Computer Science</h4>
+        <h4><a href="#category=Computer" class="hub-header-link">💻 Computer Science</a></h4>
         <span class="hub-col-count">연재 중</span>
       </div>
       <ul class="hub-col-list">
-        <li><a href="posts/Computer/Reinforcement%20Learning/">강화학습 (Reinforcement Learning) 기초</a></li>
-        <li><a href="posts/Math/Numerical_Analysis/">수치 반복 알고리즘과 수렴성</a></li>
-        <li><a href="posts/Math/Graph_Theory/Tree/Tree_Isomorphism/">트리 알고리즘과 그래프 탐색</a></li>
-        <li><a href="posts/Astronomy/AIPS_1/">AIPS 및 파이썬 천문 컴퓨팅</a></li>
+        <li><a href="#category=Reinforcement%20Learning">강화학습 (Reinforcement Learning) 기초</a></li>
+        <li><a href="#category=Numerical%20Analysis">수치 반복 알고리즘과 수렴성</a></li>
+        <li><a href="#category=Graph%20Theory">트리 알고리즘과 그래프 탐색</a></li>
+        <li><a href="#category=AIPS">AIPS 및 파이썬 천문 컴퓨팅</a></li>
       </ul>
     </div>
   </div>

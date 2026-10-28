@@ -12,9 +12,24 @@ Suppose that the equation $f(x) = 0$ has a solution $\alpha$. For a given intial
 
 $$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$$
 
-for each $n = 0, 1, 2, \dots$ converges to $\alpha$ as $n \to \infty$. 
+for each $n = 0, 1, 2, \dots$ converges to $\alpha$ as $n \to \infty$ with order of convergence $2$ if $f'(\alpha) \neq 0$.
 
 ![](new1.png)
+
+::: {.callout-note title="Proof" collapse="true" icon=false}
+The Taylor expansion of $f(x)$ of order $2$ at $x_n$ is given by
+
+$$f(x) = f(x_n) + f'(x_n)(x-x_n) + \frac{f''(c_n)}{2}(x-x_n)^2$$
+
+for some $c_n$ between $x_n$ and $x$. When $x = \alpha$, we have
+
+$$\begin{align*}
+& 0 = f(\alpha) = f(x_n) + f'(x_n)(\alpha - x_n) + \frac{f''(c_n)}{2}(\alpha-x_n)^2 \\
+\implies &\alpha = x_n - \frac{f(x_n)}{f'(x_n)} - \frac{1}{2}(\alpha - x_n)^2 \frac{f''(c_n)}{f'(x_n)} \\
+\implies &\alpha - x_{n+1} = -\frac{1}{2}(\alpha - x_n)^2 \frac{f''(c_n)}{f'(x_n)} \\
+\implies &\lim_{n \to \infty} \frac{\alpha - x_{n+1}}{(\alpha - x_n)^2} = -\frac{f''(\alpha)}{2f'(\alpha)} 
+\end{align*}$$
+:::
 
 방정식 $f(x) = 0$이 $x = \alpha$에서 해를 가진다고 할 때, 적당히 $\alpha$ 근처에 있는 적당한 초기값 $x_0$를 택하여 거기서 함수 $f$에 접하는 접선을 긋는다. 이때 그 접선과 $x$축이 만나는 점을 $x_1$이라고 하고, $x_1$에 대해서 다시 $f$에 접선을 그어 위 과정을 반복한다. 그러면 $0 = f'(x_n)(x_{n+1} - x_n) + f(x_n)$이라는 점화식을 얻고, 정리하면
 

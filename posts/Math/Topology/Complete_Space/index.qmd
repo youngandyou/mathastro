@@ -1,0 +1,150 @@
+---
+title: "Complete Metric Space"
+author: "Youmin Chun"
+date: "2026-10-29 00:00:01"
+description: "완비 거리 공간과 관련된 정리에 대해서 다룬다."
+categories: 
+  - Math > Topology
+---
+
+# Complete Space
+## Definition 1
+Let $(X, d)$ be a metric space.
+
+**(i)** A sequence $\{ x_n \}$ in $X$ is called a ***Cauchy sequence*** in $(X, d)$ if $\forall \varepsilon > 0, \exists N \in \mathbb{N}$ such that $d(x_n, x_m) < \varepsilon, \forall n, m \ge N$.
+
+**(ii)** $(X, d)$ is said to be ***complete*** if every Cauchy sequence in $X$ converges.
+
+수렴하면 코시 수열이지만, 역은 항상 성립하지는 않는다. 즉 어떤 공간 안에서 코시 수열일지라도 수렴값이 항상 그 공간에 속하리란 보장은 없다. 이를 허용해주어서 코시 수열과 수렴성이 동치가 되는 공간을 ***완비 공간(Complete Space)***이라고 부른다.
+
+## Remark
+**(i)** Every convergent sequence in $X$ is a Cauchy sequence. However, the converse does not hold in general.
+
+::: {.callout-note title="Example" collapse="true" icon=false}
+1. The sequence $x_n = \left( 1 + \frac{1}{n} \right)^n$ is a Cauchy sequence in $(\mathbb{Q}, d_{\text{Euclidean}})$ but it does not converge in $(\mathbb{Q}, d_{\text{Euclidean}})$.
+
+2. The sequence $x_n = \frac{1}{n}$ is a Cauchy sequence in $((0, 2), d_{\text{Euclidean}})$ but it does not converge in $((0, 2), d_{\text{Euclidean}})$.
+:::
+
+**(ii)** If $(X, d)$ is complete, then a sequence $\{ x_n \}$ is Cauchy $\iff$ $\{ x_n \}$ is convergent.
+
+**(iii)** $(\mathbb{R}, d)$ is not always complete.
+::: {.callout-note title="Example" collapse="true" icon=false}
+First, we note that $\lim_{n \to \infty} \arctan n = \frac{\pi}{2}$ in $(\mathbb{R}, d_{\text{Euclidean}})$.
+
+Define $d_t: \mathbb{R} \times \mathbb{R} \to \mathbb{R}$ by the equation
+
+$$d_t(x, y) = | \arctan x - \arctan y |.$$
+
+Clearly, $d_t$ is a metric on $\mathbb{R}$. 
+
+Consider the sequence $\{ n \}_{n=1}^\infty$ in $(\mathbb{R}, d_t)$. Let $\varepsilon > 0$. Since $\lim_{n \to \infty} \arctan n = \frac{\pi}{2}$, there exists $N \in \mathbb{N}$ such that $\left|\arctan n - \frac{\pi}{2} \right| < \frac{\varepsilon}{2}, \forall n \ge N$. Then we have
+
+$$\begin{align*}
+d_t(n, m) &= | \arctan n - \arctan m | \\
+&\le \left| \arctan n - \frac{\pi}{2} \right| + \left| \arctan m - \frac{\pi}{2} \right| \\
+& < \frac{\pi}{2} + \frac{\pi}{2} \\
+& < \varepsilon, \forall n, m \ge N.
+\end{align*}$$
+
+Hence, $\{ n \}_{n=1}^\infty$ is a Cauchy sequence in $(\mathbb{R}, d_t)$. However, it is not convergent in $(\mathbb{R}, d_t)$. If it converges to some point $x \in \mathbb{R}$, then for any $\varepsilon > 0$, there exists $N \in \mathbb{N}$ such that 
+
+$$\vert \arctan n - \arctan x \vert < \varepsilon, \forall n \ge N.$$
+
+It also implies that $\lim_{n \to \infty} \arctan n = \arctan x$ in $(\mathbb{R}, d_{\text{Euclidean}})$. Hence, we obtain that $\arctan x = \frac{\pi}{2}$, which is impossible. Hence, $\{ n \}_{n=1}^\infty$ is not convergent in $(\mathbb{R}, d_t)$.
+:::
+
+## Theorem 1
+Let $(X, d)$ be a metric space.
+
+**(i)** Every closed subset of a complete metric space if complete.
+
+**(ii)** $(X, d)$ is complete if every Cauchy sequence in $X$ has a convergent subsequence.
+
+### Proof
+**(i)** Let $C$ be a closed subset of a complete metric space $X$, and let $\{ x_n \}$ be a Cauchy sequence in $C$. Since $X$ is complete, $\{ x_n \}$ converges to $x \in X$. By Theorem 4 **(ii)**, $x \in \overline{C} = C$. Thus, $C$ is complete.
+
+**(ii)** Suppose that a Cauchy sequence $\{ x_n \}$ in $X$ has a convergent subsequence $\{ x_{n_k} \}$ with $x_{n_k} \to x$. Let $\varepsilon > 0$. Then there exists $N \in \mathbb{N}$ such that $d(x_n, x_m) < \frac{\varepsilon}{2}$ and $d(x_n, x) < \frac{\varepsilon}{2}$ for all $n, m \ge N$. Then we have 
+
+$$d(x_n, x) \le d(x_n, x_{n_k}) + d(x_{n_k}, x) < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon, \forall n \ge N.$$
+
+Thus, $\lim_{n \to \infty} x_n = x$, and therefore $(X, d)$ is complete. $\blacksquare$
+
+## Theorem 2
+**(i)** $(\mathbb{R}^n, d_{\text{Euclidean}})$ is complete.
+
+**(ii)** Define $D: \mathbb{R}^\omega \times \mathbb{R}^\omega \to \mathbb{R}$ by the equation
+
+$$D(\mathbf{x}, \mathbf{y}) = \sup_{n \in \mathbb{N}} \left\{ \frac{\overline{d}(x_n, y_n)}{n} \right\}$$
+
+where $\overline{d}$ is the standard bounded metric on $\mathbb{R}$. Then $D$ is a metric that induces the product topology on $\mathbb{R}^\omega$.
+
+**(iii)** $(\mathbb{R}^\omega, D)$ is complete.
+
+### Proof
+**(i)** Let $\{ x_n \}$ be a Cauchy sequence of $(\mathbb{R}^n, d_{\text{Euclidean}})$. Then there exists $N \in \mathbb{N}$ such that $\vert x_n, x_m \vert < 1, \forall n, m \ge N$. Let $M := \max \{ \vert x_1 \vert, \dots, \vert x_N \vert \}$, and let $C := \{ x \in \mathbb{R}^n \mid \vert x vert \le M + 1 \}$. Since $1 > \vert x_n, x_N \vert \ge \vert x_n \vert - \vert x_N \vert, \forall n \ge N$, we have $\vert x_n \vert < \vert x_N \vert + 1, \forall n \ge N$. Thus, $x_n \in C, \forall n \in \mathbb{N}$. Since $C$ is closed and bounded, $C$ is compact, which means that $\{ x_n \}$ has a convergent subsequence. By Theorem 1 **(ii)**, $(\mathbb{R}^n, d_{\text{Euclidean}})$ is complete. 
+
+**(ii)**
+
+**(iii)** Let $\{ \mathbf{x}_n \}$ be a Cauchy sequence in $(\mathbb{R}^\omega, D)$. Consider the sequence $\{ \pi_{n_0}(\mathbf{x}_n) \}_{n=1}^\infty$ in $(\mathbb{R}, \bar{d})$ for some fixed $n_0 \in \mathbb{N}$. Let $\varepsilon > 0$. Since $\{ \mathbf{x}_n \}$ is a Cauchy sequence, there exists $N \in \mathbb{N}$ such that $D(\mathbf{x}_n, \mathbf{x}_m) < \frac{\varepsilon}{n_0}, \forall n, m \ge N$. Then for all $n, m \ge N$, we have
+
+$$\bar{d}(\pi_{n_0}(\mathbf{x}_n), \pi_{n_0}(\mathbf{x}_m)) \le D(\mathbf{x}_n, \mathbf{x}_m) \cdot n_0 < \frac{\varepsilon}{n_0} \cdot n_0 = \varepsilon,$$
+
+which means that the sequence $\{ \pi_{n_0}(\mathbf{x}_n) \}_{n=1}^\infty$ is a Cauchy sequence in $(\mathbb{R}, \bar{d})$.
+
+Since $(\mathbb{R}, \bar{d})$ is complete, $\{ \pi_{n_0}(\mathbf{x}_n) \}_{n=1}^\infty$ converges.
+
+Suppose that $\{ \pi_{i}(\mathbf{x}_n) \}_{n=1}^\infty$ converges to $a_i \in \mathbb{R}$ for each $i \in \mathbb{N}$, and let $\mathbf{a} = (a_1, a_2, a_3, \dots) \in \mathbb{R}^\omega$.
+
+Let $U = \prod_{i \in \mathbb{N}} U_i$ be a basis element of $(\mathbb{R}^\omega, D)$ containing $\mathbf{a}$, where each $U_i$ is an open subset of $\mathbb{R}$ containing $\pi_i(\mathbf{a})$. Then there exist finitely many indices $i_1, \dots, i_k$ such that $U_{i_j} \subsetneq \mathbb{R}$. For each $j = 1, \dots, k$, there exists $N_{i_j} \in \mathbb{N}$ such that $\pi_{i_j}(\mathbf{x}_n) \in U_{i_j}, \forall n \ge N_{i_j}$. Let $N = \max \{ N_{i_1}, \dots, N_{i_k} \}$. Then 
+
+$$\mathbf{x}_n \in U, \forall n \ge N,$$
+
+which means that $\mathbf{x}_n \to \mathbf{a}$. Hence, $(\mathbb{R}^\omega, D)$ is complete. $\blacksquare$
+
+$\blacksquare$
+
+# Rleated Metrics
+## Theorem 2
+**(i)** Let $(X, d)$ be a metric space. Define $\overline{d}: X \times X \to \mathbb{R}$ by the equation
+
+$$\overline{d}(x, y) = \min \{ d(x, y), 1\}.$$
+
+Then $\overline{d}$ is a metric that induces the same topology as $d$, and we call $\overline{d}$ the ***standard bounded metric*** corresponding to $d$.
+
+**(ii)** Every subset of $(X, \overline{d})$ is bounded.
+
+**(iii)** $(X, d)$ is complete $\iff$ $(X, \overline{d})$ is complete.
+
+**(iv)** A sequence $\{ x_n \}$ is a Cauchy sequence under $(X, d)$ $\iff $ $\{ x_n \}$ is a Cauchy sequence under $(X, \overline{d})$.
+
+**(v)** A sequence $\{ x_n \}$ converges under $(X, d)$ $\iff $ $\{ x_n \}$ converges under $(X, \overline{d})$.
+
+### Proof
+
+## Theorem 3
+**(i)** Let $(X, d)$ be a metric space, and let $J$ be an index set. Let $\overline{d}$ be the standard bounded metric corresponding to $d$. Define define $\overline{\rho}: X^J \times X^J \to \mathbb{R}$ by the equation
+
+$$\overline{\rho}(f, g) = \sup_{\alpha \in J} \overline{d}(f(\alpha), g(\alpha)),$$
+
+for all $f, g \in X^J$. Then $\overline{\rho}$ is a metric on $X^J$, which is called the ***uniform metric*** on $X^J$, and the topology it induces is called the ***uniform topology***.
+
+**(ii)** If $(X, d)$ is complete, then $(X^J, \overline{\rho})$ is complete. 
+
+**(iii)** Let $X$ be a space and let $(Y, d)$ be a metric space. Then $C(X, Y)$ and $B(X, Y)$ are complete.
+
+### Proof
+**(i)**
+
+# Space-Filling Curve
+Let $I = [0, 1]$.
+
+**(i)** There exists a continuous surjective map $f: I \to I^2$.
+
+**(ii)** For each $n \in \mathbb{N}$, there exists a continuous surjective map $g: I \to I^n$.
+
+**(iii)** There exists a countinuous surjective map $f: \mathbb{R} \to \mathbb{R}^n$.
+
+
+# Reference
+- James R. Munkres. (2000). Topology (2nd ed.). Pearson.

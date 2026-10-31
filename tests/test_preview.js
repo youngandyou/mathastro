@@ -66,6 +66,17 @@ async function checkCounts() {
       await run(script);
       assert.equal(readCounts().totalPosts, 1);
       assert.equal(Deno.readTextFileSync(`${dir}/posts/example/index.qmd`), article);
+
+      const newCategory = "---\ncategories: [Astronomy > AGN > Jets, New Field > Topic]\n---\n";
+      Deno.writeTextFileSync(`${dir}/posts/new-category.qmd`, newCategory);
+      await run(script);
+      assert.equal(readCounts().totalPosts, 2);
+      assert.equal(readCounts().counts["Astronomy > AGN"], 1);
+      assert.equal(readCounts().counts["Astronomy > AGN > Jets"], 1);
+      assert.equal(readCounts().counts["New Field > Topic"], 1);
+      Deno.removeSync(`${dir}/posts/new-category.qmd`);
+      await run(script);
+      assert.equal(readCounts().counts["Astronomy > AGN"], undefined);
     }
     console.log("PASS: category updates, draft exclusion, unchanged file contents/mtimes, JS/Python parity");
   } finally {
@@ -89,6 +100,7 @@ async function checkUrls() {
       const window = { addEventListener() {} };
       const document = {
         readyState: "complete", baseURI: page,
+        addEventListener() {},
         querySelector(selector) {
           return selector === 'meta[name="quarto:offset"]' ? { content: offset } : null;
         },
@@ -112,5 +124,39 @@ async function checkUrls() {
   console.log("PASS: one category request per page at root, nested paths, and deployment prefixes; no retry cascade");
 }
 
+function checkCategoryTree() {
+  const source = navbar.match(/<script>([\s\S]*?)<\/script>/)[1];
+  const window = {};
+  runInNewContext(source.replace('  if (document.readyState === "loading")',
+    '  window.buildCategoryTree = buildCategoryTree;\n  if (document.readyState === "loading")'), {
+    window, document: { readyState: "loading", addEventListener() {} },
+  });
+  const counts = {
+    Astronomy: 3,
+    "Astronomy > AGN": 2,
+    "Astronomy > AGN > Jets": 1,
+    "Astronomy > Radio Astronomy": 1,
+    "Astronomy > Radio Astronomy > Jets": 1,
+    "새 분야": 1,
+    "새 분야 > 새 하위 분야": 1,
+    "Astronomy > Removed": 0,
+  };
+  const tree = window.buildCategoryTree(counts);
+  const nodes = new Map();
+  function collect(children) {
+    children.forEach(node => { nodes.set(node.key, node); collect(node.subcategories); });
+  }
+  collect(tree);
+  assert.equal(nodes.get("Astronomy > AGN").count, 2);
+  assert.equal(nodes.get("Astronomy > AGN > Jets").count, 1);
+  assert.equal(nodes.get("Astronomy > Radio Astronomy > Jets").count, 1);
+  assert.equal(nodes.get("새 분야 > 새 하위 분야").name, "새 하위 분야");
+  assert.equal(nodes.has("Astronomy > Removed"), false);
+  assert.equal(tree.length, 2);
+  assert.equal(window.buildCategoryTree({}).length, 0);
+  console.log("PASS: automatic categories, arbitrary depth, new roots, Unicode labels, distinct paths, removed categories");
+}
+
 await checkCounts();
 await checkUrls();
+checkCategoryTree();

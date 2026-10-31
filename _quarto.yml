@@ -53,7 +53,7 @@ website:
       - text: "Astronomy (천문학)"
         menu:
           - href: index.qmd#category=Astronomy
-            text: "🔭 천문학 전체보기 (All Astronomy) (20)"
+            text: "🔭 천문학 전체보기 (All Astronomy) (21)"
           - text: "---"
           - href: index.qmd#category=Radio%20Astronomy
             text: "전파천문학 (Radio Astronomy) (16)"

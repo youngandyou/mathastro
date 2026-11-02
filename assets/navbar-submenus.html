@@ -1,6 +1,6 @@
 <script>
 (function() {
-  // Category taxonomy with subcategories and verified post counts
+  // Editorial labels and an offline fallback. Menu membership comes from counts.
   const navSubmenuData = {
     "abstract algebra": {
       subcategories: [
@@ -61,6 +61,129 @@
     if (!href || href.indexOf("category=") === -1) return "";
     var parts = href.split("category=");
     return normalizeKey(parts[1] ? parts[1].split("&")[0] : "");
+  }
+
+  var categoryMenus = new Map();
+  var categoryLabels = new Map();
+  var categoryOrder = new Map();
+
+  function rememberLabel(key, name) {
+    key = normalizeKey(key);
+    categoryLabels.set(key, name.replace(/\s*\(\d+\)\s*$/, "").trim());
+    if (!categoryOrder.has(key)) categoryOrder.set(key, categoryOrder.size);
+  }
+
+  function rememberSubcategories(categories) {
+    categories.forEach(function(category) {
+      rememberLabel(category.key, category.name);
+      rememberSubcategories(category.subcategories || []);
+    });
+  }
+
+  function captureCategoryMenus() {
+    document.querySelectorAll(".navbar-nav > .nav-item.dropdown").forEach(function(item) {
+      var menu = item.querySelector(":scope > .dropdown-menu");
+      var allLink = menu && menu.querySelector("a.dropdown-item[href*='#category=']");
+      if (!allLink) return;
+      var key = getCategoryKeyFromHref(allLink.getAttribute("href"));
+      categoryMenus.set(key, {
+        item: item,
+        menu: menu,
+        href: allLink.getAttribute("href"),
+        allLabel: allLink.textContent.replace(/\s*\(\d+\)\s*$/, "").trim()
+      });
+      menu.querySelectorAll("a.dropdown-item").forEach(function(link) {
+        var key = getCategoryKeyFromHref(link.getAttribute("href"));
+        if (key) rememberLabel(key, link.textContent);
+      });
+    });
+    Object.values(navSubmenuData).forEach(function(info) {
+      rememberSubcategories(info.subcategories);
+    });
+    // Keep the existing short link and translated title as a supported alias.
+    if (categoryLabels.has("high energy")) {
+      categoryLabels.set("high energy astrophysics", categoryLabels.get("high energy"));
+      categoryOrder.set("high energy astrophysics", categoryOrder.get("high energy"));
+    }
+  }
+
+  function buildCategoryTree(counts) {
+    var roots = [];
+    var nodes = new Map();
+    Object.entries(counts).forEach(function(entry) {
+      if (!Number.isInteger(entry[1]) || entry[1] <= 0) return;
+      var parts = entry[0].split(/\s*(?:>|\/|::)\s*/).filter(Boolean);
+      var children = roots;
+      parts.forEach(function(label, index) {
+        var path = parts.slice(0, index + 1).join(" > ");
+        if (!nodes.has(path)) {
+          var node = {
+            key: path,
+            name: categoryLabels.get(normalizeKey(label)) || label,
+            count: counts[path] || 0,
+            subcategories: []
+          };
+          nodes.set(path, node);
+          children.push(node);
+        }
+        children = nodes.get(path).subcategories;
+      });
+    });
+    function sortChildren(children) {
+      children.sort(function(a, b) {
+        var aKey = normalizeKey(a.key.split(" > ").pop());
+        var bKey = normalizeKey(b.key.split(" > ").pop());
+        return (categoryOrder.get(aKey) ?? Infinity) - (categoryOrder.get(bKey) ?? Infinity)
+          || aKey.localeCompare(bKey);
+      });
+      children.forEach(function(child) { sortChildren(child.subcategories); });
+    }
+    sortChildren(roots);
+    return roots;
+  }
+
+  function renderCategoryMenus(counts) {
+    if (!categoryMenus.size) return;
+    var template = categoryMenus.values().next().value;
+    var activeRoots = new Set();
+    buildCategoryTree(counts).forEach(function(root) {
+      var rootKey = normalizeKey(root.key);
+      activeRoots.add(rootKey);
+      var entry = categoryMenus.get(rootKey);
+      if (!entry) {
+        var item = template.item.cloneNode(true);
+        var toggle = item.querySelector(":scope > .nav-link");
+        var menu = item.querySelector(":scope > .dropdown-menu");
+        var id = "nav-category-" + categoryMenus.size;
+        toggle.id = id;
+        toggle.classList.remove("active", "show");
+        toggle.setAttribute("aria-expanded", "false");
+        toggle.querySelector(".menu-text").textContent = root.name;
+        menu.classList.remove("show");
+        menu.setAttribute("aria-labelledby", id);
+        template.item.parentElement.insertBefore(item, template.item.parentElement.lastElementChild);
+        entry = { item: item, menu: menu, href: template.href, allLabel: root.name + " 전체보기" };
+        categoryMenus.set(rootKey, entry);
+      }
+      entry.item.hidden = false;
+      var all = createSubmenuList([{
+        key: root.key, name: entry.allLabel, count: root.count
+      }], entry.href, 0);
+      var children = createSubmenuList(root.subcategories, entry.href, 1);
+      entry.menu.replaceChildren(...all.children);
+      if (children.children.length) {
+        var divider = document.createElement("li");
+        var rule = document.createElement("hr");
+        rule.className = "dropdown-divider";
+        divider.appendChild(rule);
+        entry.menu.appendChild(divider);
+        entry.menu.append(...children.children);
+      }
+    });
+    categoryMenus.forEach(function(entry, key) {
+      entry.item.hidden = !activeRoots.has(key);
+    });
+    window.dispatchEvent(new CustomEvent("blogCategoryNavigationReady"));
   }
 
   function formatCountBadges(rootEl) {
@@ -227,6 +350,7 @@
 
   function fetchCategoryCounts() {
     if (window.__categoryCounts) {
+      renderCategoryMenus(window.__categoryCounts);
       applyCategoryCounts(window.__categoryCounts);
       return;
     }
@@ -246,6 +370,7 @@
       .then(function(data) {
         if (data && data.counts) {
           window.__categoryCounts = data.counts;
+          renderCategoryMenus(data.counts);
           applyCategoryCounts(data.counts);
         }
       })
@@ -257,6 +382,8 @@
   function setupNavbarSubmenus() {
     var navLinks = document.querySelectorAll(".navbar-nav .dropdown-menu a.dropdown-item");
     if (!navLinks.length) return;
+
+    captureCategoryMenus();
 
     navLinks.forEach(function(link) {
       var href = link.getAttribute("href") || "";
@@ -289,14 +416,16 @@
     // Listen for live counts from category-tree on index.qmd
     window.addEventListener("blogCategoryCountsReady", function(e) {
       if (e && e.detail) {
+        renderCategoryMenus(e.detail);
         applyCategoryCounts(e.detail);
       }
     });
 
     // Support touch devices / mobile accordion
-    var subToggles = document.querySelectorAll(".navbar-nav .dropdown-submenu > a.has-submenu");
-    subToggles.forEach(function(toggle) {
-      toggle.addEventListener("click", function(e) {
+    // Handle expansion before Bootstrap's document-level dropdown dismissal.
+    (navContainer || document).addEventListener("click", function(e) {
+        var toggle = e.target.closest(".navbar-nav .dropdown-submenu > a.has-submenu");
+        if (!toggle) return;
         // If on small viewport, tapping submenu toggle can toggle the sub-menu
         if (window.innerWidth < 992) {
           var submenu = toggle.nextElementSibling;
@@ -309,10 +438,10 @@
               e.stopPropagation();
               submenu.classList.toggle("show");
               toggle.classList.toggle("sub-expanded");
+              toggle.setAttribute("aria-expanded", String(submenu.classList.contains("show")));
             }
           }
         }
-      });
     });
   }
 

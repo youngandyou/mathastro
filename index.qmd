@@ -124,7 +124,8 @@ document.addEventListener("DOMContentLoaded", function() {
       document.body.classList.add('category-active');
       if (coverEl) coverEl.style.display = 'none';
 
-      var info = catInfo[catKey] || { title: rawCat };
+      var leafKey = catKey.split(' > ').pop();
+      var info = catInfo[catKey] || catInfo[leafKey] || { title: rawCat.split(' > ').pop() };
       if (sectionTitleEl) sectionTitleEl.textContent = info.title;
       if (sectionSubEl) {
         sectionSubEl.textContent = '';
@@ -147,17 +148,19 @@ document.addEventListener("DOMContentLoaded", function() {
           if (item.values && item.values()['listing-categories']) {
             rawCats.push(item.values()['listing-categories']);
           }
-          var combined = rawCats.join(' > ');
-          if (!combined) return false;
-
-          var segments = combined
-            .replace(/&gt;/g, '>')
-            .split(/\s*(?:>|\/|,)\s*/)
-            .map(function(s) { return s.trim().toLowerCase(); })
-            .filter(Boolean);
-
-          return segments.some(function(seg) {
-            return seg === catKey || (catKey === 'high energy' && seg.indexOf('high energy') !== -1);
+          return rawCats.some(function(category) {
+            var segments = category.replace(/&gt;/g, '>')
+              .split(/\s*(?:>|\/|::)\s*/)
+              .map(function(s) { return s.trim().toLowerCase(); })
+              .filter(Boolean);
+            var path = segments.join(' > ');
+            // New menu links use full paths; retain existing short bookmarks.
+            if (catKey.indexOf(' > ') !== -1) {
+              return path === catKey || path.startsWith(catKey + ' > ');
+            }
+            return segments.some(function(seg) {
+              return seg === catKey || (catKey === 'high energy' && seg === 'high energy astrophysics');
+            });
           });
         });
       }
@@ -193,7 +196,9 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
       navLinks.forEach(function(link) {
         var href = decodeURIComponent((link.getAttribute('href') || '').toLowerCase());
-        if (href.indexOf('category=' + activeCatKey) !== -1) {
+        var linkKey = (href.split('#category=')[1] || '').trim();
+        if (linkKey && (activeCatKey === linkKey || activeCatKey.startsWith(linkKey + ' > ')
+            || (activeCatKey.indexOf(' > ') === -1 && linkKey.split(' > ').pop() === activeCatKey))) {
           link.classList.add('active');
           var parentDropdown = link.closest('.nav-item.dropdown');
           if (parentDropdown) {
@@ -248,6 +253,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
   window.addEventListener('hashchange', updateView);
   window.addEventListener('popstate', updateView);
+  window.addEventListener('blogCategoryNavigationReady', updateView);
 
   updateView();
   setTimeout(updateView, 150);

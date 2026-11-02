@@ -415,7 +415,13 @@ d(\mathbf{x}, f(t_0)) &\le d(\mathbf{x}, f_N(t_0)) + d(f_N(t_0), f(t)) \\
 &= \varepsilon,
 \end{align*}$$
 
-which implies that $f(I) \cap B_d(\mathbf{x}, \varepsilon) \neq \emptyset, \forall \varepsilon > 0$. Thus, $\mathbf{x} \in \overline{f(I)}$. Since $I$ is compact and $f$ is continuous, $f(I)$ is compact and it is closed because $I^2$ is Hausdorff. Hence, $\mathbf{x} \in \overline{f(I)} = f(I)$, so $f(I) = I^2$. $\blacksquare$
+which implies that $f(I) \cap B_d(\mathbf{x}, \varepsilon) \neq \emptyset, \forall \varepsilon > 0$. Thus, $\mathbf{x} \in \overline{f(I)}$. Since $I$ is compact and $f$ is continuous, $f(I)$ is compact and it is closed because $I^2$ is Hausdorff. Hence, $\mathbf{x} \in \overline{f(I)} = f(I)$, so $f(I) = I^2$. 
+
+**(ii)** Let $f: I \to I^2$ be a continuous surjective function. By composing and multiplying $f$ and the identity function $i: I \to I$, we can get $g: I \to I^n$ for each $n = 1, 2, \dots$.
+
+**(iii)** Let $g: I \to I^n$ be a continuous surjective function. Note that $\sin : \mathbb{R} \to I$
+
+$\blacksquare$
 
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

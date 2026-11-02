@@ -24,6 +24,10 @@ $$l = \{ \mathbf{w} \in \mathbb{R}^3 \mid \mathbf{w} = \alpha(t_0) + \lambda T(t
 
 is called the ***tangent line*** of $\alpha$ at $t = t_0$.
 
+**(vii)** For a regular curve $\beta$, $\beta$ is said to be ***closed*** if $\beta$ is periodic.
+
+**(viii)** $\beta$ is said to be ***simple*** if either $\beta$ is one-to-one or $\beta$ is a closed curve of a period $a$ with $\beta(t_1) = \beta(t_2) \iff t_1 - t_2 = na$ for some $n \in \mathbb{Z}$.
+
 물리적인 직관을 가지고 있으면 정의를 받아들이기 더 쉬운데, 수학적으로는 곡선이라고 부르지만 물리학적으로는 어떤 입자가 이동하는 경로라고 봐도 무방하다. 때문에 그 도함수를 속도라고 부른다.
 
 벡터 필드(vector field)라고 하면 곡선 위의 점 $\alpha(t)$를 시점으로 하는 벡터를 의미한다. 따라서 탄젠트 벡터 필드는 특정 시점 $t$에서의 곡선 위의 점 $\alpha(t)$에서 곡선에 접하는 접선 벡터이다.

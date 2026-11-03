@@ -1,0 +1,106 @@
+---
+title: "Conformal Mapping"
+author: "Youmin Chun"
+date: "2026-11-03 00:00:01"
+description: "복소평면에서 각도를 보존하는 등각사상(Conformal Mapping)에 대해서 다룬다."
+categories: 
+  - Math > Complex Analysis
+---
+
+# Conformal Mapping
+## Definition 1
+**(i)** A transformation $w = f(z)$ is said to be ***conformal at*** a point $z_0$ if $f$ is analytic at $z_0$ and $f'(z_0) \neq 0$. If $w = f(z)$ is defined on a domain $D$ and it is conformal at each point in $D$, then $w = f(z)$ is said to be ***conformal in*** $D$, or it is called a ***conformal mapping***.
+
+**(ii)** Suppose that $f$ is not a constant function and is analytic at a point $z_0$. If $f'(z_0) = 0$, then $z_0$ is called a ***critical point*** of the transformation $w = f(z)$.
+
+정의만 놓고보면 별 거 아닌 것처럼 보이지만, ***등각사상(Conformal Mapping)***이라는 이름이 붙는 데에는 아래 정리의 모티베이션이 있다.
+
+## Theorem 1
+Let $f$ be a conformal mapping, and let $C_1$ and $C_2$ be two smooth arcs passing through $z_0$ with the directed angle $\alpha$ from $C_1$ to $C_2$. If $\Gamma_1$ and $\Gamma_2$ are two image sets of $C_1$ and $C_2$ under $f$, respectively, then two curves pass through $f(z_0)$ with the directed angle $\alpha$ from $\Gamma_1$ to $\Gamma_2$.
+
+즉 등각사상은 각도를 보존하는 사상이라고 이해할 수 있으며, 더욱이 그 방향까지 보존함을 알 수 있다. 즉 $C_1$에서 $C_2$ 방향으로 잰 각도가 $\alpha$이면 $f$라는 변환을 거치고 난 곡선인 $\Gamma_1$과 $\Gamma_2$에 대해서도 여전히 $\Gamma_1$에서 $\Gamma_2$ 방향으로 잰 각도가 $\alpha$라는 것이다. 이러한 센스에서 각도는 보존하지만 그 방향까지는 보존할 필요가 없는 사상을 ***등편각 사상(Isogonal Mapping)***이라고 부른다. 즉 등각사상이면 등편각 사상이지만, 일반적으로 역은 성립하지 않는다.
+
+### Proof
+
+:::: {.callout-note title="Lemma" icon=false}
+Let $z, w$ be two nonzero complex numbers, and let $\alpha$ be the directed angle from $z$ to $w$. Then we have
+
+$$\cos \alpha = \frac{\langle z, w \rangle}{\| z\| \| w \|} \quad \text{and} \quad \sin \alpha = \frac{\langle z, -iw \rangle}{\| z\| \| w \|}$$
+
+where $\langle \cdot, \cdot \rangle$ is the standard Euclidean inner product in $\mathbb{R}^2$.
+
+::: {.callout-note title="Proof" icon=false}
+By definition, we have
+
+$$\cos \alpha = \frac{\langle z, w \rangle}{\| z\| \| w \|}.$$
+
+Note that $-iw$ is the complex number rotating $w$ by $\frac{\pi}{2}$ clockwisely. Thus, we have
+
+$$\begin{align*}
+\frac{\langle z, -iw \rangle}{\| z\| \| w \|} &= \cos \left( \alpha - \frac{\pi}{2} \right) \\
+&= \sin \alpha.
+\end{align*}$$
+:::
+::::
+
+Let $z = z_1(t)$ and $z = z_2(t)$ be the parametrizations of $C_1$ and $C_2$, respectively. Since $C_1$ and $C_2$ meet at the point $z_0$, $z_1(t_1) = z_2 = z_2(t_2)$ for some $t_1, t_2$. Then $z'_1(t_1)$ and $z'_2(t_2)$ represent the tangents to the curves $C_1$ and $C_2$ at $z_0$, which means that
+
+$$\cos \alpha = \frac{\langle z'_1(t_1), z'_2(t_2) \rangle}{\| z'_1(t_1) \| \| z'_2(t_2) \|} \quad \text{and} \quad \sin \alpha = \frac{\langle z'_1(t_1), -iz'_2(t_2) \rangle}{\| z'_1(t_1) \| \| z'_2(t_2) \|}.$$
+
+Note that $\Gamma_1$ and $\Gamma_2$ have the parametrizations $w = w_1(t) = f(z_1(t))$ and $w = w_2(t) = f(z_2(t))$, respectively, and that $w'_1(t_1) = f'(z_1(t_1)) z'_1(t_1) = f'(z_0)z'_1(t_1)$ and $w'_2(t_2) = f'(z_2(t_2)) z'_2(t_2) = f'(z_0)z'_2(t_2)$. Then $w'_1(t_1)$ and $w'_2(t_2)$ represent the tangents to the curves $\Gamma_1$ and $\Gamma_2$ at $f(z_0)$.
+
+Let $\beta$ be the directed angle from $\Gamma_1$ to $\Gamma_2$. We will show that $\alpha = \beta$. Note that
+
+$$\cos \beta = \frac{\langle w'_1(t_1), w'_2(t_2) \rangle}{\| w'_1(t_1) \| \| w'_2(t_2) \|} \quad \text{and} \quad \sin \beta = \frac{\langle w'_1(t_1), -iw'_2(t_2) \rangle}{\| w'_1(t_1) \| \| w'_2(t_2) \|}.$$
+
+Furthermore, we have
+
+$$\begin{align*}
+\langle w'_1(t_1), w'_2(t_2) \rangle &= \langle f'(z_0)z'_1(t_1), f'(z_0)z'_2(t_2) \rangle \\
+&= | f'(z_0) |^2 \langle z'_1(t_1), z'_2(t_2) \rangle \\
+&= | f'(z_0) |^2 \| z'_1(t_1) \| \| z'_2(t_2) \| \cos \alpha \\
+&= \| f'(z_0) z'_1(t_1) \| \| f'(z_0) z'_2(t_2) \| \cos \alpha \\
+&= \| w'_1(t_1) \| \| w'_2(t_2) \| \cos \alpha,
+\end{align*}$$
+
+so that
+
+$$\cos \alpha = \frac{\langle w'_1(t_1), w'_2(t_2) \rangle}{\| w'_1(t_1) \| \| w'_2(t_2) \|} = \cos \beta.$$
+
+Similarly, we can obtain $\sin \alpha = \sin \beta$. Thus, [we have that $\beta - \alpha = 2k\pi$ for some $k \in \mathbb{Z}$.](../Lemma/Sine_Cosine_Equal/index.qmd#sec-definition) Since $\alpha$ and $\beta$ are directed angles, $\alpha, \beta \in (-\pi, pi]$, which implies that $\beta - \alpha \in (-2\pi, 2\pi)$. Hence, $\beta - \alpha = 0$, so $\alpha = \beta$. $\blacksquare$
+
+## Example
+**(i)** Consider the mapping $w = e^z$ in $\mathbb{C}$. It is conformal because $w = e^z$ is entire and nonzero in $\mathbb{C}$.
+
+**(ii)** Consider the mapping $w = \overline{z}$ in $\mathbb{C}$. It is isogonal but not conformal.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+Let $z = z_1(t)$ and $z = z_2(t)$ be the parametrizations of $C_1$ and $C_2$, respectively. Since $C_1$ and $C_2$ meet at the point $z_0$, $z_1(t_1) = z_2 = z_2(t_2)$ for some $t_1, t_2$. Then $z'_1(t_1)$ and $z'_2(t_2)$ represent the tangents to the curves $C_1$ and $C_2$ at $z_0$, which means that
+
+$$\cos \alpha = \frac{\langle z'_1(t_1), z'_2(t_2) \rangle}{\| z'_1(t_1) \| \| z'_2(t_2) \|}.$$
+
+Note that $\Gamma_1$ and $\Gamma_2$ have the parametrizations $w = w_1(t) = \overline{z_1(t)}$ and $w = w_2(t) = \overline{z_2(t)}$, respectively, and that $w'_1(t_1) = \overline{z'_1(t_1)}$ and $w'_2(t_2) = \overline{z'_2(t_2)}$. Then $w'_1(t_1)$ and $w'_2(t_2)$ represent the tangents to the curves $\Gamma_1$ and $\Gamma_2$ at $\overline{z_0}$.
+
+Let $\beta$ be the directed angle from $\Gamma_1$ to $\Gamma_2$. We will show that $\alpha = \beta$. Note that
+
+$$\cos \beta = \frac{\langle w'_1(t_1), w'_2(t_2) \rangle}{\| w'_1(t_1) \| \| w'_2(t_2) \|}.$$
+
+Furthermore, we have
+
+$$\begin{align*}
+\langle w'_1(t_1), w'_2(t_2) \rangle &= \langle \overline{z'_1(t_1)}, \overline{z'_2(t_2)} \rangle \\
+&= \langle z'_1(t_1), z'_2(t_2) \rangle \\
+&= \| z'_1(t_1) \| \| z'_2(t_2) \| \cos \alpha \\
+&= \| \overline{z'_1(t_1)} \| \| \overline{z'_2(t_2)} \| \cos \alpha \\
+&= \| w'_1(t_1) \| \| w'_2(t_2) \| \cos \alpha,
+\end{align*}$$
+
+so that
+
+$$\cos \alpha = \frac{\langle w'_1(t_1), w'_2(t_2) \rangle}{\| w'_1(t_1) \| \| w'_2(t_2) \|} = \cos \beta.$$
+
+Since $\alpha, \beta \in (-\pi, \pi]$ and $\cos$ is symmetric about $x=0$, we conclude that $| \alpha | = | \beta |$. Hence, $w = \overline{z}$ is isogonal. $\blacksquare$
+:::
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

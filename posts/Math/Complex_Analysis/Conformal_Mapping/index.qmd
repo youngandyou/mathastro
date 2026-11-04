@@ -104,3 +104,4 @@ Since $\alpha, \beta \in (-\pi, \pi]$ and $\cos$ is symmetric about $x=0$, we co
 
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.
+- Stein, E. M., & Shakarchi, R. (2003). Complex Analysis. Princeton Lectures in Analysis, Vol. 2. Princeton University Press.

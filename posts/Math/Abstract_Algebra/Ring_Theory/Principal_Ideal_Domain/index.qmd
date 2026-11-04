@@ -1,0 +1,221 @@
+---
+title: "Principal Ideal Domain"
+author: "Youmin Chun"
+date: "2026-11-04 00:00:01"
+description: "추상대수학의 주 아이디얼 정역(PID)에 대해서 다룬다."
+categories: 
+  - Math > Abstract Algebra > Ring Theory
+---
+
+# Associates
+## Definition 1
+Let $R$ be a commutative ring with identity, and let $a, b \in R$.
+
+**(i)** If $b = ac$ for some $c \in R$, then we say that $a$ ***divides*** $b$, denoted by $a \vert b$. In this case, $a$ is called a ***factor*** (or ***divisor***) of $b$, and $b$ is called a ***multiple*** of $a$.
+
+**(ii)** $a$ and $b$ are called ***associates*** in $R$ if $a \vert b$ and $b \vert a$.
+
+**(iii)** $a$ and $b$ are called ***strongly associates*** in $R$ if $a = bu$ for some unit $u$ of $R$.
+
+환에서는 곱셈이 정의되기에 정수론과 비슷한 센스로 약수, 배수와 같은 개념을 정의할 수 있다. 특별히 두 원소가 서로를 나누는 관계에 있는 경우 **associates**, 특별히 단위원에 대해서 관계가 있다면 **strongly associates**라고 부른다. 일반적으로 strongly associates이면 associate이지만, 역은 성립하지 않는다. 역 또한 성립하기 위해서는 주어진 환 $R$이 정역(Integral Domain)이면 가능함이 아래 Remark에 서술되어 있다. 
+
+## Remark 1
+Let $R$ be a commutative ring with identity, and let $a, b \in R$.
+
+**(i)** $b \vert a \iff (a) \subset (b)$.
+
+Divisible의 관계와 ideal의 포함 관계가 반대라고 생각하면 외우기 편하다.
+
+**(ii)** $a$ and $b$ are associates $\iff$ $(a) = (b)$.
+
+즉 $a$와 $b$가 associates라는 말은 두 원소가 생성하는 아이디얼 $(a)$와 $(b)$가 서로 같음을 의미한다.
+
+**(iii)** The relation $\sim$ on $R$ defined by
+
+$$a \sim b \iff a \text{ and } b \text{ are associates in } R$$
+
+is an equivalence relation on $R$.
+
+**(iv)** The relation $\approx$ on $R$ defined by
+
+$$a \approx b \iff a \text{ and } b \text{ are strongly associates in } R$$
+
+is an equivalence relation on $R$.
+
+**(v)** If $a \approx b$, then $a \sim b$. However, the converse does not hold in general.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+If $a \approx b$, then $a = bu$ for some unit $u$ of $R$, so $b \vert a$. Since $u$ is a unit, we have $b = au^{-1}$, so $a \vert b$. Hence, $a \sim b$.
+
+However, $a \sim b$ does not imply $a \approx b$. Here is the counterexample:
+
+Consider the ring $\langle C[0, 1], +, \cdot \rangle$ of real-valued continuous functions on $[0, 1]$. Then $\langle C[0, 1], +, \cdot \rangle$ is a commutative ring with identity.
+
+Let $f(x), g(x) \in C[0, 1]$ be given by
+
+$$f(x) = \begin{cases}
+\frac{1}{3} - x & \left( 0 \le x < \frac{1}{3} \right) \\
+0 & \left( \frac{1}{3} \le x < \frac{2}{3} \right) \\
+x - \frac{2}{3} & \left( \frac{2}{3} \le x \le 1 \right)
+\end{cases} \quad \text{and} \quad g(x) = \begin{cases}
+f(x) & \left( 0 \le x \le \frac{1}{2} \right) \\
+-f(x) & \left( \frac{1}{2} < x \le 1 \right).
+\end{cases}$$
+
+If $h(x) \in C[0, 1]$ is given by
+
+$$h(x) = \begin{cases}
+1 & \left( 0 \le x < \frac{1}{3} \right) \\
+3 - 6x & \left( \frac{1}{3} \le x < \frac{2}{3} \right) \\
+-1 & \left( \frac{2}{3} \le x \le 1 \right),
+\end{cases}$$
+
+then we have that $f(x) = g(x)h(x)$ and $g(x) = f(x)h(x)$, so $g(x) \vert f(x)$ and $f(x) \vert g(x)$. Hence, $f(x) \sim g(x)$. We will show that $f(x) \not \approx g(x)$.
+
+Suppose that $f(x) \approx g(x)$. Then $f(x) = g(x)u(x)$ for some unit $u(x)$ of $C[0, 1]$. Note that $u(x) \neq 0, \forall x \in [0, 1]$.
+
+Since $f(0) = g(0) = f(1) = \frac{1}{3}$ and $g(1) = -\frac{1}{3}$, we have $u(0) = 1$ and $u(1) = -1$. By the intermediate value theorem, $u(c) = 0$ for some $c \in (0, 1)$, which is a contradiction. Hence, $f(x) \not \approx g(x)$. $\blacksquare$
+:::
+
+**(vi)** If $R$ is an integral domain, then $a \sim b \iff a \approx b$.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+We only need to show that $a \sim b \implies a \approx b$.
+
+If $a \sim b$, then $a \vert b$ and $b \vert a$, so $a = bc$ and $b = ad$ for some $c, d \in R$. Then $a = bc = (ad)c = adc$. Since $R$ is an integral domain, we have $1 = dc$, which means that $c$ is a unit. Hence, $a = bc$ implies that $a \approx b$. $\blacksquare$
+:::
+
+# Irreducible, Prime
+## Definition 2
+Let $R$ be a commutative ring with identity.
+
+**(i)** Let $c$ be a nonzero nonunit in $R$. Then $c$ called an ***irreducible element*** of $R$ if whenever $a, b \in R$ with $c = ab$, either $a$ or $b$ is a unit of $R$.
+
+**(ii)** Let $p$ be a nonzero nonunit in $R$. Then $p$ is called a ***prime element*** of $R$ if whenever $a, b \in R$ with $p \vert ab$, either $p \vert a$ or $p \vert b$.
+
+## Theorem 1
+Let $D$ be an integral domain, and let $c$ and $p$ be nonzero elements in $D$.
+
+**(i)** $c$ is an irreducible element in $D$ $\iff$ $(c)$ is an ideal of $D$ which is maximal among all proper principal ideals of $D$.
+
+**(ii)** $p$ is a prime element in $D$ $\iff$ $(p)$ is a nonzero prime ideal of $D$.
+
+**(iii)** Every prime element in $D$ is irreducible in $D$. However, the converse does not hold in general.
+
+$D$가 PID라는 보장이 없으면 주아이디얼이 아닌 아이디얼도 존재할 수 있으므로 **(i)**에서 바로 극대 아이디얼이라고 보장할 수는 없다. 거꾸로 PID이면 극대 아이디얼이라는 따름정리가 바로 튀어나온다.
+
+한편 **(i)**은 직관적으로도 쉽게 납득이 가능한 정리인데, $c$가 기약원이라는 말은 달리 말하면 $c$의 인수분해가 자명한 방법 밖에 없다고도 볼 수 있다. $c = ab$이면 $a$나 $b$ 둘 중 하나는 반드시 단위원이기 때문이다. 한편 $(c) \subsetneq (x)$인 어떤 원소 $x$가 존재하면 반드시 $x \vert a$가 되는데, $x \neq a$이므로 $x$의 존재성으로 $a$의 자명하지 않은 인수분해가 보장된다. 이러한 사실이 맥시멀이라는 성질로 이어지는 것이다.
+
+**(iii)**은 소원소(prime element)이면 기약원(irreducible element)이지만, 일반적으로 역은 성립하지 않는다. 이는 원소들의 소인수분해가 유일하지 않을 수 있고, 이때 서로 관련이 없는 원소들끼리 나눌 수는 없기 때문이다.
+
+### Proof
+**(i)** $(\implies)$ Suppose that $c$ is irreducible in $D$. If $(c) = D$, then $c$ is a unit because it is nonzero, which is impossible. Hence $(c)$ is a proper ideal of $D$. 
+
+If $(c) \subset (x) \subsetneq D$ for some $x \in D$, then $x \vert c$, so $c = xy$ for some $y \in D$. Since $c$ is irreducible, either $x$ or $y$ is a unit of $D$. If $x$ is a unit of $D$, then $(x) = D$ which is impossible. Hence, $y$ is a unit of $D$, so $c \approx x$. Then $c \sim x$ which is equivalent to $(c) = (x)$. Thus, $(c)$ is maximal among all proper principal ideals of $D$.
+
+$(\impliedby)$ Suppose that $(c)$ is maximal among all proper principal ideals of $D$. Since $(c)$ is a proper ideal of $D$, $c$ is not a unit of $D$.
+
+Suppose that $c = ab$ for some $a, b \in D$. Then $a \vert c$, so $(c) \subset (a)$. By assumption, we obtain $(a) = (c)$ or $(a) = D$. If $(a) = (c)$, then $c \vert a$, which means that $a = cd$ for some $d \in D$, so $c = ab = (cd)b = cbd$. Since $D$ is an integral domain, we have $1 = bd$, which means that $b$ is a unit of $D$. 
+
+If $(a) = D$, then $a$ is a unit of $D$. Hence, in any cases, $c$ is irreducible in $D$.
+
+**(ii)** $(\implies)$ Suppose that $p$ is a prime element in $D$. If $(p) = D$, then $p$ is a unit because it is nonzero, which is impossible. Hence, $(p) \subsetneq D$. Moreover, $(p)$ is nonzero beceause $p$ is nonzero.
+
+If $ab \in (p)$, then $p \vert ab$. Since $p$ is a prime element, we have $p \vert a$ or $p \vert b$, which means that $(a) \subset (p)$ or $(b) \subset (p)$. Hence, $a \in (p)$ or $b \in (p)$, so $(p)$ is a prime ideal of $D$.
+
+$(\impliedby)$ Suppose that $(p)$ is a nonzero prime ideal of $D$. Since $(p) \subsetneq D$, $p$ is nonunit, and it is nonzero.
+
+If $p \vert ab$ for some $a, b \in D$, then $(ab) \subset (p)$, so $ab \in (p)$. Since $(p)$ is a prime ideal of $D$, we have $a \in (p)$ or $b \in (p)$, which means that $p \vert a$ or $p \vert b$. Hence, $p$ is a prime element in $D$.
+
+**(iii)** Let $p$ be a prime element in $D$. Then $p$ is nonzero and nonunit in $D$. If $p = ab$ for some $a, b \in D$, then $p \vert a$ or $p \vert b$ because $p$ is a prime element in $D$. WLOG, we may assume that $p \vert a$, so $a = pc$ for some $c \in D$. Then $p = ab = (pc)b = pcb$, so $1 = cb$. Hence, $b$ is a unit of $D$, which means that $p$ is irreducible in $D$. 
+
+However, the converse does not hold in general. Here is the counterexample:
+
+Let $D = \{ a + b \sqrt{-5} \mid a, b \in \mathbb{Z} \}$. Note that $2$ is nonzero and nonunit in $D$. If $2 = (a+b\sqrt{-5})(x+y\sqrt{-5})$ for some $a, b, x, y \in \mathbb{Z}$, then we have $ax-5by = 2$ and $ay + bx = 0$. Note that
+
+$$\begin{align*}
+(2+5by)by &= (ax)(by) \\
+&= (ay)(bx) \\
+&= (-bx)(bx) \\
+&= -(bx)^2 \le 0,
+\end{align*}$$
+
+so $-\frac{2}{5} \le by \le 0$. Since $by \in \mathbb{Z}$, $by = 0$ and $ax = 2$. Since $a, x \neq 0$, we have 
+
+$$\begin{align*}
+ay = -bx \\
+\implies \frac{y}{x} = - \frac{b}{a},
+\end{align*}$$
+
+so $b = 0 = y$. Furthermore, we obtain that $a = \pm 1$ or $x = \pm 1$, which means that either $a+b\sqrt{-5}$ or $x+y\sqrt{-5}$ is a unit of $D$. Hence, $2$ is an irreducible element in $D$. 
+
+Suppose that $2$ is a prime element in $D$. Note that $2 \cdot 3 = 6 = (1 + \sqrt{-5})(1-\sqrt{-5})$. Then $2$ must divide either $1 + \sqrt{-5}$ or $1 - \sqrt{-5}$, which is impossible. Hence, $2$ is not a prime element in $D$. $\blacksquare$
+
+# PID
+## Definition 3
+Let $D$ be an integral domain. Then $D$ is called a ***principal ideal domain (PID)*** if every ideal of $D$ is principal.
+
+정역에 대해서 정의를 했지만, 실제로 모든 아이디얼이 주 아이디얼이기 위해서 반드시 정역이 되어야 할 필요는 없다. 일반적으로 모든 아이디얼이 주 아이디얼인 환을 **주 아이디얼 환(principal ideal ring, PIR)**이라고 부른다. 예컨대 $\mathbb{Z}/6\mathbb{Z}$는 $2(6\mathbb{Z}) = \{ 0, 2, 4 \}$와 $3(6\mathbb{Z}) = \{ 0, 3 \}$에 대해서 $2(6\mathbb{Z}) \cdot 3(6\mathbb{Z}) = 6(6\mathbb{Z}) = \{ 0 \} = 0(6\mathbb{Z})$이므로 정역이 아니지만 모든 아이디얼이 주 아이디얼임을 쉽게 확인할 수 있다.
+
+## Example 1
+**(i)** Since all ideal of $\mathbb{Z}$ is of the form $n\mathbb{Z} = (n)$ for some $n \in \mathbb{N}_0$, $\mathbb{Z}$ is a PID. In particular, if $I$ is a nonzero ideal of $\mathbb{Z}$, then $I = (n)$ for the smallest positive integer $n$ in $I$.
+
+**(ii)** If $F$ is a field, then $F[x]$ is a PID. In particular, if $I$ is a nonzero ideal of $F[x]$, then $I = (f(x))$ for a nonzero element $f(x)$ of $I$ of minimal degree.
+
+## Theorem 2
+Let $D$ be a PID, and let $c$ be a nonzero element in $D$.
+
+**(i)** $c$ is irreducible in $D$ $\iff$ $(c)$ is a maximal ideal of $D$.
+
+**(ii)** $c$ is irreducible in $D$ $\iff$ $c$ is a prime element in $D$.
+
+따라서 PID에서는 기약원(irreducible element)과 소원소(prime element)는 서로 동치의 개념이다.
+
+### Proof
+**(i)** It directly comes from Theorem 1 **(i)**.
+
+**(ii)** Since we have already shown the $(\impliedby)$ direction in Theorem 1 **(iii)**, we only need to show the $(\implies)$ direction.
+
+Suppose that $c$ is irreducible in $D$. If $c \vert ab$ for some $a, b \in D$, then $ab \in (c)$. By **(i)**, $(c)$ is a maximal ideal of $D$. Then $(c)$ is also a prime ideal of $D$, so $a \in (c)$ or $b \in (c)$. Hence, $c \vert a$ or $c \vert b$, so $c$ is a prime element in $D$. $\blacksquare$
+
+## Theorem 3
+Let $D$ be an integral domain.
+
+**(i)** $D$ is a field $\iff$ $D[x]$ is a PID.
+
+**(ii)** Let $F$ be a field, and let $0 \neq p(x) \in F[x]$. Then $(p(x))$ is a maximal ideal of $F[x]$ $\iff$ $p(x)$ is irreducible over $F$.
+
+### Proof
+**(i)** $(\implies)$ Suppose that $D$ is a field. Let $N \lhd D[x]$. If $N = \{ 0 \}$, then $N = (0)$ is a principal ideal. If $N \neq \{ 0 \}$, then $N$ contains a polynomial $p(x)$ with $\deg(p(x)) \ge 0$. Choose $p(x)$ with minimal degree in $N$. 
+
+If $\deg(p(x)) = 0$, then $p(x) \in D$. Since $D$ is a field and $p(x) \neq 0$, $p(x)$ is a unit in $N$, which implies that $N = D[x] = (1)$. Hence, $N$ is a principal ideal of $D[x]$.
+
+Suppose that $\deg(p(x)) \ge 1$. We will show that $N = (p(x))$. Since $N$ is an ideal of $D[x]$, we have $(p(x)) \subset N$. For the reverse inclusion, let $f(x) \in N$. By the division algorithm for a polynomial ring, there uniquely exist $q(x), r(x) \in D[x]$ such that $f(x) = q(x)p(x) + r(x)$ where $r(x) = 0$ or $0 \le \deg(r(x)) < \deg(p(x))$. 
+
+Note that $f(x) \in N$ and $q(x)p(x) \in (p(x)) \subset N$, so $q(x)p(x) \in N$. Then $r(x) = f(x) - q(x)p(x) \in N$ Since $\deg(r(x)) < \deg(p(x))$ and $p(x)$ is a minimal degree polynomial in $D$, $r(x) = 0$. Hence, $f(x) = q(x)p(x) \in (p(x))$, and therefore $N \subset (p(x))$. Thus, $N = (p(x))$ is a principal ideal of $D[x]$. Consequently, $D[x]$ is a PID.
+
+$(\impliedby)$ Suppose that $D[x]$ is a PID. Let $d$ be a nonzero element in $D$. Then the two-generated principal ideal $(d, x)$ is a principal ideal, so $(d, x) = (f(x))$ for some $f(x) \in D[x]$. 
+
+Since $d \in (f(x))$, $d = f(x)g(x)$ for some $g(x) \in D[x]$. Since $D$ is an integral domain, we have $\deg(f(x)) + \deg(g(x)) = 0$, which means that $\deg(f(x)) = 0 = \deg(g(x))$. Then $f(x) \in D$, so we write $f(x) = a$ for some $a \in D$.
+
+Since $x \in (f(x)) = (a)$, $x = ah(x)$ for some $h(x) \in D[x]$. By comparing the coefficients of $x$, we have $1 = ab$ for some $b \in D$. Then $a \neq 0$ and $a$ is a unit in $D$, which means that $(d, x) = (f(x)) = (a) = D[x]$.
+
+For $1 \in D[x]$, $1 = du(x) + xv(x)$ for some $u(x), v(x) \in D[x]$. Then $1 = du(0)$, which means that $d \neq 0$ and $d$ is a unit. Hence, $D$ is a field.
+
+**(ii)** $(\implies)$ Suppose that $(p(x))$ is a maximal ideal of $F[x]$. Then $(0) \subsetneq (p(x)) \subsetneq F[x]$, so $p(x) \notin F$ because if $p(x) \in F$, then $p(x)$ is a unit, which implies that $(p(x)) = F[x]$. 
+
+Suppose that $p(x) = f(x)g(x)$ for some $f(x), g(x) \in F[x]$. Then $f(x)g(x) \in (p(x))$, which implies that $f(x) \in (p(x))$ or $g(x) \in (p(x))$ because $(p(x))$ is a maximal ideal, so it is a prime ideal. Hence $\deg(p(x)) \le \deg(f(x))$ or $\deg(p(x)) \le \deg(g(x))$. Since $f(x)g(x) = p(x)$ and $F[x]$ is an integral domain, we have $\deg(p(x)) = \deg(f(x)) + \deg(g(x))$. Thus, $\deg(f(x)) = 0$ or $\deg(g(x)) = 0$, so $f(x) \in F$ or $g(x) \in F$. Consequently, $p(x)$ is irreducible over $F$.
+
+$(\impliedby)$ Suppose that $p(x)$ is irreducible over $F$. Let $N$ be an ideal of $F[x]$ such that $(p(x)) \subset N \subset F[x]$. By **(i)**, $F[x]$ is a PID, so $N$ is a principal ideal of $F[x]$. Write $N = (f(x))$ for some $f(x) \in F[x]$. Since $p(x) \in N = (f(x))$, $p(x) = f(x)g(x)$ for some $g(x) \in F[x]$. Since $p(x)$ is irreducible over $F$, $\deg(f(x)) = 0$ or $\deg(g(x)) = 0$, which means that $f(x) \in F$ or $g(x) \in F$.
+
+If $f(x) \in F$, then $f(x)$ is a unit, so $N = (f(x)) = F[x]$.
+
+If $g(x) \in F$, then $g(x) = c$ for some $c \in F$. Then $p(x) = cf(x)$,s so $f(x) = \frac{1}{c} p(x) \in (p(x))$. Hence, $N = (f(x)) = (p(x))$. Consequently, $(p(x))$ is a maximal ideal of $F[x]$. $\blacksquare$
+
+## Example
+**(i)** Let $f(x) = x^3 + 3x + 2 \in \mathbb{Z}_5[x]$. Since $f(0) = 2, f(1) = 1, f(2) = 1, f(3) = 3, f(4) = 3$, $f(x)$ does not have a zero in $\mathbb{Z}_5[x]$. Then $f(x)$ is irreducible over $\mathbb{Z}_5$. By Theorem 7 **(ii)**, $(x^3 + 3x + 2)$ is a maximal ideal of $\mathbb{Z}_5[x]$. Then $\mathbb{Z}_5[x]/(x^3+3x+2)$ is a field.
+
+**(ii)** Let $g(x) = x^2 - 2 \in \mathbb{Q}[x]$. Since $g(x)$ does not have a zero in $\mathbb{Q}$, it is irreducible over $\mathbb{Q}$. Then $(x^2 - 2)$ is a maximal ideal of $\mathbb{Q}[x]$ by Theorem 7 **(ii)**. Then $\mathbb{Q}[x]/(x^2-2)$ is a field. 
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

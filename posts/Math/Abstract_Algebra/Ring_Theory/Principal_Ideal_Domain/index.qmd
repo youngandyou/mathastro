@@ -99,6 +99,8 @@ Let $R$ be a commutative ring with identity.
 
 **(ii)** Let $p$ be a nonzero nonunit in $R$. Then $p$ is called a ***prime element*** of $R$ if whenever $a, b \in R$ with $p \vert ab$, either $p \vert a$ or $p \vert b$.
 
+주의할 점은, **기약다항식(Irreducible Polynomial)**과 **기약원(Irreducible Element)**은 일반적으로 같은 개념이 아니다. 예를 들어 $\mathbb{Z}[x]$의 원소 $2x^2+2$를 생각해보면 이 다항식은 $\mathbb{Z}$에서 영점을 갖지 않으므로 $\mathbb{Z}[x]$의 기약다항식은 맞지만 $2x^2+2 = 2(x^2+1)$과 같이 $\mathbb{Z}[x]$의 단위원이 아닌 두 원소로 인수분해되므로 기약원은 아니다. 이는 $\mathbb{Z}$의 모든 원소가 단위원이 아니므로, 다시 말해 $\mathbb{Z}$가 체가 아니므로 생기는 일이다. 즉 기약원이면 기약다항식이 되지만 역은 성립하지 않으므로 기약원이 더 넓은 개념이라고 할 수 있겠다. 따라서 두 개념이 같아지는 조건으로는 다항식환 $R[x]$에서 $R$이 체가 되면 기약다항식과 기약원은 동일한 개념으로 볼 수 있다.
+
 ## Theorem 1
 Let $D$ be an integral domain, and let $c$ and $p$ be nonzero elements in $D$.
 

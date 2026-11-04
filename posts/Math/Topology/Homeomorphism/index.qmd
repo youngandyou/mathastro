@@ -12,7 +12,7 @@ Let $(X, \mathscr{T}_X)$ and $(Y, \mathscr{T}_Y)$ be topological spaces.
 
 **(i)** A function $f: X \to Y$ is called a ***homeomorphism*** if $f$ is bijective and both $f$ and $f^{-1}$ are continuous. If such a function exists, then we say that $X$ and $Y$ are ***homeomorphic***, denoted by $X \cong Y$. 
 
-**(ii)** Suppose that $X \cong Y$. A property $P$ of $X$ is called a ***topological property*** if $Y$ also possesses $P$ as well. 
+**(ii)** Suppose that $X \cong Y$. A property $P$ of $X$ is called a ***topological property*** (or ***topological invariant***) if $Y$ also possesses $P$ as well. That is, these properties are invariant under homeomorphisms.
 
 **(iii)** Let $f: X \to Y$ be an injective continuous function. If $X \cong f(X)$, where $f(X)$ is a subspace of $Y$, then $f$ is called an ***embedding*** of $X$ in $Y$. 
 

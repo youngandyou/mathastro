@@ -85,6 +85,12 @@ We only need to show that $a \sim b \implies a \approx b$.
 If $a \sim b$, then $a \vert b$ and $b \vert a$, so $a = bc$ and $b = ad$ for some $c, d \in R$. Then $a = bc = (ad)c = adc$. Since $R$ is an integral domain, we have $1 = dc$, which means that $c$ is a unit. Hence, $a = bc$ implies that $a \approx b$. $\blacksquare$
 :::
 
+**(vii)** Let $c$ be an irreducible element of an integral domain $D$. If $c$ and $d$ are associates in $D$, then $d$ is also an irreducible element of $D$.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+Since $c$ is irreducible, $(c)$ is maximal among all proper principal ideals of $D$ by Theorem 1 **(i)**. Since $c$ and $d$ are associates, we have $(c) = (d)$, so $(d)$ is maximal among all proper principal ideals of $D$. Hence, $d$ is irreducible in $D$. $\blacksquare$
+:::
+
 # Irreducible, Prime
 ## Definition 2
 Let $R$ be a commutative ring with identity.

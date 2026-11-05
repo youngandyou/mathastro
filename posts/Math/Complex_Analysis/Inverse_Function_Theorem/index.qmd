@@ -1,0 +1,85 @@
+---
+title: "Inverse Function Theorem"
+author: "Youmin Chun"
+date: "2026-11-06 00:00:01"
+description: "복소함수의 역함수 정리를 소개하고 증명한다."
+categories: 
+  - Math > Complex Analysis
+---
+
+# Theorem
+For $D \subset \mathbb{C}$, let $f: D \to \mathbb{C}$ be a analytic function at a point $z_0 \in D$ with $f'(z_0) \neq 0$. Then there exist open set $\mathcal{U}$ in $D$ with $z_0 \in \mathcal{U}$ and open set $\mathcal{V}$ in $\mathbb{C}$ with $f(z_0) \in \mathcal{V}$ such that the restriction $f:\mathcal{U} \to \mathcal{V}$ is bijective and the inverse function $f^{-1}$ is analytic in $\mathcal{V}$.
+
+실함수의 역함수 정리의 복소함수 버전이다. 다르게 표현하면 모든 등각사상은 각 점 근방에서 국소 역함수를 가지며, 그 국소 역함수 또한 등각사상이 된다고 말할 수 있다.
+
+## Proof
+Let
+
+$$E := \{ (x, y) \in \mathbb{R}^2 \mid z = x+iy \in D \}.$$
+
+If we write 
+
+$$z = x + iy, \quad z_0 = x_0 + i y_0 \quad \text{and} \quad f(z) = u(x, y) + iv(x, y),$$
+
+then we can construct the vector field $F: E \to \mathbb{R}^2$ defined by 
+
+$$F(x, y) = (u(x, y), v(x, y)), \forall (x, y) \in E.$$
+
+Let $\mathbf{p}_0 = (x_0, y_0)$. Since $f$ is analytic at $z_0$, $u$ and $v$ are continuously diffenrentiable at $\mathbf{p}_0$, which implies that $F$ is continuously differentiable at $\mathbf{p}_0$. Then the Jacobian is nonzero at $\mathbf{p}_0$, that is
+
+$$\begin{align*}
+J &= \begin{vmatrix} u_x & u_y \\
+v_x & v_y
+\end{vmatrix} \\
+&= u_xv_y - u_yv_x \\
+&= v_y^2 + v_x^2 \neq 0
+\end{align*}$$
+
+by the Cauchy-Riemann equation and the fact that 
+
+$$\begin{align*}
+0 &\neq \vert f'(z_0) \vert^2 \\ 
+&= u_x^2(x_0, y_0) + v_x^2(x_0, y_0) \\
+&= v_x^2(x_0, y_0) + v_y^2(x_0, y_0).
+\end{align*}$$
+
+Hence, by the inverse function theorem, there exist open set $U$ in $E$ with $\mathbf{p}_0 \in U$ and $V$ in $\mathbb{R}^2$ with $F(\mathbf{p}_0) \in V$ such that $F(U) = V$ and the restriction $F: U \to V$ of $F$ to $U$ is bijective. Then $F : U \to V$ has the differentiable inverse function $F^{-1}: V \to U$ defined by 
+
+$$F^{-1}(u, v) = (x(u, v), y(u, v)), \forall (u, v) \in V$$
+
+for some functions $x, y$ with 
+
+$$x(u(x_0, y_0), v(x_0, y_0)) = x_0 \quad \text{and} \quad y(u(x_0, y_0), v(x_0, y_0)) = y_0.$$
+
+Furthermore, we have
+
+$$\begin{bmatrix}
+x_u & x_v \\
+y_u & y_v
+\end{bmatrix} = \frac{1}{J} \begin{bmatrix}
+v_y & -u_y \\
+-v_x & u_x
+\end{bmatrix}$$
+
+which means that
+
+$$x_u = \frac{1}{J} v_y, \quad x_v = -\frac{1}{J} u_y, \quad y_u = - \frac{1}{J} v_x, \quad y_v = \frac{1}{J} u_x.$$
+
+Thus, we obtain the Cauchy-Riemann equation for $x, y$:
+
+$$x_u = \frac{1}{J} v_y = \frac{1}{J} u_x = y_v \quad \text{and} \quad x_v = -\frac{1}{J} u_y = \frac{1}{J} v_x = -y_u.$$
+
+Let
+
+$$\begin{align*}
+\mathcal{U} := \{ x+iy \in \mathbb{C} \mid (x, y) \in U \} \quad \text{and} \quad \mathcal{V} := \{ u+iv \in \mathbb{C} \mid (u, v) \in V \}.
+\end{align*}$$
+
+Note that $f(z_0) \in \mathcal{V}$. If we define the function $g: \mathcal{V} \to \mathcal{U}$ by 
+
+$$g(w) = x(u, v) + iy(u, v), \forall w = u + iv \in \mathcal{V},$$
+
+then $g$ is the inverse of $f$ in $\mathcal{U}$ and it is analytic at $w_0 = u_0 + iv_0$ where $u_0 = u(x_0, y_0)$ and $v_0 = v(x_0, y_0)$. $\blacksquare$
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

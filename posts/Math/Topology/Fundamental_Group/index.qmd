@@ -37,34 +37,32 @@ Let $f, f': X \to Y$ be continuous maps.
 ### Example 1
 
 ## Definition 2
-**(i)** A continuous map $f: [0, 1] \to X$ is called a path in $X$ from $x_0$ to $x_1$ if $f(0) = x_0$ and $f(1) = x_1$.
+We denote $I = [0, 1]$.
 
-**(ii)** Let $f, f' : [0, 1] \to X$ be two paths from $x_0$ to $x_1$. We say that $f$ and $f'$ are ***path homotopic***, denoted by $f \simeq_p f'$ or $f \overset{F}{\simeq_p} f'$, if there exists a continuous map $F: [0, 1] \times [0, 1] \to X$ such that 
+**(i)** A continuous map $f: I \to X$ is called a ***path*** in $X$ from $x_0$ to $x_1$ if $f(0) = x_0$ and $f(1) = x_1$. If $x_0 = x_1$, then $f$ is called a ***loop*** based at $x_0$.
+
+**(ii)** Let $f, f' : I \to X$ be two paths from $x_0$ to $x_1$. We say that $f$ and $f'$ are ***path homotopic***, denoted by $f \simeq_p f'$ or $f \overset{F}{\simeq_p} f'$, if there exists a continuous map $F: I \times I \to X$ such that 
 
 $$\begin{align*}
 F(s, 0) = f(s) \quad &\text{and} \quad F(s, 1) = f'(s) \\
 F(0, t) = x_0 \quad &\text{and} \quad F(1, t) = x_1
 \end{align*}$$
 
-for all $s, t \in [0, 1]$. The map $F$ is called a **path homotopy*** between $f$ and $f'$.
+for all $s, t \in I$. The map $F$ is called a ***path homotopy*** between $f$ and $f'$.
 
-이번엔 연속함수 $f, f'$의 정의역을 $[0, 1]$로 제한하고 시작점과 끝점을 $x_0, x_1$로 고정시킨 경로를 다룬다. 즉 앞서 다룬 정의 1의 특수 케이스라고 볼 수 있다. 마찬가지로 두 경로 사이를 연속적으로 변화시킬 수 있는 연속함수 $F(t, s)$가 존재할 때 두 경로를 경로 호모토픽 관계에 있다고 말한다. 여기서는 시작점과 끝점이 고정되어 있으므로 좀 더 직관적인 이해가 편할 것이다. 
+이번엔 연속함수 $f, f'$의 정의역을 $I$로 제한하고 시작점과 끝점을 $x_0, x_1$로 고정시킨 경로를 다룬다. 즉 앞서 다룬 정의 1의 특수 케이스라고 볼 수 있다. 마찬가지로 두 경로 사이를 연속적으로 변화시킬 수 있는 연속함수 $F(t, s)$가 존재할 때 두 경로를 경로 호모토픽 관계에 있다고 말한다. 여기서는 시작점과 끝점이 고정되어 있으므로 좀 더 직관적인 이해가 편할 것이다. 
 
 ![](homo1.png)
 
-한편 여기서도 호모토피 $F(s, t)$를 각 시점 $t$에서마다 $x_0$에서 $x_1$로 가는 경로 $g_t: [0, 1] \to X$를 주는 함수로 이해할 수 있는데, 조금만 깊게 생각해보면 이는 다름아닌 경로의 경로를 의미한다고 이해할 수 있다. 일반적인 경로 $f$가 고정된 점 $x_0$에서 고정된 점 $x_1$로 시간이 흐름에 따라 이동하는 연속함수라면, 호모토피 $F(s, t)$는 고정된 **함수** $f$에서 고정된 **함수** $f'$으로 시간이 흐름에 따라 변하는 연속함수이기 때문이다. 집합을 바꿔서 바라보자면, 경로들을 모아놓은 함수공간에서 정의된 경로가 바로 호모토피 $F(s, t)$이다.
+한편 여기서도 호모토피 $F(s, t)$를 각 시점 $t$에서마다 $x_0$에서 $x_1$로 가는 경로 $g_t: I \to X$를 주는 함수로 이해할 수 있는데, 조금만 깊게 생각해보면 이는 다름아닌 경로의 경로를 의미한다고 이해할 수 있다. 일반적인 경로 $f$가 고정된 점 $x_0$에서 고정된 점 $x_1$로 시간이 흐름에 따라 이동하는 연속함수라면, 호모토피 $F(s, t)$는 고정된 **함수** $f$에서 고정된 **함수** $f'$으로 시간이 흐름에 따라 변하는 연속함수이기 때문이다. 집합을 바꿔서 바라보자면, 경로들을 모아놓은 함수공간에서 정의된 경로가 바로 호모토피 $F(s, t)$이다.
 
 ### Example 2
 
+# Fundamental Group
 ## Theorem 1
-The relations $\simeq$ and $\simeq_p$ are equivalence relations.
+**(i)** The relations $\simeq$ and $\simeq_p$ are equivalence relations.
 
-이제 함수공간 $C(X, Y)$ 혹은 $x_0$부터 $x_1$까지의 경로들의 공간 $C([0, 1], X)$에서 정의된 동치관계 $\simeq, \simeq_p$에 대한 동치류 $[f]$를 생각할 수 있고, 우리는 이 동치류 사이의 연산을 정의해줌으로써 군 $\langle C(X, Y) / \simeq, \ast \rangle$을 정의하려고 한다.
-
-### Proof
-
-## Theorem 2
-Let $f, g: [0, 1] \to X$ be two paths from $x_0$ to $x_1$ and from $x_1$ to $x_2$, respectively. The ***product*** $f \ast g$ of $f$ and $g$ is the path defined by
+**(ii)** Let $f, g: [0, 1] \to X$ be two paths from $x_0$ to $x_1$ and from $x_1$ to $x_2$, respectively. The ***product*** $f \ast g$ of $f$ and $g$ is the path defined by
 
 $$(f \ast g)(s) = \begin{cases}
 f(2s) & s \in \left[ 0, \frac{1}{2} \right] \\
@@ -75,8 +73,36 @@ By the pasting lemma and the fact that $f(1) = g(0)$, $f \ast g$ is well-defined
 
 $$[f] \ast [g] = [f \ast g].$$
 
-### Proof
-Suppose that $f(1) = x_1 = g(0)$, $f \overset{F}{\simeq_p} f'$ and $g \overset{G}{\simeq_p} g'$. We will show that $[f' \ast g'] = [f \ast g]$. Note that $f'(1) = x_1 = g'(0)$, so $f' \ast g'$ is also a path from $x_0$ to $x_2$. Define $H: [0, 1] \times [0, 1] \to X$ by
+**(iii)** Let
+
+$$\pi_1(X, x_0) := \{ [f] \mid f \in C(I, X), f(0) = x_0 = f(1) \}$$
+
+equipped with the path product $[f] \ast [g] = [f \ast g]$. Then $\ast$ satiesfies the following properties: 
+
+1. **(Associativity)** $([f] \ast [g]) \ast [h] = [f] \ast ([g] \ast [h]), \forall [f], [g], [h] \in \pi_1(X, x_0)$.
+
+2. **(Identity)** There exists $[c_{x_0}] \in \pi_1(X, x_0)$ such that $[f] \ast [c_{x_0}] = [f] = [c_{x_0}] \ast [f], \forall [f] \in \pi_1(X, x_0)$, where $c_{x_0}$ is the constant path defined by $c_{x_0}(s) = x_0, \forall s \in I$.
+
+3. **(Inverse)** For each $[f] \in \pi_1(X, x_0)$, there exists $[\overline{f}] \in \pi_1(X, x_0)$ such that $[f] \ast [\overline{f}] = [c_{x_0}] = [\overline{f}] \ast [f]$ where $\overline{f}$ is the inverse path of $f$ definfed by $\overline{f}(s) = f(1-s), \forall s \in I$.
+
+Hence, $\langle \pi_1(X, x_0), \ast \rangle$ forms a group, called the ***fundamental group*** of $X$ at the ***base point*** $x_0$.
+
+$x_0$부터 $x_1$까지의 경로들의 공간 
+
+$$\mathcal{P} = \{ f \in C(I, X) \mid f(0) = x_0, f(1) = x_1 \}$$
+
+에서 정의된 동치관계 $\simeq_p$에 대한 동치류 $[f]$를 생각할 수 있고, 우리는 이 동치류 사이의 연산을 정의해줌으로써 군 $\langle \mathcal{P} / \simeq, \ast \rangle$을 정의하려고 한다.
+
+이렇게 군의 원소가 될 대상들은 만들어줬으니 이 원소들 사이의 연산을 정의해야 한다. 먼저 두 경로 사이의 연산을 정의해주는데, 두 경로가 각각 시작점과 끝점이 이어진다면 자연스럽게 더 긴 경로를 만들어주는 연산을 정의할 수 있다. 이때 동치류 $[f]$는 양 끝점이 서로 고정된 채 연속적으로 변형될 수 있는 경로들의 집합이므로 동치류들 사이의 연산을 이 동치류에 속하는 원소들끼리 연산해서 얻은 더 긴 경로의 동치류로 정의할 수 있고, 정리 **(ii)**는 이러한 동치류들 사이의 연산이 잘 정의됨을 보장해준다. 
+
+그러나 경로라는 게 시작점과 끝점에 의존하기 때문에 두 경로가 서로 맞물리지 않으면 연산이 정의가 되지 않는다는 문제가 있기에 이렇게 군을 구성하기에는 문제가 있다. 때문에 군의 원소를 점 $x_0$를 동시에 시작점과 끝점으로 가지는 이른바 루프로 제한하면 임의의 두 동치류들 사이에 연산이 항상 정의되게 만들 수 있다.
+
+이렇게 집합과 연산이 주어진 대수 구조를 만들어냈고, 정리 **(iii)**은 최종적으로 이 대수 구조가 ***기본군(Fundamental Group)***이라 부르는 군이 됨을 보여준다.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+**(i)**
+
+**(ii)** Suppose that $f(1) = x_1 = g(0)$, $f \overset{F}{\simeq_p} f'$ and $g \overset{G}{\simeq_p} g'$. We will show that $[f' \ast g'] = [f \ast g]$. Note that $f'(1) = x_1 = g'(0)$, so $f' \ast g'$ is also a path from $x_0$ to $x_2$. Define $H: [0, 1] \times [0, 1] \to X$ by
 
 $$H(s, t) = \begin{cases}
 F(2s, t) & s \in \left[ 0, \frac{1}{2} \right] \\
@@ -123,7 +149,22 @@ $$H(0, t) = F(0, t) = f(0) = x_0.$$
 
 $$H(1, t) = G(1, t) = g(1) = x_2.$$
 
-Hence, $H$ is a path homotopy between $f \ast g$ and $f' \ast g'$, and therefore $[f \ast g] = [f' \ast g']$. $\blacksquare$
+Hence, $H$ is a path homotopy between $f \ast g$ and $f' \ast g'$, and therefore $[f \ast g] = [f' \ast g']$.
+
+**(iii)** 
+
+1. **(Associativity)** Let $[f], [g], [h] \in \pi_1(X, x_0)$. We will show that 
+
+$$([f] \ast [g]) \ast [h] = [(f \ast g) \ast h] = [f \ast (g \ast h)] = [f] \ast ([g] \ast [h])$$
+
+by showing $(f \ast g) \ast h \simeq_p f \ast (g \ast h)$. Define $F : I \times I \to X$ by
+
+- $0 \le t \le \frac{1}{4}$
+
+$$F(s, t) = \begin{cases}
+f(4s) & s \in \left[ 0, \frac{1}{4} \right]
+\end{cases}$$
+:::
 
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

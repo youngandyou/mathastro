@@ -75,18 +75,98 @@ If $\beta(t)$ is a closed curve with period $a$ and $\alpha(s)$ is $\beta$ repar
 
 ### Proof
 
+# Continuous Argument
+단위원 $S^1$을 나타내는 곡선 $\alpha(s) = (\cos 2\pi s, \sin 2 \pi s), \forall s \in [0, 1]$은 단순폐곡선이며, 반시계방향으로 한 번 회전하는 곡선이다. 반면 원과 같이 단순곡선이 아니라 꼬여있는 곡선의 경우 한 번이 아니라 여러번 회전할 수도 있으며 시계방향으로 회전할 수도 있다. 이처럼 우리는 단순폐곡선 $\alpha$가 평면 상에서 몇 번이나 회전하는지, 회전하면 어느 방향으로 회전하는지 계산하는 이론을 세우고 싶고, 이를 위해 주어진 곡선이 **얼만큼 회전하는지** 측정할 필요가 있다. 아래 정리는 접선 벡터의 각도를 연속적으로 측정해주는 각도 함수 $\theta$를 잘 정의할 수 있음을 보장해주며, 이로써 곡선의 **회전수(Rotation Index)**를 정의할 수 있게 해준다.
+
+## Theorem 3
+Let $\alpha: [0, L] \to \mathbb{R}^2$ be a unit speed plane $C^1$ curve. 
+
+**(i)** Fix $\theta_0 \in \mathbb{R}$ such that $t(0) = (\cos \theta_0, \sin \theta_0)$. Then there exists a unique continuous function $\theta: [0, L] \to \mathbb{R}$, called the ***continuous argument*** of $\alpha$, such that $\theta(0) = \theta_0$ and $t(s) = (\cos \theta(s), \sin \theta(s)), \forall s \in [0, L]$. Thus, $\theta(s)$ gives the oriented angle from the positive $x$-axis to $t(s)$, with counterclockwise rotation taken as positive.
+
+**(ii)** If $\alpha$ is $C^2$, then $\theta'(s) = k(s)$ and $\vert \theta'(s) \vert = \kappa(s)$.
+
+**(iii)** If $\alpha$ is closed, then $\theta(L) = \theta_0 + 2n\pi$ for some $n \in \mathbb{Z}$.
+
+### Proof
+**(i)** Since $t(s)$ is continuous on a compact set $[0, L]$, it is uniformly continuous. Then we can choose a partition $0 = s_0 < s_1 < \cdots < s_n = L$ such that $\| t(s) - t(s_j) \| < 1, \forall s \in [s_j, s_{j+1}]$ for each $j = 0, \dots, n-1$. It follows that
+
+$$\begin{align*}
+\| t(s) - t(s_j) \|^2 = 2 - 2 \langle t(s), t(s_j) \rangle \\
+\implies \langle t(s), t(s_j) \rangle = 1 - \frac{1}{2} \| t(s) - t(s_j) \|^2 > \frac{1}{2}
+\end{align*}$$
+
+We now construct $\theta$ inductively on these subintervals, starting with $\theta(s_0) = \theta_0$. Let $e_0 = t(s_0)$, and let $e_0^\perp$ be the vector obtained by rotating $e_0$ counterclockwise through $\frac{\pi}{2}$. In the orthonormal basis $\{ e_0, e_0^\perp \}$ for $\mathbb{R}^2$, the first coordinate of $t(s)$ is given by 
+
+$$\langle t(s), e_0 \rangle = \langle t(s), t(s_0) \rangle > 0.$$
+
+Hence, the oriented angle from $e_0$ to $t(s)$ is given continuously on $[s_0, s_{1}]$ by
+
+$$\delta_0(s) = \arctan \left( \frac{\langle t(s), e_0^\perp \rangle}{\langle t(s), e_0 \rangle} \right).$$
+
+Define
+
+$$\theta(s) = \theta(s_0) + \delta_0(s), \forall s \in [s_0, s_1].$$
+
+Then we have 
+
+$$\begin{align*}
+t(s) &= \cos \delta_0(s) e_0 + \sin \delta_0(s) e_0^\perp \\
+&= \cos \delta_0(s) (\cos \theta_0, \sin \theta_0) + \sin \delta_0(s) (-\sin \delta_0, \cos \delta_0) \\
+&= (\cos \delta_0(s)\cos \theta_0 - \sin \delta_0(s)\sin \delta_0, \cos \delta_0(s)\sin \theta_0 + \sin \delta_0(s)\cos \delta_0) \\
+&= (\cos (\delta_0(s) + \theta_0), \sin (\delta_0(s) + \theta_0)) \\
+&= (\cos \theta(s), \sin \theta(s))
+\end{align*}$$
+
+for all $s \in [s_0, s_{1}]$.
+
+Starting with $\theta(s_1) = \theta(s_0) + \delta_0(s_1)$, we can repeat the above construction, so that we obtain
+
+$$\theta(s) = \theta(s_1) + \delta_1(s) \quad \text{and} \quad t(s) = (\cos \theta(s), \sin \theta(s))$$
+
+for all $s \in [s_1, s_2]$.
+
+Repeating the construction gives a continuous tangent angle function $\theta: [0, L] \to \mathbb{R}$ such that $\theta(0) = \theta_0$ and $t(s) = (\cos \theta(s), \sin \theta(s)), \forall x \in [0, L]$, 
+
+For uniqueness, let $\tilde{\theta}$ be another continuous tangent angle function with the same initial value $\theta_0$. Since $t(s) = (\cos \theta(s), \sin \theta(s))$ and $t(s) = (\cos \tilde{\theta}(s), \sin \tilde{\theta}(s))$ represent the same unit vector, we have
+
+$$\tilde{\theta}(s) - \theta(s) \in 2\pi \mathbb{Z}, \forall s \in [0, L].$$
+
+Since $\tilde{\theta}(s) - \theta(s)$ is continuous, it must be a constant function on $[0, L]$. Since $\tilde{\theta}(0) - \theta(0) = \theta_0 - \theta_0 = 0$, we conclude $\tilde{\theta} = \theta$. 
+
+**(ii)** Since $t(s) = (\cos \theta(s), \sin \theta(s))$, we have $n(s) = (- \sin \theta(s), \cos \theta(s))$. Then
+
+$$\begin{align*}
+t'(s) = \theta'(s)(-\sin \theta(s), \cos \theta(s)) = \theta'(s) n(s) \\
+\implies k(s) = \langle t'(s), n(s) \rangle = \theta'(s).
+\end{align*}$$
+
+Moreover, $\vert \theta'(s) \vert = \vert k(s) \vert = \kappa(s)$.
+
+**(iii)** Since $\alpha$ is closed, we have
+
+$$(\cos \theta(L), \sin \theta(L)) = t(L) = t(0) = (\cos \theta(0), \sin \theta(0)),$$
+
+so that $\theta(L) - \theta_0 \in 2\pi \mathbb{Z}$. Thus, $\theta(L) = \theta_0 + 2n\pi$ for some $n \in \mathbb{Z}$. $\blacksquare$
+
 # Rotation Index
 ## Definition 3
+The ***rotation index*** of a closed unit speed plane curve $\alpha: [0, L] \to \mathbb{R}^2$ with the continuous argument $\theta: [a, b] \to \mathbb{R}$ is the integer 
 
-**(i)** The ***rotation index*** of a closed unit speed plane curve $\alpha(s)$ is the integer 
+$$i_\alpha = \frac{\theta(L) - \theta(0)}{2 \pi}.$$
 
-$$i_\alpha = \frac{\theta(L) - \theta(0)}{2 \pi}$$
+## Theorem 4
+Let $\alpha: [0, L] to \mathbb{R}^2$ be a simple closed plane curve. 
 
-## Rotation Index Theorem
-The rotation index of a simple closed plane curve $\alpha(s)$ is $\pm 1$.
+**(i)** **(Rotation Index Theorem)** The rotation index of $\alpha$ is $\pm 1$.
+
+**(ii)** The tangent circular image $t: [0, L] \to S^1$ is onto.
 
 ### Proof
 
+## Definition 4
+**(i)** A ***piecewise regular curve*** is a continuous function $\alpha: [a, b] \to \mathbb{R}^3$ with a partition $a = s_0 < s_1 < \cdots < s_n = b$ such that each restriction $\alpha \vert_{[s_{j-1}, s_j]}$ is regular.
+
+**(ii)** 
 
 # Reference
 - R. S. Millman and G. D. Parker, Elements of Differential Geometry, Prentice-Hall, 1977.

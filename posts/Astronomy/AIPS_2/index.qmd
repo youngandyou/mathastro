@@ -18,7 +18,7 @@ categories:
 
 ---
 
-# 2. Data get in AIPS (AIPS 안으로 데이터 불러오기){#AIPS_Data_get}
+# 2. Data get in AIPS (AIPS 안으로 데이터 불러오기) {#AIPS_Data_get}
 
 - 관측 데이터를 AIPS 안으로 가져와서 데이터 처리를 수행하게 된다.
 - AIPS는 원본 데이터를 수정하지 않고 보정을 마친 후, 얻어낸 새로운 파일을 저장하는 방식으로 데이터를 처리한다.
@@ -80,9 +80,25 @@ go
 
 ---
 
+### 2.1.1. AIPS table 삭제
+
+- AIPS의 다양한 table 중에서 특정 테이블(예: SN table)을 지우고 싶다면 다음과 같이 수행한다. 
+
+```AIPS
+getn 2
+	# 지우고 싶은 테이블이 있는 데이터 카탈로그 번호
+inext 'PL'
+	# 지우고 싶은 extension table 형태 설정
+invers 2
+	 #숫자는 지우고 싶은 table 번호를 의미하며, -1을 값으로 주면 모두 지움
+extdest
+```
+
+---
+
 ## 2.2. Data check
 
-- 이제 [2. Data get in AIPS (AIPS 안으로 데이터 불러오기){#AIPS_Data_get}] 에서 불러온 데이터의 구조를 확인해보자. 이를 위해서 다음과 같이 수행한다.
+- 이제 [2. Data get in AIPS (AIPS 안으로 데이터 불러오기)]{#AIPS_Data_get} 에서 불러온 데이터의 구조를 확인해보자. 이를 위해서 다음과 같이 수행한다.
 
 ```aips 
 pca 
@@ -93,10 +109,67 @@ imhe
 	# 데이터 header 정보를 확인함
 ```
 
+---
 
+## 2.3. Possm 
 
+- `task 'possm'`은 관측 데이터를 위상, 진폭 vs IF 별로 확인할 수 있게 해주는 기능을 한다. 
+  - 전파 천문학의 visibility 스펙트럼을 그린다고 생각해도 된다. 
 
+```AIPS  
+default possm 
+task 'possm'
+getn 1
+sources 'NRAO530' ''
+	# 보고 싶은 천체 이름 설정
+docalib -1
+	# calibration table (CL table)을 사용하지 않음
+doband -1
+	# bandpass calibration을 적용하지 않음
+bif 1
+eif 16
+bchan 2
+echan 255
+solint -1
+	# parameter 설명은 아래 참고
+aparm 0
+aparm(8) 0
+	# parameter 설명은 아래 참고
+aparm(9) 3
+	# parameter 설명은 아래 참고
+nplots 4
+	# 한 페이지에 4개의 안테나/IF/편광 그래프를 그림
+dotv -1
+	# AIPSTV에 결과를 출력함
+go
+```
 
+- `task 'possm'`에서 `solint`는 어떤 시간으로 스펙트럼을 볼지 결정하는 parameter이다.
+  - `solint -1`: 데이터를 각 scan마다 평균해서 스펙트럼을 본다.
+  - `solint 0`: 데이터의 관측 시간 전체를 평균하여 하나의 스펙트럼을 생성한다. 
+  - `solint 1`: 데이터를 1분마다 평균하여 스펙트럼을 생성한다. 
+  - 보통 처음 possm을 볼 때, `solint -1`으로 스펙트럼을 그려서 각 scan에서 데이터가 비어있거나 이상이 있는지 확인한다.
+- `aparm(8)`은 어떤 스펙트럼을 표시할 것인지 결정하는 parameter이다. 
+  - `aparm(8) 0`: Cross-power spectrum (baseline visibility) 
+  - `aparm(8) 1`: Auto-power spectrum  
+- `aparm(9)`는 여러 IF를 어떻게 표시할지 결정하는 parameter이다. 
+  - `aparm(9) 0`: IF들을 개별적으로 표시한다. 
+  - `aparm(9) 1`: 여러 IF를 하나의 plot에 함께 표시한다. 
+  - `aparm(9) 3`: 여러 IF와 편광을 하나의 plot에 함께 표시한다. 
+
+<div height="2rem"></div> 
+
+- 만약 특정 baseline으로만 이루어진 possm을 보고 싶다면 다음의 명령어를 추가하면 된다. 
+
+```AIPS 
+antennas 6
+	# 6번 안테나를 기준 안테나로 설정함
+baseline 8
+	# 보고 싶은 안테나 번호 설정, 이 경우에는 6-8 baseline의 possm을 보게됨
+	# 만약 `baseline 0`으로 주면 기준 안테나와 연결되는 모든 baseline possm을 볼 수 있음
+```
+
+---
 
 
 

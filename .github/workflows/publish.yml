@@ -47,6 +47,9 @@ jobs:
       - name: Update category counts
         run: python3 scripts/update_category_counts.py
 
+      - name: Test knowledge tree
+        run: quarto run tests/test_knowledge_tree.js
+
       - name: Render site
         run: quarto render
 

@@ -6,6 +6,9 @@ title-block-style: none
 title-block-banner: false
 page-layout: full
 toc: false
+format:
+  html:
+    css: [styles.css, assets/knowledge-tree.css]
 listing:
   id: sample-listings
   contents: posts
@@ -113,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function() {
     var catKey = rawCat.toLowerCase();
     var isFiltered = isCat && catKey && catKey !== 'all';
 
-    var coverEl = document.querySelector('.magazine-cover-story');
+    var knowledgeEl = document.querySelector('.knowledge-tree');
     var sectionTitleEl = document.querySelector('.magazine-section-title');
     var sectionSubEl = document.querySelector('.magazine-section-sub');
     var listingEl = document.querySelector('.quarto-listing[id]');
@@ -122,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function() {
     if (isFiltered) {
       document.documentElement.classList.add('category-active');
       document.body.classList.add('category-active');
-      if (coverEl) coverEl.style.display = 'none';
+      if (knowledgeEl) knowledgeEl.style.display = 'none';
 
       var leafKey = catKey.split(' > ').pop();
       var info = catInfo[catKey] || catInfo[leafKey] || { title: rawCat.split(' > ').pop() };
@@ -167,7 +170,7 @@ document.addEventListener("DOMContentLoaded", function() {
     } else {
       document.documentElement.classList.remove('category-active');
       document.body.classList.remove('category-active');
-      if (coverEl) coverEl.style.display = '';
+      if (knowledgeEl) knowledgeEl.style.display = '';
 
       if (sectionTitleEl) sectionTitleEl.textContent = '최근 발행 글';
       if (sectionSubEl) {
@@ -261,66 +264,29 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-<!-- Featured Cover Story (Quanta Magazine style) -->
-<section class="magazine-cover-story">
-  <div class="cover-story-card">
-    <div class="cover-story-media">
-      <span class="cover-badge">FEATURED COVER STORY</span>
-      <svg class="cover-svg-art" viewBox="0 0 700 420" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="spaceGrad" cx="50%" cy="50%" r="60%">
-            <stop offset="0%" stop-color="#1b2d48"/>
-            <stop offset="60%" stop-color="#0b1424"/>
-            <stop offset="100%" stop-color="#040810"/>
-          </radialGradient>
-          <linearGradient id="jetBeam" x1="0" y1="1" x2="1" y2="0">
-            <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.95"/>
-            <stop offset="50%" stop-color="#a855f7" stop-opacity="0.8"/>
-            <stop offset="100%" stop-color="#f43f5e" stop-opacity="0"/>
-          </linearGradient>
-        </defs>
-        <rect width="700" height="420" fill="url(#spaceGrad)"/>
-        <!-- Starfield -->
-        <circle cx="90" cy="80" r="1.5" fill="#fff" opacity="0.8"/>
-        <circle cx="210" cy="50" r="1.2" fill="#fff" opacity="0.6"/>
-        <circle cx="590" cy="90" r="1.8" fill="#fff" opacity="0.9"/>
-        <circle cx="630" cy="220" r="1" fill="#fff" opacity="0.5"/>
-        <circle cx="340" cy="40" r="1" fill="#fff" opacity="0.7"/>
-        <circle cx="150" cy="260" r="1.2" fill="#fff" opacity="0.4"/>
-        <!-- Relativistic Jet Beam -->
-        <polygon points="460,210 680,30 695,50 470,220" fill="url(#jetBeam)"/>
-        <polygon points="460,210 240,390 225,370 450,200" fill="url(#jetBeam)" opacity="0.45"/>
-        <!-- Accretion Disk / Black Hole -->
-        <ellipse cx="460" cy="210" rx="95" ry="26" fill="#f97316" opacity="0.8" transform="rotate(-25 460 210)"/>
-        <circle cx="460" cy="210" r="28" fill="#020617"/>
-        <circle cx="460" cy="210" r="32" stroke="#fdba74" stroke-width="2" fill="none" opacity="0.9"/>
-        <!-- Radio Telescope VLBI Array -->
-        <path d="M110,360 L170,360 M140,360 L140,300 M105,280 Q140,320 175,280" stroke="#94a3b8" stroke-width="3.5" fill="none"/>
-        <line x1="140" y1="300" x2="140" y2="270" stroke="#38bdf8" stroke-width="2"/>
-        <path d="M230,380 L280,380 M255,380 L255,330 M225,315 Q255,345 285,315" stroke="#64748b" stroke-width="3" fill="none"/>
-        <!-- Mathematical Geometry Manifold -->
-        <path d="M510,320 C570,280 630,370 580,390 C530,410 490,340 510,320 Z" stroke="#38bdf8" stroke-width="1.4" stroke-dasharray="3,3" fill="none"/>
-        <path d="M530,310 C590,270 650,350 600,380" stroke="#c084fc" stroke-width="1.2" fill="none"/>
-      </svg>
+<!-- Knowledge tree: subject → topic → suggested learning path. -->
+<section id="knowledge-tree" class="knowledge-tree" aria-labelledby="knowledge-title">
+  <header class="knowledge-header">
+    <div>
+      <span class="knowledge-eyebrow">MATHASTRO / KNOWLEDGE ATLAS</span>
+      <h2 id="knowledge-title" class="knowledge-title no-anchor">지식 수목도</h2>
     </div>
-    <div class="cover-story-body">
-      <div class="cover-kicker">전파천문학 & 이론물리학 · 심층 탐구</div>
-      <h2 class="cover-heading">
-        <a href="posts/Astronomy/Interferometer_1/">전파간섭계와 초대질량 블랙홀: 지구 크기의 망원경으로 시공간을 관측하다</a>
-      </h2>
-      <p class="cover-abstract">
-        수천 킬로미터 떨어진 전파망원경들의 신호를 푸리에 변환으로 합성하는 초장기선 전파간섭계(VLBI). 사건의 지평선 너머 블랙홀 제트와 초광속 겉보기 운동의 신비를 밝혀내는 첨단 천문학과 기하학의 만남을 소개합니다.
-      </p>
-      <div class="cover-byline">
-        <span class="cover-author">이영정 (경북대학교 대학원 천문학과)</span>
-        <span class="byline-sep">·</span>
-        <span>Astro-Physics Series</span>
-        <span class="byline-sep">·</span>
-        <span class="cover-read-time">📖 약 9분 읽기</span>
-      </div>
-    </div>
+    <p class="knowledge-header-copy">하나의 호기심에서 시작해,<br>연결되는 지식을 만나보세요.</p>
+  </header>
+  <ol class="knowledge-progress" aria-label="지식 탐색 단계">
+    <li class="knowledge-step is-current" aria-current="step"><span class="knowledge-step-number">01</span> 관심 있는 학문</li>
+    <li class="knowledge-step"><span class="knowledge-step-number">02</span> 더 깊이 볼 주제</li>
+    <li class="knowledge-step"><span class="knowledge-step-number">03</span> 연결된 배움</li>
+  </ol>
+  <nav class="knowledge-trail" aria-label="지식 수목도 탐색 경로" hidden></nav>
+  <div id="knowledge-content" tabindex="-1">
+    <p class="knowledge-loading">지식의 가지를 펼치고 있습니다…</p>
   </div>
+  <p class="knowledge-status" role="status" aria-live="polite" aria-atomic="true"></p>
+  <noscript><p class="knowledge-loading">지식 수목도를 탐색하려면 JavaScript를 켜주세요. 상단 학문 메뉴와 아래 글 목록에서도 모든 글을 읽을 수 있습니다.</p></noscript>
 </section>
+<script src="assets/knowledge-tree-data.js"></script>
+<script type="module" src="assets/knowledge-tree.mjs"></script>
 
 <!-- Section Header for Recent Articles -->
 <div class="magazine-section-divider">

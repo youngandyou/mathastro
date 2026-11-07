@@ -373,14 +373,10 @@ main.column-page-left > #title-block-header,
   width: 100% !important;
 }
 
-/* 3. Featured Cover Story (Quanta style) */
-.magazine-cover-story {
-  margin-bottom: 3.2rem;
-}
-
-/* Hide cover story and masthead double rule line when category filter is active */
-body.category-active .magazine-cover-story,
-html.category-active .magazine-cover-story,
+/* 3. Homepage category view */
+/* Hide the knowledge tree and masthead double rule line when category filter is active */
+body.category-active .knowledge-tree,
+html.category-active .knowledge-tree,
 body.category-active .masthead-rule-line,
 html.category-active .masthead-rule-line {
   display: none !important;
@@ -401,112 +397,6 @@ body.category-active .magazine-section-divider,
 html.category-active .magazine-section-divider {
   margin-top: 1.4rem !important;
   margin-bottom: 1.6rem !important;
-}
-
-.cover-story-card {
-  display: grid;
-  grid-template-columns: 1.35fr 1fr;
-  gap: 2.2rem;
-  background-color: var(--mag-bg-card);
-  border: 1px solid var(--mag-border);
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: var(--mag-shadow-sm);
-  transition: box-shadow 0.25s ease, border-color 0.25s ease;
-}
-
-.cover-story-card:hover {
-  box-shadow: var(--mag-shadow-hover);
-  border-color: #cbcfd4;
-}
-
-.cover-story-media {
-  position: relative;
-  min-height: 380px;
-  background: #09131f;
-  overflow: hidden;
-  display: flex;
-}
-
-.cover-svg-art {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.cover-badge {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  background-color: var(--mag-burgundy);
-  color: #ffffff;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 0.25rem 0.65rem;
-  border-radius: 2px;
-  z-index: 2;
-}
-
-.cover-story-body {
-  padding: 2.2rem 2.2rem 2.2rem 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.cover-kicker {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--mag-burgundy);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 0.5rem;
-}
-
-.cover-heading {
-  font-family: var(--mag-font-serif);
-  font-size: 1.95rem;
-  font-weight: 700;
-  line-height: 1.25;
-  margin-bottom: 0.9rem;
-}
-
-.cover-heading a {
-  color: var(--mag-text-main);
-  text-decoration: none;
-}
-
-.cover-heading a:hover {
-  color: var(--mag-burgundy);
-}
-
-.cover-abstract {
-  font-size: 0.96rem;
-  color: var(--mag-text-muted);
-  line-height: 1.65;
-  margin-bottom: 1.3rem;
-}
-
-.cover-byline {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  font-size: 0.82rem;
-  color: var(--mag-text-light);
-  border-top: 1px solid var(--mag-border);
-  padding-top: 0.85rem;
-}
-
-.cover-author {
-  font-weight: 600;
-  color: var(--mag-text-main);
-}
-
-.byline-sep {
-  color: var(--mag-border);
 }
 
 /* 4. Section Divider */
@@ -865,12 +755,6 @@ h2.magazine-section-title,
 
 /* Responsive Media Queries */
 @media (max-width: 991.98px) {
-  .cover-story-card {
-    grid-template-columns: 1fr;
-  }
-  .cover-story-body {
-    padding: 1.8rem;
-  }
   .hub-grid-columns {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -885,9 +769,6 @@ h2.magazine-section-title,
   }
   .masthead-main-title {
     font-size: 2.3rem;
-  }
-  .cover-heading {
-    font-size: 1.5rem;
   }
 }
 

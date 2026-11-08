@@ -285,12 +285,6 @@ document.addEventListener("DOMContentLoaded", function() {
       <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5"/></svg>
     </span>
   </button>
-  <ol class="knowledge-progress" aria-label="지식 탐색 단계" hidden>
-    <li class="knowledge-step is-current" aria-current="step"><span class="knowledge-step-number">01</span> 관심 있는 학문</li>
-    <li class="knowledge-step"><span class="knowledge-step-number">02</span> 더 깊이 볼 주제</li>
-    <li class="knowledge-step"><span class="knowledge-step-number">03</span> 연결된 배움</li>
-  </ol>
-  <nav class="knowledge-trail" aria-label="지식 수목도 탐색 경로" hidden></nav>
   <div id="knowledge-content" tabindex="-1" hidden></div>
   <p class="knowledge-status" role="status" aria-live="polite" aria-atomic="true"></p>
   <noscript><p class="knowledge-loading">지식 수목도를 탐색하려면 JavaScript를 켜주세요. 상단 학문 메뉴와 아래 글 목록에서도 모든 글을 읽을 수 있습니다.</p></noscript>

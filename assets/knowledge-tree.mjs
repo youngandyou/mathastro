@@ -115,11 +115,8 @@ function setup() {
   const catalog = buildCatalog(posts, editorial);
   const launch = hero.querySelector(".knowledge-launch");
   const header = hero.querySelector(".knowledge-header");
-  const progress = hero.querySelector(".knowledge-progress");
   const content = hero.querySelector("#knowledge-content");
-  const trail = hero.querySelector(".knowledge-trail");
   const status = hero.querySelector(".knowledge-status");
-  const steps = [...hero.querySelectorAll(".knowledge-step")];
   let field = null;
   let topic = null;
 
@@ -142,16 +139,6 @@ function setup() {
     if (hero.getBoundingClientRect().top < 80) {
       hero.scrollIntoView({ block: "start", behavior: "instant" });
     }
-  }
-
-  function renderTrail() {
-    trail.replaceChildren();
-    trail.hidden = !topic;
-    if (!topic) return;
-    trail.append(button("전체 분야", "knowledge-crumb", () => navigate(null)),
-      el("span", "knowledge-crumb-separator", "/"),
-      button(field.label, "knowledge-crumb", () => navigate(field)),
-      el("span", "knowledge-crumb-separator", "/"), el("span", "knowledge-current", topic.label));
   }
 
   function renderFields() {
@@ -184,20 +171,16 @@ function setup() {
     const ordered = orderedPosts(topic, editorial);
     const stages = learningStages(ordered);
     const toolbar = el("div", "knowledge-map-toolbar");
-    const title = el("div");
-    title.append(el("h3", "knowledge-panel-title", topic.label + "의 지식 수목도"),
-      el("p", "knowledge-panel-copy", "번호를 따라 읽어보세요. 각 지식을 누르면 해당 글로 이어집니다."));
-    toolbar.append(title, button("← 주제 다시 고르기", "knowledge-back", () => navigate(field)));
+    toolbar.append(button("← 주제 다시 고르기", "knowledge-back", () => navigate(field)),
+      button("전체 분야", "knowledge-back", () => navigate(null)));
     content.append(toolbar);
 
     const map = el("div", "knowledge-map");
     map.setAttribute("role", "region");
-    map.setAttribute("aria-label", topic.label + " 추천 학습 수목도");
+    map.setAttribute("aria-label", topic.label + " 추천 학습 경로");
     map.tabIndex = 0;
     const root = el("div", "knowledge-map-root");
-    root.append(el("span", "knowledge-root-eyebrow", field.label + " / KNOWLEDGE TREE"),
-      el("strong", "knowledge-root-title", topic.label),
-      el("span", "knowledge-root-count", ordered.length + "개의 연결된 지식"));
+    root.append(el("h3", "knowledge-root-title", topic.label));
     map.append(root);
 
     const branches = el("div", "knowledge-branches");
@@ -230,35 +213,23 @@ function setup() {
       branch.append(heading, list);
       branches.append(branch);
     });
-    map.append(branches);
+    map.append(branches, el("p", "knowledge-draft-note",
+      "추천 경로 초안 · 기초에서 심화로 이어지도록 구성했으며, 학습 순서는 계속 다듬어집니다."));
     content.append(map);
 
-    const footer = el("div", "knowledge-map-footer");
-    footer.append(el("p", "knowledge-draft-note", "추천 경로 초안 · 기초에서 심화로 이어지도록 구성했으며, 학습 순서는 계속 다듬어집니다."));
     const actions = el("div", "knowledge-map-actions");
     const all = el("a", "knowledge-all-posts", "이 주제의 글 모아보기");
     all.href = "#category=" + encodeURIComponent(topic.path);
     const start = el("a", "knowledge-start", "첫 글부터 읽기 ↗");
     start.href = ordered[0]?.href || all.href;
     actions.append(all, start);
-    footer.append(actions);
-    content.append(footer);
+    content.append(actions);
   }
 
   function render() {
     content.replaceChildren();
     hero.dataset.view = topic ? "map" : field ? "topics" : "fields";
     hero.className = "knowledge-tree" + (field ? " knowledge-color-" + field.color : "");
-    header.hidden = !topic;
-    progress.hidden = !topic;
-    const current = topic ? 2 : field ? 1 : 0;
-    steps.forEach((step, index) => {
-      step.classList.toggle("is-current", index === current);
-      step.classList.toggle("is-complete", index < current);
-      if (index === current) step.setAttribute("aria-current", "step");
-      else step.removeAttribute("aria-current");
-    });
-    renderTrail();
     if (topic) renderMap();
     else if (field) renderTopics();
     else renderFields();
@@ -268,6 +239,7 @@ function setup() {
 
   launch.addEventListener("click", () => {
     launch.hidden = true;
+    header.hidden = true;
     content.hidden = false;
     navigate(null);
   });

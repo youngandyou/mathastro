@@ -173,28 +173,18 @@
 }
 .knowledge-field:hover { transform: translateY(-4px); border-color: var(--knowledge-accent); box-shadow: 0 8px 18px #0e2a470b; }
 .knowledge-field:disabled { cursor: default; opacity: .65; transform: none; box-shadow: none; }
-.knowledge-field-english { font-size: .59rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--knowledge-accent); }
-.knowledge-symbol { display: block; width: 76px; height: 76px; color: var(--knowledge-accent); margin: 1.1rem 0 .85rem; }
+.knowledge-symbol { display: block; width: 76px; height: 76px; color: var(--knowledge-accent); }
 .knowledge-symbol svg { display: block; width: 100%; height: 100%; }
 .knowledge-symbol .symbol-dot { fill: currentColor; stroke: none; }
-.knowledge-field .knowledge-symbol { margin: 0; }
 .knowledge-field-name { font-size: clamp(1rem, 1.8vw, 1.3rem); font-weight: 700; line-height: 1.4; letter-spacing: -.04em; }
-.knowledge-card-arrow { color: var(--knowledge-accent); font-size: 1.1rem; line-height: 1; }
-.knowledge-topic-layout { display: grid; grid-template-columns: 210px 1fr; gap: 2.3rem; padding-bottom: 1rem; }
-.knowledge-topic-overview { border-right: 1px solid var(--mag-border); padding-right: 1.7rem; }
-.knowledge-topic-overview .knowledge-symbol { width: 88px; height: 88px; margin: .35rem 0 1.3rem; }
-.knowledge-topic-overview .knowledge-field-english { display: block; margin-bottom: .4rem; }
 .knowledge-back { border: 0; background: transparent; color: var(--mag-text-muted); font-size: .73rem; padding: .6rem 0; cursor: pointer; white-space: nowrap; }
 .knowledge-back:hover { color: var(--knowledge-accent); text-decoration: underline; }
-.knowledge-topic-overview .knowledge-back { margin-top: 1.2rem; }
-.knowledge-tree h4.knowledge-picker-title { font: 600 1.05rem/1.5 var(--mag-font-sans); color: var(--mag-navy); margin: .2rem 0 .3rem; }
-.knowledge-topics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; margin-top: 1.2rem; }
-.knowledge-topic { display: flex; flex-direction: column; gap: .4rem; padding: .9rem 1rem; border: 1px solid var(--mag-border); border-radius: 4px; background: white; text-align: left; color: var(--mag-text-main); cursor: pointer; transition: background .15s, border-color .15s; }
+.knowledge-topic-toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .25rem 1rem; margin-bottom: 1rem; }
+.knowledge-tree h3.knowledge-picker-title { font: 650 clamp(1.05rem, 2vw, 1.35rem)/1.5 var(--mag-font-sans); color: var(--mag-navy); margin: 0; }
+.knowledge-topics { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .65rem; }
+.knowledge-topic { min-height: 3.25rem; padding: .8rem 1rem; border: 1px solid var(--mag-border); border-radius: 4px; background: white; text-align: left; color: var(--mag-text-main); font-size: .9rem; font-weight: 600; cursor: pointer; transition: background .15s, border-color .15s; }
 .knowledge-topic:hover { border-color: var(--knowledge-accent); background: var(--knowledge-tint); }
-.knowledge-topic-head { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
-.knowledge-topic-name { font-size: .88rem; font-weight: 600; }
-.knowledge-topic-description { font-size: .71rem; line-height: 1.6; color: var(--mag-text-muted); }
-.knowledge-topic-count { color: var(--knowledge-accent); font-size: .66rem; margin-top: auto; }
+.knowledge-topic-count { color: var(--knowledge-accent); font-variant-numeric: tabular-nums; }
 .knowledge-map-toolbar { display: flex; justify-content: space-between; align-items: flex-start; gap: 1.5rem; margin-bottom: 1.25rem; }
 .knowledge-map { position: relative; max-height: 600px; padding: 1.5rem 1.3rem 1.7rem; overflow: auto; overscroll-behavior: contain; border: 1px solid var(--mag-border); border-radius: 5px; background-color: #fafbf9; background-image: radial-gradient(#d8dcd8 .7px, transparent .7px); background-size: 17px 17px; scrollbar-width: thin; }
 .knowledge-map-root { position: relative; display: flex; flex-direction: column; align-items: center; width: fit-content; min-width: min(220px, 100%); max-width: 100%; margin: 0 auto 2.6rem; padding: .9rem 1.6rem; border: 1px solid var(--knowledge-accent); border-radius: 6px; background: white; box-shadow: 0 3px 8px #0e2a4708; }
@@ -233,8 +223,6 @@
   #knowledge-content { padding: 1.5rem; }
   .knowledge-trail { padding-left: 1.5rem; padding-right: 1.5rem; }
   .knowledge-fields { gap: .7rem; }
-  .knowledge-topic-layout { grid-template-columns: 155px 1fr; gap: 1.5rem; }
-  .knowledge-topic-overview { padding-right: 1.2rem; }
   .knowledge-map-footer { flex-direction: column; align-items: flex-start; gap: 1rem; }
   .knowledge-draft-note { max-width: none; }
   .knowledge-branches { gap: .75rem; }
@@ -252,10 +240,6 @@
   .knowledge-step + .knowledge-step::before { width: 1rem; margin-right: 0; }
   .knowledge-progress { gap: .7rem; }
   .knowledge-step { gap: .35rem; font-size: .66rem; }
-  .knowledge-topic-layout { grid-template-columns: 1fr; gap: 1rem; }
-  .knowledge-topic-overview { position: relative; border: 0; padding: 0 65px .9rem 0; border-bottom: 1px solid var(--mag-border); }
-  .knowledge-topic-overview .knowledge-symbol { position: absolute; right: 0; top: 0; width: 50px; height: 50px; margin: 0; }
-  .knowledge-topic-overview .knowledge-back { margin-top: .25rem; }
   .knowledge-map-toolbar { flex-direction: column; gap: .3rem; }
   .knowledge-map { max-height: 620px; padding: 1.2rem 1rem; }
   .knowledge-map-root { margin-bottom: 1.5rem; }
@@ -279,8 +263,7 @@
   .knowledge-trail { padding: 1rem 1.2rem 0; }
   .knowledge-tree h3.knowledge-panel-title { font-size: 1.12rem; }
   .knowledge-panel-copy { font-size: .75rem; }
-  .knowledge-field-english { font-size: .48rem; letter-spacing: .06em; }
-  .knowledge-symbol { width: 60px; height: 60px; margin: .9rem 0; }
+  .knowledge-symbol { width: 60px; height: 60px; }
   .knowledge-topics { grid-template-columns: 1fr; }
   .knowledge-map-actions { width: 100%; justify-content: space-between; gap: .7rem; }
   .knowledge-start { padding: .65rem .75rem; }

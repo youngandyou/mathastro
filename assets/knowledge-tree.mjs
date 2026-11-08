@@ -1,10 +1,10 @@
 // The complete Quarto listing is the source of truth, including paginated posts.
 const separator = /\s*(?:>|\/|::)\s*/;
 const fields = [
-  { key: "Math", label: "수학", english: "Mathematics", color: "math", symbol: "math" },
-  { key: "Astronomy", label: "천문학", english: "Astronomy", color: "astro", symbol: "astronomy" },
-  { key: "Physics", label: "물리학", english: "Physics", color: "physics", symbol: "physics" },
-  { key: "Computer", label: "컴퓨터 과학", english: "Computer Science", color: "cs", symbol: "computer" }
+  { key: "Math", label: "수학", color: "math", symbol: "math" },
+  { key: "Astronomy", label: "천문학", color: "astro", symbol: "astronomy" },
+  { key: "Physics", label: "물리학", color: "physics", symbol: "physics" },
+  { key: "Computer", label: "컴퓨터 과학", color: "cs", symbol: "computer" }
 ];
 
 export function buildCatalog(posts, editorial = {}) {
@@ -123,10 +123,6 @@ function setup() {
   let field = null;
   let topic = null;
 
-  function description(key, fallback = "") {
-    return editorial.descriptions?.[key] || fallback;
-  }
-
   function topics() {
     const root = catalog.get(field.key);
     if (!root) return [];
@@ -150,15 +146,12 @@ function setup() {
 
   function renderTrail() {
     trail.replaceChildren();
-    trail.append(button("전체 분야", "knowledge-crumb", () => navigate(null)));
-    if (field) {
-      trail.append(el("span", "knowledge-crumb-separator", "/"));
-      trail.append(button(field.label, "knowledge-crumb", () => navigate(field)));
-    }
-    if (topic) {
-      trail.append(el("span", "knowledge-crumb-separator", "/"), el("span", "knowledge-current", topic.label));
-    }
-    trail.hidden = !field;
+    trail.hidden = !topic;
+    if (!topic) return;
+    trail.append(button("전체 분야", "knowledge-crumb", () => navigate(null)),
+      el("span", "knowledge-crumb-separator", "/"),
+      button(field.label, "knowledge-crumb", () => navigate(field)),
+      el("span", "knowledge-crumb-separator", "/"), el("span", "knowledge-current", topic.label));
   }
 
   function renderFields() {
@@ -174,29 +167,17 @@ function setup() {
   }
 
   function renderTopics() {
-    const layout = el("div", "knowledge-topic-layout");
-    const overview = el("div", "knowledge-topic-overview");
-    overview.append(icon(field.symbol), el("span", "knowledge-field-english", field.english),
-      el("h3", "knowledge-panel-title", field.label),
-      el("p", "knowledge-panel-copy", description(field.key)),
-      button("← 다른 학문 둘러보기", "knowledge-back", () => navigate(null)));
-    const picker = el("div", "knowledge-topic-picker");
-    picker.append(el("h4", "knowledge-picker-title", "조금 더 깊이 들여다볼까요?"),
-      el("p", "knowledge-panel-copy", "주제를 고르면 연결된 글과 추천 학습 순서를 볼 수 있습니다."));
+    const toolbar = el("div", "knowledge-topic-toolbar");
+    toolbar.append(el("h3", "knowledge-picker-title", "조금 더 깊이 들여다볼까요?"),
+      button("← 전체 분야", "knowledge-back", () => navigate(null)));
     const cards = el("div", "knowledge-topics");
     topics().forEach(node => {
       const card = button("", "knowledge-topic", () => navigate(field, node));
       card.dataset.topic = node.path;
-      const head = el("span", "knowledge-topic-head");
-      head.append(el("span", "knowledge-topic-name", node.label), el("span", "knowledge-card-arrow", "↗"));
-      card.append(head, el("span", "knowledge-topic-description", description(node.key,
-        [...node.children.values()].map(child => child.label).join(" · ") || node.key)),
-        el("span", "knowledge-topic-count", node.posts.size + "개의 글"));
+      card.append(node.label + " ", el("span", "knowledge-topic-count", "(" + node.posts.size + ")"));
       cards.append(card);
     });
-    picker.append(cards);
-    layout.append(overview, picker);
-    content.append(layout);
+    content.append(toolbar, cards);
   }
 
   function renderMap() {
@@ -268,8 +249,8 @@ function setup() {
     content.replaceChildren();
     hero.dataset.view = topic ? "map" : field ? "topics" : "fields";
     hero.className = "knowledge-tree" + (field ? " knowledge-color-" + field.color : "");
-    header.hidden = !field;
-    progress.hidden = !field;
+    header.hidden = !topic;
+    progress.hidden = !topic;
     const current = topic ? 2 : field ? 1 : 0;
     steps.forEach((step, index) => {
       step.classList.toggle("is-current", index === current);

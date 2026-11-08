@@ -113,6 +113,8 @@ function setup() {
     : document.querySelectorAll("#listing-sample-listings .list > [data-index]");
   const posts = readPosts(elements);
   const catalog = buildCatalog(posts, editorial);
+  const launch = hero.querySelector(".knowledge-launch");
+  const progress = hero.querySelector(".knowledge-progress");
   const content = hero.querySelector("#knowledge-content");
   const trail = hero.querySelector(".knowledge-trail");
   const status = hero.querySelector(".knowledge-status");
@@ -297,7 +299,14 @@ function setup() {
       : field ? field.label + ", " + topics().length + "개의 주제를 살펴보세요." : "네 가지 학문 중 관심 있는 학문을 고르세요.";
   }
 
-  render();
+  launch.addEventListener("click", () => {
+    launch.hidden = true;
+    progress.hidden = false;
+    content.hidden = false;
+    navigate(null);
+  });
+  hero.dataset.view = "entry";
+  launch.hidden = false;
 }
 
 if (typeof document !== "undefined") {

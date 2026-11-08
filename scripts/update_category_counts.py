@@ -5,7 +5,6 @@ Automatically scans posts/ to count articles per category and updates:
 1. assets/category-counts.json
 2. _quarto.yml navbar counts
 3. assets/navbar-submenus.html subcategory counts
-4. index.qmd archive card counts
 
 Usage: python3 scripts/update_category_counts.py
 """
@@ -20,7 +19,6 @@ POSTS_DIR = os.path.join(ROOT_DIR, "posts")
 QUARTO_YML = os.path.join(ROOT_DIR, "_quarto.yml")
 NAVBAR_SUBMENUS = os.path.join(ROOT_DIR, "assets", "navbar-submenus.html")
 CATEGORY_JSON = os.path.join(ROOT_DIR, "assets", "category-counts.json")
-INDEX_QMD = os.path.join(ROOT_DIR, "index.qmd")
 
 def find_qmd_files(dir_path):
     qmd_files = []
@@ -188,22 +186,6 @@ def update_navbar_submenus(path_counts):
     if write_if_changed(NAVBAR_SUBMENUS, content):
         print("✓ Updated assets/navbar-submenus.html counts")
 
-def update_index_qmd(path_counts):
-    if not os.path.exists(INDEX_QMD):
-        return
-
-    with open(INDEX_QMD, "r", encoding="utf-8") as f:
-        content = f.read()
-
-    math_count = path_counts.get("Math", 0)
-    astro_count = path_counts.get("Astronomy", 0)
-
-    content = re.sub(r"(Mathematics\s*\(수학\)\s*</div>\s*<div[^>]*>)\d+편", rf"\g<1>{math_count}편", content)
-    content = re.sub(r"(Astronomy\s*\(천문학\)\s*</div>\s*<div[^>]*>)\d+편", rf"\g<1>{astro_count}편", content)
-
-    if write_if_changed(INDEX_QMD, content):
-        print(f"✓ Updated index.qmd archive cards (Math: {math_count}편, Astronomy: {astro_count}편)")
-
 def write_category_json(total_posts, path_counts, leaf_counts):
     data = {
         "totalPosts": total_posts,
@@ -246,7 +228,6 @@ def main():
     print(f"Found {total_posts} posts.")
     update_quarto_yml(path_counts, leaf_counts)
     update_navbar_submenus(path_counts)
-    update_index_qmd(path_counts)
     write_category_json(total_posts, path_counts, leaf_counts)
     print("Category counts successfully updated!")
 

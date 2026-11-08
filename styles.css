@@ -24,9 +24,6 @@
   --mag-navy: #0e2a47;
   --mag-burgundy: #842029;
   --mag-math: #0284c7;
-  --mag-astro: #7c3aed;
-  --mag-physics: #d97706;
-  --mag-cs: #0d9488;
   
   --mag-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
   --mag-shadow-hover: 0 10px 22px rgba(0, 0, 0, 0.08);
@@ -304,8 +301,8 @@ main.column-page-left > #title-block-header,
 /* 2. Masthead (KIAS Horizon & Quanta style) */
 .magazine-masthead {
   text-align: center;
-  padding: 1.8rem 0 1rem;
-  margin-bottom: 2.2rem;
+  padding: 1.4rem 0 0;
+  margin-bottom: 1.4rem;
 }
 
 .masthead-brand-container {
@@ -343,7 +340,7 @@ main.column-page-left > #title-block-header,
 
 .masthead-rule-line {
   border-top: 3px double var(--mag-border-dark);
-  margin: 0 auto 2.8rem;
+  margin: 0 auto;
   max-width: 100%;
 }
 
@@ -635,107 +632,6 @@ h2.magazine-section-title,
   text-transform: uppercase;
 }
 
-/* 7. Knowledge Archive Hub */
-.magazine-archive-hub {
-  margin-bottom: 4rem;
-}
-
-.hub-header {
-  margin-bottom: 1.4rem;
-}
-
-.hub-main-title {
-  font-family: var(--mag-font-display);
-  font-size: 1.55rem;
-  font-weight: 700;
-  color: var(--mag-navy);
-  margin-bottom: 0.2rem;
-}
-
-.hub-sub-title {
-  font-size: 0.86rem;
-  color: var(--mag-text-light);
-}
-
-.hub-grid-columns {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.2rem;
-}
-
-.hub-col {
-  background-color: var(--mag-bg-card);
-  border: 1px solid var(--mag-border);
-  border-radius: 4px;
-  padding: 1.25rem 1.15rem;
-  box-shadow: var(--mag-shadow-sm);
-}
-
-.hub-col.math-col { border-top: 4px solid var(--mag-math); }
-.hub-col.astro-col { border-top: 4px solid var(--mag-astro); }
-.hub-col.physics-col { border-top: 4px solid var(--mag-physics); }
-.hub-col.cs-col { border-top: 4px solid var(--mag-cs); }
-
-.hub-col-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--mag-border);
-  padding-bottom: 0.6rem;
-  margin-bottom: 0.75rem;
-}
-
-.hub-col-header h4 {
-  font-size: 1.02rem;
-  margin: 0;
-  color: var(--mag-text-main);
-}
-
-.hub-col-header h4 a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.18s ease;
-}
-
-.hub-col-header h4 a:hover {
-  color: var(--mag-burgundy);
-}
-
-.hub-col-count {
-  font-size: 0.74rem;
-  color: var(--mag-text-light);
-  background: var(--mag-bg-subtle);
-  padding: 0.1rem 0.4rem;
-  border-radius: 3px;
-}
-
-.hub-col-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.hub-col-list li {
-  padding: 0.4rem 0;
-  border-bottom: 1px dashed var(--mag-border);
-  font-size: 0.85rem;
-}
-
-.hub-col-list li:last-child {
-  border-bottom: none;
-}
-
-.hub-col-list a {
-  color: var(--mag-text-main);
-  text-decoration: none;
-  transition: color 0.18s ease;
-}
-
-.hub-col-list a:hover {
-  color: var(--mag-burgundy);
-  text-decoration: underline;
-}
-
 /* Post Detail Enhancements */
 .quarto-title .title {
   font-family: var(--mag-font-serif);
@@ -755,20 +651,21 @@ h2.magazine-section-title,
 
 /* Responsive Media Queries */
 @media (max-width: 991.98px) {
-  .hub-grid-columns {
-    grid-template-columns: repeat(2, 1fr);
-  }
   .masthead-main-title {
     font-size: 3rem;
   }
 }
 
 @media (max-width: 575.98px) {
-  .hub-grid-columns {
-    grid-template-columns: 1fr;
+  .magazine-masthead {
+    padding-top: 1rem;
   }
   .masthead-main-title {
     font-size: 2.3rem;
+  }
+  .masthead-sub-title {
+    font-size: .95rem;
+    line-height: 1.5;
   }
 }
 

@@ -6,7 +6,8 @@ import { runInNewContext } from "node:vm";
 const project = new URL("../", import.meta.url);
 const navbar = Deno.readTextFileSync(new URL("assets/navbar-submenus.html", project));
 const scripts = ["update_category_counts.js", "update_category_counts.py"];
-const generated = ["_quarto.yml", "index.qmd", "assets/navbar-submenus.html", "assets/category-counts.json"];
+const configFiles = ["_quarto.yml", "assets/navbar-submenus.html"];
+const generated = [...configFiles, "assets/category-counts.json"];
 
 async function checkCounts() {
   const dir = Deno.makeTempDirSync({ prefix: "mathastro-counts-" });
@@ -17,7 +18,7 @@ async function checkCounts() {
     for (const script of scripts) {
       Deno.copyFileSync(new URL(`scripts/${script}`, project), `${dir}/scripts/${script}`);
     }
-    for (const file of generated.slice(0, 3)) {
+    for (const file of configFiles) {
       Deno.copyFileSync(new URL(file, project), `${dir}/${file}`);
     }
     const article = "---\ncategories:\n  - Math > Calculus > Vector Calculus\n---\n\nUnchanged article.\n";

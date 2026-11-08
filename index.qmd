@@ -241,19 +241,6 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-  // Intercept archive hub clicks for smooth scrolling and view updates
-  document.addEventListener('click', function(e) {
-    var hubLink = e.target.closest('.magazine-archive-hub a[href*="#category="]');
-    if (!hubLink) return;
-    var href = hubLink.getAttribute('href') || '';
-    var targetHash = href.substring(href.indexOf('#category='));
-    if (window.location.hash === targetHash) {
-      e.preventDefault();
-      updateView();
-    }
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-
   window.addEventListener('hashchange', updateView);
   window.addEventListener('popstate', updateView);
   window.addEventListener('blogCategoryNavigationReady', updateView);
@@ -273,15 +260,38 @@ document.addEventListener("DOMContentLoaded", function() {
     </div>
     <p class="knowledge-header-copy">하나의 호기심에서 시작해,<br>연결되는 지식을 만나보세요.</p>
   </header>
-  <ol class="knowledge-progress" aria-label="지식 탐색 단계">
+  <button class="knowledge-launch" type="button" aria-controls="knowledge-content" hidden>
+    <svg class="knowledge-launch-branches" viewBox="0 0 1040 320" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
+      <g stroke="currentColor">
+        <path d="M0 250h110l63-63h84m-84 0v-69l55-55h90m-208 187-48-48v-87l65-65m46 68h-66"/>
+        <path d="M1040 76H930l-64 64h-85m85 0v71l-59 59h-73m196-194 51 51v86l-66 66m-49-68h66"/>
+      </g>
+      <g fill="currentColor">
+        <circle cx="110" cy="250" r="4"/><circle cx="173" cy="187" r="5"/><circle cx="257" cy="187" r="3"/>
+        <circle cx="318" cy="63" r="3"/><circle cx="127" cy="50" r="4"/><circle cx="107" cy="118" r="3"/>
+        <circle cx="930" cy="76" r="4"/><circle cx="866" cy="140" r="5"/><circle cx="781" cy="140" r="3"/>
+        <circle cx="734" cy="270" r="3"/><circle cx="915" cy="279" r="4"/><circle cx="932" cy="211" r="3"/>
+      </g>
+    </svg>
+    <span class="knowledge-launch-symbol" aria-hidden="true">
+      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+        <path d="M24 32V16m0 11 12-9m-12 9-12-9" stroke-linecap="round"/>
+        <circle cx="24" cy="13" r="3"/><circle cx="9.5" cy="16" r="3"/><circle cx="38.5" cy="16" r="3"/>
+        <circle cx="24" cy="36" r="4" fill="currentColor" stroke="none"/>
+      </svg>
+    </span>
+    <span class="knowledge-launch-prompt">클릭하여 여러분의 지식을 확장해보세요!</span>
+    <span class="knowledge-launch-action">수목도 열기
+      <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5"/></svg>
+    </span>
+  </button>
+  <ol class="knowledge-progress" aria-label="지식 탐색 단계" hidden>
     <li class="knowledge-step is-current" aria-current="step"><span class="knowledge-step-number">01</span> 관심 있는 학문</li>
     <li class="knowledge-step"><span class="knowledge-step-number">02</span> 더 깊이 볼 주제</li>
     <li class="knowledge-step"><span class="knowledge-step-number">03</span> 연결된 배움</li>
   </ol>
   <nav class="knowledge-trail" aria-label="지식 수목도 탐색 경로" hidden></nav>
-  <div id="knowledge-content" tabindex="-1">
-    <p class="knowledge-loading">지식의 가지를 펼치고 있습니다…</p>
-  </div>
+  <div id="knowledge-content" tabindex="-1" hidden></div>
   <p class="knowledge-status" role="status" aria-live="polite" aria-atomic="true"></p>
   <noscript><p class="knowledge-loading">지식 수목도를 탐색하려면 JavaScript를 켜주세요. 상단 학문 메뉴와 아래 글 목록에서도 모든 글을 읽을 수 있습니다.</p></noscript>
 </section>
@@ -307,74 +317,6 @@ document.addEventListener("DOMContentLoaded", function() {
       “자연이라는 위대한 책은 우리 눈앞에 펼쳐져 있으나,<br>그것은 수학이라는 언어로 쓰여 있기에 그 기호를 이해하지 못하면 단 한 단어도 해독할 수 없다.”
     </blockquote>
     <div class="pull-quote-author">— 갈릴레오 갈릴레이 (Galileo Galilei), 『황금측량자』</div>
-  </div>
-</section>
-
-<!-- Knowledge Archive Hub (KIAS Horizon Series style) -->
-<section class="magazine-archive-hub">
-  <div class="hub-header">
-    <h3 class="hub-main-title">학문 백과사전 아카이브 (Knowledge Archive)</h3>
-    <p class="hub-sub-title">체계적으로 분류된 전공 개념별 컬렉션을 탐색해보세요</p>
-  </div>
-  <div class="hub-grid-columns">
-    <!-- Mathematics -->
-    <div class="hub-col math-col">
-      <div class="hub-col-header">
-        <h4><a href="#category=Math" class="hub-header-link">📐 Mathematics (수학)</a></h4>
-        <span class="hub-col-count">185편</span>
-      </div>
-      <ul class="hub-col-list">
-        <li><a href="#category=Calculus">미적분학 (Calculus · 벡터미적분학)</a></li>
-        <li><a href="#category=Topology">위상수학 (Topology) 전편</a></li>
-        <li><a href="#category=Complex%20Analysis">복소해석학 (Complex Analysis)</a></li>
-        <li><a href="#category=Abstract%20Algebra">추상대수학 (군론 · 환론)</a></li>
-        <li><a href="#category=Numerical%20Analysis">수치해석학 (반복법과 알고리즘)</a></li>
-        <li><a href="#category=Graph%20Theory">그래프 이론 (트리 동형사상)</a></li>
-      </ul>
-    </div>
-
-    <!-- Astronomy -->
-    <div class="hub-col astro-col">
-      <div class="hub-col-header">
-        <h4><a href="#category=Astronomy" class="hub-header-link">🔭 Astronomy (천문학)</a></h4>
-        <span class="hub-col-count">20편</span>
-      </div>
-      <ul class="hub-col-list">
-        <li><a href="#category=Radio%20Astronomy">기초 전파천문학 시리즈 (0~5편)</a></li>
-        <li><a href="#category=Radio%20Astronomy">전파간섭계 (Interferometer 1, 2)</a></li>
-        <li><a href="#category=High%20Energy">싱크로트론 복사 이론</a></li>
-        <li><a href="#category=Relativistic%20Jets">초광속 겉보기 운동</a></li>
-        <li><a href="#category=AIPS">AIPS 천문 데이터 분석 실습</a></li>
-      </ul>
-    </div>
-
-    <!-- Physics -->
-    <div class="hub-col physics-col">
-      <div class="hub-col-header">
-        <h4><a href="#category=Physics" class="hub-header-link">⚛️ Physics (물리학)</a></h4>
-        <span class="hub-col-count">연재 중</span>
-      </div>
-      <ul class="hub-col-list">
-        <li><a href="#category=Thermodynamics">열역학: 이상기체 방정식의 미시적 기원</a></li>
-        <li><a href="#category=General%20Relativity">등가원리와 시공간의 기하학</a></li>
-        <li><a href="#category=Topology">거리 공간과 물리적 공간의 기하</a></li>
-        <li><a href="#category=Physics">통계물리 및 상태방정식</a></li>
-      </ul>
-    </div>
-
-    <!-- Computer Science -->
-    <div class="hub-col cs-col">
-      <div class="hub-col-header">
-        <h4><a href="#category=Computer" class="hub-header-link">💻 Computer Science</a></h4>
-        <span class="hub-col-count">연재 중</span>
-      </div>
-      <ul class="hub-col-list">
-        <li><a href="#category=Reinforcement%20Learning">강화학습 (Reinforcement Learning) 기초</a></li>
-        <li><a href="#category=Numerical%20Analysis">수치 반복 알고리즘과 수렴성</a></li>
-        <li><a href="#category=Graph%20Theory">트리 알고리즘과 그래프 탐색</a></li>
-        <li><a href="#category=AIPS">AIPS 및 파이썬 천문 컴퓨팅</a></li>
-      </ul>
-    </div>
   </div>
 </section>
 ```

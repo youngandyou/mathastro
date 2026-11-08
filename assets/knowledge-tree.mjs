@@ -114,6 +114,7 @@ function setup() {
   const posts = readPosts(elements);
   const catalog = buildCatalog(posts, editorial);
   const launch = hero.querySelector(".knowledge-launch");
+  const header = hero.querySelector(".knowledge-header");
   const progress = hero.querySelector(".knowledge-progress");
   const content = hero.querySelector("#knowledge-content");
   const trail = hero.querySelector(".knowledge-trail");
@@ -161,32 +162,15 @@ function setup() {
   }
 
   function renderFields() {
-    const intro = el("div", "knowledge-intro");
-    intro.append(el("h3", "knowledge-panel-title", "어떤 지식이 궁금한가요?"),
-      el("p", "knowledge-panel-copy", "관심 있는 학문을 고르면, 첫 개념부터 깊이 있는 탐구까지 이어집니다."));
     const cards = el("div", "knowledge-fields");
     fields.forEach(item => {
-      const root = catalog.get(item.key);
       const card = button("", "knowledge-field knowledge-color-" + item.color, () => navigate(item));
       card.dataset.field = item.key;
-      card.append(el("span", "knowledge-field-english", item.english), icon(item.symbol),
-        el("span", "knowledge-field-name", item.label),
-        el("span", "knowledge-field-description", description(item.key)));
-      const footer = el("span", "knowledge-field-footer");
-      footer.append(el("span", "knowledge-field-count", (root?.posts.size || 0) + "개의 글"),
-        el("span", "knowledge-card-arrow", "↗"));
-      card.append(footer);
-      if (!root?.posts.size) {
-        card.disabled = true;
-        card.querySelector(".knowledge-field-description").textContent = "새로운 지식을 준비하고 있습니다.";
-      }
+      card.disabled = !catalog.get(item.key)?.posts.size;
+      card.append(icon(item.symbol), el("span", "knowledge-field-name", item.label));
       cards.append(card);
     });
-    content.append(intro, cards);
-    const foot = el("div", "knowledge-entry-footer");
-    foot.append(el("span", "knowledge-entry-note", "작은 호기심이 깊은 이해로 자라는 곳"),
-      el("span", "knowledge-total", "4개의 분야 · " + posts.length + "개의 지식"));
-    content.append(foot);
+    content.append(cards);
   }
 
   function renderTopics() {
@@ -284,6 +268,8 @@ function setup() {
     content.replaceChildren();
     hero.dataset.view = topic ? "map" : field ? "topics" : "fields";
     hero.className = "knowledge-tree" + (field ? " knowledge-color-" + field.color : "");
+    header.hidden = !field;
+    progress.hidden = !field;
     const current = topic ? 2 : field ? 1 : 0;
     steps.forEach((step, index) => {
       step.classList.toggle("is-current", index === current);
@@ -301,7 +287,6 @@ function setup() {
 
   launch.addEventListener("click", () => {
     launch.hidden = true;
-    progress.hidden = false;
     content.hidden = false;
     navigate(null);
   });

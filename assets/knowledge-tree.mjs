@@ -114,7 +114,6 @@ function setup() {
   const posts = readPosts(elements);
   const catalog = buildCatalog(posts, editorial);
   const launch = hero.querySelector(".knowledge-launch");
-  const header = hero.querySelector(".knowledge-header");
   const content = hero.querySelector("#knowledge-content");
   const status = hero.querySelector(".knowledge-status");
   let field = null;
@@ -154,7 +153,7 @@ function setup() {
   }
 
   function renderTopics() {
-    const toolbar = el("div", "knowledge-topic-toolbar");
+    const toolbar = el("div", "knowledge-toolbar");
     toolbar.append(el("h3", "knowledge-picker-title", "조금 더 깊이 들여다볼까요?"),
       button("← 전체 분야", "knowledge-back", () => navigate(null)));
     const cards = el("div", "knowledge-topics");
@@ -170,9 +169,9 @@ function setup() {
   function renderMap() {
     const ordered = orderedPosts(topic, editorial);
     const stages = learningStages(ordered);
-    const toolbar = el("div", "knowledge-map-toolbar");
+    const toolbar = el("div", "knowledge-toolbar");
     toolbar.append(button("← 주제 다시 고르기", "knowledge-back", () => navigate(field)),
-      button("전체 분야", "knowledge-back", () => navigate(null)));
+      button("← 전체 분야", "knowledge-back", () => navigate(null)));
     content.append(toolbar);
 
     const map = el("div", "knowledge-map");
@@ -239,7 +238,6 @@ function setup() {
 
   launch.addEventListener("click", () => {
     launch.hidden = true;
-    header.hidden = true;
     content.hidden = false;
     navigate(null);
   });

@@ -252,14 +252,7 @@ document.addEventListener("DOMContentLoaded", function() {
 </script>
 
 <!-- Knowledge tree: subject → topic → suggested learning path. -->
-<section id="knowledge-tree" class="knowledge-tree" aria-labelledby="knowledge-title">
-  <header class="knowledge-header">
-    <div>
-      <span class="knowledge-eyebrow">MATHASTRO / KNOWLEDGE ATLAS</span>
-      <h2 id="knowledge-title" class="knowledge-title no-anchor">지식 수목도</h2>
-    </div>
-    <p class="knowledge-header-copy">하나의 호기심에서 시작해,<br>연결되는 지식을 만나보세요.</p>
-  </header>
+<section id="knowledge-tree" class="knowledge-tree" aria-label="지식 수목도">
   <button class="knowledge-launch" type="button" aria-controls="knowledge-content" hidden>
     <svg class="knowledge-launch-branches" viewBox="0 0 1040 320" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
       <g stroke="currentColor">

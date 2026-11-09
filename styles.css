@@ -1806,3 +1806,106 @@ div.quarto-post .listing-description > a {
     padding: 1rem;
   }
 }
+
+
+/* ==========================================================================
+   Language Switcher & Translation Styles (Korean / English)
+   ========================================================================== */
+
+.nav-lang-item {
+  display: flex;
+  align-items: center;
+  margin-left: 0.75rem;
+  padding: 0.25rem 0;
+}
+
+.lang-switcher-pill {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(14, 42, 71, 0.05);
+  border: 1px solid var(--mag-border, #e2ded6);
+  border-radius: 9999px;
+  padding: 2px 4px;
+  gap: 2px;
+  font-family: var(--mag-font-sans, "Pretendard", sans-serif);
+  font-size: 0.8rem;
+  line-height: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease;
+}
+
+.lang-switcher-pill:hover {
+  background: rgba(14, 42, 71, 0.09);
+  border-color: rgba(14, 42, 71, 0.25);
+}
+
+.lang-switcher-pill .lang-btn {
+  background: transparent;
+  border: none;
+  outline: none;
+  border-radius: 9999px;
+  padding: 4px 10px;
+  color: var(--mag-text-muted, #57574e);
+  cursor: pointer;
+  font-size: 0.78rem;
+  font-weight: 500;
+  transition: all 0.15s ease-in-out;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lang-switcher-pill .lang-btn:hover {
+  color: var(--mag-text-main, #181816);
+}
+
+.lang-switcher-pill .lang-btn.active {
+  background: var(--mag-navy, #0e2a47);
+  color: #ffffff !important;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(14, 42, 71, 0.2);
+}
+
+.lang-switcher-pill .lang-divider {
+  color: var(--mag-border, #ccc);
+  font-size: 0.72rem;
+  user-select: none;
+  padding: 0 1px;
+}
+
+@media (max-width: 991.98px) {
+  .nav-lang-item {
+    margin-left: 0;
+    margin-top: 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px dashed var(--mag-border, #e2ded6);
+  }
+}
+
+/* Google Translate Widget & Frame Cleanups */
+.goog-te-banner-frame,
+.goog-te-banner-frame.skiptranslate,
+#goog-gt-tt,
+.goog-te-balloon-frame {
+  display: none !important;
+  visibility: hidden !important;
+}
+
+body {
+  top: 0px !important;
+  position: static !important;
+}
+
+.goog-text-highlight {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+#google_translate_element {
+  display: none !important;
+}
+
+.skiptranslate iframe {
+  display: none !important;
+}

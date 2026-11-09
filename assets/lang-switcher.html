@@ -1,0 +1,345 @@
+<!-- Google Translate Integration & Language Switcher -->
+<div id="google_translate_element" style="display:none; position:absolute; top:-9999px; left:-9999px;" aria-hidden="true"></div>
+
+<script>
+(function() {
+  'use strict';
+
+  // 1. Math and Code protection: Add translate="no" and class="notranslate"
+  function protectSpecialElements() {
+    var selectors = [
+      'span.math',
+      'div.math',
+      'mjx-container',
+      '.MathJax',
+      '.MathJax_Display',
+      'annotation',
+      'script[type*="math"]',
+      'pre',
+      'code',
+      '.sourceCode',
+      '.cell-output',
+      '.pseudocode',
+      '.katex',
+      '.navbar-brand',
+      '.masthead-brand-container .masthead-main-title',
+      '.lang-switcher-pill',
+      '.quarto-listing-category',
+      '.notranslate'
+    ];
+    var elements = document.querySelectorAll(selectors.join(','));
+    for (var i = 0; i < elements.length; i++) {
+      var el = elements[i];
+      if (!el.classList.contains('notranslate')) {
+        el.classList.add('notranslate');
+      }
+      if (el.getAttribute('translate') !== 'no') {
+        el.setAttribute('translate', 'no');
+      }
+    }
+  }
+
+  // 2. Cookie Helpers for Google Translate
+  function setTransCookie(lang) {
+    var host = window.location.hostname;
+    var domains = ['', host, '.' + host];
+    var parts = host.split('.');
+    if (parts.length > 2) {
+      domains.push('.' + parts.slice(-2).join('.'));
+    }
+
+    if (!lang || lang === 'ko') {
+      domains.forEach(function(d) {
+        var dStr = d ? '; domain=' + d : '';
+        document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/' + dStr;
+        document.cookie = 'googtrans=/ko/ko; path=/' + dStr;
+      });
+      document.cookie = 'googtrans=/ko/ko; path=/';
+    } else {
+      domains.forEach(function(d) {
+        var dStr = d ? '; domain=' + d : '';
+        document.cookie = 'googtrans=/ko/' + lang + '; path=/' + dStr;
+      });
+      document.cookie = 'googtrans=/ko/' + lang + '; path=/';
+    }
+  }
+
+  function getSavedLang() {
+    var saved = localStorage.getItem('mathastro_lang');
+    if (saved === 'en' || saved === 'ko') return saved;
+    var match = document.cookie.match(/(?:^|;\s*)googtrans=\/ko\/([a-z]{2})/);
+    return (match && match[1] === 'en') ? 'en' : 'ko';
+  }
+
+  function isEnglishMode() {
+    return document.documentElement.classList.contains('translated-ltr') ||
+           document.body.classList.contains('translated-ltr') ||
+           getSavedLang() === 'en';
+  }
+
+  // 3. Math & English Word Spacing (ONLY active in English translated mode)
+  var isAdjusting = false;
+
+  function getDeepLastTextNode(node) {
+    if (!node) return null;
+    if (node.nodeType === 3) return node;
+    if (node.nodeType === 1) {
+      if (node.classList && (node.classList.contains('math') || node.tagName === 'MJX-CONTAINER')) return null;
+      for (var i = node.childNodes.length - 1; i >= 0; i--) {
+        var found = getDeepLastTextNode(node.childNodes[i]);
+        if (found) return found;
+      }
+    }
+    return null;
+  }
+
+  function getDeepFirstTextNode(node) {
+    if (!node) return null;
+    if (node.nodeType === 3) return node;
+    if (node.nodeType === 1) {
+      if (node.classList && (node.classList.contains('math') || node.tagName === 'MJX-CONTAINER')) return null;
+      for (var i = 0; i < node.childNodes.length; i++) {
+        var found = getDeepFirstTextNode(node.childNodes[i]);
+        if (found) return found;
+      }
+    }
+    return null;
+  }
+
+  function fixMathSpacing() {
+    // Strictly ONLY run in English mode. Never alter Korean text or particle attachments.
+    if (!isEnglishMode()) return;
+    if (isAdjusting) return;
+    isAdjusting = true;
+
+    try {
+      var mathEls = document.querySelectorAll('span.math.inline, mjx-container:not([display="true"])');
+      for (var i = 0; i < mathEls.length; i++) {
+        var el = mathEls[i];
+
+        // 1) Previous text: only add 1 space if it ends with alphanumeric and has no space
+        var prevNode = el.previousSibling;
+        var prevTextNode = null;
+        if (prevNode) {
+          if (prevNode.nodeType === 3) {
+            prevTextNode = prevNode;
+          } else if (prevNode.nodeType === 1) {
+            prevTextNode = getDeepLastTextNode(prevNode);
+          }
+        }
+        if (prevTextNode && prevTextNode.nodeValue) {
+          var pVal = prevTextNode.nodeValue;
+          // If ends with English word character and NOT whitespace and NOT opening parenthesis/bracket
+          if (/[a-zA-Z0-9]$/.test(pVal) && !/\s$/.test(pVal) && !/[\(\[\{\"\']$/.test(pVal)) {
+            prevTextNode.nodeValue = pVal + ' ';
+          }
+        }
+
+        // 2) Next text: only add 1 space if it begins with an English word/number
+        // NEVER add space before punctuation: . , ; : ! ? ) ] } ' " %
+        var nextNode = el.nextSibling;
+        var nextTextNode = null;
+        if (nextNode) {
+          if (nextNode.nodeType === 3) {
+            nextTextNode = nextNode;
+          } else if (nextNode.nodeType === 1) {
+            nextTextNode = getDeepFirstTextNode(nextNode);
+          }
+        }
+        if (nextTextNode && nextTextNode.nodeValue) {
+          var nVal = nextTextNode.nodeValue;
+          // If starts with English word character and NOT whitespace
+          if (/^[a-zA-Z0-9]/.test(nVal) && !/^\s/.test(nVal)) {
+            nextTextNode.nodeValue = ' ' + nVal;
+          }
+        }
+      }
+    } finally {
+      isAdjusting = false;
+    }
+  }
+
+  // Debounced runner for observer
+  var spacingTimer = null;
+  function scheduleFixMathSpacing() {
+    clearTimeout(spacingTimer);
+    spacingTimer = setTimeout(function() {
+      protectSpecialElements();
+      if (isEnglishMode()) {
+        fixMathSpacing();
+      }
+    }, 80);
+  }
+
+  // Run protection immediately
+  protectSpecialElements();
+  document.addEventListener('DOMContentLoaded', protectSpecialElements);
+
+  if (window.MathJax && window.MathJax.startup && window.MathJax.startup.promise) {
+    window.MathJax.startup.promise.then(function() {
+      protectSpecialElements();
+      if (isEnglishMode()) fixMathSpacing();
+    });
+  }
+
+  // MutationObserver to watch for Google Translate changes
+  var obs = new MutationObserver(function(mutations) {
+    if (isAdjusting) return;
+    var relevant = false;
+    for (var i = 0; i < mutations.length; i++) {
+      var m = mutations[i];
+      if (m.type === 'childList' && (m.addedNodes.length > 0 || m.removedNodes.length > 0)) {
+        relevant = true;
+        break;
+      }
+      if (m.type === 'attributes' && m.attributeName === 'class') {
+        relevant = true;
+        break;
+      }
+    }
+    if (relevant) {
+      scheduleFixMathSpacing();
+    }
+  });
+
+  obs.observe(document.documentElement, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+    attributeFilter: ['class']
+  });
+
+  // 4. Inject Language Switcher into Navbar
+  function injectLanguageSwitcher() {
+    if (document.querySelector('.nav-lang-item')) return;
+
+    var currentLang = getSavedLang();
+
+    var li = document.createElement('li');
+    li.className = 'nav-item nav-lang-item notranslate';
+    li.setAttribute('translate', 'no');
+    li.innerHTML = [
+      '<div class="lang-switcher-pill" role="group" aria-label="언어 선택 / Language Selection">',
+      '  <button type="button" class="lang-btn ' + (currentLang === 'ko' ? 'active' : '') + '" data-lang="ko" title="한국어로 보기">한국어</button>',
+      '  <span class="lang-divider">/</span>',
+      '  <button type="button" class="lang-btn ' + (currentLang === 'en' ? 'active' : '') + '" data-lang="en" title="View in English">English</button>',
+      '</div>'
+    ].join('\n');
+
+    // Prefer insertion into .navbar-nav.ms-auto
+    var target = document.querySelector('.navbar-nav.navbar-nav-scroll.ms-auto') ||
+                 document.querySelector('.quarto-navbar-tools') ||
+                 document.querySelector('.navbar-nav.ms-auto') ||
+                 document.querySelector('.navbar-nav');
+
+    if (target) {
+      target.appendChild(li);
+    }
+
+    // Attach click events
+    var btns = li.querySelectorAll('.lang-btn');
+    for (var i = 0; i < btns.length; i++) {
+      btns[i].addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var selectedLang = this.getAttribute('data-lang');
+        switchLanguage(selectedLang);
+      });
+    }
+  }
+
+  // 5. Switch Language Logic
+  function switchLanguage(targetLang) {
+    var current = getSavedLang();
+    if (targetLang === current) return;
+
+    localStorage.setItem('mathastro_lang', targetLang);
+    setTransCookie(targetLang);
+
+    // Update active class on buttons
+    var btns = document.querySelectorAll('.lang-btn');
+    for (var i = 0; i < btns.length; i++) {
+      if (btns[i].getAttribute('data-lang') === targetLang) {
+        btns[i].classList.add('active');
+      } else {
+        btns[i].classList.remove('active');
+      }
+    }
+
+    if (targetLang === 'ko') {
+      // Revert to original Korean: clean reload
+      window.location.reload();
+      return;
+    }
+
+    // Target is 'en'
+    var combo = document.querySelector('select.goog-te-combo');
+    if (combo) {
+      combo.value = 'en';
+      combo.dispatchEvent(new Event('change'));
+      setTimeout(fixMathSpacing, 300);
+      setTimeout(fixMathSpacing, 800);
+      setTimeout(fixMathSpacing, 1500);
+    } else {
+      window.location.reload();
+    }
+  }
+
+  // 6. Google Translate Callback & Auto-trigger if EN
+  window.googleTranslateElementInit = function() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'ko',
+      includedLanguages: 'en,ko',
+      autoDisplay: false
+    }, 'google_translate_element');
+
+    var currentLang = getSavedLang();
+    if (currentLang === 'en') {
+      var attempts = 0;
+      var interval = setInterval(function() {
+        attempts++;
+        var combo = document.querySelector('select.goog-te-combo');
+        if (combo) {
+          clearInterval(interval);
+          if (combo.value !== 'en') {
+            combo.value = 'en';
+            combo.dispatchEvent(new Event('change'));
+          }
+          setTimeout(fixMathSpacing, 300);
+          setTimeout(fixMathSpacing, 800);
+          setTimeout(fixMathSpacing, 1500);
+        } else if (attempts > 30) {
+          clearInterval(interval);
+        }
+      }, 150);
+    }
+  };
+
+  // 7. Dynamic Script Loader for Google Translate
+  function loadGoogleTranslateScript() {
+    if (document.getElementById('google-translate-script')) return;
+    var script = document.createElement('script');
+    script.id = 'google-translate-script';
+    script.type = 'text/javascript';
+    script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+    script.async = true;
+    document.head.appendChild(script);
+  }
+
+  // Initial startup
+  function startup() {
+    protectSpecialElements();
+    injectLanguageSwitcher();
+    loadGoogleTranslateScript();
+    if (isEnglishMode()) {
+      fixMathSpacing();
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startup);
+  } else {
+    startup();
+  }
+})();
+</script>

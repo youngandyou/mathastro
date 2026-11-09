@@ -13,6 +13,7 @@ project:
     - assets/work-store.mjs
     - assets/work-status.js
     - assets/work-status.css
+    - assets/lang-switcher.html
 
 website:
   description: "A blog built with Quarto"
@@ -125,3 +126,4 @@ format:
       - assets/category-tree.html
       - assets/pseudocode.html
       - assets/post-likes.html
+      - assets/lang-switcher.html

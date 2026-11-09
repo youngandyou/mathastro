@@ -24,9 +24,6 @@
   --mag-navy: #0e2a47;
   --mag-burgundy: #842029;
   --mag-math: #0284c7;
-  --mag-astro: #7c3aed;
-  --mag-physics: #d97706;
-  --mag-cs: #0d9488;
   
   --mag-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
   --mag-shadow-hover: 0 10px 22px rgba(0, 0, 0, 0.08);
@@ -304,8 +301,8 @@ main.column-page-left > #title-block-header,
 /* 2. Masthead (KIAS Horizon & Quanta style) */
 .magazine-masthead {
   text-align: center;
-  padding: 1.8rem 0 1rem;
-  margin-bottom: 2.2rem;
+  padding: 1.4rem 0 0;
+  margin-bottom: 1.4rem;
 }
 
 .masthead-brand-container {
@@ -343,7 +340,7 @@ main.column-page-left > #title-block-header,
 
 .masthead-rule-line {
   border-top: 3px double var(--mag-border-dark);
-  margin: 0 auto 2.8rem;
+  margin: 0 auto;
   max-width: 100%;
 }
 
@@ -373,14 +370,10 @@ main.column-page-left > #title-block-header,
   width: 100% !important;
 }
 
-/* 3. Featured Cover Story (Quanta style) */
-.magazine-cover-story {
-  margin-bottom: 3.2rem;
-}
-
-/* Hide cover story and masthead double rule line when category filter is active */
-body.category-active .magazine-cover-story,
-html.category-active .magazine-cover-story,
+/* 3. Homepage category view */
+/* Hide the knowledge tree and masthead double rule line when category filter is active */
+body.category-active .knowledge-tree,
+html.category-active .knowledge-tree,
 body.category-active .masthead-rule-line,
 html.category-active .masthead-rule-line {
   display: none !important;
@@ -401,112 +394,6 @@ body.category-active .magazine-section-divider,
 html.category-active .magazine-section-divider {
   margin-top: 1.4rem !important;
   margin-bottom: 1.6rem !important;
-}
-
-.cover-story-card {
-  display: grid;
-  grid-template-columns: 1.35fr 1fr;
-  gap: 2.2rem;
-  background-color: var(--mag-bg-card);
-  border: 1px solid var(--mag-border);
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: var(--mag-shadow-sm);
-  transition: box-shadow 0.25s ease, border-color 0.25s ease;
-}
-
-.cover-story-card:hover {
-  box-shadow: var(--mag-shadow-hover);
-  border-color: #cbcfd4;
-}
-
-.cover-story-media {
-  position: relative;
-  min-height: 380px;
-  background: #09131f;
-  overflow: hidden;
-  display: flex;
-}
-
-.cover-svg-art {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.cover-badge {
-  position: absolute;
-  top: 1rem;
-  left: 1rem;
-  background-color: var(--mag-burgundy);
-  color: #ffffff;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  padding: 0.25rem 0.65rem;
-  border-radius: 2px;
-  z-index: 2;
-}
-
-.cover-story-body {
-  padding: 2.2rem 2.2rem 2.2rem 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.cover-kicker {
-  font-size: 0.78rem;
-  font-weight: 700;
-  color: var(--mag-burgundy);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 0.5rem;
-}
-
-.cover-heading {
-  font-family: var(--mag-font-serif);
-  font-size: 1.95rem;
-  font-weight: 700;
-  line-height: 1.25;
-  margin-bottom: 0.9rem;
-}
-
-.cover-heading a {
-  color: var(--mag-text-main);
-  text-decoration: none;
-}
-
-.cover-heading a:hover {
-  color: var(--mag-burgundy);
-}
-
-.cover-abstract {
-  font-size: 0.96rem;
-  color: var(--mag-text-muted);
-  line-height: 1.65;
-  margin-bottom: 1.3rem;
-}
-
-.cover-byline {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  font-size: 0.82rem;
-  color: var(--mag-text-light);
-  border-top: 1px solid var(--mag-border);
-  padding-top: 0.85rem;
-}
-
-.cover-author {
-  font-weight: 600;
-  color: var(--mag-text-main);
-}
-
-.byline-sep {
-  color: var(--mag-border);
 }
 
 /* 4. Section Divider */
@@ -745,107 +632,6 @@ h2.magazine-section-title,
   text-transform: uppercase;
 }
 
-/* 7. Knowledge Archive Hub */
-.magazine-archive-hub {
-  margin-bottom: 4rem;
-}
-
-.hub-header {
-  margin-bottom: 1.4rem;
-}
-
-.hub-main-title {
-  font-family: var(--mag-font-display);
-  font-size: 1.55rem;
-  font-weight: 700;
-  color: var(--mag-navy);
-  margin-bottom: 0.2rem;
-}
-
-.hub-sub-title {
-  font-size: 0.86rem;
-  color: var(--mag-text-light);
-}
-
-.hub-grid-columns {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.2rem;
-}
-
-.hub-col {
-  background-color: var(--mag-bg-card);
-  border: 1px solid var(--mag-border);
-  border-radius: 4px;
-  padding: 1.25rem 1.15rem;
-  box-shadow: var(--mag-shadow-sm);
-}
-
-.hub-col.math-col { border-top: 4px solid var(--mag-math); }
-.hub-col.astro-col { border-top: 4px solid var(--mag-astro); }
-.hub-col.physics-col { border-top: 4px solid var(--mag-physics); }
-.hub-col.cs-col { border-top: 4px solid var(--mag-cs); }
-
-.hub-col-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--mag-border);
-  padding-bottom: 0.6rem;
-  margin-bottom: 0.75rem;
-}
-
-.hub-col-header h4 {
-  font-size: 1.02rem;
-  margin: 0;
-  color: var(--mag-text-main);
-}
-
-.hub-col-header h4 a {
-  color: inherit;
-  text-decoration: none;
-  transition: color 0.18s ease;
-}
-
-.hub-col-header h4 a:hover {
-  color: var(--mag-burgundy);
-}
-
-.hub-col-count {
-  font-size: 0.74rem;
-  color: var(--mag-text-light);
-  background: var(--mag-bg-subtle);
-  padding: 0.1rem 0.4rem;
-  border-radius: 3px;
-}
-
-.hub-col-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.hub-col-list li {
-  padding: 0.4rem 0;
-  border-bottom: 1px dashed var(--mag-border);
-  font-size: 0.85rem;
-}
-
-.hub-col-list li:last-child {
-  border-bottom: none;
-}
-
-.hub-col-list a {
-  color: var(--mag-text-main);
-  text-decoration: none;
-  transition: color 0.18s ease;
-}
-
-.hub-col-list a:hover {
-  color: var(--mag-burgundy);
-  text-decoration: underline;
-}
-
 /* Post Detail Enhancements */
 .quarto-title .title {
   font-family: var(--mag-font-serif);
@@ -865,29 +651,21 @@ h2.magazine-section-title,
 
 /* Responsive Media Queries */
 @media (max-width: 991.98px) {
-  .cover-story-card {
-    grid-template-columns: 1fr;
-  }
-  .cover-story-body {
-    padding: 1.8rem;
-  }
-  .hub-grid-columns {
-    grid-template-columns: repeat(2, 1fr);
-  }
   .masthead-main-title {
     font-size: 3rem;
   }
 }
 
 @media (max-width: 575.98px) {
-  .hub-grid-columns {
-    grid-template-columns: 1fr;
+  .magazine-masthead {
+    padding-top: 1rem;
   }
   .masthead-main-title {
     font-size: 2.3rem;
   }
-  .cover-heading {
-    font-size: 1.5rem;
+  .masthead-sub-title {
+    font-size: .95rem;
+    line-height: 1.5;
   }
 }
 

@@ -3,7 +3,6 @@
 // 1. assets/category-counts.json
 // 2. _quarto.yml navbar counts
 // 3. assets/navbar-submenus.html subcategory counts
-// 4. index.qmd archive card counts
 //
 // Can be run with: quarto run scripts/update_category_counts.js
 
@@ -15,7 +14,6 @@ const POSTS_DIR = path.join(ROOT_DIR, "posts");
 const QUARTO_YML = path.join(ROOT_DIR, "_quarto.yml");
 const NAVBAR_SUBMENUS = path.join(ROOT_DIR, "assets", "navbar-submenus.html");
 const CATEGORY_JSON = path.join(ROOT_DIR, "assets", "category-counts.json");
-const INDEX_QMD = path.join(ROOT_DIR, "index.qmd");
 
 function findQmdFiles(dir) {
   let files = [];
@@ -208,22 +206,6 @@ function updateNavbarSubmenus(pathCounts) {
   }
 }
 
-function updateIndexQmd(pathCounts) {
-  if (!tryExists(INDEX_QMD)) return;
-  let content = Deno.readTextFileSync(INDEX_QMD);
-
-  const mathCount = pathCounts["Math"] || 0;
-  const astroCount = pathCounts["Astronomy"] || 0;
-
-  // Update cards e.g. "174편", "16편"
-  content = content.replace(/(Mathematics\s*\(수학\)\s*<\/div>\s*<div[^>]*>)\d+편/, `$1${mathCount}편`);
-  content = content.replace(/(Astronomy\s*\(천문학\)\s*<\/div>\s*<div[^>]*>)\d+편/, `$1${astroCount}편`);
-
-  if (writeIfChanged(INDEX_QMD, content)) {
-    console.log(`✓ Updated index.qmd archive cards (Math: ${mathCount}편, Astronomy: ${astroCount}편)`);
-  }
-}
-
 function writeCategoryJson(data) {
   const output = {
     totalPosts: data.totalPosts,
@@ -288,6 +270,5 @@ const data = countPosts();
 console.log(`Found ${data.totalPosts} posts.`);
 updateQuartoYml(data.pathCounts, data.leafCounts);
 updateNavbarSubmenus(data.pathCounts);
-updateIndexQmd(data.pathCounts);
 writeCategoryJson(data);
 console.log("Category counts successfully updated!");

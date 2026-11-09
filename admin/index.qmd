@@ -6,7 +6,9 @@ search: false
 page-layout: article
 format:
   html:
-    css: ../assets/work-status.css
+    css:
+      - ../styles.css
+      - ../assets/work-status.css
 ---
 
 ```{=html}

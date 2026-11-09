@@ -66,7 +66,7 @@ style="color: black;">
 
       <div class="staff-details">
         <header class="staff-header">
-          <h2>Youmin Chun <span lang="ko">(천유민)</span></h2>
+          <h2>Chun Youmin <span lang="ko">(천유민)</span></h2>
           <p><strong>역할 및 직책</strong> <span>블로그 운영 및 편집(Managing Editor)</span></p>
 
           <div style="height: 0.5rem;"></div>
@@ -89,7 +89,7 @@ style="color: black;">
           </div>
         </dl>
 
-        <nav class="staff-links" aria-label="Youmin Chun 외부 링크">
+        <nav class="staff-links" aria-label="Chun Youmin 외부 링크">
           <span><i class="bi bi-envelope" aria-hidden="true"></i> 이메일(e-mail): chunyoumin1@gmail.com</span>
         </nav>
       </div>

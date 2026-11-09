@@ -159,15 +159,36 @@
     }
   }
 
+  // 4. Admin Name Normalizer (Replaces auto-translated 'Cheon Yu-min' with official 'Chun Youmin')
+  function normalizeAdminNames() {
+    if (!isEnglishMode()) return;
+
+    var nameRegex = /\bCheon[\s,-]*Yu[\s,-]*min\b|\bYu[\s,-]*min[\s,-]*Cheon\b/gi;
+
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, null, false);
+    var node;
+    while ((node = walker.nextNode())) {
+      var val = node.nodeValue;
+      if (val && nameRegex.test(val)) {
+        node.nodeValue = val.replace(nameRegex, 'Chun Youmin');
+      }
+    }
+  }
+
+  // Combined post-translation processor
+  function applyEnglishRefinements() {
+    if (!isEnglishMode()) return;
+    fixMathSpacing();
+    normalizeAdminNames();
+  }
+
   // Debounced runner for observer
   var spacingTimer = null;
   function scheduleFixMathSpacing() {
     clearTimeout(spacingTimer);
     spacingTimer = setTimeout(function() {
       protectSpecialElements();
-      if (isEnglishMode()) {
-        fixMathSpacing();
-      }
+      applyEnglishRefinements();
     }, 80);
   }
 
@@ -178,7 +199,7 @@
   if (window.MathJax && window.MathJax.startup && window.MathJax.startup.promise) {
     window.MathJax.startup.promise.then(function() {
       protectSpecialElements();
-      if (isEnglishMode()) fixMathSpacing();
+      applyEnglishRefinements();
     });
   }
 
@@ -277,9 +298,9 @@
     if (combo) {
       combo.value = 'en';
       combo.dispatchEvent(new Event('change'));
-      setTimeout(fixMathSpacing, 300);
-      setTimeout(fixMathSpacing, 800);
-      setTimeout(fixMathSpacing, 1500);
+      setTimeout(applyEnglishRefinements, 300);
+      setTimeout(applyEnglishRefinements, 800);
+      setTimeout(applyEnglishRefinements, 1500);
     } else {
       window.location.reload();
     }
@@ -305,9 +326,9 @@
             combo.value = 'en';
             combo.dispatchEvent(new Event('change'));
           }
-          setTimeout(fixMathSpacing, 300);
-          setTimeout(fixMathSpacing, 800);
-          setTimeout(fixMathSpacing, 1500);
+          setTimeout(applyEnglishRefinements, 300);
+          setTimeout(applyEnglishRefinements, 800);
+          setTimeout(applyEnglishRefinements, 1500);
         } else if (attempts > 30) {
           clearInterval(interval);
         }
@@ -331,9 +352,7 @@
     protectSpecialElements();
     injectLanguageSwitcher();
     loadGoogleTranslateScript();
-    if (isEnglishMode()) {
-      fixMathSpacing();
-    }
+    applyEnglishRefinements();
   }
 
   if (document.readyState === 'loading') {

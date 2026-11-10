@@ -62,7 +62,7 @@ for all $s, t \in I$. The map $F$ is called a ***path homotopy*** between $f$ an
 ## Theorem 1
 **(i)** The relations $\simeq$ and $\simeq_p$ are equivalence relations.
 
-**(ii)** Let $f, g: [0, 1] \to X$ be two paths from $x_0$ to $x_1$ and from $x_1$ to $x_2$, respectively. The ***product*** $f \ast g$ of $f$ and $g$ is the path defined by
+**(ii)** Let $f, g: I \to X$ be two paths from $x_0$ to $x_1$ and from $x_1$ to $x_2$, respectively. The ***product*** $f \ast g$ of $f$ and $g$ is the path defined by
 
 $$(f \ast g)(s) = \begin{cases}
 f(2s) & s \in \left[ 0, \frac{1}{2} \right] \\
@@ -81,11 +81,13 @@ equipped with the path product $[f] \ast [g] = [f \ast g]$. Then $\ast$ satiesfi
 
 1. **(Associativity)** $([f] \ast [g]) \ast [h] = [f] \ast ([g] \ast [h]), \forall [f], [g], [h] \in \pi_1(X, x_0)$.
 
-2. **(Identity)** There exists $[c_{x_0}] \in \pi_1(X, x_0)$ such that $[f] \ast [c_{x_0}] = [f] = [c_{x_0}] \ast [f], \forall [f] \in \pi_1(X, x_0)$, where $c_{x_0}$ is the constant path defined by $c_{x_0}(s) = x_0, \forall s \in I$.
+2. **(Identity)** There exists $[c_{x_0}] \in \pi_1(X, x_0)$ such that $[f] \ast [c_{x_0}] = [f] = [c_{x_0}] \ast [f], \forall [f] \in \pi_1(X, x_0)$, where $c_{x_0}$ is the ***constant path*** defined by $c_{x_0}(s) = x_0, \forall s \in I$.
 
-3. **(Inverse)** For each $[f] \in \pi_1(X, x_0)$, there exists $[\overline{f}] \in \pi_1(X, x_0)$ such that $[f] \ast [\overline{f}] = [c_{x_0}] = [\overline{f}] \ast [f]$ where $\overline{f}$ is the inverse path of $f$ definfed by $\overline{f}(s) = f(1-s), \forall s \in I$.
+3. **(Inverse)** For each $[f] \in \pi_1(X, x_0)$, there exists $[\overline{f}] \in \pi_1(X, x_0)$ such that $[f] \ast [\overline{f}] = [c_{x_0}] = [\overline{f}] \ast [f]$ where $\overline{f}$ is the ***inverse path*** of $f$ definfed by $\overline{f}(s) = f(1-s), \forall s \in I$.
 
 Hence, $\langle \pi_1(X, x_0), \ast \rangle$ forms a group, called the ***fundamental group*** of $X$ at the ***base point*** $x_0$.
+
+**(iv)** If $X$ is path-connected, then $\pi_1(X, x_0) \cong \pi_1(X, x_1), \forall x_0, x_1 \in X$. In this case, we denote $\pi_1(X,x_0)$ by $\pi_1(X)$. If $\pi_1(X)$ is the trivial group, then $X$ is said to be ***simply connected***.
 
 $x_0$부터 $x_1$까지의 경로들의 공간 
 
@@ -164,6 +166,112 @@ by showing $(f \ast g) \ast h \simeq_p f \ast (g \ast h)$. Define $F : I \times 
 $$F(s, t) = \begin{cases}
 f(4s) & s \in \left[ 0, \frac{1}{4} \right]
 \end{cases}$$
+
+**(iv)** Let $x_0, x_1 \in X$. Since $X$ is path-connected, there is a path $\alpha: I \to X$ from $\x_0$ to $x_1$. We define a map $\hat{\alpha} : \pi_1(X, x_0) \to \pi_1(X, x_1)$ by
+
+$$\hat{\alpha}([f]) = [\bar{\alpha} \ast f \ast \alpha], \forall [f] \in \pi_1(X, x_0)$$
+
+where $\bar{\alpha}(t) = \alpha(1-t), \forall t \in I$, which is the inverse path of $\alpha$. Clearly $\hat{\alpha}$ is well-defined.
+
+Fisrt, $\hat{\alpha}$ is a homomorphism because
+
+$$\begin{align*}
+\hat{\alpha}([f] \ast [g]) &= \hat{\alpha}([f \ast g]) \\
+&= [\bar{\alpha} \ast (f \ast g) \ast \alpha] \\
+&= [\bar{\alpha} \ast f \ast c_{x_0} \ast g \ast \alpha] \\
+&= [(\bar{\alpha} \ast f \ast \alpha) \ast (\bar{\alpha} \ast g \ast \alpha)] \\
+&= [\bar{\alpha} \ast f \ast \alpha] \ast [\bar{\alpha} \ast g \ast \alpha] \\
+&= \hat{\alpha}([f]) \ast \hat{\alpha}([g]), \forall [f], [g] \in \pi_1(X, x_0).
+\end{align*}$$
+
+Next, $\hat{\alpha}$ is bijective because if we define a function $\hat{\beta} : \pi_1(X, x_1) \to \pi_1(X, x_0)$ by
+
+$$\hat{\beta}([h]) = [\alpha \ast h \ast \bar{\alpha}], \forall [h] \in \pi_1(X, x_1),$$
+
+then we have
+
+$$\begin{align*}
+\hat{\alpha}(\hat{\beta}[h]) &= \hat{\alpha}([\alpha \ast h \ast \bar{\alpha}]) \\
+&= [\bar{\alpha} \ast (\alpha \ast h \ast \bar{\alpha}) \ast \alpha] \\
+&= [h] \\
+&= \mathrm{id}_{\pi_1(X, x_0)}([h]), \forall [h] \in \pi_1(X, x_1)
+\end{align*}$$
+
+which means that $\hat{\alpha} \circ \hat{\beta} = \mathrm{id}_{\pi_1(X, x_1)}$, and similarly $\hat{\beta} \circ \hat{\alpha} = \mathrm{id}_{\pi_1(X, x_0)}$. Hence, $\hat{\beta}$ is the inverse of $\hat{\alpha}$, so $\hat{\alpha}$ is an bijective.
+
+Therefore, $\hat{\alpha}$ is an isomorphism, so $\pi_1(X, x_0) \cong \pi_1(X, x_1)$. $\blacksquare$
+:::
+
+## Theorem 2
+**(i)** Let $h: (X, x_0) \to (Y, y_0)$ be a continuous map with $h(x_0) = y_0$. The map $h_\ast : \pi_1(X, x_0) \to \pi_1(Y, y_0)$ defined by 
+
+$$h_\ast([f]) = [h \circ f], \forall [f] \in \pi_1(X, x_0)$$
+
+is a group homomorphism, and it is called the ***induced homomorphism*** of $h$.
+
+**(ii)** If $h: (X, x_0) \to (Y, y_0)$ and $k: (Y, y_0) \to (Z, z_0)$ are continuous maps with $h(x_0) = y_0$ and $k(y_0) = z_0$, then $(k \circ h)_\ast = k_\ast \circ h_\ast$.
+
+**(iii)** If $\mathrm{id}: (X, x_0) \to (X, x_0)$ is the identity map, then $\mathrm{id}_\ast$ is the identity homomorphism on $\pi_1(X, x_0)$.
+
+**(iv)** If $h: (X, x_0) \to (Y, y_0)$ is a homeomorphism, then $h_\ast: \pi_1(X, x_0) \to \pi_1(Y, y_0)$ is an isomorphism. That is, the fundamental group is a topological invariant.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+**(i)** First, we will show that $h_\ast$ is well-defined. If $f \overset{F}{\simeq} f'$ for two loops $f, f'$ based at $x_0$, then we have
+
+$$\begin{align*}
+(h \circ F)(s, 0) = h(f(s)) = (h \circ f)(s) \quad &\text{and} \quad (h \circ F)(s, 1) = h(f'(s)) = (h \circ f')(s) \\
+(h \circ F)(0, t) = h(x_0) = y_0 \quad &\text{and} \quad (h \circ F)(1, t) = h(x_0) = y_0,
+\end{align*}$$
+
+which means that $h \circ F$ is a path homotopy between loops $h \circ f$ and $h \circ f'$ based at $y_0$. Thus,
+
+$$\begin{align*}
+h_\ast([f]) &= [h \circ f] \\
+&= [h \circ f'] \\
+h_\ast([f']),
+\end{align*}$$
+
+so $h_\ast$ is well-defined.
+
+Next, we will show that $h_\ast$ is a homomorphism. For $[f], [g] \in \pi_1(X, x_0)$, $h \circ f$ and $h \circ g$ are loops based at $y_0$. Then $(h \circ f) \ast (h \circ g)$ is also a loop based at $y_0$ given by
+
+$$[(h \circ f) \ast (h \circ g)](s) = \begin{cases}
+(h \circ f)(2s) & s \in \left[ 0, \frac{1}{2} \right] \\
+(h \circ g)(2s-1) & s \in \left[ \frac{1}{2}, 1 \right].
+\end{cases}$$
+
+On the other hands, it is simply given by $h \circ (f \ast g)$, so $h \circ (f \ast g) = (h \circ f) \ast (h \circ g)$. Hence, we have
+
+$$\begin{align*}
+h_\ast([f] \ast [g]) &= h_\ast([f \ast g]) \\
+&= [h \circ (f \ast g)] \\
+&= [(h \circ f) \ast (h \circ g)] \\
+&= [h \circ f] \ast [h \circ g] \\
+&= h_\ast([f]) \ast h_\ast([g]),
+\end{align*}$$
+
+which means that $h_\ast$ is a homomorphism.
+
+**(ii)** Let $[f] \in \pi_1(X, x_0)$. Then
+
+$$\begin{align*}
+(k \circ h)_\ast([f]) &= [(k \circ h) \circ f] \\
+&= [k \circ (h \circ f)] \\
+&= k_\ast(h \circ f) \\
+&= k_\ast (h_\ast([f])) \\
+&= (k_\ast \circ h_\ast)([f]).
+\end{align*}$$
+
+**(iii)** Note that $\mathrm{id}_\ast([f]) = [\mathrm{id} \circ f] = [f], \forall [f] \in \pi_1(X, x_0)$.
+
+**(iv)** Since $h$ is a homeomorphism, the inverse $h^{-1}$ of $h$ is a continuous map. Then we have
+
+$$\begin{align*}
+&h_\ast \circ (h^{-1})_\ast = (h \circ h^{-1})_\ast = (\mathrm{id}_Y)_\ast \\
+&(h^{-1})_\ast \circ h_\ast = (h^{-1} \circ h)_\ast = (\mathrm{id}_X)_\ast,
+\end{align*}$$
+
+which means that $(h^{-1})_\ast$ is the inverse of $h_\ast$. Hence, $h_\ast$ is an isomorphism. $\blacksquare$
 :::
 
 # Reference

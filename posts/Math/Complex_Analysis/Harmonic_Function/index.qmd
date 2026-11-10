@@ -1,22 +1,37 @@
 ---
 title: "Harmonic Function"
 author: "Youmin Chun"
-date: "2026-07-24 00:00:15"
-description: "조화함수와 복소해석학에서 해석함수와의 관계를 소개한다."
+date: "2026-11-10 00:00:01"
+description: "복소해석학을 이용해 조화함수(Harmonic Function)의 성질을 공부하고, 이를 이용해 라플라스 방정식 $\Delta u = 0$을 푸는 방법을 소개한다."
 categories: 
   - Math > Complex Analysis
 ---
 
-## Definition
-A real-valued function $H$ of two-variables $x$ and $y$ is said to be ***harmonic*** in a domain $D$ if $H$ has a continuous first and second partial derivatives in $D$ and satisfies ***Laplace's equation***
+# Harmonic Function
+## Definition 1
+**(i)** For a domain $D \subset \mathbb{R}^2$, a function $H: D \to \mathbb{R}$ is said to be ***harmonic*** in $D$ if $H \in C^2(D)$ and it satisfies ***Laplace's equation***
 
 $$\Delta H = H_{xx} + H_{yy} = 0$$
 
+**(ii)** Let $u, v : D \to \mathbb{R}$ be harmonic functions in $D$ satisfying the Cauchy-Riemann equations
+
+$$u_x = v_y \quad \text{and} \quad u_y = -v_x$$
+
+in $D$. Then $v$ is said to be a ***harnomic conjugate*** of $u$.
+
+쉽게 말해 라플라스 방정식의 해를 조화함수라고 부른다. 특별히 아래 정리에서 볼 수 있는 것처럼 해석함수의 실수부와 허수부 함수는 모두 조화함수이다. 한편 해석함수는 코시-리만 방정식을 항상 만족하는데, 코시-리만 방정식의 형태가 일종의 켤레 관계에 있는 것처럼 볼 수 있기에 조화함수이면서 코시-리만 방정식을 만족하는 두 함수의 관계를 ***harmonic conjugate***라고 부른다. 이때 코시-리만 방정식의 형태에 맞도록 $u$와 $v$의 순서를 정해주어야 하고, 일반적으로 harmonic conjugate은 유일하지 않음을 주의하자.
+
 ## Theorem 1
-Let $f(z) = u(x, y) + i v(x, y)$ be an analytic function in $D$. Then $u$ and $v$ are harmonic in $D$.
+For a domain $D \subset \mathbb{C}$, let $f: D \to \mathbb{C}$ be a complex function. We denote $f(z) = u(x, y) + iv(x, y)$ for $z = x+ iy$.
+
+**(i)** Suppose that $f(z) = u(x, y) + i v(x, y)$ is analytic in $D$. Then $u$ and $v$ are harmonic in $D$.
+
+**(ii)** $f(z) = u(x, y) + iv(x, y)$ is analytic in $D$ $\iff$ $v$ is a harmonic conjugate of $u$.
+
+**(iii)** If a harmonic function $u(x, y)$ is defined on a simply connected domain $D$, it always has a harmonic conjugate $v(x, y)$ in $D$.
 
 ### Proof
-Since $f$ is analytic in $D$, the all order partial derivatives of $u$ and $v$ exist and continuous. By the Cauchy-Riemann equation 
+**(i)** Since $f$ is analytic in $D$, the all order partial derivatives of $u$ and $v$ exist and continuous. By the Cauchy-Riemann equation 
 
 $$\begin{cases}
 u_x = v_y \\
@@ -30,7 +45,46 @@ u_{xx} = v_{yx} \\
 u_{yy} = -v_{xy}
 \end{cases}$$
 
-Since $v_{yx} = v_{xy}$, we have $\Delta u = u_{xx} + u_{yy} = 0$. Similarly, we have $\Delta v = v_{xx} + v_{yy} = 0$. Thus $u$ and $v$ are harmonic in $D$. $\blacksquare$
+Since $v_{yx} = v_{xy}$, we have $\Delta u = u_{xx} + u_{yy} = 0$. Similarly, we have $\Delta v = v_{xx} + v_{yy} = 0$. Thus $u$ and $v$ are harmonic in $D$. 
+
+**(ii)** $(\implies)$ It follows directly from **(i)**.
+
+$(\impliedby)$ Suppose that $v$ is a harmonic conjugate of $u$. Then $u$ and $v$ are harmonic in $D$ and they satisfy the Cauchy-Riemann equation in $D$. It follows that $f(z) = u(x, y) + iv(x, y)$ is analytic in $D$. $\blacksquare$
+
+## Example 1
+**(i)** Note that $f(z) = z^2$ is entire and if we write $z = x+iy$ and $u(x, y) = x^2 - y^2, v(x, y) = 2xy$, then $f(z) = x^2 - y^2 + i(2xy)$ and $v$ is a harmonic conjugate of $u$. However, $u$ is not a harmonic conjugate of $v$, because $g(z) = 2xy + i(x^2 - y^2)$ satisfies the Cauchy-Riemann equation only at the origin, so it is not analytic anywhere.
+
+**(ii)** Note that $u(x, y) = 2x(1-y)$ is harmonic in $\mathbb{R}^2$. To find a harmonic conjugate $v$ of $u$, we solte the Cauchy-Riemann equation:
+
+$$\begin{cases}
+v_y = u_x = 2(1-y) \\
+v_x = -u_y = 2x
+\end{cases}$$
+
+Then we obtain $v(x, y) = x^2 + 2y - y^2 + C$ for an arbitrary real constant $C$.
+
+# Transformations of Harmonic Functions
+어떤 라플라스 방정식 $\Delta u = 0$이 적당한 경계조건과 함께 주어졌다고 하자. 즉 $u(x, y)$는 조화함수이다. 이때 정리 1 **(iii)**에서 본 바와 같이 정의역이 단순 연결 영역으로 주어진다면 항상 조화함수 $u(x, y)$의 conjugate $v(x, y)$를 찾을 수 있고, 이를 통해 해석함수 $f(z) = u(x, y) + iv(x, y)$를 구성할 수 있다. 이를 통해 복소해석학의 여러 툴들을 사용할 수 있고, 특별히 다루기 까다로운 정의역을 등각사상과 같은 변환들을 통해 다루기 편한 영역으로 바꿀 수 있다는 점에서 복소해석학은 편미분방정식을 푸는데 좋은 도구가 될 수 있다.
+
+## Theorem 2
+Suppose that
+
+**(i)** an analytic function $w = f(z) = u(x, y) + i v(x, y)$ maps a domain $D_z$ in the $z$ plane onto a domain $D_w$ in the $w$ plane.
+
+**(ii)** $h(u, v)$ is a harmonic function defined on $D_w$.
+
+Then the function $H(x, y) = h[u(x, y), v(x, y)]$ is harmonic in $D_z$.
+
+여기서 함수 $f$는 등각사상과 같은 역할을 하고, $h$는 옮긴 영역에서 구할 해의 역할을 한다. 이 두 함수를 합성해서 실수부만을 취해주면 원래 영역에서의 해를 구할 수 있다.
+
+### Proof
+We first prove the theorem for the case in which the domain $D_w$ is simply connected. By Theorem 1 **(iii)**, there is a harmonic conjugate $g(u, v)$ of $h(u, v)$. Then the function
+
+$$\Phi(w) = h(u, v) + i g(u, v)$$
+
+is analytic in $D_w$. Since $f(z)$ is analytic in $D_z$, $\Phi(f(z))$ is analytic in $D_z$. Thus, the real part $h[u(x, y), v(x, y)]$ of this function is harmonic in $D_z$.
+
+Now, suppose that $D_w$ is not simply connected. Note that each point $w_0$ in $D_w$ has a neighborhood $\vert w - w_0 \vert < \varepsilon$ lying entirely in $D_w$. Since that neighbhorhood is simply connected, we can consider an analytic function of the form $\Phi(w) = h(u, v) + i g(u, v)$ in it. Furthermore, since $f$ is continuous at a point $z_0$ in $D_z$ with $f(z_0) = w_0$, there is a neighborhood $\vert z-z_0 \vert < \delta$ whose image is contained in the neighborhood $\vert w - w_0 \vert < \varepsilon$. Hence, the composition $\Phi(f(z))$ is analytic in the neighborhood $\vert z - z_0 \vert < \delta$, and $h[u(x, y), v(x, y)]$ is harmonic there. Since $w_0$ is arbitarily chosen in $D_w$ and $f$ maps $D_z$ onto $D_w$, $h[u(x, y), v(x, y)]$ is harmonic throughout $D_z$. $\blacksquare$
 
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

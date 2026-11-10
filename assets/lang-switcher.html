@@ -277,6 +277,11 @@
     localStorage.setItem('mathastro_lang', targetLang);
     setTransCookie(targetLang);
 
+    // Notify listeners of language change (e.g. Knowledge Tree, custom components)
+    try {
+      window.dispatchEvent(new CustomEvent('mathastro-lang-changed', { detail: { lang: targetLang } }));
+    } catch(e) {}
+
     // Update active class on buttons
     var btns = document.querySelectorAll('.lang-btn');
     for (var i = 0; i < btns.length; i++) {

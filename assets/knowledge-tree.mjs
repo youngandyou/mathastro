@@ -1,11 +1,31 @@
 // The complete Quarto listing is the source of truth, including paginated posts.
 const separator = /\s*(?:>|\/|::)\s*/;
 const fields = [
-  { key: "Math", label: "수학", color: "math", symbol: "math" },
-  { key: "Astronomy", label: "천문학", color: "astro", symbol: "astronomy" },
-  { key: "Physics", label: "물리학", color: "physics", symbol: "physics" },
-  { key: "Computer", label: "컴퓨터 과학", color: "cs", symbol: "computer" }
+  { key: "Math", label: "수학", labelEn: "Mathematics", color: "math", symbol: "math" },
+  { key: "Astronomy", label: "천문학", labelEn: "Astronomy", color: "astro", symbol: "astronomy" },
+  { key: "Physics", label: "물리학", labelEn: "Physics", color: "physics", symbol: "physics" },
+  { key: "Computer", label: "컴퓨터 과학", labelEn: "Computer Science", color: "cs", symbol: "computer" }
 ];
+
+export function currentLang() {
+  if (typeof localStorage !== "undefined" && localStorage.getItem("mathastro_lang") === "en") return "en";
+  if (typeof document !== "undefined") {
+    if (document.documentElement.classList.contains("translated-ltr") || document.body?.classList.contains("translated-ltr")) {
+      return "en";
+    }
+    const match = document.cookie.match(/(?:^|;\s*)googtrans=\/ko\/([a-z]{2})/);
+    if (match && match[1] === "en") return "en";
+  }
+  return "ko";
+}
+
+export function getNodeLabel(node, isEn, editorial = {}) {
+  if (!isEn) return editorial.labels?.[node.key] || node.label || node.key;
+  if (node.key === "Math") return "Mathematics";
+  if (node.key === "Computer") return "Computer Science";
+  if (node.key === "Radio Software") return "Radio Software";
+  return editorial.labelsEn?.[node.key] || node.key;
+}
 
 export function buildCatalog(posts, editorial = {}) {
   const roots = new Map();
@@ -45,11 +65,16 @@ export function orderedPosts(node, editorial = {}) {
   return [...new Map(posts.map(post => [post.href, post])).values()];
 }
 
-export function learningStages(posts) {
+export function learningStages(posts, lang = "ko") {
+  const isEn = lang === "en";
   const count = posts.length > 8 ? 3 : posts.length > 3 ? 2 : 1;
-  const names = count === 1 ? ["첫 개념부터 차근차근"]
+  const namesKo = count === 1 ? ["첫 개념부터 차근차근"]
     : count === 2 ? ["기초 다지기", "개념 넓히기"]
-    : ["기초 다지기", "개념 연결하기", "심화 탐구하기"];
+      : ["기초 다지기", "개념 연결하기", "심화 탐구하기"];
+  const namesEn = count === 1 ? ["From First Principles"]
+    : count === 2 ? ["Foundations", "Broadening Concepts"]
+      : ["Foundations", "Connecting Concepts", "Advanced Explorations"];
+  const names = isEn ? namesEn : namesKo;
   return names.map((name, index) => ({
     name, posts: posts.slice(Math.ceil(posts.length / count) * index,
       Math.ceil(posts.length / count) * (index + 1))
@@ -81,6 +106,37 @@ const symbols = {
   astronomy: '<ellipse cx="40" cy="40" rx="34" ry="13" transform="rotate(-30 40 40)"/><circle cx="40" cy="40" r="20"/><circle cx="63" cy="25" r="4" class="symbol-dot"/><path d="M17 12v10 M12 17h10 M62 57v10 M57 62h10"/>',
   physics: '<ellipse cx="40" cy="40" rx="32" ry="12"/><ellipse cx="40" cy="40" rx="32" ry="12" transform="rotate(60 40 40)"/><ellipse cx="40" cy="40" rx="32" ry="12" transform="rotate(120 40 40)"/><circle cx="40" cy="40" r="4" class="symbol-dot"/>',
   computer: '<path d="m21 24-14 16 14 16 M59 24l14 16-14 16 M46 17 34 63"/><path d="M7 7h15 M7 7v15 M73 58v15H58" opacity=".4"/>'
+};
+
+const i18n = {
+  ko: {
+    exploreDeeper: "조금 더 깊이 들여다볼까요?",
+    allFields: "← 전체 분야",
+    changeTopic: "← 주제 다시 고르기",
+    pathSuffix: " 추천 학습 경로",
+    draftNote: "추천 경로 초안 · 기초에서 심화로 이어지도록 구성했으며, 학습 순서는 계속 다듬어집니다.",
+    viewAllPosts: "이 주제의 글 모아보기",
+    readFirstPost: "첫 글부터 읽기 ↗",
+    launchPrompt: "클릭하여 여러분의 지식을 확장해보세요!",
+    launchAction: "지식 여행하기",
+    statusMap: (label, count) => `${label}, ${count}개의 글을 추천 순서로 표시합니다.`,
+    statusTopics: (label, count) => `${label}, ${count}개의 주제를 살펴보세요.`,
+    statusFields: "네 가지 학문 중 관심 있는 학문을 고르세요."
+  },
+  en: {
+    exploreDeeper: "Explore deeper into topics",
+    allFields: "← All Fields",
+    changeTopic: "← Change Topic",
+    pathSuffix: " Suggested Learning Path",
+    draftNote: "Draft Suggested Path · Structured from foundations to advanced topics, sequence refined continuously.",
+    viewAllPosts: "View all posts on this topic",
+    readFirstPost: "Read from first article ↗",
+    launchPrompt: "Click to expand and explore your knowledge!",
+    launchAction: "Begin Journey",
+    statusMap: (label, count) => `${label}: displaying ${count} articles in recommended sequence.`,
+    statusTopics: (label, count) => `${label}: explore ${count} topics.`,
+    statusFields: "Choose a field of interest among the four disciplines."
+  }
 };
 
 function el(tag, className, text) {
@@ -140,46 +196,49 @@ function setup() {
     }
   }
 
-  function renderFields() {
+  function renderFields(isEn) {
     const cards = el("div", "knowledge-fields");
     fields.forEach(item => {
       const card = button("", "knowledge-field knowledge-color-" + item.color, () => navigate(item));
       card.dataset.field = item.key;
       card.disabled = !catalog.get(item.key)?.posts.size;
-      card.append(icon(item.symbol), el("span", "knowledge-field-name", item.label));
+      const label = isEn ? (item.labelEn || item.key) : item.label;
+      card.append(icon(item.symbol), el("span", "knowledge-field-name", label));
       cards.append(card);
     });
     content.append(cards);
   }
 
-  function renderTopics() {
+  function renderTopics(isEn, t) {
     const toolbar = el("div", "knowledge-toolbar");
-    toolbar.append(el("h3", "knowledge-picker-title", "조금 더 깊이 들여다볼까요?"),
-      button("← 전체 분야", "knowledge-back", () => navigate(null)));
+    toolbar.append(el("h3", "knowledge-picker-title", t.exploreDeeper),
+      button(t.allFields, "knowledge-back", () => navigate(null)));
     const cards = el("div", "knowledge-topics");
     topics().forEach(node => {
       const card = button("", "knowledge-topic", () => navigate(field, node));
       card.dataset.topic = node.path;
-      card.append(node.label + " ", el("span", "knowledge-topic-count", "(" + node.posts.size + ")"));
+      const topicName = getNodeLabel(node, isEn, editorial);
+      card.append(topicName + " ", el("span", "knowledge-topic-count", "(" + node.posts.size + ")"));
       cards.append(card);
     });
     content.append(toolbar, cards);
   }
 
-  function renderMap() {
+  function renderMap(isEn, t) {
     const ordered = orderedPosts(topic, editorial);
-    const stages = learningStages(ordered);
+    const stages = learningStages(ordered, isEn ? "en" : "ko");
     const toolbar = el("div", "knowledge-toolbar");
-    toolbar.append(button("← 주제 다시 고르기", "knowledge-back", () => navigate(field)),
-      button("← 전체 분야", "knowledge-back", () => navigate(null)));
+    toolbar.append(button(t.changeTopic, "knowledge-back", () => navigate(field)),
+      button(t.allFields, "knowledge-back", () => navigate(null)));
     content.append(toolbar);
 
+    const topicLabel = getNodeLabel(topic, isEn, editorial);
     const map = el("div", "knowledge-map");
     map.setAttribute("role", "region");
-    map.setAttribute("aria-label", topic.label + " 추천 학습 경로");
+    map.setAttribute("aria-label", topicLabel + t.pathSuffix);
     map.tabIndex = 0;
     const root = el("div", "knowledge-map-root");
-    root.append(el("h3", "knowledge-root-title", topic.label));
+    root.append(el("h3", "knowledge-root-title", topicLabel));
     map.append(root);
 
     const branches = el("div", "knowledge-branches");
@@ -201,7 +260,10 @@ function setup() {
         const leaf = post.categories.find(path => path === topic.path || path.startsWith(topic.path + " > "))
           ?.split(separator).at(-1);
         body.append(el("span", "knowledge-post-title", post.title));
-        if (leaf && leaf !== topic.key) body.append(el("span", "knowledge-post-category", editorial.labels?.[leaf] || leaf));
+        if (leaf && leaf !== topic.key) {
+          const leafLabel = isEn ? (leaf === "Math" ? "Mathematics" : leaf) : (editorial.labels?.[leaf] || leaf);
+          body.append(el("span", "knowledge-post-category", leafLabel));
+        }
         const indicator = el("span", "knowledge-post-number", String(number).padStart(2, "0"));
         indicator.setAttribute("aria-hidden", "true");
         link.append(indicator, body, el("span", "knowledge-post-arrow", "↗"));
@@ -212,28 +274,46 @@ function setup() {
       branch.append(heading, list);
       branches.append(branch);
     });
-    map.append(branches, el("p", "knowledge-draft-note",
-      "추천 경로 초안 · 기초에서 심화로 이어지도록 구성했으며, 학습 순서는 계속 다듬어집니다."));
+    map.append(branches, el("p", "knowledge-draft-note", t.draftNote));
     content.append(map);
 
     const actions = el("div", "knowledge-map-actions");
-    const all = el("a", "knowledge-all-posts", "이 주제의 글 모아보기");
+    const all = el("a", "knowledge-all-posts", t.viewAllPosts);
     all.href = "#category=" + encodeURIComponent(topic.path);
-    const start = el("a", "knowledge-start", "첫 글부터 읽기 ↗");
+    const start = el("a", "knowledge-start", t.readFirstPost);
     start.href = ordered[0]?.href || all.href;
     actions.append(all, start);
     content.append(actions);
   }
 
+  function updateLaunchTexts(isEn, t) {
+    if (!launch) return;
+    const promptEl = launch.querySelector(".knowledge-launch-prompt");
+    const actionEl = launch.querySelector(".knowledge-launch-action");
+    if (promptEl) promptEl.textContent = t.launchPrompt;
+    if (actionEl) {
+      const svg = actionEl.querySelector("svg");
+      actionEl.textContent = t.launchAction + " ";
+      if (svg) actionEl.append(svg);
+    }
+  }
+
   function render() {
+    const isEn = currentLang() === "en";
+    const t = i18n[isEn ? "en" : "ko"];
+    updateLaunchTexts(isEn, t);
+
     content.replaceChildren();
     hero.dataset.view = topic ? "map" : field ? "topics" : "fields";
     hero.className = "knowledge-tree" + (field ? " knowledge-color-" + field.color : "");
-    if (topic) renderMap();
-    else if (field) renderTopics();
-    else renderFields();
-    status.textContent = topic ? topic.label + ", " + topic.posts.size + "개의 글을 추천 순서로 표시합니다."
-      : field ? field.label + ", " + topics().length + "개의 주제를 살펴보세요." : "네 가지 학문 중 관심 있는 학문을 고르세요.";
+    if (topic) renderMap(isEn, t);
+    else if (field) renderTopics(isEn, t);
+    else renderFields(isEn, t);
+
+    const fieldLabel = field ? (isEn ? (field.labelEn || field.key) : field.label) : "";
+    const topicLabel = topic ? getNodeLabel(topic, isEn, editorial) : "";
+    status.textContent = topic ? t.statusMap(topicLabel, topic.posts.size)
+      : field ? t.statusTopics(fieldLabel, topics().length) : t.statusFields;
   }
 
   launch.addEventListener("click", () => {
@@ -243,6 +323,16 @@ function setup() {
   });
   hero.dataset.view = "entry";
   launch.hidden = false;
+
+  // React to language switches dynamically
+  window.addEventListener("mathastro-lang-changed", () => render());
+  window.addEventListener("storage", e => {
+    if (e.key === "mathastro_lang") render();
+  });
+
+  // Initial render of launch texts according to current language
+  const isEn = currentLang() === "en";
+  updateLaunchTexts(isEn, i18n[isEn ? "en" : "ko"]);
 }
 
 if (typeof document !== "undefined") {

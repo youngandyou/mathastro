@@ -265,7 +265,7 @@ Let $R$ be a commutative ring with identity. Then $R$ is a ***Noetherian ring***
 ## Definition 5
 An integral domain $D$ is called a ***unique factorization domain (UFD)*** if the following conditions are satisfied:
 
-**(i)** Every nonzero nonunit element of $D$ can be factores into a finite product of irreducible elements in $D$.
+**(i)** Every nonzero nonunit element of $D$ can be factored into a finite product of irreducible elements in $D$.
 
 **(ii)** If $p_1 \cdots p_r$ and $q_1 \cdots q_s$ are two factorizations of the same element if $D$ into irreducible elements, then $r=s$ and there is some renumbering of the factors so that $p_i \approx q_i, \forall i \in \{ 1, \dots, r \}$.
 
@@ -274,7 +274,148 @@ An integral domain $D$ is called a ***unique factorization domain (UFD)*** if th
 ## Theorem 5
 **(i)** Every PID is a UFD.
 
+**(ii)** **(Fundamental Theorem of Arithemetric)** $\mathbb{Z}$ is a UFD.
+
+**(iii)** Let $D$ be a UFD. Then $p$ is irreducible in $D$ $\iff$ $p$ is prime in $D$.
+
 ::: {.callout-note title="Proof" icon=false collapse="true"}
+**(i)**
+
+**(ii)** Since $\mathbb{Z}$ is a PID, it is a UFD by **(i)**.
+
+**(iii)**
+:::
+
+# gcd
+## Definition 6
+- Let $R$ be a commutative ring with identity, and let $a_1, \dots, a_n, d \in R \setminus \{ 0 \}$.
+
+**(i)** $d$ is called a ***common divisor*** of $a_1, \dots, a_n$ if $d \vert a_i, \forall i \in \{ 1, \dots, n \}$.  
+
+**(ii)** $d$ is called a ***greatest common divisor (gcd)*** of $a_1, \dots, a_n$, denoted by $\gcd(a_1, \dots, a_n)$, if it satisfies the following conditions:
+
+1. $d$ is a common divisor of $a_1, \dots, a_n$.
+
+2. If $r \in R$ is a common divisor of $a_1, \dots, a_n$, then $r \vert d$.
+
+- Let $D$ be a UFD, and let $f(x) = a_0 + \cdots + a_nx^n$ be a nonzero polynomial in $D[x]$.
+
+**(iii)** We call $\gcd(a_0, \dots, a_n)$ a ***content*** of $f(x)$, denoted by $c(f)$ or $c(f(x))$. If $f(x) = c \in D$, then $c(f) := c$.
+
+**(iv)** $f(x)$ is said to be ***primitive*** if $c(f)$ is a unit.
+
+정수에서와 비슷한 센스로 정의하지만 항상 순서 관계를 줄 수 있는 것은 아니다. 때문에 최대공약수의 경우 그 크기가 최대라는 의미보다는 약수의 개수가 최대라는 의미로 이해할 수 있다.
+
+또한 관사에서 알 수 있듯이 일반적인 환의 경우 최대공약수는 유일할 필요도 없고, 항상 존재할 필요도 없다. 그러면 $\gcd(a_1, \dots, a_n)$과 같이 기호를 쓸 수가 없는데, 실제로는 단위원을 곱한 경우에 한해서 정의됨을 보일 수 있다. 아래 Remark에 적어둔 것처럼, 최대공약수들은 모두 단위원만큼만 차이가 난다. 예컨대 정수 $3, 6$의 최대공약수는 $3$인데, 정수환에서 단위원은 $1, -1$이므로 일반적으로는 $3$과 $-3$모두 최대공약수로 택할 수 있다는 뜻이다. 그리고 $3$과 $-3$은 단위원 $-1$만큼 차이가 나고, 이 차이만큼 나는 경우를 같은 경우로 본다면 최대공약수 $\gcd(3, 6)$은 잘 정의된다. 같은 맥락에서 content $c(f)$도 잘 정의할 수 있다.
+
+## Remark 2
+**(i)** Let $D$ be an integral domain, and let $a_1, \dots, a_n$ be nonzero elements in $D$. Suppose that $\gcd(a_1, \dots, a_n)$ exists. Then $c$ is a gcd of $a_1, \dots, a_n$ $\iff$ $c \sim \gcd(a_1, \dots a_n)$.
+
+**(ii)** Let $D$ be a UFD, and let $f(x)$ be a nonzero polynomial in $D[x]$. Then $c$ is a content of $f(x)$ $\iff$ $c \sim c(f)$.
+
+**(iii)** Let $D$ is a UFD (so also PID), and let $a_1, \dots, a_n$ be nonzero elements in $D$. Then $\gcd(a_1, \dots, a_n)$ exists.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+**(i)** $(\implies)$ Since $c$ is a gcd of $a_1, \dots, a_n$, $c \vert a_i, \forall i \in \{ 1, \dots, n \}$, which means that $c$ is a common divisor. Then we obtain $c \vert \gcd(a_1, \dots, a_n)$. Similarly, we have $\gcd(a_1, \dots, a_n) \vert c$, so $c \sim \gcd(a_1, \dots, a_n)$.
+
+$(\impliedby)$ Suppose that $c \sim \gcd(a_1, \dots, a_n)$. Since $D$ is an integral domain, $c \approx \gcd(a_1, \dots, a_n)$. Then $\gcd(a_1, \dots, a_n) = cu$ for some unit $u \in D$. Then $c \vert a_i, \forall i \in \{ 1, \dots, n \}$.
+
+If $r$ is a common divisor of $a_1, \dots, a_n$, then $r \vert \gcd(a_1, \dots, a_n)$. Note that $c = \gcd(a_1, \dots, a_n)u^{-1}$. Then 
+
+$$r \vert \gcd(a_1, \dots, a_n)u^{-1} \implies r \vert c.$$
+
+Hence, $c$ is a gcd of $a_1, \dots, a_n$.
+
+**(ii)** It follows directly from **(i)**.
+
+**(iii)** If there is a unit $a_i$ among $a_1, \dots, a_n$, then $a_i$ is a gcd of $a_1, \dots, a_n$.
+
+Suppose that all $a_i$'s are nonunit. Since $D$ is a UFD, each $a_i$ has a finite factorization into irreducible elements, unique up to order and associates. In the factorizations of $a_1, \dots, a_n$, choose one representative from each associate class of irreducible factors and absorb the resulting units into the unit coefficient of each factorization.
+
+If there is no common irreducible divisor of $a_1, \dots, a_n$, then we will show that $1$ is a gcd of $a_1, \dots, a_n$. If $d$ is a common divisor of $a_1, \dots, a_n$ which is nonunit, then $d$ has a irreducible facotr $p$. Then $p$ is a common divisor of $a_1, \dots, a_n$, which is a contradiction. Hence, $d$ is a unit, so $d \vert 1$. Therefore, $1$ is a gcd of $a_1, \dots, a_n$.
+
+Suppose that $a_1, \dots, a_n$ have common irreducible divisors, and let $p_1, \dots p_r$ be all common irreducible divisors of $a_1, \dots, a_n$ which are chosen in the above factorization. Note that $p_i \not \approx p_j, \forall i \neq j$. 
+
+For each $j = 1, \dots, r$, we choose the greatest positive integer $\alpha_j$ such that $p_j^{\alpha_j} \vert a_i, \forall i \in \{ 1, \dots, n\}$. Let
+
+$$d = p_1^{\alpha_1} \cdots p_r^{\alpha_r}.$$
+
+By above construction, $d$ is a common divisor of $a_1, \dots, a_n$. Let $c$ be a common divisor of $a_1, \dots, a_n$. If $c$ is a unit, then clearly $c \vert d$. Suppose that $c$ is nonunit, and $p$ is an irreducible factor of $c$. Since $p \vert c$ and $c \vert a_i, \forall i \in \{ 1, \dots, n \}$, $p$ is a common irreducible divisor of $a_1, \dots, a_n$, which implies that $p \approx p_j$ for some $j \in \{ 1, \dots, r \}$. Hence, we obtain
+
+$$c = up_1^{\beta_1} \cdots p_r^{\beta_r}$$
+
+for some unit $u in D$ and nonnegative integers $\beta_j$ with $0 \le \beta_j \le \alpha_j$ by the maximality of $\alpha_j$. Thus, $c \vert d$, which means that $d$ is a gcd of $a_1, \dots, a_n$. $\blacksquare$
+:::
+
+## Theorem 6
+Let $D$ be a UFD, and let $f(x), g(x)$ be a nonzero polynomial in $D[x]$.
+
+**(i)** Let $c \in D$. Then $c$ is a content of $f(x)$ $\iff$ $f(x) = cg(x)$ for some primitive polynomial $g(x) \in D[x]$.
+
+**(ii)** **(Gauss's Lemma)** A finite product of primitive polynomials in $D[x]$ is primitive.
+
+**(iii)** $c(fg) \sim c(f)c(g)$.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+**(i)** Write $f(x) = a_0 + \cdots + a_nx^n$.
+
+$(\implies)$ Suppose that $c$ is a content of $f(x)$. Then $a_i = cb_i$ for some $b_i \in D$ for each $i = 0, \dots, n$. Let $g(x) = b_0 + \cdots b_nx^n$. Then $f(x) = cg(x)$. We will show that $g(x)$ is primitive.
+
+Let $d$ be a content of $g(x)$. Then $d \vert b_i, \forall i \in \{ 1, \dots, n \}$, so $cd \vert a_i, \forall i \in \{ 1, \dots n \}$. Since $c$ is a content of $f(x)$, we have $cd \vert c$, so $d$ is a unit. Hence, $g(s)$ is primitive.
+
+$(\impliedby)$ Write $g(x) = b_0 + \cdots + b_nx^n$. Since $f(x) = cg(x)$, we have $a_i = cb_i, \forall i \in \{ 1, \dots, n\}$, so $c$ is a common divisor of $a_1, \dots, a_n$.
+
+Let $d$ be a content of $f(x)$. Then $c \vert d$, so $d = cs$ for some $s \in D$. We will show that $s$ is a unit. Note that $d \vert a_i$, so $cs \vert cb_i$. Then $s \vert b_i$, so $s \vert c(g)$. Since $g$ is primitive, $c(g)$ is a unit, which means that $s$ is a unit. Hence, $c \sim d$, so $c$ is a content of $f(x)$.
+
+**(ii)** Let $f_1(x), \dots f_n(x)$ be primitive polynomials in $D[x]$. 
+
+We use induction on $n$. Let $f_1(x) = a_0 + \cdots + a_nx^n$ and $f_2(x) = b_0 + \cdots + b_mx^m$, and let
+
+$$g(x) = f_1(x)f_2(x) = c_0 + \cdots + c_{n+m}x^{n+m}.$$
+
+Suppose that $g(x)$ is not primitive. Then there exists an irreducible element $p$ such that $p \mid c(g)$. Note that $p$ is also a prime element of $D$. Since $f_1(x)$ and $f_2(x)$ are primitive, we can find the least nonnegative integers $r$ and $s$ such that $p \nmid a_r$ and $p \nmid b_s$, which means that $p \mid a_i$ and $p \mid b_j$ for all $i \in \{ 1, \dots, r-1 \}$ and $j \in \{ 1, \dots, s_1 \}$. 
+
+Note that
+
+$$c_{r+s} = (a_0b_{r+s} + \cdots + a_{r-1}b_{s+1}) + a_rb_s + (a_{r+1}b_{s-1} + \cdots + a_{r+s}b_0).$$
+
+Also, note that
+
+$$p \mid (a_0b_{r+s} + \cdots + a_{r-1}b_{s+1}) \quad \text{and} \quad p \mid (a_{r+1}b_{s-1} + \cdots + a_{r+s}b_0).$$
+
+Since $p \mid c_{r+s}$, we must obtain $p \mid a_rb_s$, so $p \mid a_r$ or $p \mid b_s$ because $p$ is a prime element. This is a contradiction to the choice of $r$ and $s$, and therefore $g(x)$ is primitive.
+
+Suppose that the result holds for $n = m$ for some $m \ge 2$. Then $f_1(x) \cdots f_m(x)$ is primitive. Hence, $(f_1(x) \cdots f_m(x))f_{m+1}(x)$ is primitive, and therefore the induction is complete.
+
+**(iii)** First, we prove the case that $g(x)$ is constant, so $g(x) = d \in D$. Let $f(x) = a_0 + \cdots + a_nx^n$. Then $df(x) = da_0 + \cdots + da_nx^n$. Since $c(f) \mid a_i, \forall i \in \{ 1, \dots, n \}$, we have $dc(f) \mid da_i, \forall i \in \{ 1, \dots, n \}$. Thus, $dc(f) \mid c(df)$.
+
+Note that $d \mid da_i, \forall i \in \{ 1, \dots, n \}$, so $d \mid c(df)$. Then $c(df) = dt$ for some $t \in D$, so $dt \mid da_i, \forall i \in \{ 1, \dots, n\}$. Hence, $t \mid a_i, \forall i \in \{ 1, \dots, n \}$, so $dt \mid da_i, \forall i \in \{ 1, \dots, n \}$. Thus, $c(df) \mid dc(f)$, and therefore $c(df) \sim dc(f)$.
+
+Now, we will show that $c(fg) \sim c(f)c(g)$. By **(i)**, $f(x) = c(f)f_1(x)$ and $g(x) = c(g)g_1(x)$ for some primitive polynomials $f_1(x), g_1(x) \in D[x]$. Then $f(x)g(x) = c(f)c(g)f_1(x)g_1(x)$.
+
+Note that $c(fg) \sim c(f)c(g)c(f_1g_1)$ by the first case. Since $f_1(x), g_1(x)$ is primitive, $f_1(x)g_1(x)$ is also primitive by Gauss's Lemma. Hence, $c(f_1g_1)$ is a unit, so $c(fg) \sim c(f)c(g)$. $\blacksquare$
+:::
+
+# Bezout Domain
+## Definition 7
+An integral domain $D$ is called a ***Bézout domain*** if every finitely generated ideal is principal.
+
+이름부터 딱 베주 항등식과 연관이 있으리라 짐작할 수 있고, 실제로 아래 정리와 같이 정리할 수 있다.
+
+## Theorem
+**(i)** An integral domain $D$ is a Bézout domain $\iff$ for nonzero $a_1, \dots, a_n \in D$, there exists a gcd $d$ of $a_1, \dots, a_n$ such that $(d) = (a_1, \dots, a_n)$ and $d = a_1b_1 + \cdots + a_nb_n$ for some $b_1, \dots, b_n \in D$. 
+
+**(ii)** Every PID is a Bézout domain.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+### Proof
+**(i)** $(\implies)$ Suppose that $D$ is a Bézout domain. Then $(a_1, \dots, a_n) = (d)$ for some $d \in D$. Since $d \in (a_1, \dots, a_n)$, $d = a_1b_1 + \cdots + a_nb_n$ for some $b_1, \dots, b_n \in D$. 
+
+Since $a_i \in (d), \forall i \in \{ 1, \dots, n \}$, we have $d \mid a_i, \forall i \in \{ 1, \dots, n \}$. Let $c$ be a common divisor of $a_1, \dots, a_n$. Since $c \mid a_i, \forall i \in \{ 1, \dots, n \}$, $(d) = (a_1, \dots, a_n) \subset (c)$, so $c \mid d$. Hence, $d$ is a gcd of $a_1, \dots, a_n$.
+
+$(\impliedby)$ Since $d \mid a_i, \forall i \in \{ 1, \dots, n\}$, we have $(a_1, \dots, a_n) \subset (d)$. Since $d = a_1b_1 + \cdots + a_nb_n$ for some $b_1, \dots, b_n \in D$, $(d) \in (a_1, \dots, a_n)$, so $(a_1, \dots, a_n) = (d)$. Hence, $D$ is Bézout domain.
+
+**(ii)** Let $D$ be a PID. For $a_1, \dots, a_n \in D$, $(a_1, \dots, a_n)$ is an ideal of $D$. Hence, $(a_1, \dots, a_n) = (d)$ for some $d \in D$, and therefore $D$ is a Bézout domain. $\blacksquare$
 :::
 
 # Reference

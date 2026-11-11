@@ -1,0 +1,90 @@
+---
+title: "Gauss Elimination"
+author: "Youmin Chun"
+date: "2026-11-12 00:00:01"
+description: ""
+categories: 
+  - Math > Numerical Analysis
+---
+
+# Motivation
+다음과 같은 편미분방정식 문제
+
+$$\begin{cases}
+u_t = \alpha u_{xx} \\
+u(x, 0) = \phi(x) \\
+u(0, t) = f(t) \\
+u(1, t) = g(t)
+\end{cases} \quad \text{for } 0 < x < 1, t > 0$$
+
+를 생각해보자. 적당히 경계조건이 주어지면 손으로도 쉽게 풀 수 있는 문제이지만, 정의역의 격자를 나누어서 수치적으로 해석해보자. 공간 도메인을 $n$등분하고 공간과 시간 격자 간격을 각각 $\Delta x, \Delta t$라고 둘 때 $(x_i, t_j)$ 점에서 차분을 사용해서 미분방정식을 표현하면 다음과 같다.
+
+$$\frac{u_i^{j+1} - u_i^{j}}{\Delta t} = \alpha \frac{u_{i+1}^{j+1} + u_{i-1}^{j+1} - 2u_i^{j+1}}{(\Delta x)^2}$$
+
+여기서 $u^i_j = u(x_i, t_j)$으로 표기한다. 위 식을 정리하면 다음과 같다.
+
+$$\begin{align*}
+& \frac{u_i^{j+1} - u_i^{j}}{\Delta t} = \alpha \frac{u_{i+1}^{j+1} + u_{i-1}^{j+1} - 2u_i^{j+1}}{(\Delta x)^2} \\
+\implies & - \frac{1}{\Delta t} u_i^j = \frac{\alpha}{(\Delta x)^2} (u_{i+1}^{j+1} + u_{i-1}^{j+1} - 2u_i^{j+1}) - \frac{1}{\Delta t} u_i^{j+1} \\
+\implies & - \frac{1}{\Delta t} u_i^j = \frac{\alpha}{(\Delta x)^2} u^{j+1}_{i+1} - \left( \frac{1}{\Delta t} + \frac{2 \alpha}{(\Delta x)^2} \right) u^{j+1}_i + \frac{\alpha}{(\Delta x)^2} u^{j+1}_{i-1} \\
+\implies & B u^{j+1}_{i+1} A u^{j+1}_i + B u^{j+1}_{i-1} = P_i^j
+\end{align*}$$
+
+여기서
+
+$$A = - \left( \frac{1}{\Delta t} + \frac{2 \alpha}{(\Delta x)^2} \right), \quad B = \frac{\alpha}{(\Delta x)^2}, \quad P_i^n = - \frac{1}{\Delta t} u_i^n$$
+
+이다. 마지막 식을 모든 $i = 1, \dots, n-1$에 대하여 각각 나열하면 다음과 같이 선형 방정식 형태로 적을 수 있다.
+
+$$\underbrace{
+\begin{bmatrix}
+A & B      &        &        & 0 \\
+B & A      & B      &        &   \\
+  & \ddots & \ddots & \ddots &   \\
+  &        & B      & A      & B \\
+0 &        &        & B      & A
+\end{bmatrix}
+}_{(n-1)\times(n-1)}
+\begin{bmatrix}
+u_1^{j+1} \\
+u_2^{j+1} \\
+\vdots \\
+u_{n-2}^{j+1} \\
+u_{n-1}^{j+1}
+\end{bmatrix}
+=
+\begin{bmatrix}
+P_1^j - B f(t_{j+1}) \\
+P_2^j \\
+\vdots \\
+P_{n-2}^j \\
+P_{n-1}^j - B g(t_{j+1})
+\end{bmatrix}.$$
+
+가장 처음 시간 스텝인 $j=0$에서는 $u_i^0 = \phi \left(\frac{i}{n} \right)$이므로 모든 $i$에 대하여 $P_i^0$를 완전히 결정할 수 있고, 따라서 우변의 행벡터가 완전히 고정되므로 위 방정식을 풀어서 $u_1^1, \dots, u_{n-1}^1$을 얻는다. 이 정보를 가지고 다음 시간 스텝 $j=1$에서도 동일한 방정식을 풀 수 있고, 이런 식으로 반복해서 방정식을 풀어서 모든 격자에서의 함수값 $u_i^j$를 구할 수 있다. 따라서 방정식을 이산화해서 수치적으로 푸는 방법은 결국 선형 방정식 $Ax = b$를 푸는 문제로 귀결된다고 할 수 있고, 이는 자연스럽게 선형 방정식 $Ax = b$를 어떻게 가능한 한 빠르게 푸는지에 관한 논의로 이어진다. 이 포스트는 위와 같은 PDE 문제를 해결하기 위한 관점에서 선형 방정식을 계산하는 방법들을 소개한다.
+
+# LU Decomposition
+## Theorem 1
+Let $A$ be an invertible matrix. Then $A$ can be decomposed by upper and lower triangular matrices $U$ and $L$, i.e.,
+
+$$A = LU$$
+
+which is called the ***LU factoriazation*** of $A$.
+
+선형 방정식 $Ax = b$를 푸는 방법은 역행렬 $A^{-1}$를 계산하거나 $A$의 RREF를 구하는 가우스 소거법 등이 알려져 있는데, 모두 수치적으로는 꽤나 비용이 높은 방법들이다. 더군다나 우리는 각 시간 스텝 $j$마다 방정식을 반복해서 풀어야 하니 이 방법들로 편미분방정식을 푼다는 건 상당히 부담스러운 방법이다.
+
+한편 위에서 얻은 선형 방정식을 자세히 보면 우변이 시간 스텝 $j$에 의존하는 반면 계수 행렬은 모두 상수로 이루어져 있다. 이 점에 착안해서 우리는 LU 분해를 사용해서 연산 횟수를 줄이고자 한다.
+
+이산화한 열방정식을 $\mathbf{A}\mathbf{u}^{j+1} = \mathbf{P}^j$이라고 쓰고 $\mathbf{A} = LU$라고 두면 $LU\mathbf{u}^{j+1} = \mathbf{P}^j$을 얻는다. 이를 두 개의 방정식
+
+$$\begin{cases}
+Lz = \mathbf{P}^j \\
+U\mathbf{u}^{j+1} = z
+\end{cases}$$
+
+으로 나눌 수 있고, 우리는 이 두 개의 방정식을 풀어서 전체 식을 계산하려고 한다. 이렇게 두면 각 줄의 방정식은 계수 행렬이 삼각 행렬이므로 총 $\mathcal{O}(n^2)$의 계산 횟수가 필요하므로 (WHY?) 한 번의 시간 스텝에서 $\mathcal{O}(n^2)$ 만큼의 횟수가 필요하다고 볼 수 있다. 이를 필요한 시간 스텝만큼 반복하면 전체 격자에서 함수값을 계산할 수 있다.
+
+반면 이런 과정 없이 각 스텝마다 무작정 $\mathcal{O}(n^3)$의 횟수가 필요한 가우스 소거법을 적용하면 훨씬 많은 횟수의 계산을 필요로 한다. LU 분해법은 계수 행렬 $\mathbf{A}$가 시간 스텝에 대해 불변이라는 점에 착안해 처음 한 번만 분해를 해준 뒤 더 적은 횟수로 풀 수 있는 방정식 두 개로 분리한다는 점에서 가우스 소거법보다 더 유리하다.
+
+# Reference
+- K. E. Atkinson and W. Han, Elementary Numerical Analysis, 3rd ed., John Wiley & Sons, 2004.

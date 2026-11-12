@@ -11,28 +11,28 @@ categories:
 다음과 같은 편미분방정식 문제
 
 $$\begin{cases}
-u_t = \alpha u_{xx} \\
+u_t = \alpha u_{xx} \quad \text{for } 0 < x < 1, t > 0 \\
 u(x, 0) = \phi(x) \\
 u(0, t) = f(t) \\
 u(1, t) = g(t)
-\end{cases} \quad \text{for } 0 < x < 1, t > 0$$
+\end{cases}$$
 
-를 생각해보자. 적당히 경계조건이 주어지면 손으로도 쉽게 풀 수 있는 문제이지만, 정의역의 격자를 나누어서 수치적으로 해석해보자. 공간 도메인을 $n$등분하고 공간과 시간 격자 간격을 각각 $\Delta x, \Delta t$라고 둘 때 $(x_i, t_j)$ 점에서 차분을 사용해서 미분방정식을 표현하면 다음과 같다.
+를 생각해보자. 적당히 경계조건이 주어지면 손으로도 쉽게 풀 수 있는 문제이지만, 정의역의 격자를 나누어서 수치적으로 해석해보자. 공간 도메인을 $n$등분하고 공간과 시간 격자 간격을 각각 $\Delta x, \Delta t$라고 둘 때 차분을 사용해서 미분방정식을 표현하면 다음과 같은 근사식이 성립한다.
 
 $$\frac{u_i^{j+1} - u_i^{j}}{\Delta t} = \alpha \frac{u_{i+1}^{j+1} + u_{i-1}^{j+1} - 2u_i^{j+1}}{(\Delta x)^2}$$
 
-여기서 $u^i_j = u(x_i, t_j)$으로 표기한다. 위 식을 정리하면 다음과 같다.
+여기서 $u_i^j = u(x_i, t_j)$으로 표기한다. 위 식을 정리하면 다음과 같다.
 
 $$\begin{align*}
 & \frac{u_i^{j+1} - u_i^{j}}{\Delta t} = \alpha \frac{u_{i+1}^{j+1} + u_{i-1}^{j+1} - 2u_i^{j+1}}{(\Delta x)^2} \\
 \implies & - \frac{1}{\Delta t} u_i^j = \frac{\alpha}{(\Delta x)^2} (u_{i+1}^{j+1} + u_{i-1}^{j+1} - 2u_i^{j+1}) - \frac{1}{\Delta t} u_i^{j+1} \\
 \implies & - \frac{1}{\Delta t} u_i^j = \frac{\alpha}{(\Delta x)^2} u^{j+1}_{i+1} - \left( \frac{1}{\Delta t} + \frac{2 \alpha}{(\Delta x)^2} \right) u^{j+1}_i + \frac{\alpha}{(\Delta x)^2} u^{j+1}_{i-1} \\
-\implies & B u^{j+1}_{i+1} A u^{j+1}_i + B u^{j+1}_{i-1} = P_i^j
+\implies & B u^{j+1}_{i+1} + A u^{j+1}_i + B u^{j+1}_{i-1} = P_i^j
 \end{align*}$$
 
 여기서
 
-$$A = - \left( \frac{1}{\Delta t} + \frac{2 \alpha}{(\Delta x)^2} \right), \quad B = \frac{\alpha}{(\Delta x)^2}, \quad P_i^n = - \frac{1}{\Delta t} u_i^n$$
+$$A = - \left( \frac{1}{\Delta t} + \frac{2 \alpha}{(\Delta x)^2} \right), \quad B = \frac{\alpha}{(\Delta x)^2}, \quad P_i^j = - \frac{1}{\Delta t} u_i^j$$
 
 이다. 마지막 식을 모든 $i = 1, \dots, n-1$에 대하여 각각 나열하면 다음과 같이 선형 방정식 형태로 적을 수 있다.
 
@@ -65,26 +65,225 @@ P_{n-1}^j - B g(t_{j+1})
 
 # LU Decomposition
 ## Theorem 1
-Let $A$ be an invertible matrix. Then $A$ can be decomposed by upper and lower triangular matrices $U$ and $L$, i.e.,
+Let $A$ be an invertible square matrix with nonzero diagonal elements. Then $A$ can be decomposed by upper and lower triangular matrices $U$ and $L$, i.e.,
 
 $$A = LU$$
 
-which is called the ***LU factoriazation*** of $A$.
+which is called the ***LU factorization*** of $A$.
 
-선형 방정식 $Ax = b$를 푸는 방법은 역행렬 $A^{-1}$를 계산하거나 $A$의 RREF를 구하는 가우스 소거법 등이 알려져 있는데, 모두 수치적으로는 꽤나 비용이 높은 방법들이다. 더군다나 우리는 각 시간 스텝 $j$마다 방정식을 반복해서 풀어야 하니 이 방법들로 편미분방정식을 푼다는 건 상당히 부담스러운 방법이다.
+선형 방정식 $Ax = b$를 푸는 방법은 역행렬 $A^{-1}$를 계산하거나 가우스 소거법을 활용한 방법 등이 알려져 있는데, 우리는 계수 행렬이 상수라는 점에 주목해 LU 분해를 사용해 계산하려고 한다.
 
-한편 위에서 얻은 선형 방정식을 자세히 보면 우변이 시간 스텝 $j$에 의존하는 반면 계수 행렬은 모두 상수로 이루어져 있다. 이 점에 착안해서 우리는 LU 분해를 사용해서 연산 횟수를 줄이고자 한다.
+선형 방정식 $Ax = b$가 주어졌을 때 $A$를 LU 분해해보자. 편의를 위해 $A$를 $3 \times 3$ 행렬로 국한시킨다면 우리는 다음과 같은 꼴로 $A$를 분해하려고 한다.
 
-이산화한 열방정식을 $\mathbf{A}\mathbf{u}^{j+1} = \mathbf{P}^j$이라고 쓰고 $\mathbf{A} = LU$라고 두면 $LU\mathbf{u}^{j+1} = \mathbf{P}^j$을 얻는다. 이를 두 개의 방정식
+$$\begin{bmatrix}
+a_{11} & a_{12} & a_{13} \\
+a_{21} & a_{22} & a_{23} \\
+a_{31} & a_{32} & a_{33}
+\end{bmatrix}
+=
+\begin{bmatrix}
+1      & 0      & 0 \\
+m_{21} & 1      & 0 \\
+m_{31} & m_{32} & 1
+\end{bmatrix}
+\begin{bmatrix}
+u_{11} & u_{12} & u_{13} \\
+0      & u_{22} & u_{23} \\
+0      & 0      & u_{33}
+\end{bmatrix}$$
+
+첫번째 행을 계산하면
+
+$$\begin{align*}
+a_{11} &= u_{11} \\
+a_{12} &= u_{12} \\
+a_{13} &= u_{13}
+\end{align*}$$
+
+을 얻고, 같은 방식으로 두번째 행을 계산하면
+
+$$\begin{align*}
+a_{21} &= m_{21}u_{11} \\
+a_{22} &= m_{21}u_{12} + u_{22} \\
+a_{23} &= m_{21}u_{13} + u_{23}
+\end{align*}$$
+
+을 얻는다. 따라서 첫번째 행의 결과를 사용해 $m_{21}, u_{22}, u_{23}$을 결정할 수 있다. 마지막으로 세번째 행을 계산하면
+
+$$\begin{align*}
+a_{31} &= m_{31}u_{11} \\
+a_{32} &= m_{31}u_{12} + m_{32}u_{22} \\
+a_{33} &= m_{31}u_{13} + m_{32}u_{23} + u_{33}
+\end{align*}$$
+
+을 얻고, 마찬가지로 $m_{31}, m_{32}, u_{33}$을 결정할 수 있으므로 $L, U$를 완전히 계산할 수 있다. 이와 같은 방법으로 $A$의 $LU$ 분해를 항상 구할 수 있다.
+
+이제 $A = LU$로 두면 $LUx = b$를 얻고, $Ux = z$로 두면 다음과 같이 두 개의 방정식을 얻는다.
 
 $$\begin{cases}
-Lz = \mathbf{P}^j \\
-U\mathbf{u}^{j+1} = z
+Lz = b \\
+Ux = z
 \end{cases}$$
 
-으로 나눌 수 있고, 우리는 이 두 개의 방정식을 풀어서 전체 식을 계산하려고 한다. 이렇게 두면 각 줄의 방정식은 계수 행렬이 삼각 행렬이므로 총 $\mathcal{O}(n^2)$의 계산 횟수가 필요하므로 (WHY?) 한 번의 시간 스텝에서 $\mathcal{O}(n^2)$ 만큼의 횟수가 필요하다고 볼 수 있다. 이를 필요한 시간 스텝만큼 반복하면 전체 격자에서 함수값을 계산할 수 있다.
+즉 $Lz = b$를 풀어서 $z$를 계산하고, 이를 이용해 $x$를 계산하면 방정식을 풀 수 있다. 구체적으로 쓰면 다음과 같다.
 
-반면 이런 과정 없이 각 스텝마다 무작정 $\mathcal{O}(n^3)$의 횟수가 필요한 가우스 소거법을 적용하면 훨씬 많은 횟수의 계산을 필요로 한다. LU 분해법은 계수 행렬 $\mathbf{A}$가 시간 스텝에 대해 불변이라는 점에 착안해 처음 한 번만 분해를 해준 뒤 더 적은 횟수로 풀 수 있는 방정식 두 개로 분리한다는 점에서 가우스 소거법보다 더 유리하다.
+$$\begin{bmatrix}
+\ell_{11} & 0 & \cdots & 0 \\
+\vdots & \ddots & & \vdots \\
+\vdots & & \ddots & 0 \\
+\ell_{n1} & \cdots & \cdots & \ell_{nn} 
+\end{bmatrix} \begin{bmatrix}
+z_1 \\
+\vdots \\
+z_n
+\end{bmatrix} = \begin{bmatrix}
+b_1 \\
+\vdots \\
+b_n
+\end{bmatrix}$$
+
+행별로 계산하면 다음의 결과를 얻는다.
+
+$$\begin{align*}
+z_1 &= \frac{b_1}{\ell_{11}} \\
+z_2 &= \frac{b_2 - \ell_{21}z_1}{\ell_{22}} \\
+&\vdots \\
+z_n &= \frac{b_n - \ell_{n(n-1)}z_{n-1} - \cdots - \ell_{n1}z_1}{\ell_{nn}}
+\end{align*}$$
+
+따라서 방정식 하나를 풀기 위해서 $\mathcal{O}(n^2)$ 만큼의 연산 횟수가 필요하다. 이렇게 구한 $z$를 가지고 $Ux = z$를 풀면 $x$를 구할 수 있다.
+
+LU 분해는 처음 $A$를 $L, U$로 분해한 결과를 계속해서 사용할 수 있다는 데 장점이 있다. 위에서 살펴본 것처럼 우리는 여러 번의 타임 스텝에 대해서 선형 방정식을 반복해서 풀어야 한다. 이때 계속해서 선형 방정식 $Ax = b$를 푸는 방법에 비해 LU 분해를 통해 방정식을 계산하는 방법은 반복 횟수가 커질수록 더 적은 연산 횟수를 요구로 한다.
+
+# Tridiagonal System
+## Definition 1
+Let $A \in M_{n \times n}(\mathbb{R})$.
+
+**(i)** $A$ is called a ***tridiagonal matrix*** if $A$ is of the form
+
+$$\begin{bmatrix}
+b_1    & c_1    & 0      & 0       & \cdots  & 0       \\
+a_2    & b_2    & c_2    & 0       & \cdots  & 0       \\
+0      & a_3    & b_3    & c_3     & \ddots  & \vdots  \\
+\vdots & \ddots & \ddots & \ddots  & \ddots  & 0       \\
+0      & \cdots & 0      & a_{n-1} & b_{n-1} & c_{n-1} \\
+0      & \cdots & \cdots & 0       & a_n     & b_n
+\end{bmatrix}$$
+
+**(ii)** $A$ is said to be ***weakly diagonally dominant*** if
+
+$$\vert a_{ii} \vert \ge \sum_{j \neq i} \vert a_{ij} \vert, \forall i \in \{ 1, \dots, n \}.$$
+
+**(iii)** $A$ is said to be ***strictly diagonally dominant*** if
+
+$$\vert a_{ii} \vert > \sum_{j \neq i} \vert a_{ij} \vert, \forall i \in \{ 1, \dots, n \}.$$
+
+## Theorem 2
+**(i)** A strictly diagonally dominant matrix is invertible.
+
+**(ii)** A Hermitian strictly (weakly) diagonally dominant matrix with real positive (nonnegative) diagonal entries is positive (semi) definite.
+
+한편 위에서 열방정식을 이산화했을 때 얻은 계수행렬을 자세히 보면 대략 세 줄의 대각성분들만 살아남은 것을 볼 수 있는데, 이러한 행렬을 ***삼중대각행렬(Tridiagonal Matrix)***이라고 부른다. 특별히 성분 $A$와 $B$의 관계를 보면 $\vert A \vert > \vert B \vert + \vert B \vert$가 항상 성립하므로 계수 행렬은 ***강대각우세행렬(Strictly Diagonally Dominant Matrix)***이다. 선형 방정식의 계수 행렬이 강대각우세일 경우 안정적인 수치해법이 잘 알려져 있기에 이러한 행렬들의 대한 연구는 매우 중요하다.
+
+선형 방정식 $Ax = f$에서 계수 행렬 $A$가 삼중대각행렬일 때 $LU$ 분해를 통해 해의 관계식을 얻어보자. 우선 위에서 했던 것과 같이 $A$를 $LU$ 분해해보자.
+
+$$\begin{bmatrix}
+b_1    & c_1    & 0      & 0       & \cdots  & 0       \\
+a_2    & b_2    & c_2    & 0       & \cdots  & 0       \\
+0      & a_3    & b_3    & c_3     & \ddots  & \vdots  \\
+\vdots & \ddots & \ddots & \ddots  & \ddots  & 0       \\
+0      & \cdots & 0      & a_{n-1} & b_{n-1} & c_{n-1} \\
+0      & \cdots & \cdots & 0       & a_n     & b_n
+\end{bmatrix} = \begin{bmatrix}
+1        & 0        & 0      & \cdots   & 0      \\
+\alpha_2 & 1        & 0      & \cdots   & 0      \\
+0        & \alpha_3 & 1      & \ddots   & \vdots \\
+\vdots   & \ddots   & \ddots & \ddots   & 0      \\
+0        & \cdots   & 0      & \alpha_n & 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+\beta_1 & c_1     & 0      & \cdots      & 0       \\
+0       & \beta_2 & c_2    & \ddots      & \vdots  \\
+\vdots  & \ddots  & \ddots & \ddots      & 0       \\
+0       & \cdots  & 0      & \beta_{n-1} & c_{n-1} \\
+0       & \cdots  & \cdots & 0           & \beta_n
+\end{bmatrix}$$
+
+행끼리 계산하면 다음의 관계식을 얻는다.
+
+$$\begin{align*}
+\beta_1 &= b_1 \\
+\alpha_j &= \frac{a_j}{\beta_{j-1}}, \quad \beta_j = b_j - \alpha_j c_{j-1}, \quad j = 2, \dots, n.
+\end{align*}$$
+
+이제 $LUx = f$에서 두 개의 방정식 $Lg = f, Ux = g$로 분리하자. $Lg = f$를 풀면 
+
+$$\begin{align*}
+g_1 &= f_1 \\
+g_j &= f_j - \alpha_j - \alpha_j g_{j-1}, \quad j = 2, \dots, n
+\end{align*}$$
+
+을 얻고, 마찬가지로 $Ux = g$를 풀면
+
+$$\begin{align*}
+x_n &= \frac{g_n}{\beta_n} \\
+x_j &= \frac{g_j - c_jx_{j+1}}{\beta_j}, \quad j = n-1, \dots, 1
+\end{align*}$$
+
+을 얻으므로 해를 완전히 결정할 수 있다. 이러한 계산은 $\mathcal{O}(n)$ 정도의 연산 횟수가 필요하고, 따라서 훨씬 개선된 방법이라고 할 수 있다.
+
+특별히 열방정식을 이산화해서 얻은 계수 행렬의 경우
+
+$$A = \begin{bmatrix}
+\alpha        & \gamma        & 0      & \cdots   & 0      \\
+\beta & \alpha        & \gamma      & \cdots   & 0      \\
+0        & \beta & \alpha      & \ddots   & \vdots \\
+\vdots   & \ddots   & \ddots & \ddots   & \gamma      \\
+0        & \cdots   & 0      & \beta & \alpha
+\end{bmatrix}$$
+
+와 같이 각 대각선의 성분이 모두 같은 꼴을 취하고 있다. 이런 경우 좀 더 특별한 구조가 나타나는데, 행렬을 $LU$ 분해해서 적으면 다음과 같다.
+
+$$\begin{bmatrix}
+\alpha        & \gamma        & 0      & \cdots   & 0      \\
+\beta & \alpha        & \gamma      & \cdots   & 0      \\
+0        & \beta & \alpha      & \ddots   & \vdots \\
+\vdots   & \ddots   & \ddots & \ddots   & \gamma      \\
+0        & \cdots   & 0      & \beta & \alpha
+\end{bmatrix} = \begin{bmatrix}
+1        & 0        & 0      & \cdots   & 0      \\
+b_2 & 1        & 0      & \cdots   & 0      \\
+0        & b_3 & 1      & \ddots   & \vdots \\
+\vdots   & \ddots   & \ddots & \ddots   & 0      \\
+0        & \cdots   & 0      & b_n & 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+a_1 & c_1     & 0      & \cdots      & 0       \\
+0       & a_2 & c_2    & \ddots      & \vdots  \\
+\vdots  & \ddots  & \ddots & \ddots      & 0       \\
+0       & \cdots  & 0      & a_{n-1} & c_{n-1} \\
+0       & \cdots  & \cdots & 0           & a_n
+\end{bmatrix}$$
+
+이제 앞서 보였던 것과 마찬가지로 행별로 계산해서 $a_i, b_i$를 구하면 다음의 관계식을 얻는다.
+
+$$\begin{align*}
+a_1 &= \alpha \\
+b_i &= \frac{\beta}{a_{i-1}} \quad a_i = \alpha - \gamma b_i \quad i = 2, \dots, n
+\end{align*}$$
+
+이때 $a_i$는 다음과 같이 연분수 형태의 점화식 구조를 가지는 것을 알 수 있다.
+
+$$\begin{align*}
+a_1 &= \alpha \\
+a_2 &= \alpha - \frac{\gamma \beta}{a_1} \\
+a_3 &= \alpha - \frac{\gamma \beta}{a_2} = \alpha - \frac{\gamma \beta}{\alpha - \frac{\gamma \beta}{a_1}} \\
+a_4 &= \alpha - \frac{\gamma \beta}{a_3} = \alpha - \frac{\gamma \beta}{\alpha - \frac{\gamma \beta}{\alpha - \frac{\gamma \beta}{a_1}}} \\
+& \vdots
+\end{align*}$$
 
 # Reference
 - K. E. Atkinson and W. Han, Elementary Numerical Analysis, 3rd ed., John Wiley & Sons, 2004.
+- https://en.wikipedia.org/wiki/Diagonally_dominant_matrix

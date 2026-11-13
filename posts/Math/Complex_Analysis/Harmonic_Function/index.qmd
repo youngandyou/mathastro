@@ -63,28 +63,55 @@ v_x = -u_y = 2x
 
 Then we obtain $v(x, y) = x^2 + 2y - y^2 + C$ for an arbitrary real constant $C$.
 
-# Transformations of Harmonic Functions
+# Transformations
 어떤 라플라스 방정식 $\Delta u = 0$이 적당한 경계조건과 함께 주어졌다고 하자. 즉 $u(x, y)$는 조화함수이다. 이때 정리 1 **(iii)**에서 본 바와 같이 정의역이 단순 연결 영역으로 주어진다면 항상 조화함수 $u(x, y)$의 conjugate $v(x, y)$를 찾을 수 있고, 이를 통해 해석함수 $f(z) = u(x, y) + iv(x, y)$를 구성할 수 있다. 이를 통해 복소해석학의 여러 툴들을 사용할 수 있고, 특별히 다루기 까다로운 정의역을 등각사상과 같은 변환들을 통해 다루기 편한 영역으로 바꿀 수 있다는 점에서 복소해석학은 편미분방정식을 푸는데 좋은 도구가 될 수 있다.
 
 ## Theorem 2
-Suppose that
+**(i)** Suppose that
 
-**(i)** an analytic function $w = f(z) = u(x, y) + i v(x, y)$ maps a domain $D_z$ in the $z$ plane onto a domain $D_w$ in the $w$ plane.
+1. an analytic function $w = f(z) = u(x, y) + i v(x, y)$ maps a domain $D_z$ in the $z$ plane onto a domain $D_w$ in the $w$ plane.
 
-**(ii)** $h(u, v)$ is a harmonic function defined on $D_w$.
+2. $h(u, v)$ is a harmonic function defined on $D_w$.
 
 Then the function $H(x, y) = h[u(x, y), v(x, y)]$ is harmonic in $D_z$.
 
-여기서 함수 $f$는 등각사상과 같은 역할을 하고, $h$는 옮긴 영역에서 구할 해의 역할을 한다. 이 두 함수를 합성해서 실수부만을 취해주면 원래 영역에서의 해를 구할 수 있다.
+**(ii)** Suppose that
 
-### Proof
-We first prove the theorem for the case in which the domain $D_w$ is simply connected. By Theorem 1 **(iii)**, there is a harmonic conjugate $g(u, v)$ of $h(u, v)$. Then the function
+1. a conformal mapping $w = f(z) = u(x, y) + i v(x, y)$ at each point of a smooth arc $C$ and that $\Gamma = f(C)$.
+
+2. $h(u, v)$ is a function that satisfies one of the conditions
+
+$$h = h_0 \quad \text{or} \quad \frac{dh}{dn} = 0$$
+
+at points on $\Gamma$, where $h_0$ is a real constant and $\frac{dh}{dn}$ denotes directional derivatives of $h$ normal to $\Gamma$.
+
+Then the function $H(x, y) = h[u(x, y), v(x, y)]$ satisfies the corresponding condition
+
+$$H = h_0 \quad \text{or} \quad \frac{dH}{dN} = 0$$
+
+on points on $C$, where $\frac{dH}{dN}$ denotes directional derivatives of $H$ normal to $C$.
+
+위 두 정리를 종합하면 등각사상 $w = f(z)$는 기존 라플라스 방정식을 그대로 유지하고 경계조건 또한 그대로 보존한 채 정의역을 옮길 수 있다는 결론을 얻는다. 따라서 영역을 등각사상으로 바꿔 놓고 솔루션 $h$를 찾고 다시 원래 영역으로 돌아가는 풀이를 사용할 수 있다.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+**(i)** We first prove the theorem for the case in which the domain $D_w$ is simply connected. By Theorem 1 **(iii)**, there is a harmonic conjugate $g(u, v)$ of $h(u, v)$. Then the function
 
 $$\Phi(w) = h(u, v) + i g(u, v)$$
 
 is analytic in $D_w$. Since $f(z)$ is analytic in $D_z$, $\Phi(f(z))$ is analytic in $D_z$. Thus, the real part $h[u(x, y), v(x, y)]$ of this function is harmonic in $D_z$.
 
-Now, suppose that $D_w$ is not simply connected. Note that each point $w_0$ in $D_w$ has a neighborhood $\vert w - w_0 \vert < \varepsilon$ lying entirely in $D_w$. Since that neighbhorhood is simply connected, we can consider an analytic function of the form $\Phi(w) = h(u, v) + i g(u, v)$ in it. Furthermore, since $f$ is continuous at a point $z_0$ in $D_z$ with $f(z_0) = w_0$, there is a neighborhood $\vert z-z_0 \vert < \delta$ whose image is contained in the neighborhood $\vert w - w_0 \vert < \varepsilon$. Hence, the composition $\Phi(f(z))$ is analytic in the neighborhood $\vert z - z_0 \vert < \delta$, and $h[u(x, y), v(x, y)]$ is harmonic there. Since $w_0$ is arbitarily chosen in $D_w$ and $f$ maps $D_z$ onto $D_w$, $h[u(x, y), v(x, y)]$ is harmonic throughout $D_z$. $\blacksquare$
+Now, suppose that $D_w$ is not simply connected. Note that each point $w_0$ in $D_w$ has a neighborhood $\vert w - w_0 \vert < \varepsilon$ lying entirely in $D_w$. Since that neighbhorhood is simply connected, we can consider an analytic function of the form $\Phi(w) = h(u, v) + i g(u, v)$ in it. Furthermore, since $f$ is continuous at a point $z_0$ in $D_z$ with $f(z_0) = w_0$, there is a neighborhood $\vert z-z_0 \vert < \delta$ whose image is contained in the neighborhood $\vert w - w_0 \vert < \varepsilon$. Hence, the composition $\Phi(f(z))$ is analytic in the neighborhood $\vert z - z_0 \vert < \delta$, and $h[u(x, y), v(x, y)]$ is harmonic there. Since $w_0$ is arbitarily chosen in $D_w$ and $f$ maps $D_z$ onto $D_w$, $h[u(x, y), v(x, y)]$ is harmonic throughout $D_z$. 
+
+**(ii)** First, we prove the case $h = h_0$. We need to show that $H(x, y) = h_0, \forall z = x+iy \in C$. Let $z = x +iy \in C$. Then $u(x, y) + iv(x, y) = f(z) = w = u+iv \in \Gamma$, so $H(x, y) = h[u(x, y), v(x, y)] = h_0$.
+
+Next, we prove the case $\frac{dh}{dn} = 0$. To prove that $\frac{dH}{dN}(x, y) = 0, \forall z = x+iy \in C$, we will show that $\nabla H$ is tangent to the curve $C$, so $\nabla H \cdot \mathbf{N} = 0$.
+
+We fisrt consider the case $\nabla h (u_0, v_0) = \mathbf{0}$ for some $u_0 + i v_0 = w_0 = f(z_0) \in \Gamma$ for $z_0 = x_0 + iy_0$. Since $\vert \nabla H (x_0, y_0) \vert = \vert \nabla h (u_0, v_0) \vert \vert f'(z_0) \vert$, we obtain $\nabla H (x_0, y_0) = \mathbf{0}$, so $\frac{dH}{dN}(x_0, y_0) = 0$.
+
+Now, assume $\nabla h(u, v) \neq \mathbf{0}, \forall u + iv = w = f(z) \in \Gamma$ for $z = x+iy$. Consider a level curve $H(x, y) = h[u(x, y), v(x, y)] = c$. Note that the gradient $\nabla H$ is perpendicular to each level curve of $H$ and the level curve $H(x, y) = h[u(x, y), v(x, y)] = c$ is transformed into the level curve $h(u, v) = c$ under the transformation $w = f(z)$.
+
+Note that the level curve $h(u, v) = c$ is orthogonal to the gradient $\nabla h$ and by assumption, $\nabla h$ is orthogonal to $\mathbf{n}$, so $\nabla h$ is tangent to the curve $\Gamma$. Since the curve $C$ is transformed into the curve $\Gamma$ and the conformal mapping $w = f(z)$ preserves the angle between the curves, we conclude that the gradient $\nabla H$ is tangent to the curve $C$, so $\nabla H \cdot \mathbf{N} = 0$. Hence, we have $\frac{dH}{dN} = \nabla H \cdot N = 0$. $\blacksquare$
+:::
 
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

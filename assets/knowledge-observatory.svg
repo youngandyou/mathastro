@@ -1,0 +1,241 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 440" fill="none">
+  <defs>
+    <radialGradient id="observatory-halo">
+      <stop stop-color="#315987" stop-opacity=".66"/>
+      <stop offset=".46" stop-color="#213e66" stop-opacity=".4"/>
+      <stop offset="1" stop-color="#1b3357" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="floor-halo">
+      <stop stop-color="#457ba8" stop-opacity=".43"/>
+      <stop offset="1" stop-color="#203c60" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="stone" x1="215" y1="71" x2="478" y2="362" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#212f49"/>
+      <stop offset=".48" stop-color="#111b30"/>
+      <stop offset=".75" stop-color="#263448"/>
+      <stop offset="1" stop-color="#0d1628"/>
+    </linearGradient>
+    <linearGradient id="arch-bevel" x1="258" y1="79" x2="449" y2="332" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3d4657"/>
+      <stop offset=".28" stop-color="#1a273d"/>
+      <stop offset=".72" stop-color="#23364f"/>
+      <stop offset="1" stop-color="#1b2336"/>
+    </linearGradient>
+    <linearGradient id="brass" x1="244" y1="77" x2="460" y2="320" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#a29373"/>
+      <stop offset=".28" stop-color="#e9d3a2"/>
+      <stop offset=".58" stop-color="#8e795e"/>
+      <stop offset=".83" stop-color="#d6b680"/>
+      <stop offset="1" stop-color="#6f665c"/>
+    </linearGradient>
+    <linearGradient id="spandrel" x1="225" y1="0" x2="265" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111a2d"/>
+      <stop offset=".39" stop-color="#324055"/>
+      <stop offset=".55" stop-color="#202a3d"/>
+      <stop offset="1" stop-color="#111d30"/>
+    </linearGradient>
+    <radialGradient id="opening" cx="0" cy="0" r="1" gradientTransform="translate(352 215) rotate(90) scale(162 145)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4f91b1"/>
+      <stop offset=".37" stop-color="#264d7b"/>
+      <stop offset=".76" stop-color="#172747"/>
+      <stop offset="1" stop-color="#101c36"/>
+    </radialGradient>
+    <linearGradient id="deep-sky" x1="354" y1="131" x2="348" y2="282" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#09182e"/>
+      <stop offset=".45" stop-color="#18476c"/>
+      <stop offset=".76" stop-color="#397b9b"/>
+      <stop offset="1" stop-color="#9cdbdc"/>
+    </linearGradient>
+    <linearGradient id="shelf-shadow" x1="268" y1="227" x2="334" y2="247" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#101a2e"/>
+      <stop offset=".67" stop-color="#203858"/>
+      <stop offset="1" stop-color="#295674"/>
+    </linearGradient>
+    <linearGradient id="aisle" x1="352" y1="260" x2="352" y2="358" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9dd8da" stop-opacity=".83"/>
+      <stop offset=".29" stop-color="#417da6" stop-opacity=".88"/>
+      <stop offset="1" stop-color="#21385a"/>
+    </linearGradient>
+    <linearGradient id="steps" x1="352" y1="346" x2="352" y2="411" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2e425a"/>
+      <stop offset=".6" stop-color="#141f34"/>
+      <stop offset="1" stop-color="#0e182c" stop-opacity=".62"/>
+    </linearGradient>
+    <linearGradient id="light-line" x1="182" y1="0" x2="522" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8caec3" stop-opacity="0"/>
+      <stop offset=".23" stop-color="#71acc7" stop-opacity=".48"/>
+      <stop offset=".5" stop-color="#d1f6ed"/>
+      <stop offset=".77" stop-color="#6bafcb" stop-opacity=".48"/>
+      <stop offset="1" stop-color="#8caec3" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="light-soften" x="-.6" y="-.6" width="2.2" height="2.2">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+    <clipPath id="library-opening">
+      <path d="M272 352V175a80 80 0 0 1 160 0v177Z"/>
+    </clipPath>
+    <path id="star-cross" d="M0-5v10m-5-5H5m-2.6-2.6 5.2 5.2m0-5.2-5.2 5.2"/>
+    <g id="pillar">
+      <path d="M224 178h39v169h-39Z" fill="url(#spandrel)" stroke="#495365" stroke-width=".9"/>
+      <path d="M229 184h29v156h-29Z" stroke="#8f8065" stroke-opacity=".62" stroke-width=".75"/>
+      <path d="M233 191h21v141h-21Z" fill="#132238" stroke="#687184" stroke-width=".65"/>
+      <path d="M237 196v131m4-131v131m5-131v131m4-131v131" stroke="#819bb5" stroke-opacity=".33" stroke-width=".6"/>
+      <path d="M217 169h51v8l-5 4h-39l-7-4Z" fill="url(#stone)" stroke="url(#brass)" stroke-width=".85"/>
+      <path d="M220 174h44m-39 8h38m-38 4h38" stroke="#c2ad84" stroke-opacity=".68" stroke-width=".7"/>
+      <path d="M222 338h42l5 9v6h-53v-6Z" fill="url(#stone)" stroke="url(#brass)" stroke-opacity=".82" stroke-width=".9"/>
+      <path d="M218 347h48m-47 3h47m-42-11h38" stroke="#c2ad84" stroke-opacity=".56" stroke-width=".7"/>
+      <path d="m244 247 4 6-4 6-4-6Z" fill="#8fa0a4" fill-opacity=".23" stroke="#bdb092" stroke-opacity=".66" stroke-width=".7"/>
+      <circle cx="244" cy="253" r="1.35" fill="#d5c69e"/>
+    </g>
+    <g id="shelving">
+      <path d="M267 167 334 204v69l-67 59Z" fill="url(#shelf-shadow)" stroke="#4c6b86" stroke-width="1.1"/>
+      <path d="M271 179 331 208v8l-60-24Zm0 34 60 14v5l-60-10Zm0 34 60 0v5l-60 5Zm0 34 60-12v5l-60 19Z" fill="#0d192d"/>
+      <path d="M276 186l4 2v24l-4-1Zm11 5 5 2v23l-5-2Zm24 12 3 1v17l-3-1Zm8 4 4 2v15l-4-1ZM276 226l5 1v19h-5Zm14 3 4 1v17h-4Zm20 5 5 1v13h-5Zm14 3 3 1v10h-3ZM277 262h4v17l-4 1Zm17-1 5-1v15l-5 1Zm20-2h4v12l-4 1Z" fill="#8eb0b8" fill-opacity=".78"/>
+      <path d="M281 189l4 2v23l-4-1Zm16 7 4 2v21l-4-2Zm17 8 4 2v17l-4-1ZM282 227l6 1v19h-6Zm18 6 3 1v14l-3-1Zm16 3 4 1v11h-4ZM283 264l4-1v15l-4 1Zm18-2 4-1v13l-4 1Zm21-4 4-1v12l-4 1Z" fill="#c4ad7e" fill-opacity=".76"/>
+      <path d="M293 196l3 1v20l-3-1Zm9 3 7 3v18l-7-2Zm22 12 4 2v13l-4-1ZM294 231l5 1v15h-5Zm10 3 5 1v12h-5Zm17 4 2 1v9h-2ZM289 263l3-1v15l-3 1Zm17-1 6-1v12l-6 1Zm12-3 3-1v12l-3 1Z" fill="#476c90"/>
+      <path d="m271 213 60 16m-60 18 60 2m-60 32 60-11m-59-92 59 30" stroke="#88a8b6" stroke-opacity=".71" stroke-width=".95"/>
+      <path d="m271 216 60 15m-60 19 60 1m-60 33 60-13" stroke="#bba884" stroke-opacity=".56" stroke-width=".75"/>
+      <path d="M274 175v146m56-115v72" stroke="#78a2ba" stroke-opacity=".54" stroke-width="1.05"/>
+      <path d="m272 325 59-50 3-2v4l-62 56Z" fill="#142740"/>
+    </g>
+  </defs>
+
+  <style>
+    @media (prefers-reduced-motion: no-preference) {
+      .constellation-path { stroke-dasharray: 1; animation: trace .96s ease-out .1s both; }
+      .constellation-nodes { animation: stars-in .6s ease-out .5s both; }
+    }
+    @keyframes trace { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+    @keyframes stars-in { from { opacity: 0; } to { opacity: 1; } }
+  </style>
+
+  <ellipse cx="352" cy="215" rx="241" ry="194" fill="url(#observatory-halo)"/>
+  <ellipse cx="352" cy="369" rx="270" ry="53" fill="url(#floor-halo)"/>
+
+  <!-- The celestial chart sits behind the aperture. -->
+  <g stroke="#7c98b9" stroke-width=".65">
+    <circle cx="352" cy="210" r="154" opacity=".34"/>
+    <circle cx="352" cy="210" r="168" opacity=".25" stroke-dasharray="2 5"/>
+    <circle cx="352" cy="210" r="182" opacity=".17"/>
+    <path d="M352 19v382M166 210h372M223 81l258 258m0-258L223 339" opacity=".18"/>
+    <path d="M226 106a154 154 0 0 1 242 0m-240 206a154 154 0 0 0 248-13" stroke="#b7ad92" opacity=".32" stroke-dasharray="1.2 4"/>
+    <ellipse cx="352" cy="209" rx="251" ry="86" transform="rotate(-22 352 209)" opacity=".28"/>
+    <ellipse cx="352" cy="208" rx="230" ry="74" transform="rotate(17 352 208)" opacity=".16"/>
+    <path d="M160 210h13m358 0h13M352 22v12m0 352v12m-133-321 9 9m248 248 9 9m0-266-9 9m-248 248-9 9" stroke="#b2ac95" opacity=".55"/>
+    <circle cx="165" cy="210" r="3" opacity=".52"/>
+    <circle cx="538" cy="210" r="3" opacity=".52"/>
+    <circle cx="352" cy="28" r="2" stroke="#d3bd92" opacity=".8"/>
+    <circle cx="352" cy="28" r="6" stroke="#d3bd92" opacity=".25"/>
+    <path d="M194 146v10m-5-5h10m309 147v10m-5-5h10" opacity=".54"/>
+  </g>
+
+  <g fill="#9fb8ce" opacity=".53">
+    <circle cx="45" cy="88" r="1"/><circle cx="62" cy="173" r="1.3"/><circle cx="75" cy="45" r=".8"/>
+    <circle cx="111" cy="195" r="1"/><circle cx="132" cy="50" r="1.1"/><circle cx="164" cy="167" r=".8"/>
+    <circle cx="198" cy="48" r="1.2"/><circle cx="211" cy="110" r=".8"/><circle cx="244" cy="42" r=".8"/>
+    <circle cx="275" cy="31" r="1.2"/><circle cx="326" cy="42" r=".8"/><circle cx="398" cy="37" r="1.1"/>
+    <circle cx="443" cy="33" r=".75"/><circle cx="474" cy="56" r="1.05"/><circle cx="485" cy="128" r="1.2"/>
+    <circle cx="512" cy="154" r=".8"/><circle cx="548" cy="35" r="1.1"/><circle cx="574" cy="169" r=".9"/>
+    <circle cx="617" cy="145" r="1"/><circle cx="627" cy="53" r=".9"/><circle cx="624" cy="215" r="1"/>
+    <circle cx="549" cy="208" r=".85"/><circle cx="500" cy="214" r=".9"/><circle cx="612" cy="334" r="1.1"/>
+    <circle cx="563" cy="355" r="1"/><circle cx="534" cy="326" r=".8"/><circle cx="518" cy="360" r="1"/>
+    <circle cx="100" cy="333" r="1"/><circle cx="78" cy="318" r=".8"/><circle cx="42" cy="250" r="1.2"/>
+    <circle cx="120" cy="305" r="1"/><circle cx="168" cy="344" r="1.1"/><circle cx="186" cy="315" r=".75"/>
+    <circle cx="134" cy="372" r=".9"/><circle cx="54" cy="362" r=".9"/><circle cx="185" cy="364" r=".8"/>
+  </g>
+
+  <!-- Steps and engraved masonry. -->
+  <path d="M233 345h238l54 59H179Z" fill="url(#steps)" stroke="#51627a" stroke-opacity=".42"/>
+  <path d="M220 361h264m-273 9h282m-293 13h304m-315 11h326" stroke="#a6957a" stroke-opacity=".42" stroke-width=".75"/>
+  <path d="M216 364h272m-280 9h288m-300 13h312m-322 11h332" stroke="#819bb8" stroke-opacity=".31" stroke-width="2"/>
+  <path d="M270 345h164l32 58H238Z" fill="#3f789d" fill-opacity=".16"/>
+  <path d="m271 346-33 58m62-58-22 58m47-58-11 58m38-58v58m27-58 11 58m14-58 22 58m7-58 33 58" stroke="#87b5cb" stroke-opacity=".27" stroke-width=".7"/>
+  <path d="M194 386h316M216 362h272" stroke="url(#light-line)" stroke-opacity=".63"/>
+  <path d="M234 352V175a118 118 0 0 1 236 0v177Z" fill="url(#stone)" stroke="#728199" stroke-width="1"/>
+  <path d="M241 351V175a111 111 0 0 1 222 0v176" stroke="url(#brass)" stroke-width="1.3"/>
+  <path d="M246 349V175a106 106 0 0 1 212 0v174" stroke="#819ab2" stroke-opacity=".56" stroke-width=".6"/>
+  <path d="M249 348V175a103 103 0 0 1 206 0v173" stroke="#c3a97b" stroke-opacity=".88" stroke-width="2.7" stroke-dasharray=".7 5.8"/>
+  <path d="M254 350V175a98 98 0 0 1 196 0v175" stroke="url(#brass)" stroke-width="1"/>
+  <path d="M258 351V175a94 94 0 0 1 188 0v176Z" fill="url(#arch-bevel)" stroke="#8395a2" stroke-opacity=".78" stroke-width=".7"/>
+  <path d="M263 351V175a89 89 0 0 1 178 0v176" stroke="#b7ab90" stroke-opacity=".65" stroke-width=".7"/>
+  <path d="m265 175-8-1m12-23-9-4m17-15-8-6m22-11-6-8m26-3-4-9m25 2-2-10m22 8v-11m20 13 2-10m19 17 4-9m16 20 6-8m8 25 8-6m0 25 9-4m-5 28 8-1" stroke="#d6c19a" stroke-opacity=".42" stroke-width=".72"/>
+
+  <!-- Inside the opening, bookcases and a second arch converge toward the starlight. -->
+  <g clip-path="url(#library-opening)">
+    <path d="M270 94h164v263H270Z" fill="url(#opening)"/>
+    <path d="M296 254v-78a56 56 0 0 1 112 0v78" stroke="#7099b2" stroke-opacity=".44" stroke-width=".85"/>
+    <path d="M309 260v-73a43 43 0 0 1 86 0v73" stroke="#a5c8d1" stroke-opacity=".54" stroke-width=".85"/>
+    <path d="M321 263v-65a31 31 0 0 1 62 0v65Z" fill="#122946" stroke="#abc2ba" stroke-opacity=".69" stroke-width="1.2"/>
+    <path d="M326 267v-69a26 26 0 0 1 52 0v69Z" fill="url(#deep-sky)" stroke="#c4e4dc" stroke-opacity=".7" stroke-width=".85"/>
+    <path d="M330 229c12-12 27-15 44-34M330 230c18-3 31-10 44-24" stroke="#82beda" stroke-opacity=".32" stroke-width="1.7"/>
+    <g fill="#d2ede7">
+      <circle cx="347" cy="186" r="1.1"/><circle cx="359" cy="193" r="1.5"/><circle cx="367" cy="207" r="1"/>
+      <circle cx="340" cy="204" r=".8"/><circle cx="350" cy="218" r=".74"/><circle cx="336" cy="227" r=".96"/>
+      <circle cx="368" cy="225" r=".9"/><circle cx="357" cy="230" r="1"/><circle cx="345" cy="241" r=".77"/>
+      <circle cx="365" cy="244" r="1"/><circle cx="341" cy="255" r=".65"/><circle cx="359" cy="258" r=".78"/>
+    </g>
+    <use href="#star-cross" transform="translate(352 240) scale(.88)" stroke="#dff4dc" stroke-width=".68"/>
+    <path d="M324 263h56l53 89H271Z" fill="url(#aisle)"/>
+    <path d="m324 264-52 88m60-88-32 88m43-88-14 88m23-88v88m9-88 14 88m-3-88 32 88m-24-88 52 88m-114-77h68m-75 11h82m-92 15h102m-115 19h128m-143 20h158" stroke="#96c6d5" stroke-opacity=".43" stroke-width=".65"/>
+    <use href="#shelving"/>
+    <use href="#shelving" transform="translate(704 0) scale(-1 1)"/>
+    <ellipse cx="352" cy="269" rx="32" ry="6" fill="#b1eddf" opacity=".44" filter="url(#light-soften)"/>
+    <path d="M325 268h54" stroke="#c5eee6" stroke-opacity=".78" stroke-width=".85"/>
+    <path d="M289 170c27-43 99-43 126 0" stroke="#7bc0d8" stroke-opacity=".37" stroke-width=".8"/>
+    <g fill="#b7dbdf" opacity=".67">
+      <circle cx="326" cy="118" r=".9"/><circle cx="354" cy="108" r=".75"/><circle cx="373" cy="120" r="1.1"/>
+      <circle cx="338" cy="139" r=".8"/><circle cx="359" cy="132" r="1"/><circle cx="307" cy="146" r=".8"/>
+      <circle cx="392" cy="144" r=".8"/><circle cx="348" cy="151" r=".75"/>
+    </g>
+  </g>
+  <path d="M272 352V175a80 80 0 0 1 160 0v177" stroke="#7ce0ed" stroke-opacity=".88" stroke-width="3.5" filter="url(#light-soften)"/>
+  <path d="M269 351V175a83 83 0 0 1 166 0v176" stroke="url(#brass)" stroke-width="1.1"/>
+  <path d="M272 351V175a80 80 0 0 1 160 0v176" stroke="#a5d1d7" stroke-opacity=".84" stroke-width=".9"/>
+  <use href="#pillar"/>
+  <use href="#pillar" transform="translate(704 0) scale(-1 1)"/>
+  <path d="M266 351h172" stroke="url(#light-line)" stroke-width="7" opacity=".61" filter="url(#light-soften)"/>
+  <path d="M269 351h166" stroke="url(#light-line)" stroke-width="2"/>
+  <path d="M235 354h234" stroke="url(#brass)" stroke-opacity=".8" stroke-width=".95"/>
+  <path d="m342 60 10-5 10 5-5 16-5 5-5-5Z" fill="#28384d" stroke="#cfba8d" stroke-width=".85"/>
+  <circle cx="352" cy="67" r="5.25" stroke="#cfba8d" stroke-width=".72"/>
+  <path d="m352 61 1.2 4.8 4.8 1.2-4.8 1.2-1.2 4.8-1.2-4.8-4.8-1.2 4.8-1.2Z" fill="#eee0b9"/>
+
+  <!-- Four independent constellations. -->
+  <g color="#a3cff0">
+    <path class="constellation-path" pathLength="1" d="m59 120 47-41 29 25 40-18 23 39m-63-21-21 37" stroke="currentColor" stroke-opacity=".62" stroke-width=".85"/>
+    <g class="constellation-nodes" fill="currentColor">
+      <circle cx="59" cy="120" r="1.8"/><circle cx="106" cy="79" r="2.65"/><circle cx="135" cy="104" r="1.9"/>
+      <circle cx="175" cy="86" r="2.1"/><circle cx="198" cy="125" r="1.55"/><circle cx="114" cy="141" r="1.55"/>
+      <circle cx="106" cy="79" r="6.5" fill="none" stroke="currentColor" stroke-opacity=".44" stroke-width=".75"/>
+      <use href="#star-cross" transform="translate(175 86) scale(.71)" fill="none" stroke="#dae8e4" stroke-width=".85"/>
+    </g>
+  </g>
+  <g color="#ddc597">
+    <path class="constellation-path" pathLength="1" d="m493 110 39-33 38 20 30-32 16 44m-46-12 6 38" stroke="currentColor" stroke-opacity=".65" stroke-width=".85"/>
+    <g class="constellation-nodes" fill="currentColor">
+      <circle cx="493" cy="110" r="1.5"/><circle cx="532" cy="77" r="2"/><circle cx="570" cy="97" r="2.55"/>
+      <circle cx="600" cy="65" r="2.1"/><circle cx="616" cy="109" r="1.75"/><circle cx="576" cy="135" r="1.6"/>
+      <circle cx="570" cy="97" r="6.2" fill="none" stroke="currentColor" stroke-opacity=".47" stroke-width=".75"/>
+      <use href="#star-cross" transform="translate(600 65) scale(.78)" fill="none" stroke="#e4d3a7" stroke-width=".85"/>
+    </g>
+  </g>
+  <g color="#84c7c2">
+    <path class="constellation-path" pathLength="1" d="m69 286 39-44 32 30 37-34 27 26m-64 8 16 32" stroke="currentColor" stroke-opacity=".67" stroke-width=".85"/>
+    <g class="constellation-nodes" fill="currentColor">
+      <circle cx="69" cy="286" r="1.7"/><circle cx="108" cy="242" r="2.1"/><circle cx="140" cy="272" r="2.6"/>
+      <circle cx="177" cy="238" r="1.8"/><circle cx="204" cy="264" r="1.55"/><circle cx="156" cy="304" r="1.6"/>
+      <circle cx="140" cy="272" r="6.4" fill="none" stroke="currentColor" stroke-opacity=".52" stroke-width=".75"/>
+      <use href="#star-cross" transform="translate(108 242) scale(.75)" fill="none" stroke="#c1e2de" stroke-width=".85"/>
+    </g>
+  </g>
+  <g color="#abaed9">
+    <path class="constellation-path" pathLength="1" d="m494 265 34-26 29 35 28-22 29 34-30 31m-27-43-12 35" stroke="currentColor" stroke-opacity=".67" stroke-width=".85"/>
+    <g class="constellation-nodes" fill="currentColor">
+      <circle cx="494" cy="265" r="1.6"/><circle cx="528" cy="239" r="1.95"/><circle cx="557" cy="274" r="2.5"/>
+      <circle cx="585" cy="252" r="1.9"/><circle cx="614" cy="286" r="2"/><circle cx="584" cy="317" r="1.6"/>
+      <circle cx="545" cy="309" r="1.4"/>
+      <circle cx="557" cy="274" r="6.2" fill="none" stroke="currentColor" stroke-opacity=".47" stroke-width=".75"/>
+      <use href="#star-cross" transform="translate(614 286) scale(.75)" fill="none" stroke="#d3d6eb" stroke-width=".85"/>
+    </g>
+  </g>
+</svg>

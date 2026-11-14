@@ -6,6 +6,7 @@ project:
     - assets/category-counts.json
     - assets/knowledge-tree.mjs
     - assets/knowledge-tree-data.js
+    - assets/knowledge-observatory.svg
     - qna/questions.json
     - assets/firebase-config.json
     - assets/post-likes.js

@@ -251,33 +251,31 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-<!-- Knowledge tree: subject → topic → suggested learning path. -->
-<section id="knowledge-tree" class="knowledge-tree" aria-label="지식 수목도">
-  <button class="knowledge-launch" type="button" aria-controls="knowledge-content" hidden>
-    <svg class="knowledge-launch-branches" viewBox="0 0 1040 320" preserveAspectRatio="xMidYMid slice" fill="none" aria-hidden="true">
-      <g stroke="currentColor">
-        <path d="M0 250h110l63-63h84m-84 0v-69l55-55h90m-208 187-48-48v-87l65-65m46 68h-66"/>
-        <path d="M1040 76H930l-64 64h-85m85 0v71l-59 59h-73m196-194 51 51v86l-66 66m-49-68h66"/>
-      </g>
-      <g fill="currentColor">
-        <circle cx="110" cy="250" r="4"/><circle cx="173" cy="187" r="5"/><circle cx="257" cy="187" r="3"/>
-        <circle cx="318" cy="63" r="3"/><circle cx="127" cy="50" r="4"/><circle cx="107" cy="118" r="3"/>
-        <circle cx="930" cy="76" r="4"/><circle cx="866" cy="140" r="5"/><circle cx="781" cy="140" r="3"/>
-        <circle cx="734" cy="270" r="3"/><circle cx="915" cy="279" r="4"/><circle cx="932" cy="211" r="3"/>
-      </g>
-    </svg>
-    <span class="knowledge-launch-symbol" aria-hidden="true">
-      <svg viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
-        <path d="M24 32V16m0 11 12-9m-12 9-12-9" stroke-linecap="round"/>
-        <circle cx="24" cy="13" r="3"/><circle cx="9.5" cy="16" r="3"/><circle cx="38.5" cy="16" r="3"/>
-        <circle cx="24" cy="36" r="4" fill="currentColor" stroke="none"/>
-      </svg>
-    </span>
-    <span class="knowledge-launch-prompt">클릭하여 여러분의 지식을 확장해보세요!</span>
-    <span class="knowledge-launch-action">지식 여행하기
-      <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12m-5-5 5 5-5 5"/></svg>
-    </span>
-  </button>
+<!-- The entrance is visible in the initial HTML; JavaScript only enhances the link. -->
+<section id="knowledge-tree" class="knowledge-tree" data-view="entry" aria-label="지식 수목도">
+  <div class="knowledge-entrance notranslate" translate="no" lang="ko">
+    <div class="knowledge-entrance-body">
+      <div class="knowledge-entrance-copy">
+        <p class="knowledge-entrance-eyebrow"><span aria-hidden="true">✦</span> MATHASTRO <span aria-hidden="true">/</span> CELESTIAL LIBRARY</p>
+        <h1 class="knowledge-entrance-title"><span data-launch-text="title">지식의 우주</span> <span class="knowledge-entrance-gold" data-launch-text="subtitle">도서관</span></h1>
+        <p class="knowledge-entrance-description" data-launch-text="description">별을 잇듯 개념을 이어 보세요. 네 가지 별자리에서 나만의 공부 길이 시작됩니다.</p>
+        <a class="knowledge-launch" href="#listing-sample-listings">
+          <span data-launch-text="action">지식 여행하기</span>
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg>
+        </a>
+      </div>
+      <div class="knowledge-entrance-scene" aria-hidden="true">
+        <img src="assets/knowledge-observatory.svg" width="640" height="440" alt="" fetchpriority="high">
+        <span class="knowledge-entrance-plate">FIG. 01 <span>·</span> THE CELESTIAL GATE</span>
+      </div>
+    </div>
+    <ul class="knowledge-entrance-legend" aria-label="네 가지 지식 별자리">
+      <li><span aria-hidden="true">01</span><span data-launch-field="Math">수학</span></li>
+      <li><span aria-hidden="true">02</span><span data-launch-field="Astronomy">천문학</span></li>
+      <li><span aria-hidden="true">03</span><span data-launch-field="Physics">물리학</span></li>
+      <li><span aria-hidden="true">04</span><span data-launch-field="Computer">컴퓨터 과학</span></li>
+    </ul>
+  </div>
   <div id="knowledge-content" tabindex="-1" hidden></div>
   <p class="knowledge-status" role="status" aria-live="polite" aria-atomic="true"></p>
   <noscript><p class="knowledge-loading">지식 수목도를 탐색하려면 JavaScript를 켜주세요. 상단 학문 메뉴와 아래 글 목록에서도 모든 글을 읽을 수 있습니다.</p></noscript>

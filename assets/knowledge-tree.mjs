@@ -110,6 +110,11 @@ const symbols = {
 
 const i18n = {
   ko: {
+    launch: {
+      title: "지식의 우주", subtitle: "도서관",
+      description: "별을 잇듯 개념을 이어 보세요. 네 가지 별자리에서 나만의 공부 길이 시작됩니다.",
+      action: "지식 여행하기", legend: "네 가지 지식 별자리"
+    },
     exploreDeeper: "조금 더 깊이 들여다볼까요?",
     allFields: "← 전체 분야",
     changeTopic: "← 주제 다시 고르기",
@@ -117,13 +122,16 @@ const i18n = {
     draftNote: "추천 경로 초안 · 기초에서 심화로 이어지도록 구성했으며, 학습 순서는 계속 다듬어집니다.",
     viewAllPosts: "이 주제의 글 모아보기",
     readFirstPost: "첫 글부터 읽기 ↗",
-    launchPrompt: "클릭하여 여러분의 지식을 확장해보세요!",
-    launchAction: "지식 여행하기",
     statusMap: (label, count) => `${label}, ${count}개의 글을 추천 순서로 표시합니다.`,
     statusTopics: (label, count) => `${label}, ${count}개의 주제를 살펴보세요.`,
     statusFields: "네 가지 학문 중 관심 있는 학문을 고르세요."
   },
   en: {
+    launch: {
+      title: "A Library among", subtitle: "the Stars",
+      description: "Connect ideas like stars in a constellation. Follow one of four paths into the library.",
+      action: "Begin Journey", legend: "Four constellations of knowledge"
+    },
     exploreDeeper: "Explore deeper into topics",
     allFields: "← All Fields",
     changeTopic: "← Change Topic",
@@ -131,8 +139,6 @@ const i18n = {
     draftNote: "Draft Suggested Path · Structured from foundations to advanced topics, sequence refined continuously.",
     viewAllPosts: "View all posts on this topic",
     readFirstPost: "Read from first article ↗",
-    launchPrompt: "Click to expand and explore your knowledge!",
-    launchAction: "Begin Journey",
     statusMap: (label, count) => `${label}: displaying ${count} articles in recommended sequence.`,
     statusTopics: (label, count) => `${label}: explore ${count} topics.`,
     statusFields: "Choose a field of interest among the four disciplines."
@@ -169,6 +175,7 @@ function setup() {
     : document.querySelectorAll("#listing-sample-listings .list > [data-index]");
   const posts = readPosts(elements);
   const catalog = buildCatalog(posts, editorial);
+  const entrance = hero.querySelector(".knowledge-entrance");
   const launch = hero.querySelector(".knowledge-launch");
   const content = hero.querySelector("#knowledge-content");
   const status = hero.querySelector(".knowledge-status");
@@ -286,23 +293,22 @@ function setup() {
     content.append(actions);
   }
 
-  function updateLaunchTexts(isEn, t) {
-    if (!launch) return;
-    const promptEl = launch.querySelector(".knowledge-launch-prompt");
-    const actionEl = launch.querySelector(".knowledge-launch-action");
-    if (promptEl) promptEl.textContent = t.launchPrompt;
-    if (actionEl) {
-      const svg = actionEl.querySelector("svg");
-      actionEl.textContent = t.launchAction + " ";
-      if (svg) actionEl.append(svg);
-    }
+  function updateLaunchTexts() {
+    const lang = currentLang();
+    const t = i18n[lang].launch;
+    entrance.lang = lang;
+    entrance.querySelectorAll("[data-launch-text]").forEach(node => {
+      node.textContent = t[node.dataset.launchText];
+    });
+    entrance.querySelector(".knowledge-entrance-legend").setAttribute("aria-label", t.legend);
+    fields.forEach(item => {
+      entrance.querySelector(`[data-launch-field="${item.key}"]`).textContent = lang === "en" ? item.labelEn : item.label;
+    });
   }
 
   function render() {
     const isEn = currentLang() === "en";
     const t = i18n[isEn ? "en" : "ko"];
-    updateLaunchTexts(isEn, t);
-
     content.replaceChildren();
     hero.dataset.view = topic ? "map" : field ? "topics" : "fields";
     hero.className = "knowledge-tree" + (field ? " knowledge-color-" + field.color : "");
@@ -316,23 +322,24 @@ function setup() {
       : field ? t.statusTopics(fieldLabel, topics().length) : t.statusFields;
   }
 
-  launch.addEventListener("click", () => {
-    launch.hidden = true;
+  launch.setAttribute("aria-controls", content.id);
+  launch.addEventListener("click", event => {
+    if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.defaultPrevented) return;
+    event.preventDefault();
+    entrance.hidden = true;
     content.hidden = false;
     navigate(null);
   });
-  hero.dataset.view = "entry";
-  launch.hidden = false;
 
-  // React to language switches dynamically
-  window.addEventListener("mathastro-lang-changed", () => render());
+  function updateLanguage() {
+    updateLaunchTexts();
+    if (entrance.hidden) render();
+  }
+  window.addEventListener("mathastro-lang-changed", updateLanguage);
   window.addEventListener("storage", e => {
-    if (e.key === "mathastro_lang") render();
+    if (e.key === "mathastro_lang") updateLanguage();
   });
-
-  // Initial render of launch texts according to current language
-  const isEn = currentLang() === "en";
-  updateLaunchTexts(isEn, i18n[isEn ? "en" : "ko"]);
+  updateLanguage();
 }
 
 if (typeof document !== "undefined") {

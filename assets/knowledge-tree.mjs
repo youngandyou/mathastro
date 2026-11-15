@@ -111,9 +111,9 @@ const symbols = {
 const i18n = {
   ko: {
     launch: {
-      title: "지식의 우주", subtitle: "도서관",
       description: "별을 잇듯 개념을 이어 보세요. 네 가지 별자리에서 나만의 공부 길이 시작됩니다.",
-      action: "지식 여행하기", legend: "네 가지 지식 별자리"
+      action: "지식 여행하기",
+      illustration: "도서관 입구를 둘러싼 네 별자리: 수학의 좌표 평면, 천문학의 고리 행성, 물리학의 원자, 컴퓨터 과학의 코드 기호."
     },
     exploreDeeper: "조금 더 깊이 들여다볼까요?",
     allFields: "← 전체 분야",
@@ -128,9 +128,9 @@ const i18n = {
   },
   en: {
     launch: {
-      title: "A Library among", subtitle: "the Stars",
       description: "Connect ideas like stars in a constellation. Follow one of four paths into the library.",
-      action: "Begin Journey", legend: "Four constellations of knowledge"
+      action: "Begin Journey",
+      illustration: "Four constellations surround the library entrance: a coordinate plane for mathematics, a ringed planet for astronomy, an atom for physics, and code brackets for computer science."
     },
     exploreDeeper: "Explore deeper into topics",
     allFields: "← All Fields",
@@ -300,10 +300,7 @@ function setup() {
     entrance.querySelectorAll("[data-launch-text]").forEach(node => {
       node.textContent = t[node.dataset.launchText];
     });
-    entrance.querySelector(".knowledge-entrance-legend").setAttribute("aria-label", t.legend);
-    fields.forEach(item => {
-      entrance.querySelector(`[data-launch-field="${item.key}"]`).textContent = lang === "en" ? item.labelEn : item.label;
-    });
+    entrance.querySelector(".knowledge-entrance-scene img").alt = t.illustration;
   }
 
   function render() {

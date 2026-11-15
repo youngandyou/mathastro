@@ -102,11 +102,10 @@
 
   <style>
     @media (prefers-reduced-motion: no-preference) {
-      .constellation-path { stroke-dasharray: 1; animation: trace .96s ease-out .1s both; }
-      .constellation-nodes { animation: stars-in .6s ease-out .5s both; }
+      .constellation-lines { animation: constellation-in .75s ease-out .1s both; }
+      .constellation-nodes { animation: constellation-in .55s ease-out .4s both; }
     }
-    @keyframes trace { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
-    @keyframes stars-in { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes constellation-in { from { opacity: 0; } to { opacity: 1; } }
   </style>
 
   <ellipse cx="352" cy="215" rx="241" ry="194" fill="url(#observatory-halo)"/>
@@ -200,42 +199,68 @@
   <circle cx="352" cy="67" r="5.25" stroke="#cfba8d" stroke-width=".72"/>
   <path d="m352 61 1.2 4.8 4.8 1.2-4.8 1.2-1.2 4.8-1.2-4.8-4.8-1.2 4.8-1.2Z" fill="#eee0b9"/>
 
-  <!-- Four independent constellations. -->
-  <g color="#a3cff0">
-    <path class="constellation-path" pathLength="1" d="m59 120 47-41 29 25 40-18 23 39m-63-21-21 37" stroke="currentColor" stroke-opacity=".62" stroke-width=".85"/>
+  <!-- Mathematics: a Cartesian graph and its parabola. -->
+  <g color="#a3d3f4">
+    <g class="constellation-lines" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M75 125h116m-6-6 6 6-6 6M135 145V64m-6 6 6-6 6 6" stroke-opacity=".67" stroke-width="1.8"/>
+      <path d="M87 76c14 26 30 39 48 39s34-13 48-39" stroke-width="2.35"/>
+    </g>
     <g class="constellation-nodes" fill="currentColor">
-      <circle cx="59" cy="120" r="1.8"/><circle cx="106" cy="79" r="2.65"/><circle cx="135" cy="104" r="1.9"/>
-      <circle cx="175" cy="86" r="2.1"/><circle cx="198" cy="125" r="1.55"/><circle cx="114" cy="141" r="1.55"/>
-      <circle cx="106" cy="79" r="6.5" fill="none" stroke="currentColor" stroke-opacity=".44" stroke-width=".75"/>
-      <use href="#star-cross" transform="translate(175 86) scale(.71)" fill="none" stroke="#dae8e4" stroke-width=".85"/>
+      <circle cx="87" cy="76" r="3.3"/><circle cx="109" cy="105" r="2.35"/>
+      <circle cx="161" cy="105" r="2.35"/><circle cx="183" cy="76" r="3.3"/>
+      <circle cx="75" cy="125" r="1.9"/><circle cx="135" cy="145" r="1.9"/>
+      <circle cx="135" cy="115" r="7" fill-opacity=".2"/>
+      <circle cx="135" cy="115" r="3.65" fill="#ebf6fb"/>
+      <use href="#star-cross" transform="translate(183 76) scale(.96)" stroke="#edf7fb" stroke-width=".85"/>
     </g>
   </g>
-  <g color="#ddc597">
-    <path class="constellation-path" pathLength="1" d="m493 110 39-33 38 20 30-32 16 44m-46-12 6 38" stroke="currentColor" stroke-opacity=".65" stroke-width=".85"/>
+  <!-- Astronomy: the far and near halves of Saturn's ring overlap the planet. -->
+  <g color="#efd29a">
+    <g class="constellation-lines" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M502.4 121.5a55 14-23 0 1 101.2-43" stroke-opacity=".66" stroke-width="2"/>
+      <circle cx="553" cy="100" r="29" fill="#151e30" stroke-opacity=".86" stroke-width="2.1"/>
+      <path d="M528 92c10-10 30-17 43-17m-32 48c10-1 23-6 35-14" stroke-opacity=".34" stroke-width="1.35"/>
+      <path d="M502.4 121.5a55 14-23 0 0 101.2-43" stroke-width="2.6"/>
+    </g>
     <g class="constellation-nodes" fill="currentColor">
-      <circle cx="493" cy="110" r="1.5"/><circle cx="532" cy="77" r="2"/><circle cx="570" cy="97" r="2.55"/>
-      <circle cx="600" cy="65" r="2.1"/><circle cx="616" cy="109" r="1.75"/><circle cx="576" cy="135" r="1.6"/>
-      <circle cx="570" cy="97" r="6.2" fill="none" stroke="currentColor" stroke-opacity=".47" stroke-width=".75"/>
-      <use href="#star-cross" transform="translate(600 65) scale(.78)" fill="none" stroke="#e4d3a7" stroke-width=".85"/>
+      <circle cx="502.4" cy="121.5" r="3.3"/><circle cx="603.6" cy="78.5" r="3.6"/>
+      <circle cx="532.5" cy="79.5" r="2.2"/><circle cx="553" cy="71" r="3.1"/>
+      <circle cx="582" cy="100" r="2.2"/><circle cx="553" cy="129" r="2.45"/>
+      <circle cx="558.5" cy="112.9" r="6.7" fill-opacity=".23"/>
+      <circle cx="558.5" cy="112.9" r="3.55" fill="#fbefd5"/>
+      <use href="#star-cross" transform="translate(603.6 78.5) scale(.98)" stroke="#f7e7c5" stroke-width=".9"/>
     </g>
   </g>
-  <g color="#84c7c2">
-    <path class="constellation-path" pathLength="1" d="m69 286 39-44 32 30 37-34 27 26m-64 8 16 32" stroke="currentColor" stroke-opacity=".67" stroke-width=".85"/>
+  <!-- Physics: three orbits and a bright nucleus. -->
+  <g color="#92d9ce">
+    <g class="constellation-lines" stroke="currentColor" stroke-width="2.05">
+      <ellipse cx="135" cy="269" rx="48" ry="15" stroke-opacity=".78"/>
+      <ellipse cx="135" cy="269" rx="48" ry="15" transform="rotate(60 135 269)" stroke-opacity=".87"/>
+      <ellipse cx="135" cy="269" rx="48" ry="15" transform="rotate(-60 135 269)" stroke-opacity=".87"/>
+    </g>
     <g class="constellation-nodes" fill="currentColor">
-      <circle cx="69" cy="286" r="1.7"/><circle cx="108" cy="242" r="2.1"/><circle cx="140" cy="272" r="2.6"/>
-      <circle cx="177" cy="238" r="1.8"/><circle cx="204" cy="264" r="1.55"/><circle cx="156" cy="304" r="1.6"/>
-      <circle cx="140" cy="272" r="6.4" fill="none" stroke="currentColor" stroke-opacity=".52" stroke-width=".75"/>
-      <use href="#star-cross" transform="translate(108 242) scale(.75)" fill="none" stroke="#c1e2de" stroke-width=".85"/>
+      <circle cx="87" cy="269" r="2.25"/><circle cx="183" cy="269" r="3.55"/>
+      <circle cx="111" cy="227.4" r="3.45"/><circle cx="159" cy="227.4" r="2.25"/>
+      <circle cx="111" cy="310.6" r="3.45"/><circle cx="159" cy="310.6" r="2.25"/>
+      <circle cx="135" cy="269" r="10" fill-opacity=".22"/>
+      <circle cx="135" cy="269" r="4.9" fill="#dcf6eb"/>
+      <use href="#star-cross" transform="translate(183 269) scale(.96)" stroke="#dcf6eb" stroke-width=".85"/>
     </g>
   </g>
-  <g color="#abaed9">
-    <path class="constellation-path" pathLength="1" d="m494 265 34-26 29 35 28-22 29 34-30 31m-27-43-12 35" stroke="currentColor" stroke-opacity=".67" stroke-width=".85"/>
+  <!-- Computer science: angle brackets and a slash drawn as a connected star symbol. -->
+  <g color="#c8c6f0">
+    <g class="constellation-lines" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m525 245-30 24 30 24m53-48 30 24-30 24" stroke-width="2.65"/>
+      <path d="m562 236-21 66" stroke-opacity=".83" stroke-width="2.65"/>
+    </g>
     <g class="constellation-nodes" fill="currentColor">
-      <circle cx="494" cy="265" r="1.6"/><circle cx="528" cy="239" r="1.95"/><circle cx="557" cy="274" r="2.5"/>
-      <circle cx="585" cy="252" r="1.9"/><circle cx="614" cy="286" r="2"/><circle cx="584" cy="317" r="1.6"/>
-      <circle cx="545" cy="309" r="1.4"/>
-      <circle cx="557" cy="274" r="6.2" fill="none" stroke="currentColor" stroke-opacity=".47" stroke-width=".75"/>
-      <use href="#star-cross" transform="translate(614 286) scale(.75)" fill="none" stroke="#d3d6eb" stroke-width=".85"/>
+      <circle cx="525" cy="245" r="2.8"/><circle cx="525" cy="293" r="2.8"/>
+      <circle cx="578" cy="245" r="2.8"/><circle cx="578" cy="293" r="2.8"/>
+      <circle cx="495" cy="269" r="4" fill="#edecfc"/><circle cx="608" cy="269" r="4" fill="#edecfc"/>
+      <circle cx="541" cy="302" r="3.15"/><circle cx="551.5" cy="269" r="2.5"/>
+      <circle cx="562" cy="236" r="6.8" fill-opacity=".22"/>
+      <circle cx="562" cy="236" r="3.5" fill="#edecfc"/>
+      <use href="#star-cross" transform="translate(562 236) scale(.97)" stroke="#edecfc" stroke-width=".85"/>
     </g>
   </g>
 </svg>

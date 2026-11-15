@@ -26,6 +26,7 @@ website:
   navbar:
     search: true
     collapse: true
+    collapse-below: xl
     left:
       - href: index.qmd
         text: "Home"
@@ -57,7 +58,7 @@ website:
       - text: "Astronomy (천문학)"
         menu:
           - href: index.qmd#category=Astronomy
-            text: "🔭 천문학 전체보기 (All Astronomy) (22)"
+            text: "🔭 천문학 전체보기 (All Astronomy) (23)"
           - text: "---"
           - href: index.qmd#category=Radio%20Astronomy
             text: "전파천문학 (Radio Astronomy) (16)"

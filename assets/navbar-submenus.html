@@ -427,7 +427,8 @@
         var toggle = e.target.closest(".navbar-nav .dropdown-submenu > a.has-submenu");
         if (!toggle) return;
         // If on small viewport, tapping submenu toggle can toggle the sub-menu
-        if (window.innerWidth < 992) {
+        var navToggle = toggle.closest(".navbar")?.querySelector(".navbar-toggler");
+        if (navToggle && getComputedStyle(navToggle).display !== "none") {
           var submenu = toggle.nextElementSibling;
           if (submenu && submenu.classList.contains("dropdown-menu-sub")) {
             // Check if user clicked the right edge (arrow) or want to expand

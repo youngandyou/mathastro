@@ -171,8 +171,171 @@ baseline 8
 
 ---
 
+# 3. 진폭 보정(Amplitude Calibration)
+
+- 이번 섹션에서는 AIPS에서 visibility의 진폭(amplitude)을 보정하는 방법을 살펴보자. 
+
+---
+
+## 3.1. ACCOR 
+
+- `task 'accor'`은 digital sampler bias를 제거할 때, 사용한다. 
+  - 참고: `task 'accor'`를 적용하기 위해서는 앞선 `task 'fitld'` 단계에서 `digicor 1`로 실행되었어야 한다.
+- 간섭계 안테나에서 측정된 auto-correlation 스펙트럼의 평균값으로 cross-correlation 진폭을 보정할 수 있다. 
+- `task 'accor'`은 현재 데이터에 속한 모든 안테나의 auto-correlation 스펙트럼의 평균값을 추정하여 데이터 보정을 수행한다. [1] 
+- `task 'accor'`은 현재 처리 중인 데이터의 모든 SN, CL table을 무시하기 때문에 fringe fitting 혹은 추후에 수행할 self-calibration과 같은 후속 보정을 수행하기 전에 이뤄져야 한다.
+- `task 'accor'`은 다음과 같이 수행한다: 
+
+```aips 
+default accor 
+task 'accor'
+getn 2 
+timer 0 
+	# 전체 시간 데이터 선택
+solint -1 
+	# 각 scan마다 digital sampler bias gain 값을 추정함
+go
+```
+
+- 위 코드의 실행 결과로 SN table이 형성된다.
+- AIPS에서는 형성된 SN table을 CL table에 업데이트하고 최종적으로 얻은 CL table을 입력 데이터에 적용하여 최종적으로 보정된 데이터를 얻는다. 
+  - 이 과정에서 원본 데이터는 손실되지 않는다.
+- 즉, SN -> CL -> SN -> CL이 반복되는 구조이다. 어떤 task의 시행 결과로 얻어낸 SN table을 CL table에 입력하는 방법은 다음과 같다:
+
+```aips
+default clcal 
+task 'clcal'
+getn 2 
+snver 1
+	# CL table에 적용할 SN table 번호 - 반드시 확인!
+gainver 1 
+	# 입력으로 사용할 CL table 번호 지정
+gainuse 2
+	# 결과를 저장할 Cl table 번호 지정
+go
+```
+
+- 보통 `task 'clcal'`을 처음 수행한다면, `gainver 1`로 두면 된다. 
+- 어떤 번호로 해야할지 모를 때는 `imhe`를 통해서 현재 기록된 CL table 번호를 확인한 후, 그 숫자를 적어주면 된다. 
+
+---
+
+## 3.2. CLCOR 
+
+- 안테나가 하늘을 추적하면서 생기는 편광 좌표계 회전 효과를 보정하여 CL table에 기록하기 위해서 다음 코드를 입력한다:
+
+```aips 
+default clcor 
+task 'clcor'
+getn 2
+gainver 2
+gainuse 3
+opcode 'pang'
+	# parallactic angle 보정을 적용하는 옵션
+clcorprm 1,0
+	# task 'clcor'의 세부 parameter 값으로 보편적으로 1,0을 줌
+go
+```
+
+- `task 'clcor'`은 **위상 보정에 전에 진행**되어야 한다.
+
+---
+
+## 3.3. APCAL 
+
+- `task 'apcal'`은 안테나의 시스템 온도, gain curve를 이용하여 SEFD를 추정한 후, visibility 진폭을 보정하는 과정이다.
+- 안테나의 시스템 온도와 gain curve는 **antab**이라는 파일에 기록되어 있다. antab 파일을 AIPS 내부로 가져오기 위해서 다음을 실행한다:
+
+```aips
+default antab 
+task 'antab'
+getn 2
+calin 'PWD:(antab 파일 이름) 
+	# 예: a2418eKYS.ANTAB2.1 
+tyver 2
+	# 시스템 온도를 불러와서 저장할 table 번호
+gcver 1
+	# gain curve를 불러와서 저장할 table 번호
+go
+```
+
+- `task 'antab'`은 계속 수행하면 해당 파일에 데이터를 덮어 쓴다.
+- a priori method를 통해서 진폭 보정을 수행하기 위해 `task 'apcal'`을 이용한다.
+
+```aips 
+default apcal 
+task 'apcal'
+getn 2
+tyver 2 
+	# task 'apcal'에 사용할 시스템 온도 table 번호
+gcver 1 
+	# task 'apcal'에 사용할 gain curve table 번호
+snver 2 
+	# 저장할 SN table 번호
+```
+
+- 안테나의 시스템 온도와 `task 'apcal'`로 얻어낸 gain 값을 보기 위해서 `task 'snplt'`를 아래와 같이 수행한다.
+
+```aips 
+default snplt 
+task 'snplt'
+getn 2
+inext 'ty'
+	# Ty table 지정 
+inver 2
+	# 시스템 온도가 기록된 table 번호
+optype 'tsys'
+	# 그래프의 y축에 시스템 온도 설정
+opcode 'alif'
+	# 모든 IF에 기록된 시스템 온도를 봄
+nplots 4 
+	# 하나의 페이지에 출력할 "시스템 온도 vs 시간" 그래프 개수
+dotv -1 
+go 
+```
+
+- 위 코드는 시스템 온도에 대한 결과만 알려준다. gain에 대한 결과도 보기 위해서 다음과 같이 수행한다.
+
+```aips 
+tget snplt 
+	# 이전에 사용한 task 'snplt' 설정을 그대로 유지함
+inext 'sn'
+	# SN table 지정
+inver 2 
+	# gain 값이 기록된 SN table 번호 지정
+optype 'amp'
+	# 안테나별 amplitude gain 보정 값을 보여줌
+go
+```
+
+- 시스템 온도와 gain의 경향성이 유사하게 따라가는 것을 확인했다면, 진폭 보정이 완료된 것이다. 진폭 보정을 거친 SN table을 CL table에 넣기 위해 다음과 같이 수행한다.
+
+```aips 
+default clcal 
+task 'clcal'
+getn 2
+interpol 'self' 
+snver 2
+gainver 3
+gainuse 4
+go
+```
+
+- `interpol`: calibrator solution을 시간 보간해서 다른 source에도 적용할 수 있는 기능이다.
+  - `interpol 'self'`: 이 설정은 각 source를 보정할 때, 다른 source를 정보를 이용하지 않고, source 자체가 지닌 데이터만 이용하여 보정한다는 것을 뜻한다.
+
+---
+
+## 3.4. Amplitude Calibration Discussion
+
+- 만약에 특정 안테나의 antab 없어서 따로 진폭 보정을 수행하게 된다면, `task 'apcal'`에서 `antenna` 옵션을 주어서 해당 안테나만 진폭 보정을 수행한 후, 기존의 CL table에 `task 'clcal'`을 수행하면 된다.
 
 
+---
+
+# Reference 
+
+- $1.$ [Effect of Digitizers Errors on the Cross and Auto Correlation Response of an FX Correlator, L.Kogan, 1995](https://science.nrao.edu/facilities/vlba/publications/memos/sci/sci09memo.pdf)
 
 
 

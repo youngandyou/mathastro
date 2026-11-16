@@ -323,14 +323,14 @@ function setup() {
   launch.addEventListener("click", event => {
     if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey || event.defaultPrevented) return;
     event.preventDefault();
-    entrance.hidden = true;
+    entrance.inert = true;
     content.hidden = false;
     navigate(null);
   });
 
   function updateLanguage() {
     updateLaunchTexts();
-    if (entrance.hidden) render();
+    if (!content.hidden) render();
   }
   window.addEventListener("mathastro-lang-changed", updateLanguage);
   window.addEventListener("storage", e => {

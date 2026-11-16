@@ -2,11 +2,13 @@
 .knowledge-tree {
   --knowledge-accent: var(--mag-navy);
   --knowledge-tint: #edf1f5;
-  --knowledge-frame-height: clamp(22.2rem, 40vw, 24.6rem);
+  --knowledge-entrance-extra: 2.85rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
   scroll-margin-top: 90px;
   margin-bottom: 3.2rem;
   border: 1px solid var(--mag-border);
-  border-radius: 8px;
+  border-radius: 10px;
   background: var(--mag-bg-card);
   overflow: hidden;
   box-shadow: var(--mag-shadow-sm);
@@ -25,21 +27,23 @@
   outline-offset: 4px;
 }
 
-.knowledge-tree[data-view] { height: var(--knowledge-frame-height); }
 /* The entrance doubles as the home masthead; category listings retain their heading. */
 .magazine-masthead { display: none; }
 html.category-active .magazine-masthead { display: block; }
-.magazine-utility-bar { margin-bottom: 1rem; }
 
-.knowledge-tree[data-view="entry"] {
-  height: auto;
-  border-color: #15243a;
-  border-radius: 10px;
+.knowledge-tree[data-view="entry"] { border-color: #15243a; }
+/* The entrance sizes the shared grid row at each viewport width. */
+.knowledge-entrance,
+#knowledge-content {
+  grid-area: 1 / 1;
+  min-width: 0;
 }
+.knowledge-tree:not([data-view="entry"]) .knowledge-entrance { visibility: hidden; }
 .knowledge-entrance {
   position: relative;
   isolation: isolate;
   overflow: hidden;
+  padding-block: calc(var(--knowledge-entrance-extra) / 2);
   background:
     radial-gradient(ellipse at 76% 48%, #173154 0%, transparent 55%),
     radial-gradient(ellipse at 100% 104%, #173f44 0%, transparent 41%),
@@ -95,6 +99,7 @@ html.category-active .magazine-masthead { display: block; }
   word-break: keep-all;
 }
 .knowledge-launch {
+  position: relative;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -110,6 +115,65 @@ html.category-active .magazine-masthead { display: block; }
   font-size: .92rem;
   text-decoration: none;
   transition: background .18s ease, box-shadow .18s ease;
+}
+.knowledge-launch-stars {
+  position: absolute;
+  inset: -.8rem;
+  pointer-events: none;
+}
+.knowledge-launch-stars > span {
+  --star-size: .36rem;
+  --star-color: #d1e8ff;
+  position: absolute;
+  top: var(--star-y);
+  left: var(--star-x);
+  width: var(--star-size);
+  aspect-ratio: 1;
+  translate: -50% -50%;
+  color: var(--star-color);
+  filter: drop-shadow(0 0 3px currentColor);
+}
+.knowledge-launch-stars > span::before {
+  content: "";
+  display: block;
+  height: 100%;
+  background: currentColor;
+  clip-path: polygon(50% 0, 62% 38%, 100% 50%, 62% 62%, 50% 100%, 38% 62%, 0 50%, 38% 38%);
+}
+.knowledge-launch-stars > :nth-child(1) { --star-index: 0; --star-x: 15%; --star-y: 0%; --star-size: .72rem; --star-color: #ffe3a2; }
+.knowledge-launch-stars > :nth-child(2) { --star-index: 1; --star-x: 50%; --star-y: 0%; }
+.knowledge-launch-stars > :nth-child(3) { --star-index: 2; --star-x: 85%; --star-y: 0%; --star-size: .57rem; --star-color: #fbf7ee; }
+.knowledge-launch-stars > :nth-child(4) { --star-index: 3; --star-x: 100%; --star-y: 50%; }
+.knowledge-launch-stars > :nth-child(5) { --star-index: 4; --star-x: 85%; --star-y: 100%; --star-size: .68rem; --star-color: #b9f4e9; }
+.knowledge-launch-stars > :nth-child(6) { --star-index: 5; --star-x: 50%; --star-y: 100%; }
+.knowledge-launch-stars > :nth-child(7) { --star-index: 6; --star-x: 15%; --star-y: 100%; --star-size: .52rem; --star-color: #f4dc9f; }
+.knowledge-launch-stars > :nth-child(8) { --star-index: 7; --star-x: 0%; --star-y: 50%; }
+@supports (offset-path: inset(0 round 1.2rem)) {
+  .knowledge-launch-stars > span {
+    inset: 0 auto auto 0;
+    translate: none;
+    offset-path: inset(0 round 1.2rem);
+    offset-rotate: 0deg;
+    offset-distance: calc(var(--star-index) * 12.5%);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  [data-view="entry"] .knowledge-launch-stars > span::before {
+    animation: knowledge-star-twinkle 3.6s ease-in-out calc(var(--star-index) * -.7s) infinite;
+  }
+  @supports (offset-path: inset(0 round 1.2rem)) {
+    [data-view="entry"] .knowledge-launch-stars > span {
+      animation: knowledge-star-orbit 10s linear calc(var(--star-index) * -1.25s) infinite;
+    }
+  }
+}
+@keyframes knowledge-star-orbit {
+  from { offset-distance: 0%; }
+  to { offset-distance: 100%; }
+}
+@keyframes knowledge-star-twinkle {
+  0%, 100% { opacity: .5; transform: scale(.7); }
+  50% { opacity: 1; transform: scale(1.2); }
 }
 .knowledge-launch svg { flex: none; transition: transform .18s ease; }
 .knowledge-launch:hover,
@@ -136,9 +200,14 @@ html.category-active .magazine-masthead { display: block; }
   max-width: 640px;
   aspect-ratio: 640 / 440;
 }
-#knowledge-content { height: 100%; padding: 1.8rem 2.25rem 1.2rem; outline: none; }
+#knowledge-content {
+  contain: size;
+  min-height: 0;
+  padding: 1.8rem 2.25rem 1.2rem;
+  outline: none;
+}
 .knowledge-tree[data-view="fields"] {
-  border: 0;
+  border-color: transparent;
   background: transparent;
   box-shadow: none;
   overflow: visible;
@@ -221,15 +290,15 @@ html.category-active .magazine-masthead { display: block; }
   .knowledge-post-link { padding: .6rem; gap: .3rem; }
 }
 @media (max-width: 700px) {
-  .knowledge-tree { --knowledge-frame-height: 19.4rem; }
+  .knowledge-tree { --knowledge-entrance-extra: 4.75rem; }
   .knowledge-entrance-body {
     grid-template-columns: minmax(0, 1fr);
     min-height: 0;
     padding-inline: clamp(1.15rem, 5vw, 2.5rem);
   }
-  .knowledge-entrance-copy { padding-block: 1.8rem 0; }
+  .knowledge-entrance-copy { padding-block: 1.8rem 0; text-align: center; }
   .knowledge-entrance h1.knowledge-entrance-title { font-size: clamp(2.05rem, 9.1vw, 3.45rem); }
-  .knowledge-entrance-description { margin: .9rem 0 1.1rem; }
+  .knowledge-entrance-description { margin: .9rem auto 1.1rem; }
   .knowledge-entrance-scene { padding-block: .15rem .75rem; }
   .knowledge-entrance-scene img { max-width: 410px; }
   .knowledge-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -244,6 +313,7 @@ html.category-active .magazine-masthead { display: block; }
   .knowledge-post-link { padding: .75rem; gap: .7rem; }
 }
 @media (max-width: 430px) {
+  .knowledge-tree { --knowledge-entrance-extra: 6.2rem; }
   #knowledge-content { padding: 1.2rem; }
   .knowledge-symbol { width: 60px; height: 60px; }
   .knowledge-topics { grid-template-columns: 1fr; }
@@ -265,6 +335,7 @@ body.quarto-dark .knowledge-tree {
 }
 
 body.quarto-dark .knowledge-tree[data-view="fields"] {
+  border-color: transparent;
   background: transparent;
   box-shadow: none;
 }

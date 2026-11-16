@@ -294,42 +294,7 @@ main.column-page-left > #title-block-header,
   }
 }
 
-/* 1. Top Utility Bar */
-.magazine-utility-bar {
-  border-bottom: 1px solid var(--mag-border);
-  background-color: #ffffff;
-  font-size: 0.82rem;
-  color: var(--mag-text-light);
-  padding: 0.4rem 0.5rem;
-  margin-top: -0.5rem;
-  margin-bottom: 1.5rem;
-}
-
-.magazine-utility-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-
-.magazine-edition-badge {
-  display: inline-block;
-  background-color: var(--mag-burgundy);
-  color: #ffffff;
-  font-size: 0.68rem;
-  font-weight: 700;
-  padding: 0.15rem 0.5rem;
-  border-radius: 2px;
-  letter-spacing: 0.05em;
-  margin-right: 0.5rem;
-}
-
-.magazine-motto {
-  font-weight: 500;
-}
-
-/* 2. Masthead (KIAS Horizon & Quanta style) */
+/* Masthead (KIAS Horizon & Quanta style) */
 .magazine-masthead {
   text-align: center;
   padding: 1.4rem 0 0;
@@ -1868,13 +1833,7 @@ body.quarto-dark .quarto-color-scheme-toggle:hover {
   }
 }
 
-/* Dark Mode Magazine Utility Bar & Masthead */
-body.quarto-dark .magazine-utility-bar {
-  background-color: #0b0f17;
-  border-bottom-color: var(--mag-border);
-  color: var(--mag-text-light);
-}
-
+/* Dark Mode Masthead */
 body.quarto-dark .masthead-main-title {
   color: #f1f5f9;
 }
@@ -2394,7 +2353,6 @@ body,
 .navbar-nav .dropdown-menu,
 .quarto-grid-item .card,
 .knowledge-tree,
-.magazine-utility-bar,
 #TOC,
 .post-like-button,
 .lang-switcher-pill {

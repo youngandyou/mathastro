@@ -26,19 +26,6 @@ listing:
 ---
 
 ```{=html}
-<!-- Top Utility Bar (KIAS Horizon style) -->
-<div class="magazine-utility-bar">
-  <div class="magazine-utility-inner">
-    <div class="magazine-utility-left">
-      <span class="magazine-edition-badge">ACADEMIC WEBZINE</span>
-      <span class="magazine-motto">MathAstro · 세상 모든 학문의 백과사전화</span>
-    </div>
-    <div class="magazine-utility-right">
-      <span>공동 운영: 이영정 (천문학) · 천유민 (수학)</span>
-    </div>
-  </div>
-</div>
-
 <!-- Masthead (Quanta Magazine & KIAS Horizon style) -->
 <header class="magazine-masthead">
   <div class="masthead-brand-container">
@@ -261,6 +248,10 @@ document.addEventListener("DOMContentLoaded", function() {
         <a class="knowledge-launch" href="#listing-sample-listings">
           <span data-launch-text="action">지식 여행하기</span>
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg>
+          <span class="knowledge-launch-stars" aria-hidden="true">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span><span></span>
+          </span>
         </a>
       </div>
       <div class="knowledge-entrance-scene">

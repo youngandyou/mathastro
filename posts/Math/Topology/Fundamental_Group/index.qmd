@@ -2,7 +2,7 @@
 title: "Fundamental Group"
 author: "Youmin Chun"
 date: "2026-11-04 00:00:02"
-description: "위상수학의 기본군(Fundamental Group)을 설명한다."
+description: "위상수학의 기본군(Fundamental Group)을 설명하고, 이를 이용해 조르당 분리 정리(Jordan Separation Theorem)을 증명한다."
 categories: 
   - Math > Topology
 ---
@@ -272,6 +272,39 @@ $$\begin{align*}
 \end{align*}$$
 
 which means that $(h^{-1})_\ast$ is the inverse of $h_\ast$. Hence, $h_\ast$ is an isomorphism. $\blacksquare$
+:::
+
+# Jordan Separation Theorem
+## Theorem 3
+**(i)** Suppose that $X = U \cup V$ where 
+
+1. $U$ and $V$ are open in $X$.
+
+2. $U$ and $V$ are simply connected.
+
+3. $U \cap V \neq \emptyset$.
+
+4. $U \cap V$ is path-connected.
+
+Then $X$ is simply connected.
+
+**(ii)** $S^n$ is simply connected for each $n \ge 2$.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+**(i)** It is a corollary of ***Seifert-Van Kampen Theorem***.
+
+**(ii)** 
+:::
+
+## Definition 3
+**(i)** Let $X$ be a connected space, and let $A \subset X$. We say that $A$ ***separates*** $X$ if $X - A$ is not connected.
+
+**(ii)** A ***simple closed curve*** is a space homeomorphic to $S^1$.
+
+## Theorem 4 (Jordan Separation Theorem)
+Let $C$ be a simple closed curve in $S^2$. Then $C$ separates $S^2$.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
 :::
 
 # Reference

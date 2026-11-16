@@ -82,6 +82,8 @@ website:
           - text: "---"
           - href: index.qmd#category=Reinforcement%20Learning
             text: "강화학습 (Reinforcement Learning) (5)"
+      - href: books.qmd
+        text: "교재 및 참고문헌"
       - text: "관련 링크"
         menu:
           - text: "🔭 천문학 (Astronomy)"
@@ -117,8 +119,11 @@ website:
 format:
   html:
     theme:
-      - cosmo
-      - brand
+      light: cosmo
+      dark: darkly
+    highlight-style:
+      light: github
+      dark: dracula
     css: styles.css
     html-math-method: mathjax
     filters:

@@ -253,3 +253,72 @@ html.category-active .magazine-masthead { display: block; }
 @media (prefers-reduced-motion: reduce) {
   .knowledge-tree *, .knowledge-tree *::before, .knowledge-tree *::after { transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* ==========================================================================
+   Knowledge Atlas Dark Mode Adjustments
+   ========================================================================== */
+
+body.quarto-dark .knowledge-tree {
+  border-color: var(--mag-border);
+  background: var(--mag-bg-card);
+  box-shadow: var(--mag-shadow-sm);
+}
+
+body.quarto-dark .knowledge-tree[data-view="fields"] {
+  background: transparent;
+  box-shadow: none;
+}
+
+body.quarto-dark .knowledge-field {
+  background: linear-gradient(155deg, #151d2c 25%, #1c273a);
+  border-color: var(--mag-border);
+  color: #e2e8f0;
+}
+
+body.quarto-dark .knowledge-field:hover {
+  border-color: var(--knowledge-accent);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+}
+
+body.quarto-dark .knowledge-topic {
+  background: #151d2c;
+  border-color: var(--mag-border);
+  color: #e2e8f0;
+}
+
+body.quarto-dark .knowledge-topic:hover {
+  border-color: var(--knowledge-accent);
+  background: #1c273a;
+}
+
+body.quarto-dark .knowledge-tree h3.knowledge-picker-title {
+  color: #f1f5f9;
+}
+
+body.quarto-dark .knowledge-map {
+  background-color: #0b0f17;
+  background-image: radial-gradient(#253347 .7px, transparent .7px);
+  border-color: var(--mag-border);
+}
+
+body.quarto-dark .knowledge-map-root {
+  background: #151d2c;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+body.quarto-dark .knowledge-tree h4.knowledge-branch-heading {
+  background: #1c273a;
+  border-color: var(--mag-border);
+}
+
+body.quarto-dark .knowledge-post-link {
+  background: #151d2c;
+  border-color: var(--mag-border);
+  color: #e2e8f0;
+}
+
+body.quarto-dark .knowledge-post-link:hover {
+  border-color: var(--knowledge-accent);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+  color: #38bdf8;
+}

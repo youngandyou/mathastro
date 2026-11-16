@@ -1,5 +1,9 @@
 /.quarto/
 /_site/
+/.localappdata/
+/.quarto_cache/
+/.quarto_config/
+/.quarto_data/
 .DS_Store
 __pycache__/
 *.py[cod]

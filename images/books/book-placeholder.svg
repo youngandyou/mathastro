@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 135 190" width="135" height="190">
+  <rect width="135" height="190" rx="4" fill="#f1ede4" stroke="#d5cfc3" stroke-width="1.5"/>
+  <rect x="12" y="10" width="111" height="170" rx="2" fill="none" stroke="#e0dbcf" stroke-width="1"/>
+  <g fill="#8c8577" transform="translate(45, 65)">
+    <path d="M22.5 4.5c-4.5-3-11.5-3-16 0L0 8.5v25.5c4.5-3 11.5-3 16 0l6.5-4 6.5 4c4.5-3 11.5-3 16 0V8.5l-6.5-4c-4.5-3-11.5-3-16 0l-6.5 4-6.5-4z" fill="none" stroke="#8c8577" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M22.5 8.5v25" stroke="#8c8577" stroke-width="2"/>
+  </g>
+  <text x="67.5" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="11" font-weight="600" fill="#7a7366" text-anchor="middle">Book Cover</text>
+  <text x="67.5" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif" font-size="9" fill="#9e978b" text-anchor="middle">135 × 190</text>
+</svg>

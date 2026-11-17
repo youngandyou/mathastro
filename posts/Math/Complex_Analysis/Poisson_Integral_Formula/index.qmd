@@ -1,0 +1,123 @@
+---
+title: "Poisson Integral Formula"
+author: "Youmin Chun"
+date: "2026-11-17 00:00:01"
+description: "푸아송 적분 공식(Poisson Integral Formula)에 대해서 설명한다."
+categories: 
+  - Math > Complex Analysis
+---
+
+# Poisson Integral Formula
+## Theorem 1
+Let $f$ be an analytic function inside an on a positively oriented circle $C_0: \vert z \vert = r_0$. Then
+
+$$f(re^{i \theta}) = \frac{1}{2\pi} \int_0^{2\pi} \frac{r_0^2 - r^2}{r_0^2 - 2r_0 r \cos (\phi - \theta) + r^2} f(r_0 e^{i \phi}) d\phi$$
+
+for $0 < r < r_0$. 
+
+If $u$ is the real component of $f$, then we have
+
+$$u(r, \theta) = \frac{1}{2\pi} \int_0^{2\pi} \frac{r_0^2 - r^2}{r_0^2 - 2r_0 r \cos (\phi - \theta) + r^2} u(r_0, \phi) d\phi$$
+
+for $0 < r < r_0$. This is called the ***Poisson integral formula***.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+For a point $z$ interior to $C_0$, we have
+
+$$f(z) = \frac{1}{2\pi i}\int_{C_0} \frac{f(s)}{s-z} ds$$
+
+by the Cauchy integral formula.
+
+Suppose that $z$ is nonzero and denote $z = re^{i\theta}$. If $z_1$ is the inverse of $z$ with respect to the circle $C_0$, then $|z_1||z| = r_0^2$. Since $\frac{r_0}{r} > 1$, we have
+
+$$\vert z_1 \vert = \frac{r_0^2}{| z |} = \frac{r_0^2}{r} = \frac{r_0}{r} \cdot r_0 > r_0,$$
+
+which means that $z_1$ is exterior to the circle $C_0$. By the Cauchy-Goursat theorem,
+
+$$\int_{C_0} \frac{f(s)}{s-z_1} ds = 0.$$
+
+Hence,
+
+$$f(z) = \frac{1}{2\pi i}\int_{C_0} f(s) \left( \frac{1}{s-z} - \frac{1}{s-z_1} \right) ds.$$
+
+Substituting $s = r_0e^{i\phi}$, we have
+
+$$\begin{align*}
+f(re^{i\theta}) &= \frac{1}{2\pi i}\int_{0}^{2\pi} f(r_0e^{i\phi}) \left( \frac{1}{s-z} - \frac{1}{s-z_1} \right) r_0 i e^{i \phi} d \phi \\
+&= \frac{1}{2\pi}\int_{0}^{2\pi} f(r_0e^{i\phi}) \left( \frac{1}{s-z} - \frac{1}{s-z_1} \right) r_0 e^{i \phi} d \phi \\
+&= \frac{1}{2\pi}\int_{0}^{2\pi} f(r_0e^{i\phi}) \left( \frac{s}{s-z} - \frac{s}{s-z_1} \right) d \phi.
+\end{align*}$$
+
+Note that for $s \in C_0$,
+
+$$z_1 = \frac{r_0^2}{r}e^{i \theta} = \frac{r_0^2}{re^{-i\theta}} = \frac{|s|^2}{\bar{z}}$$ 
+
+and
+
+$$\begin{align*}
+|s-z|^2 &= |s|^2 + |z|^2 - 2|s||z|\cos(\phi - \theta) \\
+&= r_0^2 + r^2 - 2r_0r \cos (\phi - \theta).
+\end{align*}$$
+
+Hence,
+
+$$\begin{align*}
+\frac{s}{s-z} - \frac{s}{s-z_1} &= \frac{s}{s-z} - \frac{s}{s-\frac{|s|^2}{\bar{z}}} \\
+&= \frac{s}{s-z} - \frac{1}{1- \frac{\bar{s}}{\bar{z}}} \\
+&= \frac{s}{s-z} + \frac{\bar{z}}{\bar{s} - \bar{z}} \\
+&= \frac{s\overline{(s-z)} + \bar{z}(s-z)}{(s-z)\overline{(s - z)}} \\
+&= \frac{|s|^2 - |z|^2}{|s-z|^2} \\
+&= \frac{r_0^2 - r^2}{r_0^2 - 2r_0r \cos (\phi - \theta) + r^2},
+\end{align*}$$
+
+and therefore
+
+$$\begin{align*}
+f(re^{i\theta}) &= \frac{1}{2\pi}\int_{0}^{2\pi} f(r_0e^{i\phi}) \left( \frac{s}{s-z} - \frac{s}{s-z_1} \right) d \phi \\
+&= \frac{1}{2\pi}\int_{0}^{2\pi} \frac{r_0^2 - r^2}{r_0^2 - 2r_0r \cos (\phi - \theta) + r^2} f(r_0e^{i\phi}) d \phi. \blacksquare
+\end{align*}$$
+:::
+
+## Theorem 2
+If we define the real-valued function
+
+$$P(r_0, r, \phi - \theta) = \frac{r_0^2 - r^2}{r_0^2 - 2r_0 r \cos (\phi - \theta) + r^2}$$
+
+which is called the ***Poisson kernel***, then the Poisson integral formula becomes
+
+$$u(r, \theta) = \frac{1}{2\pi} \int_0^{2\pi} P(r_0, r, \phi- \theta) u(r_0, \phi) d\phi.$$
+
+Let $r < r_0$. Then
+
+**(i)** $P(r_0, r, \phi- \theta) > 0.$
+
+**(ii)** $P(r_0, r, \phi- \theta) = \mathrm{Re}\left( \frac{s+z}{s-z} \right)$.
+
+**(iii)** $P(r_0, r, \phi- \theta)$ is a harmonic function of $r$ and $\theta$ interior to the circle $C_0$ for each fixed $s$ on $C_0$.
+
+**(iv)** $P(r_0, r, \phi- \theta)$ is an even periodic function of $\phi - \theta$ with period $2 \pi$.
+
+**(v)** $P(r_0, 0, \phi- \theta) = 1$.
+
+**(vi)** $\displaystyle \frac{1}{2\pi} \int_0^{2\pi} P(r_0, r, \phi- \theta) d \phi = 1$.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+**(i)** Note that
+
+$$P(r_0, r, \phi - \theta) = \frac{r_0^2 - r^2}{r_0^2 - 2r_0 r \cos (\phi - \theta) + r^2} = \frac{|s|^2 - |z|^2}{|s-z|^2}$$
+
+and $\vert s \vert > \vert z \vert$, so $P(r_0, r, \phi - \theta) > 0$.
+
+**(ii)**
+
+**(iii)**
+
+**(iv)**
+
+**(v)**
+
+**(vi)**
+:::
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

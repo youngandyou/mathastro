@@ -35,6 +35,26 @@ Let $f, f': X \to Y$ be continuous maps.
 쉽게 말해 함수 $f$에서 $f'$으로 함수를 연속적으로 변화시킬 수 있으면 두 함수를 호모토픽 관계에 있다고 말하며, "연속적으로 변화시킨다"라는 말을 수학적으로는 호모토피라 부르는 연속함수 $F(x, t)$가 주어졌다고 말할 수 있다. 정의가 좀 헷갈릴 수도 있는데, $F(x, t)$는 $[0, 1]$ 사이에서 움직이는 변수 $t$ ($0$초에서 $1$초로 흐르는 시간 파라미터라고 이해해도 좋다)가 주어질 때마다 새로운 연속함수 $g_t: X \to Y$를 주는 함수이다. 시작할 때, 즉 $t=0$일 때 처음 함수 $f$를 줬다면 시간이 흐를수록, 즉 $t$가 $0$에서 $1$로 증가할수록 연속적으로 함수가 변해서 마침내 끝날 때, 즉 $t=1$일 때 함수 $f'$을 주는 식이다. 특별히 널호모토픽은 함수 $f$가 한 점으로 연속적으로 수축될 수 있음을 의미한다.
 
 ### Example 1
+**(i)** **(Straight-Line Homotopy)** Let $f, g: X \to \mathbb{R}^n$. The map $F: X \times I \to \mathbb{R}^n$ defined by
+
+$$F(x, t) = (1-t)f(x) + tg(x)$$
+
+is a homotopy between $f(x)$ and $g(x)$, so $f \simeq g$. This means that any map $f:X \to \mathbb{R}^n$ is nullhomotopic.
+
+**(ii)** Let $X = \mathbb{R}^2 - \{ (0, 0) \}$. The following paths in $X$,
+
+$$\begin{align*}
+f(s) &= (\cos \pi s, \sin \pi s) \\
+g(s) &= (\cos \pi s, 2 \sin \pi s)
+\end{align*}$$
+
+are path homotopic by the straight line homotopy. 
+
+However, $f$ is **NOT** path homotopic with the path
+
+$$h(s) = (\cos \pi s, - \sin \pi s).$$
+
+실수 공간은 연속적으로 이어져있는 공간이므로 어떤 연속함수들을 던져놔도 각 점을 직선으로 잇는 호모토피를 생각하면 항상 호모토픽함이 자명하다. 반면 평면에 구멍을 하나 뚫어 놓고 이 구멍을 감싸는 경로들을 생각하면 예시 **(ii)**와 같이 서로 진행 방향이 반대일 경우 직선으로 잇는 호모토피를 생각할 수 없고, 나아가 호모토픽하지 않음이 자명하다.
 
 ## Definition 2
 We denote $I = [0, 1]$.
@@ -202,6 +222,13 @@ which means that $\hat{\alpha} \circ \hat{\beta} = \mathrm{id}_{\pi_1(X, x_1)}$,
 Therefore, $\hat{\alpha}$ is an isomorphism, so $\pi_1(X, x_0) \cong \pi_1(X, x_1)$. $\blacksquare$
 :::
 
+## Example 2
+**(i)** Let $\alpha: I \to \mathbb{R}^n$ be a loop in $\mathbb{R}^n$ based at $x_0$. Then the map $H: I \times I \to \mathbb{R}^n$ defined by
+
+$$H(s, t) = (1-t)\alpha(s) + t \mathbf{x_0}(s)$$
+
+is a path homotopy between $\alpha$ and the constant map $\mathbf{x_0}$, so $\alpha$ is nullhomotopic. This means that $\pi_1(\mathbb{R}^n, \mathbf{x_0})$ is the trivial group, so $\mathbb{R}^n$ is simply connected.
+
 ## Theorem 2
 **(i)** Let $h: (X, x_0) \to (Y, y_0)$ be a continuous map with $h(x_0) = y_0$. The map $h_\ast : \pi_1(X, x_0) \to \pi_1(Y, y_0)$ defined by 
 
@@ -293,7 +320,21 @@ Then $X$ is simply connected.
 ::: {.callout-note title="Proof" icon=false collapse="true"}
 **(i)** It is a corollary of ***Seifert-Van Kampen Theorem***.
 
-**(ii)** 
+**(ii)** Let $p = (0, 0, \cdots, 0, 1), q = (0, 0, \cdots, 0, -1) \in S^n$. Since $S^n$ is the one-point compactification of $\mathbb{R}^n$, we have $S^n - \{ p \} \cong \mathbb{R}^n \cong S^n - \{ q \}$.
+
+Let $U := S^n - \{ p \}$ and $V := S^n - \{ q \}$. Then
+
+1. $S^n = U \cup V$.
+
+2. $U$ and $V$ are open in $S^n$ because $S^n$ is Hausdorff, so $S^n - U = \{ p \}$ and $S^n - V = \{ q \}$ are closed in $S^n$.
+
+3. $U$ and $V$ are simply connected because $U \cong \mathbb{R}^n \cong V$ and $\mathbb{R}^n$ is simply connected.
+
+4. $U \cap V = S^n - \{ p, q \} \neq \emptyset$.
+
+5. $U \cap V = S^n - \{ p, q \} \cong \mathbb{R}^n - \{ \mathbf{0} \}$ is path connected for each $n \ge 2$.
+
+By **(i)**, $S^n$ is simply connected. $\blacksquare$
 :::
 
 ## Definition 3
@@ -302,9 +343,28 @@ Then $X$ is simply connected.
 **(ii)** A ***simple closed curve*** is a space homeomorphic to $S^1$.
 
 ## Theorem 4 (Jordan Separation Theorem)
-Let $C$ be a simple closed curve in $S^2$. Then $C$ separates $S^2$.
+**(i)** Let $C$ be a simple closed curve in $S^2$. Then $C$ separates $S^2$.
+
+**(ii)** The interior of any simple closed curve in $\mathbb{R}^2$ is homeomorphic to the unit disk $D$.
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
+**(i)** Clearly, $S^2 - C$ is locally path connected, so its components and path components are the same. 
+
+Suppose that $S^2 - C$ is connected, so $S^2 - C$ is path connected. If we choose two points $a, b \in C$, then $C$ is the union of two arcs $A_1$ and $A_2$ that intersect only in their end points $a$ and $b$.
+
+Let $X = S^2 - \{ a, b \}$, and let $U = S^2 - A_1$ and $V = S^2 - A_2$. Then
+
+1. $X = U \cup V$.
+
+2. $U$ and $V$ are open in $X$ because $X$ is open in $S^2$ and $U, V$ are open in $S^2$.
+
+3. $U$ and $V$ are simply connected because $U \cong \mathbb{R}^2 \cong V$ (WHY?) and $\mathbb{R}^2$ is simply connected.
+
+4. $U \cap V = S^2 - C \neq \emptyset$.
+
+5. $U, V$ and $U \cap V = S^2 - C$ are path connected.
+
+By Theorem 3 **(i)**, $X$ is simply connected, so $\pi_1(X)$ is the trivial group. However, $S^2 - \{ a, b \} \cong \mathbb{R}^2 - \{ (0, 0) \}$ and $\pi_1(\mathbb{R}^2 - \{ (0, 0) \})$ is not the trivial group. $\bigotimes$ Hence, $S^2 - C$ is disconnected, so $C$ separates $S^2$. $\blacksquare$
 :::
 
 # Reference

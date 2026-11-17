@@ -108,15 +108,32 @@ $$P(r_0, r, \phi - \theta) = \frac{r_0^2 - r^2}{r_0^2 - 2r_0 r \cos (\phi - \the
 
 and $\vert s \vert > \vert z \vert$, so $P(r_0, r, \phi - \theta) > 0$.
 
-**(ii)**
+**(ii)** Note that
 
-**(iii)**
+$$\begin{align*}
+\frac{s+z}{s-z} &= \frac{(s+z)\overline{(s-z)}}{(s-z)\overline{(s-z)}} \\
+&= \frac{|s|^2 - |z|^2 + z\overline{s} - s \overline{z}}{|s-z|^2} \\
+&= \frac{|s|^2 - |z|^2 + z\overline{s} - \overline{z \overline{s}}}{|s-z|^2} \\
+&= \frac{|s|^2 - |z|^2 + 2i\mathrm{Im}(z\overline{s})}{|s-z|^2}.
+\end{align*}$$
 
-**(iv)**
+Hence,
 
-**(v)**
+$$\mathrm{Re}\left( \frac{s+z}{s-z} \right) = \frac{|s|^2 - |z|^2}{|s-z|^2} = P(r_0, r, \phi - \theta).$$
 
-**(vi)**
+**(iii)** For each fixed $s$ on $C_0$, $f(z) = \frac{s+z}{s-z}$ is analytic inside the circle $C_0$. Then the real part $P(r_0, r, \phi - \theta)$ is harmonic with respect to $r$ and $\theta$.
+
+**(iv)** Note that
+
+$$P(r_0, r, \phi - \theta) = \frac{r_0^2 - r^2}{r_0^2 - 2r_0 r \cos (\phi - \theta) + r^2}.$$
+
+Since $\cos(\phi - \theta)$ is even periodic function of $\phi - \theta$ with period $2\pi$, we obtain the property.
+
+**(v)** Obvious from the expression of $P(r_0, r, \phi - \theta)$.
+
+**(vi)** If $f(z) = 1, \forall z \in \mathbb{C}$, then we obtain
+
+$$1 = \frac{1}{2\pi} \int_0^{2\pi} P(r_0, r, \phi - \theta) d\phi. \blacksquare$$
 :::
 
 # Reference

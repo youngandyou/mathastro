@@ -143,3 +143,9 @@ $$
 - 만약 closure quantities 데이터를 보았을 때, 전반적으로 짧은 baseline을 포함한 데이터에서 모델과 관측이 서로 어긋날 수 있다.
 - 이 경우, 대체로 분해능이 높은 구조는 관측 데이터와 모델이 잘 맞지만, 분해능 낮은 제트 components 쪽은 관측 데이터와 모델이 잘 맞지 않다고 볼 수 있다.
 - 그러므로, 제트 components 영역에 대해서 CLEAN을 다시 수행해야겠다고 판단할 수 있다.
+
+<div style="height: 2rem"></div>
+
+- closure quantities는 (위상, 진폭) gain을 고려하지 않아도 되게 한다. 즉, 이미지를 얻을 때, gain과 이미지를 모두 찾아야 하는데 gain이 사라지면서 데이터의 degeneracy를 해결할 수 있다.
+- 그러나, visibility는 ${\rm _N C_2}$ 의 조합으로 결정되고, closure phase는 ${\rm _N C_3}$, closure amplitude는 ${\rm _N C_4}$ 의 조합으로 결정되어 점차 데이터 포인트 수가 작아지는 단점이 생긴다.  
+- 그래서 보통 이미징을 할 때, closure 값을 통해서 gain을 얻고 visibility 정보를 이용해서 이미지를 얻어낸다.

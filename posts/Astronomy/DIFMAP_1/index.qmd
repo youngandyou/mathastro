@@ -1,0 +1,154 @@
+---
+title: "DIFMAP Code"
+author: "Young Jeong Lee"
+date: "2026-11-18"
+description: "전파 천문학에서 사용되는 이미징 소프트웨어인 DIFMAP에 대한 이미징 코드를 정리한다."
+categories: 
+  - Astronomy > Radio Astronomy > Radio Software > DIFMAP 
+---
+
+- DIFMAP에 대한 자세한 개념을 추후 올리도록 하겠다. 
+- 이 글은 DIFMAP에 대해서 이미 어느 정도 알고 있는 사람이 실무적으로 어떤 코드를 쓸지 정리해둔 글이다.
+- 코드 주석은 추후에 작성할 예정이다.
+
+---
+
+# 1. Load data and setup
+
+```difmap 
+observe (파일 이름) 
+select I,1  
+(uvaver 30,false) 
+	# 단위는 초 단위
+(flag TIA,true)
+device /xw 
+mapunits mas 
+uvtaper 0,0 
+selftaper 0,0
+uvweight 2,-1,false
+selfflag false,0,0
+rflags="m3"
+vflags="efmb3"
+mapsize 1024,0.22
+loglevs 0.8,100,sqrt(2)
+mapplot map
+save (저장할 파일 이름) 
+@NRAO530_22GHz_step01.par
+``` 
+
+- 필요시, vplot에서 데이터를 지울 수 있다. 그 과정은 다음과 같다:
+- $1.$ `vplot`을 입력하여 창을 열고 1l을 통해 amplitude 데이터만 flag한다. 
+	- 스페이스바를 누르면 특정 baseline에 대해서만 지울 수 있다.
+	- "c"를 누르고 영역을 설정한 후, 해당 영역의 데이터에 대해서만 지울 수도 있다. 
+- radplot에서도 데이터를 지울 수 있다. 그 과정은 다음과 같다: 
+- $1.$ "Z"를 눌러 영역을 설정한 후, "C"를 클릭하여 데이터를 flag 한다.
+
+---
+
+# 2. CLEAN window and CLEAN, Phase self-calibration loop
+
+```difmap 
+peakwin
+(addwin -1.5,1.5,-1.5,1.5)
+	addwin RA_min, RA_max, Dec_min, Dec_max 
+mapplot map
+
+clean 200,0.02
+mapplot map,true 
+(영역 추가)
+clean 100,0.01
+mapplot map,true
+selfcal 
+clean 100,0.02
+mapplot map,true 
+``` 
+
+- clean을 수행할 때, clean box에서 edge로 추정되는 성분은 찾아서 지우고 해당 영역을 포함하는 mask 영역을 다시 설정한다. 
+
+--- 
+
+# 3. Amplitude self-calibration 
+
+```difmap 
+gscale 
+clean 50,0.01
+mapplot map,true 
+
+selfcal true,false,360 
+clean 100,0.01
+selfcal true,false,180
+clean 1000,0.01
+selfcal true,false,90
+clean 1000,0.01
+selfcal true,false,45
+clean 1000,0.01
+selfcal true,false,23.5
+clean 1000,0.01
+selfcal true,false,11.75
+clean 1000,0.01
+selfcal true,false,5.875
+clean 1000,0.01
+selfcal true,false,2.94
+clean 1000,0.01
+selfcal true,false,1.47
+clean 1000,0.01
+selfcal true,false,1
+
+clean 500,0.01
+mapplot map,true 
+print imstat(rms)
+print peak(flux,min)
+print peak(flux,max)
+print model_flux()
+print uvstat(chisq)
+print uvstat(clphs_chisq)
+
+# 최종 이미지
+mapplot cln 
+
+# 저장 
+wmap (저장할 파일 이름).fits 
+wdmap (저장할 파일 이름).fits 
+save (저장할 파일 이름)
+``` 
+
+--- 
+
+# 4. Interpretation 
+
+- 아래는 clean을 수행하면서 기록해야하는 정보이다. 
+- 아래의 값들은 예시이다.
+- Estimated beam: 
+  - bmin = 1.358 mas
+  - bmaj = 1.845 mas 
+  - bpa = 7.931 degrees 
+- 6.17 pixel/beam 
+- Estimated noise = 4.04434 mJy/beam 
+
+<div style="hegiht" 2rem></div>
+
+- **gscale 정보** 
+
+Amplitude normalization factor in sub-array 1: 1.00805
+Telescope amplitude corrections in sub-array 1:
+
+URU       1.00    TIA       1.00    TAK       1.00*    KPC       1.06     
+KTN       1.17     KYS       0.92     KUS       1.07     IRK       0.82     
+MIZ       0.85     ISG       0.96     OGA       1.04 
+
+Fit before self-cal, rms=0.247674Jy  sigma=1.328269
+Fit after  self-cal, rms=0.153127Jy  sigma=0.825783
+
+<div style="hegiht" 2rem></div> 
+
+- **residual map 분석** 
+- rms = 2.11mJy/beam
+
+<div style="hegiht" 2rem></div>
+
+- **clean map 분석** 
+- map peak: 1.24 Jy/beam
+- model flux: 1.56Jy
+- Dynamic range: 588
+- clphs_chisq: 0.08 
+- chisq: 0.17

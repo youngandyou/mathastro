@@ -19,6 +19,7 @@ categories:
     - **Torus 측면(edge-on)**: Torus에 의해서 중심부가 가려진다. 이로 인해, BLR에 의한 방출선이 관측되지 않으며, 가스의 고속 운동도 관측되지 않다. 이 경우, **제2형 AGN(Type 2 AGN)** 으로 분류한다. 
     - **Torus 축 방향(face-on)**: Torus에 수직이기 관측하여 중심부의 구조를 볼 수 있다. 그래서 BLR에 의한 방출선이 관측되며, 가스의 고속 운동도 관측된다. 이 경우, **제1형 AGN(Type 1 AGN)** 으로 분류한다. 
 - AGN unification model에서 설명하는 각 세부 유형 및 세부 구조는 아래의 글에서 확인할 수 있다: (추후 작성 예정)
+- **블레이자(Blazar)**: [블레이자](/posts/Astronomy/AGN_3/index.qmd)
 
 ---
 

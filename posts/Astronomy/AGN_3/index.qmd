@@ -93,6 +93,8 @@ categories:
 
 - 블레이자는 극한 환경 조건에서 상대론적인 플라즈마의 물리에 대해서 검증할 수 있는 실험실로 사용될 수 있다.
 - $1\text{ GeV}$ 이상의 에너지에서, 중심 엔진 근처의 역컴프턴 산란된 compact 광자장(photon-field)은 $\gamma \gamma \rightarrow e^{\pm}$ 반응을 통해 방출되는 $\gamma$-선에 대해 매우 불투명할 것으로 예상되며(예: Ghisellini and Tavecchio, 2009), 이는 여러 블레이자에서 관측되는 $\text{GeV}$ 스펙트럼 꺾임(spectral break)의 원인이 될 수 있다(Poutanen and Stern, 2010).
+- one-zone synchrotron self-Compton, SSC 및/또는 external Compton, EC 모형을 사용하는 전통적인 SED 모델링 체계에서, 블레이자는 sub-pc 크기 방출 영역 또는 더 작은 영역을 가질 것으로 생각된다. (Kubo et al. 1998)
+  - 방출 영역은 제트의 기저와 연관된다고 생각된다.
 
 <div height="2rem"></div>
 

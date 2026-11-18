@@ -27,7 +27,7 @@ async function checkCounts() {
 
     async function run(script) {
       const js = script.endsWith(".js");
-      const command = js ? Deno.execPath() : "python3";
+      const command = js ? Deno.execPath() : (Deno.build.os === "windows" ? "python" : "python3");
       const args = js ? ["run", "--no-config", "--no-lock", "--allow-read", "--allow-write", `${dir}/scripts/${script}`]
         : [`${dir}/scripts/${script}`];
       // A different working directory also checks project-root resolution.

@@ -382,9 +382,9 @@
   }
 
   function updateMegaMenuBadges(counts) {
-    if (!counts) return;
-    var panel = document.getElementById("navbarMegaMenu");
-    if (!panel) return;
+    if (!counts || typeof document === "undefined" || typeof document.querySelector !== "function") return;
+    var panel = document.querySelector("#navbarMegaMenu");
+    if (!panel || typeof panel.querySelectorAll !== "function") return;
     panel.querySelectorAll("[data-count-key]").forEach(function(el) {
       var key = el.getAttribute("data-count-key");
       var count = resolveCount(counts, key);
@@ -395,18 +395,19 @@
   }
 
   function setupFloatingDarkModeToggle() {
+    if (typeof document === "undefined" || !document.body || typeof document.querySelector !== "function" || typeof document.createElement !== "function") return;
     var toggle = document.querySelector(".quarto-color-scheme-toggle");
     if (!toggle) return;
 
     // Move to body so it floats above content and is never clipped or affected by header transforms
-    if (toggle.parentElement !== document.body) {
+    if (toggle.parentElement !== document.body && typeof document.body.appendChild === "function") {
       document.body.appendChild(toggle);
     }
     toggle.classList.add("floating-dark-toggle");
     toggle.setAttribute("aria-label", "화면 모드 전환 (다크/라이트)");
 
     var tooltip = document.querySelector(".floating-dark-tooltip");
-    if (!tooltip) {
+    if (!tooltip && typeof document.body.appendChild === "function") {
       tooltip = document.createElement("span");
       tooltip.className = "floating-dark-tooltip notranslate";
       tooltip.setAttribute("translate", "no");
@@ -414,7 +415,8 @@
     }
 
     function syncThemeTooltip() {
-      var isDark = document.body.classList.contains("quarto-dark");
+      if (!tooltip) return;
+      var isDark = document.body && document.body.classList ? document.body.classList.contains("quarto-dark") : false;
       var label = isDark ? "라이트 모드로 전환" : "다크 모드로 전환";
       tooltip.textContent = label;
       toggle.setAttribute("title", label);
@@ -422,23 +424,28 @@
 
     syncThemeTooltip();
 
-    var obs = new MutationObserver(function() {
-      syncThemeTooltip();
-    });
-    obs.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+    if (typeof MutationObserver !== "undefined") {
+      var obs = new MutationObserver(function() {
+        syncThemeTooltip();
+      });
+      obs.observe(document.body, { attributes: true, attributeFilter: ["class"] });
+    }
 
-    toggle.addEventListener("mouseenter", function() {
-      tooltip.classList.add("is-visible");
-    });
-    toggle.addEventListener("mouseleave", function() {
-      tooltip.classList.remove("is-visible");
-    });
+    if (typeof toggle.addEventListener === "function" && tooltip) {
+      toggle.addEventListener("mouseenter", function() {
+        tooltip.classList.add("is-visible");
+      });
+      toggle.addEventListener("mouseleave", function() {
+        tooltip.classList.remove("is-visible");
+      });
+    }
   }
 
   function buildMegaMenuPanel() {
-    if (document.getElementById("navbarMegaMenu")) return;
-    var header = document.getElementById("quarto-header") || document.querySelector("header.headroom");
-    if (!header) return;
+    if (typeof document === "undefined" || !document.body || typeof document.querySelector !== "function" || typeof document.createElement !== "function") return;
+    if (document.querySelector("#navbarMegaMenu")) return;
+    var header = document.querySelector("#quarto-header") || document.querySelector("header.headroom");
+    if (!header || typeof header.appendChild !== "function") return;
 
     var offset = document.querySelector('meta[name="quarto:offset"]');
     var root = offset ? offset.content : "./";
@@ -720,13 +727,18 @@
       '</div>'
     ].join('\n');
 
-    header.appendChild(panel);
-    document.body.classList.add("has-megamenu");
+    if (header && typeof header.appendChild === "function") {
+      header.appendChild(panel);
+    }
+    if (document.body && document.body.classList) {
+      document.body.classList.add("has-megamenu");
+    }
 
     setupMegaMenuInteractions(panel);
   }
 
   function setupMegaMenuInteractions(panel) {
+    if (!panel || typeof panel.querySelectorAll !== "function" || typeof document.querySelectorAll !== "function") return;
     var closeTimer = null;
     var dropdownItems = document.querySelectorAll(".navbar-nav > .nav-item.dropdown");
 

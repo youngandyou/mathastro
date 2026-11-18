@@ -205,7 +205,7 @@ Let $D$ be a UFD with quotient field $F$, and let $f(x), g(x)$ be a nonzero poly
 
 2. If $f$ is primitive in $D[x]$ and irreducible in $F[x]$, then $f(x)$ is irreducible in $D[x]$.
 
-3. $f(x)$ factors into a product of two polynomials of lower degrees $r$ and $s$ in $F[x]$ $\iff$ it has a factorization into polynomials of the same degrees $r$ and $s$ in $D[x]$. 
+3. $f(x)$ factors into a product of $k$ polynomials of lower degrees $d_i$'s in $F[x]$ $\iff$ it has a factorization into $k$ polynomials of the same degrees $d_i$'s in $D[x]$.
 
 **(v)** Let $f(x)$ be a nonzero nonunit element in $D[x]$ with $\deg(f(x)) \ge 1$. If $f(x)$ is irreducible in $D[x]$, then $f(x)$ is primitive in $D[x]$.
 
@@ -264,7 +264,7 @@ Now, we will show that $c(fg) \sim c(f)c(g)$. By **(i)**, $f(x) = c(f)f_1(x)$ an
 
 Note that $c(fg) \sim c(f)c(g)c(f_1g_1)$ by the first case. Since $f_1(x), g_1(x)$ is primitive, $f_1(x)g_1(x)$ is also primitive by Gauss's Lemma. Hence, $c(f_1g_1)$ is a unit, so $c(fg) \sim c(f)c(g)$. 
 
-**(iv)** 1. Suppose that $f(x)$ is reducible in $F[x]$. Then $f(x) = r(x)s(x)$ for some $r(x), s(x) in F[x]$ with $\deg(r(x)), \deg(s(x)) < \deg(f(x))$.
+**(iv)** 1. Suppose that $f(x)$ is reducible in $F[x]$. Then $f(x) = r(x)s(x)$ for some $r(x), s(x) \in F[x]$ with $\deg(r(x)), \deg(s(x)) < \deg(f(x))$.
 
 Let $a, b \in D \setminus \{0 \}$ such that $ar(x), br(x) \in D[x]$. Then $\deg(ar(x)) = \deg(r(x))$ and $\deg(bs(x)) = \deg(s(x))$.
 
@@ -292,7 +292,25 @@ Note that $\deg(u(x)) = \deg(ar(x)) < \deg(f(x))$ and $\deg(v(x)) = \deg(bs(x)) 
 
 WLOG, we may assume that $h(x)$ is a unit in $F[x]$. Then $h(x) = d \in F$, so $f(x) = dg(x)$. It follows that $d \mid c(f)$. Since $f(x)$ is primitive in $D[x]$, $c(f)$ is a unit in $D$, and so is $d$. Hence, $f(x)$ is irreducible in $D[x]$.
 
-3. It follows from the proof of 1. 
+3. $(\impliedby)$ Since $D[x] \subset F[x]$, it is obvious.
+
+$(\implies)$ Suppose that $f(x) = p_1(x) \cdots p_k(x)$ for some polynomials $p_1(x), \dots, p_k(x)$ in $F[x]$ with $\deg(p_i(x)) = d_i, \forall i \in \{ 1, \dots, k \}$. For each $i = 1, \dots, k$, choose $b_i \in D \setminus \{ 0 \}$ such that $b_ip_i \in D[x]$. By (i), we have $b_ip_i(x) = c(b_ip_i)q_i(x)$ for some primitive polynomials $q_i(x)$ in $D[x]$ with $\deg(p_i(x)) = \deg(q_i(x))$. Then
+
+$$(b_1 \cdots b_k)(p_1(x) \cdots p_k(x)) = (c(b_1p_1) \cdots c(b_kp_k))(q_1(x) \cdots q_k(x)).$$
+
+Since $q_1(x) \cdots q_k(x)$ is primitive in $D[x]$ by Gauss's lemma, we have 
+
+$$c(b_1p_1) \cdots c(b_kp_k) = c((b_1 \cdots b_k)(p_1(x) \cdots p_k(x)))$$
+
+by **(i)**. Since $b_1 \cdots b_k$ is a common divisor of $(b_1 \cdots b_k)(p_1(x) \cdots p_k(x))$, we have
+
+$$(b_1 \cdots b_k) \mid c(b_1p_1) \cdots c(b_kp_k),$$
+
+so $c(b_1p_1) \cdots c(b_kp_k) = A (b_1 \cdots b_k)$ for some nonzero $A \in D$. Thus, we obtain
+
+$$f(x) = p_1(x) \cdots p_k(x) = A(q_1(x) \cdots q_k(x)),$$
+
+and therefore $f(x)$ has a factorization into $k$ polynomials of the same degrees $d_i$'s in $D[x]$.
 
 **(v)** By **(i)**, $f(x) = c(f)g(x)$ for some primitive polynomial $g(x) \in D[x]$. If $f(x)$ is not primitive, then $c(f)$ is nonunit in $D$, and hence in $D[x]$. If $g(x)$ is a unit, then $g(x) \in D$, so $\deg(f(x)) = 0$, which is a contradiction. Hence, $g(x)$ is a nonunit, which means that $f(x)$ is not irreducible, which is a contradiction. Thus, $f(x)$ is primitive in $D[x]$.
 

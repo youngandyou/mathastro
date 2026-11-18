@@ -1,0 +1,158 @@
+---
+title: "Irreducible and Prime Elements"
+author: "Youmin Chun"
+date: "2026-11-04 00:00:01"
+description: "추상대수학의 Associates와 기약원(Irreducible Element), 소원소(Prime Element)에 대해서 설명한다."
+categories: 
+  - Math > Abstract Algebra > Ring Theory
+---
+
+# Associates
+## Definition 1
+Let $R$ be a commutative ring with identity, and let $a, b \in R$.
+
+**(i)** If $b = ac$ for some $c \in R$, then we say that $a$ ***divides*** $b$, denoted by $a \vert b$. In this case, $a$ is called a ***factor*** (or ***divisor***) of $b$, and $b$ is called a ***multiple*** of $a$.
+
+**(ii)** $a$ and $b$ are called ***associates*** in $R$ if $a \vert b$ and $b \vert a$.
+
+**(iii)** $a$ and $b$ are called ***strongly associates*** in $R$ if $a = bu$ for some unit $u$ of $R$.
+
+환에서는 곱셈이 정의되기에 정수론과 비슷한 센스로 약수, 배수와 같은 개념을 정의할 수 있다. 특별히 두 원소가 서로를 나누는 관계에 있는 경우 **associates**, 특별히 단위원에 대해서 관계가 있다면 **strongly associates**라고 부른다. 일반적으로 strongly associates이면 associate이지만, 역은 성립하지 않는다. 역 또한 성립하기 위해서는 주어진 환 $R$이 정역(Integral Domain)이면 가능함이 아래 Remark에 서술되어 있다. 
+
+## Remark 1
+Let $R$ be a commutative ring with identity, and let $a, b \in R$.
+
+**(i)** $b \vert a \iff (a) \subset (b)$.
+
+**(ii)** $a$ and $b$ are associates $\iff$ $(a) = (b)$.
+
+**(iii)** The relation $\sim$ on $R$ defined by
+
+$$a \sim b \iff a \text{ and } b \text{ are associates in } R$$
+
+is an equivalence relation on $R$.
+
+**(iv)** The relation $\approx$ on $R$ defined by
+
+$$a \approx b \iff a \text{ and } b \text{ are strongly associates in } R$$
+
+is an equivalence relation on $R$.
+
+**(v)** If $a \approx b$, then $a \sim b$. However, the converse does not hold in general.
+
+**(vi)** If $R$ is an integral domain, then $a \sim b \iff a \approx b$.
+
+**(vii)** Let $c$ be an irreducible element of an integral domain $D$. If $c$ and $d$ are associates in $D$, then $d$ is also an irreducible element of $D$.
+
+Divisible의 관계와 ideal의 포함 관계가 반대라고 생각하면 외우기 편하다. 나아가 $a$와 $b$가 associates라는 말은 두 원소가 생성하는 아이디얼 $(a)$와 $(b)$가 서로 같음을 의미한다.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+**(v)** If $a \approx b$, then $a = bu$ for some unit $u$ of $R$, so $b \vert a$. Since $u$ is a unit, we have $b = au^{-1}$, so $a \vert b$. Hence, $a \sim b$.
+
+However, $a \sim b$ does not imply $a \approx b$. Here is the counterexample:
+
+Consider the ring $\langle C[0, 1], +, \cdot \rangle$ of real-valued continuous functions on $[0, 1]$. Then $\langle C[0, 1], +, \cdot \rangle$ is a commutative ring with identity.
+
+Let $f(x), g(x) \in C[0, 1]$ be given by
+
+$$f(x) = \begin{cases}
+\frac{1}{3} - x & \left( 0 \le x < \frac{1}{3} \right) \\
+0 & \left( \frac{1}{3} \le x < \frac{2}{3} \right) \\
+x - \frac{2}{3} & \left( \frac{2}{3} \le x \le 1 \right)
+\end{cases} \quad \text{and} \quad g(x) = \begin{cases}
+f(x) & \left( 0 \le x \le \frac{1}{2} \right) \\
+-f(x) & \left( \frac{1}{2} < x \le 1 \right).
+\end{cases}$$
+
+If $h(x) \in C[0, 1]$ is given by
+
+$$h(x) = \begin{cases}
+1 & \left( 0 \le x < \frac{1}{3} \right) \\
+3 - 6x & \left( \frac{1}{3} \le x < \frac{2}{3} \right) \\
+-1 & \left( \frac{2}{3} \le x \le 1 \right),
+\end{cases}$$
+
+then we have that $f(x) = g(x)h(x)$ and $g(x) = f(x)h(x)$, so $g(x) \vert f(x)$ and $f(x) \vert g(x)$. Hence, $f(x) \sim g(x)$. We will show that $f(x) \not \approx g(x)$.
+
+Suppose that $f(x) \approx g(x)$. Then $f(x) = g(x)u(x)$ for some unit $u(x)$ of $C[0, 1]$. Note that $u(x) \neq 0, \forall x \in [0, 1]$.
+
+Since $f(0) = g(0) = f(1) = \frac{1}{3}$ and $g(1) = -\frac{1}{3}$, we have $u(0) = 1$ and $u(1) = -1$. By the intermediate value theorem, $u(c) = 0$ for some $c \in (0, 1)$, which is a contradiction. Hence, $f(x) \not \approx g(x)$. 
+
+**(vi)** We only need to show that $a \sim b \implies a \approx b$.
+
+If $a \sim b$, then $a \vert b$ and $b \vert a$, so $a = bc$ and $b = ad$ for some $c, d \in R$. Then $a = bc = (ad)c = adc$. Since $R$ is an integral domain, we have $1 = dc$, which means that $c$ is a unit. Hence, $a = bc$ implies that $a \approx b$.
+
+**(vii)** Since $c$ is irreducible, $(c)$ is maximal among all proper principal ideals of $D$ by Theorem 1 **(i)**. Since $c$ and $d$ are associates, we have $(c) = (d)$, so $(d)$ is maximal among all proper principal ideals of $D$. Hence, $d$ is irreducible in $D$. $\blacksquare$
+:::
+
+# Irreducible, Prime
+## Definition 2
+Let $R$ be a commutative ring with identity.
+
+**(i)** Let $c$ be a nonzero nonunit in $R$. Then $c$ called an ***irreducible element*** of $R$ if whenever $a, b \in R$ with $c = ab$, either $a$ or $b$ is a unit of $R$.
+
+**(ii)** Let $p$ be a nonzero nonunit in $R$. Then $p$ is called a ***prime element*** of $R$ if whenever $a, b \in R$ with $p \vert ab$, either $p \vert a$ or $p \vert b$.
+
+주의할 점은, **기약다항식(Irreducible Polynomial)**과 **기약원(Irreducible Element)**은 일반적으로 같은 개념이 아니다. 예를 들어 $\mathbb{Z}[x]$의 원소 $2x^2+2$를 생각해보면 이 다항식은 $\mathbb{Z}$에서 영점을 갖지 않으므로 $\mathbb{Z}[x]$의 기약다항식은 맞지만 $2x^2+2 = 2(x^2+1)$과 같이 $\mathbb{Z}[x]$의 단위원이 아닌 두 원소로 인수분해되므로 기약원은 아니다. 이는 $\mathbb{Z}$의 모든 원소가 단위원이 아니므로, 다시 말해 $\mathbb{Z}$가 체가 아니므로 생기는 일이다. 즉 다항식환에서는 기약원이면 기약다항식이 되지만 역은 성립하지 않으므로 기약다항식이 더 넓은 개념이라고 할 수 있겠다. 따라서 두 개념이 같아지는 조건으로는 다항식환 $R[x]$에서 $R$이 체가 되면 기약다항식과 기약원은 동일한 개념으로 볼 수 있다.
+
+## Theorem 1
+Let $D$ be an integral domain, and let $c$ and $p$ be nonzero elements in $D$.
+
+**(i)** $c$ is an irreducible element in $D$ $\iff$ $(c)$ is an ideal of $D$ which is maximal among all proper principal ideals of $D$.
+
+**(ii)** $p$ is a prime element in $D$ $\iff$ $(p)$ is a nonzero prime ideal of $D$.
+
+**(iii)** Every prime element in $D$ is irreducible in $D$. However, the converse does not hold in general.
+
+$D$가 PID라는 보장이 없으면 주아이디얼이 아닌 아이디얼도 존재할 수 있으므로 **(i)**에서 바로 극대 아이디얼이라고 보장할 수는 없다. 거꾸로 PID이면 극대 아이디얼이라는 따름정리가 바로 튀어나온다.
+
+한편 **(i)**은 직관적으로도 쉽게 납득이 가능한 정리인데, $c$가 기약원이라는 말은 달리 말하면 $c$의 인수분해가 자명한 방법 밖에 없다고도 볼 수 있다. $c = ab$이면 $a$나 $b$ 둘 중 하나는 반드시 단위원이기 때문이다. 한편 $(c) \subsetneq (x)$인 어떤 원소 $x$가 존재하면 반드시 $x \vert a$가 되는데, $x \neq a$이므로 $x$의 존재성으로 $a$의 자명하지 않은 인수분해가 보장된다. 이러한 사실이 맥시멀이라는 성질로 이어지는 것이다.
+
+**(iii)**은 소원소(prime element)이면 기약원(irreducible element)이지만, 일반적으로 역은 성립하지 않는다는 사실을 말해준다. 이는 원소들의 소인수분해가 유일하지 않을 수 있고, 이때 서로 관련이 없는 원소들끼리 나눌 수는 없기 때문이다.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+**(i)** $(\implies)$ Suppose that $c$ is irreducible in $D$. If $(c) = D$, then $c$ is a unit because it is nonzero, which is impossible. Hence $(c)$ is a proper ideal of $D$. 
+
+If $(c) \subset (x) \subsetneq D$ for some $x \in D$, then $x \vert c$, so $c = xy$ for some $y \in D$. Since $c$ is irreducible, either $x$ or $y$ is a unit of $D$. If $x$ is a unit of $D$, then $(x) = D$ which is impossible. Hence, $y$ is a unit of $D$, so $c \approx x$. Then $c \sim x$ which is equivalent to $(c) = (x)$. Thus, $(c)$ is maximal among all proper principal ideals of $D$.
+
+$(\impliedby)$ Suppose that $(c)$ is maximal among all proper principal ideals of $D$. Since $(c)$ is a proper ideal of $D$, $c$ is not a unit of $D$.
+
+Suppose that $c = ab$ for some $a, b \in D$. Then $a \vert c$, so $(c) \subset (a)$. By assumption, we obtain $(a) = (c)$ or $(a) = D$. If $(a) = (c)$, then $c \vert a$, which means that $a = cd$ for some $d \in D$, so $c = ab = (cd)b = cbd$. Since $D$ is an integral domain, we have $1 = bd$, which means that $b$ is a unit of $D$. 
+
+If $(a) = D$, then $a$ is a unit of $D$. Hence, in any cases, $c$ is irreducible in $D$.
+
+**(ii)** $(\implies)$ Suppose that $p$ is a prime element in $D$. If $(p) = D$, then $p$ is a unit because it is nonzero, which is impossible. Hence, $(p) \subsetneq D$. Moreover, $(p)$ is nonzero beceause $p$ is nonzero.
+
+If $ab \in (p)$, then $p \vert ab$. Since $p$ is a prime element, we have $p \vert a$ or $p \vert b$, which means that $(a) \subset (p)$ or $(b) \subset (p)$. Hence, $a \in (p)$ or $b \in (p)$, so $(p)$ is a prime ideal of $D$.
+
+$(\impliedby)$ Suppose that $(p)$ is a nonzero prime ideal of $D$. Since $(p) \subsetneq D$, $p$ is nonunit, and it is nonzero.
+
+If $p \vert ab$ for some $a, b \in D$, then $(ab) \subset (p)$, so $ab \in (p)$. Since $(p)$ is a prime ideal of $D$, we have $a \in (p)$ or $b \in (p)$, which means that $p \vert a$ or $p \vert b$. Hence, $p$ is a prime element in $D$.
+
+**(iii)** Let $p$ be a prime element in $D$. Then $p$ is nonzero and nonunit in $D$. If $p = ab$ for some $a, b \in D$, then $p \vert a$ or $p \vert b$ because $p$ is a prime element in $D$. WLOG, we may assume that $p \vert a$, so $a = pc$ for some $c \in D$. Then $p = ab = (pc)b = pcb$, so $1 = cb$. Hence, $b$ is a unit of $D$, which means that $p$ is irreducible in $D$. 
+
+However, the converse does not hold in general. Here is the counterexample:
+
+Let $D = \{ a + b \sqrt{-5} \mid a, b \in \mathbb{Z} \}$. Note that $2$ is nonzero and nonunit in $D$. If $2 = (a+b\sqrt{-5})(x+y\sqrt{-5})$ for some $a, b, x, y \in \mathbb{Z}$, then we have $ax-5by = 2$ and $ay + bx = 0$. Note that
+
+$$\begin{align*}
+(2+5by)by &= (ax)(by) \\
+&= (ay)(bx) \\
+&= (-bx)(bx) \\
+&= -(bx)^2 \le 0,
+\end{align*}$$
+
+so $-\frac{2}{5} \le by \le 0$. Since $by \in \mathbb{Z}$, $by = 0$ and $ax = 2$. Since $a, x \neq 0$, we have 
+
+$$\begin{align*}
+ay = -bx \\
+\implies \frac{y}{x} = - \frac{b}{a},
+\end{align*}$$
+
+so $b = 0 = y$. Furthermore, we obtain that $a = \pm 1$ or $x = \pm 1$, which means that either $a+b\sqrt{-5}$ or $x+y\sqrt{-5}$ is a unit of $D$. Hence, $2$ is an irreducible element in $D$. 
+
+Suppose that $2$ is a prime element in $D$. Note that $2 \cdot 3 = 6 = (1 + \sqrt{-5})(1-\sqrt{-5})$. Then $2$ must divide either $1 + \sqrt{-5}$ or $1 - \sqrt{-5}$, which is impossible. Hence, $2$ is not a prime element in $D$. $\blacksquare$
+:::
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

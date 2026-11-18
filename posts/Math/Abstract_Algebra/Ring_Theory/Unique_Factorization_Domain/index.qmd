@@ -356,6 +356,16 @@ Let $D$ be a UFD, and let $f(x), g(x)$ be a nonzero polynomial in $D[x]$.
 
 **(iii)** $c(fg) \sim c(f)c(g)$.
 
+**(iv)** Let $F$ be the quotient field of $D$, and let $f(x) \in D[x]$ with $\deg(f(x)) \ge 1$.
+
+1. If $f(x)$ is irreducible in $D[x]$, then $f(x)$ is irreducible in $F[x]$.
+
+2. If $f$ is primitive in $D[x]$ and irreducible in $F[x]$, then $f(x)$ is irreducible in $D[x]$.
+
+3. $f(x)$ factors into a product of two polynomials of lower degrees $r$ and $s$ in $F[x]$ $\iff$ it has a factorization into polynomials of the same degrees $r$ and $s$ in $D[x]$. 
+
+**(iv)**번의 1번 명제의 역은 일반적으로 성립하지 않고, 실제로는 primitive 조건이 추가되어야 함을 정리한 명제가 2번이다. 3번은 $D[x]$에서와 $F[x]$에서의 인수분해 조건이 사실상 동치임을 보여준다. 
+
 ::: {.callout-note title="Proof" icon=false collapse="true"}
 **(i)** Write $f(x) = a_0 + \cdots + a_nx^n$.
 
@@ -393,7 +403,35 @@ Note that $d \mid da_i, \forall i \in \{ 1, \dots, n \}$, so $d \mid c(df)$. The
 
 Now, we will show that $c(fg) \sim c(f)c(g)$. By **(i)**, $f(x) = c(f)f_1(x)$ and $g(x) = c(g)g_1(x)$ for some primitive polynomials $f_1(x), g_1(x) \in D[x]$. Then $f(x)g(x) = c(f)c(g)f_1(x)g_1(x)$.
 
-Note that $c(fg) \sim c(f)c(g)c(f_1g_1)$ by the first case. Since $f_1(x), g_1(x)$ is primitive, $f_1(x)g_1(x)$ is also primitive by Gauss's Lemma. Hence, $c(f_1g_1)$ is a unit, so $c(fg) \sim c(f)c(g)$. $\blacksquare$
+Note that $c(fg) \sim c(f)c(g)c(f_1g_1)$ by the first case. Since $f_1(x), g_1(x)$ is primitive, $f_1(x)g_1(x)$ is also primitive by Gauss's Lemma. Hence, $c(f_1g_1)$ is a unit, so $c(fg) \sim c(f)c(g)$. 
+
+**(iv)** 1. Suppose that $f(x)$ is reducible in $F[x]$. Then $f(x) = r(x)s(x)$ for some $r(x), s(x) in F[x]$ with $\deg(r(x)), \deg(s(x)) < \deg(f(x))$.
+
+Let $a, b \in D \setminus \{0 \}$ such that $ar(x), br(x) \in D[x]$. Then $\deg(ar(x)) = \deg(r(x))$ and $\deg(bs(x)) = \deg(s(x))$.
+
+Let $c = c(f(x)), c_1 = c(ar(x))$ and $c_2 = c(bs(x))$. By **(i)**,
+
+$$f(x) = cg(x), \quad ar(x) = c_1u(x), \quad bs(x) = c_2v(x)$$
+
+for some primitive polynomials $g(x), u(x), v(x) \in D[x]$.
+
+Let $d = ab$. Then we obtain
+
+$$dcg(x) = df(x) = (ar(x))(bs(x)) = c_1c_2u(x)v(x),$$
+
+and by Gauss's lemma, $u(x)v(x)$ is primitive. Since $c(dcg(x)) = dc \cdot c(g(x)), c(c_1c_2u(x)v(x)) = c_1c_2 \cdot c(u(x)v(x))$ and $c(g(x)), c(u(x)v(x))$ are units in $D$, we have $dc \sim c_1c_2$, so $c_1c_2 = bdc$ for some unit $b$ in $D$. Then we have
+
+$$\begin{align*}
+& dcg(x) = c_1c_2u(x)v(x) = bdcu(x)v(x) \\
+\implies & g(x) = bu(x)v(x) \\
+\implies & f(x) = cbu(x)v(x).
+\end{align*}$$
+
+Note that $\deg(u(x)) = \deg(ar(x)) < \deg(f(x))$ and $\deg(v(x)) = \deg(bs(x)) < \deg(f(x))$, so $f(x)$ is reducible in $D[x]$, which is a contradiction. Hence, $f(x)$ is irreducible in $F[x]$.
+
+2. 
+
+3. It follows from the proof of 1. $\blacksquare$
 :::
 
 # Bezout Domain

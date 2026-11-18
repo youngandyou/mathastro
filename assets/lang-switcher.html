@@ -249,9 +249,18 @@
 
     // Prefer insertion into .navbar-nav.ms-auto
     var target = document.querySelector('.navbar-nav.navbar-nav-scroll.ms-auto') ||
-                 document.querySelector('.quarto-navbar-tools') ||
-                 document.querySelector('.navbar-nav.ms-auto') ||
-                 document.querySelector('.navbar-nav');
+                 document.querySelector('.navbar-nav.ms-auto');
+    if (!target) {
+      var collapse = document.querySelector('#navbarCollapse');
+      if (collapse) {
+        target = document.createElement('ul');
+        target.className = 'navbar-nav navbar-nav-scroll ms-auto';
+        collapse.appendChild(target);
+      }
+    }
+    if (!target) {
+      target = document.querySelector('.quarto-navbar-tools') || document.querySelector('.navbar-nav');
+    }
 
     if (target) {
       target.appendChild(li);

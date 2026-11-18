@@ -352,7 +352,7 @@
     if (window.__categoryCounts) {
       renderCategoryMenus(window.__categoryCounts);
       applyCategoryCounts(window.__categoryCounts);
-      updateMegaMenuBadges(window.__categoryCounts);
+      updateCategoryDropdownBadges(window.__categoryCounts);
       return;
     }
 
@@ -373,7 +373,7 @@
           window.__categoryCounts = data.counts;
           renderCategoryMenus(data.counts);
           applyCategoryCounts(data.counts);
-          updateMegaMenuBadges(data.counts);
+          updateCategoryDropdownBadges(data.counts);
         }
       })
       .catch(function() {
@@ -381,9 +381,9 @@
       });
   }
 
-  function updateMegaMenuBadges(counts) {
+  function updateCategoryDropdownBadges(counts) {
     if (!counts || typeof document === "undefined" || typeof document.querySelector !== "function") return;
-    var panel = document.querySelector("#navbarMegaMenu");
+    var panel = document.querySelector("#navbarCategoryDropdown");
     if (!panel || typeof panel.querySelectorAll !== "function") return;
     panel.querySelectorAll("[data-count-key]").forEach(function(el) {
       var key = el.getAttribute("data-count-key");
@@ -398,6 +398,9 @@
     if (typeof document === "undefined" || !document.body || typeof document.querySelector !== "function" || typeof document.createElement !== "function") return;
     var toggle = document.querySelector(".quarto-color-scheme-toggle");
     if (!toggle) return;
+
+    var MOON_SVG = '<svg class="dark-mode-svg" viewBox="0 0 24 24" width="22" height="22" fill="#0f172a" stroke="#0f172a" stroke-width="1.5"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+    var SUN_SVG = '<svg class="dark-mode-svg" viewBox="0 0 24 24" width="24" height="24" fill="#fbbf24" stroke="#fbbf24" stroke-width="1.5"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3" stroke="#fbbf24" stroke-width="2.5"></line><line x1="12" y1="21" x2="12" y2="23" stroke="#fbbf24" stroke-width="2.5"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64" stroke="#fbbf24" stroke-width="2.5"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78" stroke="#fbbf24" stroke-width="2.5"></line><line x1="1" y1="12" x2="3" y2="12" stroke="#fbbf24" stroke-width="2.5"></line><line x1="21" y1="12" x2="23" y2="12" stroke="#fbbf24" stroke-width="2.5"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36" stroke="#fbbf24" stroke-width="2.5"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22" stroke="#fbbf24" stroke-width="2.5"></line></svg>';
 
     // Move to body so it floats above content and is never clipped or affected by header transforms
     if (toggle.parentElement !== document.body && typeof document.body.appendChild === "function") {
@@ -415,11 +418,11 @@
     }
 
     function syncThemeTooltip() {
-      if (!tooltip) return;
       var isDark = document.body && document.body.classList ? document.body.classList.contains("quarto-dark") : false;
       var label = isDark ? "라이트 모드로 전환" : "다크 모드로 전환";
-      tooltip.textContent = label;
+      if (tooltip) tooltip.textContent = label;
       toggle.setAttribute("title", label);
+      toggle.innerHTML = isDark ? SUN_SVG : MOON_SVG;
     }
 
     syncThemeTooltip();
@@ -431,19 +434,19 @@
       obs.observe(document.body, { attributes: true, attributeFilter: ["class"] });
     }
 
-    if (typeof toggle.addEventListener === "function" && tooltip) {
+    if (typeof toggle.addEventListener === "function") {
       toggle.addEventListener("mouseenter", function() {
-        tooltip.classList.add("is-visible");
+        if (tooltip) tooltip.classList.add("is-visible");
       });
       toggle.addEventListener("mouseleave", function() {
-        tooltip.classList.remove("is-visible");
+        if (tooltip) tooltip.classList.remove("is-visible");
       });
     }
   }
 
-  function buildMegaMenuPanel() {
+  function buildCategoryDropdownPanel() {
     if (typeof document === "undefined" || !document.body || typeof document.querySelector !== "function" || typeof document.createElement !== "function") return;
-    if (document.querySelector("#navbarMegaMenu")) return;
+    if (document.querySelector("#navbarCategoryDropdown")) return;
     var header = document.querySelector("#quarto-header") || document.querySelector("header.headroom");
     if (!header || typeof header.appendChild !== "function") return;
 
@@ -451,277 +454,238 @@
     var root = offset ? offset.content : "./";
 
     var panel = document.createElement("div");
-    panel.id = "navbarMegaMenu";
-    panel.className = "navbar-megamenu-panel notranslate";
-    panel.setAttribute("aria-label", "전체 카테고리 메가메뉴");
+    panel.id = "navbarCategoryDropdown";
+    panel.className = "navbar-category-dropdown-panel notranslate";
+    panel.setAttribute("aria-label", "카테고리 네비게이션 드롭다운");
 
     panel.innerHTML = [
-      '<div class="megamenu-container">',
-      '  <div class="megamenu-grid">',
-      '    <!-- Col 1: Mathematics -->',
-      '    <div class="megamenu-col" data-col="math">',
-      '      <div class="megamenu-col-header">',
-      '        <div class="megamenu-col-title">📐 수학 (Mathematics)</div>',
-      '        <a href="' + root + 'index.html#category=Math" class="megamenu-col-all-link">',
-      '          수학 전체보기 <span class="megamenu-badge" data-count-key="Math">(194)</span> →',
-      '        </a>',
-      '      </div>',
-      '      <ul class="megamenu-list">',
-      '        <li class="megamenu-item">',
-      '          <a href="' + root + 'index.html#category=Calculus" class="megamenu-link">',
-      '            <span class="cat-label">미적분학 (Calculus)</span>',
-      '            <span class="megamenu-badge" data-count-key="Calculus">(2)</span>',
-      '          </a>',
-      '          <ul class="megamenu-sublist">',
-      '            <li><a href="' + root + 'index.html#category=Vector%20Calculus" class="megamenu-sublink">벡터미적분학 <span data-count-key="Vector Calculus">(2)</span></a></li>',
-      '          </ul>',
-      '        </li>',
-      '        <li class="megamenu-item">',
-      '          <a href="' + root + 'index.html#category=Abstract%20Algebra" class="megamenu-link">',
-      '            <span class="cat-label">추상대수학 (Abstract Algebra)</span>',
-      '            <span class="megamenu-badge" data-count-key="Abstract Algebra">(42)</span>',
-      '          </a>',
-      '          <ul class="megamenu-sublist">',
-      '            <li><a href="' + root + 'index.html#category=Group%20Theory" class="megamenu-sublink">군론 <span data-count-key="Group Theory">(31)</span></a></li>',
-      '            <li><a href="' + root + 'index.html#category=Ring%20Theory" class="megamenu-sublink">환론 <span data-count-key="Ring Theory">(8)</span></a></li>',
-      '            <li><a href="' + root + 'index.html#category=Binary%20Algebraic%20Structure" class="megamenu-sublink">이항대수 <span data-count-key="Binary Algebraic Structure">(2)</span></a></li>',
-      '            <li><a href="' + root + 'index.html#category=Field%20Theory" class="megamenu-sublink">체론 <span data-count-key="Field Theory">(1)</span></a></li>',
-      '          </ul>',
-      '        </li>',
-      '        <li class="megamenu-item">',
-      '          <a href="' + root + 'index.html#category=Linear%20Algebra" class="megamenu-link">',
-      '            <span class="cat-label">선형대수학 (Linear Algebra)</span>',
-      '            <span class="megamenu-badge" data-count-key="Linear Algebra">(7)</span>',
-      '          </a>',
-      '        </li>',
-      '        <li class="megamenu-item">',
-      '          <a href="' + root + 'index.html#category=Matrix%20Algebra" class="megamenu-link">',
-      '            <span class="cat-label">행렬대수학 (Matrix Algebra)</span>',
-      '            <span class="megamenu-badge" data-count-key="Matrix Algebra">(9)</span>',
-      '          </a>',
-      '        </li>',
-      '        <li class="megamenu-item">',
-      '          <a href="' + root + 'index.html#category=Complex%20Analysis" class="megamenu-link">',
-      '            <span class="cat-label">복소해석학 (Complex Analysis)</span>',
-      '            <span class="megamenu-badge" data-count-key="Complex Analysis">(44)</span>',
-      '          </a>',
-      '        </li>',
-      '        <li class="megamenu-item">',
-      '          <a href="' + root + 'index.html#category=Analysis" class="megamenu-link">',
-      '            <span class="cat-label">해석학 (Analysis)</span>',
-      '            <span class="megamenu-badge" data-count-key="Analysis">(2)</span>',
-      '          </a>',
-      '          <ul class="megamenu-sublist">',
-      '            <li><a href="' + root + 'index.html#category=Multivariable" class="megamenu-sublink">다변수해석학 <span data-count-key="Multivariable">(1)</span></a></li>',
-      '          </ul>',
-      '        </li>',
-      '        <li class="megamenu-item">',
-      '          <a href="' + root + 'index.html#category=Topology" class="megamenu-link">',
-      '            <span class="cat-label">위상수학 (Topology)</span>',
-      '            <span class="megamenu-badge" data-count-key="Topology">(31)</span>',
-      '          </a>',
-      '        </li>',
-      '        <li class="megamenu-item">',
-      '          <a href="' + root + 'index.html#category=Differential%20Geometry" class="megamenu-link">',
-      '            <span class="cat-label">미분기하학 (Diff Geometry)</span>',
-      '            <span class="megamenu-badge" data-count-key="Differential Geometry">(6)</span>',
-      '          </a>',
-      '          <ul class="megamenu-sublist">',
-      '            <li><a href="' + root + 'index.html#category=Curve%20Theory" class="megamenu-sublink">곡선론 <span data-count-key="Curve Theory">(6)</span></a></li>',
-      '          </ul>',
-      '        </li>',
-      '        <li class="megamenu-item">',
-      '          <a href="' + root + 'index.html#category=Graph%20Theory" class="megamenu-link">',
-      '            <span class="cat-label">그래프 이론 (Graph Theory)</span>',
-      '            <span class="megamenu-badge" data-count-key="Graph Theory">(41)</span>',
-      '          </a>',
-      '          <ul class="megamenu-sublist">',
-      '            <li><a href="' + root + 'index.html#category=Graph" class="megamenu-sublink">그래프 <span data-count-key="Graph">(27)</span></a></li>',
-      '            <li><a href="' + root + 'index.html#category=Network%20Analysis" class="megamenu-sublink">네트워크 <span data-count-key="Network Analysis">(8)</span></a></li>',
-      '            <li><a href="' + root + 'index.html#category=Algorithm" class="megamenu-sublink">알고리즘 <span data-count-key="Algorithm">(3)</span></a></li>',
-      '            <li><a href="' + root + 'index.html#category=Tree" class="megamenu-sublink">트리 <span data-count-key="Tree">(3)</span></a></li>',
-      '          </ul>',
-      '        </li>',
-      '        <li class="megamenu-item">',
-      '          <a href="' + root + 'index.html#category=Numerical%20Analysis" class="megamenu-link">',
-      '            <span class="cat-label">수치해석학 (Numerical Analysis)</span>',
-      '            <span class="megamenu-badge" data-count-key="Numerical Analysis">(9)</span>',
-      '          </a>',
-      '        </li>',
-      '      </ul>',
+      '<!-- Math Section (3 Horizontal Columns) -->',
+      '<div id="cat-panel-math" class="cat-dropdown-section" style="display: none;">',
+      '  <div class="cat-dropdown-container">',
+      '    <div class="cat-dropdown-header">',
+      '      <div class="cat-dropdown-title">📐 Mathematics (수학)</div>',
+      '      <a href="' + root + 'index.html#category=Math" class="cat-dropdown-all-link">',
+      '        수학 전체보기 <span class="nav-count-badge" data-count-key="Math">(193)</span> →',
+      '      </a>',
       '    </div>',
-      '',
-      '    <!-- Col 2: Astronomy -->',
-      '    <div class="megamenu-col" data-col="astronomy">',
-      '      <div class="megamenu-col-header">',
-      '        <div class="megamenu-col-title">🔭 천문학 (Astronomy)</div>',
-      '        <a href="' + root + 'index.html#category=Astronomy" class="megamenu-col-all-link">',
-      '          천문학 전체보기 <span class="megamenu-badge" data-count-key="Astronomy">(23)</span> →',
-      '        </a>',
+      '    <div class="cat-grid-3">',
+      '      <!-- Col 1: 해석학 & 미적분학 -->',
+      '      <div class="cat-col">',
+      '        <div class="cat-sub-title">미적분학 &amp; 해석학</div>',
+      '        <ul class="cat-list">',
+      '          <li>',
+      '            <a href="' + root + 'index.html#category=Calculus" class="cat-item-link">',
+      '              <span>미적분학 (Calculus)</span><span class="nav-count-badge" data-count-key="Calculus">(2)</span>',
+      '            </a>',
+      '            <div class="cat-sub-chips">',
+      '              <a href="' + root + 'index.html#category=Vector%20Calculus">벡터미적분학 <span data-count-key="Vector Calculus">(2)</span></a>',
+      '            </div>',
+      '          </li>',
+      '          <li>',
+      '            <a href="' + root + 'index.html#category=Analysis" class="cat-item-link">',
+      '              <span>해석학 (Analysis)</span><span class="nav-count-badge" data-count-key="Analysis">(2)</span>',
+      '            </a>',
+      '            <div class="cat-sub-chips">',
+      '              <a href="' + root + 'index.html#category=Multivariable">다변수해석학 <span data-count-key="Multivariable">(1)</span></a>',
+      '            </div>',
+      '          </li>',
+      '          <li>',
+      '            <a href="' + root + 'index.html#category=Complex%20Analysis" class="cat-item-link">',
+      '              <span>복소해석학 (Complex Analysis)</span><span class="nav-count-badge" data-count-key="Complex Analysis">(44)</span>',
+      '            </a>',
+      '          </li>',
+      '          <li>',
+      '            <a href="' + root + 'index.html#category=Numerical%20Analysis" class="cat-item-link">',
+      '              <span>수치해석학 (Numerical Analysis)</span><span class="nav-count-badge" data-count-key="Numerical Analysis">(9)</span>',
+      '            </a>',
+      '          </li>',
+      '        </ul>',
       '      </div>',
-      '      <ul class="megamenu-list">',
-      '        <li class="megamenu-item">',
-      '          <a href="' + root + 'index.html#category=Radio%20Astronomy" class="megamenu-link">',
-      '            <span class="cat-label">전파천문학 (Radio Astronomy)</span>',
-      '            <span class="megamenu-badge" data-count-key="Radio Astronomy">(16)</span>',
-      '          </a>',
-      '          <ul class="megamenu-sublist">',
-      '            <li><a href="' + root + 'index.html#category=AIPS" class="megamenu-sublink">AIPS <span data-count-key="AIPS">(2)</span></a></li>',
-      '            <li><a href="' + root + 'index.html#category=resolve" class="megamenu-sublink">resolve <span data-count-key="resolve">(1)</span></a></li>',
-      '          </ul>',
-      '        </li>',
-      '        <li class="megamenu-item">',
-      '          <a href="' + root + 'index.html#category=General%20Relativity" class="megamenu-link">',
-      '            <span class="cat-label">일반상대론 &amp; 등가원리</span>',
-      '            <span class="megamenu-badge" data-count-key="General Relativity">(1)</span>',
-      '          </a>',
-      '          <ul class="megamenu-sublist">',
-      '            <li><a href="' + root + 'index.html#category=Equivalence%20Principle" class="megamenu-sublink">등가원리 <span data-count-key="Equivalence Principle">(1)</span></a></li>',
-      '          </ul>',
-      '        </li>',
-      '        <li class="megamenu-item">',
-      '          <a href="' + root + 'index.html#category=High%20Energy" class="megamenu-link">',
-      '            <span class="cat-label">고에너지 천체물리학</span>',
-      '            <span class="megamenu-badge" data-count-key="High Energy">(2)</span>',
-      '          </a>',
-      '        </li>',
-      '        <li class="megamenu-item">',
-      '          <a href="' + root + 'index.html#category=Relativistic%20Jets" class="megamenu-link">',
-      '            <span class="cat-label">상대론적 제트 (Jets)</span>',
-      '            <span class="megamenu-badge" data-count-key="Relativistic Jets">(1)</span>',
-      '          </a>',
-      '        </li>',
-      '      </ul>',
+      '      <!-- Col 2: 대수학 -->',
+      '      <div class="cat-col">',
+      '        <div class="cat-sub-title">대수학 (Algebra)</div>',
+      '        <ul class="cat-list">',
+      '          <li>',
+      '            <a href="' + root + 'index.html#category=Abstract%20Algebra" class="cat-item-link">',
+      '              <span>추상대수학 (Abstract Algebra)</span><span class="nav-count-badge" data-count-key="Abstract Algebra">(42)</span>',
+      '            </a>',
+      '            <div class="cat-sub-chips">',
+      '              <a href="' + root + 'index.html#category=Group%20Theory">군론 <span data-count-key="Group Theory">(31)</span></a>',
+      '              <a href="' + root + 'index.html#category=Ring%20Theory">환론 <span data-count-key="Ring Theory">(8)</span></a>',
+      '              <a href="' + root + 'index.html#category=Binary%20Algebraic%20Structure">이항대수 <span data-count-key="Binary Algebraic Structure">(2)</span></a>',
+      '              <a href="' + root + 'index.html#category=Field%20Theory">체론 <span data-count-key="Field Theory">(1)</span></a>',
+      '            </div>',
+      '          </li>',
+      '          <li>',
+      '            <a href="' + root + 'index.html#category=Linear%20Algebra" class="cat-item-link">',
+      '              <span>선형대수학 (Linear Algebra)</span><span class="nav-count-badge" data-count-key="Linear Algebra">(7)</span>',
+      '            </a>',
+      '          </li>',
+      '          <li>',
+      '            <a href="' + root + 'index.html#category=Matrix%20Algebra" class="cat-item-link">',
+      '              <span>행렬대수학 (Matrix Algebra)</span><span class="nav-count-badge" data-count-key="Matrix Algebra">(9)</span>',
+      '            </a>',
+      '          </li>',
+      '        </ul>',
+      '      </div>',
+      '      <!-- Col 3: 기하·위상·그래프이론 -->',
+      '      <div class="cat-col">',
+      '        <div class="cat-sub-title">기하학 &amp; 위상 &amp; 그래프 이론</div>',
+      '        <ul class="cat-list">',
+      '          <li>',
+      '            <a href="' + root + 'index.html#category=Topology" class="cat-item-link">',
+      '              <span>위상수학 (Topology)</span><span class="nav-count-badge" data-count-key="Topology">(30)</span>',
+      '            </a>',
+      '          </li>',
+      '          <li>',
+      '            <a href="' + root + 'index.html#category=Differential%20Geometry" class="cat-item-link">',
+      '              <span>미분기하학 (Differential Geometry)</span><span class="nav-count-badge" data-count-key="Differential Geometry">(6)</span>',
+      '            </a>',
+      '            <div class="cat-sub-chips">',
+      '              <a href="' + root + 'index.html#category=Curve%20Theory">곡선론 <span data-count-key="Curve Theory">(6)</span></a>',
+      '            </div>',
+      '          </li>',
+      '          <li>',
+      '            <a href="' + root + 'index.html#category=Graph%20Theory" class="cat-item-link">',
+      '              <span>그래프 이론 (Graph Theory)</span><span class="nav-count-badge" data-count-key="Graph Theory">(41)</span>',
+      '            </a>',
+      '            <div class="cat-sub-chips">',
+      '              <a href="' + root + 'index.html#category=Graph">그래프 <span data-count-key="Graph">(27)</span></a>',
+      '              <a href="' + root + 'index.html#category=Network%20Analysis">네트워크 <span data-count-key="Network Analysis">(8)</span></a>',
+      '              <a href="' + root + 'index.html#category=Algorithm">알고리즘 <span data-count-key="Algorithm">(3)</span></a>',
+      '              <a href="' + root + 'index.html#category=Tree">트리 <span data-count-key="Tree">(3)</span></a>',
+      '            </div>',
+      '          </li>',
+      '        </ul>',
+      '      </div>',
       '    </div>',
+      '  </div>',
+      '</div>',
       '',
-      '    <!-- Col 3: Physics & Computer Science -->',
-      '    <div class="megamenu-col" data-col="phys-cs">',
-      '      <div class="megamenu-col-header">',
-      '        <div class="megamenu-col-title">⚛️ 물리학 (Physics)</div>',
-      '        <a href="' + root + 'index.html#category=Physics" class="megamenu-col-all-link">',
-      '          물리학 전체보기 <span class="megamenu-badge" data-count-key="Physics">(1)</span> →',
-      '        </a>',
-      '      </div>',
-      '      <ul class="megamenu-list">',
-      '        <li class="megamenu-item">',
-      '          <a href="' + root + 'index.html#category=Thermodynamics" class="megamenu-link">',
-      '            <span class="cat-label">열역학 (Thermodynamics)</span>',
-      '            <span class="megamenu-badge" data-count-key="Thermodynamics">(1)</span>',
-      '          </a>',
-      '        </li>',
-      '      </ul>',
-      '',
-      '      <div class="megamenu-section-divider">',
-      '        <div class="megamenu-section-title">💻 컴퓨터과학 (CS)</div>',
-      '        <a href="' + root + 'index.html#category=Computer" class="megamenu-col-all-link">',
-      '          컴퓨터과학 전체보기 <span class="megamenu-badge" data-count-key="Computer">(5)</span> →',
-      '        </a>',
-      '      </div>',
-      '      <ul class="megamenu-list">',
-      '        <li class="megamenu-item">',
-      '          <a href="' + root + 'index.html#category=Reinforcement%20Learning" class="megamenu-link">',
-      '            <span class="cat-label">강화학습 (RL)</span>',
-      '            <span class="megamenu-badge" data-count-key="Reinforcement Learning">(5)</span>',
-      '          </a>',
-      '        </li>',
-      '      </ul>',
+      '<!-- Astronomy Section (2 Columns) -->',
+      '<div id="cat-panel-astronomy" class="cat-dropdown-section" style="display: none;">',
+      '  <div class="cat-dropdown-container">',
+      '    <div class="cat-dropdown-header">',
+      '      <div class="cat-dropdown-title">🔭 Astronomy (천문학)</div>',
+      '      <a href="' + root + 'index.html#category=Astronomy" class="cat-dropdown-all-link">',
+      '        천문학 전체보기 <span class="nav-count-badge" data-count-key="Astronomy">(23)</span> →',
+      '      </a>',
       '    </div>',
-      '',
-      '    <!-- Col 4: 안내 및 소개 (About & Info) -->',
-      '    <div class="megamenu-col" data-col="info">',
-      '      <div class="megamenu-col-header">',
-      '        <div class="megamenu-col-title">📌 안내 및 소개</div>',
-      '        <span class="megamenu-col-all-link" style="color:var(--mag-text-muted); text-decoration:none !important;">자료실 &amp; 소개</span>',
+      '    <div class="cat-grid-2">',
+      '      <div class="cat-col">',
+      '        <div class="cat-sub-title">관측 및 전파천문학</div>',
+      '        <ul class="cat-list">',
+      '          <li>',
+      '            <a href="' + root + 'index.html#category=Radio%20Astronomy" class="cat-item-link">',
+      '              <span>전파천문학 (Radio Astronomy)</span><span class="nav-count-badge" data-count-key="Radio Astronomy">(16)</span>',
+      '            </a>',
+      '            <div class="cat-sub-chips">',
+      '              <a href="' + root + 'index.html#category=AIPS">AIPS <span data-count-key="AIPS">(2)</span></a>',
+      '              <a href="' + root + 'index.html#category=resolve">resolve <span data-count-key="resolve">(1)</span></a>',
+      '            </div>',
+      '          </li>',
+      '        </ul>',
       '      </div>',
-      '      <ul class="megamenu-list">',
-      '        <li class="megamenu-item">',
-      '          <a href="' + root + 'books.html" class="megamenu-link">',
-      '            <span class="cat-label">📚 교재 및 참고문헌</span>',
-      '          </a>',
-      '        </li>',
-      '        <li class="megamenu-item">',
-      '          <a href="' + root + 'qna/" class="megamenu-link">',
-      '            <span class="cat-label">💬 질문 &amp; 답변 (Q&amp;A)</span>',
-      '          </a>',
-      '        </li>',
-      '        <li class="megamenu-item">',
-      '          <a href="' + root + 'about.html" class="megamenu-link">',
-      '            <span class="cat-label">ℹ️ 블로그 소개 (About)</span>',
-      '          </a>',
-      '        </li>',
-      '        <li class="megamenu-item">',
-      '          <a href="' + root + 'team.html" class="megamenu-link">',
-      '            <span class="cat-label">👥 운영진 소개 (Team)</span>',
-      '          </a>',
-      '        </li>',
-      '        <li class="megamenu-item">',
-      '          <a href="' + root + 'admin/index.html" class="megamenu-link">',
-      '            <span class="cat-label">🔒 운영진 작업 현황</span>',
-      '          </a>',
-      '        </li>',
-      '      </ul>',
+      '      <div class="cat-col">',
+      '        <div class="cat-sub-title">상대론 &amp; 고에너지 천체물리학</div>',
+      '        <ul class="cat-list">',
+      '          <li>',
+      '            <a href="' + root + 'index.html#category=General%20Relativity" class="cat-item-link">',
+      '              <span>일반상대론 &amp; 등가원리</span><span class="nav-count-badge" data-count-key="General Relativity">(1)</span>',
+      '            </a>',
+      '            <div class="cat-sub-chips">',
+      '              <a href="' + root + 'index.html#category=Equivalence%20Principle">등가원리 <span data-count-key="Equivalence Principle">(1)</span></a>',
+      '            </div>',
+      '          </li>',
+      '          <li>',
+      '            <a href="' + root + 'index.html#category=High%20Energy" class="cat-item-link">',
+      '              <span>고에너지 천체물리학</span><span class="nav-count-badge" data-count-key="High Energy">(2)</span>',
+      '            </a>',
+      '          </li>',
+      '          <li>',
+      '            <a href="' + root + 'index.html#category=Relativistic%20Jets" class="cat-item-link">',
+      '              <span>상대론적 제트 (Jets)</span><span class="nav-count-badge" data-count-key="Relativistic Jets">(1)</span>',
+      '            </a>',
+      '          </li>',
+      '        </ul>',
+      '      </div>',
       '    </div>',
+      '  </div>',
+      '</div>',
       '',
-      '    <!-- Col 5: 학술 관련 링크 (Links) -->',
-      '    <div class="megamenu-col" data-col="links">',
-      '      <div class="megamenu-col-header">',
-      '        <div class="megamenu-col-title">🔗 학술 관련 링크</div>',
-      '        <span class="megamenu-col-all-link" style="color:var(--mag-text-muted); text-decoration:none !important;">공식 기관 &amp; 아카이브</span>',
+      '<!-- Physics Section -->',
+      '<div id="cat-panel-physics" class="cat-dropdown-section" style="display: none;">',
+      '  <div class="cat-dropdown-container" style="max-width: 600px;">',
+      '    <div class="cat-dropdown-header">',
+      '      <div class="cat-dropdown-title">⚛️ Physics (물리학)</div>',
+      '      <a href="' + root + 'index.html#category=Physics" class="cat-dropdown-all-link">',
+      '        물리학 전체보기 <span class="nav-count-badge" data-count-key="Physics">(1)</span> →',
+      '      </a>',
+      '    </div>',
+      '    <ul class="cat-list">',
+      '      <li>',
+      '        <a href="' + root + 'index.html#category=Thermodynamics" class="cat-item-link">',
+      '          <span>열역학 (Thermodynamics)</span><span class="nav-count-badge" data-count-key="Thermodynamics">(1)</span>',
+      '        </a>',
+      '      </li>',
+      '    </ul>',
+      '  </div>',
+      '</div>',
+      '',
+      '<!-- CS Section -->',
+      '<div id="cat-panel-cs" class="cat-dropdown-section" style="display: none;">',
+      '  <div class="cat-dropdown-container" style="max-width: 600px;">',
+      '    <div class="cat-dropdown-header">',
+      '      <div class="cat-dropdown-title">💻 Computer Science</div>',
+      '      <a href="' + root + 'index.html#category=Computer" class="cat-dropdown-all-link">',
+      '        컴퓨터과학 전체보기 <span class="nav-count-badge" data-count-key="Computer">(5)</span> →',
+      '      </a>',
+      '    </div>',
+      '    <ul class="cat-list">',
+      '      <li>',
+      '        <a href="' + root + 'index.html#category=Reinforcement%20Learning" class="cat-item-link">',
+      '          <span>강화학습 (Reinforcement Learning)</span><span class="nav-count-badge" data-count-key="Reinforcement Learning">(5)</span>',
+      '        </a>',
+      '      </li>',
+      '    </ul>',
+      '  </div>',
+      '</div>',
+      '',
+      '<!-- Info & Links Section (안내 및 소개 + 학술 관련 링크 통합) -->',
+      '<div id="cat-panel-info" class="cat-dropdown-section" style="display: none;">',
+      '  <div class="cat-dropdown-container">',
+      '    <div class="cat-dropdown-header">',
+      '      <div class="cat-dropdown-title">📌 안내 및 자료</div>',
+      '      <span style="font-size: 0.8rem; color: var(--mag-text-muted);">블로그 안내 및 학술 기관 링크</span>',
+      '    </div>',
+      '    <div class="cat-grid-2">',
+      '      <div class="cat-col">',
+      '        <div class="cat-sub-title">안내 및 소개</div>',
+      '        <ul class="cat-list">',
+      '          <li><a href="' + root + 'books.html" class="cat-item-link"><span>📚 교재 및 참고문헌</span></a></li>',
+      '          <li><a href="' + root + 'qna/" class="cat-item-link"><span>💬 질문 &amp; 답변 (Q&amp;A)</span></a></li>',
+      '          <li><a href="' + root + 'about.html" class="cat-item-link"><span>ℹ️ 블로그 소개 (About)</span></a></li>',
+      '          <li><a href="' + root + 'team.html" class="cat-item-link"><span>👥 운영진 소개 (Team)</span></a></li>',
+      '          <li><a href="' + root + 'admin/index.html" class="cat-item-link"><span>🔒 운영진 작업 현황</span></a></li>',
+      '        </ul>',
       '      </div>',
-      '      <div style="font-size:0.8rem; font-weight:700; color:var(--mag-navy); margin: 0.15rem 0 0.35rem 0.5rem;">🔭 천문학</div>',
-      '      <ul class="megamenu-list">',
-      '        <li class="megamenu-item">',
-      '          <a href="https://www.kasi.re.kr/" target="_blank" rel="noopener noreferrer" class="megamenu-link">',
-      '            <span class="cat-label">한국천문연구원 (KASI)</span>',
-      '            <span class="megamenu-ext-icon">↗</span>',
-      '          </a>',
-      '        </li>',
-      '        <li class="megamenu-item">',
-      '          <a href="https://www.kas.org/index.html" target="_blank" rel="noopener noreferrer" class="megamenu-link">',
-      '            <span class="cat-label">한국천문학회 (KAS)</span>',
-      '            <span class="megamenu-ext-icon">↗</span>',
-      '          </a>',
-      '        </li>',
-      '        <li class="megamenu-item">',
-      '          <a href="https://terms.naver.com/~%EC%B2%9C%EB%AC%B8%ED%95%99%EB%B0%B1%EA%B3%BC-4jCeB76aXmnbp44IBL8pRW" target="_blank" rel="noopener noreferrer" class="megamenu-link">',
-      '            <span class="cat-label">네이버 천문학백과</span>',
-      '            <span class="megamenu-ext-icon">↗</span>',
-      '          </a>',
-      '        </li>',
-      '        <li class="megamenu-item">',
-      '          <a href="https://arxiv.org/archive/astro-ph" target="_blank" rel="noopener noreferrer" class="megamenu-link">',
-      '            <span class="cat-label">Astrophysics arXiv</span>',
-      '            <span class="megamenu-ext-icon">↗</span>',
-      '          </a>',
-      '        </li>',
-      '      </ul>',
-      '      <div style="font-size:0.8rem; font-weight:700; color:var(--mag-navy); margin: 0.65rem 0 0.35rem 0.5rem; border-top:1px dashed var(--mag-border); padding-top:0.45rem;">📐 수학</div>',
-      '      <ul class="megamenu-list">',
-      '        <li class="megamenu-item">',
-      '          <a href="https://www.kms.or.kr/" target="_blank" rel="noopener noreferrer" class="megamenu-link">',
-      '            <span class="cat-label">대한수학회 (KMS)</span>',
-      '            <span class="megamenu-ext-icon">↗</span>',
-      '          </a>',
-      '        </li>',
-      '        <li class="megamenu-item">',
-      '          <a href="https://www.nims.re.kr/" target="_blank" rel="noopener noreferrer" class="megamenu-link">',
-      '            <span class="cat-label">국가수리과학연구소 (NIMS)</span>',
-      '            <span class="megamenu-ext-icon">↗</span>',
-      '          </a>',
-      '        </li>',
-      '        <li class="megamenu-item">',
-      '          <a href="https://horizon.kias.re.kr/" target="_blank" rel="noopener noreferrer" class="megamenu-link">',
-      '            <span class="cat-label">고등과학원 HORIZON</span>',
-      '            <span class="megamenu-ext-icon">↗</span>',
-      '          </a>',
-      '        </li>',
-      '        <li class="megamenu-item">',
-      '          <a href="https://arxiv.org/archive/math" target="_blank" rel="noopener noreferrer" class="megamenu-link">',
-      '            <span class="cat-label">Mathematics arXiv</span>',
-      '            <span class="megamenu-ext-icon">↗</span>',
-      '          </a>',
-      '        </li>',
-      '      </ul>',
+      '      <div class="cat-col">',
+      '        <div class="cat-sub-title">학술 관련 링크</div>',
+      '        <div style="font-size:0.78rem; font-weight:700; color:var(--mag-navy); margin: 0.15rem 0 0.35rem 0.5rem;">🔭 천문학</div>',
+      '        <ul class="cat-list mb-2">',
+      '          <li><a href="https://www.kasi.re.kr/" target="_blank" rel="noopener noreferrer" class="cat-item-link"><span>한국천문연구원 (KASI)</span><span class="cat-ext-icon">↗</span></a></li>',
+      '          <li><a href="https://www.kas.org/index.html" target="_blank" rel="noopener noreferrer" class="cat-item-link"><span>한국천문학회 (KAS)</span><span class="cat-ext-icon">↗</span></a></li>',
+      '          <li><a href="https://terms.naver.com/~%EC%B2%9C%EB%AC%B8%ED%95%99%EB%B0%B1%EA%B3%BC-4jCeB76aXmnbp44IBL8pRW" target="_blank" rel="noopener noreferrer" class="cat-item-link"><span>네이버 천문학백과</span><span class="cat-ext-icon">↗</span></a></li>',
+      '          <li><a href="https://arxiv.org/archive/astro-ph" target="_blank" rel="noopener noreferrer" class="cat-item-link"><span>Astrophysics arXiv</span><span class="cat-ext-icon">↗</span></a></li>',
+      '        </ul>',
+      '        <div style="font-size:0.78rem; font-weight:700; color:var(--mag-navy); margin: 0.5rem 0 0.35rem 0.5rem; border-top:1px dashed var(--mag-border); padding-top:0.4rem;">📐 수학</div>',
+      '        <ul class="cat-list">',
+      '          <li><a href="https://www.kms.or.kr/" target="_blank" rel="noopener noreferrer" class="cat-item-link"><span>대한수학회 (KMS)</span><span class="cat-ext-icon">↗</span></a></li>',
+      '          <li><a href="https://www.nims.re.kr/" target="_blank" rel="noopener noreferrer" class="cat-item-link"><span>국가수리과학연구소 (NIMS)</span><span class="cat-ext-icon">↗</span></a></li>',
+      '          <li><a href="https://horizon.kias.re.kr/" target="_blank" rel="noopener noreferrer" class="cat-item-link"><span>고등과학원 HORIZON</span><span class="cat-ext-icon">↗</span></a></li>',
+      '          <li><a href="https://arxiv.org/archive/math" target="_blank" rel="noopener noreferrer" class="cat-item-link"><span>Mathematics arXiv</span><span class="cat-ext-icon">↗</span></a></li>',
+      '        </ul>',
+      '      </div>',
       '    </div>',
       '  </div>',
       '</div>'
@@ -734,72 +698,71 @@
       document.body.classList.add("has-megamenu");
     }
 
-    setupMegaMenuInteractions(panel);
+    setupCategoryDropdownInteractions(panel);
   }
 
-  function setupMegaMenuInteractions(panel) {
+  function setupCategoryDropdownInteractions(panel) {
     if (!panel || typeof panel.querySelectorAll !== "function" || typeof document.querySelectorAll !== "function") return;
     var closeTimer = null;
     var dropdownItems = document.querySelectorAll(".navbar-nav > .nav-item.dropdown");
+    var sections = {
+      math: panel.querySelector("#cat-panel-math"),
+      astronomy: panel.querySelector("#cat-panel-astronomy"),
+      physics: panel.querySelector("#cat-panel-physics"),
+      cs: panel.querySelector("#cat-panel-cs"),
+      info: panel.querySelector("#cat-panel-info")
+    };
 
-    function getColForNavItem(navItem) {
+    function getCatKeyForNavItem(navItem) {
       var text = (navItem.querySelector(".nav-link")?.textContent || "").toLowerCase();
       if (text.includes("math") || text.includes("수학")) return "math";
       if (text.includes("astronomy") || text.includes("천문학")) return "astronomy";
-      if (text.includes("physics") || text.includes("물리")) return "phys-cs";
-      if (text.includes("computer") || text.includes("컴퓨터")) return "phys-cs";
+      if (text.includes("physics") || text.includes("물리")) return "physics";
+      if (text.includes("computer") || text.includes("컴퓨터")) return "cs";
       if (text.includes("안내") || text.includes("자료") || text.includes("more")) return "info";
       return "";
     }
 
-    function clearHighlights() {
+    function clearActiveLinks() {
       dropdownItems.forEach(function(item) {
         var link = item.querySelector(".nav-link");
-        if (link) link.classList.remove("megamenu-active-link");
-      });
-      panel.querySelectorAll(".megamenu-col").forEach(function(col) {
-        col.classList.remove("active-col");
+        if (link) link.classList.remove("cat-active-link");
       });
     }
 
-    function highlight(colKey, activeNavItem) {
-      clearHighlights();
-      if (activeNavItem) {
-        var link = activeNavItem.querySelector(".nav-link");
-        if (link) link.classList.add("megamenu-active-link");
-      }
-      if (colKey) {
-        var col = panel.querySelector('.megamenu-col[data-col="' + colKey + '"]');
-        if (col) col.classList.add("active-col");
-        if (colKey === "info") {
-          var linksCol = panel.querySelector('.megamenu-col[data-col="links"]');
-          if (linksCol) linksCol.classList.add("active-col");
-        }
-      }
-    }
-
-    function openMegaMenu(colKey, navItem) {
+    function showSection(catKey, activeNavItem) {
       if (window.innerWidth < 1200) return;
       if (closeTimer) {
         clearTimeout(closeTimer);
         closeTimer = null;
       }
+
+      // Hide all sections, show only active one
+      for (var k in sections) {
+        if (sections[k]) sections[k].style.display = (k === catKey) ? "block" : "none";
+      }
+
+      clearActiveLinks();
+      if (activeNavItem) {
+        var link = activeNavItem.querySelector(".nav-link");
+        if (link) link.classList.add("cat-active-link");
+      }
+
       panel.classList.add("is-open");
-      highlight(colKey, navItem);
     }
 
     function scheduleClose() {
       if (closeTimer) clearTimeout(closeTimer);
       closeTimer = setTimeout(function() {
         panel.classList.remove("is-open");
-        clearHighlights();
+        clearActiveLinks();
       }, 180);
     }
 
     dropdownItems.forEach(function(item) {
-      var colKey = getColForNavItem(item);
+      var catKey = getCatKeyForNavItem(item);
       item.addEventListener("mouseenter", function() {
-        openMegaMenu(colKey, item);
+        showSection(catKey, item);
       });
       item.addEventListener("mouseleave", function() {
         scheduleClose();
@@ -817,23 +780,11 @@
       scheduleClose();
     });
 
-    // Hovering inside individual columns
-    panel.querySelectorAll(".megamenu-col").forEach(function(col) {
-      col.addEventListener("mouseenter", function() {
-        var key = col.getAttribute("data-col");
-        var matchingNavItem = null;
-        dropdownItems.forEach(function(item) {
-          if (getColForNavItem(item) === key) matchingNavItem = item;
-        });
-        highlight(key, matchingNavItem);
-      });
-    });
-
     // Close on link click
     panel.addEventListener("click", function(e) {
       if (e.target.closest("a")) {
         panel.classList.remove("is-open");
-        clearHighlights();
+        clearActiveLinks();
       }
     });
 
@@ -841,7 +792,7 @@
     document.addEventListener("keydown", function(e) {
       if (e.key === "Escape") {
         panel.classList.remove("is-open");
-        clearHighlights();
+        clearActiveLinks();
       }
     });
   }
@@ -877,8 +828,8 @@
       formatCountBadges(navContainer);
     }
 
-    // Initialize Full-Width Mega Menu and Floating Dark Mode Toggle
-    buildMegaMenuPanel();
+    // Initialize Category-Specific Dropdowns and Floating Dark Mode Toggle
+    buildCategoryDropdownPanel();
     setupFloatingDarkModeToggle();
 
     // Apply live or fetched counts
@@ -889,7 +840,7 @@
       if (e && e.detail) {
         renderCategoryMenus(e.detail);
         applyCategoryCounts(e.detail);
-        updateMegaMenuBadges(e.detail);
+        updateCategoryDropdownBadges(e.detail);
       }
     });
 

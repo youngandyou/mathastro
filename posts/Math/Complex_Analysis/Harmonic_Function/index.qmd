@@ -113,5 +113,158 @@ Now, assume $\nabla h(u, v) \neq \mathbf{0}, \forall u + iv = w = f(z) \in \Gamm
 Note that the level curve $h(u, v) = c$ is orthogonal to the gradient $\nabla h$ and by assumption, $\nabla h$ is orthogonal to $\mathbf{n}$, so $\nabla h$ is tangent to the curve $\Gamma$. Since the curve $C$ is transformed into the curve $\Gamma$ and the conformal mapping $w = f(z)$ preserves the angle between the curves, we conclude that the gradient $\nabla H$ is tangent to the curve $C$, so $\nabla H \cdot \mathbf{N} = 0$. Hence, we have $\frac{dH}{dN} = \nabla H \cdot N = 0$. $\blacksquare$
 :::
 
+# Dirichlet Problem
+## Theorem 3
+Let $F$ be a piecewise continuous function of $\theta$ on the interval $0 \le \theta \le 2\pi$. The ***Poisson integral transform*** of $F$ is defined in terms of the [Poisson kernel](../Poisson_Integral_Formula/index.qmd#sec-theorem-2) $P(r_0, r, \phi - \theta)$ by means of the equation
+
+$$U(r, \theta) = \frac{1}{2\pi} \int_0^{2\pi} P(r_0, r, \phi - \theta) F(\phi) d\phi \quad (r < r_0).$$
+
+**(i)** The function $U(r, \theta)$ is harmonic inside the circle $r = r_0$.
+
+**(ii)** $\displaystyle \lim_{r \to r_0^-} U(r, \theta) = F(\theta)$ for each fixed $\theta$ at which $F$ is continuous.
+
+**(iii)** $\displaystyle U(0, \theta) = \frac{1}{2\pi} \int_0^{2\pi} F(\phi) d\phi$; Hence, the value of a harmonic function $U(r, \theta)$ ate the center of the circle $r = r_0$ is the average of the boundary values on the circle. 
+
+Thus, $U$ is a solution of the Dirichlet problem for the disk $r < r_0$ in the sense that $U(r, \theta)$ is harmonic and approches the boundary value $F(\theta)$ as the point $(r, \theta)$ aproaches $(r_0, \theta)$ along a radius, except at the finite number of points $(r_0, \theta)$ where discontinuous of $F$ may occur.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+**(i)** Since $F$ is piecewise continuous, there are the discontinuous points $0 = \phi_0 < \phi_1 < \cdots < \phi_n = 2\pi$ such that
+
+$$\begin{align*}
+U(r, \theta) &= \frac{1}{2\pi} \int_0^{2\pi} P(r_0, r, \phi - \theta) F(\phi) d\phi \\
+&= \frac{1}{2\pi} \sum_{k=0}^{n-1} \int_{\phi_k}^{\phi_{k+1}} P(r_0, r, \phi - \theta) F(\phi) d\phi
+\end{align*}$$
+
+whenever $r < r_0$. Note that each integrand is continuous in $r, \theta, \phi$. Then
+
+$$\begin{align*}
+\frac{\partial^j}{\partial r^j} U(r, \theta) &= \frac{1}{2\pi} \sum_{k=0}^{n-1} \int_{\phi_k}^{\phi_{k+1}} \frac{\partial^j}{\partial r^j}P(r_0, r, \phi - \theta) F(\phi) d\phi \\
+\frac{\partial^j}{\partial \theta^j} U(r, \theta) &= \frac{1}{2\pi} \sum_{k=0}^{n-1} \int_{\phi_k}^{\phi_{k+1}} \frac{\partial^j}{\partial \theta^j}P(r_0, r, \phi - \theta) F(\phi) d\phi
+\end{align*}$$
+
+for each $j = 1, 2, \dots$. Since $P$ satisfies Laplace's equation
+
+$$\Delta_{(r, \theta)} P = r^2P_{rr} + rP_r + P_{\theta \theta} = 0,$$
+
+we have
+
+$$\Delta_{(r, \theta)} U = \frac{1}{2\pi} \sum_{k=0}^{n-1} \int_{\phi_k}^{\phi_{k+1}} \Delta_{(r, \theta)}P(r_0, r, \phi - \theta) F(\phi) d\phi = 0$$
+
+whenever $r < r_0$. Hence, the function $U(r, \theta)$ is harmonic on the disk $r < r_0$.
+
+**(ii)** Let $\theta$ be a point at which $F$ is continuous. [Note that](../Poisson_Integral_Formula/index.qmd#sec-theorem-2)
+
+$$\begin{align*}
+&1 = \frac{1}{2\pi} \int_0^{2\pi} P(r_0, r, \phi - \theta) d \phi \\
+\implies &F(\theta) = \frac{1}{2\pi} \int_0^{2\pi} P(r_0, r, \phi - \theta) F(\theta) d \phi \\
+\implies &U(r, \theta) - F(\theta) = \frac{1}{2\pi} \int_0^{2\pi} P(r_0, r, \phi - \theta) \left[ F(\phi) - F(\theta) \right] d \phi.
+\end{align*}$$
+
+We let $F$ be extended periodically, with period $2\pi$, so that the integrand $P(r_0, r, \phi - \theta) \left[ F(\phi) - F(\theta) \right]$ is periodic in $\phi$ with period $2\pi$.
+
+Since $F$ is continuous at $\theta$, for a given $\varepsilon > 0$, there exists $\alpha > 0$ such that
+
+$$| F(\phi) - F(\theta) | < \frac{\varepsilon}{2} \quad \text{whenever} \quad | \phi - \theta | \le \alpha.$$
+
+Note that $U(r, \theta) - F(\theta)$ can be written as
+
+$$U(r, \theta) - F(\theta) = I_1(r) + I_2(r)$$
+
+where
+
+$$\begin{align*}
+I_1(r) &= \frac{1}{2\pi} \int_{\theta - \alpha}^{\theta + \alpha} P(r_0, r, \phi - \theta) [F(\phi) - F(\theta)] d\phi \\
+I_1(r) &= \frac{1}{2\pi} \int_{\theta + \alpha}^{\theta - \alpha + 2\pi} P(r_0, r, \phi - \theta) [F(\phi) - F(\theta)] d\phi.
+\end{align*}$$
+
+[Since $P$ is a positive function](../Poisson_Integral_Formula/index.qmd#sec-theorem-2), we have 
+
+$$\begin{align*}
+| I_1(r) | &\le \frac{1}{2\pi} \int_{\theta - \alpha}^{\theta + \alpha} P(r_0, r, \phi - \theta) |F(\phi) - F(\theta)| d\phi \\
+&\le \frac{\varepsilon}{4\pi} \int_0^{2\pi} P(r_0, r, \phi - \theta) d \phi \\
+&= \frac{\varepsilon}{4\pi} \cdot 2 \pi \\
+&= \frac{\varepsilon}{2}
+\end{align*}$$
+
+whenever $|\phi - \theta| \le \alpha$.
+
+Note that
+
+$$P(r_0, r, \phi - \theta) = \frac{r_0^2 - r^2}{|s-z|^2}$$
+
+where $s = r_0e^{i\phi}$ and $z = re^{i\theta}$ for $0 < r < r_0$, and the denominator $| s - z|^2$ has a minimum value $m$ as $\phi$ varies over $\theta + \alpha \le \phi \le \theta - \alpha + 2\pi$. If we let
+
+$$M = \sup_{\phi \in [0, 2\pi]} | F(\phi) - F(\theta) |,$$
+
+then
+
+$$\begin{align*}
+| I_2(r) | & \le \frac{1}{2\pi} \int_{\theta + \alpha}^{\theta - \alpha + 2\pi} \frac{r_0^2 - r^2}{|s-z|^2} |F(\phi) - F(\theta)| d\phi \\
+& \le \frac{r_0^2 - r^2}{2\pi} \cdot \frac{M}{m} \cdot 2\pi \\
+&= \frac{M}{m}(r_0^2 - r^2).
+\end{align*}$$
+
+Note that
+
+$$\begin{align*}
+0 &< (r_0 - r)^2 \\
+&= r_0^2 -2r_0r + r^2 \\
+&= 2r_0^2 - 2r_0r + r^2 - r_0^2,
+\end{align*}$$
+
+so $r_0^2 - r^2 < 2r_0(r_0 - r)$. Let 
+
+$$\delta = \frac{m \varepsilon}{4Mr_0}.$$
+
+Then we have
+
+$$\begin{align*}
+| I_2(r) | & \le \frac{M}{m}(r_0^2 - r^2) \\
+&< \frac{2Mr_0}{m}(r_0 - r) \\
+&< \frac{2Mr_0}{m} \delta \\
+&= \frac{\varepsilon}{2}
+\end{align*}$$
+
+whenever $0 < r_0 - r < \delta$. Hence,
+
+$$|U(r, \theta) - F(\theta)| \le |I_1(r)| + |I_2(r)| < \frac{\varepsilon}{2} + \frac{\varepsilon}{2} = \varepsilon$$
+
+whenever $0 < r_0 - r < \delta$, and therefore
+
+$$\lim_{r \to r_0^-} U(r, \theta) = F(\theta). \blacksquare$$
+:::
+
+## Example 2
+위 정리를 사용해서 다음과 같이 경계조건이 주어진 디리클레 문제 $\Delta V(r, \theta) = 0$을 풀어보자
+
+![](harmo.png)
+
+즉 경계조건은 함수
+
+$$F(\phi) = \begin{cases}
+0 & 0 < \phi < \pi \\
+1 & \pi < \phi < 2\pi
+\end{cases}$$
+
+로 주어진다. 위 정리에 의해 솔루션은
+
+$$\begin{align*}
+V(r, \theta) &= \frac{1}{2\pi} \int_0^{2\pi} P(1, r, \phi - \theta) F(\phi) d \phi \\
+&= \frac{1}{2\pi} \int_\pi^{2\pi} \frac{1-r^2}{1+r^2 - 2r\cos(\phi - \theta)} d \phi \\
+&= \frac{1}{2\pi} \int_{\pi - \theta}^{2\pi - \theta} \frac{1-r^2}{1+r^2 - 2r\cos \psi} d \psi \\
+&= \frac{1}{2\pi} \cdot 2 \arctan \left( \frac{1+r}{1-r} \tan \frac{\psi}{2} \right) \Bigg_{\pi - \theta}^{2\pi - \theta} \\
+&= \frac{1}{\pi} \arctan \left( \frac{1-r^2}{2r \sin \theta} \right) \quad (0 \le \arctan t \le \pi)
+\end{align*}$$
+
+으로 주어진다. 데카르트 좌표계로 바꾸면
+
+$$V(x, y) = \frac{1}{\pi} \arctan \left( \frac{1 - x^2 - y^2}{2y} \right) \quad (0 \le \arctan t \le \pi)$$
+
+을 얻는다. 이 솔루션을 전위로 해석하고, 이 전위를 퍼텐셜로 취하는 전기장을 그려보면 다음과 같이 그려진다.
+
+![](sol.png)
+
+즉 높은 전위에서 낮은 전위의 방향으로 전기력이 가해지고, 물리적 직관과도 일치함을 알 수 있다.
+
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

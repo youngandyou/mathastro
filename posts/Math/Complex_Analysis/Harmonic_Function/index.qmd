@@ -252,7 +252,7 @@ $$\begin{align*}
 V(r, \theta) &= \frac{1}{2\pi} \int_0^{2\pi} P(1, r, \phi - \theta) F(\phi) d \phi \\
 &= \frac{1}{2\pi} \int_\pi^{2\pi} \frac{1-r^2}{1+r^2 - 2r\cos(\phi - \theta)} d \phi \\
 &= \frac{1}{2\pi} \int_{\pi - \theta}^{2\pi - \theta} \frac{1-r^2}{1+r^2 - 2r\cos \psi} d \psi \\
-&= \frac{1}{2\pi} \cdot 2 \arctan \left( \frac{1+r}{1-r} \tan \frac{\psi}{2} \right) \Bigg_{\pi - \theta}^{2\pi - \theta} \\
+&= \frac{1}{2\pi} \cdot 2 \arctan \left( \frac{1+r}{1-r} \tan \frac{\psi}{2} \right) \Bigg \vert_{\pi - \theta}^{2\pi - \theta} \\
 &= \frac{1}{\pi} \arctan \left( \frac{1-r^2}{2r \sin \theta} \right) \quad (0 \le \arctan t \le \pi)
 \end{align*}$$
 

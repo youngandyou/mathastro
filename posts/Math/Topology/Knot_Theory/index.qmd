@@ -79,7 +79,7 @@ Every connected, orientable, closed (compact without boundary) surface is homeom
 
 **(i)** the sphere $S^2$,
 
-**(ii)** the connected sum of $g$ tori for $g \ge 1$, $T^2 # $\cdots$ # $T^2$.
+**(ii)** the connected sum of $g$ tori for $g \ge 1$, $T^2$ # $\cdots$ # $T^2$.
 
 ## Corollary
 Let $M$ be a connected, orientable, compact surface with genus $g$ and $b$ boundary components. Then 

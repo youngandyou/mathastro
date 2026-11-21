@@ -206,37 +206,143 @@ html.category-active .magazine-masthead { display: block; }
   padding: 1.8rem 2.25rem 1.2rem;
   outline: none;
 }
-.knowledge-tree[data-view="fields"] {
-  border-color: transparent;
-  background: transparent;
-  box-shadow: none;
-  overflow: visible;
-}
-.knowledge-tree[data-view="fields"] #knowledge-content { padding: .4rem; overflow: auto; }
-.knowledge-fields { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); grid-auto-rows: 1fr; gap: 1rem; min-height: 100%; }
-.knowledge-field {
+.knowledge-tree[data-view="fields"] { border-color: #24394c; }
+/* Let a growing atlas expand the page. The other steps still share the entrance height. */
+.knowledge-tree[data-view="fields"] #knowledge-content { display: grid; contain: none; padding: 0; }
+.knowledge-atlas {
+  --atlas-edge: clamp(1.1rem, 3.6vw, 3.4rem);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: .75rem;
-  text-align: center;
-  padding: 1rem .5rem;
-  min-height: clamp(8rem, 17vw, 11rem);
-  border: 1px solid var(--mag-border);
-  border-top: 2px solid var(--knowledge-accent);
-  border-radius: 4px;
-  background: linear-gradient(155deg, white 25%, var(--knowledge-tint));
-  color: var(--mag-text-main);
-  cursor: pointer;
-  transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+  justify-content: space-between;
+  isolation: isolate;
+  background: #081421 url("knowledge-star-chart.svg") center / cover;
+  color: #f0f5f7;
 }
-.knowledge-field:hover { transform: translateY(-4px); border-color: var(--knowledge-accent); box-shadow: 0 8px 18px #0e2a470b; }
-.knowledge-field:disabled { cursor: default; opacity: .65; transform: none; box-shadow: none; }
-.knowledge-symbol { display: block; width: 76px; height: 76px; color: var(--knowledge-accent); }
-.knowledge-symbol svg { display: block; width: 100%; height: 100%; }
-.knowledge-symbol .symbol-dot { fill: currentColor; stroke: none; }
-.knowledge-field-name { font-size: clamp(1rem, 1.8vw, 1.3rem); font-weight: 700; line-height: 1.4; letter-spacing: -.04em; }
+.knowledge-atlas-header {
+  padding: clamp(1.35rem, 3vw, 2.8rem) var(--atlas-edge) 0;
+}
+.knowledge-atlas h2.knowledge-atlas-title {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  color: #f6efdc;
+  font: 550 clamp(1.5rem, 3vw, 2.55rem)/1.15 var(--mag-font-serif);
+  letter-spacing: -.055em;
+  text-wrap: balance;
+}
+.knowledge-atlas-hint {
+  margin: .55rem 0 0;
+  color: #cfdeea;
+  font-size: clamp(.875rem, 1.2vw, 1rem);
+  line-height: 1.5;
+  word-break: keep-all;
+}
+.knowledge-fields {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  align-items: center;
+  align-content: space-evenly;
+  row-gap: 1.25rem;
+  padding: 1.3rem var(--atlas-edge) 2.3rem;
+}
+.knowledge-field {
+  --starlight: #d4c9ff;
+  --altitude: 0rem;
+  position: relative;
+  top: var(--altitude);
+  display: grid;
+  place-items: center;
+  justify-self: center;
+  width: 100%;
+  max-width: 16rem;
+  min-width: 0;
+  padding: 1.25rem .8rem;
+  border: 0;
+  border-radius: 25%;
+  background: transparent;
+  color: var(--starlight);
+  text-align: center;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+.knowledge-field.knowledge-color-math { --starlight: #9ad6ff; }
+.knowledge-field.knowledge-color-astro { --starlight: #f2cd8e; }
+.knowledge-field.knowledge-color-physics { --starlight: #88e4dc; }
+.knowledge-field.knowledge-color-cs { --starlight: #cbb8fb; }
+.knowledge-field:nth-child(4n + 1) { --altitude: 1.45rem; }
+.knowledge-field:nth-child(4n + 2) { --altitude: -1.25rem; }
+.knowledge-field:nth-child(4n + 3) { --altitude: 2rem; }
+.knowledge-field:nth-child(4n) { --altitude: -.7rem; }
+.knowledge-field-star {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  width: 100%;
+  max-width: 12rem;
+  pointer-events: none;
+}
+.knowledge-field-star::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -10% -8% 0;
+  background: radial-gradient(ellipse, currentColor, transparent 68%);
+  opacity: .10;
+}
+.knowledge-field-star svg { display: block; width: 100%; height: auto; aspect-ratio: 180 / 108; }
+.knowledge-field-name {
+  margin-top: .35rem;
+  color: #f6f8fa;
+  font: 650 clamp(1rem, 1.7vw, 1.42rem)/1.35 var(--mag-font-sans);
+  letter-spacing: -.035em;
+  text-wrap: balance;
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+.knowledge-field-count {
+  margin-top: .2rem;
+  color: var(--starlight);
+  font: 450 .8rem/1.4 var(--mag-font-sans);
+  font-variant-numeric: tabular-nums;
+}
+.knowledge-field:is(:hover, :focus-visible, :active) .knowledge-field-star::before { opacity: .22; }
+.knowledge-field:is(:hover, :focus-visible, :active) .knowledge-field-name {
+  text-decoration: underline;
+  text-decoration-color: var(--starlight);
+  text-underline-offset: .22em;
+}
+.knowledge-atlas button:focus-visible { outline: 2px solid #e8d8ae; outline-offset: -2px; }
+@keyframes knowledge-drift {
+  0%, 100% { transform: var(--drift-0); }
+  25% { transform: var(--drift-1); }
+  50% { transform: var(--drift-2); }
+  75% { transform: var(--drift-3); }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .knowledge-field-star {
+    animation: knowledge-drift var(--drift-duration) ease-in-out var(--drift-delay) infinite;
+  }
+  .knowledge-field:is(:focus-visible, :active) .knowledge-field-star { animation-play-state: paused; }
+  @media (hover: hover) {
+    .knowledge-field:hover .knowledge-field-star { animation-play-state: paused; }
+  }
+}
+@media (max-width: 850px) {
+  .knowledge-fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: .6rem;
+    padding: 1rem var(--atlas-edge) 1.8rem;
+  }
+  .knowledge-field:nth-child(n) { --altitude: .55rem; }
+  .knowledge-field:nth-child(even) { --altitude: -.4rem; }
+  .knowledge-field { padding: .85rem .65rem; }
+  .knowledge-field-star { max-width: 10.8rem; }
+}
+@media (max-width: 480px) {
+  .knowledge-fields { padding-inline: .4rem; }
+  .knowledge-field-star { max-width: 8.2rem; }
+}
 .knowledge-back { border: 0; background: transparent; color: var(--mag-text-muted); font-size: .73rem; padding: .6rem 0; cursor: pointer; white-space: nowrap; }
 .knowledge-back:hover { color: var(--knowledge-accent); text-decoration: underline; }
 .knowledge-toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .25rem 1rem; }
@@ -285,7 +391,6 @@ html.category-active .magazine-masthead { display: block; }
 
 @media (max-width: 991.98px) {
   #knowledge-content { padding: 1.5rem; }
-  .knowledge-fields { gap: .7rem; }
   .knowledge-branches { gap: .75rem; }
   .knowledge-post-link { padding: .6rem; gap: .3rem; }
 }
@@ -301,7 +406,6 @@ html.category-active .magazine-masthead { display: block; }
   .knowledge-entrance-description { margin: .9rem auto 1.1rem; }
   .knowledge-entrance-scene { padding-block: .15rem .75rem; }
   .knowledge-entrance-scene img { max-width: 410px; }
-  .knowledge-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .knowledge-map { padding: .65rem .75rem; }
   .knowledge-map-root { margin-bottom: 1.5rem; }
   .knowledge-map-root::after { height: 1.5rem; }
@@ -315,7 +419,6 @@ html.category-active .magazine-masthead { display: block; }
 @media (max-width: 430px) {
   .knowledge-tree { --knowledge-entrance-extra: 6.2rem; }
   #knowledge-content { padding: 1.2rem; }
-  .knowledge-symbol { width: 60px; height: 60px; }
   .knowledge-topics { grid-template-columns: 1fr; }
   .knowledge-map-actions { width: 100%; justify-content: space-between; gap: .7rem; }
   .knowledge-start { padding: .65rem .75rem; }
@@ -332,23 +435,6 @@ body.quarto-dark .knowledge-tree {
   border-color: var(--mag-border);
   background: var(--mag-bg-card);
   box-shadow: var(--mag-shadow-sm);
-}
-
-body.quarto-dark .knowledge-tree[data-view="fields"] {
-  border-color: transparent;
-  background: transparent;
-  box-shadow: none;
-}
-
-body.quarto-dark .knowledge-field {
-  background: linear-gradient(155deg, #151d2c 25%, #1c273a);
-  border-color: var(--mag-border);
-  color: #e2e8f0;
-}
-
-body.quarto-dark .knowledge-field:hover {
-  border-color: var(--knowledge-accent);
-  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
 }
 
 body.quarto-dark .knowledge-topic {

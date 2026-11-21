@@ -1,11 +1,12 @@
 // The complete Quarto listing is the source of truth, including paginated posts.
 const separator = /\s*(?:>|\/|::)\s*/;
-const fields = [
-  { key: "Math", label: "수학", labelEn: "Mathematics", color: "math", symbol: "math" },
-  { key: "Astronomy", label: "천문학", labelEn: "Astronomy", color: "astro", symbol: "astronomy" },
-  { key: "Physics", label: "물리학", labelEn: "Physics", color: "physics", symbol: "physics" },
-  { key: "Computer", label: "컴퓨터 과학", labelEn: "Computer Science", color: "cs", symbol: "computer" }
-];
+const fieldArt = new Map([
+  ["Math", { color: "math", symbol: "math" }],
+  ["Astronomy", { color: "astro", symbol: "astronomy" }],
+  ["Physics", { color: "physics", symbol: "physics" }],
+  ["Computer", { color: "cs", symbol: "computer" }]
+]);
+const defaultArt = { color: "generic", symbol: "generic" };
 
 export function currentLang() {
   if (typeof localStorage !== "undefined" && localStorage.getItem("mathastro_lang") === "en") return "en";
@@ -101,17 +102,10 @@ export function readPosts(elements) {
   return [...posts.values()];
 }
 
-const symbols = {
-  math: '<circle cx="40" cy="40" r="27"/><path d="M17 55 40 14 63 55Z M13 40h54 M40 13v54"/><circle cx="40" cy="40" r="3" class="symbol-dot"/>',
-  astronomy: '<ellipse cx="40" cy="40" rx="34" ry="13" transform="rotate(-30 40 40)"/><circle cx="40" cy="40" r="20"/><circle cx="63" cy="25" r="4" class="symbol-dot"/><path d="M17 12v10 M12 17h10 M62 57v10 M57 62h10"/>',
-  physics: '<ellipse cx="40" cy="40" rx="32" ry="12"/><ellipse cx="40" cy="40" rx="32" ry="12" transform="rotate(60 40 40)"/><ellipse cx="40" cy="40" rx="32" ry="12" transform="rotate(120 40 40)"/><circle cx="40" cy="40" r="4" class="symbol-dot"/>',
-  computer: '<path d="m21 24-14 16 14 16 M59 24l14 16-14 16 M46 17 34 63"/><path d="M7 7h15 M7 7v15 M73 58v15H58" opacity=".4"/>'
-};
-
 const i18n = {
   ko: {
     launch: {
-      description: "별을 잇듯 개념을 이어 보세요. 네 가지 별자리에서 나만의 공부 길이 시작됩니다.",
+      description: "별을 잇듯 개념을 이어 보세요. 관심 있는 별자리에서 나만의 공부 길이 시작됩니다.",
       action: "지식 여행하기",
       illustration: "도서관 입구를 둘러싼 네 별자리: 수학의 좌표 평면, 천문학의 고리 행성, 물리학의 원자, 컴퓨터 과학의 코드 기호."
     },
@@ -124,11 +118,13 @@ const i18n = {
     readFirstPost: "첫 글부터 읽기 ↗",
     statusMap: (label, count) => `${label}, ${count}개의 글을 추천 순서로 표시합니다.`,
     statusTopics: (label, count) => `${label}, ${count}개의 주제를 살펴보세요.`,
-    statusFields: "네 가지 학문 중 관심 있는 학문을 고르세요."
+    atlasTitle: "지식의 별자리",
+    atlasHint: "탐험하고 싶은 별자리를 골라 보세요.",
+    articles: count => `글 ${count}편`
   },
   en: {
     launch: {
-      description: "Connect ideas like stars in a constellation. Follow one of four paths into the library.",
+      description: "Connect ideas like stars in a constellation. Follow a field that sparks your curiosity.",
       action: "Begin Journey",
       illustration: "Four constellations surround the library entrance: a coordinate plane for mathematics, a ringed planet for astronomy, an atom for physics, and code brackets for computer science."
     },
@@ -141,7 +137,9 @@ const i18n = {
     readFirstPost: "Read from first article ↗",
     statusMap: (label, count) => `${label}: displaying ${count} articles in recommended sequence.`,
     statusTopics: (label, count) => `${label}: explore ${count} topics.`,
-    statusFields: "Choose a field of interest among the four disciplines."
+    atlasTitle: "Knowledge Constellations",
+    atlasHint: "Choose a constellation to explore.",
+    articles: count => `${count} ${count === 1 ? "article" : "articles"}`
   }
 };
 
@@ -153,10 +151,29 @@ function el(tag, className, text) {
 }
 
 function icon(name) {
-  const container = el("span", "knowledge-symbol");
-  container.setAttribute("aria-hidden", "true");
-  container.innerHTML = '<svg viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-width="1.25">' + symbols[name] + '</svg>';
-  return container;
+  const svgNS = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(svgNS, "svg");
+  svg.setAttribute("viewBox", "0 0 180 108");
+  svg.setAttribute("aria-hidden", "true");
+  const use = document.createElementNS(svgNS, "use");
+  use.setAttribute("href", new URL("./knowledge-constellations.svg#" + name, import.meta.url).href);
+  svg.append(use);
+  return svg;
+}
+
+// Sample a small, independent loop per star. Only the drawing and its label
+// drift; the surrounding button stays in place for touch and keyboard input.
+function setDrift(star) {
+  const phase = Math.random() * 2 * Math.PI;
+  const duration = 32 + Math.random() * 22;
+  star.style.setProperty("--drift-duration", duration.toFixed(2) + "s");
+  star.style.setProperty("--drift-delay", (-Math.random() * duration).toFixed(2) + "s");
+  for (let i = 0; i < 4; i++) {
+    const angle = phase + i * Math.PI / 2;
+    const x = Math.cos(angle) * (5 + Math.random() * 4);
+    const y = Math.sin(angle) * (6 + Math.random() * 5);
+    star.style.setProperty("--drift-" + i, `translate(${x.toFixed(2)}%, ${y.toFixed(2)}%)`);
+  }
 }
 
 function button(text, className, callback) {
@@ -175,6 +192,8 @@ function setup() {
     : document.querySelectorAll("#listing-sample-listings .list > [data-index]");
   const posts = readPosts(elements);
   const catalog = buildCatalog(posts, editorial);
+  const additionalKeys = [...catalog.keys()].filter(key => !fieldArt.has(key)).sort();
+  const fields = [...fieldArt.keys(), ...additionalKeys].map(key => catalog.get(key)).filter(Boolean);
   const entrance = hero.querySelector(".knowledge-entrance");
   const launch = hero.querySelector(".knowledge-launch");
   const content = hero.querySelector("#knowledge-content");
@@ -183,9 +202,7 @@ function setup() {
   let topic = null;
 
   function topics() {
-    const root = catalog.get(field.key);
-    if (!root) return [];
-    const nodes = sortChildren(root, editorial);
+    const nodes = sortChildren(field, editorial);
     // Keep the existing computer menu's direct access to reinforcement learning.
     return field.key === "Computer" ? nodes.map(node =>
       !node.direct.size && node.children.size === 1 ? [...node.children.values()][0] : node) : nodes;
@@ -203,17 +220,28 @@ function setup() {
     }
   }
 
-  function renderFields(isEn) {
-    const cards = el("div", "knowledge-fields");
-    fields.forEach(item => {
-      const card = button("", "knowledge-field knowledge-color-" + item.color, () => navigate(item));
-      card.dataset.field = item.key;
-      card.disabled = !catalog.get(item.key)?.posts.size;
-      const label = isEn ? (item.labelEn || item.key) : item.label;
-      card.append(icon(item.symbol), el("span", "knowledge-field-name", label));
-      cards.append(card);
-    });
-    content.append(cards);
+  function renderFields(isEn, t) {
+    const atlas = el("div", "knowledge-atlas notranslate");
+    atlas.translate = false;
+    atlas.lang = isEn ? "en" : "ko";
+    const header = el("div", "knowledge-atlas-header");
+    header.append(el("h2", "knowledge-atlas-title", t.atlasTitle), el("p", "knowledge-atlas-hint", t.atlasHint));
+
+    const sky = el("div", "knowledge-fields");
+    for (const item of fields) {
+      const art = fieldArt.get(item.key) || defaultArt;
+      const target = button("", "knowledge-field knowledge-color-" + art.color,
+        () => navigate(item, item.children.size ? null : item));
+      target.dataset.field = item.key;
+      const star = el("span", "knowledge-field-star");
+      setDrift(star);
+      star.append(icon(art.symbol), el("span", "knowledge-field-name", getNodeLabel(item, isEn, editorial)),
+        el("span", "knowledge-field-count", t.articles(item.posts.size)));
+      target.append(star);
+      sky.append(target);
+    }
+    atlas.append(header, sky);
+    content.append(atlas);
   }
 
   function renderTopics(isEn, t) {
@@ -235,8 +263,8 @@ function setup() {
     const ordered = orderedPosts(topic, editorial);
     const stages = learningStages(ordered, isEn ? "en" : "ko");
     const toolbar = el("div", "knowledge-toolbar");
-    toolbar.append(button(t.changeTopic, "knowledge-back", () => navigate(field)),
-      button(t.allFields, "knowledge-back", () => navigate(null)));
+    if (topic !== field) toolbar.append(button(t.changeTopic, "knowledge-back", () => navigate(field)));
+    toolbar.append(button(t.allFields, "knowledge-back", () => navigate(null)));
     content.append(toolbar);
 
     const topicLabel = getNodeLabel(topic, isEn, editorial);
@@ -308,15 +336,15 @@ function setup() {
     const t = i18n[isEn ? "en" : "ko"];
     content.replaceChildren();
     hero.dataset.view = topic ? "map" : field ? "topics" : "fields";
-    hero.className = "knowledge-tree" + (field ? " knowledge-color-" + field.color : "");
+    hero.className = "knowledge-tree" + (field ? " knowledge-color-" + (fieldArt.get(field.key) || defaultArt).color : "");
     if (topic) renderMap(isEn, t);
     else if (field) renderTopics(isEn, t);
     else renderFields(isEn, t);
 
-    const fieldLabel = field ? (isEn ? (field.labelEn || field.key) : field.label) : "";
+    const fieldLabel = field ? getNodeLabel(field, isEn, editorial) : "";
     const topicLabel = topic ? getNodeLabel(topic, isEn, editorial) : "";
     status.textContent = topic ? t.statusMap(topicLabel, topic.posts.size)
-      : field ? t.statusTopics(fieldLabel, topics().length) : t.statusFields;
+      : field ? t.statusTopics(fieldLabel, topics().length) : t.atlasHint;
   }
 
   launch.setAttribute("aria-controls", content.id);

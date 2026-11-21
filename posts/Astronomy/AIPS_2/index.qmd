@@ -18,6 +18,38 @@ categories:
 
 ---
 
+## 1.1. Extension Table 
+
+- AIPS 파일은 보통 **Header + data + extension table**로 구성된다.
+- 이렇게 구성하는 이유는 원본 UV data를 직접 덮어쓰지 않고, 여러 extension table을 이용하여 보정된 데이터를 새롭게 생성하기 위함이다.
+- **Extension Table**은 여러 관측 정보 및 calibration 정보를 담고 있는 테이블이다.
+	- 데이터 자체가 수정되지 않으므로, 테이블 삭제해서 다시 생성할 수도 있다.
+- AIPS에 있는 UV data의 구조를 대략적으로 보면 아래 그림과 같다: 
+
+![**그림**: AIPS UV 데이터 구조와 calibration 과정](extensiontable.png){ width="100%" }
+
+- AIPS에서 사용하는 대표적인 extension table을 정리하면 다음과 같다:
+
+| 이름 | 역할 |
+| :--- | :--- |
+| **`HI`** (History) | 데이터의 처리 이력과 실행한 task 및 주요 parameter 기록 |
+| **`AN`** (Antenna) | 각 안테나의 위치, 좌표, 편광 및 array 관련 정보 |
+| **`FQ`** (Frequency) | 각 IF의 주파수 offset, channel 간격, bandwidth 정보 |
+| **`SU`** (Source) | 관측 천체 이름, 좌표, source ID, flux 등 source 정보 | 
+| **`NX`** (Index) | 관측 시간, 천체, scan 및 visibility 데이터 위치에 대한 인덱스 정보 |
+| **`SN`** (Solution) | Calibration 과정에서 계산된 안테나별 complex gain, delay, rate 및 phase solution |
+| **`CL`** (Calibration) | 시간에 따른 안테나별 complex gain 및 누적된 보정 정보 |
+| **`BP`** (Bandpass) | 주파수 채널에 따른 안테나별 complex gain 보정 정보 |
+| **`TY`** (System Temperature) | 각 안테나의 시간 및 IF에 따른 시스템 온도와 안테나 온도 정보 |
+| **`GC`** (Gain Curve) | 각 안테나의 고도 등에 따른 gain curve와 감도(sensitivity) 정보 |
+| **`FG`** (Flag) | Flagging 대상인 baseline, 시간, IF, channel 및 편광 정보 |
+| **`PL`** (Plot) | AIPS에서 생성한 그래프의 출력 parameter와 plot 명령어 정보 |
+: AIPS 주요 Extension Table 정리 {.striped .hover tbl-colwidths="[30, 70]"}
+
+- 예를 들어, CL table은 Calibration table이라고 부른다.
+
+---
+
 # 2. Data get in AIPS (AIPS 안으로 데이터 불러오기) {#AIPS_Data_get}
 
 - 관측 데이터를 AIPS 안으로 가져와서 데이터 처리를 수행하게 된다.
@@ -64,7 +96,6 @@ go
 
 ## 2.1. 자주 사용하는 AIPS 명령어 정리
 
-- 본격적인 데이터 처리 단계로 넘어가기 전에 자주 사용하는 명령어를 정리하고 가자.
 - 본격적인 데이터 처리 단계로 넘어가기 전에 자주 사용하는 명령어를 정리하고 가자. 
 - `kleenex`: AIPS 종료
 - `pca`: 현재 AIPS 내부에 있는 데이터 카탈로그를 모두 보여주는 코드
@@ -77,22 +108,7 @@ go
 	- 에: `help fitld`
 - `starttv`: AIPS를 이루는 창 중 하나가 닫혔을 때, 복원할 수 있는 코드
 - `clrmsg`: AIPS에서 사용하는 메모리에서 메시지를 초기화하는 코드
-
----
-
-### 2.1.1. AIPS table 삭제
-
-- AIPS의 다양한 table 중에서 특정 테이블(예: SN table)을 지우고 싶다면 다음과 같이 수행한다. 
-
-```AIPS
-getn 2
-	# 지우고 싶은 테이블이 있는 데이터 카탈로그 번호
-inext 'PL'
-	# 지우고 싶은 extension table 형태 설정
-invers 2
-	 #숫자는 지우고 싶은 table 번호를 의미하며, -1을 값으로 주면 모두 지움
-extdest
-```
+- `clrstat`: AIPS에서 파일이 읽거나(READ) 쓰고 있는(WRITE) 상태일 때, 해제하는 코드
 
 ---
 
@@ -107,6 +123,34 @@ getn 1
 	# 확인할 데이터의 카탈로그 번호 선택
 imhe
 	# 데이터 header 정보를 확인함
+```
+
+---
+
+### 2.2.1. AIPS table 확인 및 삭제
+
+- AIPS task를 통해서 생성된 table, plot 목록은 다음과 같이 수행하여 확인할 수 있다.
+
+```AIPS 
+getn 2
+	# 보고 싶은 테이블이 있는 데이터 카탈로그 번호
+inext 'PL'
+	# 보고 싶은 table 형태 설정
+inver 1
+	# 보고 싶은 table 번호
+extlist 
+```
+
+- AIPS의 다양한 table 중에서 특정 테이블(예: SN table)을 지우고 싶다면 다음과 같이 수행한다. 
+
+```AIPS
+getn 2
+	# 지우고 싶은 테이블이 있는 데이터 카탈로그 번호
+inext 'PL'
+	# 지우고 싶은 extension table 형태 설정
+invers 2
+	 #숫자는 지우고 싶은 table 번호를 의미하며, -1을 값으로 주면 모두 지움
+extdest
 ```
 
 ---

@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 108">
+  <defs>
+    <!-- Each symbol inherits its field's colour from the chart. -->
+    <g id="atlas-star" fill="currentColor">
+      <circle r="5.8" opacity=".09"/>
+      <circle r="3.8" opacity=".23"/>
+      <circle r="2.2"/>
+      <circle r=".9" fill="#fff"/>
+    </g>
+    <g id="atlas-beacon" fill="currentColor">
+      <circle r="10" opacity=".06"/>
+      <circle r="6.2" opacity=".14"/>
+      <path d="M0-8.5 1.6-1.8 7.3 0 1.6 1.8 0 8.5-1.6 1.8-7.3 0-1.6-1.8Z"/>
+      <circle r="1.8" fill="#fff"/>
+    </g>
+    <g id="atlas-orbit" fill="none" stroke="currentColor" stroke-linejoin="round">
+      <path d="M-52 0-47-7-33-13-13-16H13L33-13 47-7 52 0 47 7 33 13 13 16H-13L-33 13-47 7Z" stroke-width="1.3"/>
+    </g>
+  </defs>
+
+  <symbol id="math" viewBox="0 0 180 108">
+    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M48 20v64m21-64v64m42-64v64m21-64v64M45 24h90M45 44h90M45 84h90"
+            opacity=".18" stroke-width=".8" stroke-dasharray="1 4"/>
+      <path d="M32 63h119l-5-3m5 3-5 3M90 93V11l-3 5m3-5 3 5" opacity=".74" stroke-width="1.1"/>
+      <path d="M48 60v6m21-6v6m42-6v6m21-6v6M87 24h6m-6 20h6m-6 40h6" opacity=".6"/>
+      <path d="m47 19 11 25 11 17 10 11 11 4 11-4 10-11 11-17 11-25"
+            stroke-width="2"/>
+    </g>
+    <g fill="currentColor">
+      <circle cx="79" cy="72" r="1.8"/><circle cx="101" cy="72" r="1.8"/>
+    </g>
+    <use href="#atlas-star" x="47" y="19"/>
+    <use href="#atlas-star" x="58" y="44"/>
+    <use href="#atlas-star" x="69" y="61"/>
+    <use href="#atlas-beacon" x="90" y="76"/>
+    <use href="#atlas-star" x="111" y="61"/>
+    <use href="#atlas-star" x="122" y="44"/>
+    <use href="#atlas-beacon" x="133" y="19"/>
+  </symbol>
+
+  <symbol id="astronomy" viewBox="0 0 180 108">
+    <g transform="rotate(-20 90 54)">
+      <g stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+        <path d="m31 54 8-6.5 13-4 12-1.5m52 0 12 1.5 13 4 8 6.5" fill="none" stroke-width="1.35" opacity=".76"/>
+        <path d="m60 54 2-12 7-10 9-6 12-2 12 2 9 6 7 10 2 12-2 11-7 10-10 7-11 2-12-2-10-7-6-10Z"
+              fill="currentColor" fill-opacity=".07" stroke-width="1.7"/>
+        <path d="M70 32q15 10 37-2m-44 12q22 11 51-4M71 76q19 8 36 2" fill="none" opacity=".38" stroke-width=".9"/>
+        <path d="m31 54 7 6 17 4.5 18 2.5 17 1 19-1 18-2.5 15-4.5 7-6"
+              fill="none" stroke-width="2"/>
+        <path d="M31 54q.5 21 66 18 47-1 52-18" fill="none" stroke-width=".8" opacity=".47"/>
+      </g>
+      <use href="#atlas-beacon" x="31" y="54"/>
+      <use href="#atlas-star" x="55" y="64.5"/>
+      <use href="#atlas-star" x="90" y="68"/>
+      <use href="#atlas-star" x="127" y="64.5"/>
+      <use href="#atlas-beacon" x="149" y="54"/>
+      <use href="#atlas-star" x="69" y="32"/>
+      <use href="#atlas-star" x="90" y="24"/>
+      <use href="#atlas-star" x="111" y="32"/>
+      <use href="#atlas-star" x="118" y="65"/>
+      <use href="#atlas-star" x="90" y="84"/>
+      <g fill="currentColor">
+        <circle cx="62" cy="42" r="1.5"/><circle cx="62" cy="65" r="1.6"/>
+        <circle cx="141" cy="47.5" r="1.5"/><circle cx="39" cy="47.5" r="1.5"/>
+      </g>
+    </g>
+  </symbol>
+
+  <symbol id="physics" viewBox="0 0 180 108">
+    <g transform="translate(90 54)">
+      <use href="#atlas-orbit" opacity=".94"/>
+      <use href="#atlas-orbit" transform="rotate(60)" opacity=".89"/>
+      <use href="#atlas-orbit" transform="rotate(-60)" opacity=".89"/>
+      <g fill="currentColor">
+        <circle cx="47" cy="-7" r="1.6"/><circle cx="-33" cy="13" r="1.5"/>
+        <circle cx="27" cy="39" r="1.6"/><circle cx="-12" cy="37" r="1.6"/>
+      </g>
+      <circle r="12.5" fill="none" stroke="currentColor" stroke-opacity=".38" stroke-dasharray="1.5 3"/>
+      <circle r="6.2" fill="currentColor" opacity=".35"/>
+      <use href="#atlas-beacon" transform="scale(1.25)"/>
+      <use href="#atlas-beacon" x="-52"/>
+      <use href="#atlas-star" x="52"/>
+      <g transform="rotate(60)">
+        <use href="#atlas-star" x="-52"/><use href="#atlas-star" x="52"/>
+      </g>
+      <g transform="rotate(-60)">
+        <use href="#atlas-star" x="-52"/><use href="#atlas-beacon" x="52"/>
+      </g>
+    </g>
+  </symbol>
+
+  <symbol id="computer" viewBox="0 0 180 108">
+    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M30 45v-8h8m105 0h8v8M30 66v8h8m105 0h8v-8" opacity=".36" stroke-width="1"/>
+      <path d="M38 54h102M65 27v55m50-55v55" opacity=".29" stroke-dasharray="1.2 4" stroke-width=".9"/>
+      <path d="M67 30 54 42 40 54l14 12 13 12m37-58L90 54 76 88m37-58 13 12 14 12-14 12-13 12"
+            stroke-width="2.1"/>
+    </g>
+    <use href="#atlas-star" x="67" y="30"/>
+    <use href="#atlas-beacon" x="40" y="54"/>
+    <use href="#atlas-star" x="67" y="78"/>
+    <use href="#atlas-star" x="104" y="20"/>
+    <use href="#atlas-star" x="90" y="54"/>
+    <use href="#atlas-beacon" x="76" y="88"/>
+    <use href="#atlas-star" x="113" y="30"/>
+    <use href="#atlas-beacon" x="140" y="54"/>
+    <use href="#atlas-star" x="113" y="78"/>
+    <g fill="currentColor">
+      <circle cx="54" cy="42" r="1.65"/><circle cx="54" cy="66" r="1.65"/>
+      <circle cx="126" cy="42" r="1.65"/><circle cx="126" cy="66" r="1.65"/>
+    </g>
+  </symbol>
+
+  <symbol id="generic" viewBox="0 0 180 108">
+    <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M31 68 56 56l22-33 23 28 25 20 23-13M56 56l27 26 18-31M83 82l43-11" stroke-width="1.7"/>
+      <path d="m78 23 48 48M31 68l52 14" stroke-width="1" stroke-dasharray="2 4" opacity=".35"/>
+    </g>
+    <use href="#atlas-star" x="31" y="68"/>
+    <use href="#atlas-star" x="56" y="56"/>
+    <use href="#atlas-beacon" x="78" y="23"/>
+    <use href="#atlas-star" x="83" y="82"/>
+    <use href="#atlas-beacon" x="101" y="51"/>
+    <use href="#atlas-star" x="126" y="71"/>
+    <use href="#atlas-star" x="149" y="58"/>
+  </symbol>
+</svg>

@@ -7,6 +7,8 @@ project:
     - assets/knowledge-tree.mjs
     - assets/knowledge-tree-data.js
     - assets/knowledge-observatory.svg
+    - assets/knowledge-constellations.svg
+    - assets/knowledge-star-chart.svg
     - qna/questions.json
     - assets/firebase-config.json
     - assets/post-likes.js
@@ -31,12 +33,12 @@ website:
       - text: "Mathematics (수학)"
         menu:
           - href: index.qmd#category=Math
-            text: "📐 수학 전체보기 (All Math) (193)"
+            text: "📐 수학 전체보기 (All Math) (194)"
           - text: "---"
           - href: index.qmd#category=Calculus
             text: "미적분학 (Calculus) (2)"
           - href: index.qmd#category=Abstract%20Algebra
-            text: "추상대수학 (Abstract Algebra) (42)"
+            text: "추상대수학 (Abstract Algebra) (43)"
           - href: index.qmd#category=Linear%20Algebra
             text: "선형대수학 (Linear Algebra) (7)"
           - href: index.qmd#category=Matrix%20Algebra
@@ -56,10 +58,10 @@ website:
       - text: "Astronomy (천문학)"
         menu:
           - href: index.qmd#category=Astronomy
-            text: "🔭 천문학 전체보기 (All Astronomy) (24)"
+            text: "🔭 천문학 전체보기 (All Astronomy) (25)"
           - text: "---"
           - href: index.qmd#category=Radio%20Astronomy
-            text: "전파천문학 (Radio Astronomy) (17)"
+            text: "전파천문학 (Radio Astronomy) (18)"
           - href: index.qmd#category=General%20Relativity
             text: "일반상대론 & 등가원리 (General Relativity) (1)"
           - href: index.qmd#category=High%20Energy

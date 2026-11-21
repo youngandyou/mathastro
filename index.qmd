@@ -244,7 +244,7 @@ document.addEventListener("DOMContentLoaded", function() {
     <div class="knowledge-entrance-body">
       <div class="knowledge-entrance-copy">
         <h1 class="knowledge-entrance-title" lang="en"><span>MathAstro</span> <span class="knowledge-entrance-gold">Library</span></h1>
-        <p class="knowledge-entrance-description" data-launch-text="description">별을 잇듯 개념을 이어 보세요. 네 가지 별자리에서 나만의 공부 길이 시작됩니다.</p>
+        <p class="knowledge-entrance-description" data-launch-text="description">별을 잇듯 개념을 이어 보세요. 관심 있는 별자리에서 나만의 공부 길이 시작됩니다.</p>
         <a class="knowledge-launch" href="#listing-sample-listings">
           <span data-launch-text="action">지식 여행하기</span>
           <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg>

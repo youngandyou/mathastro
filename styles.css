@@ -2581,11 +2581,41 @@ body,
 .cat-sub-chips {
   display: flex;
   flex-wrap: wrap;
+  align-items: flex-start;
   gap: 0.35rem;
+  list-style: none;
+  margin: 0;
   padding: 0.2rem 0 0.45rem 0.85rem;
 }
 
+.cat-chip-submenu {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0.3rem 0 0 0.65rem;
+  border-inline-start: 1px solid var(--mag-border);
+}
+
+.cat-chip-branch:hover > .cat-chip-submenu,
+.cat-chip-branch:focus-within > .cat-chip-submenu {
+  display: grid;
+  gap: 0.2rem;
+}
+
+.cat-chip-branch > a::after {
+  content: "";
+  width: 0.45em;
+  height: 0.45em;
+  margin-inline-start: 0.2em;
+  border: solid currentColor;
+  border-width: 0 1px 1px 0;
+  transform: rotate(45deg);
+}
+
 .cat-sub-chips a {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
   font-family: var(--mag-font-sans);
   font-size: 0.76rem;
   color: #64748b;

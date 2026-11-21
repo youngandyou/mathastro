@@ -5,7 +5,7 @@
     "abstract algebra": {
       subcategories: [
         { key: "Group Theory", name: "군론 (Group Theory)", count: 31 },
-        { key: "Ring Theory", name: "환론 (Ring Theory)", count: 8 },
+        { key: "Ring Theory", name: "환론 (Ring Theory)", count: 9 },
         { key: "Binary Algebraic Structure", name: "이항대수구조 (Binary Algebraic Structure)", count: 2 },
         { key: "Field Theory", name: "체론 (Field Theory)", count: 1 }
       ]
@@ -271,88 +271,9 @@
     return ul;
   }
 
-  function resolveCount(counts, key) {
-    if (!counts || !key) return null;
-    var clean = key.trim();
-    if (counts[clean] !== undefined) return counts[clean];
-
-    var variations = [
-      clean,
-      "Math > " + clean,
-      "Astronomy > " + clean,
-      "Physics > " + clean,
-      "Computer > " + clean,
-      "Math > Abstract Algebra > " + clean,
-      "Math > Differential Geometry > " + clean,
-      "Math > Graph Theory > " + clean,
-      "Math > Calculus > " + clean,
-      "Math > Analysis > " + clean,
-      "Astronomy > Radio Astronomy > " + clean,
-      "Astronomy > Radio Astronomy > Radio Software > " + clean,
-      "Astronomy > General Relativity > " + clean
-    ];
-    for (var i = 0; i < variations.length; i++) {
-      if (counts[variations[i]] !== undefined) return counts[variations[i]];
-    }
-
-    var lower = clean.toLowerCase();
-    for (var k in counts) {
-      var kLower = k.toLowerCase();
-      if (kLower === lower || kLower.endsWith(" > " + lower)) {
-        return counts[k];
-      }
-    }
-    return null;
-  }
-
-  function applyCategoryCounts(counts) {
-    if (!counts) return;
-
-    var items = document.querySelectorAll(".navbar-nav .dropdown-item");
-    items.forEach(function(item) {
-      var href = item.getAttribute("href") || "";
-      if (href.indexOf("category=") === -1) return;
-
-      var rawKey = decodeURIComponent(href.split("category=")[1].split("&")[0]).trim();
-      var count = resolveCount(counts, rawKey);
-
-      if (count !== null) {
-        var badge = item.querySelector(".nav-count-badge");
-        if (badge) {
-          badge.textContent = "(" + count + ")";
-        } else {
-          var textSpan = item.querySelector(".dropdown-text") || item;
-          var text = textSpan.textContent || "";
-          var match = text.match(/^(.*?)(\s*\(\d+\))?$/);
-          if (match) {
-            textSpan.innerHTML = escapeHtml(match[1].trim()) + ' <span class="nav-count-badge">(' + count + ')</span>';
-            textSpan.dataset.badgeProcessed = "true";
-          }
-        }
-      }
-    });
-
-    // Update submenu items as well
-    var subItems = document.querySelectorAll(".dropdown-menu-sub .dropdown-item");
-    subItems.forEach(function(subItem) {
-      var href = subItem.getAttribute("href") || "";
-      if (href.indexOf("category=") === -1) return;
-      var rawKey = decodeURIComponent(href.split("category=")[1].split("&")[0]).trim();
-      var count = resolveCount(counts, rawKey);
-      if (count !== null) {
-        var badge = subItem.querySelector(".nav-count-badge");
-        if (badge) {
-          badge.textContent = "(" + count + ")";
-        }
-      }
-    });
-  }
-
   function fetchCategoryCounts() {
     if (window.__categoryCounts) {
       renderCategoryMenus(window.__categoryCounts);
-      applyCategoryCounts(window.__categoryCounts);
-      updateCategoryDropdownBadges(window.__categoryCounts);
       return;
     }
 
@@ -363,7 +284,7 @@
     var siteRoot = new URL(offset ? offset.content : "./", document.baseURI);
     var countsUrl = new URL("assets/category-counts.json", siteRoot);
 
-    fetch(countsUrl)
+    fetch(countsUrl, { cache: "no-cache" })
       .then(function(res) {
         if (!res.ok) throw new Error("HTTP error " + res.status);
         return res.json();
@@ -372,26 +293,11 @@
         if (data && data.counts) {
           window.__categoryCounts = data.counts;
           renderCategoryMenus(data.counts);
-          applyCategoryCounts(data.counts);
-          updateCategoryDropdownBadges(data.counts);
         }
       })
       .catch(function() {
         // Keep the counts embedded at render time if the resource is offline.
       });
-  }
-
-  function updateCategoryDropdownBadges(counts) {
-    if (!counts || typeof document === "undefined" || typeof document.querySelector !== "function") return;
-    var panel = document.querySelector("#navbarCategoryDropdown");
-    if (!panel || typeof panel.querySelectorAll !== "function") return;
-    panel.querySelectorAll("[data-count-key]").forEach(function(el) {
-      var key = el.getAttribute("data-count-key");
-      var count = resolveCount(counts, key);
-      if (count !== null && count !== undefined) {
-        el.textContent = "(" + count + ")";
-      }
-    });
   }
 
   function setupFloatingDarkModeToggle() {
@@ -444,6 +350,68 @@
     }
   }
 
+  function panelLink(source, className) {
+    var link = document.createElement("a");
+    link.href = source.href;
+    link.className = className;
+    source.childNodes.forEach(function(child) { link.appendChild(child.cloneNode(true)); });
+    return link;
+  }
+
+  function panelSubcategory(source) {
+    var item = document.createElement("li");
+    item.appendChild(panelLink(source, ""));
+    var children = source.parentElement.querySelectorAll(":scope > .dropdown-menu > li > a.dropdown-item");
+    if (children.length) {
+      var submenu = document.createElement("ul");
+      submenu.className = "cat-chip-submenu";
+      Array.from(children)
+        .sort((left, right) => left.textContent.localeCompare(right.textContent, "ko", { numeric: true }))
+        .forEach(child => submenu.appendChild(panelSubcategory(child)));
+      item.className = "cat-chip-branch";
+      item.appendChild(submenu);
+    }
+    return item;
+  }
+
+  function renderSubjectPanel(section, item, links) {
+    var container = document.createElement("div");
+    container.className = "cat-dropdown-container";
+    var header = document.createElement("div");
+    header.className = "cat-dropdown-header";
+    var title = document.createElement("div");
+    title.className = "cat-dropdown-title";
+    title.textContent = item.querySelector(".nav-link").textContent.trim();
+    header.append(title, panelLink(links[0], "cat-dropdown-all-link"));
+    container.appendChild(header);
+
+    var categories = Array.from(links).slice(1);
+    var columns = categories.length >= 8 ? 3 : 1;
+    var grid = document.createElement("div");
+    if (columns === 3) grid.className = "cat-grid-3";
+    else container.style.maxWidth = categories.length > 2 ? "800px" : "600px";
+    var perColumn = Math.ceil(categories.length / columns);
+    for (var column = 0; column < columns; column++) {
+      var list = document.createElement("ul");
+      list.className = "cat-list";
+      categories.slice(column * perColumn, (column + 1) * perColumn).forEach(function(source) {
+        var row = document.createElement("li");
+        row.appendChild(panelLink(source, "cat-item-link"));
+        var children = source.parentElement.querySelectorAll(":scope > .dropdown-menu > li > a.dropdown-item");
+        if (children.length) {
+          var chips = document.createElement("ul");
+          chips.className = "cat-sub-chips";
+          children.forEach(child => chips.appendChild(panelSubcategory(child)));
+          row.appendChild(chips);
+        }
+        list.appendChild(row);
+      });
+      grid.appendChild(list);
+    }
+    container.appendChild(grid);
+    section.replaceChildren(container);
+  }
+
   function buildCategoryDropdownPanel() {
     if (typeof document === "undefined" || !document.body || typeof document.querySelector !== "function" || typeof document.createElement !== "function") return;
     if (document.querySelector("#navbarCategoryDropdown")) return;
@@ -459,184 +427,7 @@
     panel.setAttribute("aria-label", "카테고리 네비게이션 드롭다운");
 
     panel.innerHTML = [
-      '<!-- Math Section (3 Columns, each field independently) -->',
-      '<div id="cat-panel-math" class="cat-dropdown-section" style="display: none;">',
-      '  <div class="cat-dropdown-container">',
-      '    <div class="cat-dropdown-header">',
-      '      <div class="cat-dropdown-title">📐 Mathematics (수학)</div>',
-      '      <a href="' + root + 'index.html#category=Math" class="cat-dropdown-all-link">',
-      '        수학 전체보기 <span class="nav-count-badge" data-count-key="Math">(193)</span> →',
-      '      </a>',
-      '    </div>',
-      '    <div class="cat-grid-3">',
-      '      <!-- Col 1 -->',
-      '      <div class="cat-col">',
-      '        <ul class="cat-list">',
-      '          <li>',
-      '            <a href="' + root + 'index.html#category=Calculus" class="cat-item-link">',
-      '              <span>미적분학 (Calculus)</span><span class="nav-count-badge" data-count-key="Calculus">(2)</span>',
-      '            </a>',
-      '            <div class="cat-sub-chips">',
-      '              <a href="' + root + 'index.html#category=Vector%20Calculus">벡터미적분학 <span data-count-key="Vector Calculus">(2)</span></a>',
-      '            </div>',
-      '          </li>',
-      '          <li>',
-      '            <a href="' + root + 'index.html#category=Analysis" class="cat-item-link">',
-      '              <span>해석학 (Analysis)</span><span class="nav-count-badge" data-count-key="Analysis">(2)</span>',
-      '            </a>',
-      '            <div class="cat-sub-chips">',
-      '              <a href="' + root + 'index.html#category=Multivariable">다변수해석학 <span data-count-key="Multivariable">(1)</span></a>',
-      '            </div>',
-      '          </li>',
-      '          <li>',
-      '            <a href="' + root + 'index.html#category=Complex%20Analysis" class="cat-item-link">',
-      '              <span>복소해석학 (Complex Analysis)</span><span class="nav-count-badge" data-count-key="Complex Analysis">(44)</span>',
-      '            </a>',
-      '          </li>',
-      '          <li>',
-      '            <a href="' + root + 'index.html#category=Numerical%20Analysis" class="cat-item-link">',
-      '              <span>수치해석학 (Numerical Analysis)</span><span class="nav-count-badge" data-count-key="Numerical Analysis">(9)</span>',
-      '            </a>',
-      '          </li>',
-      '        </ul>',
-      '      </div>',
-      '      <!-- Col 2 -->',
-      '      <div class="cat-col">',
-      '        <ul class="cat-list">',
-      '          <li>',
-      '            <a href="' + root + 'index.html#category=Abstract%20Algebra" class="cat-item-link">',
-      '              <span>추상대수학 (Abstract Algebra)</span><span class="nav-count-badge" data-count-key="Abstract Algebra">(42)</span>',
-      '            </a>',
-      '            <div class="cat-sub-chips">',
-      '              <a href="' + root + 'index.html#category=Group%20Theory">군론 <span data-count-key="Group Theory">(31)</span></a>',
-      '              <a href="' + root + 'index.html#category=Ring%20Theory">환론 <span data-count-key="Ring Theory">(8)</span></a>',
-      '              <a href="' + root + 'index.html#category=Binary%20Algebraic%20Structure">이항대수 <span data-count-key="Binary Algebraic Structure">(2)</span></a>',
-      '              <a href="' + root + 'index.html#category=Field%20Theory">체론 <span data-count-key="Field Theory">(1)</span></a>',
-      '            </div>',
-      '          </li>',
-      '          <li>',
-      '            <a href="' + root + 'index.html#category=Linear%20Algebra" class="cat-item-link">',
-      '              <span>선형대수학 (Linear Algebra)</span><span class="nav-count-badge" data-count-key="Linear Algebra">(7)</span>',
-      '            </a>',
-      '          </li>',
-      '          <li>',
-      '            <a href="' + root + 'index.html#category=Matrix%20Algebra" class="cat-item-link">',
-      '              <span>행렬대수학 (Matrix Algebra)</span><span class="nav-count-badge" data-count-key="Matrix Algebra">(9)</span>',
-      '            </a>',
-      '          </li>',
-      '        </ul>',
-      '      </div>',
-      '      <!-- Col 3 -->',
-      '      <div class="cat-col">',
-      '        <ul class="cat-list">',
-      '          <li>',
-      '            <a href="' + root + 'index.html#category=Topology" class="cat-item-link">',
-      '              <span>위상수학 (Topology)</span><span class="nav-count-badge" data-count-key="Topology">(30)</span>',
-      '            </a>',
-      '          </li>',
-      '          <li>',
-      '            <a href="' + root + 'index.html#category=Differential%20Geometry" class="cat-item-link">',
-      '              <span>미분기하학 (Differential Geometry)</span><span class="nav-count-badge" data-count-key="Differential Geometry">(6)</span>',
-      '            </a>',
-      '            <div class="cat-sub-chips">',
-      '              <a href="' + root + 'index.html#category=Curve%20Theory">곡선론 <span data-count-key="Curve Theory">(6)</span></a>',
-      '            </div>',
-      '          </li>',
-      '          <li>',
-      '            <a href="' + root + 'index.html#category=Graph%20Theory" class="cat-item-link">',
-      '              <span>그래프 이론 (Graph Theory)</span><span class="nav-count-badge" data-count-key="Graph Theory">(41)</span>',
-      '            </a>',
-      '            <div class="cat-sub-chips">',
-      '              <a href="' + root + 'index.html#category=Graph">그래프 <span data-count-key="Graph">(27)</span></a>',
-      '              <a href="' + root + 'index.html#category=Network%20Analysis">네트워크 <span data-count-key="Network Analysis">(8)</span></a>',
-      '              <a href="' + root + 'index.html#category=Algorithm">알고리즘 <span data-count-key="Algorithm">(3)</span></a>',
-      '              <a href="' + root + 'index.html#category=Tree">트리 <span data-count-key="Tree">(3)</span></a>',
-      '            </div>',
-      '          </li>',
-      '        </ul>',
-      '      </div>',
-      '    </div>',
-      '  </div>',
-      '</div>',
-      '',
-      '<!-- Astronomy Section (flat list) -->',
-      '<div id="cat-panel-astronomy" class="cat-dropdown-section" style="display: none;">',
-      '  <div class="cat-dropdown-container" style="max-width: 800px;">',
-      '    <div class="cat-dropdown-header">',
-      '      <div class="cat-dropdown-title">🔭 Astronomy (천문학)</div>',
-      '      <a href="' + root + 'index.html#category=Astronomy" class="cat-dropdown-all-link">',
-      '        천문학 전체보기 <span class="nav-count-badge" data-count-key="Astronomy">(23)</span> →',
-      '      </a>',
-      '    </div>',
-      '    <ul class="cat-list">',
-      '      <li>',
-      '        <a href="' + root + 'index.html#category=Radio%20Astronomy" class="cat-item-link">',
-      '          <span>전파천문학 (Radio Astronomy)</span><span class="nav-count-badge" data-count-key="Radio Astronomy">(16)</span>',
-      '        </a>',
-      '        <div class="cat-sub-chips">',
-      '          <a href="' + root + 'index.html#category=AIPS">AIPS <span data-count-key="AIPS">(2)</span></a>',
-      '          <a href="' + root + 'index.html#category=resolve">resolve <span data-count-key="resolve">(1)</span></a>',
-      '        </div>',
-      '      </li>',
-      '      <li>',
-      '        <a href="' + root + 'index.html#category=General%20Relativity" class="cat-item-link">',
-      '          <span>일반상대론 &amp; 등가원리 (General Relativity)</span><span class="nav-count-badge" data-count-key="General Relativity">(1)</span>',
-      '        </a>',
-      '        <div class="cat-sub-chips">',
-      '          <a href="' + root + 'index.html#category=Equivalence%20Principle">등가원리 <span data-count-key="Equivalence Principle">(1)</span></a>',
-      '        </div>',
-      '      </li>',
-      '      <li>',
-      '        <a href="' + root + 'index.html#category=High%20Energy" class="cat-item-link">',
-      '          <span>고에너지 천체물리학 (High Energy)</span><span class="nav-count-badge" data-count-key="High Energy">(2)</span>',
-      '        </a>',
-      '      </li>',
-      '      <li>',
-      '        <a href="' + root + 'index.html#category=Relativistic%20Jets" class="cat-item-link">',
-      '          <span>상대론적 제트 (Relativistic Jets)</span><span class="nav-count-badge" data-count-key="Relativistic Jets">(1)</span>',
-      '        </a>',
-      '      </li>',
-      '    </ul>',
-      '  </div>',
-      '</div>',
-      '<!-- Physics Section -->',
-      '<div id="cat-panel-physics" class="cat-dropdown-section" style="display: none;">',
-      '  <div class="cat-dropdown-container" style="max-width: 600px;">',
-      '    <div class="cat-dropdown-header">',
-      '      <div class="cat-dropdown-title">⚛️ Physics (물리학)</div>',
-      '      <a href="' + root + 'index.html#category=Physics" class="cat-dropdown-all-link">',
-      '        물리학 전체보기 <span class="nav-count-badge" data-count-key="Physics">(1)</span> →',
-      '      </a>',
-      '    </div>',
-      '    <ul class="cat-list">',
-      '      <li>',
-      '        <a href="' + root + 'index.html#category=Thermodynamics" class="cat-item-link">',
-      '          <span>열역학 (Thermodynamics)</span><span class="nav-count-badge" data-count-key="Thermodynamics">(1)</span>',
-      '        </a>',
-      '      </li>',
-      '    </ul>',
-      '  </div>',
-      '</div>',
-      '',
-      '<!-- CS Section -->',
-      '<div id="cat-panel-cs" class="cat-dropdown-section" style="display: none;">',
-      '  <div class="cat-dropdown-container" style="max-width: 600px;">',
-      '    <div class="cat-dropdown-header">',
-      '      <div class="cat-dropdown-title">💻 Computer Science</div>',
-      '      <a href="' + root + 'index.html#category=Computer" class="cat-dropdown-all-link">',
-      '        컴퓨터과학 전체보기 <span class="nav-count-badge" data-count-key="Computer">(5)</span> →',
-      '      </a>',
-      '    </div>',
-      '    <ul class="cat-list">',
-      '      <li>',
-      '        <a href="' + root + 'index.html#category=Reinforcement%20Learning" class="cat-item-link">',
-      '          <span>강화학습 (Reinforcement Learning)</span><span class="nav-count-badge" data-count-key="Reinforcement Learning">(5)</span>',
-      '        </a>',
-      '      </li>',
-      '    </ul>',
-      '  </div>',
-      '</div>',
-      '',
+      '<div class="cat-dropdown-section" id="cat-panel-subject" hidden></div>',
       '<!-- Info & Links Section (안내 및 소개 + 학술 관련 링크 통합) -->',
       '<div id="cat-panel-info" class="cat-dropdown-section" style="display: none;">',
       '  <div class="cat-dropdown-container">',
@@ -690,50 +481,27 @@
   function setupCategoryDropdownInteractions(panel) {
     if (!panel || typeof panel.querySelectorAll !== "function" || typeof document.querySelectorAll !== "function") return;
     var closeTimer = null;
-    var dropdownItems = document.querySelectorAll(".navbar-nav > .nav-item.dropdown");
-    var sections = {
-      math: panel.querySelector("#cat-panel-math"),
-      astronomy: panel.querySelector("#cat-panel-astronomy"),
-      physics: panel.querySelector("#cat-panel-physics"),
-      cs: panel.querySelector("#cat-panel-cs"),
-      info: panel.querySelector("#cat-panel-info")
-    };
-
-    function getCatKeyForNavItem(navItem) {
-      var text = (navItem.querySelector(".nav-link")?.textContent || "").toLowerCase();
-      if (text.includes("math") || text.includes("수학")) return "math";
-      if (text.includes("astronomy") || text.includes("천문학")) return "astronomy";
-      if (text.includes("physics") || text.includes("물리")) return "physics";
-      if (text.includes("computer") || text.includes("컴퓨터")) return "cs";
-      if (text.includes("안내") || text.includes("자료") || text.includes("more")) return "info";
-      return "";
-    }
+    var nav = document.querySelector(".navbar-nav > .nav-item.dropdown")?.parentElement;
+    if (!nav) return;
+    var activeItem = null;
+    var subject = panel.querySelector("#cat-panel-subject");
+    var info = panel.querySelector("#cat-panel-info");
 
     function clearActiveLinks() {
-      dropdownItems.forEach(function(item) {
-        var link = item.querySelector(".nav-link");
-        if (link) link.classList.remove("cat-active-link");
-      });
+      activeItem?.querySelector(".nav-link")?.classList.remove("cat-active-link");
+      activeItem = null;
     }
 
-    function showSection(catKey, activeNavItem) {
+    function showSection(item) {
       if (window.innerWidth < 1200) return;
-      if (closeTimer) {
-        clearTimeout(closeTimer);
-        closeTimer = null;
-      }
-
-      // Hide all sections, show only active one
-      for (var k in sections) {
-        if (sections[k]) sections[k].style.display = (k === catKey) ? "block" : "none";
-      }
-
+      clearTimeout(closeTimer);
       clearActiveLinks();
-      if (activeNavItem) {
-        var link = activeNavItem.querySelector(".nav-link");
-        if (link) link.classList.add("cat-active-link");
-      }
-
+      activeItem = item;
+      var links = item.querySelectorAll(":scope > .dropdown-menu > li > a[href*='#category=']");
+      subject.hidden = links.length === 0;
+      info.style.display = subject.hidden ? "block" : "none";
+      if (links.length) renderSubjectPanel(subject, item, links);
+      item.querySelector(".nav-link").classList.add("cat-active-link");
       panel.classList.add("is-open");
     }
 
@@ -745,14 +513,29 @@
       }, 180);
     }
 
-    dropdownItems.forEach(function(item) {
-      var catKey = getCatKeyForNavItem(item);
-      item.addEventListener("mouseenter", function() {
-        showSection(catKey, item);
-      });
-      item.addEventListener("mouseleave", function() {
-        scheduleClose();
-      });
+    nav.addEventListener("mouseover", function(event) {
+      var item = event.target.closest(".nav-item.dropdown");
+      if (item && !item.contains(event.relatedTarget)) showSection(item);
+    });
+    nav.addEventListener("mouseout", function(event) {
+      var item = event.target.closest(".nav-item.dropdown");
+      if (item && !item.contains(event.relatedTarget)) scheduleClose();
+    });
+    nav.addEventListener("click", function(event) {
+      var toggle = event.target.closest(".nav-item.dropdown > .nav-link");
+      if (toggle && window.innerWidth >= 1200) {
+        event.preventDefault();
+        showSection(toggle.parentElement);
+      }
+    });
+    window.addEventListener("blogCategoryNavigationReady", function() {
+      if (!activeItem || !panel.classList.contains("is-open")) return;
+      if (activeItem.hidden) {
+        panel.classList.remove("is-open");
+        clearActiveLinks();
+      } else {
+        showSection(activeItem);
+      }
     });
 
     panel.addEventListener("mouseenter", function() {
@@ -825,8 +608,6 @@
     window.addEventListener("blogCategoryCountsReady", function(e) {
       if (e && e.detail) {
         renderCategoryMenus(e.detail);
-        applyCategoryCounts(e.detail);
-        updateCategoryDropdownBadges(e.detail);
       }
     });
 

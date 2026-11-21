@@ -1,0 +1,156 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 560" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="night" x2="1" y2=".6" gradientUnits="objectBoundingBox">
+      <stop stop-color="#0b182b"/>
+      <stop offset=".48" stop-color="#0e1c30"/>
+      <stop offset="1" stop-color="#081421"/>
+    </linearGradient>
+    <radialGradient id="haze" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="1">
+      <stop stop-color="#85a5cb" stop-opacity=".65"/>
+      <stop offset=".35" stop-color="#7298bd" stop-opacity=".38"/>
+      <stop offset=".68" stop-color="#5376a4" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#426f96" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="shadow" gradientUnits="userSpaceOnUse" cx="0" cy="0" r="1">
+      <stop stop-color="#101a2a"/>
+      <stop offset=".48" stop-color="#101a2a" stop-opacity=".63"/>
+      <stop offset="1" stop-color="#101a2a" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="teal">
+      <stop stop-color="#376774" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#1e4f66" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="violet">
+      <stop stop-color="#57577c" stop-opacity=".24"/>
+      <stop offset="1" stop-color="#494667" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <path fill="url(#night)" d="M0 0h1200v560H0z"/>
+  <ellipse cx="1110" cy="105" rx="490" ry="290" fill="url(#teal)"/>
+  <ellipse cx="135" cy="514" rx="390" ry="310" fill="url(#violet)"/>
+  <g fill="url(#haze)">
+    <circle r="1" opacity="0.18" transform="translate(-35 571) rotate(-22) scale(192 51)"/>
+    <circle r="1" opacity="0.19" transform="translate(83 511) rotate(-24) scale(153 48)"/>
+    <circle r="1" opacity="0.22" transform="translate(201 443) rotate(-30) scale(215 69)"/>
+    <circle r="1" opacity="0.16" transform="translate(319 382) rotate(-30) scale(159 60)"/>
+    <circle r="1" opacity="0.14" transform="translate(437 363) rotate(-21) scale(170 60)"/>
+    <circle r="1" opacity="0.13" transform="translate(555 324) rotate(-26) scale(213 56)"/>
+    <circle r="1" opacity="0.19" transform="translate(673 251) rotate(-19) scale(174 42)"/>
+    <circle r="1" opacity="0.20" transform="translate(791 234) rotate(-20) scale(180 72)"/>
+    <circle r="1" opacity="0.19" transform="translate(909 188) rotate(-28) scale(212 53)"/>
+    <circle r="1" opacity="0.14" transform="translate(1027 143) rotate(-22) scale(177 46)"/>
+    <circle r="1" opacity="0.20" transform="translate(1145 60) rotate(-28) scale(205 46)"/>
+    <circle r="1" opacity="0.07" transform="translate(463 365) rotate(-29) scale(42 15)"/>
+    <circle r="1" opacity="0.12" transform="translate(209 473) rotate(-22) scale(22 8)"/>
+    <circle r="1" opacity="0.13" transform="translate(-48 584) rotate(-37) scale(66 7)"/>
+    <circle r="1" opacity="0.12" transform="translate(-62 542) rotate(-9) scale(53 18)"/>
+    <circle r="1" opacity="0.17" transform="translate(122 532) rotate(-31) scale(62 8)"/>
+    <circle r="1" opacity="0.14" transform="translate(816 185) rotate(-30) scale(65 18)"/>
+    <circle r="1" opacity="0.09" transform="translate(271 380) rotate(-26) scale(40 13)"/>
+    <circle r="1" opacity="0.13" transform="translate(211 454) rotate(-30) scale(34 13)"/>
+    <circle r="1" opacity="0.10" transform="translate(1044 96) rotate(-21) scale(24 19)"/>
+    <circle r="1" opacity="0.09" transform="translate(1016 147) rotate(-35) scale(46 11)"/>
+    <circle r="1" opacity="0.09" transform="translate(1234 46) rotate(-26) scale(33 8)"/>
+    <circle r="1" opacity="0.18" transform="translate(1098 75) rotate(-22) scale(30 12)"/>
+    <circle r="1" opacity="0.17" transform="translate(582 326) rotate(-20) scale(51 19)"/>
+    <circle r="1" opacity="0.17" transform="translate(138 508) rotate(-5) scale(47 10)"/>
+    <circle r="1" opacity="0.07" transform="translate(845 187) rotate(-10) scale(20 12)"/>
+    <circle r="1" opacity="0.09" transform="translate(384 335) rotate(-5) scale(46 17)"/>
+    <circle r="1" opacity="0.13" transform="translate(52 511) rotate(-22) scale(38 16)"/>
+    <circle r="1" opacity="0.11" transform="translate(485 370) rotate(-19) scale(47 13)"/>
+    <circle r="1" opacity="0.18" transform="translate(1148 56) rotate(-28) scale(51 12)"/>
+    <circle r="1" opacity="0.14" transform="translate(769 266) rotate(-37) scale(47 9)"/>
+    <circle r="1" opacity="0.10" transform="translate(1032 117) rotate(-21) scale(56 18)"/>
+    <circle r="1" opacity="0.13" transform="translate(325 346) rotate(-23) scale(45 14)"/>
+    <circle r="1" opacity="0.16" transform="translate(626 266) rotate(-15) scale(55 9)"/>
+    <circle r="1" opacity="0.13" transform="translate(340 421) rotate(-16) scale(67 19)"/>
+    <circle r="1" opacity="0.08" transform="translate(577 287) rotate(-10) scale(65 13)"/>
+    <circle r="1" opacity="0.18" transform="translate(60 549) rotate(-31) scale(64 20)"/>
+    <circle r="1" opacity="0.10" transform="translate(1066 66) rotate(-17) scale(36 17)"/>
+    <circle r="1" opacity="0.11" transform="translate(46 543) rotate(-29) scale(31 19)"/>
+    <circle r="1" opacity="0.10" transform="translate(456 320) rotate(-27) scale(30 14)"/>
+    <circle r="1" opacity="0.11" transform="translate(786 267) rotate(-36) scale(21 8)"/>
+    <circle r="1" opacity="0.08" transform="translate(530 285) rotate(-5) scale(57 20)"/>
+    <circle r="1" opacity="0.11" transform="translate(145 461) rotate(-21) scale(46 15)"/>
+    <circle r="1" opacity="0.08" transform="translate(265 417) rotate(-28) scale(40 19)"/>
+    <circle r="1" opacity="0.16" transform="translate(754 266) rotate(-30) scale(44 18)"/>
+    <circle r="1" opacity="0.13" transform="translate(1103 65) rotate(-38) scale(32 11)"/>
+    <circle r="1" opacity="0.17" transform="translate(-30 575) rotate(-14) scale(38 20)"/>
+    <circle r="1" opacity="0.08" transform="translate(1268 -11) rotate(-34) scale(39 20)"/>
+    <circle r="1" opacity="0.10" transform="translate(109 499) rotate(-7) scale(63 18)"/>
+    <circle r="1" opacity="0.08" transform="translate(794 273) rotate(-28) scale(38 8)"/>
+    <circle r="1" opacity="0.10" transform="translate(93 470) rotate(-32) scale(43 14)"/>
+    <circle r="1" opacity="0.17" transform="translate(1206 34) rotate(-14) scale(36 14)"/>
+    <circle r="1" opacity="0.07" transform="translate(624 257) rotate(-6) scale(68 14)"/>
+    <circle r="1" opacity="0.11" transform="translate(-52 590) rotate(-4) scale(33 9)"/>
+    <circle r="1" opacity="0.11" transform="translate(736 278) rotate(-14) scale(44 14)"/>
+    <circle r="1" opacity="0.14" transform="translate(154 486) rotate(-16) scale(22 8)"/>
+    <circle r="1" opacity="0.15" transform="translate(168 492) rotate(-21) scale(31 14)"/>
+    <circle r="1" opacity="0.13" transform="translate(834 232) rotate(-5) scale(57 17)"/>
+    <circle r="1" opacity="0.10" transform="translate(515 312) rotate(-35) scale(26 7)"/>
+    <circle r="1" opacity="0.16" transform="translate(1017 91) rotate(-9) scale(38 13)"/>
+    <circle r="1" opacity="0.14" transform="translate(846 258) rotate(-18) scale(22 16)"/>
+    <circle r="1" opacity="0.15" transform="translate(449 360) rotate(-22) scale(61 20)"/>
+    <circle r="1" opacity="0.10" transform="translate(1097 97) rotate(-29) scale(43 9)"/>
+    <circle r="1" opacity="0.11" transform="translate(774 247) rotate(-12) scale(28 20)"/>
+    <circle r="1" opacity="0.17" transform="translate(1233 40) rotate(-12) scale(23 7)"/>
+    <circle r="1" opacity="0.07" transform="translate(610 334) rotate(-17) scale(52 8)"/>
+    <circle r="1" opacity="0.17" transform="translate(1186 77) rotate(-14) scale(65 10)"/>
+    <circle r="1" opacity="0.18" transform="translate(773 220) rotate(-13) scale(25 19)"/>
+    <circle r="1" opacity="0.10" transform="translate(469 314) rotate(-6) scale(54 16)"/>
+    <circle r="1" opacity="0.14" transform="translate(1134 92) rotate(-24) scale(30 17)"/>
+    <circle r="1" opacity="0.10" transform="translate(660 257) rotate(-13) scale(23 16)"/>
+    <circle r="1" opacity="0.14" transform="translate(772 254) rotate(-16) scale(34 11)"/>
+    <circle r="1" opacity="0.18" transform="translate(1254 31) rotate(-21) scale(43 18)"/>
+    <circle r="1" opacity="0.13" transform="translate(1089 52) rotate(-22) scale(68 8)"/>
+    <circle r="1" opacity="0.17" transform="translate(1172 70) rotate(-26) scale(64 17)"/>
+    <circle r="1" opacity="0.12" transform="translate(994 106) rotate(-32) scale(53 18)"/>
+    <circle r="1" opacity="0.13" transform="translate(1079 110) rotate(-34) scale(42 9)"/>
+    <circle r="1" opacity="0.18" transform="translate(-63 591) rotate(-16) scale(49 19)"/>
+    <circle r="1" opacity="0.09" transform="translate(1069 87) rotate(-4) scale(55 17)"/>
+  </g>
+  <g fill="url(#shadow)">
+    <circle r="1" opacity="0.32" transform="translate(-40 563) rotate(-15) scale(45 7)"/>
+    <circle r="1" opacity="0.30" transform="translate(30 530) rotate(-29) scale(65 5)"/>
+    <circle r="1" opacity="0.29" transform="translate(100 502) rotate(-21) scale(69 13)"/>
+    <circle r="1" opacity="0.50" transform="translate(170 459) rotate(-32) scale(46 8)"/>
+    <circle r="1" opacity="0.33" transform="translate(240 421) rotate(-28) scale(65 6)"/>
+    <circle r="1" opacity="0.43" transform="translate(310 386) rotate(-26) scale(77 5)"/>
+    <circle r="1" opacity="0.34" transform="translate(380 368) rotate(-17) scale(48 12)"/>
+    <circle r="1" opacity="0.41" transform="translate(450 348) rotate(-28) scale(77 11)"/>
+    <circle r="1" opacity="0.52" transform="translate(520 326) rotate(-28) scale(70 10)"/>
+    <circle r="1" opacity="0.30" transform="translate(590 293) rotate(-29) scale(74 5)"/>
+    <circle r="1" opacity="0.42" transform="translate(660 267) rotate(-28) scale(73 10)"/>
+    <circle r="1" opacity="0.37" transform="translate(730 247) rotate(-22) scale(75 14)"/>
+    <circle r="1" opacity="0.46" transform="translate(800 230) rotate(-16) scale(57 5)"/>
+    <circle r="1" opacity="0.30" transform="translate(870 202) rotate(-22) scale(64 10)"/>
+    <circle r="1" opacity="0.28" transform="translate(940 167) rotate(-31) scale(58 5)"/>
+    <circle r="1" opacity="0.34" transform="translate(1010 125) rotate(-24) scale(65 13)"/>
+    <circle r="1" opacity="0.31" transform="translate(1080 89) rotate(-29) scale(57 7)"/>
+    <circle r="1" opacity="0.31" transform="translate(1150 55) rotate(-16) scale(82 13)"/>
+    <circle r="1" opacity="0.36" transform="translate(1220 25) rotate(-17) scale(50 9)"/>
+  </g>
+  <!-- Fine meridians and horizon arcs of the celestial chart. -->
+  <g fill="none" stroke="#8eafc6" stroke-width=".8">
+    <path opacity=".15" d="M-82 160C209 15 680-67 1280 92M-80 439C339 212 882 156 1250 194"/>
+    <path opacity=".14" stroke-dasharray="2 6" d="M-80 325C275 140 757 63 1260 148"/>
+    <path opacity=".09" d="M115-30C61 153 144 391 334 635M528-55C480 157 491 330 610 624M960-50C827 179 813 432 830 619"/>
+    <path opacity=".15" stroke-dasharray="2 6" d="M1062-54C943 132 889 371 890 637"/>
+  </g>
+  <path fill="none" stroke="#a0bac9" stroke-width=".8" opacity=".22" d="M9.9 393.7l0.8 1.8M21.4 388.4l0.8 1.8M32.9 383.2l1.6 3.6M44.5 378.0l0.8 1.8M56.1 372.9l0.8 1.8M67.7 367.9l0.8 1.8M79.4 363.0l0.8 1.8M91.2 358.1l1.5 3.7M102.9 353.3l0.7 1.9M114.7 348.6l0.7 1.9M126.6 344.0l0.7 1.9M138.4 339.4l0.7 1.9M150.4 334.9l1.4 3.7M162.3 330.5l0.7 1.9M174.3 326.1l0.7 1.9M186.3 321.9l0.7 1.9M198.3 317.6l0.7 1.9M210.4 313.5l1.3 3.8M222.5 309.5l0.6 1.9M234.6 305.5l0.6 1.9M246.7 301.5l0.6 1.9M258.9 297.7l0.6 1.9M271.1 293.9l1.2 3.8M283.3 290.2l0.6 1.9M295.5 286.6l0.6 1.9M307.8 283.0l0.6 1.9M320.1 279.5l0.5 1.9M332.3 276.0l1.1 3.9M344.6 272.7l0.5 1.9M356.9 269.4l0.5 1.9M369.3 266.1l0.5 1.9M381.6 263.0l0.5 1.9M393.9 259.9l1.0 3.9M406.3 256.9l0.5 1.9M418.6 253.9l0.5 1.9M431.0 251.0l0.5 1.9M443.4 248.2l0.4 2.0M455.8 245.4l0.9 3.9M468.1 242.7l0.4 2.0M480.5 240.0l0.4 2.0M492.9 237.5l0.4 2.0M505.3 235.0l0.4 2.0M517.6 232.5l0.8 3.9M530.0 230.1l0.4 2.0M542.4 227.8l0.4 2.0M554.8 225.5l0.4 2.0M567.1 223.3l0.3 2.0M579.5 221.2l0.7 3.9M591.8 219.1l0.3 2.0M604.1 217.1l0.3 2.0M616.4 215.2l0.3 2.0M628.7 213.3l0.3 2.0M641.0 211.5l0.6 4.0M653.3 209.7l0.3 2.0M665.6 208.0l0.3 2.0M677.8 206.3l0.3 2.0M690.0 204.7l0.3 2.0M702.2 203.2l0.5 4.0M714.4 201.7l0.2 2.0M726.6 200.3l0.2 2.0M738.7 199.0l0.2 2.0M750.8 197.7l0.2 2.0M762.9 196.4l0.4 4.0M774.9 195.3l0.2 2.0M787.0 194.1l0.2 2.0M798.9 193.1l0.2 2.0M810.9 192.0l0.2 2.0M822.8 191.1l0.3 4.0M834.7 190.2l0.1 2.0M846.6 189.3l0.1 2.0M858.4 188.5l0.1 2.0M870.2 187.8l0.1 2.0M882.0 187.1l0.2 4.0M893.7 186.5l0.1 2.0M905.4 185.9l0.1 2.0M917.0 185.4l0.1 2.0M928.6 184.9l0.1 2.0M940.1 184.5l0.1 4.0M951.6 184.2l0.1 2.0M963.0 183.8l0.0 2.0M974.4 183.6l0.0 2.0M985.8 183.4l0.0 2.0M997.1 183.2l0.0 4.0M1008.3 183.1l0.0 2.0M1019.5 183.1l0.0 2.0M1030.7 183.1l-0.0 2.0M1041.8 183.1l-0.0 2.0M1052.8 183.2l-0.0 4.0M1063.8 183.3l-0.0 2.0M1074.7 183.5l-0.0 2.0M1085.5 183.8l-0.0 2.0M1096.3 184.1l-0.1 2.0M1107.1 184.4l-0.1 4.0M1117.7 184.8l-0.1 2.0M1128.3 185.2l-0.1 2.0M1138.9 185.7l-0.1 2.0M1149.3 186.2l-0.1 2.0M1159.7 186.8l-0.2 4.0M1170.0 187.4l-0.1 2.0M1180.3 188.1l-0.1 2.0M1190.5 188.8l-0.1 2.0"/>
+  <g fill="none" stroke-linecap="round">
+    <path stroke="#cedaf1" stroke-width=".85" opacity=".51" d="M748 66v.1M923 411v.1M66 510v.1M344 460v.1M141 280v.1M869 219v.1M1154 168v.1M396 375v.1M928 491v.1M1108 197v.1M539 39v.1M1093 249v.1M236 342v.1M950 17v.1M766 89v.1M1056 472v.1M482 377v.1M273 440v.1M254 482v.1M624 236v.1M326 287v.1M885 81v.1M22 111v.1M751 108v.1M988 13v.1M903 388v.1M526 156v.1M578 180v.1M1024 253v.1M734 542v.1M695 49v.1M824 549v.1M765 105v.1M529 281v.1M833 71v.1M789 452v.1M16 473v.1M161 284v.1M946 508v.1M815 176v.1M1032 462v.1M1050 374v.1M551 142v.1M715 222v.1M115 506v.1M868 66v.1M1155 428v.1M507 241v.1M640 81v.1M921 424v.1M874 300v.1M532 94v.1M403 360v.1M550 243v.1M334 290v.1M435 209v.1M690 256v.1M1157 355v.1M733 301v.1M890 509v.1M172 519v.1M68 355v.1M756 170v.1M55 408v.1M660 165v.1M149 479v.1M419 173v.1M302 285v.1M328 248v.1M1197 206v.1M702 51v.1M985 180v.1M1027 423v.1M1047 51v.1M317 462v.1M1183 197v.1M434 329v.1M531 221v.1M638 66v.1M391 352v.1M735 268v.1M1026 138v.1M43 487v.1M336 507v.1M516 134v.1M159 546v.1M600 56v.1M124 233v.1M763 463v.1M666 552v.1M364 412v.1M1027 81v.1M437 93v.1M649 555v.1M814 205v.1M687 399v.1M849 322v.1M360 45v.1M1151 99v.1M999 328v.1M486 116v.1M650 487v.1M509 46v.1M513 363v.1M793 486v.1M997 424v.1M91 161v.1M1027 410v.1M1035 96v.1M287 350v.1M179 43v.1M618 69v.1M782 255v.1M1062 237v.1M604 97v.1M619 479v.1M178 463v.1M551 555v.1M242 4v.1M212 153v.1M230 274v.1M476 537v.1M663 324v.1M903 140v.1M571 381v.1M773 464v.1M524 114v.1M766 162v.1M868 394v.1M1195 134v.1M682 336v.1M1091 557v.1M1053 42v.1M121 414v.1M1030 362v.1M730 164v.1M251 310v.1M812 73v.1M745 530v.1M751 11v.1M243 313v.1M855 17v.1M1195 127v.1M639 146v.1M832 37v.1M656 377v.1M992 33v.1M343 462v.1M176 180v.1M802 246v.1M1008 244v.1M1166 482v.1M344 316v.1M450 114v.1M642 191v.1M422 396v.1M608 311v.1M209 88v.1M413 216v.1M659 487v.1M1104 102v.1M690 437v.1M71 84v.1M1049 196v.1M1026 203v.1M954 554v.1M1059 184v.1M731 2v.1M701 261v.1M1086 93v.1M188 142v.1M686 187v.1M140 351v.1M171 497v.1M219 442v.1M837 288v.1M202 330v.1M908 4v.1M980 260v.1M943 251v.1M643 14v.1M696 130v.1M450 251v.1M263 542v.1M252 59v.1M193 531v.1M769 190v.1M903 90v.1M810 350v.1M326 507v.1M11 263v.1M1151 207v.1M544 513v.1M478 466v.1M664 162v.1M246 414v.1M0 179v.1M627 300v.1M1118 490v.1M912 174v.1"/>
+    <path stroke="#e5eeff" stroke-width="1.38" opacity=".69" d="M194 29v.1M411 249v.1M527 343v.1M175 470v.1M817 21v.1M875 439v.1M157 141v.1M402 57v.1M587 384v.1M349 449v.1M43 272v.1M1159 538v.1M55 446v.1M258 337v.1M771 286v.1M209 37v.1M636 417v.1M1100 442v.1M1068 446v.1M1079 523v.1M356 91v.1M742 36v.1M49 62v.1M632 257v.1M1112 460v.1M131 463v.1M2 13v.1M1112 124v.1M683 246v.1M454 177v.1M805 420v.1M114 382v.1M749 282v.1M810 208v.1M764 407v.1M623 136v.1M60 490v.1M721 523v.1M991 142v.1M653 85v.1M551 165v.1M849 131v.1M653 244v.1M233 143v.1M99 48v.1M1109 498v.1M223 129v.1M535 155v.1M44 354v.1M1111 48v.1M1179 454v.1M981 139v.1M398 245v.1M218 4v.1M786 98v.1M614 174v.1M903 460v.1M1072 57v.1M760 441v.1M14 385v.1M311 156v.1M731 514v.1"/>
+    <path stroke="#e9d2af" stroke-width="1.7" opacity=".73" d="M1136 486v.1M925 338v.1M542 292v.1M1028 439v.1M540 150v.1M624 489v.1M727 522v.1M191 504v.1M594 427v.1M440 129v.1M1183 216v.1M322 282v.1M937 263v.1M599 468v.1M639 507v.1M1179 264v.1M521 13v.1M309 360v.1M12 550v.1M1001 497v.1M1113 458v.1M411 115v.1M521 399v.1M863 192v.1M585 56v.1"/>
+    <path stroke="#dae8fd" stroke-width="1.98" opacity=".82" d="M689 334v.1M512 554v.1M1123 492v.1M331 481v.1M1136 95v.1M1076 372v.1M235 10v.1M399 519v.1M90 508v.1M409 192v.1M723 520v.1M258 213v.1M1150 160v.1M1174 535v.1M458 410v.1M143 235v.1M793 171v.1M346 389v.1M420 179v.1M910 113v.1M703 549v.1M154 226v.1M1090 435v.1"/>
+    <path stroke="#d8e2f6" stroke-width=".76" opacity=".34" d="M865 238v.1M266 370v.1M296 381v.1M286 402v.1M1074 118v.1M849 227v.1M1102 133v.1M484 279v.1M626 255v.1M988 168v.1M316 319v.1M1196 4v.1M184 413v.1M1005 164v.1M308 392v.1M1015 150v.1M367 341v.1M352 460v.1M412 393v.1M851 285v.1M545 353v.1M284 435v.1M640 255v.1M369 379v.1M485 334v.1M131 403v.1M891 191v.1M995 140v.1M170 439v.1M610 305v.1M953 193v.1M928 185v.1M1073 85v.1M627 304v.1M487 320v.1M588 292v.1M571 283v.1M158 487v.1M638 300v.1M304 394v.1M372 353v.1M272 343v.1M993 105v.1M352 397v.1M1126 82v.1M608 307v.1M121 514v.1M355 381v.1M1056 104v.1M599 243v.1M285 437v.1M212 453v.1M815 198v.1M983 113v.1M995 175v.1M1114 76v.1M274 369v.1M459 310v.1M298 382v.1M711 248v.1M25 501v.1M65 491v.1M524 318v.1M102 507v.1M221 437v.1M446 366v.1M74 545v.1M863 196v.1M1130 29v.1M457 352v.1M738 212v.1M472 344v.1M125 464v.1M1020 175v.1M728 276v.1M1007 125v.1M1003 144v.1M620 285v.1M474 384v.1M522 310v.1M589 215v.1M756 230v.1M697 203v.1M562 326v.1M231 444v.1M1157 68v.1M1148 95v.1M1026 133v.1M821 240v.1M867 199v.1M719 210v.1M165 444v.1M925 108v.1M553 243v.1M1073 154v.1M814 218v.1M295 381v.1M413 377v.1M320 378v.1M959 135v.1M750 216v.1M295 457v.1M97 489v.1M1157 75v.1M72 440v.1M663 274v.1M160 526v.1M1073 165v.1M976 164v.1M30 550v.1M387 393v.1M817 239v.1M672 260v.1M1061 80v.1M1192 89v.1M995 113v.1M801 260v.1M249 399v.1M1102 76v.1M435 343v.1M1054 108v.1M12 556v.1M335 378v.1M1120 53v.1M129 469v.1M573 255v.1M842 225v.1M884 213v.1M585 274v.1M1049 130v.1M326 329v.1M824 233v.1M339 396v.1M1104 65v.1M212 456v.1M1193 25v.1M849 233v.1M817 238v.1M489 329v.1M766 222v.1M869 159v.1M416 365v.1M245 439v.1M1044 126v.1M639 213v.1M977 161v.1M717 247v.1M450 382v.1M659 280v.1M978 194v.1M847 220v.1M866 188v.1M933 163v.1M215 400v.1M262 426v.1M202 465v.1M879 156v.1M1163 87v.1M388 366v.1M326 381v.1M713 240v.1M1117 102v.1M100 436v.1M424 365v.1M384 391v.1M1008 111v.1M605 330v.1M884 224v.1M1186 72v.1M838 291v.1M1109 83v.1M120 518v.1M1146 109v.1M801 252v.1M131 528v.1M95 504v.1M778 284v.1M47 540v.1M1003 153v.1M26 526v.1M440 357v.1M955 212v.1M414 407v.1M857 226v.1M967 151v.1M581 284v.1M38 499v.1M504 329v.1M37 513v.1M151 485v.1M600 261v.1M428 360v.1M295 432v.1M206 461v.1M451 315v.1M701 268v.1M76 461v.1M796 238v.1M1007 151v.1M432 312v.1M1074 142v.1M214 423v.1M345 402v.1M1115 99v.1M423 322v.1M1071 102v.1M474 327v.1M15 517v.1M658 312v.1M665 308v.1M1099 83v.1M975 152v.1M983 100v.1M123 526v.1M429 326v.1M57 483v.1M777 253v.1M327 349v.1M1189 53v.1M342 350v.1M131 477v.1M966 171v.1M365 396v.1M647 302v.1M887 209v.1M78 495v.1M8 473v.1M971 176v.1M1081 83v.1M167 476v.1M170 473v.1M869 266v.1M314 418v.1M704 303v.1M1180 42v.1M324 410v.1M709 264v.1M423 388v.1M257 403v.1M900 130v.1M1137 103v.1M223 369v.1M1123 74v.1M1036 114v.1M366 356v.1M459 288v.1M1153 81v.1M773 207v.1M463 341v.1M601 331v.1M709 279v.1M958 207v.1M637 285v.1M657 221v.1M298 357v.1M849 236v.1M756 194v.1M955 208v.1M142 495v.1M315 363v.1M57 537v.1M904 200v.1M354 424v.1M309 448v.1M832 216v.1M890 170v.1M1000 136v.1M433 343v.1M1116 56v.1M679 315v.1M598 276v.1M929 176v.1M591 318v.1M628 315v.1M902 230v.1M159 438v.1M977 160v.1M774 182v.1M575 286v.1M905 191v.1M758 312v.1M937 186v.1M58 552v.1M228 481v.1M1074 50v.1M11 553v.1M1149 62v.1M482 334v.1M914 189v.1M406 375v.1M600 346v.1M487 362v.1M1143 107v.1M614 269v.1M1191 40v.1M852 204v.1M533 383v.1M973 178v.1M71 546v.1M425 415v.1M541 343v.1M360 417v.1M1044 121v.1M413 324v.1M54 525v.1M239 405v.1M1099 69v.1M874 291v.1M516 311v.1M396 346v.1M495 329v.1M1020 144v.1M990 132v.1M381 382v.1M637 240v.1M163 448v.1M1149 44v.1M925 217v.1M346 384v.1M280 427v.1M61 519v.1M190 388v.1M237 461v.1M660 269v.1M521 266v.1M84 510v.1M359 390v.1M992 130v.1M863 203v.1M880 210v.1M517 305v.1M370 396v.1M224 478v.1M357 372v.1M866 189v.1M1140 11v.1M1097 68v.1M620 233v.1M733 248v.1M458 301v.1M550 353v.1M779 269v.1M327 366v.1M391 390v.1M987 162v.1M686 225v.1M932 192v.1M666 333v.1M279 401v.1M154 486v.1M703 251v.1"/>
+    <path stroke="#d8e2f6" stroke-width="1" opacity=".44" d="M326 420v.1M984 136v.1M985 127v.1M838 215v.1M415 360v.1M645 248v.1M21 516v.1M599 327v.1M247 454v.1M935 207v.1M1168 24v.1M954 139v.1M1167 67v.1M464 363v.1M731 241v.1M1114 106v.1M947 194v.1M406 348v.1M898 208v.1M600 267v.1M326 403v.1M339 350v.1M537 316v.1M1184 61v.1M161 467v.1M481 359v.1M387 380v.1M538 307v.1M401 382v.1M1041 161v.1M519 338v.1M378 387v.1M1093 112v.1M675 287v.1M744 276v.1M320 372v.1M253 393v.1M617 236v.1M500 349v.1M507 357v.1M1086 49v.1M672 200v.1M422 394v.1M347 312v.1M328 314v.1M718 264v.1M495 384v.1M186 454v.1M820 185v.1M1048 81v.1M578 264v.1M755 218v.1M500 344v.1M218 380v.1M1016 59v.1M741 304v.1M428 379v.1M370 331v.1M889 147v.1M735 238v.1M365 350v.1M1036 148v.1M1027 112v.1M288 393v.1M316 419v.1M842 224v.1M656 331v.1M809 237v.1M35 512v.1M560 316v.1M419 368v.1M253 423v.1M537 340v.1M378 416v.1M508 306v.1M1171 40v.1M1188 23v.1M983 137v.1M1137 131v.1M422 341v.1M880 263v.1M999 124v.1M376 344v.1M477 365v.1M884 245v.1M811 259v.1M277 342v.1M862 222v.1M819 222v.1M1106 77v.1M499 345v.1M112 463v.1M217 404v.1M661 263v.1M4 523v.1M818 217v.1M516 262v.1M1134 53v.1M1072 109v.1M981 142v.1M846 188v.1M1170 45v.1M953 181v.1M506 394v.1M1084 89v.1M386 375v.1M324 408v.1M742 299v.1M1168 52v.1M896 187v.1M1073 61v.1M573 329v.1M460 360v.1M449 329v.1M794 247v.1M895 195v.1M305 340v.1M235 372v.1M154 523v.1M844 239v.1M956 139v.1M466 338v.1M157 528v.1M655 313v.1M926 164v.1M965 204v.1M921 223v.1M330 356v.1M950 142v.1M284 369v.1M463 383v.1M1094 109v.1M639 269v.1M533 320v.1M889 213v.1M271 488v.1M1072 40v.1M255 493v.1M502 405v.1M784 257v.1M772 276v.1M942 120v.1M1014 93v.1M351 386v.1M318 370v.1M276 447v.1M643 223v.1M132 489v.1M783 207v.1M308 327v.1M891 181v.1M527 384v.1M416 357v.1M22 544v.1M739 259v.1M344 410v.1M183 444v.1M995 225v.1"/>
+    <path stroke="#d8e2f6" stroke-width="1.25" opacity=".52" d="M1192 115v.1M576 298v.1M1147 106v.1M734 222v.1M220 400v.1M430 412v.1M655 300v.1M477 294v.1M248 396v.1M352 336v.1M119 454v.1M109 472v.1M177 432v.1M582 280v.1M872 247v.1M1172 106v.1M105 489v.1M869 196v.1M825 212v.1M900 245v.1M744 237v.1M1166 63v.1M780 258v.1M94 546v.1M224 473v.1M950 150v.1M529 318v.1M771 237v.1M969 122v.1M404 352v.1M1102 108v.1M814 282v.1M320 368v.1M608 328v.1M489 360v.1M602 298v.1M905 223v.1M612 261v.1M14 547v.1M362 397v.1M1078 129v.1M918 195v.1M342 356v.1M362 423v.1M751 254v.1M636 274v.1"/>
+  </g>
+  <g fill="#dbe9f7" opacity=".68">
+    <path d="M89 121l.8 3.3 3.2.7-3.2.8-.8 3.2-.8-3.2-3.2-.8 3.2-.7z"/>
+    <path d="M526 410l.8 3.2 3.2.8-3.2.7-.8 3.3-.8-3.3-3.2-.7 3.2-.8z"/>
+    <path d="M854 74l.7 2.8 2.8.7-2.8.7-.7 2.8-.7-2.8-2.8-.7 2.8-.7z"/>
+    <path d="M1108 372l.9 3.5 3.4.8-3.4.9-.9 3.4-.8-3.4-3.5-.9 3.5-.8z"/>
+  </g>
+</svg>

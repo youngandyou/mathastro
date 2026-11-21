@@ -1,0 +1,47 @@
+---
+title: "전파 데이터 보정의 배경(Calibration Background)"
+author: "Young Jeong Lee"
+date: "2026-11-21"
+description: "전파 관측으로 얻어낸 데이터에 보정이 필요한 이유를 소개한다. "
+categories: 
+  - Astronomy > Radio Astronomy 
+---
+
+# 1. 데이터 보정의 배경(Calibration Background) 
+
+- 전파 관측으로 얻어낸 데이터에 보정이 필요한 이유를 살펴보자. 
+- 천체 신호는 수신 시스템에서 발생하는 노이즈에 비해 극도로 약하다. 그러므로 $n$ 개의 방대한 샘플을 평균하여 SNR을 높여야 한다. 하지만, bandwidth와 샘플의 수는 임의로 늘릴 수 없고 제한된다.
+- 나이퀴스트 샘플링 정리(Nyquist sampling theorem)에 따르면, $1/(2\Delta \nu)$ 보다 짧은 시간 간격 $\Delta t$ 동안 수집된 샘플들은 독립적이지 않다.
+    - $\Delta \nu$: bandwidth
+    - 이 맥락에서 독립적이라는 것은 어떤 시점에서 측정한 데이터의 값이 다른 시점에서 측정한 데이터의 값에 대한 정보를 제공하지 않는 상태를 의미한다.
+    - 즉, 관측 데이터가 서로 간의 영향을 주지 않으며, 잡음을 줄일 만큼 충분히 평균하면서도 천체의 위상과 구조적 변화를 보존할 수 있는 적절한 시간 간격을 선택하는 것이 중요하다.
+- 그러므로, 샘플수($n = 2\Delta \nu t$)는 관측 시간 $t$ 를 늘리거나 관측 bandwidth를 확장하여 더욱 많이 얻을 수 있다.
+- 중심 극한 정리(central limit theorem)에 따르면, 많은 수의 샘플에 대해 평균을 취하고 얻어낸 rms 잡음 $\sigma$ 는 $\sqrt{n}$ 만큼 감소한다. 이는 **radiometer equation**을 이용하여 다음과 같이 나타낼 수 있다:
+
+$$
+\sigma = \frac{\sqrt{2}T_{\rm sys}}{\sqrt{2\Delta \nu t}} = \frac{T_{\rm sys}}{\sqrt{\Delta \nu t}} \tag{1.1}
+$$
+
+- mm-VLBI에서는 대류권의 영향으로 visibility amplitude와 phase 에러가 발생한다. 이러한 영향을 제거하기 위해서는 보정(calibration) 과정이 필수적이다.
+
+---
+
+## 1.1. 연속선 보정(Continuum Calibration)
+
+- 연속선(continuum) 측정을 위해 보정해야 하는 두 가지 물리량은 진폭과 위상이다.
+    - 만약, 분광선 측정이라면 기기의 bandpass 보정도 필요하다.
+- 진폭 보정 시, 각 안테나의 응답(response)을 이용하여 사용 중인 수신기 시스템의 잡음을 결정한다. 그리고 잡음 정도를 통해서 실제 진폭을 얻어낸다.
+- 위상 보정 시, 기기의 위상을 결정하기 위해 잘 알려진 적절한 point source가 필요하다. 이 source는 대부분 외부은하 전파원이며, compact하고 시간에 따라 변광할 수 있다.
+    - 보통 간섭계에서 보정원은 대부분 분해되지 않는 전파원이거나 point 전파원이다. 
+    - 이러한 보정원이 되는 천체를 **calibrator**라고 부른다. 
+- 보통 cm 파장대는 대기 역할이 작지만, mm, sub-mm 파장대에서는 대기 효과를 반드시 고려해야 한다.
+
+---
+
+
+<style>
+h2 {
+border-bottom: none !important;
+}
+</style>
+

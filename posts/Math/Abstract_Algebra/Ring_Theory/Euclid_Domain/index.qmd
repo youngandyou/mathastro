@@ -1,0 +1,143 @@
+---
+title: "Euclidean Domain"
+author: "Youmin Chun"
+date: "2026-11-22 00:00:01"
+description: "추상대수학의 유클리드 정역(Euclidean Domain)에 대해서 다룬다."
+categories: 
+  - Math > Abstract Algebra > Ring Theory
+---
+
+# Euclidean Domain
+## Definition 1
+Let $D$ be an integral domain.
+
+**(i)** A ***Euclidean norm*** on $D$ is a function $\varphi: D \setminus \{ 0 \} \to \mathbb{N}_0$ such that the following conditions are satisfied:
+
+1. $\forall a, b \in D (b \neq 0), \exists q, r \in D$ such that $a = bq+r$ where either $r = 0$ or $\varphi(r) < \varphi(b)$.
+
+2. $\forall a, b \in D \setminus \{ 0 \}, \varphi(a) \le \varphi(ab)$.
+
+**(ii)** $D$ is a ***Euclidean domain (ED)*** if there exists a Euclidean norm on $D$.
+
+내적이 정의된 공간을 내적 공간, 놈이 정의된 공간을 놈 공간, 거리가 정의된 공간을 거리 공간이라고 부르듯이 유클리드 놈이란 함수가 정의된 정역을 유클리드 정역이라고 부른다. 유클리드 놈이란 한마디로 나눗셈 정리가 잘 정의되게 만드는 함수이며, 따라서 유클리드 정역은 나눗셈 정리가 일반적으로 잘 정의되는 대수 구조라고 볼 수 있다. 그러면 자연스럽게 나눗셈 정리가 성립하는 정수환과 다항식환은 유클리드 정역임을 알 수 있다.
+
+## Example 1
+**(i)** $\mathbb{Z}$ is an ED.
+
+**(ii)** If $F$ is a field, then $F[x]$ is an ED.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+**(i)** Define a function $\varphi: \mathbb{Z} \setminus \{ 0 \} \to \mathbb{N}_0$ by 
+
+$$\varphi(n) = |n|, \forall n \in \mathbb{Z} \setminus \{ 0 \}.$$
+
+Clearly, $\varphi$ is well-defined.
+
+Let $a, b \in \mathbb{Z}$ with $b \neq 0$. By the division algorithm, there exist $q, r \in \mathbb{Z}$ such that $a = bq + r$ where either $r = 0$ or $\varphi(r) = |r| < |b| = \varphi(b)$.
+
+Also, $\forall a, b \in \mathbb{Z} \setminus \{ 0 \}$, $\varphi(a) = |a| \le |ab| = \varphi(ab)$. Hence, $\varphi$ is a Euclidean norm on $\mathbb{Z}$, and therefore $\mathbb{Z}$ is a Euclidean domain.
+
+**(ii)** Define a function $\varphi: F[x] \setminus \{ 0 \} \to \mathbb{N}_0$ by
+
+$$\varphi(f(x)) = \deg (f(x)), \forall f(x) \in F[x] \setminus \{ 0 \}.$$
+
+Clearly, $\varphi$ is well-defined.
+
+Let $f(x), g(x) \in F[x]$ with $g(x) \neq 0$. By the [division algorithm](../Polynomial_Ring/index.qmd#sec-theorem-3), there exists $q(x), r(x) \in F[x]$ such that $f(x) = g(x)q(x) + r(x)$ where $r(x) = 0$ or $\varphi(r(x)) = \deg(r(x)) < \deg(g(x)) = \varphi(g(x))$.
+
+Also, $\forall f(x), g(x) \in F[x] \setminus \{ 0 \}$, $\varphi(f(x)) = \deg(f(x)) \le \deg(f(x)g(x)) = \varphi(f(x)g(x))$. Hence, $\varphi$ is a Euclidean norm on $F[x]$, and therefore $F[x]$ is a Euclidean domain. $\blacksquare$
+:::
+
+## Theorem 1
+Every ED is a PID.
+
+따라서 "ED $\implies$ PID $\implies$ UFD"라는 관계가 성립한다고 정리할 수 있다. 한편 역은 성립하지 않는데, $\mathbb{C}$의 부분환인
+
+$$D = \mathbb{Z} \left[ \frac{1 + i\sqrt{19}}{2} \right] = \left\{ a + \frac{b(1 + i\sqrt{19})}{2} \,\, \Bigg \vert \,\, a,b \in \mathbb{Z} \right\}$$
+
+는 PID이지만 ED는 아닌 대표적인 예이다.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+Let $D$ be an ED with a Euclidean norm $\varphi$, and let $N \lhd D$. If $N = \{ 0 \}$, then $N = (0)$.
+
+Suppose that $N \supsetneq \{ 0 \}$. Then there exists $b \in N \setminus \{ 0 \}$ such that $\varphi(b)$ is minimal in the image $\varphi(D \setminus \{ 0 \})$. We will show that $N = (b)$.
+
+Let $x \in (b)$. Then $x = rb$ for some $r \in D$, and $x = rb \in N$ because $N$ is an ideal. Hence, $(b) \subset N$.
+
+Let $a \in N$. Since $D$ is an Euclidean domain, there exist $q, r \in D$ such that $a = bq + r$ where either $r = 0$ or $\varphi(r) < \varphi(b)$. Since $N$ is an ideal of $D$, $r = a - bq \in N$. If $r \neq 0$, then $\varphi(r) < \varphi(b)$, which contradicts the minimality of $\varphi(b)$. Hence, $r = 0$, which implies that $a = bq \in (b)$. Thus, $N = (b)$. $\blacksquare$
+:::
+
+## Theorem 2
+Let $D$ be an ED with a Euclidean norm $\varphi$, and let $a, b \in D \setminus \{ 0\}$.
+
+**(i)** $\varphi(1)$ is minimal in the image $\varphi(D \setminus \{ 0 \})$.
+
+**(ii)** Let $u \in D \setminus \{ 0 \}$. Then $u$ is a unit in $D$ $\iff \varphi(u) = \varphi(1)$.
+
+**(iii)** If $a \sim b$ in $D$, then $\varphi(a) = \varphi(b)$.
+
+**(iv)** **(Euclidean Algorithm)**
+
+1. If $a = bq + r$ for some $q, r \in D$ with $\varphi(r) < \varphi(b)$, then $\gcd(a, b) \sim \gcd(b, r)$.
+
+2. Suppose that
+
+$$\begin{align*}
+a & = bq_1 + r_1 \quad \text{for some } q_1, r_1 \in D \text{ with } \varphi(r_1) < \varphi(b) \\
+b & = r_1q_2 + r_2 \quad \text{for some } q_2, r_2 \in D \text{ with } \varphi(r_2) < \varphi(r+1) \\
+&\vdots \\
+r_{n-2} & = r_{n-1}q_n + r_n \quad \text{for some } q_n, r_n \in D \text{ with } \varphi(r_n) < \varphi(r_{n-1}) \\
+r_{n-1} & = r_{n}q_{n+1} \quad \text{for some } q_{n+1} \in D.
+\end{align*}$$
+
+Then $\gcd(a, b) \sim r_n$, so $r_n = \gcd(a, b)$. Furthermore, there exist $x, y \in D$ such that 
+
+$$\gcd(a, b) = ax + by.$$
+
+**(ii)**를 통해 $D$의 단위원이 어떤 원소들인지 파악할 수 있다. 예컨대 $\mathbb{Z}$의 경우 절댓값이 $1$인 원소는 $\pm 1$ 뿐이므로 단위원은 $\pm 1$임을 알 수 있고, $F[x]$의 경우 차수가 $0$인 원소는 $F \setminus \{ 0 \}$의 모든 원소이다.
+
+또한 **(iii)**의 역은 일반적으로 성립하지 않는데, $x^2$과 $x^2+1$은 모두 차수가 $2$로 같지만 associate 관계에 있지 않다.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+**(i)** Let $a \in D \setminus \{ 0 \}$. Then $\varphi(1) \le \varphi(1 \cdot a) = \varphi(a)$, so $\varphi(1)$ is minimal in $\varphi(D \setminus \{ 0 \})$.
+
+**(ii)** $(\implies)$ Suppose that $u$ is a unit in $D$. By **(i)**, $\varphi(1) \le \varphi(u)$. Note that $\varphi(u) \le \varphi(uu^{-1}) = \varphi(1)$, so $\varphi(1) = \varphi(u)$.
+
+$(\impliedby)$ Suppose that $\varphi(u) = \varphi(1)$. By division algorithm, there exists $q, r \in D$ such that $1 = uq + r$ where either $r = 0$ or $\varphi(r) < \varphi(u)$. By **(i)**, $\varphi(u) = \varphi(1)$ is minimal in $\varphi(D \setminus \{ 0 \})$. Hence, we obtain $r = 0$, so $1 = uq$. Hence, $u$ is a unit in $D$.
+
+**(iii)** Suppose that $a \sim b$ in $D$. Since $D$ is an integral domain, $a = bu$ for some unit $u$ in $D$, and $au^{-1} = b$. Then we have
+
+$$\varphi(a) \le \varphi(au^{-1}) = \varphi(b) \quad \text{and} \quad \varphi(b) \le \varphi(bu) = \varphi(a).$$
+
+Hence $\varphi(a) = \varphi(b)$.
+
+**(iv)** 1. Suppose that $a = bq + r$ for some $q, r \in D$ with $\varphi(r) < \varphi(b)$. Let $d_1 = \gcd(a, b)$ and let $d_2 = \gcd(b, r)$. Then $d_1 \mid a$ and $d_2 \mid b$, so $d_1 \mid a - bq = r$. This means that $d_1$ is a common divisor of $b$ and $r$, so $d_1 \mid d_2$.
+
+Note that $d_1 \mid b$ and $d_2 \mid r$. Then $d_2 \mid bq + r = a$, so $d_2$ is a common divisor of $a$ and $b$. Hence, $d_2 \mid d_1$, and therefore $d_1 \sim d_2$.
+
+2. By 1, 
+
+$$\begin{align*}
+\gcd(a, b) &\sim \gcd(b, r_1) \\
+&\sim \gcd(r_1, r_2) \\
+&\sim \cdots \\
+&\sim \gcd(r_{n-1}, r_n) \\
+&= \gcd(r_nq_{n+1}, r_n) \\
+&\sim r_n.
+\end{align*}$$
+
+Furthermore, we have
+
+$$\begin{align*}
+r_n &= r_{n-2} - r_{n-1}q_n \quad (\because) r_{n-2} = r_{n-1}q_n + r_n \\
+&= r_{n-2} - (r_{n-3} - r_{n-2}q_{n-1})q_n \quad (\because) r_{n-3} = r_{n-2}q_{n-1} + r_{n-1} \\
+&= - r_{n-3} + r_{n-2}(1 + q_{n-1}q_n) \\
+&\vdots \\
+&= ax + by \quad (\because) a = bq_1 + r_1
+\end{align*}$$
+
+for some $x, y \in D$. $\blacksquare$
+:::
+
+# Reference
+- John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

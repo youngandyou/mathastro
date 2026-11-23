@@ -2,7 +2,7 @@
 title: "Euclidean Domain"
 author: "Youmin Chun"
 date: "2026-11-22 00:00:01"
-description: "추상대수학의 유클리드 정역(Euclidean Domain)에 대해서 다룬다."
+description: "추상대수학의 유클리드 정역(Euclidean Domain)에 대해서 다룬다. 나아가 가우스 정수(Gaussian Integer)와 Multiplicative Norm에 대해서 설명한다."
 categories: 
   - Math > Abstract Algebra > Ring Theory
 ---
@@ -138,6 +138,95 @@ r_n &= r_{n-2} - r_{n-1}q_n \quad (\because) r_{n-2} = r_{n-1}q_n + r_n \\
 
 for some $x, y \in D$. $\blacksquare$
 :::
+
+# Gaussian Integer
+## Definition 2
+**(i)** A ***Gaussian integer*** is a complex number $a + bi$, where $a, b \in \mathbb{Z}$. We denote the set of Gaussian integers by $\mathbb{Z}[i] = \{ a+ bi \mid a, b \in \mathbb{Z} \}$.
+
+**(ii)** The ***norm*** of $\alpha$ is a function $N: \mathbb{Z}[i] \to \mathbb{N}_0$ defined by
+
+$$N(\alpha) = a^2 + b^2, \forall \alpha = a+bi \in \mathbb{Z}[i].$$
+
+일반적인 복소수에서 실수부와 허수부가 모두 정수인 경우를 가우스 정수라고 부르고, 이들의 집합은 대수적으로 $\mathbb{Z}[i]$와 같이 쓸 수 있다. 보통 복소수의 크기는 $| \alpha| = \sqrt{\alpha\bar{\alpha}}$와 같이 정의하는데, 가우스 정수의 크기, 즉 놈은 $\alpha \bar{\alpha}$로 정의한다. 즉 $N(\alpha) = \alpha\bar{\alpha} = |\alpha|^2$과 동일하다. 가우스 정수에 한해서 정의하긴 했지만, 사실 일반적인 복소수에 대해서 정의역을 자연스럽게 확장할 수 있다.
+
+## Theorem 3
+**(i)** Let $N$ be the norm function on $\mathbb{Z}[i]$, and let $\alpha, \beta \in \mathbb{Z}[i]$. The
+
+1. $N(\alpha) \ge 0$.
+
+2. $N(\alpha) = 0 \iff \alpha = 0$.
+
+3. $N(\alpha \beta) = N(\alpha) N(\beta)$.
+
+**(ii)** $\mathbb{Z}[i]$ is an integral domain.
+
+**(iii)** The function $\varphi: \mathbb{Z}[i] \setminus \{ 0 \} \to \mathbb{N}_0$ defined by 
+
+$$\varphi(\alpha) = N(\alpha), \forall \alpha \in \mathbb{Z}[i] \setminus \{ 0 \}$$
+
+is a Euclidean norm on $\mathbb{Z}[i]$. Hence, $\mathbb{Z}[i]$ is an ED.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+**(i)** Trivial.
+
+**(ii)** It is routine to check that $\mathbb{Z}[i]$ is a commutative ring with identity and $\mathbb{Z}[i]$ is a subring of $\mathbb{C}$. Since $\mathbb{C}$ has no zero divisors, so does $\mathbb{Z}[i]$. Hence, $\mathbb{Z}[i]$ is an integral domain.
+
+**[Another Proof]**
+
+Let $\alpha, \beta \in \mathbb{Z}[i]$ be such that $\alpha \beta = 0$. Then $N(\alpha)N(\beta) = N(\alpha \beta) = N(0) = 0$, which implies that $N(\alpha) = 0$ or $N(\beta) = 0$. Hence, $\alpha = 0$ or $\beta = 0$, and therefore $\mathbb{Z}[i]$ does not contain zero divisors.
+
+**(iii)** Let $\alpha = a_1 + a_2i, \beta = b_1 + b_2i \in \mathbb{Z}[i]$ with $\beta \neq 0$. Then $\varphi(\beta) = b_1^2 + b_2^2 \ge 1$. Hence, $\varphi(\alpha) \le \varphi(\alpha) \varphi(\beta) = \varphi(\alpha \beta)$ by **(i)**.
+
+Now, we will show that there exists $\sigma, \rho \in \mathbb{Z}[i]$ such that $\alpha = \beta \sigma + \rho$ where either $\rho = 0$ or $\varphi(\rho) < \varphi(\beta)$.
+
+Note that
+
+$$\begin{align*}
+\frac{\alpha}{\beta} &= \frac{a_1 + a_2i}{b_1+b_2i} \\
+&= \frac{a_1b_1 + a_2b_2}{b_1^2 + b_2^2} + \frac{a_2b_1 - a_1b_2}{b_1^2 + b_2^2}i \\
+&= r + si
+\end{align*}$$
+
+where $\displaystyle r = \frac{a_1b_1 + a_2b_2}{b_1^2 + b_2^2}, s = \frac{a_2b_1 - a_1b_2}{b_1^2 + b_2^2} \in \mathbb{Q}$.
+
+Let $q_1, q_2 \in \mathbb{Z}$ be such that $\displaystyle |r - q_1| \le \frac{1}{2}$ and $\displaystyle |s-q_2| \le \frac{1}{2}$, and let $\sigma = q_1 + q_2i$ and $\rho = \alpha - \beta \sigma$. Then $\sigma, \rho \in \mathbb{Z}[i]$ and $\alpha = \beta \sigma + \rho$.
+
+If $\rho = 0$, then $\alpha = \beta \sigma$ and it is done.
+
+Suppose that $\rho \neq 0$. Note that
+
+$$\begin{align*}
+\left \vert \frac{\alpha}{\beta} - \sigma \right \vert^2 &= \vert (r+si) - (q_1+q_2i) \vert^2 \\
+&= | (r - q_1) + (s - q_2)i |^2 \\
+&= (r-q_1)^2 + (s-q_2)^2 \\
+&\le \left( \frac{1}{2} \right)^2 + \left( \frac{1}{2} \right)^2 \\
+&= \frac{1}{2}.
+\end{align*}$$
+
+Then we have
+
+$$\begin{align*}
+\varphi(\rho) &= |\rho|^2 \\
+&= \left \vert \beta \left( \frac{\alpha}{\beta} - \sigma \right) \right \vert^2 \\
+&= |\beta|^2 \left \vert \frac{\alpha}{\beta} - \sigma \right \vert^2 \\
+&\le \frac{1}{2}\varphi(\beta) \\
+&< \varphi(\beta).
+\end{align*}$$
+
+Hence, $\varphi$ is a Euclidean norm on $\mathbb{Z}[i]$, and therefore $\mathbb{Z}[i]$ is an ED. $\blacksquare$
+:::
+
+## Example 2
+Let $\varphi$ be a Euclidean norm on $\mathbb{Z}[i]$.
+
+**(i)** Let $\alpha = a+bi$ be a unit in $\mathbb{Z}[i]$. Then $N(\alpha) = N(1) = 1$. Hence $a^2 + b^2 = 1$, which implies that $\alpha = \pm 1, \pm i$.
+
+**(ii)** $\gcd(16+7i, 10-5i) = 1+2i$ in $\mathbb{Z}[i]$. Then $-1-2i, -2+i, 2-i$ are the only other $\gcd(16+7i, 10-5i)$.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+:::
+
+**(iii)** It is clear that $5$ is an irreducible element in $\mathbb{Z}$. Note that $5 = (1+2i)(1-2i)$ and by **(i)**, neither $1+2i$ nor $1-2i$ is a unit in $\mathbb{Z}[i]$. Hence, $5$ is a reducible element in $\mathbb{Z}[i]$.
 
 # Reference
 - John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

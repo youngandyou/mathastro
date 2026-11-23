@@ -156,7 +156,39 @@ $$\begin{align*}
 &= \alpha(s).
 \end{align*}$$
 
-Since $a$ is the period of $\beta$, $L$ must be the least positive number such that $\alpha(s+L) = \alpha(s), \forall s$. $\blacksquare$
+Since $a$ is the period of $\beta$, $L$ must be the least positive number such that $\alpha(s+L) = \alpha(s), \forall s$.
+
+**(ii)** Note that
+
+$$\begin{align*}
+\dot{\beta}(t) &= \frac{d}{dt}\alpha(s(t)) \\
+&= \alpha'(s(t)) \| \dot{\beta} \| \\
+&= T_\alpha(s(t)) \| \dot{\beta} \| \\
+&= T_\beta(t) \| \dot{\beta} \|,
+\end{align*}$$
+
+so $T_\beta = \frac{\dot{\beta}}{\| \dot{\beta} \|}$.
+
+By definition, we obtain $n_\beta = JT_\beta = J\frac{\dot{\beta}}{\| \dot{\beta} \|}$.
+
+Note that
+
+$$\begin{align*}
+\ddot{\beta}(t) &= \frac{d}{dt}(T_\alpha(s(t)) \cdot \dot{s}(t)) \\
+&= T'_\alpha(s(t)) \cdot (\dot{s}(t))^2 + T_\alpha(s(t)) \cdot \ddot{s}(t) \\
+&= \| \dot{\beta} \|^2 T'_\alpha(s(t)) + T_\alpha(s(t)) \cdot \ddt{s}(t).
+\end{align*}$$
+
+Then 
+
+$$\begin{align*}
+\langle \ddot{\beta}(t), n_\beta(t) \rangle &= \langle \ddot{\beta}(t), n_\alpha(s(t)) \rangle \\
+&= \| \dot{\beta} \|^2 \langle T'_\alpha(s(t)), n_\alpha(s(t)) \rangle \\
+&= \| \dot{\beta} \|^2 k_\alpha(s(t)) \\
+&= \| \dot{\beta} \|^2 k_\beta(t).
+\end{align*}$$
+
+Hence, $k_\beta = \frac{\langle \ddot{\beta}, J \dot{\beta} \rangle}{\| \dot{\beta} \|^3}$. $\blacksquare$
 :::
 
 # Continuous Argument
@@ -248,7 +280,7 @@ i_\alpha &= \frac{\theta(L) - \theta(0)}{2 \pi} \\
 \end{align*}$$
 
 ## Theorem 4
-Let $\alpha: [0, L] to \mathbb{R}^2$ be a simple closed plane curve. 
+Let $\alpha: [0, L] \to \mathbb{R}^2$ be a simple closed plane curve. 
 
 **(i)** **(Rotation Index Theorem)** The rotation index of $\alpha$ is $\pm 1$.
 
@@ -303,6 +335,17 @@ The rotation index is invariant under regular homotopy.
 
 ## Theorem 5
 A simple closed regular plane curve $\alpha(s)$ with the continuous argument $\theta(s)$ is convex $\iff$ $k(s)$ has constant sign $\iff$ $\theta(s)$ is monotone.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+:::
+
+# Isoperimetric Inequality
+## Theorem 6
+Let $\alpha$ be a simple closed regular plane curve of length $L$, and let $A$ be the area of the rigeon surrounded by $\alpha$. Then 
+
+$$L^2 \ge 4 \pi A$$
+
+and the equality holds $\iff$ $\alpha$ is a circle.
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
 :::

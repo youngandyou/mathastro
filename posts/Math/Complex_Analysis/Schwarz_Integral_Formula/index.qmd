@@ -1,0 +1,80 @@
+---
+title: "Schwarz Integral Formula"
+author: "Youmin Chun"
+date: "2026-11-24 00:00:01"
+description: "슈바르츠 적분 공식(Schwarz Integral Formula)에 대해서 설명한다."
+categories: 
+  - Math > Complex Analysis
+---
+
+# Schwarz Integral Formula
+## Theorem 1
+Let $f(z)$ be an analytic function throughout the upper half plane $\mathrm{Im} z \ge 0$ such that for some positive constants $a$ and $M$, $| z^af(z) | < M$ for all $z$ with $\mathrm{Im} z \ge 0$. If $f(z) = u(x, y) = iv(x, y)$, then $u(x, y)$ and $v(x, y)$ are harmonic in the upper half plane $y > 0$ and
+
+$$\begin{align*}
+u(x, y) &= \frac{1}{\pi} \int_{-\infty}^\infty \frac{yu(t, 0)}{(t-x)^2 + y^2} dt
+v(x, y) &= \frac{1}{\pi} \int_{-\infty}^\infty \frac{(x-t)u(t, 0)}{(t-x)^2 + y^2} dt
+\end{align*}$$
+
+whenever $y > 0$.
+
+::: {.callout-note title="Proof" collapse="true" icon=false}
+Let $C_r$ denote the upper half of a positively oriented circle of radius $R$ centered at origin. By the Cauchy integral formula, we have
+
+$$\begin{align*}
+f(z) &= \frac{1}{2\pi i} \int_{C_R \cup [-R, R]} \frac{f(s)}{s-z} ds \\
+&= \frac{1}{2\pi i} \int_{C_R} \frac{f(s)}{s-z} ds + \frac{1}{2\pi i} \int_{-R}^R \frac{f(t)}{t-z} dt
+\end{align*}$$
+
+for any $z$ interior to the simple closed contour $C_R \cup [-R, R]$.
+
+By ML Lemma, we have
+
+$$\begin{align*}
+\left \vert \int_{C_R} \frac{f(s)}{s-z} ds \right \vert &\le \frac{M}{R^a} \cdot \frac{1}{R - \vert z \vert} \cdot \pi R \\
+&= \frac{\pi M}{R^a\left( 1 - \frac{|z|}{R} \right)} \to 0
+\end{align*}$$
+
+as $R \to \infty$. Thus,
+
+$$f(z) = \frac{1}{2\pi i} \int_{-\infty}^\infty \frac{f(t)}{t-z} dt \quad (\mathrm{Im} z > 0).$$
+
+If the point $z$ lies below the real axis, then the integrand $\displaystyle \frac{f(s)}{s-z}$ is analytic on the simple closed contour $C_R \cup [-R, R]$, so 
+
+$$f(z) = \frac{1}{2\pi i} \int_{C_R \cup [-R, R]} \frac{f(s)}{s-z} ds = 0$$
+
+by the Cauchy-Goursat theorem. 
+
+Thus, when $z$ is above the real axis, we have the following expression
+
+$$f(z) = \frac{1}{2\pi i} \int_{-\infty}^\infty \left( \frac{1}{t-z} + \frac{c}{t-\bar{z}} \right) f(t) dt, \quad (\mathrm{Im} z > 0)$$
+
+where $c$ is an arbitrary complex constant.
+
+Let us denote that $z = x+iy$ and $f(z) = u(x, y) + i v(x, y)$. If we choose $c = -1$, then it reduces to
+
+$$\begin{align*}
+f(z) &= \frac{1}{2\pi i} \int_{-\infty}^\infty \left( \frac{1}{t-z} - \frac{1}{t-\bar{z}} \right) f(t) dt \\
+&= \frac{1}{2\pi i} \int_{-\infty}^\infty \frac{z - \bar{z}}{|t-z|^2} f(t) dt \\
+&= \frac{1}{2\pi i} \int_{-\infty}^\infty \frac{2iy}{|t-z|^2} f(t) dt \\
+&= \frac{1}{\pi} \int_{-\infty}^\infty \frac{yf(t)}{|t-z|^2} dt.
+\end{align*}$$
+
+Similarly, if $c = 1$, it reduces
+
+$$f(z) = \frac{1}{\pi i} \int_{-\infty}^\infty \frac{(t-x)f(t)}{|t-z|^2} dt.$$
+
+Since $f(t) = u(x,0) + i v(x, 0)$, we have
+
+$$\begin{align*}
+u(x, y) &= \frac{1}{\pi} \int_{-\infty}^\infty \frac{yu(t, 0)}{(t-x)^2 + y^2} dt
+v(x, y) &= \frac{1}{\pi} \int_{-\infty}^\infty \frac{(x-t)u(t, 0)}{(t-x)^2 + y^2} dt
+\end{align*}$$
+
+whenever $y > 0$. $\blacksquare$
+:::
+
+
+
+# Reference
+- Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

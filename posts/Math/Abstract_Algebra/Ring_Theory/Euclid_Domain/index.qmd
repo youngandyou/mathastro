@@ -1,4 +1,4 @@
----
+﻿---
 title: "Euclidean Domain"
 author: "Youmin Chun"
 date: "2026-11-22 00:00:01"
@@ -9,6 +9,7 @@ categories:
 
 # Euclidean Domain
 ## Definition 1
+::: {.math-box}
 Let $D$ be an integral domain.
 
 **(i)** A ***Euclidean norm*** on $D$ is a function $\varphi: D \setminus \{ 0 \} \to \mathbb{N}_0$ such that the following conditions are satisfied:
@@ -18,13 +19,16 @@ Let $D$ be an integral domain.
 2. $\forall a, b \in D \setminus \{ 0 \}, \varphi(a) \le \varphi(ab)$.
 
 **(ii)** $D$ is a ***Euclidean domain (ED)*** if there exists a Euclidean norm on $D$.
+:::
 
 내적이 정의된 공간을 내적 공간, 놈이 정의된 공간을 놈 공간, 거리가 정의된 공간을 거리 공간이라고 부르듯이 유클리드 놈이란 함수가 정의된 정역을 유클리드 정역이라고 부른다. 유클리드 놈이란 한마디로 나눗셈 정리가 잘 정의되게 만드는 함수이며, 따라서 유클리드 정역은 나눗셈 정리가 일반적으로 잘 정의되는 대수 구조라고 볼 수 있다. 그러면 자연스럽게 나눗셈 정리가 성립하는 정수환과 다항식환은 유클리드 정역임을 알 수 있다.
 
 ## Example 1
+::: {.math-box}
 **(i)** $\mathbb{Z}$ is an ED.
 
 **(ii)** If $F$ is a field, then $F[x]$ is an ED.
+:::
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
 **(i)** Define a function $\varphi: \mathbb{Z} \setminus \{ 0 \} \to \mathbb{N}_0$ by 
@@ -49,7 +53,9 @@ Also, $\forall f(x), g(x) \in F[x] \setminus \{ 0 \}$, $\varphi(f(x)) = \deg(f(x
 :::
 
 ## Theorem 1
+::: {.math-box}
 Every ED is a PID.
+:::
 
 따라서 "ED $\implies$ PID $\implies$ UFD"라는 관계가 성립한다고 정리할 수 있다. 한편 역은 성립하지 않는데, $\mathbb{C}$의 부분환인
 
@@ -68,6 +74,7 @@ Let $a \in N$. Since $D$ is an Euclidean domain, there exist $q, r \in D$ such t
 :::
 
 ## Theorem 2
+::: {.math-box}
 Let $D$ be an ED with a Euclidean norm $\varphi$, and let $a, b \in D \setminus \{ 0\}$.
 
 **(i)** $\varphi(1)$ is minimal in the image $\varphi(D \setminus \{ 0 \})$.
@@ -93,6 +100,7 @@ r_{n-1} & = r_{n}q_{n+1} \quad \text{for some } q_{n+1} \in D.
 Then $\gcd(a, b) \sim r_n$, so $r_n = \gcd(a, b)$. Furthermore, there exist $x, y \in D$ such that 
 
 $$\gcd(a, b) = ax + by.$$
+:::
 
 **(ii)**를 통해 $D$의 단위원이 어떤 원소들인지 파악할 수 있다. 예컨대 $\mathbb{Z}$의 경우 절댓값이 $1$인 원소는 $\pm 1$ 뿐이므로 단위원은 $\pm 1$임을 알 수 있고, $F[x]$의 경우 차수가 $0$인 원소는 $F \setminus \{ 0 \}$의 모든 원소이다.
 
@@ -141,15 +149,18 @@ for some $x, y \in D$. $\blacksquare$
 
 # Gaussian Integer
 ## Definition 2
+::: {.math-box}
 **(i)** A ***Gaussian integer*** is a complex number $a + bi$, where $a, b \in \mathbb{Z}$. We denote the set of Gaussian integers by $\mathbb{Z}[i] = \{ a+ bi \mid a, b \in \mathbb{Z} \}$.
 
 **(ii)** The ***norm*** of $\alpha$ is a function $N: \mathbb{Z}[i] \to \mathbb{N}_0$ defined by
 
 $$N(\alpha) = a^2 + b^2, \forall \alpha = a+bi \in \mathbb{Z}[i].$$
+:::
 
 일반적인 복소수에서 실수부와 허수부가 모두 정수인 경우를 가우스 정수라고 부르고, 이들의 집합은 대수적으로 $\mathbb{Z}[i]$와 같이 쓸 수 있다. 보통 복소수의 크기는 $| \alpha| = \sqrt{\alpha\bar{\alpha}}$와 같이 정의하는데, 가우스 정수의 크기, 즉 놈은 $\alpha \bar{\alpha}$로 정의한다. 즉 $N(\alpha) = \alpha\bar{\alpha} = |\alpha|^2$과 동일하다. 가우스 정수에 한해서 정의하긴 했지만, 사실 일반적인 복소수에 대해서 정의역을 자연스럽게 확장할 수 있다.
 
 ## Theorem 3
+::: {.math-box}
 **(i)** Let $N$ be the norm function on $\mathbb{Z}[i]$, and let $\alpha, \beta \in \mathbb{Z}[i]$. The
 
 1. $N(\alpha) \ge 0$.
@@ -165,6 +176,7 @@ $$N(\alpha) = a^2 + b^2, \forall \alpha = a+bi \in \mathbb{Z}[i].$$
 $$\varphi(\alpha) = N(\alpha), \forall \alpha \in \mathbb{Z}[i] \setminus \{ 0 \}$$
 
 is a Euclidean norm on $\mathbb{Z}[i]$. Hence, $\mathbb{Z}[i]$ is an ED.
+:::
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
 **(i)** Trivial.
@@ -217,16 +229,17 @@ Hence, $\varphi$ is a Euclidean norm on $\mathbb{Z}[i]$, and therefore $\mathbb{
 :::
 
 ## Example 2
+::: {.math-box}
 Let $\varphi$ be a Euclidean norm on $\mathbb{Z}[i]$.
 
 **(i)** Let $\alpha = a+bi$ be a unit in $\mathbb{Z}[i]$. Then $N(\alpha) = N(1) = 1$. Hence $a^2 + b^2 = 1$, which implies that $\alpha = \pm 1, \pm i$.
 
 **(ii)** $\gcd(16+7i, 10-5i) = 1+2i$ in $\mathbb{Z}[i]$. Then $-1-2i, -2+i, 2-i$ are the only other $\gcd(16+7i, 10-5i)$.
 
-::: {.callout-note title="Proof" icon=false collapse="true"}
+**(iii)** It is clear that $5$ is an irreducible element in $\mathbb{Z}$. Note that $5 = (1+2i)(1-2i)$ and by **(i)**, neither $1+2i$ nor $1-2i$ is a unit in $\mathbb{Z}[i]$. Hence, $5$ is a reducible element in $\mathbb{Z}[i]$.
 :::
 
-**(iii)** It is clear that $5$ is an irreducible element in $\mathbb{Z}$. Note that $5 = (1+2i)(1-2i)$ and by **(i)**, neither $1+2i$ nor $1-2i$ is a unit in $\mathbb{Z}[i]$. Hence, $5$ is a reducible element in $\mathbb{Z}[i]$.
-
+::: {.callout-note title="Proof" icon=false collapse="true"}
+:::
 # Reference
 - John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

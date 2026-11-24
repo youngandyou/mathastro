@@ -1,4 +1,4 @@
----
+﻿---
 title: "Field of Quotients of an Integral Domain"
 author: "Youmin Chun"
 date: "2026-09-18 00:00:01"
@@ -301,9 +301,11 @@ Let $x \in L$. Then $x = \frac{a}{b}L$ for some $a, b \in D$, so we have $\psi\l
 :::
 
 # Remark
+::: {.math-box}
 **(i)** Let $F$ be a field, and let $K$ be a quotient field of $F$. Then $F \cong K$.
 
 **(ii)** Let $D$ and $S$ be two integral domains with $D \cong S$. Then the quotient fields of $D$ and $K$ are isomorphic.
+:::
 
 ::: {.callout-note title="Proof" collapse="true"}
 **(i)** Let $\phi: K \to F$ be a function defined by $\phi([(x, y)]) = xy^{-1}, \forall [(x, y)] \in K$. If $[(x, y)] = [(a, b)]$, then $(x, y) \sim (a, b)$, so $xb = ay$. Since $F$ is a field, $b^{-1}$ and $y^{-1}$ exist. Then we have

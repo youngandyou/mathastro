@@ -1,4 +1,4 @@
----
+﻿---
 title: "Alternating Group"
 author: "Youmin Chun"
 date: "2026-09:02 00:00:05"
@@ -8,7 +8,9 @@ categories:
 ---
 
 ## Theorem
+::: {.math-box}
 Let $n \ge 2$ and let $A_n$ be the set of even permutation in $S_n$. Then $A_n \le S_n$ and $\vert A_n \vert = \frac{n!}{2}$.
+:::
 
 ### Proof
 **(i)** $A_n \le S_n$
@@ -36,14 +38,18 @@ Let $\tau \in B_n$. Then $(1, 2) \tau \in A_n$ and $\pi((1, 2) \tau) = (1, 2)(1,
 Hence $\pi$ is bijective, which implies that $\vert A_n \vert = \vert B_n \vert$. Thus, $\vert A_n \vert = \frac{n!}{2}.$ $\blacksquare$
 
 ## Definition
+::: {.math-box}
 For $n \ge 2$, the group $A_n$ is called the ***alternating group*** on $n$ letters. 
+:::
 
 ## Remark
+::: {.math-box}
 **(i)** Note that $\vert A_2 \vert = 1$, so that $A_2$ is the trivial group.
 
 **(ii)** Note that $\vert A_3 \vert = 3$, so that $A_3$ is isomorphic to $\mathbb{Z}_3$.
 
 **(iii)** For $n \ge 4$, $A_n$ is never abelian.
+:::
 
 # Reference
 - John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

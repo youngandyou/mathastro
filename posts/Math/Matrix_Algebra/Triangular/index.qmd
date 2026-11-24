@@ -1,4 +1,4 @@
----
+﻿---
 title: "Triangular Matrix"
 author: "Youmin Chun"
 date: "2026-09-05 00:00:08"
@@ -8,10 +8,14 @@ categories:
 ---
 
 # Definition
+::: {.math-box}
 A ***upper triangular matrix*** is an $m \times n$ matrix such that $A_{ij} = 0$ whenever $i > j$, and a ***lower triangular matrix*** is an $m \times n$ matrix such that $A_{ij} = 0$ whenver $i < j$. 
+:::
 
 # Theorem
+::: {.math-box}
 Let $A$ be an $n \times n$ triangular matrix. Then $\det(A)$ equals the product of the diagonal entries of $A$.
+:::
 
 # Reference
 - S. H. Friedberg, A. J. Insel, and L. E. Spence, Linear Algebra, 4th ed. (Pearson New International Edition), Pearson, 2013.

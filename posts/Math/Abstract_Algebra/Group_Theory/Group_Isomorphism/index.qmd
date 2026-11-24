@@ -1,4 +1,4 @@
----
+﻿---
 title: "Group Isomorphism"
 author: "Youmin Chun"
 date: "2026-07-31 00:00:03"
@@ -8,6 +8,7 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 Let $G$ and $G'$ be groups. 
 
 **(i)** A map $\phi: G \to G'$ is a ***homomorphism*** if 
@@ -23,8 +24,10 @@ Let $\phi : G \to G'$ be a homomorphism.
 **(iv)** If $\phi$ is bijective, then $\phi$ is called an ***isomorphism***. If an isomorphism $\phi : S \to T$ of $S$ with $T$ exists, then $S$ and $T$ are said to be ***isomorphic*** groups and we denote by $S \cong T$ (or $S \simeq T$).
 
 **(v)** If $\phi$ is an isomorphism and $G = G'$, then $\phi$ is called an ***automorphism***.
+:::
 
 ## Theorem
+::: {.math-box}
 - Let $\phi: G \to G'$ be a group homomorphism. Then
 
 **(i)** $\phi(e_G) = e_{G'}$.
@@ -34,8 +37,10 @@ Let $\phi : G \to G'$ be a homomorphism.
 **(iii)** $H \le G \implies \phi(H) \le G'$
 
 **(iv)** $K \le G' \implies \phi^{-1}(K) \le G$
+:::
 
 ## Example 1
+::: {.math-box}
 **(i)** $\langle \mathbb{R}, + \rangle \cong \langle \mathbb{R}^+, \cdot \rangle$.
 
 $\big[ (\because)$ Define $\phi : \langle \mathbb{R}, + \rangle \to \langle \mathbb{R}^+, \cdot \rangle$ by
@@ -109,8 +114,10 @@ $$\begin{align*}
 \end{align*}$$
 
 which means that $A \cdot B = B \cdot A$ for all $A, B \in \mathbb{R}^{2 \times 2}$. $\bigotimes$ Thus $\phi$ is not an isomorphism.$\big]$ 
+:::
 
 ## Example 2
+::: {.math-box}
 Let $G, G'$ be groups.
 
 **(i)** The map $\phi:G \to G'$ defined by 
@@ -196,6 +203,7 @@ Furthermore, For each $k \in \{ 1, ..., n \}$, define $\pi_k : G \to G_k$ by
 $$\pi_k(g_1, \cdots, g_n) = g_k, \forall (g_1, \cdots, g_n) \in G.$$
 
 Then $\pi_k$ is an epimorphism, but not monomorphism in general. The map $\pi_k$ is called the ***canonical epimorphism***, or the ***projection map***.
+:::
 
 # Reference
 - John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

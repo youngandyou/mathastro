@@ -1,4 +1,4 @@
----
+﻿---
 title: "Symmetric and Skew-Symmetric Matrix"
 author: "Youmin Chun"
 date: "2026-09-05 00:00:06"
@@ -8,9 +8,12 @@ categories:
 ---
 
 # Definition
+::: {.math-box}
 A ***symmetric matrix*** is a matrix $A$ such that $A^\top = A$, and a ***skew-symmetric matrix*** is a matrix $A$ such that $A^\top = -A$.
+:::
 
 # Theorem
+::: {.math-box}
 **(i)** $A + A^\top$ is symmetric for any square matrix $A$.
 
 **(ii)** $A - A^\top$ is skew-symmetric for any square matrix $A$.
@@ -18,6 +21,7 @@ A ***symmetric matrix*** is a matrix $A$ such that $A^\top = A$, and a ***skew-s
 **(iii)** Every square matrix can be uniquely expressed by a sum of a symmetric matrix and skew-symmetric matrix. In particular, for any square matrix $A$,
 
 $$A = \frac{A+A^\top}{2} + \frac{A-A^\top}{2}$$
+:::
 
 # Reference
 - S. H. Friedberg, A. J. Insel, and L. E. Spence, Linear Algebra, 4th ed. (Pearson New International Edition), Pearson, 2013.

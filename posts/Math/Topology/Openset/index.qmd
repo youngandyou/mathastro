@@ -1,4 +1,4 @@
----
+﻿---
 title: "Open set"
 author: "Youmin Chun"
 date: "2026-07-08 00:00:03"
@@ -8,9 +8,12 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 Let $(X, \mathscr{T})$ be a topological space. If a subset $A$ of $X$ is an element of $\mathscr{T}$, then $A$ is called an ***open set*** of $X$, or $A$ is said to be ***open*** in $X$.
+:::
 
 ## Theorem
+::: {.math-box}
 Let $(X, \mathscr{T})$ be a topological space, and $\mathscr{B}$ be a basis for $\mathscr{T}$. Let $A \subset X$. TFAE.
 
 **(i)** $A \in \mathscr{T}.$ That is, $A$ is open in $X$.
@@ -20,6 +23,7 @@ Let $(X, \mathscr{T})$ be a topological space, and $\mathscr{B}$ be a basis for 
 **(iii)** $\displaystyle A = \bigcup_{U \in \mathcal{A}} U$ where $\mathcal{A} \subset \mathscr{T}$.
 
 **(iv)** $x \in A \implies \exists B \in \mathscr{B}$ such that $x \in B \subset A$.
+:::
 
 처음 위상수학을 공부하게 되면 동치인 정의가 하도 많아서 헷갈릴 것이다. Munkres 책에 찾을 수 있는 오픈 셋의 모든 정의를 정리해 놓았으니 잘 기억해두자.
 

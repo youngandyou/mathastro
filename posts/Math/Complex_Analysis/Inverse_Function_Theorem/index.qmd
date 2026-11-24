@@ -1,4 +1,4 @@
----
+﻿---
 title: "Inverse Function Theorem"
 author: "Youmin Chun"
 date: "2026-11-06 00:00:01"
@@ -8,7 +8,9 @@ categories:
 ---
 
 # Theorem
+::: {.math-box}
 For $D \subset \mathbb{C}$, let $f: D \to \mathbb{C}$ be a analytic function at a point $z_0 \in D$ with $f'(z_0) \neq 0$. Then there exist open set $\mathcal{U}$ in $D$ with $z_0 \in \mathcal{U}$ and open set $\mathcal{V}$ in $\mathbb{C}$ with $f(z_0) \in \mathcal{V}$ such that the restriction $f:\mathcal{U} \to \mathcal{V}$ is bijective and the inverse function $f^{-1}$ is analytic in $\mathcal{V}$.
+:::
 
 실함수의 역함수 정리의 복소함수 버전이다. 다르게 표현하면 모든 등각사상은 각 점 근방에서 국소 역함수를 가지며, 그 국소 역함수 또한 등각사상이 된다고 말할 수 있다.
 

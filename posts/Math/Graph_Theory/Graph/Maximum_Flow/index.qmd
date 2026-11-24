@@ -1,4 +1,4 @@
----
+﻿---
 title: "Maximum Flow"
 author: "Youmin Chun"
 date: "2026-08-10"
@@ -29,6 +29,7 @@ $$\text{Max Flow} = nr. \blacksquare$$
 따라서 $A$와 $B$ 사이에 edge-independent path가 $n$개 존재한다면 maximum flow는 $n$개에 비례하여서 주어진다. 특별히 $r=1$과 같이 unit capacity로 주어진다면 우리는 다음과 같은 특별한 관계를 얻는다.
 
 ## Corollary
+::: {.math-box}
 In any graph where each edge has unit capacity $r = 1$, the following three quantities are equal for any pair of vertices $A$ and $B$: 
 
 **(i)** The edge connectivity: The maximum number of edge-independent paths connecting $A$ and $B$.
@@ -36,11 +37,14 @@ In any graph where each edge has unit capacity $r = 1$, the following three quan
 **(ii)** The size of the minimum edge cut set: The minimum number of edges whose removal disconnects $A$ and $B$.
 
 **(iii)** The maximum flow: The maximum throughput achievable from $A$ to $B$.
+:::
 
 한편 이러한 논의들은 그래프가 directed이거나 weighted여도 증명에 아무런 제약을 가하지 않으므로 동일하게 적용된다.
 
 ## Definition
+::: {.math-box}
 Let $G$ be a weighted graph. A ***minimum edge cut set*** is a cut set such that the sum of the weights on the edges of the set has the minimum possible value. 
+:::
 
 Unweighted graph에서는 cut set 중 가장 작은 크기를 갖는 집합을 minimum cut set이라고 불렀지만, 가중치가 부여되면 이제 cut set 중 에지의 가중치의 총합이 가장 작은 cut set을 minimum cut set으로 정의한다. 다만 unweighted graph를 모든 에지에 가중치 1이 균등하게 부여된 weighted graph의 특별한 경우라고 생각한다면 위 정의는 기존의 정의를 포함하는 보다 일반화된 정의라고 볼 수 있다. 이러한 정의 하에 max-flow min-cut theorem을 다음과 같이 일반화할 수 있다.
 

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Connected Graph"
 author: "Youmin Chun"
 date: "2026-08-08"
@@ -8,11 +8,13 @@ categories:
 ---
 
 ## Theorem 1
+::: {.math-box}
 Let $G$ be a graph, and let the relation $\sim_c$ be defined on $V(G)$ by
 
 $$u \sim_c v \iff \text{there is a } uv\text{-walk in } G.$$
 
 Then $\sim_c$ is an equivalence relation on $V(G)$. 
+:::
 
 ### Proof
 Let $u, v, w \in V(G)$.
@@ -26,6 +28,7 @@ If there is a $uv$-walk in $G$, say $u = x_0, x_1, ..., x_k = v$, and there is a
 Thus, $\sim_c$ is an equivalence relation on $V(G)$. $\blacksquare$
 
 ## Definition
+::: {.math-box}
 Let $G$ be a graph.
 
 **(i)** $G$ is said to be ***connected*** if $u \sim_c v$ for all $u, v \in V(G)$.
@@ -33,11 +36,14 @@ Let $G$ be a graph.
 **(ii)** Let $C$ be a equivalence class of $V(G)$ under $\sim_c$. The subgraph of $G$ induced by $C$ is called a ***component*** of $G$. 
 
 **(iii)** The ***complement*** of $G$, denoted by $\overline{G}$, is a graph on $V(G)$, with $E(\overline{G}) = \overline{E(G)}$.
+:::
 
 ## Theorem 2
+::: {.math-box}
 **(i)** Each component of any graph is connected.
 
 **(ii)** A graph is connected $\iff$ it has only one component.
+:::
 
 ### Proof
 **(i)** Let $C$ be a component of $G$, and let $u, v \in V(C)$. Clearly $u \sim_c v$. 
@@ -53,7 +59,9 @@ $(\Longleftarrow)$
 Suppose that a graph $G$ has only one component, say $C$. Then clearly $G = C$. By (i), $G$ is connected. $\blacksquare$
 
 ## Theorem 3
+::: {.math-box}
 If a graph $G$ is disconnected, then its complement $\overline{G}$ is connected. 
+:::
 
 ### Proof
 We prove the contrapositive.

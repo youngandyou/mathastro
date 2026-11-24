@@ -1,4 +1,4 @@
----
+﻿---
 title: "Hubs and Authorities"
 author: "Youmin Chun"
 date: "2026-08-20"
@@ -11,11 +11,14 @@ categories:
 유향그래프에서는 에지의 방향이 존재하므로 중심성을 측정할 때 들어오는 에지인지, 나가는 에지인지가 매우 중요했다. 그리고 고유벡터 중심성과 카츠 중심성, 페이지랭크 모두 들어오는 에지가 없으면 중심성 또한 $0$ 내지는 기본값으로 주어진다는 공통점이 있었다. 그런데 때로는 들어오는 에지가 없고 나가는 에지만 있더라도 해당 네트워크에서 중요한 노드의 역할을 할 수도 있다. 예컨대 인용 네트워크(citation network)의 경우, 보통이 리뷰 논문들은 그 자체만으로는 다른 연구 논문들만큼 중요한 연구 결과를 가지고 있지 않을 수도 있고, 리뷰 논문을 인용하는 논문도 상대적으로 적을 것이다. 그러나 리뷰 논문은 특정한 주제에 대해서 정보를 찾으려면 어느 논문을 찾아야 하는지, 일종의 **허브(hub)**의 역할을 하게 된다. 이러한 맥락에서 리뷰 논문은 들어오는 링크는 적지만, 나가는 링크가 많고 그 네트워크에서 중요한 역할을 한다는 점에서 높은 중심성을 받을 가치가 충분하다. 따라서 우리는 특정 네트워크에서 중요한 역할을 하는 노드를 두 종류로 구분해서 정의할 필요가 있다.
 
 ## Definition 1
+::: {.math-box}
 - In a directed network, ***authorities*** are nodes that contain useful information on a topic of interest, and ***hubs*** are nodes that tell us where the best authoities are to be found.
+:::
 
 당연히 수학적으로 엄밀한 정의는 아니며, 딱히 엄밀할 필요도 없다. 또한 어떤 노드가 authority이면서 동시에 hub일 수도 있음을 주의하자.
 
 ## Definition 2
+::: {.math-box}
 - Let $G$ be a directed network, and let $\mathbf{A}$ be the adjacency matrix of $G$. The authority centrality $x_i$ and the hub centrality $y_i$ of a vertex $i$ are defined as
 
 $$\begin{align*}
@@ -29,6 +32,7 @@ $$\begin{align*}
 \mathbf{x} &= \alpha \mathbf{A} \mathbf{y} \\
 \mathbf{y} &= \beta \mathbf{A}^\top \mathbf{x}
 \end{align*}$$
+:::
 
 정의를 보면 $\mathbf{x}$와 $\mathbf{y}$가 서로 얽혀있다. 이대로면 곧바로 계산은 힘들기에 다음과 같은 고유값 방정식 형태로 고칠 수 있다.
 

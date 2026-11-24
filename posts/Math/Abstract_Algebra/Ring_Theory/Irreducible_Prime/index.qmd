@@ -1,4 +1,4 @@
----
+﻿---
 title: "Irreducible and Prime Elements"
 author: "Youmin Chun"
 date: "2026-11-04 00:00:01"
@@ -9,6 +9,7 @@ categories:
 
 # Associates
 ## Definition 1
+::: {.math-box}
 Let $R$ be a commutative ring with identity, and let $a, b \in R$.
 
 **(i)** If $b = ac$ for some $c \in R$, then we say that $a$ ***divides*** $b$, denoted by $a \vert b$. In this case, $a$ is called a ***factor*** (or ***divisor***) of $b$, and $b$ is called a ***multiple*** of $a$.
@@ -16,10 +17,12 @@ Let $R$ be a commutative ring with identity, and let $a, b \in R$.
 **(ii)** $a$ and $b$ are called ***associates*** in $R$ if $a \vert b$ and $b \vert a$.
 
 **(iii)** $a$ and $b$ are called ***strongly associates*** in $R$ if $a = bu$ for some unit $u$ of $R$.
+:::
 
 환에서는 곱셈이 정의되기에 정수론과 비슷한 센스로 약수, 배수와 같은 개념을 정의할 수 있다. 특별히 두 원소가 서로를 나누는 관계에 있는 경우 **associates**, 특별히 단위원에 대해서 관계가 있다면 **strongly associates**라고 부른다. 일반적으로 strongly associates이면 associate이지만, 역은 성립하지 않는다. 역 또한 성립하기 위해서는 주어진 환 $R$이 정역(Integral Domain)이면 가능함이 아래 Remark에 서술되어 있다. 
 
 ## Remark 1
+::: {.math-box}
 Let $R$ be a commutative ring with identity, and let $a, b \in R$.
 
 **(i)** $b \vert a \iff (a) \subset (b)$.
@@ -43,6 +46,7 @@ is an equivalence relation on $R$.
 **(vi)** If $R$ is an integral domain, then $a \sim b \iff a \approx b$.
 
 **(vii)** Let $c$ be an irreducible element of an integral domain $D$. If $c$ and $d$ are associates in $D$, then $d$ is also an irreducible element of $D$.
+:::
 
 Divisible의 관계와 ideal의 포함 관계가 반대라고 생각하면 외우기 편하다. 나아가 $a$와 $b$가 associates라는 말은 두 원소가 생성하는 아이디얼 $(a)$와 $(b)$가 서로 같음을 의미한다.
 
@@ -87,15 +91,18 @@ If $a \sim b$, then $a \vert b$ and $b \vert a$, so $a = bc$ and $b = ad$ for so
 
 # Irreducible, Prime
 ## Definition 2
+::: {.math-box}
 Let $R$ be a commutative ring with identity.
 
 **(i)** Let $c$ be a nonzero nonunit in $R$. Then $c$ called an ***irreducible element*** of $R$ if whenever $a, b \in R$ with $c = ab$, either $a$ or $b$ is a unit of $R$.
 
 **(ii)** Let $p$ be a nonzero nonunit in $R$. Then $p$ is called a ***prime element*** of $R$ if whenever $a, b \in R$ with $p \vert ab$, either $p \vert a$ or $p \vert b$.
+:::
 
 주의할 점은, **기약다항식(Irreducible Polynomial)**과 **기약원(Irreducible Element)**은 일반적으로 같은 개념이 아니다. 예를 들어 $\mathbb{Z}[x]$의 원소 $2x^2+2$를 생각해보면 이 다항식은 $\mathbb{Z}$에서 영점을 갖지 않으므로 $\mathbb{Z}[x]$의 기약다항식은 맞지만 $2x^2+2 = 2(x^2+1)$과 같이 $\mathbb{Z}[x]$의 단위원이 아닌 두 원소로 인수분해되므로 기약원은 아니다. 이는 $\mathbb{Z}$의 모든 원소가 단위원이 아니므로, 다시 말해 $\mathbb{Z}$가 체가 아니므로 생기는 일이다. 즉 다항식환에서는 기약원이면 기약다항식이 되지만 역은 성립하지 않으므로 기약다항식이 더 넓은 개념이라고 할 수 있겠다. 따라서 두 개념이 같아지는 조건으로는 다항식환 $R[x]$에서 $R$이 체가 되면 기약다항식과 기약원은 동일한 개념으로 볼 수 있다.
 
 ## Theorem 1
+::: {.math-box}
 Let $D$ be an integral domain, and let $c$ and $p$ be nonzero elements in $D$.
 
 **(i)** $c$ is an irreducible element in $D$ $\iff$ $(c)$ is an ideal of $D$ which is maximal among all proper principal ideals of $D$.
@@ -103,6 +110,7 @@ Let $D$ be an integral domain, and let $c$ and $p$ be nonzero elements in $D$.
 **(ii)** $p$ is a prime element in $D$ $\iff$ $(p)$ is a nonzero prime ideal of $D$.
 
 **(iii)** Every prime element in $D$ is irreducible in $D$. However, the converse does not hold in general.
+:::
 
 $D$가 PID라는 보장이 없으면 주아이디얼이 아닌 아이디얼도 존재할 수 있으므로 **(i)**에서 바로 극대 아이디얼이라고 보장할 수는 없다. 거꾸로 PID이면 극대 아이디얼이라는 따름정리가 바로 튀어나온다.
 

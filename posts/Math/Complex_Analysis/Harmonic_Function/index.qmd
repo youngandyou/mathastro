@@ -1,4 +1,4 @@
----
+﻿---
 title: "Harmonic Function"
 author: "Youmin Chun"
 date: "2026-11-10 00:00:01"
@@ -9,6 +9,7 @@ categories:
 
 # Harmonic Function
 ## Definition 1
+::: {.math-box}
 **(i)** For a domain $D \subset \mathbb{R}^2$, a function $H: D \to \mathbb{R}$ is said to be ***harmonic*** in $D$ if $H \in C^2(D)$ and it satisfies ***Laplace's equation***
 
 $$\Delta H = H_{xx} + H_{yy} = 0$$
@@ -18,10 +19,12 @@ $$\Delta H = H_{xx} + H_{yy} = 0$$
 $$u_x = v_y \quad \text{and} \quad u_y = -v_x$$
 
 in $D$. Then $v$ is said to be a ***harmonic conjugate*** of $u$.
+:::
 
 쉽게 말해 라플라스 방정식의 해를 조화함수라고 부른다. 특별히 아래 정리에서 볼 수 있는 것처럼 해석함수의 실수부와 허수부 함수는 모두 조화함수이다. 한편 해석함수는 코시-리만 방정식을 항상 만족하는데, 코시-리만 방정식의 형태가 일종의 켤레 관계에 있는 것처럼 볼 수 있기에 조화함수이면서 코시-리만 방정식을 만족하는 두 함수의 관계를 ***harmonic conjugate***라고 부른다. 이때 코시-리만 방정식의 형태에 맞도록 $u$와 $v$의 순서를 정해주어야 하고, 일반적으로 harmonic conjugate은 유일하지 않음을 주의하자.
 
 ## Theorem 1
+::: {.math-box}
 For a domain $D \subset \mathbb{C}$, let $f: D \to \mathbb{C}$ be a complex function. We denote $f(z) = u(x, y) + iv(x, y)$ for $z = x+ iy$.
 
 **(i)** Suppose that $f(z) = u(x, y) + i v(x, y)$ is analytic in $D$. Then $u$ and $v$ are harmonic in $D$.
@@ -29,6 +32,7 @@ For a domain $D \subset \mathbb{C}$, let $f: D \to \mathbb{C}$ be a complex func
 **(ii)** $f(z) = u(x, y) + iv(x, y)$ is analytic in $D$ $\iff$ $v$ is a harmonic conjugate of $u$.
 
 **(iii)** If a harmonic function $u(x, y)$ is defined on a simply connected domain $D$, it always has a harmonic conjugate $v(x, y)$ in $D$.
+:::
 
 ### Proof
 **(i)** Since $f$ is analytic in $D$, the all order partial derivatives of $u$ and $v$ exist and continuous. By the Cauchy-Riemann equation 
@@ -52,6 +56,7 @@ Since $v_{yx} = v_{xy}$, we have $\Delta u = u_{xx} + u_{yy} = 0$. Similarly, we
 $(\impliedby)$ Suppose that $v$ is a harmonic conjugate of $u$. Then $u$ and $v$ are harmonic in $D$ and they satisfy the Cauchy-Riemann equation in $D$. It follows that $f(z) = u(x, y) + iv(x, y)$ is analytic in $D$. $\blacksquare$
 
 ## Example 1
+::: {.math-box}
 **(i)** Note that $f(z) = z^2$ is entire and if we write $z = x+iy$ and $u(x, y) = x^2 - y^2, v(x, y) = 2xy$, then $f(z) = x^2 - y^2 + i(2xy)$ and $v$ is a harmonic conjugate of $u$. However, $u$ is not a harmonic conjugate of $v$, because $g(z) = 2xy + i(x^2 - y^2)$ satisfies the Cauchy-Riemann equation only at the origin, so it is not analytic anywhere.
 
 **(ii)** Note that $u(x, y) = 2x(1-y)$ is harmonic in $\mathbb{R}^2$. To find a harmonic conjugate $v$ of $u$, we solve the Cauchy-Riemann equation:
@@ -62,11 +67,13 @@ v_x = -u_y = 2x
 \end{cases}$$
 
 Then we obtain $v(x, y) = x^2 + 2y - y^2 + C$ for an arbitrary real constant $C$.
+:::
 
 # Transformations
 어떤 라플라스 방정식 $\Delta u = 0$이 적당한 경계조건과 함께 주어졌다고 하자. 즉 $u(x, y)$는 조화함수이다. 이때 정리 1 **(iii)**에서 본 바와 같이 정의역이 단순 연결 영역으로 주어진다면 항상 조화함수 $u(x, y)$의 conjugate $v(x, y)$를 찾을 수 있고, 이를 통해 해석함수 $f(z) = u(x, y) + iv(x, y)$를 구성할 수 있다. 이를 통해 복소해석학의 여러 툴들을 사용할 수 있고, 특별히 다루기 까다로운 정의역을 등각사상과 같은 변환들을 통해 다루기 편한 영역으로 바꿀 수 있다는 점에서 복소해석학은 편미분방정식을 푸는데 좋은 도구가 될 수 있다.
 
 ## Theorem 2
+::: {.math-box}
 **(i)** Suppose that
 
 1. an analytic function $w = f(z) = u(x, y) + i v(x, y)$ maps a domain $D_z$ in the $z$ plane onto a domain $D_w$ in the $w$ plane.
@@ -90,6 +97,7 @@ Then the function $H(x, y) = h[u(x, y), v(x, y)]$ satisfies the corresponding co
 $$H = h_0 \quad \text{or} \quad \frac{dH}{dN} = 0$$
 
 on points on $C$, where $\frac{dH}{dN}$ denotes directional derivatives of $H$ normal to $C$.
+:::
 
 위 두 정리를 종합하면 등각사상 $w = f(z)$는 기존 라플라스 방정식을 그대로 유지하고 경계조건 또한 그대로 보존한 채 정의역을 옮길 수 있다는 결론을 얻는다. 따라서 영역을 등각사상으로 바꿔 놓고 솔루션 $h$를 찾고 다시 원래 영역으로 돌아가는 풀이를 사용할 수 있다.
 
@@ -115,6 +123,7 @@ Note that the level curve $h(u, v) = c$ is orthogonal to the gradient $\nabla h$
 
 # Dirichlet Problem
 ## Theorem 3
+::: {.math-box}
 Let $F$ be a piecewise continuous function of $\theta$ on the interval $0 \le \theta \le 2\pi$. The ***Poisson integral transform*** of $F$ is defined in terms of the [Poisson kernel](../Poisson_Integral_Formula/index.qmd#sec-theorem-2) $P(r_0, r, \phi - \theta)$ by means of the equation
 
 $$U(r, \theta) = \frac{1}{2\pi} \int_0^{2\pi} P(r_0, r, \phi - \theta) F(\phi) d\phi \quad (r < r_0).$$
@@ -126,6 +135,7 @@ $$U(r, \theta) = \frac{1}{2\pi} \int_0^{2\pi} P(r_0, r, \phi - \theta) F(\phi) d
 **(iii)** $\displaystyle U(0, \theta) = \frac{1}{2\pi} \int_0^{2\pi} F(\phi) d\phi$; Hence, the value of a harmonic function $U(r, \theta)$ ate the center of the circle $r = r_0$ is the average of the boundary values on the circle. 
 
 Thus, $U$ is a solution of the Dirichlet problem for the disk $r < r_0$ in the sense that $U(r, \theta)$ is harmonic and approches the boundary value $F(\theta)$ as the point $(r, \theta)$ aproaches $(r_0, \theta)$ along a radius, except at the finite number of points $(r_0, \theta)$ where discontinuous of $F$ may occur.
+:::
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
 **(i)** Since $F$ is piecewise continuous, there are the discontinuous points $0 = \phi_0 < \phi_1 < \cdots < \phi_n = 2\pi$ such that
@@ -265,6 +275,138 @@ $$V(x, y) = \frac{1}{\pi} \arctan \left( \frac{1 - x^2 - y^2}{2y} \right) \quad 
 ![](sol.png)
 
 즉 높은 전위에서 낮은 전위의 방향으로 전기력이 가해지고, 물리적 직관과도 일치함을 알 수 있다.
+
+# Newmann Problem
+
+# Further Examples
+Let $F(\theta)$ be a piecewise continuous function.
+
+**(i)** Let $f(\theta)$ be a piecewise continuous function on $0 < \theta < \pi$, and let $D^+ := \{ re^{i\theta} \in \mathbb{C} \mid 0 < r < r_0, 0 < \theta < \pi \}$ be the semicircular region. Solve the Dirichlet problem
+
+$$\begin{cases}
+\Delta U(r, \theta) = 0 & \text{in } D^+ \\
+U(r, \theta) = 0 & 0 \le r < r_0, \theta \in \{ 0, \pi \} \\
+\lim_{r \to r_0^-} U(r, \theta) = f(\theta) & \text{for each fixed } \theta \in (0, \pi) \text{ at which } f \text{ is continuous}
+\end{cases}.$$
+
+::: {.callout-note title="Solution" icon=false collapse="true"}
+문제의 정의역은 원 전체가 아닌 반원으로 주어졌다. 우리는 정의역을 원 전체로 확장해준 뒤 푸아송 적분 공식을 이용해 해를 구하고, 이를 다시 원래 정의역에서도 해가 되도록 변형해 주려고 한다.
+
+현재 $f(\theta)$는 $0 < \theta < \pi$에서 정의되어 있는데, 푸아송 적분 공식을 사용할 수 있도록 새로운 함수 $F$를 다음과 같이 정의하자.
+
+$$F(\theta) = \begin{cases}
+f(\theta) & 0 < \theta < \pi \\
+-f(2\pi - \theta) & \pi < \theta < 2\pi \\
+0 & \theta \in \{ 0, \pi, 2\pi \}
+\end{cases}$$
+
+그러면 $F$는 $[0, 2\pi]$에서 $F(2\pi - \theta) = - F(\theta)$를 만족하는 piecewise continuous function이 된다. 따라서 정리 3에 의해
+
+$$U(r, \theta) = \frac{1}{2\pi} \int_0^{2\pi} P(r_0, r, \phi - \theta) F(\phi) d\phi$$
+
+로 주어지고, $U$는 원 $|z| < r_0$ 내부에서 라플라스 방정식 $\Delta U = 0$과 경계조건 $\displaystyle \lim_{r \to r_0^-} U(r, \theta) = F(\theta)$을 만족한다.
+
+한편 $\phi = 2\pi - \psi$과 같이 치환하고 위 식을 정리하면 다음의 결과를 얻는다.
+
+$$\begin{align*}
+U(r, \theta) &= \frac{1}{2\pi} \int_0^{2\pi} P(r_0, r, \phi - \theta) F(\phi) d\phi \\
+&= \frac{1}{2\pi} \int_0^{\pi} P(r_0, r, \phi - \theta) F(\phi) d\phi + \frac{1}{2\pi} \int_\pi^{2\pi} P(r_0, r, \phi - \theta) F(\phi) d\phi \\
+&= \frac{1}{2\pi} \int_0^{\pi} P(r_0, r, \phi - \theta) F(\phi) d\phi - \frac{1}{2\pi} \int_\pi^{0} P(r_0, r, 2\pi - (\psi + \theta)) F(2\pi - \psi) d\psi \\
+&= \frac{1}{2\pi} \int_0^{\pi} P(r_0, r, \phi - \theta) F(\phi) d\phi - \frac{1}{2\pi} \int_0^{\pi} P(r_0, r, \psi + \theta) F(\psi) d\psi \\
+&= \frac{1}{2\pi} \int_0^{\pi} \left[ P(r_0, r, \phi - \theta) - P(r_0, r, \phi + \theta) \right] F(\phi) d\phi
+\end{align*}$$
+
+이때 $r < r_0$를 만족하는 모든 $r$에 대해서 $U(r, 0) = 0 = U(r, \pi)$를 만족하고, $0 < \theta < \pi$에서 $F(\theta) = f(\theta)$이므로 우리가 구한 $U(r, \theta)$가 원래 문제의 해가 됨을 알 수 있다.
+:::
+
+**(ii)** Let $f(\theta)$ be a piecewise continuous function on $0 < \theta < \pi$, and let $D^+ := \{ re^{i\theta} \in \mathbb{C} \mid 0 < r < r_0, 0 < \theta < \pi \}$ be the semicircular region. Solve the boundary value problem
+
+$$\begin{cases}
+\Delta U(r, \theta) = 0 & \text{in } D^+ \\
+U_{\theta}(r, \theta) = 0 & 0 \le r < r_0, \theta \in \{ 0, \pi \} \\
+\lim_{r \to r_0^-} U(r, \theta) = f(\theta) & \text{for each fixed } \theta \in (0, \pi) \text{ at which } f \text{ is continuous}
+\end{cases}.$$
+
+::: {.callout-note title="Solution" icon=false collapse="true"}
+1번과 마찬가지의 방법으로 풀어주면 된다. 새로운 함수 $F$를 다음과 같이 정의하자.
+
+$$F(\theta) = \begin{cases}
+f(\theta) & 0 < \theta < \pi \\
+f(2\pi - \theta) & \pi < \theta < 2\pi \\
+0 & \theta \in \{ 0, \pi, 2\pi \}
+\end{cases}$$
+
+그러면 $F$는 $[0, 2\pi]$에서 $F(2\pi - \theta) = F(\theta)$를 만족하는 piecewise continuous function이 된다. 따라서 정리 3에 의해
+
+$$U(r, \theta) = \frac{1}{2\pi} \int_0^{2\pi} P(r_0, r, \phi - \theta) F(\phi) d\phi$$
+
+로 주어지고, $U$는 원 $|z| < r_0$ 내부에서 라플라스 방정식 $\Delta U = 0$과 경계조건 $\displaystyle \lim_{r \to r_0^-} U(r, \theta) = F(\theta)$을 만족한다.
+
+한편 $\phi = 2\pi - \psi$과 같이 치환하고 위 식을 정리하면 다음의 결과를 얻는다.
+
+$$\begin{align*}
+U(r, \theta) &= \frac{1}{2\pi} \int_0^{2\pi} P(r_0, r, \phi - \theta) F(\phi) d\phi \\
+&= \frac{1}{2\pi} \int_0^{\pi} P(r_0, r, \phi - \theta) F(\phi) d\phi + \frac{1}{2\pi} \int_\pi^{2\pi} P(r_0, r, \phi - \theta) F(\phi) d\phi \\
+&= \frac{1}{2\pi} \int_0^{\pi} P(r_0, r, \phi - \theta) F(\phi) d\phi + \frac{1}{2\pi} \int_\pi^{0} P(r_0, r, 2\pi - (\psi + \theta)) F(2\pi - \psi) d\psi \\
+&= \frac{1}{2\pi} \int_0^{\pi} P(r_0, r, \phi - \theta) F(\phi) d\phi + \frac{1}{2\pi} \int_0^{\pi} P(r_0, r, \psi + \theta) F(\psi) d\psi \\
+&= \frac{1}{2\pi} \int_0^{\pi} \left[ P(r_0, r, \phi - \theta) + P(r_0, r, \phi + \theta) \right] F(\phi) d\phi
+\end{align*}$$
+
+마지막 결과를 $\theta$에 대해서 미분하면 다음과 같다.
+
+$$U_\theta(r, \theta) = \frac{1}{2\pi} \int_0^{\pi} \left[ -P_\theta(r_0, r, \phi - \theta) + P_\theta(r_0, r, \phi + \theta) \right] F(\phi) d\phi$$
+
+따라서 $r < r_0$를 만족하는 모든 $r$에 대해서 $U_\theta(r, 0) = 0 = U_\theta(r, \pi)$를 만족하고, $0 < \theta < \pi$에서 $F(\theta) = f(\theta)$이므로 우리가 구한 $U(r, \theta)$가 원래 문제의 해가 됨을 알 수 있다.
+:::
+
+**(iii)** Let $f(\theta)$ be a piecewise continuous function on $0 \le \theta \le 2\pi$, and let $E := \{ z \in \mathbb{C} \mid |z| > r_0 \}$. Solve the Dirichlet problem
+
+$$\begin{cases}
+\Delta H(r, \theta) = 0 & \text{in } E \\
+\lim_{r \to r_0^+} H(r, \theta) = f(\theta) & \text{for each fixed } \theta \text{ at which } f \text{ is continuous}
+\end{cases}.$$
+
+::: {.callout-note title="Solution" icon=false collapse="true"}
+이 문제에서는 정의역이 원판 $|z| < r_0$의 외부이므로, 원판 외부를 내부로 매핑해주는 변환을 통해 정의역을 바꿔줄 필요가 있다. 특별히 함수 $w = \frac{r_0^2}{z}$은 $|z| > r_0$를 만족하는 모든 $z$에 대해서 
+
+$$|w| = \left \vert \frac{r_0^2}{z} \right \vert = |r_0| \frac{|r_0|}{|z|} < |r_0|$$
+
+를 만족하므로 정의역 $E$를 원판 $D = \{ w \in \mathbb{C} \mid |w| < r_0 \}$로 매핑함을 알 수 있다. 또한 $w = \rho e^{i\psi}, z = re^{i \theta}$로 쓰면
+
+$$\rho e^{i \psi} = w = \frac{r_0^2}{z} = \frac{r_0^2}{r}e^{-i\theta}$$
+
+이므로 $\displaystyle \rho = \frac{r_0^2}{r}, \psi = 2\pi - \theta$를 얻는다. $\psi = -\theta$가 아닌 이유는 $\theta$의 범위가 $[0, 2\pi]$이고, $\psi$ 또한 동일한 범위로 잡아주기 위함이다. 이를 이용하여 새로운 함수 $F$를 $F(\theta) = f(2\pi - \theta)$로 정의하자.
+
+이제 이 영역에서 정리 3을 사용하면
+
+$$U(\rho, \psi) = \frac{1}{2\pi} \int_0^{2\pi} P(r_0, \rho, \phi - \psi) F(\phi) d\phi$$
+
+을 얻고, $U$는 원 $|w| = \rho < r_0$ 내부에서 라플라스 방정식 $\Delta U = 0$과 경계조건 $\displaystyle \lim_{\rho \to r_0^-} U(\rho, \psi) = F(\psi)$를 만족한다.
+
+한편 
+
+$$\begin{align*}
+U(\rho, \psi) &= U \left( \frac{r_0^2}{r}, 2\pi - \theta \right) \\
+&= \frac{1}{2\pi} \int_0^{2\pi} P(r_0, \rho, \phi - \psi) F(\phi) d\phi \\
+&= \frac{1}{2\pi} \int_0^{2\pi} P \left(r_0, \frac{r_0^2}{r}, \phi + \theta - 2\pi \right) F(\phi) d\phi \\
+&= \frac{1}{2\pi} \int_0^{2\pi} P \left(r_0, \frac{r_0^2}{r}, \phi + \theta \right) F(\phi) d\phi
+\end{align*}$$
+
+이고, $P \left(r_0, \frac{r_0^2}{r}, \phi + \theta \right)$을 정리하면 다음과 같다.
+
+$$\begin{align*}
+P \left(r_0, \frac{r_0^2}{r}, \phi + \theta \right) &= \frac{r_0^2 - \left( \frac{r_0^2}{r} \right)^2}{r_0^2 - 2r_0 \frac{r_0^2}{r} \cos(\phi + \theta) + \left( \frac{r_0^2}{r} \right)^2} \\
+&= \frac{1 - \frac{r_0^2}{r^2}}{1 - 2\frac{r_0}{r} \cos(\phi + \theta) + \frac{r_0^2}{r^2}} \\
+&= \frac{r^2 - r_0^2}{r^2 - 2r_0r \cos(\phi + \theta) + r_0^2} \\
+&= - P(r_0, r, \phi + \theta)
+\end{align*}$$
+
+따라서
+
+$$U(\rho, \psi) = -\frac{1}{2\pi} \int_0^{2\pi} P(r_0, r, \phi + \theta) F(\phi) d\phi =: H(r, \theta)$$
+
+라고 두면 함수 $H$는 $r > r_0$에서 $\Delta H = 0$을 만족하고, $\frac{r_0^2}{r} = \rho \to r_0^-$일 때 $r \to r_0^+$이므로 경계조건 $\displaystyle \lim_{r \to r_0^+} H(r, \theta) = F(\psi) = f(2\pi - \psi) = f(\theta)$를 만족한다. 따라서 $H$는 기존 문제의 해가 된다.
+:::
 
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

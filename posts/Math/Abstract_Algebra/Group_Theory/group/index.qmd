@@ -1,4 +1,4 @@
----
+﻿---
 title: "Group"
 author: "Youmin Chun"
 date: "2026-06-25 00:00:03"
@@ -8,6 +8,7 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 **(i)** A ***group*** $\langle G, \ast \rangle$ is a binary algebraic structure which satisfies the following conditions:
 
 - $(a \ast b) \ast c = a \ast (b \ast c), \forall a, b, c \in G$.
@@ -17,8 +18,10 @@ categories:
 - $\forall a \in G$, $\exists b \in G$ such that $a \ast b = e = b \ast a$.
 
 **(ii)** A group $\langle G, \ast \rangle$ is called an ***abelian group*** if $\ast$ is commutative.
+:::
 
 ## Example
+::: {.math-box}
 **(i)** $\langle \mathbb{Z}, + \rangle, \langle \mathbb{Q}, + \rangle$, and $\langle \mathbb{R}, + \rangle$ are abelian groups.
 
 **(ii)** $\langle \mathbb{Q}^{\ast}, \cdot \rangle$ and $\langle \mathbb{R}^{\ast}, \cdot \rangle$ are abelian groups.
@@ -26,6 +29,7 @@ categories:
 **(iii)** $\langle \mathbb{R}^{m \times n}, + \rangle$ is an abelian group.
 
 **(iv)** $\langle GL(n, \mathbb{R}), \cdot \rangle$ and $\langle SL(n, \mathbb{R}), \cdot \rangle$ are not abelian groups.
+:::
 
 ## Remark 1
 정수군 $\langle \mathbb{Z}, + \rangle$에서 정의된 일차방정식 $5 + x = 2$은 군의 정의에 의해 다음과 같이 풀 수 있다.

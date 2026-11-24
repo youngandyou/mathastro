@@ -1,4 +1,4 @@
----
+﻿---
 title: "Katz Centrality"
 author: "Youmin Chun"
 date: "2026-08-18"
@@ -20,6 +20,7 @@ categories:
 $A$야 out-degree만 가지므로 그러려니 하겠지만, $B$의 경우 $1$의 in-degree를 가지지만 $A$에서 들어오는 에지이고, $A$는 $0$의 고유벡터 중심성을 가지므로 $B$ 또한 $0$의 고유벡터 중심성을 가진다. 이러한 직관에 반하는 예시가 존재하므로 유향그래프의 경우 고유벡터 중심성만으로는 충분하지 않음을 알 수 있고, 이는 새로운 중심성을 정의해야 함을 시사한다.
 
 ## Definition
+::: {.math-box}
 Let $G$ be a network, and let $\mathbf{A}$ be the adjacency matrix of $G$. The ***Katz centrality*** $x_i$ of a vertex $i$ is defined as
 
 $$x_i = \alpha \sum_j A_{ij} x_j + \beta$$
@@ -27,6 +28,7 @@ $$x_i = \alpha \sum_j A_{ij} x_j + \beta$$
 for some nonnegative constants $\alpha$ and $\beta$. In matrix form,
 
 $$\mathbf{x} = \alpha \mathbf{A} \mathbf{x} + \beta \mathbf{1}$$
+:::
 
 $\alpha = 1, \beta = 0$으로 두었을 경우 카츠 중심성은 고유벡터 중심성과 같은 값을 가진다. 식을 자세히 보면 $\beta$는 모든 노드들에 부여되는 기본값을 의미하고, $\alpha$는 고유벡터 중심성 $\sum_j A_{ij}x_j$ 항에 붙는 가중치를 의미한다. 위에서 살펴본 예시를 고려했을 때, 카츠 중심성은 고유벡터 중심성의 자연스러운 확장이라고 할 수 있다. 카츠 중심성을 사용하면 유향그래프에서도 의미있는 중심성을 정의할 수 있게 된다.
 

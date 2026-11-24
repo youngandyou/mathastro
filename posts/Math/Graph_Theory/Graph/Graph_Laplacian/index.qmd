@@ -1,4 +1,4 @@
----
+﻿---
 title: "Graph Laplacian"
 author: "Youmin Chun"
 date: "2026-08-10"
@@ -8,6 +8,7 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 Let $G$ be a graph, and let $\mathbf{D}$ and $\mathbf{A}$ be the degree matrix and adjacency matrix of $G$ respectively. Then the ***graph Laplacian*** of $G$ is the $n \times n$ matrix $\mathbf{L}$ given by
 
 $$\mathbf{L} = \mathbf{D} - \mathbf{A}.$$
@@ -21,6 +22,7 @@ or
 $$L_{ij} = \delta_{ij} d_i - A_{ij}$$
 
 where $\delta_{ij}$ is the Kronecker-delta.
+:::
 
 함수 $f: \mathbb{R}^n \to \mathbb{R}$에 대해 정의되는 라플라시안 연산자 $\Delta$는 주어진 함수가 어떤 점에서 주변 값들과 차이가 얼마나 나는지 알려주는 척도로 해석할 수 있다. 편의를 위해 $f: \mathbb{R} \to \mathbb{R}$로 생각해 봤을 때 라플라시안 연산자는 단순히 이계도함수 $f''(x)$에 해당한다. 
 
@@ -91,11 +93,13 @@ $$B_{ij} = \begin{cases} +1 & \text{if end 1 of } e_i \text{ is attached to } v_
 각 에지의 양 끝에 $1$번, $2$번이라고 이름을 붙혀서 구분하자는 것인데, 써놨듯이 그냥 아무렇게나 붙이면 된다. 사실 정의처럼 써놓긴 했지만 잘 정의된 개념은 아닌데, 다음의 정리를 증명하기 위한 중간 과정에 불과하기 때문이다.
 
 ## Theorem 1
+::: {.math-box}
 Let $\mathbf{L}$ be the graph Laplacian of a graph $G$. Then we have:
 
 **(i)** $\mathbf{L}$ is positive semi-definite, i.e., each eigenvalue of $\mathbf{L}$ is nonnegative.
 
 **(ii)** $\mathbf{L}$ has at least one zero eigenvalue; that is, $\mathbf{L}$ is not invertible.
+:::
 
 ### Proof
 **(i)** Let $\mathbf{B}$ be the edge-incidence matrix of $G$. We claim that $\mathbf{L} = \mathbf{B}^\top\mathbf{B}$, that is, $L_{ij} = \sum_k B_{ki} B_{kj}$.
@@ -129,11 +133,13 @@ which implies that $\mathbf{L} \mathbf{1} = \mathbf{0} = 0 \cdot \mathbf{1}$. Th
 증명에서 (i)의 claim 부분을 보면 알겠지만, 에지의 양 끝을 어떤 방식으로 이름을 붙이던간에 어차피 우리가 관심있는 값은 $B_{ki}$와 $B_{kj}$의 곱, 혹은 제곱이기 때문에 항상 일정한 값이 나오게 된다. 따라서 $\mathbf{L} = \mathbf{B}^\top\mathbf{B}$라는 결론을 이끌어 내기 위해서 어떤 방식으로 edge-incidence matrix를 정의하던지 상관이 없게 된다.
 
 ## Theorem 2
+::: {.math-box}
 Let $G$ be a graph which is divided up into $c$ different components of sizes $n_1, n_2, \cdots, n_c$, and let $\mathbf{L}$ be the graph Laplacian of $G$.
 
 **(i)** $\mathbf{L}$ has exactly $c$ zero eigenvalues.
 
 **(ii)** Let $0 = \lambda_1 \le \lambda_2 \le \cdots \le \lambda_n$ be the eigenvalues of $\mathbf{L}$ in increasing order. Then the second eigenvalue $\lambda_2$, called ***algebraic connectivity*** of $G$, is nonzero $\iff$ the graph $G$ is connected, i.e., it consists of a single component.
+:::
 
 ### Proof
 **(i)** For convinience, let us number the vertices of the graph so that  the first $n_1$ vertices are those of the first component, the next $n_2$ are those of the second component, and so forth. With this choice the Laplacian of the network will be block diagonal, looking something like this:

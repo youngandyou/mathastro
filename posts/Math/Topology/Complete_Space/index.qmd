@@ -1,4 +1,4 @@
----
+﻿---
 title: "Complete Metric Space"
 author: "Youmin Chun"
 date: "2026-10-29 00:00:01"
@@ -9,16 +9,20 @@ categories:
 
 # Complete Space
 ## Definition 1
+::: {.math-box}
 Let $(X, d)$ be a metric space.
 
 **(i)** A sequence $\{ x_n \}$ in $X$ is called a ***Cauchy sequence*** in $(X, d)$ if $\forall \varepsilon > 0, \exists N \in \mathbb{N}$ such that $d(x_n, x_m) < \varepsilon, \forall n, m \ge N$.
 
 **(ii)** $(X, d)$ is said to be ***complete*** if every Cauchy sequence in $X$ converges.
+:::
 
 수렴하면 코시 수열이지만, 역은 항상 성립하지는 않는다. 즉 어떤 공간 안에서 코시 수열일지라도 수렴값이 항상 그 공간에 속하리란 보장은 없다. 이를 허용해주어서 코시 수열과 수렴성이 동치가 되는 공간을 ***완비 공간(Complete Space)***이라고 부른다.
 
 ## Remark
+::: {.math-box}
 **(i)** Every convergent sequence in $X$ is a Cauchy sequence. However, the converse does not hold in general.
+:::
 
 ::: {.callout-note title="Example" collapse="true" icon=false}
 1. The sequence $x_n = \left( 1 + \frac{1}{n} \right)^n$ is a Cauchy sequence in $(\mathbb{Q}, d_{\text{Euclidean}})$ but it does not converge in $(\mathbb{Q}, d_{\text{Euclidean}})$.
@@ -56,11 +60,13 @@ It also implies that $\lim_{n \to \infty} \arctan n = \arctan x$ in $(\mathbb{R}
 :::
 
 ## Theorem 1
+::: {.math-box}
 Let $(X, d)$ be a metric space.
 
 **(i)** Every closed subset of a complete metric space if complete.
 
 **(ii)** $(X, d)$ is complete if every Cauchy sequence in $X$ has a convergent subsequence.
+:::
 
 ::: {.callout-note collapse="true" icon=false}
 ### Proof
@@ -74,6 +80,7 @@ Thus, $\lim_{n \to \infty} x_n = x$, and therefore $(X, d)$ is complete. $\black
 :::
 
 ## Theorem 2
+::: {.math-box}
 **(i)** $(\mathbb{R}^n, d_{\text{Euclidean}}), (\mathbb{R}^n, d_{\text{square}}), (\mathbb{R}^n, d_{\text{taxicab}})$ are complete.
 
 **(ii)** Define $D: \mathbb{R}^\omega \times \mathbb{R}^\omega \to \mathbb{R}$ by the equation
@@ -83,6 +90,7 @@ $$D(\mathbf{x}, \mathbf{y}) = \sup_{n \in \mathbb{N}} \left\{ \frac{\overline{d}
 where $\overline{d}$ is the standard bounded metric on $\mathbb{R}$. Then $D$ is a metric that induces the product topology on $\mathbb{R}^\omega$.
 
 **(iii)** $(\mathbb{R}^\omega, D)$ is complete.
+:::
 
 ::: {.callout-note collapse="true" icon=false}
 ### Proof
@@ -180,6 +188,7 @@ which means that $\mathbf{x}_n \to \mathbf{a}$. Hence, $(\mathbb{R}^\omega, D)$ 
 
 # Rleated Metrics
 ## Theorem 3
+::: {.math-box}
 **(i)** Let $(X, d)$ be a metric space. Define $\overline{d}: X \times X \to \mathbb{R}$ by the equation
 
 $$\overline{d}(x, y) = \min \{ d(x, y), 1\}.$$
@@ -193,6 +202,7 @@ Then $\overline{d}$ is a metric that induces the same topology as $d$, and we ca
 **(iv)** A sequence $\{ x_n \}$ converges under $(X, d)$ $\iff $ $\{ x_n \}$ converges under $(X, \overline{d})$.
 
 **(v)** $(X, d)$ is complete $\iff$ $(X, \overline{d})$ is complete.
+:::
 
 ::: {.callout-note collapse="true" icon=false}
 ### Proof
@@ -249,6 +259,7 @@ Since $\overline{d}(x_n, x_m) < 1$, we obtain that $d(x_n, x_m) = \overline{d}(x
 :::
 
 ## Theorem 4
+::: {.math-box}
 **(i)** Let $(X, d)$ be a metric space, and let $J$ be an index set. Let $\overline{d}$ be the standard bounded metric corresponding to $d$. Define define $\overline{\rho}: X^J \times X^J \to \mathbb{R}$ by the equation
 
 $$\overline{\rho}(f, g) = \sup_{\alpha \in J} \overline{d}(f(\alpha), g(\alpha)),$$
@@ -258,6 +269,7 @@ for all $f, g \in X^J$. Then $\overline{\rho}$ is a metric on $X^J$, which is ca
 **(ii)** If $(X, d)$ is complete, then $(X^J, \overline{\rho})$ is complete. 
 
 **(iii)** Let $X$ be a space and let $(Y, d)$ be a metric space. Then $C(X, Y)$ and $B(X, Y)$ are closed in $(Y^X, \overline{\rho})$. If $(Y, d)$ is complete, then $C(X, Y)$ and $B(X, Y)$ are complete in $(Y^X, \overline{\rho})$.
+:::
 
 ::: {.callout-note collapse="true" icon=false}
 ### Proof

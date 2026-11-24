@@ -1,4 +1,4 @@
----
+﻿---
 title: "Closed Set"
 author: "Youmin Chun"
 date: "2026-07-10 00:00:03"
@@ -8,13 +8,16 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 Let $X$ be a topological space and let $Y$ be a subspace of $X$. 
 
 **(i)** A subset $A \subset X$ is said to be ***closed*** in $X$ if $X - A$ is open in $X$. 
 
 **(ii)** A subset $B \subset Y$ is said to be ***closed*** in $Y$ if $Y - B$ is open in $Y$. 
+:::
 
 ## Theorem 1
+::: {.math-box}
 Let $X$ be a topological space. Then the followings hold:
 
 **(i)** $\emptyset$ and $X$ are closed.
@@ -22,6 +25,7 @@ Let $X$ be a topological space. Then the followings hold:
 **(ii)** The intersection of any collection of closed sets is closed.
 
 **(iii)** The union of any finite collection of closed sets is closed.
+:::
 
 ### Proof
 
@@ -44,11 +48,13 @@ X - \bigcup_{i = 1}^n C_i & = \bigcap_{i = 1}^n (X - C_i).
 Since each $X - C_i$ is open, their finite intersection is open. Thus $\bigcup_{i = 1}^n C_i$ is closed. $\blacksquare$
 
 ## Theorem 2
+::: {.math-box}
 Let $Y$ be a subspace of a topological space $X$, and let $A \subset Y$.
 
 **(i)** $A$ is closed in $Y$ $\iff$ $A = Y \cap C$ for some closed set $C$ of $X$.
 
 **(ii)** If $A$ is closed in $Y$ and $Y$ is closed in $X$, then $A$ is closed in $X$.
+:::
 
 ### Proof
 
@@ -95,6 +101,7 @@ Since $X - Y$ and $X - C$ are open in $X$, their union is open in $X$. Thus $X -
 
 ## Example
 
+::: {.math-box}
 **(i)** Let $X = \mathbb{R}$ with the usual topology. The closed interval $[1, 2], (-\infty, 0], [2, \infty)$ are closed in $\mathbb{R}$ because, for example, $\mathbb{R} - [1, 2] = (-\infty, 1) \cup (2, \infty)$ is open in $\mathbb{R}$. 
 
 **(ii)** Let $X = \mathbb{R}^2$ with the usual topology. The region $R = \{ (x, y) \in \mathbb{R}^2 \mid x \ge 0 \} = \mathbb{R}^+ \times \mathbb{R}$ is closed in $\mathbb{R}^2$ because $\mathbb{R} - R = \mathbb{R}^- \times \mathbb{R}$ and $\mathbb{R}^-$ and $\mathbb{R}$ are open in $\mathbb{R}$. 
@@ -102,6 +109,7 @@ Since $X - Y$ and $X - C$ are open in $X$, their union is open in $X$. Thus $X -
 **(iii)** Let $\mathscr{T}_f$ be the cofinite topology on $X$. Then $\emptyset, X$ and all finite subsets of $X$ are closed in $X$. 
 
 **(iv)** Let $\mathscr{T}_d$ be the discrete topology on $X$. Then every subset of $X$ is closed in $X$. 
+:::
 
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Comb Space"
 author: "Youmin Chun"
 date: "2026-07-15 00:00:05"
@@ -8,6 +8,7 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 The subspace $C$ of the standard topology on $\mathbb{R}^2$, defined by 
 
 $$C = [0, 1] \times \{0\} \cup \left(\{ 0 \} \cup \left\{ \frac{1}{n} \mid n \in \mathbb{N} \right\} \right) \times [0, 1]$$
@@ -15,11 +16,14 @@ $$C = [0, 1] \times \{0\} \cup \left(\{ 0 \} \cup \left\{ \frac{1}{n} \mid n \in
 is called the ***comb space***.
 
 ![](comb1.png)
+:::
 
 생긴 모양이 마치 빗을 연상시킨다고 하여 ***빗공간***이라고 부른다. 보이는 바와 같이 경로 연결되어 있고, 따라서 연결되어 있다.
 
 ## Theorem
+::: {.math-box}
 The comb space $C$ is path connected, so $C$ is connected.
+:::
 
 ## Proof
 We denote 

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Kernel"
 author: "Youmin Chun"
 date: "2026-09:02 00:00:12"
@@ -8,12 +8,16 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 Let $\phi: G \to G'$ be a group homomorphism. The ***kernel*** $\mathrm{Ker}(\phi)$ of $\phi$ is a set $\mathrm{Ker}(\phi) = \phi^{-1}(\{ e_{G'} \}) = \{ a \in G \mid \phi(a) = e_{G'} \}$. 
+:::
 
 즉 $G'$의 identity로 mapping되는 원소들의 집합을 커널이라고 부른다. 한편 $\{ e_{G'} \} \le G'$이므로 $\mathrm{Ker}(\phi) = \phi^{-1}(\{ e_{G'} \}) \le G$가 성립한다. 즉 커널은 $G$의 부분군이다. 
 
 ## Theorem 1
+::: {.math-box}
 Let $\phi: G \to G'$ be a group homomorphism. Let $a \in G$ and $H := \mathrm{Ker}(\phi)$. Then $aH = \phi^{-1}(\{ \phi(a) \}) = Ha$. 
+:::
 
 다르게 표현하면, kernel은 항상 normal subgroup이라는 뜻이 된다.
 
@@ -40,7 +44,9 @@ $$\begin{align*}
 which means that $a^{-1}x \in H$. Thus, $x \in aH$, and therefore $aH = \phi^{-1}(\{ \phi(a) \})$. Similarly, we can show that $Ha = \phi^{-1}(\{ \phi(a) \})$. $\blacksquare$
 
 ## Theorem 2
+::: {.math-box}
 Let $\phi: G \to G'$ be a group homomorphism. Then $\phi$ is a monomorphism $\iff$ $\mathrm{Ker}(\phi) = \{ e_G \}$.
+:::
 
 ### Proof
 $(\Longrightarrow)$

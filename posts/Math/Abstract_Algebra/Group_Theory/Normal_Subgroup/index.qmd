@@ -1,4 +1,4 @@
----
+﻿---
 title: "Normal Subgroup"
 author: "Youmin Chun"
 date: "2026-09:02 00:00:11"
@@ -8,12 +8,16 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 Let $H$ be a subgroup of a group $G$. Then $H$ is called a ***normal subgroup*** of $G$ if $aH = Ha$ for all $a \in G$. If $H$ is normal in $G$, then we denoted by $H \lhd G$. 
+:::
 
 ## Remark
+::: {.math-box}
 **(i)** Let $\phi: G \to G'$ be a group homomorphism. Then $\ker(\phi) \lhd G$.
 
 **(ii)** Every subgroup of an abelian group is normal.
+:::
 
 ::: {.callout-note title="Proof" collapse="true" icon=false}
 $\big[(\because)$ Let $G$ be an abelian group and $H \le G$. Let $a \in G$. Then $ah = ha, \forall h \in H$, which means that $aH = Ha$. Thus $H \lhd G.\big]$
@@ -28,6 +32,7 @@ Let $a \in G$. Then for each $g \in G$, $a = a(a^{-1}g) \in aG$ and $a = (ga^{-1
 :::
 
 ## Example
+::: {.math-box}
 **(i)** For $n \ge 3,$ the map $\mathrm{sgn}_n: S_n \to \{ 1, -1 \}$ defined by 
 
 $$\mathrm{sgn}_n(\sigma) = \text{sign of } \sigma$$
@@ -35,8 +40,10 @@ $$\mathrm{sgn}_n(\sigma) = \text{sign of } \sigma$$
 is a group epimorphism. (We consider $\{ 1, -1 \}$ as the multiplicative group.) Then $\ker(\mathrm{sgn}_n) = A_n,$ which is a normal subgroup of $S_n.$ This is an example of a nontrivial proper normal subgroup.
 
 **(ii)** $V \cong \mathbb{Z}_2 \times \mathbb{Z}_2$ is nontrivial proper normal subgroup of $S_4.$
+:::
 
 ## Theorem 1
+::: {.math-box}
 Let $H \le G$. TFAE.
 
 **(i)** $H \lhd G$
@@ -44,6 +51,7 @@ Let $H \le G$. TFAE.
 **(ii)** $gHg^{-1} \subset H, \forall g \in G$
 
 **(iii)** $gHg^{-1} = H, \forall g \in G$
+:::
 
 결국 normal group에 한해서, 집합 양 옆에 곱해져있는 원소들을 마치 원소를 연산하듯이 처리해도 된다는 결론을 얻는다.
 
@@ -67,7 +75,9 @@ Suppose that $gHg^{-1} = H, \forall g \in G$. Let $g \in G$, and let $h \in H$. 
 Let $h \in H$. Since $g^{-1}Hg = H$, we have $g^{-1}hg = b$ for some $b \in H$, so that $hg = gb \in gH$. Thus $Hg \subset gH$. Hence, $gH = Hg$, which means that $H \lhd G$. $\blacksquare$
 
 ## Corollary
+::: {.math-box}
 Let $H \le G,$ and let $N \lhd G.$ If $N \le H,$ then $N \lhd H.$
+:::
 
 즉, 부분군 $N$의 normal 구조는 전체 군을 $G$에서 $H$로 축소시킨다고 하더라도 완전히 보존된다고 말할 수 있다. [제 3 동형 정리](../Third_Isomorphism_Theorem/index.qmd#sec-third-isomorphism-theorem)에서 이 내용이 사용됨을 확인할 수 있다.
 
@@ -85,7 +95,9 @@ However, $N \not \lhd G.$ Note that $\rho_1 \mu_1 = \delta_2 \neq \delta_1 = \mu
 Since $N \lhd G,$ we have $gNg^{-1} \subset N, \forall g \in G$ by Theorem 1. It follows that $hNh^{-1} \subset N, \forall h \in H,$ which means that $N \lhd H.$ $\blacksquare$
 
 ## Theorem 2
+::: {.math-box}
 An intersection of normal subgroups of a group $G$ is again a normal subgroup of $G$.
+:::
 
 ### Proof
 Let $\{ H_i \lhd G \mid i \in I\}$ be a collection of normal subgroups of $G$, where $I$ is an index set. By [Theorem 2](../Subgroup/index.qmd#sec-theorem-2), $\bigcap_{i \in I}  H_i \le G$. By Theorem 1, we have that $gH_ig^{-1} \subset H_i, \forall g \in G$, for each $i \in I$. 
@@ -99,11 +111,13 @@ We will show that $gHg^{-1} \subset H, \forall g \in G,$ which is equivalent to 
 Fix $g \in G$, and let $x \in gHg^{-1}$. Then $x = gyg^{-1}$ for some $y \in H$. Since $y \in H_i, \forall i \in I$, $gyg^{-1} \in gH_ig^{-1} \subset H_i, \forall i \in I$ by Theorem 1, which means that $gyg^{-1} \in H$. Thus, we have $x = gyg^{-1} \in H$, and therefore $gHg^{-1} \subset H$. By Theorem 1, $H \lhd G$. $\blacksquare$
 
 ## Theorem 3
+::: {.math-box}
 Let $\phi: G \to G'$ be a group homomorphism. 
 
 **(i)** If $N \lhd G$, then $\phi(N) \lhd \phi(G)$. 
 
 **(ii)** If $N' \lhd \phi(G)$, then $\phi^{-1}(N') \lhd G.$
+:::
 
 ### Proof
 **(i)** We will show that $g'\phi(N)g'^{-1} \subset \phi(N), \forall g' \in \phi(G)$. 
@@ -133,7 +147,9 @@ $$\phi(gx'g^{-1}) = \phi(g)\phi(x')\phi(g^{-1}) \in N'.$$
 Thus, $x = gx'g^{-1} \in \phi^{-1}(N')$, and therefore $g\phi^{-1}(N')g^{-1} \subset \phi^{-1}(N').$ Hence, $\phi^{-1}(N') \lhd G. \blacksquare$
 
 ## Remark
+::: {.math-box}
 **(i)** In the above theorem, $\phi(N)$ need NOT to be normal in $G'$ if $N \lhd G.$
+:::
 
 ::: {.callout-note title="Proof" collapse="true" icon=false}
 Consider a map $\phi: \mathbb{Z}_2 \to S_3$ given by $\phi(0) = \rho_0$ and $\phi(1) = \mu_1$. Note that $\mathbb{Z}_2 \le \mathbb{Z}_2.$ However, $\phi(\mathbb{Z}_2) = \{ \rho_0, \mu_1 \} \ntriangleleft S_3,$ because 

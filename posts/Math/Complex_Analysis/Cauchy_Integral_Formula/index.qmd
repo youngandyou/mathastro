@@ -1,4 +1,4 @@
----
+﻿---
 title: "Cauchy Integral Formula"
 author: "Youmin Chun"
 date: "2026-09-01 00:00:08"
@@ -49,11 +49,13 @@ Thus,
 $$\int_{C _ {\rho}} \frac{f(z)}{z - z_0} \, dz = 2\pi i f(z_0). \quad \blacksquare$$
 
 ## Corollary 1
+::: {.math-box}
 Let $f$ be an analytic function inside and on a positvely oriented simple closed contour $C$. If $z_0$ be any point interior to $C$, then 
 
 $$f^{(n)}(z_0) = \frac{n!}{2\pi i} \int_C \frac{f(z)}{(z - z_0)^{n+1}} \, dz$$
 
 for each $n = 0, 1, 2, \cdots.$
+:::
 
 ### Proof
 We use induction on $n$.
@@ -105,7 +107,9 @@ f'(z) &= \lim_{\Delta z \to 0} \frac{f(z + \Delta z) - f(z)}{\Delta z} \\
 \end{align*}$$
 
 ## Corollary 2
+::: {.math-box}
 If a function $f$ is analytic at a given point, then its derivatives of all orders are analytic there too.
+:::
 
 다시 말해 복소공간에서는 함수가 한번 미분가능하면 무한번 미분가능하다는 사실이 보장된다는 말도 안되는 내용이 성립한다.
 
@@ -123,7 +127,9 @@ at each point $z$ interior to $C_0$. This means that $f''$ exists throughout $C_
 Suppose that $f^{(n)}$ is analytic at $z_0$ for some $n > 1$. Then we can show that $f^{(n+1)}$ is analytic at $z_0$ as before. Thus, $f^{(n)}$ is analytic at $z_0$ for all $n$. $\blacksquare$
 
 ## Corollary 3
+::: {.math-box}
 If a function $f(z) = u(x, y) + iv(x, y)$ is analytic at a point $z = (x, y)$, then the component functions $u$ and $v$ are of class $C^\infty$, that is, have continuous partial derivatives of all orders at that point.
+:::
 
 ### Proof
 Since $f$ is analytic at $z$, $f'(z) = u_x + iv_x = v_y - iu_x$ is also analytic, which means that $u_x, u_y, v_x, v_y$ exist and are continuous. By induction, $u$ and $v$ have continuous partial derivatives of all orders at $z$, which means that they are of class $C^\infty$. $\blacksquare$

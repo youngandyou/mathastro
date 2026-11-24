@@ -1,4 +1,4 @@
----
+﻿---
 title: "Binary Operation"
 author: "Youmin Chun"
 date: "2026-06-25 00:00:01"
@@ -9,6 +9,7 @@ categories:
 
 # Binary operation
 ## Definition 1
+::: {.math-box}
 **(i)** A ***binary operation*** $\ast$ on a set $S$ is a function $\ast : S \times S \to S$. For each $(a, b) \in S \times S$, we will denote $\ast(a, b)$ by $a \ast b,$ or $ab.$ We call the ordered pair $\langle S, \ast \rangle$ a ***binary algebraic structure***.
 
 **(ii)** Let $\ast$ be a binary operation on $S$, and let $H \subset S$. Then $H$ is said to be ***closed*** under $\ast$ if $a \ast b \in H, \forall a, b \in H$. In this case, $\ast \vert_H$ is called the ***induced operation*** of $\ast$ on $H$.
@@ -22,9 +23,12 @@ categories:
 **(v)** A element $e$ is called an **identity element** for $\ast$ if $e \ast a = a = a \ast e, \forall a \in S$.
 
 **(vi)** Let $a \in S$. If there is an element $b \in S$ such that $a \ast b = e = b \ast a$, then $b$ is called an **inverse element** of $a$ for $\ast$.
+:::
 
 ## Theorem 1
+::: {.math-box}
 - A binary algebraic structure $\langle S, \ast \rangle$ has at most one identity element.
+:::
 
 ### Proof
 If $S$ does not have an identity element, then there is nothing to prove. 
@@ -32,6 +36,7 @@ If $S$ does not have an identity element, then there is nothing to prove.
 Suppose that $e_1$ and $e_2$ are identity elements for $\ast.$ Then $e_1 = e_1 \ast e_2 = e_2.$ $\blacksquare$
 
 ## Remark
+::: {.math-box}
 - Let $S = \{ a, b, c \}$, and let $\ast$ be a binary operation on $S$ as follows:
 
 $$
@@ -47,9 +52,11 @@ $$
 Then $\ast$ is not commutative.
 
 We can easily see that a binary operation $\ast$ defined by a table is commutative $\iff$ the table is symmetric.
+:::
 
 # Binary algebraic structure
 ## Definition 2
+::: {.math-box}
 - Let $\langle S, \ast \rangle$ be a binary algebraic structure.
 
 **(i)** $\langle S, \ast \rangle$ is called a ***semigroup*** if $\ast$ is associative.
@@ -57,11 +64,14 @@ We can easily see that a binary operation $\ast$ defined by a table is commutati
 **(ii)** $\langle S, \ast \rangle$ is called a ***monoid*** if $\ast$ is associative and has an identity element.
 
 **(iii)** $\langle S, \ast \rangle$ is called a ***group*** if $\ast$ is associative and has an identity element and every element has an inverse.
+:::
 
 ## Example
+::: {.math-box}
 **(i)** $\langle \mathbb{N}, + \rangle$ is a semigroup, but not a monoid.
 
 **(ii)** $\langle \mathbb{N}_0, + \rangle$ is a monoid, but not a group.
+:::
 
 # Reference
 - John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

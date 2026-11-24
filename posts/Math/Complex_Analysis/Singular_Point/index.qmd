@@ -1,4 +1,4 @@
----
+﻿---
 title: "Singular Point"
 author: "Youmin Chun"
 date: "2026-09-08 00:00:01"
@@ -8,6 +8,7 @@ categories:
 ---
 
 # Definition 1
+::: {.math-box}
 Let $f$ be a complex function.
 
 **(i)** $f$ is said to be ***analytic*** at a point $z_0$ if it has a derivative on some open set containing $z_0$.
@@ -17,8 +18,10 @@ Let $f$ be a complex function.
 **(iii)** A singular point $z_0$ of $f$ is said to be ***isolated*** if there exists $\varepsilon > 0$ such that $f$ is analytic in $0 < \vert z - z_0 \vert < \varepsilon$.
 
 **(iv)** The function $f$ is said to be have an ***isolated singular point at $z_0 = \infty$*** if there exists $R > 0$ such that $f$ is analytic for $R < \vert z \vert < \infty$.
+:::
 
 ## Example
+::: {.math-box}
 **(i)** The function
 
 $$f(z) = \frac{z-1}{z^5(z^2+9)}$$
@@ -36,11 +39,15 @@ However, it is not isolated since every deleted neighborhood of it contains poin
 $$f(z) = \frac{1}{\sin \left( \frac{\pi}{z} \right)}$$
 
 has singular points $z_0 = 0$ and $z_n = \frac{1}{n}$ for each $n = \pm 1, \pm 2, \dots$. Although each $z_n = \frac{1}{n}$ is an isolated singular point, $z_0 = 0$ is not isolated.
+:::
 
 ## Remark
+::: {.math-box}
 The singular points of a rational function of two polynomials without common factors are always isolated.
+:::
 
 # Definition 2
+::: {.math-box}
 Suppose that $f$ has an isolated singular point at $z_0$. Then $f$ can be represented by a Laurent series:
 
 $$f(z) = \sum_{n=0}^\infty a_n (z-z_0)^n + \sum_{n=1}^\infty \frac{b_n}{(z-z_0)^n}$$
@@ -52,8 +59,10 @@ for $0 < \vert z-z_0 \vert < R$ for some $R > 0$.
 **(ii)** $z_0$ is called an ***essential singular point*** of $f$ if there are infinitely many nonzero coefficients $b_n$.
 
 **(iii)** $z_0$ is called a ***pole of order $m$*** of $f$ if there exists $m \in \mathbb{N}$ such that $b_m \neq 0$ and $b_n = 0, \forall n > m$. If $m=1$, then $z_0$ is called a ***simple pole***. 
+:::
 
 ## Example
+::: {.math-box}
 **(i)** Consider the function $\displaystyle f(z) = \frac{1 - \cosh z}{z^2}$. Then
 
 $$\begin{align*}
@@ -85,8 +94,7 @@ f(z) &= \frac{1}{z^2} \sum_{n=0}^\infty z^n \\
 for $0 < \vert z \vert < 1$. Thus, $z = 0$ is a pole of order 2. 
 
 Furthermore,
-
-
+:::
 
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

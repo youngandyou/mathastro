@@ -1,4 +1,4 @@
----
+﻿---
 title: "Limit of Complex Functions"
 author: "Youmin Chun"
 date: "2026-07-24 00:00:08"
@@ -8,11 +8,14 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 Let $f: D \to \mathbb{C}$ be a complex function defined on a domain $D \subset \mathbb{C}$. We say that $\lim_{z \to z_0} f(z) = w_0$ if
 
 $$\forall \varepsilon > 0, \exists \delta > 0 \text{ such that } 0 < |z - z_0| < \delta \implies |f(z) - w_0| < \varepsilon.$$
+:::
 
 ## Theorem 1
+::: {.math-box}
 **(i)** When a limit of a function $f(z)$ exists at a point $z_0$, it is unique. 
 
 **(ii)** Suppose that $f(z) = u(x, y) + iv(x, y) (z = x + iy)$ and $z_0 = x_0 + iy_0, w_0 = u_0 + iv_0$. Then
@@ -21,6 +24,7 @@ $$\begin{gather*}
 \lim_{(x, y) \to (x_0, y_0)} u(x, y) = u_0 \quad \text{and} \quad \lim_{(x, y) \to (x_0, y_0)} v(x, y) = v_0 \iff \lim_{z \to z_0} f(z) = w_0.
 \end{gather*}
 $$
+:::
 
 ### Proof
 **(ii)** 
@@ -61,6 +65,7 @@ $$\vert u(x, y) - u_0 \vert \le \vert f(z) - w_0 \vert < \varepsilon.$$
 Thus, $\lim_{(x, y) \to (x_0, y_0)} u(x, y) = u_0$. Similarly, we can show that $\lim_{(x, y) \to (x_0, y_0)} v(x, y) = v_0$. $\blacksquare$
 
 ## Theorem 2
+::: {.math-box}
 Suppose that $\displaystyle \lim_{z \to z_0} f(z) = w_0$ and $\displaystyle \lim_{z \to z_0} g(z) = w_1$. Then the followings hold:
 
 **(i)** $\displaystyle \lim_{z \to z_0} [f(z) + cg(z)] = w_0 + cw_1$
@@ -72,6 +77,7 @@ Suppose that $\displaystyle \lim_{z \to z_0} f(z) = w_0$ and $\displaystyle \lim
 **(iv)** $\displaystyle \lim_{z \to z_0} \frac{f(z)}{g(z)} = \frac{w_0}{w_1}, \quad \text{provided } w_1 \ne 0.$
 
 **(v)** $\displaystyle \lim_{z \to z_0} \overline{f(z)} = \overline{f(z_0)}$
+:::
 
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

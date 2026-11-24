@@ -1,4 +1,4 @@
----
+﻿---
 title: "Unique Factorization Domain"
 author: "Youmin Chun"
 date: "2026-11-04 00:00:02"
@@ -9,16 +9,21 @@ categories:
 
 # PID
 ## Definition 1
+::: {.math-box}
 Let $D$ be an integral domain. Then $D$ is called a ***principal ideal domain (PID)*** if every ideal of $D$ is principal.
+:::
 
 정역에 대해서 정의를 했지만, 실제로 모든 아이디얼이 주 아이디얼이기 위해서 반드시 정역이 되어야 할 필요는 없다. 일반적으로 모든 아이디얼이 주 아이디얼인 환을 **주 아이디얼 환(principal ideal ring, PIR)**이라고 부른다. 예컨대 $\mathbb{Z}/6\mathbb{Z}$는 $2(6\mathbb{Z}) = \{ 0, 2, 4 \}$와 $3(6\mathbb{Z}) = \{ 0, 3 \}$에 대해서 $2(6\mathbb{Z}) \cdot 3(6\mathbb{Z}) = 6(6\mathbb{Z}) = \{ 0 \} = 0(6\mathbb{Z})$이므로 정역이 아니지만 모든 아이디얼이 주 아이디얼임을 쉽게 확인할 수 있다.
 
 ## Example 1
+::: {.math-box}
 **(i)** Since all ideal of $\mathbb{Z}$ is of the form $n\mathbb{Z} = (n)$ for some $n \in \mathbb{N}_0$, $\mathbb{Z}$ is a PID. In particular, if $I$ is a nonzero ideal of $\mathbb{Z}$, then $I = (n)$ for the smallest positive integer $n$ in $I$.
 
 **(ii)** If $F$ is a field, then $F[x]$ is a PID. In particular, if $I$ is a nonzero ideal of $F[x]$, then $I = (f(x))$ for a nonzero element $f(x)$ of $I$ of minimal degree.
+:::
 
 ## Theorem 1
+::: {.math-box}
 Let $D$ be a PID, and let $p$ be a nonzero element in $D$.
 
 **(i)** $p$ is irreducible in $D$ $\iff$ $(p)$ is a maximal ideal of $D$.
@@ -26,6 +31,7 @@ Let $D$ be a PID, and let $p$ be a nonzero element in $D$.
 **(ii)** $p$ is irreducible in $D$ $\iff$ $p$ is a prime element in $D$.
 
 **(iii)** Let $a_1, \dots, a_n \in D$. If $p$ is irreducible in $D$ and $p$ divides $a_1 \cdots a_n$, then $p$ divides $a_i$ for some $i \in \{ 1, \dots, n \}$.
+:::
 
 따라서 PID에서는 기약원(irreducible element)과 소원소(prime element)는 서로 동치의 개념이다. 이 사실을 이용해서 어떤 환이 PID가 아님을 보일 수도 있는데, 환 $D = \{ a + b \sqrt{-5} \mid a, b \in \mathbb{Z} \}$는 PID가 아니다. 이 환에서 $2$는 기약원이지만 소원소는 아니고, 따라서 위 정리 **(ii)**의 반례가 되기 때문이다. 즉, 어떤 환이 PID가 아님을 보이기 위해 정의 그대로 주 아이디얼이 아닌 아이디얼이 있음을 보여도 되지만, 이와 같이 기약원이지만 소원소가 아닌 원소의 존재를 보여도 된다.
 
@@ -42,11 +48,13 @@ $\blacksquare$
 :::
 
 ## Theorem 2
+::: {.math-box}
 Let $D$ be an integral domain.
 
 **(i)** $D$ is a field $\iff$ $D[x]$ is a PID.
 
 **(ii)** Let $F$ be a field, and let $0 \neq p(x) \in F[x]$. Then $(p(x))$ is a maximal ideal of $F[x]$ $\iff$ $p(x)$ is irreducible over $F$.
+:::
 
 **(ii)**는 정리 1 **(i)**의 따름정리로 바라볼 수 있다.
 
@@ -79,18 +87,25 @@ If $g(x) \in F$, then $g(x) = c$ for some $c \in F$. Then $p(x) = cf(x)$,s so $f
 :::
 
 ## Example 2
+::: {.math-box}
 **(i)** Let $f(x) = x^3 + 3x + 2 \in \mathbb{Z}_5[x]$. Since $f(0) = 2, f(1) = 1, f(2) = 1, f(3) = 3, f(4) = 3$, $f(x)$ does not have a zero in $\mathbb{Z}_5[x]$. Then $f(x)$ is irreducible over $\mathbb{Z}_5$. By Theorem 3 **(ii)**, $(x^3 + 3x + 2)$ is a maximal ideal of $\mathbb{Z}_5[x]$. Then $\mathbb{Z}_5[x]/(x^3+3x+2)$ is a field.
 
 **(ii)** Let $g(x) = x^2 - 2 \in \mathbb{Q}[x]$. Since $g(x)$ does not have a zero in $\mathbb{Q}$, it is irreducible over $\mathbb{Q}$. Then $(x^2 - 2)$ is a maximal ideal of $\mathbb{Q}[x]$ by Theorem 3 **(ii)**. Then $\mathbb{Q}[x]/(x^2-2)$ is a field.
+:::
 
 # Noetherian Ring
 ## Definition 2
+::: {.math-box}
 Let $R$ be a commutative ring with identity. Then $R$ is a ***Noetherian ring*** if every ideal of $R$ is finitely generated. If $R$ is a Noetherian ring and an integral domain, we call $R$ a ***Noetherian domain***.
+:::
 
 ## Example 3
+::: {.math-box}
 **(i)**
+:::
 
 ## Theorem 3
+::: {.math-box}
 **(i)** Every PID is a Noetherian domain.
 
 **(ii)** **(Hilbert Basis Theorem)** If $R$ is a Noetherian ring, then $R[x]$ is a Noetherian ring. 
@@ -104,26 +119,31 @@ Let $R$ be a commutative ring with identity. Then $R$ is a ***Noetherian ring***
 2. $R$ satisfies the ***ascending chain condition*** of ideals, i.e., if $\{ I_n \}_{n=1}^\infty$ is an ascending chain of ideals of $R$, then there is $N \in \mathbb{N}$ such that $I_n = I_N, \forall n \ge N$.
 
 3. Every nonempty set of ideals of $R$ has a maximal element with respect to inclusion.
+:::
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
 :::
 
 # UFD
 ## Definition 3
+::: {.math-box}
 An integral domain $D$ is called a ***unique factorization domain (UFD)*** if the following conditions are satisfied:
 
 **(i)** Every nonzero nonunit element of $D$ can be factored into a finite product of irreducible elements in $D$.
 
 **(ii)** If $p_1 \cdots p_r$ and $q_1 \cdots q_s$ are two factorizations of the same element if $D$ into irreducible elements, then $r=s$ and there is some renumbering of the factors so that $p_i \approx q_i, \forall i \in \{ 1, \dots, r \}$.
+:::
 
 ## Example 4
 
 ## Theorem 4
+::: {.math-box}
 **(i)** Every PID is a UFD.
 
 **(ii)** **(Fundamental Theorem of Arithemetric)** $\mathbb{Z}$ is a UFD.
 
 **(iii)** Let $D$ be a UFD. Then $p$ is irreducible in $D$ $\iff$ $p$ is prime in $D$.
+:::
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
 **(i)**
@@ -135,6 +155,7 @@ An integral domain $D$ is called a ***unique factorization domain (UFD)*** if th
 
 # gcd
 ## Definition 5
+::: {.math-box}
 Let $R$ be a commutative ring with identity, and let $a_1, \dots, a_n, d \in R \setminus \{ 0 \}$.
 
 **(i)** $d$ is called a ***common divisor*** of $a_1, \dots, a_n$ if $d \vert a_i, \forall i \in \{ 1, \dots, n \}$.  
@@ -146,17 +167,20 @@ Let $R$ be a commutative ring with identity, and let $a_1, \dots, a_n, d \in R \
 2. If $r \in R$ is a common divisor of $a_1, \dots, a_n$, then $r \vert d$.
 
 **(iii)** Let $D$ be a UFD, and let $f(x) = a_0 + \cdots + a_nx^n$ be a nonzero polynomial in $D[x]$. We call $\gcd(a_0, \dots, a_n)$ a ***content*** of $f(x)$, denoted by $c(f)$ or $c(f(x))$. If $f(x) = c \in D$, then $c(f) := c$. If $c(f)$ is a unit, then $f(x)$ is said to be ***primitive***.
+:::
 
 정수에서와 비슷한 센스로 정의하지만 항상 순서 관계를 줄 수 있는 것은 아니다. 때문에 최대공약수의 경우 그 크기가 최대라는 의미보다는 약수의 개수가 최대라는 의미로 이해할 수 있다.
 
 또한 관사에서 알 수 있듯이 일반적인 환의 경우 최대공약수는 유일할 필요도 없고, 항상 존재할 필요도 없다. 그러면 $\gcd(a_1, \dots, a_n)$과 같이 기호를 쓸 수가 없는데, 실제로는 단위원을 곱한 경우에 한해서 정의됨을 보일 수 있다. 아래 Remark에 적어둔 것처럼, 최대공약수들은 모두 단위원만큼만 차이가 난다. 예컨대 정수 $3, 6$의 최대공약수는 $3$인데, 정수환에서 단위원은 $1, -1$이므로 일반적으로는 $3$과 $-3$모두 최대공약수로 택할 수 있다는 뜻이다. 그리고 $3$과 $-3$은 단위원 $-1$만큼 차이가 나고, 이 차이만큼 나는 경우를 같은 경우로 본다면 최대공약수 $\gcd(3, 6)$은 잘 정의된다. 같은 맥락에서 content $c(f)$도 잘 정의할 수 있다.
 
 ## Remark 1
+::: {.math-box}
 **(i)** Let $D$ be an integral domain, and let $a_1, \dots, a_n$ be nonzero elements in $D$. Suppose that $\gcd(a_1, \dots, a_n)$ exists. Then $c$ is a gcd of $a_1, \dots, a_n$ $\iff$ $c \sim \gcd(a_1, \dots a_n)$.
 
 **(ii)** Let $D$ be a UFD, and let $f(x)$ be a nonzero polynomial in $D[x]$. Then $c$ is a content of $f(x)$ $\iff$ $c \sim c(f)$.
 
 **(iii)** Let $D$ is a UFD (so also PID), and let $a_1, \dots, a_n$ be nonzero elements in $D$. Then $\gcd(a_1, \dots, a_n)$ exists.
+:::
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
 **(i)** $(\implies)$ Since $c$ is a gcd of $a_1, \dots, a_n$, $c \vert a_i, \forall i \in \{ 1, \dots, n \}$, which means that $c$ is a common divisor. Then we obtain $c \vert \gcd(a_1, \dots, a_n)$. Similarly, we have $\gcd(a_1, \dots, a_n) \vert c$, so $c \sim \gcd(a_1, \dots, a_n)$.
@@ -191,6 +215,7 @@ for some unit $u in D$ and nonnegative integers $\beta_j$ with $0 \le \beta_j \l
 :::
 
 ## Theorem 5
+::: {.math-box}
 Let $D$ be a UFD with quotient field $F$, and let $f(x), g(x)$ be a nonzero polynomials in $D[x]$.
 
 **(i)** Let $c \in D$. Then $c$ is a content of $f(x)$ $\iff$ $f(x) = cg(x)$ for some primitive polynomial $g(x) \in D[x]$.
@@ -222,6 +247,7 @@ Let $D$ be a UFD with quotient field $F$, and let $f(x), g(x)$ be a nonzero poly
 3. $p^2 \not \mid a_0$.
 
 Then $f(x)$ is irreducible in $F[x]$. If $f(x)$ is primitive in $D[x]$, then $f(x)$ is irreducible in $D[x]$.
+:::
 
 **(iv)**번의 1번 명제의 역은 일반적으로 성립하지 않고, 실제로는 primitive 조건이 추가되어야 함을 정리한 명제가 2번이다. 더 큰 공간인 $F[x]$에서 기약이어서 인수분해가 단위원들로 주어지더라도 그 단위원이 더 작은 공간인 $D[x]$에서는 단위원이 아닐 수 있기 때문이다. 3번은 $D[x]$에서와 $F[x]$에서의 인수분해 조건이 사실상 동치임을 보여준다. 
 
@@ -391,14 +417,18 @@ Since $p \mid a_m$ and $p \mid c_i, \forall i \in \{ 0, \dots, m-1 \}$, we have 
 
 # Bezout Domain
 ## Definition 6
+::: {.math-box}
 An integral domain $D$ is called a ***Bézout domain*** if every finitely generated ideal is principal.
+:::
 
 이름부터 딱 베주 항등식과 연관이 있으리라 짐작할 수 있고, 실제로 아래 정리와 같이 정리할 수 있다.
 
 ## Theorem 6
+::: {.math-box}
 **(i)** An integral domain $D$ is a Bézout domain $\iff$ for nonzero $a_1, \dots, a_n \in D$, there exists a gcd $d$ of $a_1, \dots, a_n$ such that $(d) = (a_1, \dots, a_n)$ and $d = a_1b_1 + \cdots + a_nb_n$ for some $b_1, \dots, b_n \in D$. 
 
 **(ii)** Every PID is a Bézout domain.
+:::
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
 ### Proof

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Complex Conjugate"
 author: "Youmin Chun"
 date: "2026-07-24 00:00:03"
@@ -8,11 +8,14 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 Let $z = (x, y) \in \mathbb{C}$. The ***complex conjugate*** of $z$, denoted by $\overline{z}$, is defined by
 
 $$\overline{z} = (x, -y).$$
+:::
 
 ## Theorem
+::: {.math-box}
 Let $z_1, z_2 \in \mathbb{C}$. Then
 
 **(i)** $\overline{z_1 + z_2} = \overline{z_1} + \overline{z_2}$
@@ -30,6 +33,7 @@ Let $z_1, z_2 \in \mathbb{C}$. Then
 **(vii)** $\overline{z} = z$ if and only if $z \in \mathbb{R}$
 
 **(viii)** $\vert z \vert^2 = z \overline{z}$
+:::
 
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

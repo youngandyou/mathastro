@@ -2719,3 +2719,60 @@ body.quarto-dark .navbar-nav .nav-link.cat-active-link::after {
     display: none !important;
   }
 }
+
+/* ==========================================================================
+   Math Statement Custom Div Styling (Option 3: Minimal Left Border)
+   Unified elegant left border for Definitions, Theorems, Examples, Remarks, etc.
+   ========================================================================== */
+
+.math-box,
+.math-statement,
+.statement-box,
+.statement,
+.def-box,
+.thm-box,
+.ex-box,
+.rmk-box {
+  border-left: 3.5px solid var(--mag-math);
+  padding: 0.2rem 0 0.2rem 1.25rem;
+  margin: 1.15rem 0 1.35rem 0;
+  transition: border-color 0.2s ease;
+}
+
+.math-box > :first-child,
+.math-statement > :first-child,
+.statement-box > :first-child,
+.statement > :first-child,
+.def-box > :first-child,
+.thm-box > :first-child,
+.ex-box > :first-child,
+.rmk-box > :first-child {
+  margin-top: 0 !important;
+}
+
+.math-box > :last-child,
+.math-statement > :last-child,
+.statement-box > :last-child,
+.statement > :last-child,
+.def-box > :last-child,
+.thm-box > :last-child,
+.ex-box > :last-child,
+.rmk-box > :last-child {
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 575.98px) {
+  .math-box,
+  .math-statement,
+  .statement-box,
+  .statement,
+  .def-box,
+  .thm-box,
+  .ex-box,
+  .rmk-box {
+    border-left-width: 3px;
+    padding-left: 0.95rem;
+    margin: 1rem 0 1.2rem 0;
+  }
+}
+

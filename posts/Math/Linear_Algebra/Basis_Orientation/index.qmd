@@ -1,4 +1,4 @@
----
+﻿---
 title: "Orientation of Basis"
 author: "Youmin Chun"
 date: "2026-09-07 00:00:03"
@@ -8,9 +8,11 @@ categories:
 ---
 
 # Definition
+::: {.math-box}
 Let $\beta = \{\mathbf{u}_1, \dots, \mathbf{u}_n \}$ and $\gamma = \{\mathbf{v}_1, \dots, \mathbf{v}_n \}$ be two ordered bases for a vector space $V$ of dimension $n$, and let $\mathsf{T} : V \to V$ be the linear transformation defined by $\mathsf{T}(\mathbf{u}_i) = \mathbf{v}_i$ for each $i = 1, \dots, n$. 
 
 If $\det(T) = \det([\mathsf{T}]_\alpha) > 0$ for the standard ordered basis $\alpha$, then $\beta$ and $\gamma$ are said to have the ***same orientation*** or $\mathsf{T}$ is said to be ***orientation preserving***. Otherwise, they are said to have ***opposite orientation***, or $\mathsf{T}$ is said to be ***orientation reversing***.
+:::
 
 특별히 $\mathbb{R}^3$ 상에서 표준순서기저 $\{ \mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3 \}$이 갖는 방향을 ***오른손 방향(right handed)***이라고 부른다.
 

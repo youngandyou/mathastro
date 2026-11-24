@@ -1,4 +1,4 @@
----
+﻿---
 title: "Permutation"
 author: "Youmin Chun"
 date: "2026-09:02 00:00:03"
@@ -8,6 +8,7 @@ categories:
 ---
 
 # Definition 1
+::: {.math-box}
 A ***permutation*** of a set $A$ is a bijection $\sigma: A \to A$. We write the permutation $\sigma$ as 
 
 $$
@@ -15,9 +16,11 @@ $$
 $$
 
 We denote the set of permutations of $A$ by $S_A$.
+:::
 
 ## Remark 1
 
+::: {.math-box}
 **(i)** If $\sigma$ and $\tau$ are permutations of $A$, then so are $\sigma \tau$ and $\tau \sigma$.
 
 **(ii)** If $A = \{ 1 \}$, then $S_A = \{ id_A \}$ and it is isomorphic to $\mathbb{Z}_1$. If $A = \{ 1, 2 \}$, then $S_A = \{ id_A, \sigma \}$, where 
@@ -35,9 +38,12 @@ Then $S_A$ is isomorphic to $\mathbb{Z}_2$.
 $$\sigma = \begin{pmatrix} 1 & 2 & \cdots & n-1 & n \\ 2 & 3 & \cdots & n & 1 \end{pmatrix} \quad \text{and} \quad \tau = \begin{pmatrix} 1 & 2 & 3 & \cdots & n \\ 2 & 1 & 3 & \cdots & n \end{pmatrix}.$$
 
 Then $(\sigma \tau)(1) = 3 \neq 1 = (\tau \sigma)(1)$. Thus $S_A$ is non-abelian.
+:::
 
 # Theorem 1
+::: {.math-box}
 Let $A$ be a nonempty set. Then $S_A$ is a group under permutation multiplication.
+:::
 
 ## Proof
 By Remark 1 (i), $S_A$ is closed under permutation multiplication. 
@@ -51,10 +57,14 @@ For each $\sigma \in S_A$, $\exists \sigma^{-1} \in S_A$ such that $\sigma \sigm
 Thus $S_A$ is a group under permutation multiplication. $\blacksquare$
 
 # Definition 2
+::: {.math-box}
 Let $A = \{ 1, 2, ..., n \}$. Then the group of permutations of $A$ is called the ***symmetric group*** on $n$ letters and is denoted by $S_n$.
+:::
 
 ## Remark 2
+::: {.math-box}
 $\vert S_n \vert = n!$.
+:::
 
 ## Example
 

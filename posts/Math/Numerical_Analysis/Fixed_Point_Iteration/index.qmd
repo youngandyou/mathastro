@@ -1,4 +1,4 @@
----
+﻿---
 title: "Fixed Point Iteration"
 author: "Youmin Chun"
 date: "2026-09-17 00:00:01"
@@ -8,15 +8,20 @@ categories:
 ---
 
 # Definition 1
+::: {.math-box}
 For a function $f: X \to X$, a point $\alpha \in X$ satisfying $\alpha = f(\alpha)$ is called a ***fixed point*** of $f$.
+:::
 
 # Lemma
+::: {.math-box}
 Let $g : [a, b] \to [a, b]$ be a continuous function. Then $g$ has a fixed point in $[a, b]$.
+:::
 
 ## Proof
 Put $f(x) = x - g(x), \forall x \in [a, b]$. Then we have $f(a) = a - g(a) \le 0$ and $f(b) = b - g(b) \ge 0$. By the Intermediate Value Theorem, there exists $c \in [a, b]$ such that $f(c) = 0$. Thus $c - g(c) = 0$, which implies $c = g(c)$. Hence $c$ is a fixed point of $g$. $\blacksquare$
 
 # Theorem
+::: {.math-box}
 Let $g: [a, b] \to [a, b]$ be a function satisfying that $g$ and $g'$ is continuous on $[a, b]$. Assume that 
 
 $$\lambda = \max_{a \le x \le b} \vert g'(x) \vert < 1.$$
@@ -36,6 +41,7 @@ $$\vert \alpha - x_n \vert \le \frac{\lambda^n}{1 - \lambda} \vert x_0 - x_1 \ve
 $$\lim_{n \to \infty} \frac{\alpha - x_{n+1}}{\alpha - x_n} = g'(\alpha)$$
 
 Thus, $\vert \alpha - x_{n+1} \vert \le C \vert \alpha - x_n \vert$ for sufficiently large $n$ and for some constant $C \ge 0$ independent of $n$.
+:::
 
 ## Proof
 **(i)** Let $\alpha, \beta$ be two fixed points of $g$ with $\alpha < \beta$, that is, $\alpha = g(\alpha)$ and $\beta = g(\beta)$. By the mean value theorem, there exists $c \in (\alpha, \beta)$ such that
@@ -91,11 +97,13 @@ Hence, for sufficiently large $n$ and some constant $C \ge 0$, we have
 $$\vert \alpha - x_{n+1} \vert \le C \vert \alpha - x_n \vert. \blacksquare$$
 
 # Definition 2
+::: {.math-box}
 A sequence $\{ x_n \}$ is said to converge to $\alpha$ ***with order of convergence*** $p \ge 1$ if
 
 $$\vert \alpha - x_{n+1} \vert \le c \vert \alpha - x_n \vert^p, \quad n \ge n_0$$
 
 for some constant $c > 0$. The cases $p=1$ and $p=2$ are called linear convergence and quadratic convergence, respectively. 
+:::
 
 # Reference
 - K. E. Atkinson and W. Han, Elementary Numerical Analysis, 3rd ed., John Wiley & Sons, 2004.

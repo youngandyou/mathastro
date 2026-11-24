@@ -1,4 +1,4 @@
----
+﻿---
 title: "Topology in Complex Plane"
 author: "Youmin Chun"
 date: "2026-07-24 00:00:07"
@@ -8,6 +8,7 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 Let $z_0 \in \mathbb{C}$ and let $S \subset \mathbb{C}$.
 
 **(1)** Let $\varepsilon > 0$. The ***$\varepsilon$-neighborhood*** of $z_0$ is 
@@ -37,11 +38,14 @@ $$N_{\varepsilon}(z_0) = \{ z \in \mathbb{C} \mid \vert z - z_0 \vert < \varepsi
 **(11)** $S$ is ***bounded*** if every point in $S$ lies inside some circle $N_R(0)$. Otherwise, $S$ is ***unbounded***.
 
 **(12)** $z_0$ is an ***accumulation point***, or ***limit point***, of $S$ if each deleted neighborhood of $z_0$ contains at least one point in $S$. The ***derived set*** of $S$, denoted by $S'$, is the set of all accumulation points of $S$.
+:::
 
 ## Remark
+::: {.math-box}
 **(i)** $S$ is closed $\iff$ $S' \subset S$.
 
 **(ii)** A point $z_0$ of a domain is an accumulation point of that domain.
+:::
 
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

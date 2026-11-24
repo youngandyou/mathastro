@@ -1,4 +1,4 @@
----
+﻿---
 title: "Spanning Tree"
 author: "Youmin Chun"
 date: "2026-08-05"
@@ -8,10 +8,14 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 A ***spanning tree*** in a graph is a subgraph containing all vertices, which is isomorphic to a tree.
+:::
 
 ## Remark
+::: {.math-box}
 A graph is connected $\iff$ it has a spanning tree.
+:::
 
 ## Algorithm
 Let $G$ be a connected graph, and let $T$ be an "empty" connected subgraph of $G$, with $V(T) = \{ v_0 \}$. Let $R := V(G) \setminus V(T)$. 

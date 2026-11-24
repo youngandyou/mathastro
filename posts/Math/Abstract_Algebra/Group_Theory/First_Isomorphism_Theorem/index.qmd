@@ -1,4 +1,4 @@
----
+﻿---
 title: "First Isomorphism Theorem"
 author: "Youmin Chun"
 date: "2026-09:02 00:00:15"
@@ -8,7 +8,9 @@ categories:
 ---
 
 ## Theorem 1
+::: {.math-box}
 Let $H \lhd G$. The map $\gamma: G \to G/H$ defined by $\gamma(g) = gH, \forall g \in G$ is an epimorphism with $\ker(\gamma) = H$. We call $\gamma$ the ***canonical epimorphism***.
+:::
 
 ### Proof
 Clearly, $\gamma$ is well-defined. 
@@ -77,7 +79,9 @@ $$\begin{align*}
 Thus, $\phi = \mu \circ \gamma$. $\blacksquare$
 
 ## Corollary
+::: {.math-box}
 Let $\phi: G \to G'$ be a group epimorphism. Then $G/\ker(\phi) \cong G'$.
+:::
 
 ### Proof
 Since $\phi$ is surjective, we have $\mathrm{Im}(\phi) = G'$. By Theorem 1 (i), $G/\ker(\phi) \cong \mathrm{Im}(\phi) = G'$. $\blacksquare$

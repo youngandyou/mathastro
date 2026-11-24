@@ -1,4 +1,4 @@
----
+﻿---
 title: "Tree Isomorphism"
 author: "Youmin Chun"
 date: "2026-08-05"
@@ -13,6 +13,7 @@ $n$개의 vertex를 가지는 두 그래프 $G, G'$이 있다고 하자. 이때 
 그러나 다행히도 tree라는 그래프의 특별한 한 종류에 대해서는 이 문제를 해결하는 일반적인 알고리즘이 알려져 있고, 팩토리얼이 아닌 선형 시간 내에 해결할 수 있다.
 
 ## Definition 1
+::: {.math-box}
 **(i)** A ***rooted tree*** $(T, r)$ is a tree $T$ with a special vertex $r \in V(T)$, called the ***root***. If $\{ x, y \} \in E(T)$ is an edge and a vertex $x$ lies on the unique path from $y$ to the root $r$, we say that $x$ is the ***father*** of $y$ and $y$ is the ***child*** of $x$.
 
 **(ii)** A ***planted tree*** $(T, r, \nu)$ is a rooted tree $(T, r)$ with the collection of linear orderings, one linear ordering for the set of children of each vertex. 
@@ -20,10 +21,12 @@ $n$개의 vertex를 가지는 두 그래프 $G, G'$이 있다고 하자. 이때 
 **(iii)** Two rooted trees $(T, r)$ and $(T', r')$ are called ***isomorphic*** if there exists an isomorphism $\phi: V(T) \to V(T')$ such that $\phi(r) = r'$.
 
 **(iv)** Two planted trees $(T, r, \nu)$ and $(T', r', \nu')$ are called ***isomorphic*** if there exists a rooted tree isomorphism $\phi: V(T) \to V(T')$ such that for children $a, b$ of a vertex, $a \le_\nu b \iff \phi(a) \le_{\nu'} \phi(b)$.
+:::
 
 즉 tree 중에서 root라는 특별한 vertex를 가지는 tree를 rooted tree라고 부르며, rooted tree에서 같은 부모를 가지는 vertex들 사이에 ordering을 준 rooted tree를 planted tree라고 부른다. 
 
 ## Definition 2
+::: {.math-box}
 For each planted tree $(T, r, \nu)$ on $n$ verticies, we define the ***code*** $A(T) \in \{ 0, 1 \}^{2n}$ of the tree $T$ recursively as follows:
 
 **(i)** If $v$ is a leaf of $T$, let $L_v = 01$.
@@ -31,14 +34,19 @@ For each planted tree $(T, r, \nu)$ on $n$ verticies, we define the ***code*** $
 **(ii)** For a vertex $v$ with children $a_1 \le_\nu a_2 \le_\nu \cdots \le_\nu a_k$ such that each $a_i$ has a label $L_{a_i}$, let $L_v = 0L_{a_1}L_{a_2}\cdots L_{a_k}1$.
 
 **(iii)** $A(T) = L_r$. 
+:::
 
 이제 우리는 모든 planted tree와 code 사이에 일대일 대응이 존재함을 보일 것이다. 그리고 rooted tree에 canonical한 방법으로 order를 주고, 각 tree에서 항상 root를 정할 수 있음을 보임으로써 모든 tree에 대해서 code를 유일하게 결정할 수 있음을 보일 수 있다. 이러한 방법으로 서로 다른 두 tree가 isomorphic한지 선형 시간 내에 결정할 수 있다.
 
 ## Remark
+::: {.math-box}
 Each label has the same number of $0$s as $1$s and the same is not true of any nontrivial initial sublabel.
+:::
 
 ## Theorem 1
+::: {.math-box}
 For planted trees $T$ and $T'$, $A(T) = A(T') \iff T \cong T'$, that is, a given code uniquely determines the planted tree up to isomorphisms.
+:::
 
 ### Proof
 If $T \cong T'$, then clearly $A(T) = A(T')$. 
@@ -92,7 +100,9 @@ Minimum이라는 말 때문에 $C(G)$는 항상 singleton일 것 같지만, 실�
 그러면 우리는 주어진 tree로부터 root라는 특별한 vertex를 정의해야 하는데, 아래 정리는 root를 $C(G)$에서 뽑아서 canonical하게 정의할 수 있음을 보장해준다.
 
 ## Theorem 2
+::: {.math-box}
 For a tree $T$, the center $C(T)$ of $T$ consists of a single vertex, or two adjacent vertices.
+:::
 
 ### Proof
 We proceed by induction on $n = \vert V(T) \vert$. 

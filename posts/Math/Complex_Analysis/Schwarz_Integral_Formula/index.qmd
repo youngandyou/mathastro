@@ -1,4 +1,4 @@
----
+﻿---
 title: "Schwarz Integral Formula"
 author: "Youmin Chun"
 date: "2026-11-24 00:00:01"
@@ -9,14 +9,16 @@ categories:
 
 # Schwarz Integral Formula
 ## Theorem 1
+::: {.math-box}
 Let $f(z)$ be an analytic function throughout the upper half plane $\mathrm{Im} z \ge 0$ such that for some positive constants $a$ and $M$, $| z^af(z) | < M$ for all $z$ with $\mathrm{Im} z \ge 0$. If $f(z) = u(x, y) = iv(x, y)$, then $u(x, y)$ and $v(x, y)$ are harmonic in the upper half plane $y > 0$ and
 
 $$\begin{align*}
-u(x, y) &= \frac{1}{\pi} \int_{-\infty}^\infty \frac{yu(t, 0)}{(t-x)^2 + y^2} dt
+u(x, y) &= \frac{1}{\pi} \int_{-\infty}^\infty \frac{yu(t, 0)}{(t-x)^2 + y^2} dt \\
 v(x, y) &= \frac{1}{\pi} \int_{-\infty}^\infty \frac{(x-t)u(t, 0)}{(t-x)^2 + y^2} dt
 \end{align*}$$
 
 whenever $y > 0$.
+:::
 
 ::: {.callout-note title="Proof" collapse="true" icon=false}
 Let $C_r$ denote the upper half of a positively oriented circle of radius $R$ centered at origin. By the Cauchy integral formula, we have

@@ -1,4 +1,4 @@
----
+﻿---
 title: "De Bruijn Graph"
 author: "Youmin Chun"
 date: "2026-08-05"
@@ -8,6 +8,7 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 For each $k \ge 2$, the ***De Bruijn graph*** $D_k$ is a digraph having $V(D_k) = \{0, 1\}^{k-1}$ and edges defined by 
 
 $$(a_1, a_2, \cdots, a_{k-1}) \to (a_2, a_3, \cdots, a_k), \forall (a_1, \cdots, a_k) \in \{0, 1\}^k.$$
@@ -15,9 +16,12 @@ $$(a_1, a_2, \cdots, a_{k-1}) \to (a_2, a_3, \cdots, a_k), \forall (a_1, \cdots,
 We refer to the edge $(a_1, a_2, \cdots, a_{k-1}) \to (a_2, a_3, \cdots, a_k)$ as $a_1a_2\cdots a_k.$
 
 ![](de1.png)
+:::
 
 ## Theorem
+::: {.math-box}
 For each $k \ge 2$, $D_k$ is Eulerian. 
+:::
 
 ### Proof
 Note that for each $v \in D_k$, $\mathrm{deg}^+(v) = 2 = \mathrm{deg}^-(v)$. 

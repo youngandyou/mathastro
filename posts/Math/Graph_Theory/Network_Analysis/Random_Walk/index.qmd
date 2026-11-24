@@ -1,4 +1,4 @@
----
+﻿---
 title: "Random Walk"
 author: "Youmin Chun"
 date: "2026-08-11"
@@ -11,11 +11,13 @@ categories:
 ***랜덤 워크(Random Walk)***란 나이브하게 말하자면 주어진 네트워크 위에서 균등한 확률로 인접한 정점을 이동해나가서 만들어진 워크를 의미한다. 기본적으로 확률에 의존하여 워크를 만들어나가므로 무한히 많은 개수의 랜덤 워크들이 존재할 수 있으며, 워크의 길이 또한 일반적으로 무한히 이어진다고 가정한다. 
 
 ## Definition 1
+::: {.math-box}
 Let $G = (V, E)$ be a connected network with $V = \{1, 2, \dots, N\}$. Let $\mathbf{A}$ be the adjacency matrix of $G$, and let $\mathbf{D} = \mathrm{diag}(d_1, ..., d_N)$ be the degree matrix of $G$. A ***random walk*** on $G$ is a discrete-time stochastic process $\{X_t\}_{t \in \mathbb{N}_0}$ taking values in $V$, where the process transitions by taking repeated random steps across the graph $G$. The transition probabilities is given by:
 
 $$P[X_t = i \mid X_{t-1} = j] = \frac{A_{ij}}{d_j}$$
 
 Let $\mathbf{p}(t) \in \mathbb{R}^N$ be the state probability vector at time $t$, where the $i$th componenet $p_i(t)$ is defined as the conditional probability $p_i(t) = P[X_t = i \mid X_0 = u]$ for a given initial vertex $u \in V$.
+:::
 
 자연스럽게 $p_i(t)$는 다음과도 같이 계산될 수 있다.
 
@@ -29,6 +31,7 @@ p_i(t) &= \sum_{j=1}^N P[X_t = i \mid X_{t-1} = j] P[X_{t-1} = j \mid X_0 = u] \
 $$\mathbf{p}(t) = \mathbf{A} \mathbf{D}^{-1}\mathbf{p}(t-1)$$
 
 ## Theorem 1
+::: {.math-box}
 Let $G = (V, E)$ be a connected network with $V = \{1, 2, \dots, N\}$ and $\vert E \vert = m$. Suppose that the stationary distribution $\mathbf{p} = \displaystyle \lim_{t \to \infty} \mathbf{p}(t)$ exists. Then
 
 $$\mathbf{p} = \frac{1}{2m} \mathbf{D} \cdot \mathbf{1},$$
@@ -38,6 +41,7 @@ that is,
 $$p_i = \frac{d_i}{2m}$$
 
 for $i = 1, 2, \cdots, N$.
+:::
 
 다시 말해 차수가 높은 노드일수록 랜덤 워크에서 방문될 확률이 더 높다는 지극히 상식적인 이야기다.
 
@@ -61,6 +65,7 @@ $$\mathbf{p} = a\mathbf{D} \cdot\mathbf{1}.$$
 By the normalization condition, the constant $a$ is given as $a = \frac{1}{2m}$. $\blacksquare$
 
 ## Definition 2
+::: {.math-box}
 Let $G = (V, E)$ be a connected network, and let $\{X_t\}_{t \in \mathbb{N}_0}$ be a random walk on $G$.
 
 **(i)** The ***first passage time*** from an initial vertex $u$ to a target vertex $v$ is the minimum number of steps before a walk starting at $u$ first reaches $v$ on $G$. We denote it by $T_{uv}$.
@@ -71,13 +76,16 @@ $$\begin{align*}
 P(\tilde{X}_t = i \mid \tilde{X}_{t-1} = j) &= \frac{A_{ij}}{d_j}, \quad \text{for } j \neq v, \\
 P(\tilde{X}_t = v \mid \tilde{X}_{t-1} = v) &= 1
 \end{align*}$$ 
+:::
 
 First passage time이란 단순하게 말해서 $u$에서 시작해서 $v$에 도달하기까지 걸리는 최소 시간, 다시 말해 최소 스텝 수를 말한다. 자명하게 그 자체로 확률변수이며, 때문에 우리는 $T_{u, v}$의 기댓값 $E[T_{u, v}] =: \tau$을 계산하는 것을 목표로 한다. 
 
 ## Lemma
+::: {.math-box}
 Let $p_v(t) = P[\tilde{X}_t = v \mid \tilde{X}_0 = u]$ be the conditional probability of being at vertex $v$ at time $t$ for an absorbing random walk starting at $u$. The probability that a walk has first passage time exactly $t$ is given by 
 
 $$P[T_{u,v} = t] = p_v(t) - p_v(t-1)$$
+:::
 
 ### Proof
 Note that $p_v(t)$ represents the probability that the first passage time to $v$ is less than or equal to $t$ by the absorbing condition. That is, $p_v(t) = P[T_{u, v} \le t]$, which means that $p_v(t)$ is the CDF of $T_{u, v}$. Thus, we obtain:
@@ -88,9 +96,11 @@ P[T_{u, v} = t] &= P[T_{u, v} \le t] - P[T_{u, v} \le t - 1] \\
 \end{align*}$$
 
 ## Theorem 2
+::: {.math-box}
 Let $\mathbf{L}'$ be the ***$v$-th reduced Laplacian***, which is the symmetric matrix obtained by removing the $v$-th row and column from the graph Laplacian $\mathbf{L}$. Let $\mathbf{\Lambda}^{(v)}$ be the $N \times N$ symmetric matrix constructed by taking $(\mathbf{L}')^{-1}$ and reintroducing the $v$-th row and column having elements all zero. The ***mean first passage time*** $\tau = \mathbb{E}[T_{u,v}]$ is given by:
 
 $$\tau = \sum_{i=1}^N d_i \Lambda_{iu}^{(v)}$$
+:::
 
 굳이 $v$에 해당하는 행과 열을 지워주고 다시 채워주는 테크닉을 사용하는 이유는, absorbing random walk에서 인접 행렬 $\mathbf{A}$가 대칭이 아니기 때문이다. 따라서 대칭으로 만들어주기 위한 트릭을 사용했다고 이해하면 된다. 결국 $u$에서 $v$에 도달하기까지 걸리는 최소 시간의 기댓값 $\tau$는 그래프 라플라시안 $\mathbf{L}$의 역행렬만 있으면 계산할 수 있다는 결론이 주어진다.
 

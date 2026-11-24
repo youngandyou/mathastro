@@ -1,4 +1,4 @@
----
+﻿---
 title: "Limit at Infinity"
 author: "Youmin Chun"
 date: "2026-07-24 00:00:09"
@@ -18,11 +18,13 @@ categories:
 
 ## Theorem
 
+::: {.math-box}
 **(i)** $\displaystyle \lim_{z \to z_0} \frac{1}{f(z)} = 0 \implies \lim_{z \to z_0} f(z) = \infty$ 
 
 **(ii)** $\displaystyle \lim_{z \to 0} f\left( \frac{1}{z} \right) = w_0 \implies \lim_{z \to \infty} f(z) = w_0$ 
 
 **(iii)** $\displaystyle \lim_{z \to 0} \frac{1}{f \left( \frac{1}{z} \right)} = 0 \implies \lim_{z \to \infty} f(z) = \infty$ 
+:::
 
 ### Proof
 **(i)** By assumption, for any $\varepsilon > 0$, $\exists \delta > 0$ such that 

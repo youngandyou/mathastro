@@ -1,4 +1,4 @@
----
+﻿---
 title: "Planar Graph"
 author: "Youmin Chun"
 date: "2026-08-05"
@@ -8,7 +8,9 @@ categories:
 ---
 
 ## Definition 1
+::: {.math-box}
 A graph is said to be ***planer*** if it can be drwan in $\mathbb{R}^2$ without crossing edges. A drawing of a graph in $\mathbb{R}^2$ is a ***plane graph*** or a ***topological graph***.
+:::
 
 쉽게 말해 평면에 그래프를 에지가 겹치지 않고 그릴 수 있으면 평면 그래프라고 부른다. 당연히 완전 그래프 $K_4$는 평면 그래프이지만 $K_5$는 그렇지 않다.
 
@@ -25,7 +27,9 @@ A graph is said to be ***planer*** if it can be drwan in $\mathbb{R}^2$ without 
 ![](planar3.png)
 
 ## Definition 2
+::: {.math-box}
 A ***subdivision*** of a graph $G$ is is any graph we get from $G$ by adding vertices to edges. 
+:::
 
 즉, 에지 위에 노드를 추가해서 얻은 그래프를 subdivision이라고 부른다. 기존의 그래프를 더 세밀한 단위로 쪼개는 느낌으로 생각하면 된다. 자명하게 임의의 cycle은 triangle, 즉 $K_3$의 subdivision이다.
 

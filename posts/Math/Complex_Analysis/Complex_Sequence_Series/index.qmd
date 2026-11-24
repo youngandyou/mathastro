@@ -1,4 +1,4 @@
----
+﻿---
 title: "Complex Sequence and Series"
 author: "Youmin Chun"
 date: "2026-09-01 00:00:14"
@@ -8,6 +8,7 @@ categories:
 ---
 
 ## Definition 1
+::: {.math-box}
 **(i)** A sequence $\{ z_n \}_{n=1}^{\infty}$ in $\mathbb{C}$ is said to ***converge*** to a number $z_0$, denoted by 
 
 $$\lim_{n \to \infty} z_n = z_0$$
@@ -37,8 +38,10 @@ If the sequence $\{ S_n \}$ diverges, the series is said to ***diverge***.
 $$\sum_{n=0}^\infty a_n(z-z_0)^n$$
 
 is called a ***power series*** centered at $z_0$.
+:::
 
 ## Theorem 1
+::: {.math-box}
 Let $z_n = x_n + iy_n$ be a sequence of complex numbers, and let $z = x+iy$.
 
 **(i)** If $\{ z_n \}$ has a limit, then it is unique.
@@ -48,10 +51,12 @@ Let $z_n = x_n + iy_n$ be a sequence of complex numbers, and let $z = x+iy$.
 **(iii)** If $\{ z_n \}$ converges, then it is bounded.
 
 **(iv)** If $\displaystyle \lim_{n \to \infty} z_n = z$, then $\displaystyle \lim_{n \to \infty} \vert z_n \vert = \vert z \vert$.
+:::
 
 ### Proof
 
 ## Theorem 2
+::: {.math-box}
 Let $z_n = x_n + iy_n$ be a sequence of complex numbers, and let $S = X + iY$.
 
 **(i)** $\displaystyle \sum_{n=1}^\infty z_n = S \iff \sum_{n=1}^\infty x_n = X \text{ and } \sum_{n=1}^\infty y_n = Y$.
@@ -65,6 +70,7 @@ Let $z_n = x_n + iy_n$ be a sequence of complex numbers, and let $S = X + iY$.
 **(v)** A series converges to $S$ $\iff$ the sequence of remainders $\{ \rho_n \}$ converges to $0$.
 
 **(vi)** $\displaystyle \sum_{n=0}^\infty z^n = \frac{1}{1-z}$ whenever $\vert z \vert < 1$. Moreover, if $\vert z \vert \ge 1$, the series diverges.
+:::
 
 ### Proof
 

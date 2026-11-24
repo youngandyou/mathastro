@@ -1,4 +1,4 @@
----
+﻿---
 title: "Homeomorphism"
 author: "Youmin Chun"
 date: "2026-07-10 00:00:12"
@@ -8,6 +8,7 @@ categories:
 ---
 
 ## Definition 1
+::: {.math-box}
 Let $(X, \mathscr{T}_X)$ and $(Y, \mathscr{T}_Y)$ be topological spaces. 
 
 **(i)** A function $f: X \to Y$ is called a ***homeomorphism*** if $f$ is bijective and both $f$ and $f^{-1}$ are continuous. If such a function exists, then we say that $X$ and $Y$ are ***homeomorphic***, denoted by $X \cong Y$. 
@@ -15,13 +16,16 @@ Let $(X, \mathscr{T}_X)$ and $(Y, \mathscr{T}_Y)$ be topological spaces.
 **(ii)** Suppose that $X \cong Y$. A property $P$ of $X$ is called a ***topological property*** (or ***topological invariant***) if $Y$ also possesses $P$ as well. That is, these properties are invariant under homeomorphisms.
 
 **(iii)** Let $f: X \to Y$ be an injective continuous function. If $X \cong f(X)$, where $f(X)$ is a subspace of $Y$, then $f$ is called an ***embedding*** of $X$ in $Y$. 
+:::
 
 ## Remark
+::: {.math-box}
 **(i)** $f: X \to Y$ is a homeomorphism $\iff$ $[f(U) \in \mathscr{T}_Y \iff U \in \mathscr{T}_X]$. 
 
 **(ii)** Even though $f$ is bijective and continuous, $f^{-1}$ need not be continuous.
 
 $\big[(\because)$ The function $h: [0, 1) \to S^1$ defined by $h(t) = (\cos 2\pi t, \sin 2\pi t)$ is bijective and continuous. But for the point $(1, 0)$ and the neighborhood $V$ of $h^{-1}(1, 0) = 0$ in $[0, 1)$, we must have that for any neighborhood $U$ of $(1, 0)$, $h^{-1}(U) = [0, a) \cup (b, 1) \not \subset V$ for some $a, b \in (0, 1)$. Thus, $h^{-1}$ is not continuous.$\big]$
+:::
 
 ## Example
 Usual topology가 부여된 실수 공간 $\mathbb{R}$을 생각하자. 
@@ -31,6 +35,7 @@ Usual topology가 부여된 실수 공간 $\mathbb{R}$을 생각하자.
 **(ii)** Open unit disk $D$에 대해서, 함수 $g: D \to \mathbb{R}^2$가 $g(x, y) = \frac{(x, y)}{1-(x^2+y^2)}$로 정의되었다고 하자. 마찬가지로 $g$는 전단사이고, $g$와 $g^{-1}$ 모두 연속이므로 $g$는 homeomorphism이다. 즉 $D \cong \mathbb{R}^2$이다. 
 
 ## Theorem 1
+::: {.math-box}
 Let $(X, \mathscr{T}_X)$ and $(Y, \mathscr{T}_Y)$ be topological spaces, and let $f: X \to Y$ be a homeomorphism. Let $A \subset X$.
 
 **(i)** If $\mathscr{B}$ is a basis for $\mathscr{T}_X$, then $f(\mathscr{B})$ is a basis for $\mathscr{T}_Y$. 
@@ -38,6 +43,7 @@ Let $(X, \mathscr{T}_X)$ and $(Y, \mathscr{T}_Y)$ be topological spaces, and let
 **(ii)** $f(A') = f(A)'$.
 
 **(iii)** $f(\overline{A}) = \overline{f(A)}$.
+:::
 
 ### Proof
 **(i)** Since each $B$ in $\mathscr{B}$ is open in $X$, each $f(B)$ is open in $Y$, which means that $f(\mathscr{B}) \subset \mathscr{T}_Y$.

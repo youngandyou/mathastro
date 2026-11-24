@@ -1,4 +1,4 @@
----
+﻿---
 title: "Linear Combination"
 author: "Youmin Chun"
 date: "2026-09-05 00:00:01"
@@ -8,19 +8,25 @@ categories:
 ---
 
 # Definition
+::: {.math-box}
 **(i)** Let $V$ be a [vector space](../Vector_Space/index.qmd#sec-definition), and let $v_1, \dots, v_n \in V$. A vector $v \in V$ is called a ***linear combination*** of vectors $v_1, \dots, v_n$ if $v = a_1v_1 + \cdots + a_nv_n$ for some $a_1, \dots, a_n \in F$. 
 
 **(ii)** Let $S$ be a nonempty subset of $V$. The ***span*** of $S$, denoted $\langle S \rangle$ (or span($S$)), is the set consisting of all linear combinations of the vectors in $S$. For convenience, we define $\langle \emptyset \rangle := \{ \mathbf{0} \}$. We say that $S$ ***generates***, or ***spans*** $V$ if $\langle S \rangle = V$.
+:::
 
 ## Remark
+::: {.math-box}
 Let $S \subset V$.
 
 **(i)** $\langle S \rangle \neq \emptyset$. In particular, $\mathbf{0} \in \langle S \rangle$.
 
 **(ii)** $S \subset \langle S \rangle$.
+:::
 
 # Theorem 1
+::: {.math-box}
 Let $S$ be a subset of a vector space $V$. Then $\langle S \rangle$ is the smallest [subspace](../Subspace/index.qmd#sec-definition) of $V$ that contains $S$.
+:::
 
 ## Proof
 First, we will show that $\langle S \rangle \le V$. We have already noted that $\langle S \rangle \neq \emptyset$. Let $x, y \in \langle S \rangle$ and $c \in F$. Then for vectors $x_1, ..., x_n \in S$, we have 
@@ -38,7 +44,9 @@ $$
 Let $U$ be a subspace of $V$ that contains $S$. Let $v \in \langle S \rangle$. Then for $y_1, \dots, y_n \in S$, we have $v = a_1y_1 + \cdots + a_ny_n$ for some $a_1, \dots, a_n \in F$. Since $y_1, \dots, y_n \in U$ and $U$ is a vector space, $v = a_1y_1 + \cdots + a_ny_n \in U$. Thus $\langle S \rangle \subset U$. $\blacksquare$
 
 # Theorem 2
+::: {.math-box}
 Let $S$ be a nonempty subset of a vector space $V$. Then $S \leq V \iff S = \langle S \rangle$.
+:::
 
 ## Proof
 ($\Longrightarrow$) 
@@ -50,6 +58,7 @@ Let $v \in \langle S \rangle$. Then for vectors $v_1, \dots, v_n \in S$, $v = a_
 It is clear by Theorem 1. $\blacksquare$
 
 # Theorem 3
+::: {.math-box}
 Let $S_1, S_2$ be subsets of a vector space $V$. Then the following statements hold:
 
 **(i)** If $S_1 \subset S_2$, then $\langle S_1 \rangle \subset \langle S_2 \rangle$. 
@@ -57,6 +66,7 @@ Let $S_1, S_2$ be subsets of a vector space $V$. Then the following statements h
 **(ii)** $\langle S_1 \cup S_2 \rangle = \langle S_1 \rangle + \langle S_2 \rangle$.
 
 **(iii)** $\langle S_1 \cap S_2 \rangle \subset \langle S_1 \rangle \cap \langle S_2 \rangle$.
+:::
 
 ## Proof
 **(i)** Let $x \in$ $ \langle S_1 \rangle $. Then $x = \sum_{i=1}^n a_iv_i$ for $a_i \in F, v_i \in S_1 (i=1, \dots, n)$. Since $S_1 \subset S_2$, $x \in \langle S_2 \rangle$. Hence $\langle S_1 \rangle \subse \langle S_2 \rangle$.

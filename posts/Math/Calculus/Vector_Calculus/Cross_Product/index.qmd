@@ -1,4 +1,4 @@
----
+﻿---
 title: "Cross Product"
 author: "Youmin Chun"
 date: "2026-09-07 00:00:01"
@@ -8,6 +8,7 @@ categories:
 ---
 
 # Definition
+::: {.math-box}
 For vectors $\mathbf{u} = (u_1, u_2, u_3), \mathbf{v} = (v_1, v_2, v_3) \in \mathbb{R}^3$, the ***cross product*** of $\mathbf{u}$ and $\mathbf{v}$ is defined as
 
 $$\begin{align*}
@@ -21,8 +22,10 @@ u_1 & v_2 & v_3
 
 where $\{ \mathbf{e}_1, \mathbf{e}_2, \mathbf{e}_3 \}$ is the standard ordered [basis](../Basis/index.qmd#sec-definition-1)
  for $\mathbb{R}^3$.
+:::
 
 ## Proposition
+::: {.math-box}
 Let $\mathbf{u}, \mathbf{v}, \mathbf{w} \in \mathbb{R}^3$, and $r \in \mathbb{R}$. Then
 
 **(i)** $\mathbf{u} \times \mathbf{v} = - \mathbf{v} \times \mathbf{u}$
@@ -40,6 +43,7 @@ Let $\mathbf{u}, \mathbf{v}, \mathbf{w} \in \mathbb{R}^3$, and $r \in \mathbb{R}
 **(vii)** If $\{ \mathbf{u}, \mathbf{v} \}$ is linearly independent, then $\{ \mathbf{u}, \mathbf{v}, \mathbf{u} \times \mathbf{v} \}$ is a [basis](../Basis/index.qmd#sec-definition-1) for $\mathbb{R}^3$ and gives a [right handed orientation](../Basis_Orientation/index.qmd#sec-definition) to $\mathbb{R}^3$.
 
 **(viii)** For an orthogonal matrix $A \in O(3)$, $(A \mathbf{u}) \times (A \mathbf{v}) = \det(A) \cdot A (\mathbf{u} \times \mathbf{v})$
+:::
 
 ### Proof
 **(v)** WLOG, it suffices to show that $\langle \mathbf{u} \times \mathbf{v}, \mathbf{u} \rangle = 0$. 

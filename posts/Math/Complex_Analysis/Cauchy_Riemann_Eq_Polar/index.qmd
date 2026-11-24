@@ -1,4 +1,4 @@
----
+﻿---
 title: "Cauchy-Riemann Equations in Polar Coordinates"
 author: "Youmin Chun"
 date: "2026-07-24 00:00:14"
@@ -8,6 +8,7 @@ categories:
 ---
 
 ## Remark
+::: {.math-box}
 Suppose that for $f(z) = u(x, y) + i v(x, y)$, $u(x, y)$ and $v(x, y)$ satisfy the Cauchy-Riemann equations 
 
 $$
@@ -47,8 +48,10 @@ rv_r = -u_\theta
 $$
 
 Conversely, if $u_r, u_\theta, v_r, v_\theta$ exist and satisfy the Cauchy-Riemann equations in polar coordinates at $(r_0, \theta_0)$, then $u_x, u_y, v_x, v_y$ exist and satisfy the Cauchy-Riemann equations in Cartesian coordinates at $(x_0, y_0)$.
+:::
 
 ## Theorem 1
+::: {.math-box}
 Let $f(z) = u(r, \theta) + i v(r, \theta)$ be defined throughout some $\varepsilon$ neighborhood of $z_0 = r_0 e^{i \theta_0}$. Suppose that $u_r, u_\theta, v_r, v_\theta$ exist in this neighborhood, are continuous at $(r_0, \theta_0)$, and satisfy the Cauchy-Riemann equations in polar coordinates at $(r_0, \theta_0)$:
 
 $$
@@ -64,6 +67,7 @@ $$\begin{align*}
 f'(z_0) &= e^{-i \theta_0} (u_r + i v_r) \\
 &= -\frac{i}{z_0}(u_\theta + i v_\theta)
 \end{align*}$$
+:::
 
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

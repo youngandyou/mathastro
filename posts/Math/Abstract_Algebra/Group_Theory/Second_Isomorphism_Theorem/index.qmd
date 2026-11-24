@@ -1,4 +1,4 @@
----
+﻿---
 title: "Second Isomorphism Theorem"
 author: "Youmin Chun"
 date: "2026-09:02 00:00:16"
@@ -8,13 +8,16 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 Let $G$ be a group, and let $H, N \le G.$ Then the ***join*** of $H$ and $N$, denoted by $H \vee N,$ is defined by 
 
 $$H \vee N := \bigcap_{HN \subset K \le G} K.$$
+:::
 
 아래 Remark를 보면 알겠지만, 두 개의 서브그룹 $H, N$이 주어졌다고 해서 그 곱 $HN$은 일반적으로 서브그룹이 되지 않는다. 그러면 두 개의 서브그룹으로 다시 서브그룹을 만들기 위한 다른 방법이 필요하고, 그 답 중에 하나로 join을 정의할 수 있다. 
  
 ## Lemma
+::: {.math-box}
 Let $G$ be a group, and let $H,N \le G.$ We denote $HN := \{ hn \mid h \in H, n \in N \}.$
 
 **(i)** $H \vee N$ is the smallest subgroup of $G$ containing $HN.$
@@ -24,6 +27,7 @@ Let $G$ be a group, and let $H,N \le G.$ We denote $HN := \{ hn \mid h \in H, n 
 **(iii)** If $N \lhd G,$ then $HN$ is the smallest subgroup of $G$ containing both $H$ and $N.$ That is, $H \vee N = HN = NH.$
 
 **(iv)** If $N, H \lhd G,$ then $HN \lhd G.$
+:::
 
 위에서 언급했듯이 $H \vee N$은 서브그룹이 되고, 특별히 $HN$과 $H$ 그리고 $N$을 포함하는 가장 작은 서브그룹임을 알 수 있다.
 
@@ -74,6 +78,7 @@ g(hn)g^{-1} &= (ghg^{-1})(gng^{-1}) \\
 so $g(HN)g^{-1} \subset HN,$ which means that $HN \lhd G.$ $\blacksquare$
 
 ## Remark
+::: {.math-box}
 Let $G$ be a group, and let $H, N \le G.$ 
 
 **(i)** $HN$ need not to be a subgroup of $G.$
@@ -95,6 +100,7 @@ Suppose that $HN \le G.$ By definition of the join, we have $HN = H \vee N.$
 Let $K \le G$ with $HN \subset K.$ Let $nh \in NH.$ 
 
 \big]$
+:::
 
 ## Second Isomorphism Theorem
 Let $G$ be a group, and let $H \le G, N \lhd G.$ Then 

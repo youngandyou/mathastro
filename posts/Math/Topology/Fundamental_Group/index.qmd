@@ -1,4 +1,4 @@
----
+﻿---
 title: "Fundamental Group"
 author: "Youmin Chun"
 date: "2026-11-04 00:00:02"
@@ -26,15 +26,18 @@ categories:
 
 # Homotopy
 ## Definition 1
+::: {.math-box}
 Let $f, f': X \to Y$ be continuous maps.
 
 **(i)** $f$ is said to be ***homotopic*** to $f'$, denoted by $f \simeq f'$ or $f \overset{F}{\simeq} f'$, if there exists a continuous map $F: X \times [0, 1] \to Y$ such that $F(x, 0) = f(x)$ and $F(x, 1) = f'(x)$ for all $x \in X$. The map $F$ is called a ***homotopy*** between $f$ and $f'$.
 
 **(ii)** The map $f$ is said to be ***nullhomotopic*** if $f \simeq f'$ and $f'$ is a constant map.
+:::
 
 쉽게 말해 함수 $f$에서 $f'$으로 함수를 연속적으로 변화시킬 수 있으면 두 함수를 호모토픽 관계에 있다고 말하며, "연속적으로 변화시킨다"라는 말을 수학적으로는 호모토피라 부르는 연속함수 $F(x, t)$가 주어졌다고 말할 수 있다. 정의가 좀 헷갈릴 수도 있는데, $F(x, t)$는 $[0, 1]$ 사이에서 움직이는 변수 $t$ ($0$초에서 $1$초로 흐르는 시간 파라미터라고 이해해도 좋다)가 주어질 때마다 새로운 연속함수 $g_t: X \to Y$를 주는 함수이다. 시작할 때, 즉 $t=0$일 때 처음 함수 $f$를 줬다면 시간이 흐를수록, 즉 $t$가 $0$에서 $1$로 증가할수록 연속적으로 함수가 변해서 마침내 끝날 때, 즉 $t=1$일 때 함수 $f'$을 주는 식이다. 특별히 널호모토픽은 함수 $f$가 한 점으로 연속적으로 수축될 수 있음을 의미한다.
 
 ### Example 1
+::: {.math-box}
 **(i)** **(Straight-Line Homotopy)** Let $f, g: X \to \mathbb{R}^n$. The map $F: X \times I \to \mathbb{R}^n$ defined by
 
 $$F(x, t) = (1-t)f(x) + tg(x)$$
@@ -53,10 +56,12 @@ are path homotopic by the straight line homotopy.
 However, $f$ is **NOT** path homotopic with the path
 
 $$h(s) = (\cos \pi s, - \sin \pi s).$$
+:::
 
 실수 공간은 연속적으로 이어져있는 공간이므로 어떤 연속함수들을 던져놔도 각 점을 직선으로 잇는 호모토피를 생각하면 항상 호모토픽함이 자명하다. 반면 평면에 구멍을 하나 뚫어 놓고 이 구멍을 감싸는 경로들을 생각하면 예시 **(ii)**와 같이 서로 진행 방향이 반대일 경우 직선으로 잇는 호모토피를 생각할 수 없고, 나아가 호모토픽하지 않음이 자명하다.
 
 ## Definition 2
+::: {.math-box}
 We denote $I = [0, 1]$.
 
 **(i)** A continuous map $f: I \to X$ is called a ***path*** in $X$ from $x_0$ to $x_1$ if $f(0) = x_0$ and $f(1) = x_1$. If $x_0 = x_1$, then $f$ is called a ***loop*** based at $x_0$.
@@ -69,6 +74,7 @@ F(0, t) = x_0 \quad &\text{and} \quad F(1, t) = x_1
 \end{align*}$$
 
 for all $s, t \in I$. The map $F$ is called a ***path homotopy*** between $f$ and $f'$.
+:::
 
 이번엔 연속함수 $f, f'$의 정의역을 $I$로 제한하고 시작점과 끝점을 $x_0, x_1$로 고정시킨 경로를 다룬다. 즉 앞서 다룬 정의 1의 특수 케이스라고 볼 수 있다. 마찬가지로 두 경로 사이를 연속적으로 변화시킬 수 있는 연속함수 $F(t, s)$가 존재할 때 두 경로를 경로 호모토픽 관계에 있다고 말한다. 여기서는 시작점과 끝점이 고정되어 있으므로 좀 더 직관적인 이해가 편할 것이다. 
 
@@ -80,6 +86,7 @@ for all $s, t \in I$. The map $F$ is called a ***path homotopy*** between $f$ an
 
 # Fundamental Group
 ## Theorem 1
+::: {.math-box}
 **(i)** The relations $\simeq$ and $\simeq_p$ are equivalence relations.
 
 **(ii)** Let $f, g: I \to X$ be two paths from $x_0$ to $x_1$ and from $x_1$ to $x_2$, respectively. The ***product*** $f \ast g$ of $f$ and $g$ is the path defined by
@@ -108,6 +115,7 @@ equipped with the path product $[f] \ast [g] = [f \ast g]$. Then $\ast$ satiesfi
 Hence, $\langle \pi_1(X, x_0), \ast \rangle$ forms a group, called the ***fundamental group*** of $X$ at the ***base point*** $x_0$.
 
 **(iv)** If $X$ is path-connected, then $\pi_1(X, x_0) \cong \pi_1(X, x_1), \forall x_0, x_1 \in X$. In this case, we denote $\pi_1(X,x_0)$ by $\pi_1(X)$. If $\pi_1(X)$ is the trivial group, then $X$ is said to be ***simply connected***.
+:::
 
 $x_0$부터 $x_1$까지의 경로들의 공간 
 
@@ -223,13 +231,16 @@ Therefore, $\hat{\alpha}$ is an isomorphism, so $\pi_1(X, x_0) \cong \pi_1(X, x_
 :::
 
 ## Example 2
+::: {.math-box}
 **(i)** Let $\alpha: I \to \mathbb{R}^n$ be a loop in $\mathbb{R}^n$ based at $x_0$. Then the map $H: I \times I \to \mathbb{R}^n$ defined by
 
 $$H(s, t) = (1-t)\alpha(s) + t \mathbf{x_0}(s)$$
 
 is a path homotopy between $\alpha$ and the constant map $\mathbf{x_0}$, so $\alpha$ is nullhomotopic. This means that $\pi_1(\mathbb{R}^n, \mathbf{x_0})$ is the trivial group, so $\mathbb{R}^n$ is simply connected.
+:::
 
 ## Theorem 2
+::: {.math-box}
 **(i)** Let $h: (X, x_0) \to (Y, y_0)$ be a continuous map with $h(x_0) = y_0$. The map $h_\ast : \pi_1(X, x_0) \to \pi_1(Y, y_0)$ defined by 
 
 $$h_\ast([f]) = [h \circ f], \forall [f] \in \pi_1(X, x_0)$$
@@ -241,6 +252,7 @@ is a group homomorphism, and it is called the ***induced homomorphism*** of $h$.
 **(iii)** If $\mathrm{id}: (X, x_0) \to (X, x_0)$ is the identity map, then $\mathrm{id}_\ast$ is the identity homomorphism on $\pi_1(X, x_0)$.
 
 **(iv)** If $h: (X, x_0) \to (Y, y_0)$ is a homeomorphism, then $h_\ast: \pi_1(X, x_0) \to \pi_1(Y, y_0)$ is an isomorphism. That is, the fundamental group is a topological invariant.
+:::
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
 **(i)** First, we will show that $h_\ast$ is well-defined. If $f \overset{F}{\simeq} f'$ for two loops $f, f'$ based at $x_0$, then we have
@@ -303,6 +315,7 @@ which means that $(h^{-1})_\ast$ is the inverse of $h_\ast$. Hence, $h_\ast$ is 
 
 # Jordan Separation Theorem
 ## Theorem 3
+::: {.math-box}
 **(i)** Suppose that $X = U \cup V$ where 
 
 1. $U$ and $V$ are open in $X$.
@@ -316,6 +329,7 @@ which means that $(h^{-1})_\ast$ is the inverse of $h_\ast$. Hence, $h_\ast$ is 
 Then $X$ is simply connected.
 
 **(ii)** $S^n$ is simply connected for each $n \ge 2$.
+:::
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
 **(i)** It is a corollary of ***Seifert-Van Kampen Theorem***.
@@ -338,14 +352,18 @@ By **(i)**, $S^n$ is simply connected. $\blacksquare$
 :::
 
 ## Definition 3
+::: {.math-box}
 **(i)** Let $X$ be a connected space, and let $A \subset X$. We say that $A$ ***separates*** $X$ if $X - A$ is not connected.
 
 **(ii)** A ***simple closed curve*** is a space homeomorphic to $S^1$.
+:::
 
 ## Theorem 4 (Jordan Separation Theorem)
+::: {.math-box}
 **(i)** Let $C$ be a simple closed curve in $S^2$. Then $C$ separates $S^2$.
 
 **(ii)** The interior of any simple closed curve in $\mathbb{R}^2$ is homeomorphic to the unit disk $D$.
+:::
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
 **(i)** Clearly, $S^2 - C$ is locally path connected, so its components and path components are the same. 

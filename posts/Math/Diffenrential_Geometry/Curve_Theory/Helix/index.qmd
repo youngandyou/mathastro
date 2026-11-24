@@ -1,4 +1,4 @@
----
+﻿---
 title: "Helix"
 author: "Youmin Chun"
 date: "2026-09-28 00:00:02"
@@ -8,13 +8,16 @@ categories:
 ---
 
 # Definition
+::: {.math-box}
 A ***helix*** is a regular curve $\alpha$ such that $\langle T(s), u \rangle$ is a constant for some fixed vector $u \in \mathbb{R}^3$. The vector $u$ is called the ***axis*** of the helix.
 
 ![](helix1.png)
+:::
 
 보통 나선이라고 하면 $\alpha(t) = (\cos t, \sin t, t)$와 같이 일정하게 올라가는 예시만 생각할텐데, 위 정의에 따르면 굳이 이렇게 일정한 모양이 아니더라도 상관없다.
 
 ## Example
+::: {.math-box}
 **(i)** $\alpha(t) = (e^{t}\cos 2\pi t, e^{t} \sin 2\pi t, e^t)$
 
 ![](helix2.png)
@@ -22,9 +25,12 @@ A ***helix*** is a regular curve $\alpha$ such that $\langle T(s), u \rangle$ is
 **(ii)** $\alpha(t) = (t\cos t, t \sin t, t)$
 
 ![](helix3.png)
+:::
 
 # Theorem
+::: {.math-box}
 A unit speed curve $\alpha$ with $\kappa(s) \neq 0, \forall s$ is a helix $\iff$ $\tau = c\kappa$ for some constant $c$.
+:::
 
 ## Proof
 $(\implies)$ Suppose that $\alpha$ is a helix. Then $\langle T(s), u \rangle = \cos \theta$ for some fixed unit vector $u$ and constant $\theta$. Then we have

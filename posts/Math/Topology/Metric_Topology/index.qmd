@@ -1,4 +1,4 @@
----
+﻿---
 title: "Metric Topology"
 author: "Youmin Chun"
 date: "2026-07-15 00:00:01"
@@ -9,6 +9,7 @@ categories:
 
 # Metric Topology
 ## Theorem 1
+::: {.math-box}
 **(i)** If $d$ is a metric on a set $X$, then the collection $\mathscr{B} = \{ B_d(x, \varepsilon) \mid x \in X, \varepsilon > 0 \}$ is a basis for a topology $\mathscr{T}_d$ on $X$, called ***the metric topology induced by $d$.*** We call $(X, \mathscr{T}_d)$ a ***metric space***.
 
 > A function $d : X \times X \to \mathbb{R}$ is said to be a ***metric*** on $X$ if it satisfies the following conditions:
@@ -20,6 +21,7 @@ categories:
 > **(iii)** $d(x, z) \leq d(x, y) + d(y, z), \forall x, y, z \in X$.
 >
 > The $\varepsilon$-ball centered at $x$ is defined by $B_d(x, \varepsilon) = \{ y \in X \mid d(x, y) < \varepsilon \}$.
+:::
 
 해석개론에서는 위상 얘기를 생략하고 바로 거리공간 위에서 오픈이니, 컴팩트이니 등등의 논의를 진행했었다. 위상수학에서는 이를 더 일반화해서 사실 거리공간도 위상공간의 한 종류로 이야기하고, 메트릭으로 만들어지는 오픈볼을 오픈셋으로 볼 수 있게 한다.
 
@@ -28,6 +30,7 @@ U \in \mathscr{T}_d \iff \forall x \in U, \exists \delta > 0 \text{ such that } 
 \end{align*}$$
 
 ## Definition 1
+::: {.math-box}
 **(i)** A space $X$ is said to be ***metrizable*** if there exists a metric $d: X \times X \to \mathbb{R}$ that induces the topology of $X$. 
 
 Let $A$ be a subset of a metric space $(X, d)$.
@@ -35,6 +38,7 @@ Let $A$ be a subset of a metric space $(X, d)$.
 **(ii)** $A$ is said to be ***bounded*** if there is some positive number $M$ such that $d(a, b) \le M, \forall a, b \in A$. 
 
 **(iii)** If $A$ is bounded and nonempty, then the ***diameter*** of $A$ is defined to be the number $\mathrm{diam}(A) = \sup_{a, b \in A} d(a, b)$.
+:::
 
 유클리드 공간 $(\mathbb{R}, \mathscr{T}_{\text{usual}})$에 거리 $d(x, y) = \vert x - y \vert$를 부여할 수 있고, 이 거리가 만들어내는 위상은 기존의 유클리드 공간과 정확히 동일하다. 이렇게 기존의 위상 $(X, \mathscr{T})$와 정확히 동일한 위상을 만들어낼 수 있도록 거리 $d$를 잡아올 수 있을 때 $X$를 거리화가능하다고 부르고, 어떤 특정한 거리 $d$가 $X$에 만들어내는 위상공간 $(X, \mathscr{T}_d)$를 거리 공간이라고 부른다. 다시 말해 $(X, \mathscr{T})$가 거리화가능하고, 이에 대응되는 거리 $d$가 존재하면 $(X, \mathscr{T}) = (X, \mathscr{T}_d)$이다. 한편 애초에 처음부터 위상이 존재하고 이 위상을 유도하는 거리가 존재한다는 맥락이 아니라, 처음부터 거리가 주어져서 이 거리가 어떤 위상을 생성할 수도 있고, 이러한 맥락의 정의를 거리공간이라고 부른다.
 
@@ -50,6 +54,7 @@ $$d(y, x_1) \le d(y, x) + d(x, x_1) < \delta_1 \quad \text{and} \quad d(y, x_2) 
 so that $y \in B_d(x_1, \delta_1) \cap B_d(x_2, \delta_2) = B_1 \cap B_2$. Therefore, $B_d(x, \delta) \subset B_1 \cap B_2$. It follows that $\mathscr{B}$ is a basis for a topology on $X$. $\blacksquare$
 
 ## Example
+::: {.math-box}
 The followings give the metrics on $\mathbb{R}^n$:
 
 **(i)** ***The Euclidean metric***: $\displaystyle d(x, y) = \sqrt{\sum_{i=1}^n (x_i - y_i)^2}$.
@@ -64,9 +69,12 @@ $$d(x, y) = \begin{cases}
 0 & \text{if } x = y \\
 1 & \text{if } x \neq y.
 \end{cases}$$
+:::
 
 ## Theorem 2
+::: {.math-box}
 Let $d, d'$ be two metrics on a set $X$, and let $\mathscr{T}_d, \mathscr{T}_{d'}$ be two topologies induced by $d, d'$, respectively. Then $\mathscr{T}_{d'}$ is finer than $\mathscr{T}_d$ $\iff$ $\forall x \in X$ and $\forall \varepsilon > 0$, $\exists \delta > 0$ such that $B_{d'}(x, \delta) \subset B_d(x, \varepsilon)$.
+:::
 
 ### Proof
 $(\Longrightarrow)$ Suppose that $\mathscr{T}_{d} \subset \mathscr{T}_{d'}$. Let $x \in X$ and $\varepsilon > 0$. Since $B _d(x, \varepsilon)$ is a basis element of $\mathscr{T}_{d}$, [there exists a basis element $B'$ of $\mathscr{T}_{d'}$ such that $x \in B' \subset B _d(x, \varepsilon)$.](../Basis_Topology/index.qmd#sec-theorem-4) Then $B' = B_{d'}(x, \delta)$ for some $\delta > 0$. Thus, we have $B_{d'}(x, \delta) \subset B_d(x, \varepsilon)$.
@@ -74,9 +82,11 @@ $(\Longrightarrow)$ Suppose that $\mathscr{T}_{d} \subset \mathscr{T}_{d'}$. Let
 $(\Longleftarrow)$ Suppose that $\forall x \in X$ and $\forall \varepsilon > 0$, $\exists \delta > 0$ such that $B_{d'}(x, \delta) \subset B _d(x, \varepsilon)$. Let $B$ be a basis element of $\mathscr{T}_{d}$. Then $B = B_{d}(x, \varepsilon)$ for some $x \in X$ and $\varepsilon > 0$. By assumption, $\exists \delta > 0$ such that $B_{d'}(x, \delta) \subset B_d(x, \varepsilon)$. Since $B_{d'}(x, \delta)$ is a basis element of $\mathscr{T}_{d'}$ and it contains $x$, we conclude that $\mathscr{T}_{d} \subset \mathscr{T}_{d'}$. $\blacksquare$
 
 ## Corollary
+::: {.math-box}
 **(i)** Let $d, d', d''$ be the Euclidean metric, the taxicab metric, and the square metric, respectively, on $\mathbb{R}^n$. Then $\mathscr{T}_d = \mathscr{T}_{d'} = \mathscr{T}_{d''}$. Furthermore, these topologies are the same as the usual topology of $\mathbb{R}^n$.
 
 **(ii)** Let $d$ be a discrete metric on a set $X$. Then the metric topology induced by $d$ is the discrete topology on $X$.
+:::
 
 ::: {.callout-note title="Proof" collapse="true" icon=false}
 **(i)** Let $x \in \mathbb{R}^n$ and $\varepsilon > 0$.
@@ -156,9 +166,11 @@ by the definition of the discrete metric. [Thus, we always have $x \in B_d(x, 1)
 :::
 
 ## Theorem 3
+::: {.math-box}
 **(i)** Every metric space is Hausdorff.
 
 **(ii)** Let $\mathbb{R}^n$ be the metric space with the Euclidean metric $d$. A subspace $A$ of $\mathbb{R}^n$ is [compact](../Compact_Space/index.qmd#sec-definition) $\iff$ $A$ is [closed](../Closed_Set/index.qmd#sec-definition) and bounded.
+:::
 
 ### Proof
 **(i)** Let $X$ be a metric space with the metric $d$. Let $x, y \in X$ with $x \neq y$. Then $d(x, y) > 0$. Take $\varepsilon = \frac{1}{2}d(x, y)$. Since
@@ -184,6 +196,7 @@ $$A \subset B_d(\mathbf{0}, N+M) \subset [-(N+M), N+M]^n.$$
 [Since $[-(N+M), N+M]^n$ is compact and $A$ is closed, $A$ is compact.](../Compact_Space/index.qmd#sec-theorem) $\blacksquare$
 
 ## Theorem 4
+::: {.math-box}
 **(i)** Let $f: (X, d_X) \to (Y, d_Y)$ be a function. Then 
 
 $$f \text{ is continuous } \iff \forall x \in X, \forall \varepsilon > 0, \exists \delta >0 \text{ such that } d_X(x, y) < \delta \implies d_Y(f(x), f(y)) < \varepsilon.$$
@@ -193,6 +206,7 @@ $$f \text{ is continuous } \iff \forall x \in X, \forall \varepsilon > 0, \exist
 **(iii)** Let $f: X \to Y$ be a continuous function. Then for every sequence $\{ x_n \} _{n=1} ^{\infty}$ in $X$ with $\lim_{n \to \infty} x_n = x$, we have $\lim_{n \to \infty} f(x_n) = f(x)$. Moreover, if $X$ is metrizable, then the converse holds. 
 
 **(iv)** Let $f: (X, d_X) \to (Y, d_Y)$ be a continuous function such that $X$ is compact. Then $f$ is uniformly continuous, i.e. for any $\varepsilon >0$, there exists $\delta > 0$ such that $d_X(x, y) < \delta \implies d_Y(f(x), f(y)) < \varepsilon$. 
+:::
 
 ### Proof
 **(i)**

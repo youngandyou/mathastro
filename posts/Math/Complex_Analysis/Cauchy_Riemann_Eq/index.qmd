@@ -1,4 +1,4 @@
----
+﻿---
 title: "Cauchy-Riemann Equations"
 author: "Youmin Chun"
 date: "2026-07-24 00:00:13"
@@ -8,6 +8,7 @@ categories:
 ---
 
 ## Theorem 1
+::: {.math-box}
 Suppose that $f(z) = u(x, y) + i v(x, y)$ is differentiable at $z_0 = x_0 + i y_0$. Then $u_x, u_y, v_x, v_y$ exist and satisfy the Cauchy-Riemann equations at $(x_0, y_0)$:
 
 $$
@@ -16,6 +17,7 @@ u_x = v_y \\
 u_y = -v_x
 \end{cases}
 $$
+:::
 
 ### Proof
 Denote $\Delta z = \Delta x + i \Delta y$. Note that 
@@ -55,6 +57,7 @@ u_y = -v_x. \blacksquare
 \end{cases}$$
 
 ## Theorem 2
+::: {.math-box}
 Let $f(z) = u(x, y) +iv(x, y)$ be defined throughout some $\varepsilon$ neighborhood of $z_0 = x_0 + i y_0$. Suppose that $u_x, u_y, v_x, v_y$ exist in this neighborhood, are continuous at $(x_0, y_0)$, and satisfy the Cauchy-Riemann equations at $(x_0, y_0)$. Then $f$ is differentiable at $z_0$ and $f'(z_0)$ is given by
 
 $$ \begin{align*}
@@ -62,6 +65,7 @@ f'(z_0) &= u_x(x_0, y_0) + i v_x(x_0, y_0) \\
 &= v_y(x_0, y_0) - i u_y(x_0, y_0)
 \end{align*}
 $$
+:::
 
 미분가능하면 코시-리만 방정식이 성립하지만, 그 역이 성립하기 위해서는 추가로 함수 $f$가 $C^1$ 함수여야 한다.
 

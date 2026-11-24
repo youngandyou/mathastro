@@ -7,7 +7,8 @@ categories:
   - Math > Graph Theory > Graph
 ---
 
-## Bipartite Graph
+# Bipartite Graph
+::: {.math-box}
 **(i)** A graph $G$ is ***bipartite*** if $V(G)$ has a partition $V(G) = A \cup B$ such that all edges go from $A$ to $B$.
 
 **(ii)** The ***complete bipartite graph*** $K_{m, n}$ on the sets $M$ and $N$ with $\vert M \vert = m$ and $\vert N \vert = n$ is defined by 
@@ -15,6 +16,7 @@ categories:
 $$V(K_{m, n}) = M \cup N \quad \text{and} \quad E(K_{m, n}) = \{\{ x, y \} \mid x \in M, y \in N \}.$$
 
 ![](bipartite.png)
+:::
 
 ## Two-Mode Network
 일반적으로는 위와 같이 정의되지만, 네트워크 이론의 맥락에서는 하이퍼그래프의 또 다른 표현으로 기술되기도 한다. 예컨대 아래 그림과 같이 표현된 하이퍼그래프는 '그룹'과 '멤버'라는 두 가지 모드로 구분할 수 있다. 이분그래프는 멤버를 아래 검은색 정점으로 두고, 멤버들이 속하는 그룹을 위 흰색 정점으로 두어서 어떤 멤버들이 어떤 그룹에 속하는지를 하나의 에지로 표현한다. 

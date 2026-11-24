@@ -1,4 +1,4 @@
----
+﻿---
 title: "Convergence of a Sequence"
 author: "Youmin Chun"
 date: "2026-07-10 00:00:07"
@@ -8,12 +8,16 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 Let $X$ be a topological space. We say that a sequence $\{ x_n \}_{n \in \mathbb{N}}$ in $X$ ***converges*** to a point $x \in X$ if for each neighborhood $U$ of $x$, there is a positive integer $N$ such that $x_n \in U$ for all $n \ge N$. 
+:::
 
 ## Remark
+::: {.math-box}
 **(i)** Let $\mathscr{B}$ be a basis for the topological space $X$. If for each basis element $B$ containing $x$, there is a positive integer $N$ such that $x_n \in B, \forall n \ge N$, then the sequence $\{ x_n \}$ converges to $x$.
 
 **(ii)** Let $\mathscr{S}$ be a subbasis for the topological space $X$. If for each element $S$ containing $x$, there is a positive integer $N$ such that $x_n \in S, \forall n \ge N$, then the sequence $\{ x_n \}$ converges to $x$.
+:::
 
 **(iii)** 실수나 거리 공간에서는 어떤 수열이 수렴한다면 항상 극한값은 유일했지만, 일반적인 위상 공간으로 넘어오면 수렴한다고 해서 그 값이 유일하다고 보장할 수 없다. 예컨대 다음의 예시를 보자.
 

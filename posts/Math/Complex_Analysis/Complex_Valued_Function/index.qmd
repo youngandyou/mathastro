@@ -1,4 +1,4 @@
----
+﻿---
 title: "Complex-Valued Functions"
 author: "Youmin Chun"
 date: "2026-07-24 00:00:06"
@@ -8,14 +8,19 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 **(i)** Let $S \subset \mathbb{C}$. A function $f: S \to \mathbb{C}$ is called a ***complex valued function*** on $S$. 
 
 **(ii)** The function that assigns more than one value to a point $z$ in the domain of the function is called a ***multi-valued function***. We usually construct a single-valued function from a multi-valued function by assigning just one of the possible values at each point is taken.
+:::
 
 ## Remark 1
+::: {.math-box}
 Let $f$ be a complex valued function on $S$. Then $f$ can be written as $f(z) = u(x, y) + i v(x, y)$ for all $z = x + iy \in S$, where $u$ and $v$ are real valued functions on $S$. 
+:::
 
 ## Example
+::: {.math-box}
 **(i)** Consider $f(z) = \frac{1}{z}, \forall z \in \mathbb{C} \setminus \{ 0 \}$. Note that 
 
 $$\begin{align*}
@@ -51,6 +56,7 @@ where $r = \vert z \vert$ and $\Theta \in (-\pi, \pi]$ is the principal value of
 $$f(z) = \sqrt{r} \exp \left( i \frac{\Theta}{2} \right)$$
 
 then $f$ is a single-valued function on $\mathbb{C} \setminus \{ 0 \}$. By assigning $f(0) = 0$, the function $f$ is well-defined on $\mathbb{C}$.
+:::
 
 ## Remark 2
 회전 행렬 

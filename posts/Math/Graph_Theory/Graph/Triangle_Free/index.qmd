@@ -1,4 +1,4 @@
----
+﻿---
 title: "Triangle Free Graph"
 author: "Youmin Chun"
 date: "2026-08-05"
@@ -8,9 +8,11 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 **(i)** A graph $G$ is called ***triangle-free*** if $G$ does not contain $K_3$ as a subgraph. In general, a graph $G$ is called ***$K_k$-free*** if $G$ does not contain $K_k$ as a subgraph. 
 
 **(ii)** Let $T(n)$ be the maximum number of edges in triangle-free graphs on $n$ vertices. In general, the ***Turan number*** $T_k(n)$ is the maximum number of edges in $K_k$-free graphs on $n$ vertices. That is, $T(n) = T_3(n)$.
+:::
 
 ## Problem
 Let $G$ be a graph on $n$ verticies. 
@@ -48,9 +50,11 @@ $$\frac{n}{2} = \frac{a+b}{2} \ge \sqrt{ab}$$
 이 성립하고, 등호는 $a = \frac{b}{2} = b$일 때 성립한다. 따라서 에지의 최대값은 $\left\lfloor \frac{n^2}{4} \right\rfloor$이다.
 
 ## Theorem
+::: {.math-box}
 For all $n \ge 1$, we have 
 
 $$T(n) = \left\lfloor \frac{n^2}{4} \right\rfloor$$
+:::
 
 ### Proof
 We prove by induction on $n$. 

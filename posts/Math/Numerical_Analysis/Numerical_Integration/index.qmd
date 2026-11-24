@@ -1,4 +1,4 @@
----
+﻿---
 title: "Numerical Integration"
 author: "Youmin Chun"
 date: "2026-10-12 00:00:01"
@@ -27,6 +27,7 @@ $$T(f) = \int_a^b p_1(x) dx = \frac{b-a}{2}(f(a) + f(b))$$
 
 :::: {.callout-note icon=false}
 ## Lemma
+::: {.math-box}
 Let $f: [a, b] \to \mathbb{R}$ be a continuous function, and let $g: [a, b] \to \mathbb{R}$ be an integrable function with $g(x) \ge 0, \forall x \in [a, b]$. Then there exists $c \in [a, b]$ such that
 
 $$\int_a^b f(x) g(x) dx = f(c) \int_a^b g(x) dx$$
@@ -40,6 +41,7 @@ E(f) &= I(f) - T(f) \\
 &= \frac{f''(\xi)}{2} \cdot \left( - \frac{(b-a)^3}{6} \right) \\
 &= -\frac{f''(\xi)}{12}(b-a)^3 \\
 \end{align*}$$
+:::
 
 정리하면 근사하고자 하는 적분값 $I(f)$는 사다리꼴 규칙을 사용한 근사값 $T(f)$와 오차 $E(f)$의 합으로 나타낼 수 있다. 
 

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Cauchy-Goursat Theorem"
 author: "Youmin Chun"
 date: "2026-09-01 00:00:06"
@@ -14,11 +14,13 @@ categories:
 그러면 영역 $R$은 당연하게도 square와 partial square들의 합집합으로 표현, 다시 말해 cover된다. 이때 다음의 Lemma가 성립한다.
 
 ## Lemma
+::: {.math-box}
 Let $R$ be a closed region consisting of the points interior to a positively oriented simple closed contour $C$ together with the points on $C$ itself. Let $f(z)$ be an analytic function throughout $R$. For each $\varepsilon > 0$, the region $R$ can be covered with a finite number of squares and partial squares, indexed by $j = 1, 2,...,n$ such that in each one there is a fixed point $z_j$ for which the inequality
 
 $$\left \vert \frac{f(z) - f(z_j)}{z - z_j} - f'(z_j) \right \vert < \varepsilon \quad \cdots \quad (\ast)$$
 
 is satisfied by all points other than $z_j$ in that square or partial square.
+:::
 
 ### Proof
 If every subregion contains a needed point $z_j$ such that the inequality $(\ast)$ holds for all other points $z$ in it, then we are done.

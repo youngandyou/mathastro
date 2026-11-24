@@ -8,6 +8,7 @@ categories:
 ---
 
 # Newton-Raphson Method
+::: {.math-box}
 Suppose that the equation $f(x) = 0$ has a solution $\alpha$. For a given intial value $x_0$ near $\alpha$, the sequence $\{ x_n \}$ defined as
 
 $$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$$
@@ -15,6 +16,7 @@ $$x_{n+1} = x_n - \frac{f(x_n)}{f'(x_n)}$$
 for each $n = 0, 1, 2, \dots$ converges to $\alpha$ as $n \to \infty$ with order of convergence $2$ if $f'(\alpha) \neq 0$.
 
 ![](new1.png)
+:::
 
 ::: {.callout-note title="Proof" collapse="true" icon=false}
 The Taylor expansion of $f(x)$ of order $2$ at $x_n$ is given by

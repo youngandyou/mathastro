@@ -1,4 +1,4 @@
----
+﻿---
 title: "Order of Groups"
 author: "Youmin Chun"
 date: "2026-07-31 00:00:04"
@@ -8,16 +8,20 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 - Let $G$ be a group. 
 
 **(i)** The ***order of a group*** $G$ is the number of elements in $G$, denoted by $\vert G \vert$.
 
 **(ii)** The ***order of an element*** $a \in G$ is the order of the cyclic group $\langle a \rangle$. That is, $\vert a \vert = \vert \langle a \rangle \vert$.
+:::
 
 ## Theorem
+::: {.math-box}
 Let $G$ be a finite group, and let $a \in G$. Then
 
 $$\vert a \vert = \vert \langle a \rangle \vert = \min \{ m \in \mathbb{N} \mid a^m = e \}$$
+:::
 
 ### Proof
 Let $n = \min \{ m \in \mathbb{N} \mid a^m = e \}$, that is, $a^n = e$ and $a^k \neq e, \forall 1 \le k < n$. We claim that $\langle a \rangle = \{ e, a, a^2, \cdots, a^{n-1} \}$.

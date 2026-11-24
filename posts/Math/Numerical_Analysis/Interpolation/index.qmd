@@ -1,4 +1,4 @@
----
+﻿---
 title: "Interpolation"
 author: "Youmin Chun"
 date: "2026-09-28 00:00:03"
@@ -11,7 +11,9 @@ categories:
 ***보간법(Interpolation)***이란 데이터들의 집합 $\{ (x_0, y_0), (x_1, y_1), \dots, (x_n, y_n) \}$이 주어졌을 때 $f(x_i) = y_i$를 만족하면서 주어진 데이터들을 가장 잘 설명하는 함수 $f$를 찾는 과정 내지는 방법을 말한다. 이 포스트에서는 주로 ***다항식 보간법(Polynomial Interpolation)***, 즉 함수 $f$를 다항식으로 표현하는 방법에 대해서 다룬다. 아래 정리에서 볼 수 있듯이 이미 주어진 데이터들로 계산되는 다항식은 유일하게 존재함을 알 수 있는데, 그렇다면 남은 것은 존재하는 여러 표현 중에 계산 비용이 더 적은 것은 무엇인지 파악하는 것이다.
 
 # Theorem 1
+::: {.math-box}
 For points $(x_0, y_0), (x_1, y_1), \dots, (x_n, y_n)$ with distinct $x_i$'s, a polynomial $P_n$ is called an ***interpolating polynomial*** of $f$ at $x_0, x_1, \dots, x_n$ or $P_n$ is said to ***interpolate*** $f$ at $x_0, x_1, \dots, x_n$ if $P_n(x_i) = f(x_i)$ for all $i = 0, 1, \dots, n$ and $\deg P_n \le n$. Then there exists a unique interpolating polynomial $P_n(x)$.
+:::
 
 ## Proof
 The existence comes directly from the Lagrange's interpolation formula. Suppose that there are two interpolating poloynomial $P_n(x)$ and $Q_n(x)$ at $x_0, x_1, \dots, x_n$. Define $R(x) = P_n(x) - Q_n(x)$. Since $\deg P_n, \deg Q_n \le n$, we have $\deg R \le n$. Since $R(x_i) = P_n(x_i) - Q_n(x_i) = 0$ for all $i = 0, 1, \dots, n$ and all $x_i$'s are distinct, $R(x)$ has $n+1$ distinct roots. Since $R$ has at most $n$ roots, we must obtain $R \equiv 0$, which implies $P_n = Q_n$. $\blacksquare$
@@ -48,6 +50,7 @@ L_1(x) &= \frac{x - x_0}{x_1 - x_0}
 이 아이디어를 확장시키면 $n+1$ 개의 점들 $\{ (x_0, y_0), (x_1, y_1), \dots, (x_n, y_n) \}$이 주어졌을 때에도 같은 과정을 통해 주어진 점들을 지나는 다항식 $P_n$을 찾을 수 있다. 이러한 방법을 ***라그랑주 보간법(Lagrange Interpolation)***이라고 부르며 집합 $\{L_0, L_1, \dots, L_n\}$을 라그랑주 보간법의 ***기저 함수(basis functions)***라고 부른다.
 
 ## Theorem 2
+::: {.math-box}
 Define
 
 $$L_i(x) = \prod_{0 \le k \neq i \le n} \frac{x-x_k}{x_i - x_k}.$$
@@ -63,6 +66,7 @@ Then followings hold:
 The ***Lagrange interpolating polynomial*** for the $n+1$ points $\{ (x_0, y_0), (x_1, y_1), \dots, (x_n, y_n) \}$ with distinct $x_i$'s is given by
 
 $$P_n(x) = y_0L_0(x) + y_1L_1(x) + \dots + y_nL_n(x)$$
+:::
 
 ### Proof
 
@@ -70,6 +74,7 @@ $$P_n(x) = y_0L_0(x) + y_1L_1(x) + \dots + y_nL_n(x)$$
 라그랑주 보간법은 다항식 공간 $P_n$의 기저를 제시하고 단순한 선형결합으로 다항식을 표현하게 만들어 줄 수 있다는 점에서 유용하나, 계산 코스트는 $\mathcal{O}(n^2)$ 정도로 다소 높다고 할 수 있다. 아래에서 설명할 뉴턴 계차상 보간법(Newton's Divided Difference Interpolation)은 라그랑주 보간법과 동일한 결과를 제공하면서도 $\mathcal{O}(n)$의 계산 코스트로 다항식을 구성할 수 있다.
 
 ## Definition 1
+::: {.math-box}
 Let $f: \mathbb{R} \to \mathbb{R}$ be a function, and let $x_0, x_1, \dots, x_n$ be $n+1$ distinct points. Define the ***divided difference*** of $f$ as
 
 $$\begin{align*}
@@ -79,6 +84,7 @@ f[x_0, x_1, x_2] &:= \frac{f[x_0, x_1] - f[x_1, x_2]}{x_0 - x_2}\\
 \vdots\\
 f[x_0, x_1, \dots, x_n] &:= \frac{f[x_0, x_1, \dots, x_{n-1}] - f[x_1, x_2, \dots, x_n]}{x_0 - x_n}
 \end{align*}$$
+:::
 
 $f[x_0, x_1]$을 ***first-order divided difference***, $f[x_0, x_1, x_2]$를 ***second-order divided difference***, 같은 방식으로 $f[x_0, x_1, \dots, x_n]$을 ***n-th order divided difference***라고 부른다. "Divided difference"는 한국어로 '계차상' 쯤으로 번역된다. 계차라는 것이 인접한 항끼리의 차의 의미를 갖다보니 이렇게 번역된 듯하다.
 
@@ -113,6 +119,7 @@ $$P_2(x) = f(x_0) + f[x_0, x_1](x-x_0) + f[x_0, x_1, x_2](x-x_0)(x-x_1)$$
 와 같은 식이 주어진다. 이를 임의의 $n$에 대해 일반화한 공식이 바로 뉴턴 계차상 보간법이다.
 
 ## Theorem 2
+::: {.math-box}
 For the points $(x_0, y_0), (x_1, y_1), \dots, (x_n, y_n)$ with distinct $x_i$'s, the ***Newton divided difference interpolating polynomial*** is given by:
 
 **(i)** **Normal Form:**
@@ -130,6 +137,7 @@ $$P_n(x) = P_{n-1}(x) + f[x_0, \dots, x_n] \prod_{j=0}^{n-1} (x-x_j)$$
 **(iii)** **Nested Form:**
 
 $$P_n(x) = f(x_0) + (x-x_0) \left\{ f[x_0, x_1] + (x-x_1) \left\{ f[x_0, x_1, x_2] + \dots + (x-x_{n-1})f[x_0, \dots, x_n] \right\} \right\}$$
+:::
 
 마지막 nested form은 마치 [Horner's method](../Horner_Method/index.qmd#sec-horner's-method)와 비슷한 구조를 가진다. 이렇게 공통인수를 묶어서 나타내면 곱셈 횟수를 더욱 줄일 수 있고, 결과적으로 더 적은 계산 비용으로 보간 다항식을 계산할 수 있다.
 
@@ -140,9 +148,11 @@ $$P_1(x) = f(x_0) + f[x_0, x_1](x-x_0).$$
 
 :::: {.callout-note icon=false}
 ### Lemma
+::: {.math-box}
 Let $P_{n-1}$ be the polynomial interpolating $f$ at $x_0, \dots, x_{n-1}$. Then
 
 $$f[x_0, \dots, x_n] = \frac{f(x_n) - P_{n-1}(x_n)}{\prod_{j=0}^{n-1} (x_n - x_j)}$$
+:::
 
 ::: {.callout-note title="Proof" collapse="true" icon=false}
 By the Lagrange's interpolation theorem,
@@ -187,6 +197,7 @@ Q_n(x_n) &= P_{n-1}(x_n) + \prod_{j=0}^{n-1}(x_n - x_j) f[x_0, \dots, x_n] \\
 which means that $Q_n$ interpolates $f$ at $x_0, \dots, x_n$. By Theorem 1, $Q_n = P_n$. $\blacksquare$
 
 ## Theorem 3
+::: {.math-box}
 Let $f \in C^n([\alpha, \beta])$, and let $x_0, x_1, \dots, x_n$ be $n+1$ distinct points in $[\alpha, \beta]$. We denote $H(x_0, \dots, x_n) := (\min\{x_0, \dots, x_n\}, \max\{x_0, \dots, x_n\})$.
 
 **(i)**
@@ -204,6 +215,7 @@ $$f[x_0, x_1, \dots, x_n] = \frac{1}{n!}f^{(n)}(c)$$
 for some $c \in H(x_0, \dots, x_n)$.
 
 **(iv)** ***(Hermite-Genocchi Formula)*** $\frac{d}{dx}f[x_0, x_1, \dots, x_n, x] = f[x_0, x_1, \dots, x_n, x, x]$
+:::
 
 **(iii)**를 자연스럽게 확장해서 $x_i$들이 모두 같은 계차상을 다음과 같이 정의한다.
 
@@ -257,6 +269,7 @@ which gives
 $$f[x_0, \dots, x_n] = \frac{f^{(n)}(c)}{n!}. \blacksquare$$
 
 ## Theorem 4
+::: {.math-box}
 Let $P_n$ interpolate $f$ at distinct points $x_0, \dots, x_n$ of $[\alpha, \beta]$.
 
 **(i)** For any point $x$ distinct from all $x_i$'s,
@@ -266,6 +279,7 @@ $$f(x) - P_n(x) = f[x_0, \dots, x_n, x] \prod_{j=0}^n (x - x_j)$$
 **(ii)** Let $f \in C^{n+1}([\alpha, \beta])$. For any $x \in [\alpha, \beta]$, there exists a point $c_x \in H(x_0,\dots, x_n, x)$ such that
 
 $$f(x) - P_n(x) = \frac{f^{(n+1)}(c_x)}{(n+1)!} \prod_{j=0}^n (x - x_j)$$
+:::
 
 ### Proof
 **(i)** Construct the polynomial $P_{n+1}$ interpolating $f$ at $x_0, x_1, \dots, x_n, x$.
@@ -294,6 +308,7 @@ $$\vert f(x) - P_n(x) \vert \le \frac{\max_{x \in [\alpha, \beta]} \vert f^{(n+1
 즉 오차는 두 개의 팩터 $\max \vert f^{(n+1)} (x) \vert$와 $\displaystyle \max \left \vert \prod_{j=0}^n (x - x_j) \right \vert$에 의존한다. 우리가 원하는 바가 $n$이 커질 때 $P_n \to f$로 수렴하는 것이라면 저 두 가지 팩터에 의존하는 바운드가 $0$으로 수렴해야 할 것이다. 항상 수렴하면 좋겠지만, 아래 예시와 같이 수렴하지 않고 오차가 마구 튀어버리는 ***룽게 현상(Runge Phenomenon)***이 생기기도 함이 잘 알려져 있다.
 
 ## Example
+::: {.math-box}
 Consider the function
 
 $$f(x) = \frac{1}{1+25x^2}, x \in [-1, 1].$$
@@ -301,6 +316,7 @@ $$f(x) = \frac{1}{1+25x^2}, x \in [-1, 1].$$
 For each $n$, let $x_j=-1+\frac{2j}{n}$ for $j=0,\dots,n$ be $n+1$ equally spaced points on $[-1,1]$, and let $P_n$ be the interpolation polynomial of $f$ at $x_j$'s. The following figure shows the graph of $f$ and $P_n$ for $n=5, 10, 15$.
 
 ![](int3.png)
+:::
 
 $P_5$ 정도만 해도 그럭저럭 $f$를 향해서 잘 가나 싶더니, $P_{10}$만 되어도 양 끝점 $x = \pm 1$에서 엄청나게 튀어버리는 것을 볼 수 있다. 이러한 일이 일어나는 이유는 $x_i$들을 등간격으로 잡아서 끝점으로 갈수록 $\displaystyle \left \vert \prod_{j=0}^n (x - x_j) \right \vert$의 값이 점점 커지기 때문이다. 직관적으로 보아도 중앙에 가까울수록 $\vert x - x_j \vert$는 거의 균일하게 작은 값들을 가지지만, 끝점으로 가게 되면 큰 값들을 갖게 된다. 때문에 점들을 등간격으로 잡지 않고 구간의 양 끝에 점들을 몰아서 잡는 ***체비셰프 노드(Chebyshev nodes)***를 사용하거나, 아예 하나의 다항식으로 $f$를 근사하는 게 아닌 구간 별로 처리하는 ***스플라인 방법(Spline Method)***을 사용해야 한다.
 
@@ -310,6 +326,7 @@ $P_5$ 정도만 해도 그럭저럭 $f$를 향해서 잘 가나 싶더니, $P_{1
 이때 각 점들을 잇는 함수를 어떻게 잇는지에 따라 스플라인의 방법이 나뉘는데, 많은 경우 다항함수를 사용하게 되고, 그 중에서도 삼차 이하의 다항식을 사용한다. 즉 우리는 다음의 조건을 만족하는 구간 별로 정의된 함수 $s(x)$를 구해야 한다.
 
 ## Definition 2
+::: {.math-box}
 Suppose that $n$ data points $(x_i, y_i), i = 1, \dots, n$ with $a = x_1 < \cdots < x_n = b$ are given. The function $s(x)$ is called the ***natural cubic spline function*** satisfying the conditions:
 
 **(i)** $s(x)$ is a polynomial of degree at most $3$ on each subinterval $[x_{j-1}, x_j], j = 2, 3, \dots, n$.
@@ -319,6 +336,7 @@ Suppose that $n$ data points $(x_i, y_i), i = 1, \dots, n$ with $a = x_1 < \cdot
 **(iii)** $s(x_i) = y_i$ for $i = 1, \dots, n$.
 
 **(iv)** $s''(x_1) = s''(x_n) = 0$.
+:::
 
 조건을 꼭 위와 같이 줄 필요는 없는데, 예컨대 조건 **(iv)**를 어떻게 주느냐에 따라서 다른 스플라인 함수가 계산될 수 있다. 
 

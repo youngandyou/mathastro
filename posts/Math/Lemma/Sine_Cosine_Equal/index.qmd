@@ -1,4 +1,4 @@
----
+﻿---
 title: "사인과 코사인 값이 모두 같을 동치조건"
 author: "Youmin Chun"
 date: "2026-11-03 00:00:02"
@@ -8,9 +8,11 @@ categories:
 ---
 
 # Theorem
+::: {.math-box}
 Let $\alpha, \beta \in \mathbb{R}$. Then 
 
 $$\sin \alpha = \sin \beta \quad \text{and} \quad \cos \alpha = \cos \beta \iff \alpha - \beta = 2k\pi \text{ for some } k \in \mathbb{Z}$$
+:::
 
 # Proof
 Note that the identity

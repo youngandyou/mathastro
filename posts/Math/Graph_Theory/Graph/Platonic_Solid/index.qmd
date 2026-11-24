@@ -1,4 +1,4 @@
----
+﻿---
 title: "Platonic Solid"
 author: "Youmin Chun"
 date: "2026-08-05"
@@ -8,15 +8,21 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 A ***platonic solid*** is a convex $3$-dimensional polyhedron in which every face has the same number of edges, and every vertex has the same number of edges.
+:::
 
 ## Remark
+::: {.math-box}
 There are only $5$ platonic solids. 
 
 ![](plato1.png)
+:::
 
 ## Lemma
+::: {.math-box}
 Let $G$ be a connected planar graph such that every vertex has degree $d \ge 3$ and every face has $k \ge 3$ edges. Then $G$ is one of the five above graphs.
+:::
 
 ### Proof
 Note that $2m = dn$ and $fk = 2m$. Then we have 

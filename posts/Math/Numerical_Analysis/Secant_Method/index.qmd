@@ -8,6 +8,7 @@ categories:
 ---
 
 # Secant Method
+::: {.math-box}
 Suppose that the equation $f(x) = 0$ has a solution $\alpha$. For given two intial values $x_0$ and $x_1$ near $\alpha$, the sequence $\{ x_n \}$ defined as
 
 $$x_{n+1} = x_n - f(x_n) \frac{x_n - x_{n-1}}{f(x_n) - f(x_{n-1})}$$
@@ -15,6 +16,7 @@ $$x_{n+1} = x_n - f(x_n) \frac{x_n - x_{n-1}}{f(x_n) - f(x_{n-1})}$$
 for each $n = 1, 2, \dots$ converges to $\alpha$ as $n \to \infty$.
 
 ![](sec1.png)
+:::
 
 뉴턴-랩슨 메소드가 하나의 초기값 만을 요구했다면, 시컨트 메소드는 두 개의 초기값을 요구한다. 방정식 $f(x) = 0$의 실제 해 $\alpha$ 주변의 초기값 $x_0, x_1$을 가져온 뒤 함수 $y = f(x)$ 위의 두 점 $(x_0, f(x_0)), (x_1, f(x_1))$을 잇는 ***할선(secant)***을 그으면 방정식은 다음과 같이 주어진다.
 

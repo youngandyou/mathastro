@@ -1,4 +1,4 @@
----
+﻿---
 title: "Eigenvector Centrality"
 author: "Youmin Chun"
 date: "2026-08-14"
@@ -11,7 +11,9 @@ categories:
 중심성을 정의할 때 차수 중심성(degree centrality)은 그 정의만큼이나 매우 단순한 개념이다. 차수 중심성은 단순히 주어진 노드가 다른 주변 노드들과 '얼마나 많이' 연결되었냐만 따지는데, 다르게 말하면 모든 주변 노드들에 동일한 가중치를 부여하고 있는 것과 같다. 그러나 당연하게도 모든 네트워크에서 주변 노드들이 같은 가중치를 갖고 있을 수는 없기에 어떤 방식으로든 서로 다른 가중치를 부여하는 메커니즘이 필요하다. 이러한 점에서 고유벡터 중심성(eigenvector centrality)은 차수 중심성과는 본질적으로 다른 방법으로 중심성을 정의하는 방법 중 하나로, 특정 노드의 주변 노드들의 중심성의 합에 비례해서 중심성을 정의한다.
 
 ## Definition
+::: {.math-box}
 Let $G = (V, E)$ be an undirected connected network, and $\mathbf{A}$ be the adjacency matrix of $G$. The ***eigenvector centrality*** of a vertex $v_i$ is the $i$-th component $x_i$ of the eigenvector $\mathbf{x}_1$ of $\mathbf{A}$ corresponding to the spectral radius $\lambda_1$ of $\mathbf{A}$.
+:::
 
 ## Derivation
 그 정의가 너무나도 간단했던 차수 중심성에 비해 고유벡터 중심성의 정의는 꽤나 뜬금없게 느껴진다. 이 정의가 나오기까지의 과정을 유도해보자.

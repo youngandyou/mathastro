@@ -1,4 +1,4 @@
----
+﻿---
 title: "Coincidence Principle"
 author: "Youmin Chun"
 date: "2026-07-25 00:00:16"
@@ -8,7 +8,9 @@ categories:
 ---
 
 ## Lemma
+::: {.math-box}
 - Let $f: D \to \mathbb{C}$ be an analytic function in a domain $D$. If $f(z) = 0$ at each point $z$ of a subdomain or line segment contained in $D$, then $f(z) \equiv 0$ in $D$.
+:::
 
 [여기서 도메인은 정의역의 의미가 아니라 연결된 열린 집합을 의미함을 주의하자.](../Topology_Complex/index.qmd#sec-definition)
 
@@ -30,7 +32,9 @@ Next, we construct a finite sequence of points $z_0, z_1, \cdots, z_n = P$ along
 By the above lemma, $f(z) \equiv 0$ in $N_0$. Since $z_1 \in N_0$, by applying the above lemma again, we obtain that $f(z) \equiv 0$ in $N_1$. By continuing in this manner, we arrive at the fact that $f(z) \equiv 0$ in $N_n$, so $f(z_n) = f(P) = 0$. Since $P$ was arbitrarily selected in $D$, we conclude that $f(z) \equiv 0$ in $D$. $\blacksquare$
 
 ## Theorem
+::: {.math-box}
 - A function that is analytic in a domain $D$ is uniquely determined over $D$ by its values in a subdomain, or along a line segment, contained in $D$.
+:::
 
 다시 말해 해석 함수를 완전히 결정하기 위해서 정의역 전체의 정보를 알 필요 없이 정의역의 일부만 알아도 가능하다. 이 정리는 아래 coincidence principle이라는 이름의 정리로 더욱 일반화할 수 있다.
 

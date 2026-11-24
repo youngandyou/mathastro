@@ -1,4 +1,4 @@
----
+﻿---
 title: "Rouché's Theorem"
 author: "Youmin Chun"
 date: "2026-10-17 00:00:02"
@@ -8,6 +8,7 @@ categories:
 ---
 
 # Theorem (Rouché's Theorem)
+::: {.math-box}
 Let $C$ be a simple closed contour. Suppose that
 
 **(i)** Two functions $f(z)$ and $g(z)$ are analytic inside and on $C$.
@@ -15,6 +16,7 @@ Let $C$ be a simple closed contour. Suppose that
 **(ii)** $|g(z)| < |f(z)|, \forall z \in C$.
 
 Then $f$ and $f+g$ have the same number of zeros inside $C$, counted with multiplicities.
+:::
 
 보통 $f+g$를 해의 개수를 알고 싶은 함수로 두고, $f$를 개수를 찾기 쉬운 함수로 두었을 때 쉽게 해의 개수를 찾을 수 있다. 관점을 바꿔서 보면 $f$에 비해 충분히 작은 함수 $g$를 더하는 행위는 해의 개수를 바꾸지 않는다고 볼 수도 있다.
 
@@ -39,6 +41,7 @@ Thus, $Z_{f+g} = Z_f + \frac{1}{2\pi} \Delta_C \arg F(z)$ where $F(z) = 1 + \fra
 Note that $\vert F(z) - 1 \vert = \frac{|g(z)|}{|f(z)|} < 1$ on $C$, which means that the image of $C$ under $F(z)$ is contained in the open disk $\vert w - 1 \vert < 1$. Since it does not enclose the origin, we must have $\Delta_C \arg F(z) = 0$. Hence, $Z_{f+g} = Z_f$. $\blacksquare$
 
 ## Example
+::: {.math-box}
 **(i)** Consider the equation $z^4+3z^3+6=0$ inside the circle $|z|=2$, counting multiplicities. Let $f(z)=3z^3$ and $g(z)=z^4+6.$. Both functions are entire. On $|z|=2$, we have 
 
 $$|f(z)|=3|z|^3=24 \quad \text{and} \quad |g(z)|=|z^4+6| \leq |z|^4+6 = 22 < 24 = |f(z)|.$$
@@ -50,6 +53,7 @@ By Rouché's theorem, $3z^3$ and $z^4+3z^3+6$ have the same number of zeros insi
 $$P(z)=a_0+a_1z+\cdots+a_nz^n, \quad a_n\neq 0, \quad n\geq 1,$$
 
 has exactly $n$ zeros in $\mathbb{C}$, counted with multiplicities.
+:::
 
 ::: {.callout-note title="Proof" collapse="true" icon=false}
 Let

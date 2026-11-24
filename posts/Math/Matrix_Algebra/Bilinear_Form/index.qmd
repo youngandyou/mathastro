@@ -1,4 +1,4 @@
----
+﻿---
 title: "Bilinear Form"
 author: "Youmin Chun"
 date: "2026-09-07 00:00:00"
@@ -8,16 +8,20 @@ categories:
 ---
 
 # Definition 1
+::: {.math-box}
 Let $V$ be a vector space over a field $F$. A function $H : V \times V \to F$ is called a ***bilinear form*** on $V$ if $H$ is linear in each variable when the other variable is held fixed; that is, $H$ is a bilinear form on $V$ if
 
 **(i)** $H(ax_1 + x_2, y) = aH(x_1, y) + H(x_2, y)$ for all $x_1, x_2, y \in V$ and $a \in F$
 
 **(ii)** $H(x, ay_1 + y_2) = aH(x, y_1) + H(x, y_2)$ for all $x, y_1, y_2 \in V$ and $a \in F$.
+:::
 
 ## Remark
+::: {.math-box}
 **(i)** We denote the set of all bilinear forms on $V$ by $\mathcal{B}(V)$.
 
 **(ii)** An inner product on a vector space is a bilinear form if the underlying field is real, but not. if the underlying field is complex. 
+:::
 
 ## Properties
 **(i)** If, for any $x \in V$, the functions $L_x, R_x : V \to F$ are defined by
@@ -33,22 +37,28 @@ $$H(x + y, z + w) = H(x, z) + H(x, w) + H(y, z) + H(y, w).$$
 **(iv)** If $J : V \times V \to F$ is defined by $J(x, y) = H(y, x)$, then $J$ is a bilinear form.
 
 # Theorem 1
+::: {.math-box}
 For any vector space $V$, $\mathcal{B}(V)$ is a vector space with respect to operations defined by
 
 $$\begin{align*}
 (H_1 + H_2)(x, y) = H_1(x, y) + H_2(x, y), \\
 (aH_1)(x, y) = a(H_1(x, y)) \quad \forall x, y \in V, a \in F.
 \end{align*}$$
+:::
 
 # Definition 2
+::: {.math-box}
 Let $\beta = \{v_1, v_2, \dots, v_n\}$ be an ordered basis for an $n$-dimensional vector space $V$, and let $H \in \mathcal{B}(V)$. Define a matrix $A \in F^{n \times n}$ by the equation:
 
 $$A_{ij} = H(v_i, v_j) \quad \forall i, j = 1, 2, \dots, n$$
 
 The matrix $A$ is called the **matrix representation** of $H$ with respect to the ordered basis $\beta$ and is denoted by $\psi_\beta(H)$.
+:::
 
 # Theorem 2
+::: {.math-box}
 For any $n$-dimensional vector space $V$ over $F$ and any ordered basis $\beta$ for $V$, the function $\psi_\beta : \mathcal{B}(V) \to F^{n \times n}$ defined above is an isomorphism.
+:::
 
 ## Corollay
 **(i)** Let $V$ be an $n$-dimensional vector space over $F$ with ordered basis $\beta$. If $H \in \mathcal{B}(V)$ and $A \in F^{n \times n}$, then $\psi_\beta(H) = A$ $\iff$ $H(x, y) = [x]_\beta^\top A [y]_\beta, \forall x, y \in V$.
@@ -63,7 +73,9 @@ $$\langle \mathbf{x}, \mathbf{y} \rangle = [\mathbf{x}]_\beta^\top A [\mathbf{y}
 으로 쓸 수 있다. 특별히 기저 $\beta$가 정규직교기저라면 $A$는 단위행렬이 되고, 이는 내적 $\langle \mathbf{x}, \mathbf{y} \rangle$이 유클리드 내적 $\mathbf{x} \cdot \mathbf{y}$과 같음을 의미한다.
 
 # Theorem 3
+::: {.math-box}
 Let $V$ be a $n$-dimensional vector space over a field $F$, and let $\beta = \{ \mathbf{v}_1, \mathbf{v}_2, \dots, \mathbf{v}_n \}$ be an ordered basis for $V$. Let $\mathcal{I}$ be the set of all inner products on $V$, and let $\mathcal{SPD}$ be the set of all symmetric positive definite $n \times n$ matrices over $F$. Then there exists a bijection $\Phi : \mathcal{I} \to \mathcal{SPD}$.
+:::
 
 다시 말해 내적과 대칭 양정부호 행렬은 일대일 대응이 된다.
 

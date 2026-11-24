@@ -1,4 +1,4 @@
----
+﻿---
 title: "Incident Matrix"
 author: "Youmin Chun"
 date: "2026-08-10"
@@ -8,6 +8,7 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 **(i)** Let $G$ be a graph with $n$ vertices and $m$ edges. The ***incident matrix*** of $G$ is the $n \times m$ matrix $B$ whose entries are given by
 
 $$B_{ij} = \begin{cases} 1 & \text{if } v_i \text{ is incident to } e_j \\ 0 & \text{otherwise} \end{cases}$$
@@ -18,6 +19,7 @@ $$B_{ij} = \begin{cases}
 1 & \text{if vertex } j \text{ belongs to group } i \\
 0 & \text{otherwise}
 \end{cases}$$
+:::
 
 # Reference
 - Newman, M.E.J. (2010). Networks: An Introduction. Oxford University Press.

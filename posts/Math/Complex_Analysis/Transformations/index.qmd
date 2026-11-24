@@ -1,4 +1,4 @@
----
+﻿---
 title: "Transformations"
 author: "Youmin Chun"
 date: "2026-10-13 00:00:02"
@@ -70,6 +70,7 @@ $$Azw + Bz + Cw + D = 0$$
 의 꼴을 얻고, 이 식이 $z$와 $w$에 대해서 일차식이므로 이러한 변환을 ***쌍선형변환(Bilinear Transformation)***이라고 부르기도 한다.
 
 ## Theorem 1
+::: {.math-box}
 **(i)** The linear fractional transformation
 
 $$w = \frac{az + b}{cz + d}, \quad ad - bc \neq 0$$
@@ -79,6 +80,7 @@ is a continuous one-to-one correspondence in $\overline{\mathbb{C}}$, and it map
 **(ii)** The inverse of the linear fractional transformation is also a linear fractional transformation. 
 
 **(iii)** The composition of two linear fractional transformations is also a linear fractional transformation.
+:::
 
 아래 증명 과정을 보면 알겠지만, 변환 $w = \frac{az + b}{cz + d}$은 다음과 같은 함수의 합성들로 이루어지기 때문에 위 정리들은 사실상 자명한 결과라고도 볼 수 있다.
 
@@ -204,6 +206,7 @@ $$\frac{(w - w_1)(w_2 - w_3)}{(w - w_3)(w_2 - w_1)} = \frac{z_2-z_3}{z-z_3}$$
 
 ## Mappings of The Upper Half Plane
 ### Theorem 2
+::: {.math-box}
 Let $U := \{ z \in \mathbb{C} \mid \mathrm{Im}(z) > 0 \}$, and let $D := \{ w \in \mathbb{C} \mid \vert w \vert < 1 \}$. Let $T: \overline{C} \to \overline{C}$ be a linear fractional transformation. The following are equivalent:
 
 **(i)** $T(U) = D, T(\partial U \cup \{\infty\}) = \partial D$.
@@ -213,6 +216,7 @@ Let $U := \{ z \in \mathbb{C} \mid \mathrm{Im}(z) > 0 \}$, and let $D := \{ w \i
 $$T(z) = e^{i \alpha} \frac{z - z_0}{z - \overline{z_0}}$$
 
 for some $\alpha \in \mathbb{R}$ and $z_0 \in U$.
+:::
 
 #### Proof
 **(i)** $\implies$ **(ii)** Let $T = \frac{az + b}{cz + d}$ with $ad - bc \neq 0$.

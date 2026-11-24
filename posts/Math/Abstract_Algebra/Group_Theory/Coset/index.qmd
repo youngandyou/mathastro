@@ -1,4 +1,4 @@
----
+﻿---
 title: "Coset"
 author: "Youmin Chun"
 date: "2026-09:02 00:00:08"
@@ -8,6 +8,7 @@ categories:
 ---
 
 ## Theorem 1
+::: {.math-box}
 Let $G$ be a group and let $H \le G$. Let the relation $\sim_L$ be defined on $G$ by 
 
 $$a \sim_L b \iff a^{-1}b \in H$$
@@ -19,6 +20,7 @@ a \sim_R b \iff ab^{-1} \in H.
 $$
 
 Then $\sim_L$ and $\sim_R$ are equivalence relations on $G$.
+:::
 
 ### Proof
 Let $a, b, c \in G$. 
@@ -34,6 +36,7 @@ Thus $\sim_L$ is an equivalence relation.
 Similarly, we can show that $\sim_R$ is an equivalence relation. $\blacksquare$
 
 ## Remark 1
+::: {.math-box}
 Let $G$ be a group and $H \le G$. 
 
 **(i)** For $x \in G$, we obtain 
@@ -48,6 +51,7 @@ a \sim_L x &\iff a^{-1}x \in H \\
 where $aH := \{ ah \mid h \in H \}.$ Hence the equivalence class $\{ x \in G \mid a \sim_L x \}$ of $a$ under $\sim_L$ is $aH$. 
 
 **(ii)** By a similar argument as in (i), the equivalence class $\{ x \in G \mid a \sim_R x \}$ of $a$ under $\sim_R$ is $Ha$.
+:::
 
 그러니까 $aH$는 부분군 $H$의 모든 원소의 왼쪽에 $a$를 곱해서 만들어진 원소들의 집합이기도 하지만, $a$와 관계 $\sim_L$에 대해서 관계가 있는 모든 원소들의 집합, 즉 동치류이기도 하다. 그럼 여기서 알 수 있는 사실은, $a \sim_L b$이면 $aH = bH$가 성립한다. 미리 말하자면, 이는 같은 동치류에 속해있는 원소들은 모두 같은 coset을 생성한다는 사실을 의미한다.
 
@@ -60,11 +64,13 @@ $\big[(\because)$ Suppose that $a \in H$. Then $a^{-1}e = a^{-1} \in H$ and $ea^
 Suppose that $aH = H$. Since $H = eH$, we have $aH = eH$, which means that $a \sim_L e$, so that $e \sim_L a$. Thus $e^{-1}a = a \in H$. Similarly, if $Ha = H$, then we have $a \in H$.$\big]$
 
 ## Definition 1
+::: {.math-box}
 Let $G$ be a group and $H \le G$. Let $a \in G$. 
 
 **(i)** $aH$ is the ***left coset*** of $H$ containing $a$.
 
 **(ii)** $Ha$ is the ***right coset*** of $H$ containing $a$.
+:::
 
 ## Example
 **(i)** $\mathbb{Z}$의 부분군 $3 \mathbb{Z}$을 고려하자. 어떤 정수 $m \in \mathbb{Z}$에 대하여 $m$을 포함하는 $3 \mathbb{Z}$의 모든 left coset은 다음과 같은 형태를 가진다. 
@@ -116,9 +122,12 @@ $$S_3 = H \bigsqcup \rho_1 H \bigsqcup \rho_2 H$$
 또한 $S_3$는 abelian이 아니므로 위 두 예시와는 다르게 left coset과 right coset이 일치하지 않는다.
 
 ## Definition 2
+::: {.math-box}
 Let $H \le G$. The number of left cosets of $H$ in $G$ is called the ***index*** of $H$ in $G$, denoted by $(G: H)$. 
+:::
 
 ## Remark 2
+::: {.math-box}
 **(i)** The number of right cosets of $H$ in $G$ is the same as the index. 
 
 $\big[(\because)$ Let $L$ and $R$ be sets of left cosets and right cosets of $H$ in $G$, respectively. Define a function $\phi: L \to R$ by $\phi(aH) = Ha^{-1}, \forall aH \in L$. 
@@ -134,6 +143,7 @@ Thus, $\phi$ is bijective, so that $\vert L \vert = \vert R \vert$. $\blacksquar
 **(ii)** If $H$ is a subgroup of a finite group $G$, then $\vert G \vert = \vert H \vert (G : H)$ by Lagrange's theorem. In other words, 
 
 $$(G : H) = \frac{\vert G \vert}{ \vert H \vert}.$$
+:::
 
 한편 index $(G : H)$는 $H$의 coset의 개수이고, $H$가 $G$의 normal group이라면 이 값은 정의상 factor group $G/H$의 크기일 수 밖에 없다. 따라서 다음의 관계가 성립한다.
 
@@ -142,9 +152,11 @@ $$\vert G/H \vert = \frac{\vert G \vert}{\vert H \vert}.$$
 마치 factor group $G/H$를 '실제로' $G$와 $H$의 나눗셈처럼 생각해서 계산한 것 같은 결과가 성립함을 알 수 있다.
 
 ## Theorem 2
+::: {.math-box}
 Let $K \le H \le G$. If $(G : H)$ and $(H : K)$ are finite, then $(G : K)$ is finite, and 
 
 $$(G : K) = (G : H)(H : K).$$
+:::
 
 ### Proof
 Suppose that $(G : H) = m$ and $(H : K) = n$, which means that there are $m$ left cosets $g_1H, ..., g_mH$ of $H$ in $G$ for some $g_1, ..., g_m \in G$, and there are $n$ left cosets $h_1K, ..., h_nK$ of $K$ in $H$ for some $h_1, ..., h_n \in H$. Then we have
@@ -192,7 +204,9 @@ Note that there are $mn$ left cosets $g_ih_jK$ of $K$ in $G$. Hence, we have
 $$(G:K) = mn = (G:H)(H:K). \blacksquare$$
 
 ## Theorem 3
+::: {.math-box}
 Let $G$ be a finite group, and let $H \le G$. If $(G:H) = 2$, then $H \lhd G$.
+:::
 
 ### Proof
 Since $(G:H) = 2$, $H$ and $aH$ is all the left cosets of $H$ where $a \notin H$. Since the number of right cosets is also $2$, $H$ and $Ha$ is all the right cosets of $H$. Since $\{ H, aH \}$ and $\{ H, Ha \}$ is the partitions of $G$, if the element $x$ of $G$ belongs to $aH$, then $x \notin H$. Then $x \in Ha$. Similarly, if $x \in Ha$, then $x \in Ha$. Thus, we have $aH = Ha$ for all $a \in G$ with $a \notin H$.

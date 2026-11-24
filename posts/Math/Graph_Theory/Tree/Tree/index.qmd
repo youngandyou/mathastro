@@ -1,4 +1,4 @@
----
+﻿---
 title: "Tree"
 author: "Youmin Chun"
 date: "2026-08-05"
@@ -8,13 +8,16 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 **(i)** A graph is called a ***tree*** if it is connected and has no cycle.
 
 **(ii)** A vertex of degree one is called a ***leaf***.
 
 **(iii)** If each component of a graph is a tree, then the graph is called a ***forest***. 
+:::
 
 ## Theorem 1
+::: {.math-box}
 For a graph $T$, TFAE.
 
 **(i)** $T$ is a tree.
@@ -26,9 +29,12 @@ For a graph $T$, TFAE.
 **(iv)** $T$ has no cylce, but has a cycle on the addition of any edge.
 
 **(v)** $\vert V(T) \vert = \vert E(T) \vert + 1$.
+:::
 
 ## Theorem 2
+::: {.math-box}
 For a finite tree $T$, it has a leaf $\ell$. Furthermore, $T - \ell$ is also a tree.
+:::
 
 ### Proof
 **[Proof 1]**

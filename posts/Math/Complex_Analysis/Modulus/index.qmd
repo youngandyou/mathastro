@@ -1,4 +1,4 @@
----
+﻿---
 title: "Modulus"
 author: "Youmin Chun"
 date: "2026-07-24 00:00:02"
@@ -8,9 +8,11 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 Let $z = x + iy$ be a complex number. The ***modulus*** or ***absolute value*** of $z$, denoted by $\vert z \vert$, is defined by
 
 $$\vert z \vert = \sqrt{x^2 + y^2}.$$
+:::
 
 주의할 점은 여기서 $x, y$는 $\mathbb{R} \times \{ 0 \}$에 mapping된, 즉 complex number로 identified된 숫자가 아니라 그 자체로 실수 공간 $\mathbb{R}$의 원소이다. 즉 
 
@@ -21,11 +23,14 @@ $$\sqrt{x^2 + y^2} \neq \sqrt{(x,0)^2 + (y,0)^2}$$
 한편 위와 같이 정의되는 modulus는 자명하게 놈의 정의를 만족하고, 자연스럽게 복소 공간 $\mathbb{C}$에 거리 $d(z_1, z_2) = \vert z_1 - z_2 \vert$를 부여할 수 있다. 이로써 극한의 개념을 논할 수 있게 된다.
 
 ## Remark
+::: {.math-box}
 Let $z = x + iy$ be a complex number. Then 
 
 $$\mathrm{Re} z \le \vert \mathrm{Re} z \vert \le \vert z \vert \quad \text{and} \quad \mathrm{Im} z \le \vert \mathrm{Im} z \vert \le \vert z \vert.$$
+:::
 
 ## Theorem
+::: {.math-box}
 Let $z_1, z_2 \in \mathbb{C}$. Then
 
 **(i)** $\vert z_1 z_2 \vert = \vert z_1 \vert \vert z_2 \vert$
@@ -33,6 +38,7 @@ Let $z_1, z_2 \in \mathbb{C}$. Then
 **(ii)** $\vert z_1 + z_2 \vert \le \vert z_1 \vert + \vert z_2 \vert$
 
 **(iii)** $\vert z_1 - z_2 \vert \ge \vert \vert z_1 \vert - \vert z_2 \vert \vert$
+:::
 
 ### Proof
 Let $z_1 = (x_1, y_1)$ and $z_2 = (x_2, y_2)$.
@@ -90,6 +96,7 @@ $$\begin{gather*}
 \end{gather*}$$
 
 ## Remark
+::: {.math-box}
 Let $n \in \mathbb{N}$ and let $a_0, a_1, ..., a_n \in \mathbb{C}$ where $a_n \neq 0$. Let 
 
 $$P(z) = a_0 + a_1z+ \cdots + a_nz^n$$
@@ -141,6 +148,7 @@ $$\begin{align*}
 Similarly, we can show that there exists $R > 0$ such that 
 
 $$\vert P(z) \vert < 2 \vert a_n \vert \vert z \vert^n \quad \text{for } \vert z \vert > R.$$
+:::
 
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Countability Axioms"
 author: "Youmin Chun"
 date: "2026-09-30 00:00:01"
@@ -9,12 +9,16 @@ categories:
 
 # Countability Axioms
 ## Definition 1
+::: {.math-box}
 **(i)** A space $X$ is said to be ***first-countable*** if it has a countable [local basis](../Basis_Topology/index.qmd#sec-definition-3) at every $x \in X$.
 
 **(ii)** A space $X$ is said to be ***second-countable*** if it has a countable [basis](../Basis_Topology/index.qmd#sec-definition-1).
+:::
 
 ### Remark 1
+::: {.math-box}
 **(i)** Every metrizable space is first-countable.
+:::
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
 Let $X$ be a metrizable space with a metric $d$ inducing the topology of $X$. For $x \in X$, define $\mathscr{B}_x := \left\{ B_d \left(x, \frac{1}{n} \right) \,\, \Bigg \vert \,\, n \in \mathbb{N} \right\}$. For an open set $U$ containing $x$, there exists $\delta > 0$ such that $B_d(x, \delta) \subset U$. Choosing $n \in \mathbb{N}$ such that $\frac{1}{n} < \delta$, we have
@@ -31,7 +35,9 @@ Let $X$ be a second-countable space with a countable basis $\mathscr{B}$. Since 
 :::
 
 ### Example 1
+::: {.math-box}
 **(i)** $(\mathbb{R}, \mathscr{T}_{f})$ is neither first-countable nor second-countable.
+:::
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
 Suppose that it is first-countable. Let $\mathscr{B}_x = \{ B_n \}_{n=1}^\infty$ be a countable local basis at $x$. (If $\mathscr{B}_x$ is finite, so $\mathscr{B}_x = \{ B_1, B_2, \dots, B_n \}$, then we let $B_n = B_{n+1} = B_{n+2} = \cdots$.) Since $(\mathbb{R}, \mathscr{T}_{f})$ is $T_1$, $\displaystyle \bigcap_{n=1}^\infty B_n = \{ x \}$. Note that
@@ -54,15 +60,18 @@ $\big[ (\because)$ $\{ (a, b) \mid a, b \in \mathbb{Q}, a < b \}$ is a countable
 :::
 
 ## Theorem 1
+::: {.math-box}
 Let $X$ be a first-countable space.
 
 **(i)** Let $A \subset X$. Then there exists a sequence $\{ x_n \}$ in $A$ such that $\displaystyle \lim_{n \to \infty} x_n = x$ $\iff$ $x \in \bar{A}$.
 
 **(ii)** Let $f: X \to Y$ be a function. Then $f$ is continuous $\iff$ for any sequence $\{ x_n \}$ in $X$ such that $\displaystyle \lim_{n \to \infty} x_n = x$, we have $\displaystyle \lim_{n \to \infty} f(x_n) = f(x)$.
+:::
 
 거리 공간에서 성립하는 정리로 등장했지만, 실은 거리 공간이 제1 가산 공간이다보니 성립하는 내용이었다. 국소기저의 정의를 잘 생각해보면 굳이 외우지 않아도 자연스럽게 납득되는 내용들이다.
 
 ## Theorem 2
+::: {.math-box}
 **(i)** A subspace of a first-countable (second-countable) space is first-countable (second-countable).
 
 **(ii)** A countable product of first-countable (second-countable) spaces is first-countable (second-countable).
@@ -70,6 +79,7 @@ Let $X$ be a first-countable space.
 **(iii)** Let $f: X \to Y$ be a continuous open map. If $X$ is first-countable (second-countable), then $Y$ is first-countable (second-countable).
 
 **(iv)** Every compact metrizable space is second-countable.
+:::
 
 ### Proof
 **(i)** Let $A$ be a subspace of a space $X$. Suppose that $X$ is fisrt-countable. Let $x \in A$. Since $x \in X$, there is a countable local basis $\mathscr{B}_x$ at $x$. We claim that the set $\mathscr{U}_x = \{ B \cap A \mid B \in \mathscr{B}_x \}$ is a countable local basis for $A$ at $x$, so $A$ is first-countable.
@@ -108,6 +118,7 @@ is a countable basis for $X$, because the number of $I$ is countable. Hence, $X$
 
 # Dense, Lindelöf, and Separable
 ## Definition 2
+::: {.math-box}
 Let $X$ be a topological space.
 
 **(i)** A subset $S$ of $X$ is said to be ***dense*** if $\overline{S} = X$.
@@ -115,9 +126,12 @@ Let $X$ be a topological space.
 **(ii)** $X$ is called a ***Lindelöf space*** if every open cover of $X$ has a countable subcover.
 
 **(iii)** $X$ is said to be ***separable*** if it has a countable dense subset.
+:::
 
 ### Example 2
+::: {.math-box}
 **(i)** $(\mathbb{R}, \mathscr{T}_{\text{usual}})$ is NOT compact, but is Lindelöf and separable.
+:::
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
 Since $\mathscr{B} = \{ (a, b) \mid a < b, a, b \in \mathbb{Q} \}$ is a countable basis, $(\mathbb{R}, \mathscr{T}_{\text{usual}})$ is second-countable, so it is Lindelöf and separable.
@@ -146,7 +160,9 @@ Thus $\mathcal{U}$ has a countable subcover, so $\mathbb{R}^2$ is Lindelöf.
 :::
 
 ## Remark 2
+::: {.math-box}
 **(i)** The product of Lindelöf spaces is not necessarily Lindelöf.
+:::
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
 We will show that $\mathbb{R}_\ell$ is Lindelöf. Let $\mathcal{U}$ be an open cover of $\mathbb{R}_\ell$. For each $x \in \mathbb{R}$, $x \in U_x$ for some $U_x \in \mathcal{U}$. Then $x \in [x, b_x) \subset U_x$ for some $b_x > x$. Let
@@ -185,6 +201,7 @@ Let $Y = \mathbb{R} \setminus \{ 0 \}$ be a subspace of $(\mathbb{R}, \mathscr{T
 :::
 
 ## Theorem 3
+::: {.math-box}
 **(i)** A second-countable space is a Lindelöf space.
 
 **(ii)** A second-countable space is separable.
@@ -192,6 +209,7 @@ Let $Y = \mathbb{R} \setminus \{ 0 \}$ be a subspace of $(\mathbb{R}, \mathscr{T
 **(iii)** Let $f: X \to Y$ be a continuous function. If $X$ is Lindelöf (separable), then $f(X)$ is Lindelöf (separable).
 
 **(iv)** Every closed subspace of a Lindelöf space is Lindelöf.
+:::
 
 ### Proof
 Let $X$ be a second-countable space. Then $X$ has a countable basis $\mathscr{B}$. Since $\mathscr{B}$ is countable, we can denote $\mathscr{B} = \{ B_n \}_{n \in \Lambda}$ for some subset $\Lambda$ of $\mathbb{N}$.

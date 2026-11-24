@@ -1,4 +1,4 @@
----
+﻿---
 title: "Laplace Inverse Transform"
 author: "Youmin Chun"
 date: "2026-10-06 00:00:01"
@@ -8,7 +8,9 @@ categories:
 ---
 
 # Theorem
+::: {.math-box}
 Let $g(t)$ be the inverse Laplace transform of $\displaystyle F(s) = \int_0^\infty e^{-st} f(t) dt$ for a function $f(t)$. Then $g(t) = f(t)$.
+:::
 
 # Laplace Inverse Transform
 함수 $f(t)$의 라플라스 변환 $\mathcal{L}\{ f(t) \}$은 다음과 같이 정의되었었다.

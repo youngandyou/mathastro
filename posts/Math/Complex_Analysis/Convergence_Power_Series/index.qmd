@@ -1,4 +1,4 @@
----
+﻿---
 title: "Convergence of Power Series"
 author: "Youmin Chun"
 date: "2026-09-01 00:00:17"
@@ -8,6 +8,7 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 Let 
 
 $$S(z) = \sum_{n=0}^\infty a_n(z-z_0)^n$$
@@ -23,8 +24,10 @@ $$S_k(z) = \sum_{n=0}^k a_n(z-z_0)^n$$
 be the partial sums of the power series. Let $\rho_k(z) := S(z) - S_k(z)$ for each $k = 0, 1, 2, \cdots.$ The series $S(z)$ is said to be ***uniformly convergent*** in some region $E$ if 
 
 $$\forall \varepsilon > 0, \exists N \in \mathbb{N} \text{ such that } \vert \rho_k(z) \vert < \varepsilon, \forall k \ge N \text{ whenever } z \in E.$$
+:::
 
 ## Theorem
+::: {.math-box}
 Let 
 
 $$S(z) = \sum_{n=0}^\infty a_n(z-z_0)^n$$
@@ -61,6 +64,7 @@ $$\sum_{n=-\infty}^\infty c_n(z-z_0)^n$$
 converges to $f(z)$ at all points in some annular domain about $z_0$, then it is the Laurent series expansion for $f$ in powers of $z-z_0$ for that domain. That is, 
 
 $$c_n = \frac{1}{2\pi i} \int_C \frac{f(z)}{(z-z_0)^{n+1}} \, dz, \forall n \in \mathbb{Z}.$$
+:::
 
 ### Proof
 **(i)** Since the series 

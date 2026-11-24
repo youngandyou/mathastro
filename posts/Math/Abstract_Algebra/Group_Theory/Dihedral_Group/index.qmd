@@ -1,4 +1,4 @@
----
+﻿---
 title: "Dihedral Group"
 author: "Youmin Chun"
 date: "2026-09:02 00:00:06"
@@ -8,7 +8,9 @@ categories:
 ---
 
 ## Definition 1
+::: {.math-box}
 Let $n \ge 3$ be a positive integer. Then the ***$n$-th dihedral group***, denoted by $D_n$, is defined as the group of symmetries of a regular $n$-gon.
+:::
 
 ## Example
 **(i)** 예컨대 $D_3$을 고려해보자. 정의대로 생각하면 $D_3$는 정삼각형의 대칭성을 가지는 군인데, 예컨대 다음과 같이 각 꼭짓점에 번호를 붙인 정삼각형을 생각해보자. 

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Pagerank"
 author: "Youmin Chun"
 date: "2026-08-19"
@@ -18,6 +18,7 @@ categories:
 예를 들어 어쩌다가 네이버 홈 화면에 내 블로그의 어떤 글이 게재되었다고 하자. 이를 네트워크 식으로 표현하면 네이버라는 노드에서 출발해서 내 블로그라는 노드로 도착하는 링크, 즉 에지가 연결되었다고 볼 수 있다. 한편 자명하게 네이버는 많은 사람들이 드나드는 페이지이므로 매우 높은 카츠 중심성을 가지고 있을텐데, 그러면 내 블로그 또한 네이버의 중심성의 값만큼 더해진 중심성을 가지게 될 것이다. 그러나 상식적으로 네이버만큼 내 블로그의 중심성이 높다고 볼 수는 없다. 네이버는 내 블로그 말고도 수많은 페이지와 링크가 연결되어 있을 것이기에, 이 또한 감안해서 보정된 값이 중심성에 추가되어야 할 것이다. 이러한 컨셉을 반영해서 카츠 중심성을 개선한 개념이 ***페이지랭크(pagerank)***다.
 
 ## Definition
+::: {.math-box}
 Let $G$ be a directed network, and let $\mathbf{A}$ be the adjacency matrix of $G$. The ***pagerank*** $x_i$ of a vertex $i$ is defined as
 
 $$x_i = \alpha \sum_j A_{ij} \frac{x_j}{d^-_j} + \beta$$
@@ -27,6 +28,7 @@ where $\alpha, \beta$ are nonnegative constants, and $d^-_j$ is the out-degree o
 $$\mathbf{x} = \alpha \mathbf{A} \mathbf{D}^{-1} \mathbf{x} + \beta \mathbf{1}$$
 
 where $\mathbf{D}$ is the diagonal matrix with $D_{ii} = \max \{ d^-_i, 1 \}$.
+:::
 
 위에서 설명한 예시를 생각했을 때, $x_j$에 out-degree $d^-_j$를 나눠주도록 정의하는 방식이 합리적이다. 만약 밖으로 내보내는 링크가 없는 노드일 경우, 즉 $d^- = 0$일 경우 페이지랭크에 한해서 $0$이 아닌 $1$로 간주하도록 한다. 어차피 이 경우 $A_{ij} = 0$이므로 계산에 영향을 미치지 않는다. 이러한 컨벤션에 맞춰서 차수행렬 $\mathbf{D}$ 또한 조금 다르게 정의해준다.
 

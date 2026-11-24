@@ -1,4 +1,4 @@
----
+﻿---
 title: "Connected Space"
 author: "Youmin Chun"
 date: "2026-07-15 00:00:03"
@@ -9,13 +9,16 @@ categories:
 
 # Connected Space
 ## Definition 1
+::: {.math-box}
 Let $X$ be a topological space. A ***seperation*** of $X$ is a pair $(U, V)$ of disjoint nonemepty open subsets of $X$ whose union is $X$. The space $X$ is said to be ***connected*** if there does not exist a separation of $X$.
+:::
 
 정의에서 $U, V$를 open이 아니라 closed로 바꿔도 상관없다. 어떤 경우든 $U$와 $V$는 open이면서 closed이기 때문이다. 
 
 즉 $X$가 연결되지 않는다는 말은 열리면서 닫힌 비자명 부분집합으로 이루어진 $X$의 partition이 존재한다는 말이다. 위상 공간에서 열리면서 닫힌 집합으로는 당연하게 $\emptyset$과 집합 그 자신 $X$이 있다. 그런데 이 둘이 아닌 또 다른 집합들이 존재한다는 말은, $X$ 안에 마치 그 자신이 위상 공간처럼 행동하는 두 부분이 존재하는 것처럼 생각할 수 있다. 그러면 두 부분은 사실상 독립적인 공간들로 다뤄질 수 있고, 이는 연결되어 있지 않다는 직관으로 이어진다.
 
 ## Remark 1
+::: {.math-box}
 **(i)** If $X \cong Y$ and $X$ is connected, then so is $Y$. That is, connectedness is a topological property, so it is preserved by a homeomorphism.
 
 **(ii)** A space $X$ is connected $\iff$ the only subsets of $X$ that are both open and closed in $X$ are $\emptyset$ and $X$ itself.
@@ -29,13 +32,16 @@ Let $X$ be a topological space. A ***seperation*** of $X$ is a pair $(U, V)$ of 
 **(vi)** The image of a connected space under a continuous map is connected, i.e., a continuous map preserves the connectedness.
 
 **(vii)** A finite cartesian product of connected spaces is connected.
+:::
 
 **(v)**에서 특별히 $B = \overline{A}$를 대입하면 연결공간의 closure도 연결공간이라는 결론을 얻는다.
 
 ## Theorem 1
+::: {.math-box}
 **(i)** If $Y$ is a subspace of $X$, a separation of $Y$ is a pair $(A, B)$ of disjoint nonempty subsets of $Y$ whose union is $Y$, neither of which contains a limit point of the other. The space $Y$ is connected if there exists no separation of $Y$. 
 
 **(ii)** If the sets $C$ and $D$ form a separation of $X$, and if $Y$ is a connected subspace of $X$, then $Y$ lies entirely within either $C$ or $D$.
+:::
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
 **(i)** Suppose that $(A, B)$ is a separation of $Y$. Then $A$ is a nonempty subset of $Y$ that is both open and closed in $Y$. Note that the closure of $A$ in $Y$ is $\overline{A} \cap Y$, where $\overline{A}$ is the closure of $A$ in $X$. Since $A$ is closed in $Y$, $A = \overline{A} \cap Y$. Since $A \cap B = \emptyset$, we have
@@ -122,18 +128,22 @@ and each $\prod_{i=1}^{k} A_i$ and $A_{k+1}$ is connected, by the base case, $\p
 
 # Path Connected Space
 ## Definition 2
+::: {.math-box}
 Let $X$ be a topological space.
 
 **(i)** For given $x, y \in X,$ a ***path*** in $X$ from $x$ to $y$ is defined as a continuous map $f: [a, b] \to X$ such that $f(a) = x$ and $f(b) = y.$ 
 
 **(ii)** $X$ is said to be ***path connected*** if every pair of points of $X$ can be joined by a path in $X$, that is, any two points in $X$, there is a path between them.
+:::
 
 정의에서 확인할 수 있는 것처럼 "연결성"을 자연스럽게 정의한 내용이다. 그러나 그냥 connected보다는 더 강한 조건임을 아래 정리에서 확인할 수 있다.
 
 ## Theorem 2
+::: {.math-box}
 **(i)** Every path connected space is connected, but the converse does not hold.
 
 **(ii)** Let $f: X \to Y$ be a continuous map. If a subspace $A$ of $X$ is path connected, then so is $f(A).$
+:::
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
 **(i)** Let $X$ be a path connected space. Suppose that $X$ is not connected. Then $X$ has a separation $(A, B).$ Since $A, B \neq \emptyset$ and $A \cap B = \emptyset,$ we can choose distinct two points $x \in A$ and $y \in B.$ Since $x, y \in X$ and $X$ is path connected, there is a path $p: [a, b] \to X$ from $x$ to $y$, i.e., $p$ is continuous and satisfies that $p(a) = x$ and $p(b) = y.$
@@ -156,6 +166,7 @@ Thus, $f(A)$ is path connected. $\blacksquare$
 :::
 
 ## Example
+::: {.math-box}
 **(i)** The ***unit ball*** 
 
 $$B^n = \{ (x_1, \cdots, x_n) \in \mathbb{R}^n \mid \sqrt{x_1^2 + \cdots x_n^2} \le 1 \}$$
@@ -177,32 +188,40 @@ $$S^{n-1} = \{ (x_1, \cdots, x_n) \in \mathbb{R}^n \mid \sqrt{x_1^2 + \cdots x_n
 is path connected.
 
 $\big[(\because)$ Define a map $g: \mathbb{R}^n - \{ \mathbf{0} \} \to S^{n-1}$ by $g(x) = \frac{x}{\| x \|}, \forall x \in \mathbb{R}^n - \{ \mathbf{0} \}.$ Then clearly $g$ is continuous and surjective. Since $\mathbb{R}^n - \{ \mathbf{0} \}$ is path connected, $g(\mathbb{R}^n - \{ \mathbf{0} \}) = S^{n-1}$ is path connected.$\big]$
+:::
 
 # Locally Connected Space
 ## Definition 3
+::: {.math-box}
 **(i)** A space $X$ is said to be ***locally connected at*** $x$ if for every neighborhood $U$ of $x$, there is a connected neighborhood $V$ of $x$ contained $U$. If $X$ is locally connected at each point, it is said to be ***locally connected***.
 
 **(ii)** A space $X$ is said to be ***locally path connected at*** $x$ if for every neighborhood $U$ of $x$, there is a path connected neighborhood $V$ of $x$ contained $U$. If $X$ is locally path connected at each point, it is said to be ***locally path connected***.
+:::
 
 ## Theorem 3
+::: {.math-box}
 **(i)** $X$ is locally connected $\iff$ for every open set $U$ of $X$, each component of $U$ is open in $X$.
 
 **(ii)** $X$ is locally path connected $\iff$ for every open set $U$ of $X$, each path component of $U$ is open in $X$.
 
 **(iii)** If $X$ is locally path connected, then the components and the path components of $X$ are the same.
+:::
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
 :::
 
 # Connected Component
 ## Definition 4
+::: {.math-box}
 Let $X$ be a topological space. 
 
 **(i)** Define an equivalence relation on $X$ by setting $x \sim y$ if there is a connected subspace of $X$ containing both $x$ and $y$. The equivalence classes are called the ***components*** of $X$.
 
 **(ii)** Define an equivalence relation on $X$ by setting $x \sim y$ if there is a path in $X$ from $x$ to $y$. The equivalence classes are called the ***path components*** of $X$.
+:::
 
 ## Remark 2
+::: {.math-box}
 We check the relations defined above are indeed equivalence relations.
 
 **(i)** For each $x \in X$, $\{ x \}$ is a connected subspace of $X$ containing $x$. Thus, $x \sim x$, so $\sim$ is reflexive.
@@ -216,13 +235,16 @@ If $x \sim y$ and $y \sim z$, then there are connected subspaces $A$ and $B$ of 
 If $x \sim y$, then there is a path $f:[0, 1] \to X$ in $X$ from $x$ to $y$. Note that $f(1-t) = g(t)$ is a path from $y$ to $x$. Thus, $y \sim x$, so $\sim$ is symmetric.
 
 If $x \sim y$ and $y \sim z$, then there are paths $f:[0, 1] \to X$ and $g:[1, 2] \to X$ in $X$ from $x$ to $y$ and from $y$ to $z$, respectively. By [pasting lemma](../Pasting_Lemma/index.qmd#sec-pasting-lemma), the function $h = f \cup g : [0, 2] \to X$ is a path in $X$ from $x$ to $z$, which means that $x \sim z.$ Thus, $\sim$ is transitive and therefore $\sim$ is an equivalence relation.
+:::
 
 ## Theorem 4
+::: {.math-box}
 **(i)** The components of $X$ are connected disjoint subspaces of $X$ whose union is $X$, such that each nonempty connected subspace of $X$ intersects only one of them.
 
 **(ii)** The path components of $X$ are path-connected disjoint subspaces of $X$ whose union is $X$, such that each nonempty path-connected subspace of $X$ intersects only one of them.
 
 **(iii)** Each path component of $X$ lies in a component of $X$.
+:::
 
 Component는 정의만 봐서는 그저 전체 공간의 부분공간일 뿐, 연결성이 자명하게 보장되는 것은 아님을 유의하자. 또한 위에서 동치 관계를 정의한 방법을 생각해본다면 component일 필요가 없는, 임의의 연결 부분 공간을 들고 왔을 때 반드시 두 개 이상의 component에 걸칠 수는 없음을 쉽게 파악할 수 있다.
 
@@ -239,6 +261,7 @@ Since $A_x$ is connected for all $x \in C,$ and $x_0 \in A_x$ for all $x \in C,$
 :::
 
 ## Remark 3
+::: {.math-box}
 **(i)** Each component of a space $X$ is closed in $X.$
 
 $\big[(\because)$ Note that a closure $\overline{C}$ of a component $C$ of $X$ is connected. Then $\overline{C} = C,$ which means that $C$ is closed in $X$.$\big]$
@@ -246,6 +269,7 @@ $\big[(\because)$ Note that a closure $\overline{C}$ of a component $C$ of $X$ i
 **(ii)** If $X$ has only finitely many components, then each component is also open in $X.$
 
 $\big[(\because)$ Let $C$ be a component of $C.$ Then $X - C$ is the finite union of components of $X$ which is closed in $X.$ Thus, $C$ is open in $X.\big]$
+:::
 
 ## Example
 

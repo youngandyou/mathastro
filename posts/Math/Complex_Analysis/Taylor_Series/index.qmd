@@ -1,4 +1,4 @@
----
+﻿---
 title: "Taylor Series"
 author: "Youmin Chun"
 date: "2026-09-01 00:00:15"
@@ -8,6 +8,7 @@ categories:
 ---
 
 ## Theorem
+::: {.math-box}
 Suppose that a function $f$ is analytic throughout a disk $\vert z - z_0 \vert < R_0$ centered at $z_0$ and with radius $R_0$. Then $f$ has the power series expansion 
 
 $$f(z) = \sum_{n=0}^\infty a_n(z-z_0)^n \quad (\vert z - z_0 \vert < R_0),$$
@@ -19,6 +20,7 @@ $$a_n = \frac{f^{(n)}(z_0)}{n!}, \quad n = 0, 1, 2, \cdots,$$
 for each point in the open disk $\vert z - z_0 \vert < R_0$.
 
 This series is called the ***Taylor series*** for $f$ about $z_0$. When $z_0 = 0$, the series is also called the ***Maclaurin series*** for $f$.
+:::
 
 ### Proof
 For a given $z$ in the open disk $\vert z - z_0 \vert < R_0$, we write $\vert z - z_0 \vert = r$ and let $C_0$ denote the positively oriendted circle $\vert z - z_0 \vert = r_0$ where $r < r_0 < R_0$. Since $f$ is analytic inside and on $C_0$ and $z$ is interior to $C_0$, we have 
@@ -97,9 +99,11 @@ f(z) &= \lim_{k \to \infty} f(z) \\
 \end{align*}$$
 
 ## Remark
+::: {.math-box}
 **(i)** Any function which is analytic at a point $z_0$ must have a Taylor series about $z_0$.
 
 **(ii)** An entire function has a Taylor series everywhere.
+:::
 
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

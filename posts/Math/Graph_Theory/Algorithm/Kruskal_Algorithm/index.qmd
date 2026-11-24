@@ -1,4 +1,4 @@
----
+﻿---
 title: "Kruskal Algorithm"
 author: "Youmin Chun"
 date: "2026-08-05"
@@ -24,7 +24,9 @@ $$w(e_1) \le w(e_2) \le \cdots \le w(e_m)$$
 ***Output:*** The spanning tree $T \le G$ that minimizes $w(T).$
 
 ## Theorem
+::: {.math-box}
 The spanning tree $T$ of $G$ returned by Kruskals' algorithm is a minimum weighted spanning tree of $G$.
+:::
 
 ### Proof
 First, we will show that $T$ is a spanning tree.

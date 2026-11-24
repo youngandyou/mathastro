@@ -1,4 +1,4 @@
----
+﻿---
 title: "Ring"
 author: "Youmin Chun"
 date: "2026-09-09 00:00:01"
@@ -9,6 +9,7 @@ categories:
 
 # Ring
 ## Definition 1
+::: {.math-box}
 **(i)** A ***ring*** $\langle R, +, \cdot \rangle$ is a set $R$ together with two [binary operations](../binaryop/index.qmd#sec-1.1.-definition) $+$ and $\cdot$, which we call addition and multiplication, defined on $R$ such that
 
 - $\langle R, + \rangle$ is an [abelian group.](../group/index.qmd#sec-definition)
@@ -22,10 +23,12 @@ We denote $ab$ instead of $a \cdot b$ for simplicity. The ***additive identity**
 **(ii)** A ring is said to be ***commutative*** or ***abelian*** if the multiplication $\cdot$ is commutative.
 
 **(iii)** Let $R$ be a ring. Then a subset $S$ of $R$ is called a ***subring*** of $R$, denoted by $S \le R$, if $E$ is a ring under the induced operations from $F$.
+:::
 
 특별히 덧셈에 대해서는 [군](../group/index.qmd#sec-definition)이 되기 때문에 항등원과 역원이 모두 유일하게 존재하지만, 곱셈에 대해서는 반군만 되기 때문에 일반적으로 항등원과 역원을 가지지 않음을 주의하자.
 
 ### Example
+::: {.math-box}
 **(i)** $\langle \mathbb{Z}, +, \cdot \rangle, \langle \mathbb{Q}, +, \cdot \rangle, \langle \mathbb{R}, +, \cdot \rangle, \langle \mathbb{C}, +, \cdot \rangle$ are abelian rings.
 
 **(ii)** Let $R$ be a ring. Then $\langle R^{n \times n}, +, \cdot \rangle$ is a ring but it is not abelian.
@@ -46,6 +49,7 @@ $$\begin{align*}
 Then $\langle R, +, \cdot \rangle$ is a ring which is called the ***direct product*** of $R_1, \cdots, R_n$.
 
 **(vii)** For $0 \in \mathbb{Z}$, $\langle \{ 0 \}, +, \cdot \rangle$ is a ring, called the ***zero ring***.
+:::
 
 ### Notation
 Let $R$ be a ring, and let $a \in R$.
@@ -77,9 +81,11 @@ Let $R$ be a ring, and let $a, b \in R$.
 **(iii)** By (ii), we have $(-a)(-b) = -(a(-b)) = -(-(ab))$. Since $-(ab) + (-(-(ab))) = 0$ and $ab + (-(ab)) = 0$, it follows from the uniqueness of the additive inverse that $(-a)(-b) = ab$. $\blacksquare$
 
 ## Theorem 1
+::: {.math-box}
 **(i)** Let $S$ be a nonempty subset of a ring $R$. Then $S \le R$ $\iff$ $a - b, ab \in S, \forall a, b \in S$.
 
 **(ii)** An intersection of subrings of a ring $R$ is a subring of $R$.
+:::
 
 부분군 판정법과 유사하지만 환은 군과는 달리 곱셈이라는 연산이 추가되므로 곱셈에 대해서 닫혀있음도 보여야 한다.
 
@@ -98,16 +104,20 @@ Let $a, b \in R^\ast$. Then $a, b \in R_\alpha, \forall \alpha$. Since $R_\alpha
 
 # Characteristic
 ## Definition 2
+::: {.math-box}
 Let $R$ be a ring. If there exists an $n \in \mathbb{N}$ such that $na = 0, \forall a \in R$, then the least such positive integer is called the ***characteristic*** of $R$. If no such positive integer exists, then $R$ is of ***characteristic 0***. We denote the characteristic of $R$ $\mathrm{char}(R)$.
+:::
 
 한국어로는 표수, 특성 정도로 번역되는 듯하다. $\mathbb{Z}, \mathbb{R}$ 등의 집합은 당연하게 $0$의 표수를 가진다. 어떤 정수를 자연수 배를 한 결과가 항상 $0$이 나올 수는 없기 때문이다. 다르게 말하면 이를 만족하는 $n$은 오직 $0$ 뿐이다. 그러나 $\mathbb{Z}_n$과 같은 집합은 $n$의 배수는 모두 항등원인 $0$이 되기 때문에 $n$의 표수를 가지게 된다.
 
 ## Remark
+::: {.math-box}
 **(i)** $\mathrm{char}(\mathbb{Z}_n) = n$
 
 **(ii)** $\mathrm{char}(\mathbb{Z}) = \mathrm{char}(\mathbb{Q}) = \mathrm{char}(\mathbb{R}) = \mathrm{char}(\mathbb{C}) = 0$.
 
 **(iii)** Let $R$ be a ring with identity. If $n \cdot 1 \neq 0, \forall n \in \mathbb{N}$, then $\mathrm{char}(R) = 0$. If $n \cdot 1 = 0$ for some $n \in \mathbb{N}$, then the smallest such integer $n$ is the characteristic of $R$.
+:::
 
 다시 말해 표수를 찾기 위해 $R$의 임의의 원소에 대해서 정의를 체크하는 대신 곱셈의 항등원 $1$에 대해서만 체크해도 충분하다는 사실을 얻는다.
 
@@ -130,11 +140,13 @@ Thus, the smallest positive integer $n$ is the characteristic of $R$.
 
 # Prime Ring
 ## Definition 3
+::: {.math-box}
 Let $R$ be a ring with identity.
 
 **(i)** $R$ is called a ***prime ring*** if it has no proper subrings containing the identity. 
 
 **(ii)** The smallest subring of $R$ containing the identity of $R$ is called the ***prime subring*** of $R$.
+:::
 
 정의상 $R$이 소환(prime ring)이면 $R$은 자기 자신을 소부분환(prime subring)으로 가진다. 정의에서 반드시 부분환들은 $R$의 곱셈의 항등원을 포함하는 부분환들로 제한되는데, 일반적으로 부분환은 기존 환의 곱셈 항등원을 가질 필요가 없기 때문이다. 따라서 이 조건을 빼버리면 소부분환은 항상 $\{ 0 \}$이 되어버리기 때문에 소부분환이라는 정의가 무의미해진다.
 
@@ -147,9 +159,11 @@ $$R_0 = \bigcap_{1 \in S \le R} S$$
 한편 부분환이라면 반드시 $0$과 위 조건에 의해서 기존 환의 곱셈 항등원 $1$을 반드시 포함해야 하고, 연산에 대해 닫혀있기 때문에 이들을 가지고 생성되는 다른 원소들도 반드시 포함해야 한다. $0$은 생성해봤자 자기 자신이고, $1$은 자신의 정수배에 해당하는 모든 원소들을 생성하기 때문에 소부분환은 $1$로 생성되는 환이라고도 볼 수 있다. 이때 환의 표수의 정의에 의해 표수가 $0$인지, $0$보다 큰 어떤 정수인지에 따라 그 모양이 달라질 것이다. 이 내용을 정리한 게 아래 정리이다.
 
 ## Theorem 2
+::: {.math-box}
 **(i)** Every ring $R$ with identity has the prime subring $R_0 = \{ m \cdot 1 \mid m \in \mathbb{Z} \}$. If $\mathrm{char}(R) = 0$, then $R_0 \cong \mathbb{Z}$. If $\mathrm{char}(R) = n > 1$, then $R_0 \cong \mathbb{Z}_n$.
 
 **(ii)** Prime rings are only $\mathbb{Z}$ or $\mathbb{Z}_n (n \ge 2)$ up to isomorphism.
+:::
 
 ### Proof
 **(i)** Define
@@ -290,6 +304,7 @@ $$\begin{aligned}
 
 # Ring Homomorphism
 ## Definition 3
+::: {.math-box}
 **(i)** For rings $R$ and $R'$, a map $\phi: R \to R'$ is called a ***homomorphism*** if
 
 $$\phi(a+b) = \phi(a) + \phi(b) \quad \text{and} \quad \phi(ab) = \phi(a)\phi(b)$$
@@ -301,8 +316,10 @@ for all $a, b \in R$.
 $$\phi^{-1}(\{ 0 \}) = \{ a \in R \mid \phi(a) = 0 \}$$
 
 is called the ***kernel*** of $\phi$, denoted by $\ker(\phi)$.
+:::
 
 ## Theorem 2
+::: {.math-box}
 Let $\phi: R \to R'$ be a ring homomorphism.
 
 **(i)** $\phi(0) = 0$.
@@ -318,6 +335,7 @@ Let $\phi: R \to R'$ be a ring homomorphism.
 **(vi)** For $a \in R$, $a + \ker(\phi) = \phi^{-1}(\{ \phi(a) \}) = \ker(\phi) + a$.
 
 **(vii)** $\phi$ is one-to-one $\iff$ $\ker(\phi) = \{ 0 \}$.
+:::
 
 **(v)**에서 $\phi(1)$은 $R'$이 아닌 $\phi(R)$의 항등원임을 주의해야 한다. 단적인 예로 함수 $\phi : \mathbb{Z} \to \mathbb{Z} \times \mathbb{Z}$를 $\phi(n) = (n, 0)$과 같이 정의하면 $\phi$는 준동형사상이 된다. 이때 $\phi(1) = (1, 0)$인데, $(1, 0)$은 $\mathbb{Z} \times \{ 0 \}$의 항등원이지만 $\mathbb{Z} \times \mathbb{Z}$의 항등원은 아니다. 환은 부분환에 대해서 반드시 같은 곱셈 항등원을 가질 필요가 없음을 주의하자.
 

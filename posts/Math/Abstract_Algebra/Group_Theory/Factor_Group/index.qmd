@@ -1,4 +1,4 @@
----
+﻿---
 title: "Factor Group"
 author: "Youmin Chun"
 date: "2026-09:02 00:00:14"
@@ -8,11 +8,13 @@ categories:
 ---
 
 ## Theorem 1
+::: {.math-box}
 Let $H \le G$. We denote $G / H = \{ aH \mid a \in G \}$. Then the operation on $G / H$ defined by 
 
 $$(aH)(bH) = (ab)H, \forall a , b \in G$$
 
 is well-defined $\iff$ $H \lhd G$.
+:::
 
 ### Proof
 $(\Longrightarrow)$
@@ -57,7 +59,9 @@ Since $h_3b_2 \in Hb_2$ and $Hb_2 = b_2H$, $h_3b_2 \in b_2H$, which means that $
 Similarly, we also have $(a_2b_2)H \subset (a_1b_1)H$. Hence, $(a_1b_1)H = (a_2b_2)H$. $\blacksquare$
 
 ## Corollary
+::: {.math-box}
 Let $H \lhd G$. Then $G / H$ is a group under the binary operaton defined above theorem. 
+:::
 
 ### Proof
 By Theorem 1, the operation is well-defined.
@@ -97,9 +101,12 @@ $$\begin{align*}
 Thus, each element $aH$ in $G/H$ has the inverse and $(aH)^{-1} = a^{-1}H$. Hence, $G/H$ is a group. $\blacksquare$
 
 ## Definition
+::: {.math-box}
 Let $H \lhd G$. The group $G/H$ is called the ***factor group*** (or ***quotient group***) of $G$ by $H$. 
+:::
 
 ## Remark
+::: {.math-box}
 **(i)** If $G$ is abelian and $H \lhd G$, then $G / H$ is abelian.
 
 **(ii)** $G /H$ being abelian does not imply that $G$ is abelian.
@@ -111,9 +118,12 @@ $\big[(\because)$ Note that $A_n \le S_n$ and $\vert A_n \vert = \frac{n!}{2}$. 
 **(iv)** Note that $\ker(\phi) \lhd G$ for a group homomorphism $\phi : G \to G'$ by [Theorem 1.](../Kernel/index.qmd#sec-theorem-1) Then $G/\ker(\phi)$ is a factor group of $G$ by $\ker(\phi)$. 
 
 **(v)** $G / \{ e \} \cong G$ and $G / G \cong \{ e \}$.
+:::
 
 ## Theorem 2
+::: {.math-box}
 A factor group of a cyclic group is cyclic.
+:::
 
 ### Proof
 Let $G = \langle a \rangle$ and let $H \lhd G$. We claim that $G/H = \langle a H \rangle$.
@@ -123,9 +133,11 @@ To see this, let $bH \in G/H$. Since $b \in G$, $b = a^n$ for some $n \in \mathb
 Since $aH \in G/H$, $\langle aH \rangle \subset G/H$ is clear. Thus, $G/H = \langle a H \rangle$. $\blacksquare$
 
 ## Theorem 3
+::: {.math-box}
 Let $H$ and $K$ be groups, and let $N_1 \lhd H$ and $N_2 \lhd K$. Then
 
 $$(H \times K) / (N_1 \times N_2) \cong (H/N_1) \times (K / N_2).$$
+:::
 
 ### Proof
 Note that the factor groups $(H \times K)/(N_1 \times N_2),$ $H/N_1$ and $K/N_2$ are well-defined because $N_1 \lhd H$ and $N_2 \lhd K$ by Theoerm 1 and $N_1 \times N_2 \lhd H \times K.$
@@ -153,11 +165,13 @@ By [the first isomorphism theorem](../First_Isomorphism_Theorem/index.qmd#sec-th
 $$(H \times K) / (N_1 \times N_2) \cong (H/N_1) \times (K / N_2). \quad \blacksquare$$
 
 ## Corollary
+::: {.math-box}
 Let $H$ and $K$ be groups. 
 
 **(i)** $(H \times K) / (H \times \{ e_K \}) \cong K$.
 
 **(ii)** $(H \times K) / (\{ e_H \} \times K) \cong H$.
+:::
 
 ### Proof
 **(i)** Define a function $\phi: H \times K \to K$ by $\phi(h, k) = k, \forall (h, k) \in H \times K$. Clearly, $\phi$ is an epimorphism with kernel $H \times \{ e_K \}$. By the first isomorphism theorem, $(H \times K)/(H \times \{ e_K \}) \cong K$. 

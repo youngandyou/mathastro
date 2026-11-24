@@ -1,4 +1,4 @@
----
+﻿---
 title: "Exponential Form"
 author: "Youmin Chun"
 date: "2026-07-24 00:00:04"
@@ -8,6 +8,7 @@ categories:
 ---
 
 ## Remark
+::: {.math-box}
 Let $z = (x, y) \in \mathbb{C}$ and let $\vert z \vert = r$. Assume $z \neq 0$. 
 
 ![](polarform.png)
@@ -24,13 +25,17 @@ Thus, we have
 $$
 z = r e^{i\theta}.
 $$
+:::
 
 ## Definition 1
+::: {.math-box}
 Let $z (\neq 0) \in \mathbb{C}$. Then $z$ can be written in ***exponential form*** as
 
 $$z = r e^{i\theta}.$$
+:::
 
 ## Remark
+::: {.math-box}
 **(i)** The circle 
 
 $$C_R(z_0) = \{ z \in \mathbb{C} \mid \vert z - z_0 \vert = R \}$$
@@ -46,8 +51,10 @@ $$z = re^{i\theta} = r e^{i(\theta + 2n\pi)}, \quad \forall n \in \mathbb{Z}.$$
 Each value of $\theta$ is called the ***argument*** of $z$, and the set of all such values is denoted by $\arg z$. The ***principal value*** of $\arg z$, denoted by $\text{Arg } z$, is the unique value $\Theta$ such that $-\pi < \Theta \le \pi$. Then we have
 
 $$\arg z = \{\text{Arg } z + 2n\pi \mid n \in \mathbb{Z}\}$$
+:::
 
 ## Theorem 1
+::: {.math-box}
 Let $z_1 = r_1 e^{i\theta_1}$ and $z_2 = r_2 e^{i\theta_2}$. Then
 
 **(i)** $z_1 z_2 = r_1 r_2 e^{i(\theta_1 + \theta_2)}$
@@ -57,6 +64,7 @@ Let $z_1 = r_1 e^{i\theta_1}$ and $z_2 = r_2 e^{i\theta_2}$. Then
 **(iii)** $z_1^n = r_1^n e^{in\theta_1}$ for any integer $n$
 
 **(iv)** $\displaystyle \cos (2m \theta) = \sum_{k=0}^m (-1)^k \binom{2m}{2k} \cos^{2m-2k} \theta \sin^{2k} \theta$ and $\displaystyle \sin (2m \theta) = \sum_{k=0}^m (-1)^k \binom{2m}{2k+1} \cos^{2m-2k-1} \theta \sin^{2k+1} \theta$
+:::
 
 ### Proof
 **(i)** 
@@ -125,9 +133,11 @@ $$\begin{align*}
 \end{align*}$$
 
 ## Theorem 2
+::: {.math-box}
 Let $z_1 = r_1 e^{i\theta_1}$ and $z_2 = r_2 e^{i\theta_2}$ be nonzero complex numbers. Then 
 
 $$z_1 = z_2 \iff r_1 = r_2 \text{ and } \theta_1 = \theta_2 + 2k\pi \text{ where } k \text{ is any integer} (k = 0, \pm 1, \pm 2, ...).$$
+:::
 
 ### Proof
 $(\Longrightarrow)$
@@ -182,6 +192,7 @@ Thus we have
 $$z_1 = z_2 \iff r_1 = r_2 \text{ and } \theta_1 = \theta_2 + 2k\pi \text{ where } k \text{ is any integer} (k = 0, \pm 1, \pm 2, ...). \quad \blacksquare$$
 
 ## Theorem 3
+::: {.math-box}
 Let $z_1 = r_1 e^{i\theta_1}$ and $z_2 = r_2 e^{i\theta_2}$ be nonzero complex numbers. Then 
 
 **(i)** $\arg (z_1 z_2) = \arg z_1 + \arg z_2$
@@ -189,6 +200,7 @@ Let $z_1 = r_1 e^{i\theta_1}$ and $z_2 = r_2 e^{i\theta_2}$ be nonzero complex n
 **(ii)** $\displaystyle \arg \left( \frac{z_1}{z_2} \right) = \arg z_1 - \arg z_2$
 
 **(iii)** $\arg \overline{z_1} = - \arg z_1$
+:::
 
 ### Proof
 **(i)** Let $\alpha_1 + \alpha_2 \in \arg z_1 + \arg z_2$ where $\alpha_1 \in \arg z_1$ and $\alpha_2 \in \arg z_2$. Then 

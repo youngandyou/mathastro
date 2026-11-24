@@ -1,4 +1,4 @@
----
+﻿---
 title: "Cayley Theorem"
 author: "Youmin Chun"
 date: "2026-09:02 00:00:07"
@@ -8,7 +8,9 @@ categories:
 ---
 
 ## Lemma
+::: {.math-box}
 Let $\phi:G \to G'$ be a monomorphism of groups. Then $\operatorname{Im}(\phi) \le G'$ and $\operatorname{Im}(\phi) \cong G$.
+:::
 
 ### Proof 
 Since $\phi$ is a homomorphism, clearly $\operatorname{Im}(\phi) = \phi(G) \le G'$.
@@ -65,6 +67,7 @@ for all $g \in G$. Thus $\phi(xy) = \phi(x) \phi(y)$, so that $\phi$ is a homomo
 By Lemma, $G$ is isomorphic to $\operatorname{Im}(\phi)$, a subgroup of $S_G$. $\blacksquare$
 
 ## Example
+::: {.math-box}
 Let $G = \{ e, a, b \}$ be a group given by
 
 $$
@@ -107,6 +110,7 @@ $$
 $$
 
 Hence $G \cong \{ \sigma_e, \sigma_a, \sigma_b \} \le S_G.$
+:::
 
 # Reference
 - John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

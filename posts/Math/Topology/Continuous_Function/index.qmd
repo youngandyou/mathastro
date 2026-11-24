@@ -1,4 +1,4 @@
----
+﻿---
 title: "Continuous Function"
 author: "Youmin Chun"
 date: "2026-07-10 00:00:11"
@@ -8,7 +8,9 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 Let $(X, \mathscr{T}_X)$ and $(Y, \mathscr{T}_Y)$ be topological spaces. A function $f: X \to Y$ is said to be ***continuous*** if $f^{-1}(V) \in \mathscr{T}_X, \forall V \in \mathscr{T}_Y$. 
+:::
 
 정의만 보면 왜 이 모양인가 싶겠지만, 사실 해석학에서 다루던 $\varepsilon - \delta$ 논법을 위상수학의 언어로 바꾼 것과 다름 없다. 
 
@@ -22,6 +24,7 @@ f: \mathbb{R} \to \mathbb{R} \text{ is continuous at } a &\iff \forall \varepsil
 즉 양수 $\varepsilon$을 하나 가지고 온다는 것은 $f(a)$의 네이버후드 $V$를 가지고 오는 것이고, 그에 대응되는 양수 $\delta$가 존재한다는 것은 $f^{-1}(V)$에 속하는 $a$의 네이버후드가 존재한다는 말이다. 그런데 이건 사실상 $f^{-1}(V)$가 open이 되는 조건이므로, 위에서 새롭게 정의한 연속과 $\varepsilon- \delta$ 논법의 정의가 사실상 같음을 알 수 있다. 
 
 ## Remark
+::: {.math-box}
 **(i)** Let $\mathscr{B}$ be a basis generating $\mathscr{T}_Y$. If $f^{-1}(B) \in \mathscr{T}_X, \forall B \in \mathscr{B}$, then $f$ is continuous.  
 
 $\big[ (\because)$ Let $V \in \mathscr{T}_Y$. Then $V = \bigcup _ {B \in \mathcal{A}} B$ for some $\mathcal{A} \subset \mathscr{B}$. Then
@@ -43,8 +46,10 @@ f^{-1}(B) &= f^{-1} \left( \bigcap_{i=1}^n S_i \right) \\
 \end{align*}$$
 
 because each $f^{-1}(S_i) \in \mathscr{T}_X$. By (i), $f$ is continuous. $\blacksquare \big]$
+:::
 
 ## Example
+::: {.math-box}
 **(i)** Let $f_1 : \mathbb{R} _ {\ell} \to \mathbb{R} _ {\text{usual}}$ defined by $f_1(x) = x$. Then $f$ is continuous.
 
 $\big[(\because)$ Let $(a, b)$ be a basis element of $\mathbb{R} _ {\text{usual}}$. Then we have $f^{-1}((a, b)) = (a, b)$. Note that 
@@ -56,8 +61,10 @@ Thus $(a, b)$ is open in $\mathbb{R} _ {\ell}$. By Remark (i), $f$ is continuous
 **(ii)** Let $f_2 : \mathbb{R} _ {\text{usual}} \to \mathbb{R} _ {\ell}$ defined by $f_2(x) = x$. Then $f$ is NOT continuous.
 
 $\big[(\because)$ Note that $f^{-1}([0, 1)) = [0, 1).$ If $f$ is continuous, then $[0, 1)$ is open in $\mathbb{R} _ {\text{usual}}$. But there is no basis element $B$ of $\mathbb{R} _ {\text{usual}}$ such that $0 \in B$ and $B \subset [0, 1)$. Hence $f$ is not continuous. $\big]$
+:::
 
 ## Theorem 1
+::: {.math-box}
 Let $(X, \mathscr{T}_X)$ and $(Y, \mathscr{T}_Y)$ be topological spaces, and let $f:X \to Y$ be a function. TFAE.
 
 **(i)** $f$ is continuous.
@@ -67,6 +74,7 @@ Let $(X, \mathscr{T}_X)$ and $(Y, \mathscr{T}_Y)$ be topological spaces, and let
 **(iii)** $f^{-1}(B)$ is closed in $X$ for all closed set $B$ of $Y$.
 
 **(iv)** For each $x \in X$ and a neighborhood $V$ of $f(x)$, there exists a neighborhood $U$ of $x$ such that $f(U) \subset V$. In this case, we say that $f$ is ***continuous at*** $x \in X$.
+:::
 
 ### Proof
 **(i)** $\Longrightarrow$ **(ii)**
@@ -108,7 +116,9 @@ Suppose that $f$ is continuous. Let $x \in X$ and let $V$ be a neighborhood of $
 Suppose that for each $x \in X$ and a neighborhood $V$ of $f(x)$, there exists a neighborhood $U$ of $x$ such that $f(U) \subset V$. Let $V \in \mathscr{T}_Y$. Let $x \in f^{-1}(V)$. Then $f(x) \in V$. Then there exists a neighborhood $U$ of $x$ such that $f(U) \subset V$, which implies that $U \subset f^{-1}(V)$. Thus, $f^{-1}(V) \in \mathscr{T}_X$, so that $f$ is continuous. $\blacksquare$
 
 ## Theorem 2
+::: {.math-box}
 Let $(X, \mathscr{T}_X)$ and $(Y, \mathscr{T}_Y)$ be topological spaces, and let $f: X \to Y$ be a injective continuous function. Let $A \subset X$. Then $f(A') \subset f(A)'$. 
+:::
 
 ### Proof
 Let $y \in f(A')$. Then $y = f(x)$ for some $x \in A'$. Let $V$ be a neighborhood of $f(x)$. Then $f(x) \in V$, which means that $x \in f^{-1}(V)$. Since $f$ is continuous, $f^{-1}(V)$ is open in $X$. Then $f^{-1}(V) \cap (A - \{ x \}) \neq \emptyset$, which means that $\exists a \in f^{-1}(V) \cap (A - \{ x \})$. Then $a \in f^{-1}(V)$ and $a \in A - \{ x \}$, which means that $f(a) \in V$ and $f(a) \in f(A - \{ x \}) = f(A) - \{ f(x) \}$ because $f$ is injective. Thus, $f(a) \in V \cap (f(A) - \{ f(x) \})$, which means that $f(x) \in f(A)'$. Hence, $f(A') \subset f(A)'. \blacksquare$
@@ -130,6 +140,7 @@ $$\forall \varepsilon > 0, \exists \delta > 0 \text{ such that } d(x, a) < \delt
 이는 limit point가 연속함수에 의해서 보존되기 위해서는 추가적으로 조건이 더 필요하고, '서로 다름'이라는 조건을 가지고 있는 함수는 다름아닌 단사함수이고, 이를 표현한 정리가 Theorem 2이다.
 
 ## Theorem 3
+::: {.math-box}
 Let $X, Y, Z$ be topological spaces. Then
 
 **(i)** For some $y_0 \in Y$, the function $f : X \to Y$ defined by $f(x) = y_0, \forall x \in X$, called a ***constant function***, is continuous.
@@ -147,6 +158,7 @@ Let $X, Y, Z$ be topological spaces. Then
 **(v-2)** If $Y$ is a subspace of $Z$, then the function $h : X \to Z$, obtained by expanding the range of $f$, is continuous.
 
 **(vi)** Let $\{U_\alpha\}$ be a collection of open sets in $X$. The function $f : X \to Y$ is continuous if $X = \bigcup U_\alpha$ and $f \vert _ {U_\alpha}$ is continuous for each $\alpha$.
+:::
 
 ### Proof
 **(i)** Let $V \in \mathscr{T}_Y$. If $y_0 \in V$, then $f^{-1}(V) = X \in \mathscr{T}_X$. If $y_0 \notin V$, then $f^{-1}(V) = \emptyset \in \mathscr{T}_X$. Thus, $f$ is continuous.
@@ -205,6 +217,7 @@ If $y \in f^{-1}(V)$, then $f(y) \in V$. Since $f^{-1}(V) \subset X$, $y \in U _
 Since $f^{-1}(V)= \bigcup_\alpha \left( f \vert U _ {\alpha} \right)^{-1}(V) \in \mathscr{T}_X$, $f$ is continuous. $\blacksquare$
 
 ## Theorem 4
+::: {.math-box}
 Let $A, B, X$ and $Y$ be topological spaces.
 
 **(i)** Let $f_1: A \to X$ and $f_2:A \to Y$ be functions. Then the function $f: A \to X \times Y$ defined by $f(a) = (f_1(a), f_2(a))$ is continuous $\iff$ the coordinate functions $f_1$ and $f_2$ of $f$ are continuous.
@@ -214,6 +227,7 @@ Let $A, B, X$ and $Y$ be topological spaces.
 $$(f \times g)(a, b) = (f(a), g(b))$$
 
 is continuous.
+:::
 
 ### Proof
 **(i)**
@@ -276,7 +290,9 @@ $$(x, y) \in f^{-1}(U) \times g^{-1}(V) = (f \times g)^{-1}(U \times V) \subset 
 Since $f$ and $g$ are continuous, $f^{-1}(U)$ and $g^{-1}(V)$ are open in $A$ and $C$, respectively. Then $f^{-1}(U) \times g^{-1}(V)$ is a basis element of the product space $A \times C$, which means that $(f \times g)^{-1}(W)$ is open in $A \times C$. Thus, $f \times g$ is continuous. $\blacksquare$
 
 ## Theorem 5
+::: {.math-box}
 Let $f:X \to Y$ be a continuous function. Suppose that $Y$ is a $T_2$ space. Then the ***graph*** $G_f := \{ (x, f(x)) \in X \times Y \}$ of $f$ is closed in $X \times Y.$
+:::
 
 ### Proof 1
 We will show that $X \times Y - G_f$ is open in $X \times Y.$ Let $(x, y) \in X \times Y - G_f.$ Since $(x, y) \notin G_f$, $y \neq f(x).$ Since $Y$ is $T_2,$ there exists open sets $U$ and $V$ of $Y$ such that $f(x) \in U, y \in V$ and $U \cap V = \emptyset.$ Then $x \in f^{-1}(U),$ and $f^{-1}(U)$ is open in $X$ because $f$ is continuous. Note that $f^{-1}(U) \times V$ is a basis element of $X \times Y.$ 

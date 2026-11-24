@@ -1,4 +1,4 @@
----
+﻿---
 title: "Antiderivative"
 author: "Youmin Chun"
 date: "2026-09-01 00:00:04"
@@ -8,14 +8,19 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 Let $f(z)$ be a continuous function on a domain $D$. A function $F(z)$ is called an ***antiderivative*** of $f(z)$ if $F'(z) = f(z), \forall z \in D$.
+:::
 
 ## Remark
+::: {.math-box}
 An antiderivative of a given function $f(z)$ is unique except for an additive constant.
 
 $\big[(\because)$ Let $F(z)$ and $G(z)$ be two antiderivatives of $f(z)$. Since $F'(z) = f(z) = G'(z)$ on $D$, we have $(F - G)'(z) = F'(z) - G'(z) = 0$ on $D$, which means that the function $F - G$ is analytic on $D$. By [Theorem 1](../Analytic_Function/index.qmd#sec-theorem-1), we have $F(z) - G(z) = (F-G)(z) = C$ for some constant $C$.$\big]$
+:::
 
 ## Theorem 1
+::: {.math-box}
 Suppose that a function $f(z)$ is continuous on a domain $D$. TFAE.
 
 **(i)** $f(z)$ has an antiderivative $F(z)$ throughout $D$.
@@ -27,6 +32,7 @@ $$\int_{z_1}^{z_2} f(z) \, dz = F(z_2) - F(z_1),$$
 where $F(z)$ is the antiderivative of $f(z)$.
 
 **(iii)** For any closed contour $C \subset D$, $\displaystyle \int_C f(z) \, dz = 0$.
+:::
 
 ### Proof
 **(i)** $\Longrightarrow$ **(ii)**

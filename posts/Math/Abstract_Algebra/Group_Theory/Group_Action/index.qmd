@@ -1,4 +1,4 @@
----
+﻿---
 title: "Group Action"
 author: "Youmin Chun"
 date: "2026-09:02 00:00:22"
@@ -8,6 +8,7 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 Let $G$ be a group, and let $X$ be a nonempty set. Then a ***group action*** of $G$ on $X$ is a map $\ast: G \times X \to X,$ denoted by $\ast(g, x) = g \ast x = gx,$ such that 
 
 **(i)** $ex = x, \forall x \in X,$
@@ -15,10 +16,12 @@ Let $G$ be a group, and let $X$ be a nonempty set. Then a ***group action*** of 
 **(ii)** $(g_1g_2)x = g_1(g_2x), \forall g_1, g_2 \in G, x \in X.$
 
 If there exists a group action of $G$ on $X$, then $X$ is called a ***$G$-set.***
+:::
 
 $X$라는 집합은 공집합이 아니기만 하면 딱히 제한이 없고, 군이 될 필요도 없을 뿐더러 연산조차 주어지지 않아도 상관없다. 핵심은 이런 집합 $X$에 군 $G$의 원소를 가하는 action을 취했을 때 $X$의 다른 원소로 매핑되는 관계가 위 조건에 따라 잘 정의되면 그 원소를 가하는 행위를 group action이라고 부른다. Permutation 같은 예를 생각해보면 $X$의 원소를 $X$의 또 다른 원소로 보내는 행위가 무엇인지 자연스럽게 알 수 있겠다.
 
 ## Example
+::: {.math-box}
 **(i)** Let $X$ be any nonemptyset, and let $H \le S_X.$ Then $X$ is a $H$-set.
 
 $\big[(\because)$ Define $\ast: H \times X \to X$ by $\ast(\sigma, x) = \sigma(x), \forall (\sigma, x) \in H \times X$. Then $\ast$ is well-defined. 
@@ -82,15 +85,18 @@ Hence, $\ast$ is a group action of $H$ on $G.\big]$
 ![](act1.png)
 
 Then $X$ is a $G$-set in a natural way. 
+:::
 
 이 예시에서야 비로소 "action"이라는 말의 진가가 드러난다. 위 사진과 같이 정사각형의 꼭짓점과 중점, 모서리와 중선, 대각선에 라벨링을 한 집합을 $X$라고 두고 그룹 $G$를 dihedral group으로 둔다. 그러면 중심 $C$를 기준으로 돌리거나 뒤집는 연산을 생각해보면 정사각형을 이리저리 돌리고 뒤집는 행위로 대응되고, $X$의 원소들은 또 다른 $X$의 원소들로 대응된다.
 
 ## Theorem 1
+::: {.math-box}
 Let $X$ be a $G$-set. 
 
 **(i)** For each $g \in G$, the map $\sigma_g: X \to X$ defined by $\sigma_g(x) = gx, \forall x \in X$ is a permutation on $X$.
 
 **(ii)** The map $\phi: G \to S_X$ defined by $\phi(g) = \sigma_g, \forall g \in G$ is a group homomorphism with $\phi(g)(x) = \sigma_g(x) = gx$.
+:::
 
 ### Proof
 **(i)** Clearly, $\sigma_g$ is well-defined. Suppose that $\sigma_g(x_1) = \sigma_g(x_2).$ Then $gx_1 = gx_2,$ so 

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Compact Space"
 author: "Youmin Chun"
 date: "2026-09-03 00:00:01"
@@ -8,13 +8,16 @@ categories:
 ---
 
 # Definition
+::: {.math-box}
 Let $X$ be a topological space.
 
 **(i)** A collection $\mathscr{U}$ of open subsets of $X$ is called an ***open cover*** of $X$ if $\displaystyle X = \bigcup_{U \in \mathscr{U}} U$.
 
 **(ii)** The space $X$ is said to be ***compact*** if every open cover of $X$ has a finite subcover.
+:::
 
 ## Example
+::: {.math-box}
 **(i)** $\mathbb{R}$ with the usual topology is **NOT** compact.
 
 $\big[ (\because)$ The collection $\{ (n, n+2) \mid n \in \mathbb{Z} \}$ is an open cover of $\mathbb{R}$, but it has no finite subcover. $\big]$
@@ -30,6 +33,7 @@ $\big[ (\because)$ The collection $\left \{ \left[ 0, 1 - \frac{1}{n} \right) \,
 $\big[ (\because)$ Let $\mathscr{U}$ be an open cover of $K$. Since $0 \in K$ and $\mathscr{U}$ is an open cover of $K$, $0 \in U$ for some $U \in \mathscr{U}$. Then $U$ contains all but finitely many of the points $\frac{1}{n}$. By choosing, for each point of $X$ not in $U$, an open set in $\mathscr{U}$ containing it, we obtain a finite subcover of $K$. $\big]$
 
 **(v)** A closed interval $[a, b]$ is compact.
+:::
 
 ::: {.callout-note collapse="true"}
 $\big[ (\because)$ Suppose that $[a, b]$ is not compact. Then there is an open cover $\mathscr{U}$ of $[a, b]$ such that $\mathscr{U}$ does not have a finite subcover.
@@ -46,6 +50,7 @@ By the nested interval theorem, there exists $x^\ast \in \displaystyle \bigcap_{
 **(vi)** Since $S^n$ is a closed subspace of a compact space $[-1, 1]^{n+1}$, $S^n$ is compact. Similarly, $B^n$ is compact. 
 
 # Theorem 1
+::: {.math-box}
 **(i)** Let $Y$ be a subspace of $X$. Then $Y$ is compact $\iff$ every collection $\mathscr{U} = \{ U \subset X \mid U \text{ is open in } X \}$ such that $Y \subset \bigcup_{U \in \mathscr{U}} U$ has a finite subcollection that covers $Y$.
 
 **(ii)** Every closed subspace of a compact space is compact.
@@ -65,6 +70,7 @@ By the nested interval theorem, there exists $x^\ast \in \displaystyle \bigcap_{
 **(ix)** **(Tube Lemma)** Let $X \times Y$ be a space where $Y$ is compact. If $O$ is an open subset of $X \times Y$ containing $\{ x_0 \} \times Y$ for some $x_0 \in X$, then there exists an open subset $U$ of $X$ containing $x_0$ such that $U \times Y \subset O$.
 
 **(x)** A intersection of compact subspaces of a Hausdorff space is compact.
+:::
 
 본디 부분공간 $Y$의 오픈 커버는 $Y$의 오픈셋들로 구성되어야 한다. 이는 부분공간의 정의상 오픈셋의 모양이 조금 지저분해질 수 밖에 없는데, 정리 **(i)**은 그러한 불편함을 없애고 $X$의 오픈셋들만 가지고도 부분공간의 컴팩터성을 논할 수 있게 해준다는 점을 시사한다.
 
@@ -141,17 +147,23 @@ is compact. Thus, we complete the proof.
 **(vii)** Suppose that $K$ is compact in $Y$. Let $j: K \to X$ be an [inclusion map](../Continuous_Function/index.qmd#sec-theorem-3). By **(iv)**, $j(K) = K$ is a compact subspace of $X$. Conversely, if $K$ is compact in $X$ and $j: K \to Y$ is an inclusion map, then $j(K) = K$ is a compact subspace of $Y$. $\blacksquare$
 
 # Definition 2
+::: {.math-box}
 A point $x$ of a space $X$ is called an ***isolated point*** of $X$ if $\{ x \}$ is open in $X$.
+:::
 
 ## Example
+::: {.math-box}
 **(i)** $(\mathbb{R}, \mathscr{T}_{\text{usual}})$ has no isolated points.
 
 **(ii)** Every point in $(X, \mathscr{T}_\text{discrete})$ is an isolated point.
 
 **(iii)** A subspace $\{ 0 \} \cup [1, 2]$ of $(\mathbb{R}, \mathscr{T}_{\text{usual}})$ has an isolated point $0$.
+:::
 
 # Theorem 2
+::: {.math-box}
 Let $X$ be a nonempty compact Hausdorff space. If $X$ has no isolated points, then $X$ is uncountable.
+:::
 
 ## Proof
 Let $U$ be a nonempty open subset of $X$, and let $x \in X$. Then there exists a nonempty open subset $V$ of $U$ such that $x \notin \overline{V}$.
@@ -167,7 +179,9 @@ $\big[ (\because)$  Let $x_1 = f(1) \in X$. By above assertation, there exists a
 [Since $X$ is compact, $\displaystyle \exists x \in \bigcap_{n=1}^\infty \overline{V_n}$.](../Finite_Intersection_Property/index.qmd#sec-theorem) Since $x \in \overline{V_n}, \forall n \in \mathbb{N}$, $x \neq x_n = f(n), \forall n \in \mathbb{N}$. Hence, $f$ is not surjective. $\blacksquare \big]$
 
 ## Corollary
+::: {.math-box}
 Every nonempty closed interval in $\mathbb{R}$ is uncountable. Thus, $\mathbb{R}$ is uncountable.
+:::
 
 # Reference
 - James R. Munkres. (2000). Topology (2nd ed.). Pearson.

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Laurant Series"
 author: "Youmin Chun"
 date: "2026-09-01 00:00:16"
@@ -8,6 +8,7 @@ categories:
 ---
 
 ## Theorem
+::: {.math-box}
 Suppose that a function $f$ is analytic throughout an annular domain $R_1 < \vert z - z_0 \vert < R_2$, centered at $z_0$, and let $C$ denote any positively oriented simple closed contour around $z_0$ and lying in that domain. Then $f$ has the series representation 
 
 $$f(z) = \sum_{n=0}^\infty a_n(z-z_0)^n + \sum_{n=1}^\infty \frac{b_n}{(z-z_0)^n}$$
@@ -20,6 +21,7 @@ b_n &= \frac{1}{2\pi i} \int_C \frac{f(z)}{(z-z_0)^{-n+1}} \, dz \quad (n= 1, 2,
 \end{align*}$$
 
 This series is called the ***Laurent series*** for $f$ about $z_0$.
+:::
 
 ### Proof
 Let $z$ be a point in the domain, and let denote $\vert z- z_0 \vert = r$. Let $C$ be a positively oriented simple closed contour around $z_0$ lying in that domain. We construct a closed annular region $r_1 \le \vert z - z_0 \vert \le r_2$ that is contained in the domain $R_1 < \vert z - z_0 \vert < R_2$ and whose interior contains both the point $z$ and the contour $C$. We let $C_1$ and $C_2$ denote the positively oriented circles $\vert z - z_0 \vert = r_1$ and $\vert z - z_0 \vert = r_2$, respectively. Note that $f$ is analytic on $C_1$ and $C_2$, as well as in the annular domain between them.
@@ -133,6 +135,7 @@ b_n &= \frac{1}{2\pi i} \int _{C_1} \frac{f(s)}{(s-z_0)^{-n+1}} \, ds \\
 \end{align*}$$
 
 ## Remark
+::: {.math-box}
 **(i)** Note that 
 
 $$b_{-n} = \frac{1}{2\pi i} \int_C \frac{f(z)}{(z-z_0)^{n+1}} \quad (n = -1, -2, \cdots).$$
@@ -190,6 +193,7 @@ by Theorem 1. Thus, the series $\displaystyle \sum_{n=1}^\infty \frac{b_n}{(z-z_
 $$f(z) = \sum_{n=0}^\infty a_n(z-z_0)^n + \sum_{n=1}^\infty \frac{b_n}{(z-z_0)^n}$$
 
 in an annulus domain $R_1 < \vert z- z_0 \vert < R_2$, then the Laurant series converges uniformly in any closed annulus which is concentric to and interior to the domain $R_1 < \vert z- z_0 \vert < R_2$. 
+:::
 
 # Reference
 - Brown, James Ward, & Churchill, Ruel V. (2017). Complex Variables and Applications (9th ed.). McGraw-Hill.

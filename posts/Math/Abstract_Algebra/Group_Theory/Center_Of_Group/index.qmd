@@ -1,4 +1,4 @@
----
+﻿---
 title: "Center of Group"
 author: "Youmin Chun"
 date: "2026-09:02 00:00:19"
@@ -8,18 +8,22 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 The ***center*** $Z(G)$ of a group is defined by
 
 $$Z(G) = \{ a \in G \mid ga = ag, \forall g \in G \}.$$
 
 If $Z(G) = \{ e \},$ then we say that the center of $G$ is ***trivial***.
+:::
 
 ## Theorem 1
+::: {.math-box}
 Let $G$ be a group.
 
 **(i)** $Z(G)$ is an abelian normal subgroup of $G.$ 
 
 **(ii)** $Z(G) = G \iff G$ is abelian.
+:::
 
 ### Proof
 **(i)** First, we will prove $Z(G) \le G.$
@@ -55,9 +59,11 @@ which means that $gZ(G)g^{-1} \subset Z(G), \forall g \in G$. Thus, $Z(G) \lhd G
 If $G$ is abelian, each element of $G$ belongs to $Z(G)$ clearly. $\blacksquare$
 
 ## Theorem 2
+::: {.math-box}
 Let $G_1, G_2$ be groups. Then 
 
 $$Z(G_1 \times G_2) = Z(G_1) \times Z(G_2).$$
+:::
 
 ### Proof
 

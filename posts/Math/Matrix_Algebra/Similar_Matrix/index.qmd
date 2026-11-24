@@ -1,4 +1,4 @@
----
+﻿---
 title: "Similar Matrix"
 author: "Youmin Chun"
 date: "2026-09-05 00:00:11"
@@ -8,19 +8,26 @@ categories:
 ---
 
 # Definition
+::: {.math-box}
 Two square matrix $A, B \in F^{n \times n}$ are said to be ***similar*** if there exists an invertible matrix $Q \in F^{n \times n}$ such that $B = Q^{-1}AQ$. 
+:::
 
 보통 기저벡터들을 나열해서 가역행렬 $Q$를 구성하므로, 두 행렬이 닮음 관계에 있다는 것은 마치 좌표 변환 관계에 있는 것처럼 이해해도 무방하다.
 
 ## Remark
+::: {.math-box}
 The relation of similarity is an equivalence relation.
+:::
 
 # Theorem 1
+::: {.math-box}
 Let $\alpha$ be a basis for a finite-dimensional vector space $V$, and let $T \in \mathcal{L}(V)$ such that $[T]_{\alpha} = A$. Suppose that $B$ is similar with $A$, i.e, there exists an invertible matrix $Q$ such that $B = Q^{-1}AQ$. Then there exists a basis $\beta$ for $V$ such that $[T]_{\beta} = B$ and $Q = [\mathrm{id}_V]_{\beta}^{\alpha}$.
+:::
 
 ## Proof
 
 # Theorem 2
+::: {.math-box}
 Let $A$ and $B$ be similar matrices.
 
 **(i)** $\det(A) = \det(B)$
@@ -28,6 +35,7 @@ Let $A$ and $B$ be similar matrices.
 **(ii)** tr($A$) = tr($B$)
 
 **(iii)** $A$ and $B$ have the same characteristic polynomial.
+:::
 
 ## Proof
 **(i)** Since $A$ and $B$ are similar, there exists an invertible matrix $Q \in F^{n \times n}$ such that $B = Q^{-1}AQ$. Let $f_A(t)$ and $f_B(t)$ be the characteristic polynomials of $A$ and $B$, respectively. Then

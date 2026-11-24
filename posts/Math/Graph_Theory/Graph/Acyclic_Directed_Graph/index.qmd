@@ -1,4 +1,4 @@
----
+﻿---
 title: "Acyclic Directed Graph"
 author: "Youmin Chun"
 date: "2026-07-31"
@@ -8,12 +8,16 @@ categories:
 ---
 
 ## Definition
+::: {.math-box}
 - A ***cycle in a directed graph*** is a closed loop of edges with the arrows on each of the edges pointing the same way around the loop. A directed graph with no cycles is called an ***acyclic directed graph***, and one with cycles is called a ***cyclic directed graph***. A self-edge (an edge connecting a vertex to itself) counts as a cycle. 
 
 ![](cycle1.png)
+:::
 
 ## Lemma
+::: {.math-box}
 - Every finite acyclic directed graph contains at least one vertex with an out-degree of zero.
+:::
 
 즉 사이클이 없는 유향 그래프는 오로지 들어오는 에지만 가지는 정점을 반드시 가진다. 이 렘마를 통해 어떤 유향 그래프가 사이클을 가지는지 판별할 수 있고, 사이클을 가지지 않는다면 항상 에지의 방향을 위에서 아래로 정렬하는 알고리즘을 만들 수 있다.
 
@@ -38,7 +42,9 @@ If a directed network is acyclic, this algorithm will successfully remove all ve
 ![](cycle2.png)
 
 ## Theorem
+::: {.math-box}
 A directed graph is acyclic $\iff$ all eigenvalues of its adjacency matrix are zero.
+:::
 
 ### Proof
 Let $A$ be the $n \times n$ adjacency matrix of a directed graph $G$, and let $\kappa_1, \kappa_2, \dots, \kappa_n$ be its eigenvalues. We prove both directions of the biconditional statement.

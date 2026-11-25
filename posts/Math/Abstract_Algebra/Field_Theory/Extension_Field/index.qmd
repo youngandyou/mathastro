@@ -15,7 +15,7 @@ A field $E$ is an ***extension field*** of a field $F$ if $F$ is a subfield of $
 
 정의 자체는 단순하게 주어진 필드 $F$를 포함하는 필드 $E$를 $F$의 확대체(extension field)라고 부른다. 간단한 예시로 $\mathbb{Q} \le \mathbb{R} \le \mathbb{C}$가 있고, $F \le F(x), F(y) \le F(x, y)$ 등이 있다.
 
-![]()
+![](field_extensions.png)
 
 ## Theorem 1 (Kronecker's Theorem)
 ::: {.math-box}

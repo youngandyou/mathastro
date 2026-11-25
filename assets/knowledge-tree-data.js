@@ -25,6 +25,7 @@ window.MathAstroKnowledge = {
     "Topology": "위상수학",
     "Differential Geometry": "미분기하학",
     "Curve Theory": "곡선론",
+    "Surface Theory": "곡면론",
     "Graph Theory": "그래프 이론",
     "Graph": "그래프",
     "Tree": "트리",
@@ -65,6 +66,7 @@ window.MathAstroKnowledge = {
     "Topology": "열린집합에서 연속성, 연결성, 컴팩트성까지",
     "Differential Geometry": "곡선을 따라 살펴보는 기하학과 미분의 만남",
     "Curve Theory": "곡선의 매개화에서 곡률, 나선, 회전수까지",
+    "Surface Theory": "국소 곡면의 좌표조각과 기하학적 성질",
     "Graph Theory": "점과 연결에서 트리, 알고리즘, 네트워크로",
     "Graph": "그래프의 기본 언어와 연결, 행렬, 평면성",
     "Tree": "트리의 구조에서 신장트리와 동형 판별까지",
@@ -229,10 +231,13 @@ window.MathAstroKnowledge = {
       "Complete_Space",
       "Fundamental_Group"
     ],
-    "Differential Geometry": ["Curve Theory"],
+    "Differential Geometry": ["Curve Theory", "Surface Theory"],
     "Curve Theory": [
       "Curve", "Arc_Length_Reparametrization", "Frenet_Serret_Frame",
       "Rigid_Motion", "Helix", "Rotation_Index"
+    ],
+    "Surface Theory": [
+      "Simple_Surface"
     ],
     "Graph Theory": ["Graph", "Tree", "Algorithm", "Network Analysis"],
     "Graph": [

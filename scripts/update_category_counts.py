@@ -168,6 +168,7 @@ def update_navbar_submenus(path_counts):
         "Vector Calculus": "Math > Calculus > Vector Calculus",
         "Multivariable": "Math > Analysis > Multivariable",
         "Curve Theory": "Math > Differential Geometry > Curve Theory",
+        "Surface Theory": "Math > Differential Geometry > Surface Theory",
         "Graph": "Math > Graph Theory > Graph",
         "Network Analysis": "Math > Graph Theory > Network Analysis",
         "Algorithm": "Math > Graph Theory > Algorithm",

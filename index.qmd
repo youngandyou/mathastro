@@ -70,6 +70,7 @@ document.addEventListener("DOMContentLoaded", function() {
     'topology': { title: 'Topology (위상수학)' },
     'differential geometry': { title: 'Differential Geometry (미분기하학)' },
     'curve theory': { title: 'Curve Theory (곡선론)' },
+    'surface theory': { title: 'Surface Theory (곡면론)' },
     'graph theory': { title: 'Graph Theory (그래프 이론)' },
     'graph': { title: 'Graph (그래프)' },
     'network analysis': { title: 'Network Analysis (네트워크 분석)' },

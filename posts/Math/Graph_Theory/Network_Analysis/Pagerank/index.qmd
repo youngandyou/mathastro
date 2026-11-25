@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Pagerank"
 author: "Youmin Chun"
 date: "2026-08-19"

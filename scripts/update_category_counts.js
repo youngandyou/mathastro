@@ -29,6 +29,8 @@ function findQmdFiles(dir) {
 }
 
 function parseFrontmatterCategories(content) {
+  // Strip UTF-8 BOM if present
+  content = content.replace(/^\uFEFF/, "");
   // Extract YAML frontmatter
   const match = content.match(/^---\r?\n([\s\S]*?)\r?\n---/);
   if (!match) return [];

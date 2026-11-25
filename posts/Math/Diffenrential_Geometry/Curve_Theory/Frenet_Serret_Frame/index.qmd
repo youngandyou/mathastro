@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Frenet-Serret Frame"
 author: "Youmin Chun"
 date: "2026-09-19 00:00:02"

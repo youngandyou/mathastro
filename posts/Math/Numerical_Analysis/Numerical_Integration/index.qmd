@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Numerical Integration"
 author: "Youmin Chun"
 date: "2026-10-12 00:00:01"

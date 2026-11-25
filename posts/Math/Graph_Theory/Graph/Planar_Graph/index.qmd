@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Planar Graph"
 author: "Youmin Chun"
 date: "2026-08-05"

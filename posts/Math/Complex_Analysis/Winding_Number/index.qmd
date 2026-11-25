@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Winding Number"
 author: "Youmin Chun"
 date: "2026-10-17 00:00:01"

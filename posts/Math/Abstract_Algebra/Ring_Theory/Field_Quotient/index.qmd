@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Field of Quotients of an Integral Domain"
 author: "Youmin Chun"
 date: "2026-09-18 00:00:01"

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Transformations"
 author: "Youmin Chun"
 date: "2026-10-13 00:00:02"

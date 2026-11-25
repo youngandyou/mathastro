@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Multiply Connected Domain"
 author: "Youmin Chun"
 date: "2026-09-01 00:00:07"

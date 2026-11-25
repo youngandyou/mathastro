@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Subgroup"
 author: "Youmin Chun"
 date: "2026-06-25 00:00:04"

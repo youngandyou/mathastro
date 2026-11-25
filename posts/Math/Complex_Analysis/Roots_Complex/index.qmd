@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Roots of Complex Numbers"
 author: "Youmin Chun"
 date: "2026-07-24 00:00:05"

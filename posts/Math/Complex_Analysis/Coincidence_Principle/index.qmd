@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Coincidence Principle"
 author: "Youmin Chun"
 date: "2026-07-25 00:00:16"

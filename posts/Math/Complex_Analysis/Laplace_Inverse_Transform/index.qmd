@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Laplace Inverse Transform"
 author: "Youmin Chun"
 date: "2026-10-06 00:00:01"

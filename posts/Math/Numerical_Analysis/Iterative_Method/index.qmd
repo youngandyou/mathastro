@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Iterative Method"
 author: "Youmin Chun"
 date: "2026-07-04"

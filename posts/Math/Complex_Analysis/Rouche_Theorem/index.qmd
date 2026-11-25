@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Rouché's Theorem"
 author: "Youmin Chun"
 date: "2026-10-17 00:00:02"

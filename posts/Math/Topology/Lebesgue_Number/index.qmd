@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Lebesgue Number"
 author: "Youmin Chun"
 date: "2026-09-15 00:00:01"

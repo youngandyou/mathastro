@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Similar Matrix"
 author: "Youmin Chun"
 date: "2026-09-05 00:00:11"

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Katz Centrality"
 author: "Youmin Chun"
 date: "2026-08-18"

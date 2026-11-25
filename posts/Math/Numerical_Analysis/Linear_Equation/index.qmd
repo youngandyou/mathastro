@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Solving the System of Linear Equations"
 author: "Youmin Chun"
 date: "2026-11-12 00:00:01"

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Coset"
 author: "Youmin Chun"
 date: "2026-09:02 00:00:08"

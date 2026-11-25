@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Evaluation of the Integrals using Residue"
 author: "Youmin Chun"
 date: "2026-09-22 00:00:02"

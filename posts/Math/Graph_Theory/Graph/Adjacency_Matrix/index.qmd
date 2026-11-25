@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Adjacency Matrix"
 author: "Youmin Chun"
 date: "2026-07-24"

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Fixed Point Iteration"
 author: "Youmin Chun"
 date: "2026-09-17 00:00:01"

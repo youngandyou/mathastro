@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Walk and Path"
 author: "Youmin Chun"
 date: "2026-08-06"

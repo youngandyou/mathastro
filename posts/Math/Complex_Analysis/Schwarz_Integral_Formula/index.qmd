@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Schwarz Integral Formula"
 author: "Youmin Chun"
 date: "2026-11-24 00:00:01"

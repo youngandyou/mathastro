@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Graph Laplacian"
 author: "Youmin Chun"
 date: "2026-08-10"

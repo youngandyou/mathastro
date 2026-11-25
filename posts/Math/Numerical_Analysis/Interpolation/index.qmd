@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Interpolation"
 author: "Youmin Chun"
 date: "2026-09-28 00:00:03"

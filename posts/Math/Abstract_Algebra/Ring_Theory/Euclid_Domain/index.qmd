@@ -1,4 +1,4 @@
----
+﻿---
 title: "Euclidean Domain"
 author: "Youmin Chun"
 date: "2026-11-22 00:00:01"
@@ -232,7 +232,7 @@ Hence, $\varphi$ is a Euclidean norm on $\mathbb{Z}[i]$, and therefore $\mathbb{
 ::: {.math-box}
 Let $\varphi$ be a Euclidean norm on $\mathbb{Z}[i]$.
 
-**(i)** Let $\alpha = a+bi$ be a unit in $\mathbb{Z}[i]$. Then $N(\alpha) = N(1) = 1$. Hence $a^2 + b^2 = 1$, which implies that $\alpha = \pm 1, \pm i$.
+**(i)** Note that $\varphi(1) = 1$. If $\alpha = a+bi$ a unit in $\mathbb{Z}[i]$, then $N(\alpha) = N(1) = 1$. Hence $a^2 + b^2 = 1$, which implies that $\alpha = \pm 1, \pm i$. Hence, $u = \pm 1, \pm i \in \mathbb{Z}[i]$ $\iff$ $\varphi(u) = 1$.
 
 **(ii)** $\gcd(16+7i, 10-5i) = 1+2i$ in $\mathbb{Z}[i]$. Then $-1-2i, -2+i, 2-i$ are the only other $\gcd(16+7i, 10-5i)$.
 
@@ -241,5 +241,70 @@ Let $\varphi$ be a Euclidean norm on $\mathbb{Z}[i]$.
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
 :::
+
+# Multiplicative Norm
+## Definition 3
+::: {.math-box}
+Let $D$ be an integral domain. Then a ***multiplicative norm*** $N$ on $D$ is a function $N: D \to \mathbb{Z}$ such that the following conditions are satisfied for all $\alpha, \beta \in D$:
+
+**(i)** $N(\alpha) = 0 \iff \alpha = 0$.
+
+**(ii)** $N(\alpha \beta) = N(\alpha) N(\beta)$
+:::
+
+앞서 가우스 정수를 살펴볼 때 정의한 가우스 정수의 놈 $N$을 일반화한 개념이라고 받아들여도 좋다. 실제로 아래에서 설명할 $\mathbb{Z}[\sqrt{-5}]$와 같은 경우도 가우스 정수와 동일한 방법으로 놈을 정의하며, 이러한 놈들은 모두 위 정의와 같은 multiplicative norm이 된다. 한편 놈이라는 명칭과 달리 음의 정수 값도 가질 수 있음을 주의하자.
+
+## Theorem 4
+::: {.math-box}
+Let $D$ be an integral domain with a multiplicative norm $N$.
+
+**(i)** $N(1) = 1$ and $|N(u)| = 1$ for every unit $u$ in $D$.
+
+**(ii)** Suppose that every $\gamma \in D$ with $|N(\gamma)| = 1$ is a unit in $D$. Then $\pi \in D$ such that $|N(\pi)|$ is a prime is irreducible in $D$.
+:::
+
+단위원이면 놈의 크기가 항상 $1$이지만, 놈의 크기가 $1$이라고 항상 단위원은 아니다. 그러나 만약 이 가정이 충족된다면 인수분해가 분리된다는 multiplicative norm의 정의를 이용해서 기약원의 여부를 판단할 수 있다. 예컨대 위 예시 2 **(i)**에서는 $\mathbb{Z}[i]$에서 놈의 값이 $1$인 것과 단위원인 것이 동치임을 보였다. 또한 **(iii)**에서는 $5$가 $\mathbb{Z}[i]$에서 $5 = (1+2i)(1-2i)$로 인수분해되는 상황을 다뤘고,  $\varphi(1+2i) = 5 = \varphi(1-2i)$이고 $5$가 소수이므로 $1+2i$와 $1-2i$는 $\mathbb{Z}[i]$에서 기약원이라고 할 수 있다.
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+**(i)** Note that $N(1) = N(1 \cdot 1) = N(1) \cdot N(1)$. Since $N(1) \neq 0$ because $1 \neq 0$, we obtain $N(1) = 1$.
+
+Let $u$ be a unit in $D$. Then $1 = N(1) = N(uu^{-1}) = N(u)N(u^{-1})$. Since $N(u), N(u^{-1}) \in \mathbb{Z}$, we have $|N(u)| = 1$.
+
+**(ii)** Suppose that every $\gamma \in D$ with $|N(\gamma)| = 1$ is a unit in $D$. Let $\pi \in D$ such that $|N(\pi)|$ is a prime $p$. If $\pi = \alpha \beta$ for some $\alpha, \beta \in D$, then we have
+
+$$p = |N(\pi)| = |N(\alpha\beta)| = |N(\alpha)||N(\beta)|,$$
+
+so either $|N(\alpha)| = 1$ or $|N(\beta)| = 1$. By assumption, either $\alpha$ or $\beta$ is a unit in $D$. Hence, $\pi$ is ireducible in $D$. $\blacksquare$
+:::
+
+## Remark
+::: {.math-box}
+**(i)** If $d \in \mathbb{Z} \setminus \mathbb{N}_0$, then $\mathbb{Z}[d] = \{ a + b\sqrt{d} \mid a, b \in \mathbb{Z} \}$ is a UFD $\iff$ $d = -1$ or $d = -2$.
+
+**(ii)** For example, $\mathbb{Z}[\sqrt{-5}]$ is NOT a UFD.
+:::
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+**(ii)** Note that $\mathbb{Z}[\sqrt{-5}]$ is an integral domain, and the function $N: \mathbb{Z}[\sqrt{-5}] \to \mathbb{Z}$ defined by
+
+$$N(a+b\sqrt{-5}) = a^2 + 5b^2, \forall a + b\sqrt{-5} \in \mathbb{Z}[\sqrt{-5}]$$
+
+is a multiplicative norm on $\mathbb{Z}[\sqrt{-5}]$.
+
+If $\alpha = a+b\sqrt{-5}$ is a unit in $\mathbb{Z}[\sqrt{-5}]$, then $1 = |N(\alpha)| = a^2 +5b^2$, so $a = \pm 1$ and $b = 0$. Hence, $1$ and $-1$ are the only units in $\mathbb{Z}[\sqrt{-5}]$. Hence, if $|N(\alpha)| = 1$ for $\alpha \in \mathbb{Z}[\sqrt{-5}]$, then $\alpha$ is a unit in $\mathbb{Z}[\sqrt{-5}]$.
+
+Note that $21 = 3 \cdot 7 = (1+2\sqrt{-5})(1-2\sqrt{-5})$ in $\mathbb{Z}[\sqrt{-5}]$. We will show that $3, 7, 1+2\sqrt{-5}, 1-2\sqrt{-5}$ are irreducible in $\mathbb{Z}[\sqrt{-5}]$, so the factorization of $12$ is not unique.
+
+Suppose that $3 = \alpha \beta$ for some $\alpha, \beta \in \mathbb{Z}[\sqrt{-5}]$. Then $9 = N(3) = N(\alpha)N(\beta)$, so $N(\alpha) = 1, 3$ or $9$. 
+
+Let $\alpha = a + b\sqrt{-5}$. If $N(\alpha) = 1$, then $\alpha$ is a unit in $\mathbb{Z}[\sqrt{-5}]$. If $N(\alpha) = 3$, then $a^2 + 5b^2 = 3$, which is impossible for $a, b \in \mathbb{Z}$. If $N(\alpha) = 9$, then $N(\beta) = 1$, so $\beta$ is a unit in $\mathbb{Z}[\sqrt{-5}]$. Consequently, $3$ is irreducible in $\mathbb{Z}[\sqrt{-5}]$ and similarly, $7$ is also irreducible in $\mathbb{Z}[\sqrt{-5}]$.
+
+Next, suppose that $1+2\sqrt{-5} = \gamma \delta$ for $\gamma, \delta \in \mathbb{Z}[\sqrt{-5}]$. Then $21 = N(1+2\sqrt{-5}) = N(\gamma)N(\delta)$, so $N(\gamma) = 1, 3, 7$ or $21$.
+
+Let $\gamma = c + d\sqrt{-5}$. If $N(\gamma) = 1$, then $\gamma$ is a unit in $\mathbb{Z}[\sqrt{-5}]$. If $N(\gamma) = 3$ or $7$, then $c^2 + 5d^2 = 3$ or $7$, which is impossible for $c, d \in \mathbb{Z}$. If $N(\gamma) = 21$, then $N(\delta) = 1$, so $\delta$ is a unit in $\mathbb{Z}[\sqrt{-5}]$. Consequently, $1+2\sqrt{-5}$ is irreducible in $\mathbb{Z}[\sqrt{-5}]$ and similarly, $1-2\sqrt{-5}$ is also irreducible in $\mathbb{Z}[\sqrt{-5}]$.
+
+Since $\pm 1$ is the only unit in $\mathbb{Z}[\sqrt{-5}]$, neither $3$ nor $7$ is associate to $1+2\sqrt{-5}$. Hence, there are two different factorizations $21 = 3 \cdot 7 = (1+2\sqrt{-5})(1-2\sqrt{-5})$ of $21$ into irreducible elements in $\mathbb{Z}[\sqrt{-5}]$, so $\mathbb{Z}[\sqrt{-5}]$ is not a UFD. $\blacksquare$
+:::
+
 # Reference
 - John B. Fraleigh. (2004). A First Course in Abstract Algebra (7th ed.). Pearson.

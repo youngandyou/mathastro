@@ -10,11 +10,16 @@ categories:
 # Polynomial Ring
 ## Definition 1
 ::: {.math-box}
-Let $R$ be a ring. A ***polynomial*** $f(x)$ with coefficients in $R$ is 
+Let $R$ be a ring. 
+
+**(i)** A ***polynomial*** $f(x)$ with coefficients in $R$ is 
 
 $$f(x) = \sum_{i=0}^\infty a_ix^i = a_0 + a_1x + a_2x^2 + \cdots$$
 
-where $a_0, a_1, \cdots \in R$ and $a_i = 0$ for all but finite numbers of values of $i$. Each $a_i$ is called a ***coefficient*** of $f(x)$. If $a_i \neq 0$ for some $i \ge 0$, then the largest such value of $i$ is the ***degree*** of $f(x)$. We define the degree of $0 \in R[x]$ as $-\infty$. The set of all polynomials in $x$ with coefficients in $R$ is denoted by $R[x]$.
+where $a_0, a_1, \cdots \in R$ and $a_i = 0$ for all but finite numbers of values of $i$. The set of all polynomials in $x$ with coefficients in $R$ is denoted by $R[x]$.
+:::
+
+**(ii)** Each $a_i$ is called a ***coefficient*** of $f(x)$. If $a_i \neq 0$ for some $i \ge 0$, then the largest such value of $i$ is the ***degree*** of $f(x)$. We define the degree of $0 \in R[x]$ as $-\infty$. 
 :::
 
 대수적으로 다항식은 환 $R$ 위에서 정의된다. 다시 말해 어떤 환이 주어지느냐에 따라서 다항식이 속하는 범위가 달라진다. 예컨대 $\frac{1}{2} + 3x \notin \mathbb{Z}[x]$이지만 $\frac{1}{2} + 3x \in \mathbb{Q}[x]$이다. 따라서 다항식을 다룰 때는 어떤 환 위에서 주어졌는지 반드시 파악해야 한다.
@@ -24,6 +29,11 @@ where $a_0, a_1, \cdots \in R$ and $a_i = 0$ for all but finite numbers of value
 또한 주의해야 할 점은 $R[x]$에서 $x$의 사용법이다. 다항**식**과 다항**함수**는 엄연히 다른 대상이다. 예컨대 함수 $f: \mathbb{R} \to \mathbb{R}$가 $f(x) = x^2 + 4$와 같이 정의되었다면 $f(x)$는 다항**함수**이다. 여기서 $x$의 역할은 변수이며, $\mathbb{R}$의 임의의 값을 "대입"해도 된다. 반면 $f(x) = x^2 + 4 \in \mathbb{R}[x]$는 다항**식**이며, 여기서 $x$의 역할은 단순히 각 항의 차수를 표현하는 역할을 하는 $\mathbb{R}[x]$의 어떤 원소이다. 즉 $x$는 $1 \cdot x \in \mathbb{R}[x]$로 취급되며, $x = 2, 3$과 같이 어떤 값을 대입할 수 있는 대상이 아니다. 이러한 맥락에서 $f(x) = 0$을 다항식의 언어로 보면 $f(x) \in \mathbb{R}[x]$가 영다항식이란 결론이 되고, 이는 우리가 흔히 생각하는 방정식과는 다른 개념이다.
 
 때문에 다항식 $f(x) \in R[x]$를 $R$에서의 다항함수처럼 취급하기 위해서 evaluation homomorphism $\phi_\alpha$가 필요하다. 즉 $\alpha \in R$에서의 $f(x)$의 값 $f(\alpha)$를 $\phi_\alpha(f(x))$로 정의하는 것이다.
+
+## Remark 1
+**(i)** 위 정의에서는 문자가 하나 뿐인 환 $R[x]$를 정의했었다. 하지만 굳이 문자가 하나인 상황만을 고려할 필요는 없고, $3x^2y + 5xy -3x + 8y + 9$와 같은 다항식 또한 다룰 수 있도록 문자를 두 개로 확장하려고 한다. 이때 $3x^2y + 5xy -3x + 8y + 9 = (3x^2 + 5x +8)y -3x + 9$와 같이 정리할 수 있고, 이 다항식은 $(R[x])[y]$의 원소로 볼 수 있다. 같은 방법으로 $(R[y])[x]$의 원소로 볼 수도 있고, 이와 같은 방법으로 $(R[x])[y]$와 $(R[y])[x]$가 서로 동형임을 알 수 있다. 따라서 이 집합을 자연스럽게 $R[x, y]$와 같이 써주려고 하고, 이 집합을 **ring of polynomials in two indeterminates $x$ and $y$ with coeefficients in $R$**이라고 부른다. 같은 방식으로 $R[x_1, \dots, x_n]$과 같은 다항식환 또한 정의할 수 있다.
+
+**(ii)** 아래 정리에서 볼 수 있는 것처럼 $R$이 정역이면 $R[x]$도 정역이지만 $R$이 필드라고 해서 $R[x]$도 필드가 되지는 않으며, 일반적으로 $R[x]$ 자체가 필드가 되기란 쉽지 않은 일이다. 때문에 $R[x]$의 분수체를 고려하면 $R[x]$를 포함하는 필드를 찾을 수 있고, 이러한 분수체를 $R(x)$로 표기하려고 한다. 유사하게 $R[x_1, \dots, x_n]$의 분수체는 $R(x_1, \dots, x_n)$으로 표기한다.
 
 ## Theorem 1
 ::: {.math-box}
@@ -260,7 +270,7 @@ Let $F$ be a field, and let $f(x) \in F[x]$ with $\deg(f(x)) \ge 1$.
 
 자연수 $n$이 합성수이면 $1 < a, b < n$인 두 자연수 $a, b$에 대하여 $n = ab$로 표현할 수 있고, $n$이 소수라면 두 수의 곱으로 표현할 수 있는 방법이 $n = n \cdot 1$ 외에는 없는 것과 같은 센스이다. 이와 같이 다항식에서도 인수분해(factorization)와 같은 개념이 성립함을 알 수 있고, 소수와 같은 역할을 하는 다항식을 ***기약다항식(Irreducible Polynomial)***, 합성수와 같은 역할을 하는 다항식을 ***가약다항식(Reducible Polynomial)***이라고 한다. 정의에서 $f(x)$는 차수가 $1$ 이상, 즉 상수가 아닌 다항식만 가져왔음을 주의하자.
 
-## Remark
+## Remark 2
 ::: {.math-box}
 **(i)** A polynomial $f(x)$ may be irreducible over $F$, but may not be irreducible over $E$ containing $F$.
 

@@ -24,6 +24,8 @@
   --mag-navy: #0e2a47;
   --mag-burgundy: #842029;
   --mag-math: #0284c7;
+  --mag-math-bg: rgba(2, 132, 199, 0.035);
+  --mag-math-border: #0284c7;
   
   --mag-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.04);
   --mag-shadow-hover: 0 10px 22px rgba(0, 0, 0, 0.08);
@@ -42,6 +44,8 @@ body.quarto-dark {
   --mag-navy: #7dd3fc;
   --mag-burgundy: #f472b6;
   --mag-math: #38bdf8;
+  --mag-math-bg: rgba(56, 189, 248, 0.06);
+  --mag-math-border: #38bdf8;
   
   --mag-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.4);
   --mag-shadow-hover: 0 10px 22px rgba(0, 0, 0, 0.6);
@@ -2721,8 +2725,8 @@ body.quarto-dark .navbar-nav .nav-link.cat-active-link::after {
 }
 
 /* ==========================================================================
-   Math Statement Custom Div Styling (Option 3: Minimal Left Border)
-   Unified elegant left border for Definitions, Theorems, Examples, Remarks, etc.
+   Math Statement Custom Div Styling (Full 4-sided Box Enclosure)
+   Unified elegant framed box for Definitions, Theorems, Examples, Remarks, etc.
    ========================================================================== */
 
 .math-box,
@@ -2733,10 +2737,24 @@ body.quarto-dark .navbar-nav .nav-link.cat-active-link::after {
 .thm-box,
 .ex-box,
 .rmk-box {
-  border-left: 3.5px solid var(--mag-math);
-  padding: 0.2rem 0 0.2rem 1.25rem;
-  margin: 1.15rem 0 1.35rem 0;
-  transition: border-color 0.2s ease;
+  border: 1.5px solid var(--mag-math);
+  border-radius: 6px;
+  background-color: var(--mag-math-bg);
+  padding: 1.1rem 1.35rem;
+  margin: 1.25rem 0 1.5rem 0;
+  box-shadow: 0 1px 4px rgba(2, 132, 199, 0.05);
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+body.quarto-dark .math-box,
+body.quarto-dark .math-statement,
+body.quarto-dark .statement-box,
+body.quarto-dark .statement,
+body.quarto-dark .def-box,
+body.quarto-dark .thm-box,
+body.quarto-dark .ex-box,
+body.quarto-dark .rmk-box {
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.35);
 }
 
 .math-box > :first-child,
@@ -2770,9 +2788,9 @@ body.quarto-dark .navbar-nav .nav-link.cat-active-link::after {
   .thm-box,
   .ex-box,
   .rmk-box {
-    border-left-width: 3px;
-    padding-left: 0.95rem;
-    margin: 1rem 0 1.2rem 0;
+    border-width: 1.25px;
+    padding: 0.95rem 1.05rem;
+    margin: 1rem 0 1.25rem 0;
   }
 }
 

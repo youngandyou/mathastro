@@ -33,12 +33,12 @@ website:
       - text: "Mathematics (수학)"
         menu:
           - href: index.qmd#category=Math
-            text: "📐 수학 전체보기 (All Math) (197)"
+            text: "📐 수학 전체보기 (All Math) (198)"
           - text: "---"
           - href: index.qmd#category=Calculus
             text: "미적분학 (Calculus) (2)"
           - href: index.qmd#category=Abstract%20Algebra
-            text: "추상대수학 (Abstract Algebra) (44)"
+            text: "추상대수학 (Abstract Algebra) (45)"
           - href: index.qmd#category=Linear%20Algebra
             text: "선형대수학 (Linear Algebra) (7)"
           - href: index.qmd#category=Matrix%20Algebra

@@ -1,8 +1,8 @@
 ---
-title: "Harmonic Function"
+title: "Laplace Equation and Boundary Value Problem"
 author: "Youmin Chun"
 date: "2026-11-10 00:00:01"
-description: '복소해석학을 이용해 조화함수(Harmonic Function)의 성질을 공부하고, 이를 이용해 라플라스 방정식 $\Delta u = 0$을 푸는 방법을 소개한다.'
+description: '복소해석학을 이용해 조화함수(Harmonic Function)의 성질을 공부하고, 이를 이용해 경계조건이 주어진 라플라스 방정식 $\Delta u = 0$을 푸는 방법을 소개한다.'
 categories: 
   - Math > Complex Analysis
 ---
@@ -34,7 +34,7 @@ For a domain $D \subset \mathbb{C}$, let $f: D \to \mathbb{C}$ be a complex func
 **(iii)** If a harmonic function $u(x, y)$ is defined on a simply connected domain $D$, it always has a harmonic conjugate $v(x, y)$ in $D$.
 :::
 
-### Proof
+::: {.callout-note title="Proof" icon=false collapse="true"}
 **(i)** Since $f$ is analytic in $D$, the all order partial derivatives of $u$ and $v$ exist and continuous. By the Cauchy-Riemann equation 
 
 $$\begin{cases}
@@ -54,6 +54,7 @@ Since $v_{yx} = v_{xy}$, we have $\Delta u = u_{xx} + u_{yy} = 0$. Similarly, we
 **(ii)** $(\implies)$ It follows directly from **(i)**.
 
 $(\impliedby)$ Suppose that $v$ is a harmonic conjugate of $u$. Then $u$ and $v$ are harmonic in $D$ and they satisfy the Cauchy-Riemann equation in $D$. It follows that $f(z) = u(x, y) + iv(x, y)$ is analytic in $D$. $\blacksquare$
+:::
 
 ## Example 1
 ::: {.math-box}
@@ -121,10 +122,142 @@ Now, assume $\nabla h(u, v) \neq \mathbf{0}, \forall u + iv = w = f(z) \in \Gamm
 Note that the level curve $h(u, v) = c$ is orthogonal to the gradient $\nabla h$ and by assumption, $\nabla h$ is orthogonal to $\mathbf{n}$, so $\nabla h$ is tangent to the curve $\Gamma$. Since the curve $C$ is transformed into the curve $\Gamma$ and the conformal mapping $w = f(z)$ preserves the angle between the curves, we conclude that the gradient $\nabla H$ is tangent to the curve $C$, so $\nabla H \cdot \mathbf{N} = 0$. Hence, we have $\frac{dH}{dN} = \nabla H \cdot N = 0$. $\blacksquare$
 :::
 
-# Dirichlet Problem
-## Theorem 3
+# Poisson Integral Transform
+## Theorem 3 (Poisson Integral Formula)
 ::: {.math-box}
-Let $F$ be a piecewise continuous function of $\theta$ on the interval $0 \le \theta \le 2\pi$. The ***Poisson integral transform*** of $F$ is defined in terms of the [Poisson kernel](../Poisson_Integral_Formula/index.qmd#sec-theorem-2) $P(r_0, r, \phi - \theta)$ by means of the equation
+Let $f$ be an analytic function inside an on a positively oriented circle $C_0: \vert z \vert = r_0$. Then
+
+$$f(re^{i \theta}) = \frac{1}{2\pi} \int_0^{2\pi} \frac{r_0^2 - r^2}{r_0^2 - 2r_0 r \cos (\phi - \theta) + r^2} f(r_0 e^{i \phi}) d\phi$$
+
+for $0 < r < r_0$. 
+
+If $u$ is the real component of $f$, then we have
+
+$$u(r, \theta) = \frac{1}{2\pi} \int_0^{2\pi} \frac{r_0^2 - r^2}{r_0^2 - 2r_0 r \cos (\phi - \theta) + r^2} u(r_0, \phi) d\phi$$
+
+for $0 < r < r_0$. This is called the ***Poisson integral formula***.
+:::
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+For a point $z$ interior to $C_0$, we have
+
+$$f(z) = \frac{1}{2\pi i}\int_{C_0} \frac{f(s)}{s-z} ds$$
+
+by the Cauchy integral formula.
+
+Suppose that $z$ is nonzero and denote $z = re^{i\theta}$. If $z_1$ is the inverse of $z$ with respect to the circle $C_0$, then $|z_1||z| = r_0^2$. Since $\frac{r_0}{r} > 1$, we have
+
+$$\vert z_1 \vert = \frac{r_0^2}{| z |} = \frac{r_0^2}{r} = \frac{r_0}{r} \cdot r_0 > r_0,$$
+
+which means that $z_1$ is exterior to the circle $C_0$. By the Cauchy-Goursat theorem,
+
+$$\int_{C_0} \frac{f(s)}{s-z_1} ds = 0.$$
+
+Hence,
+
+$$f(z) = \frac{1}{2\pi i}\int_{C_0} f(s) \left( \frac{1}{s-z} - \frac{1}{s-z_1} \right) ds.$$
+
+Substituting $s = r_0e^{i\phi}$, we have
+
+$$\begin{align*}
+f(re^{i\theta}) &= \frac{1}{2\pi i}\int_{0}^{2\pi} f(r_0e^{i\phi}) \left( \frac{1}{s-z} - \frac{1}{s-z_1} \right) r_0 i e^{i \phi} d \phi \\
+&= \frac{1}{2\pi}\int_{0}^{2\pi} f(r_0e^{i\phi}) \left( \frac{1}{s-z} - \frac{1}{s-z_1} \right) r_0 e^{i \phi} d \phi \\
+&= \frac{1}{2\pi}\int_{0}^{2\pi} f(r_0e^{i\phi}) \left( \frac{s}{s-z} - \frac{s}{s-z_1} \right) d \phi.
+\end{align*}$$
+
+Note that for $s \in C_0$,
+
+$$z_1 = \frac{r_0^2}{r}e^{i \theta} = \frac{r_0^2}{re^{-i\theta}} = \frac{|s|^2}{\bar{z}}$$ 
+
+and
+
+$$\begin{align*}
+|s-z|^2 &= |s|^2 + |z|^2 - 2|s||z|\cos(\phi - \theta) \\
+&= r_0^2 + r^2 - 2r_0r \cos (\phi - \theta).
+\end{align*}$$
+
+Hence,
+
+$$\begin{align*}
+\frac{s}{s-z} - \frac{s}{s-z_1} &= \frac{s}{s-z} - \frac{s}{s-\frac{|s|^2}{\bar{z}}} \\
+&= \frac{s}{s-z} - \frac{1}{1- \frac{\bar{s}}{\bar{z}}} \\
+&= \frac{s}{s-z} + \frac{\bar{z}}{\bar{s} - \bar{z}} \\
+&= \frac{s\overline{(s-z)} + \bar{z}(s-z)}{(s-z)\overline{(s - z)}} \\
+&= \frac{|s|^2 - |z|^2}{|s-z|^2} \\
+&= \frac{r_0^2 - r^2}{r_0^2 - 2r_0r \cos (\phi - \theta) + r^2},
+\end{align*}$$
+
+and therefore
+
+$$\begin{align*}
+f(re^{i\theta}) &= \frac{1}{2\pi}\int_{0}^{2\pi} f(r_0e^{i\phi}) \left( \frac{s}{s-z} - \frac{s}{s-z_1} \right) d \phi \\
+&= \frac{1}{2\pi}\int_{0}^{2\pi} \frac{r_0^2 - r^2}{r_0^2 - 2r_0r \cos (\phi - \theta) + r^2} f(r_0e^{i\phi}) d \phi. \blacksquare
+\end{align*}$$
+:::
+
+## Theorem 4 (Poisson Kernel)
+::: {.math-box}
+If we define the real-valued function
+
+$$P(r_0, r, \phi - \theta) = \frac{r_0^2 - r^2}{r_0^2 - 2r_0 r \cos (\phi - \theta) + r^2}$$
+
+which is called the ***Poisson kernel***, then the Poisson integral formula becomes
+
+$$u(r, \theta) = \frac{1}{2\pi} \int_0^{2\pi} P(r_0, r, \phi- \theta) u(r_0, \phi) d\phi.$$
+
+Let $r < r_0$. Then
+
+**(i)** $P(r_0, r, \phi- \theta) > 0.$
+
+**(ii)** $P(r_0, r, \phi- \theta) = \mathrm{Re}\left( \frac{s+z}{s-z} \right)$.
+
+**(iii)** $P(r_0, r, \phi- \theta)$ is a harmonic function of $r$ and $\theta$ interior to the circle $C_0$ for each fixed $s$ on $C_0$.
+
+**(iv)** $P(r_0, r, \phi- \theta)$ is an even periodic function of $\phi - \theta$ with period $2 \pi$.
+
+**(v)** $P(r_0, 0, \phi- \theta) = 1$.
+
+**(vi)** $\displaystyle \frac{1}{2\pi} \int_0^{2\pi} P(r_0, r, \phi- \theta) d \phi = 1$.
+:::
+
+::: {.callout-note title="Proof" icon=false collapse="true"}
+**(i)** Note that
+
+$$P(r_0, r, \phi - \theta) = \frac{r_0^2 - r^2}{r_0^2 - 2r_0 r \cos (\phi - \theta) + r^2} = \frac{|s|^2 - |z|^2}{|s-z|^2}$$
+
+and $\vert s \vert > \vert z \vert$, so $P(r_0, r, \phi - \theta) > 0$.
+
+**(ii)** Note that
+
+$$\begin{align*}
+\frac{s+z}{s-z} &= \frac{(s+z)\overline{(s-z)}}{(s-z)\overline{(s-z)}} \\
+&= \frac{|s|^2 - |z|^2 + z\overline{s} - s \overline{z}}{|s-z|^2} \\
+&= \frac{|s|^2 - |z|^2 + z\overline{s} - \overline{z \overline{s}}}{|s-z|^2} \\
+&= \frac{|s|^2 - |z|^2 + 2i\mathrm{Im}(z\overline{s})}{|s-z|^2}.
+\end{align*}$$
+
+Hence,
+
+$$\mathrm{Re}\left( \frac{s+z}{s-z} \right) = \frac{|s|^2 - |z|^2}{|s-z|^2} = P(r_0, r, \phi - \theta).$$
+
+**(iii)** For each fixed $s$ on $C_0$, $f(z) = \frac{s+z}{s-z}$ is analytic inside the circle $C_0$. Then the real part $P(r_0, r, \phi - \theta)$ is harmonic with respect to $r$ and $\theta$.
+
+**(iv)** Note that
+
+$$P(r_0, r, \phi - \theta) = \frac{r_0^2 - r^2}{r_0^2 - 2r_0 r \cos (\phi - \theta) + r^2}.$$
+
+Since $\cos(\phi - \theta)$ is even periodic function of $\phi - \theta$ with period $2\pi$, we obtain the property.
+
+**(v)** Obvious from the expression of $P(r_0, r, \phi - \theta)$.
+
+**(vi)** If $f(z) = 1, \forall z \in \mathbb{C}$, then we obtain
+
+$$1 = \frac{1}{2\pi} \int_0^{2\pi} P(r_0, r, \phi - \theta) d\phi. \blacksquare$$
+:::
+
+## Theorem 5 (Poisson Integral Transform)
+::: {.math-box}
+Let $F$ be a piecewise continuous function of $\theta$ on the interval $0 \le \theta \le 2\pi$. The ***Poisson integral transform*** of $F$ is defined in terms of the Poisson kernel $P(r_0, r, \phi - \theta)$ by means of the equation
 
 $$U(r, \theta) = \frac{1}{2\pi} \int_0^{2\pi} P(r_0, r, \phi - \theta) F(\phi) d\phi \quad (r < r_0).$$
 
@@ -132,7 +265,7 @@ $$U(r, \theta) = \frac{1}{2\pi} \int_0^{2\pi} P(r_0, r, \phi - \theta) F(\phi) d
 
 **(ii)** $\displaystyle \lim_{r \to r_0^-} U(r, \theta) = F(\theta)$ for each fixed $\theta$ at which $F$ is continuous.
 
-**(iii)** $\displaystyle U(0, \theta) = \frac{1}{2\pi} \int_0^{2\pi} F(\phi) d\phi$; Hence, the value of a harmonic function $U(r, \theta)$ ate the center of the circle $r = r_0$ is the average of the boundary values on the circle. 
+**(iii)** $\displaystyle U(0, \theta) = \frac{1}{2\pi} \int_0^{2\pi} F(\phi) d\phi$; Hence, the value of a harmonic function $U(r, \theta)$ are the center of the circle $r = r_0$ is the average of the boundary values on the circle. 
 
 Thus, $U$ is a solution of the Dirichlet problem for the disk $r < r_0$ in the sense that $U(r, \theta)$ is harmonic and approches the boundary value $F(\theta)$ as the point $(r, \theta)$ aproaches $(r_0, \theta)$ along a radius, except at the finite number of points $(r_0, \theta)$ where discontinuous of $F$ may occur.
 :::
@@ -162,7 +295,7 @@ $$\Delta_{(r, \theta)} U = \frac{1}{2\pi} \sum_{k=0}^{n-1} \int_{\phi_k}^{\phi_{
 
 whenever $r < r_0$. Hence, the function $U(r, \theta)$ is harmonic on the disk $r < r_0$.
 
-**(ii)** Let $\theta$ be a point at which $F$ is continuous. [Note that](../Poisson_Integral_Formula/index.qmd#sec-theorem-2)
+**(ii)** Let $\theta$ be a point at which $F$ is continuous. Note that
 
 $$\begin{align*}
 &1 = \frac{1}{2\pi} \int_0^{2\pi} P(r_0, r, \phi - \theta) d \phi \\
@@ -187,7 +320,7 @@ I_1(r) &= \frac{1}{2\pi} \int_{\theta - \alpha}^{\theta + \alpha} P(r_0, r, \phi
 I_1(r) &= \frac{1}{2\pi} \int_{\theta + \alpha}^{\theta - \alpha + 2\pi} P(r_0, r, \phi - \theta) [F(\phi) - F(\theta)] d\phi.
 \end{align*}$$
 
-[Since $P$ is a positive function](../Poisson_Integral_Formula/index.qmd#sec-theorem-2), we have 
+Since $P$ is a positive function, we have 
 
 $$\begin{align*}
 | I_1(r) | &\le \frac{1}{2\pi} \int_{\theta - \alpha}^{\theta + \alpha} P(r_0, r, \phi - \theta) |F(\phi) - F(\theta)| d\phi \\
@@ -244,7 +377,174 @@ whenever $0 < r_0 - r < \delta$, and therefore
 $$\lim_{r \to r_0^-} U(r, \theta) = F(\theta). \blacksquare$$
 :::
 
-## Example 2
+# Schwarz Integral Transform
+## Theorem 6 (Schwarz Integral Formula)
+::: {.math-box}
+Let $f(z)$ be an analytic function throughout the upper half plane $\mathrm{Im} z \ge 0$ such that for some positive constants $a$ and $M$, $| z^af(z) | < M$ for all $z$ with $\mathrm{Im} z \ge 0$. If $f(z) = u(x, y) = iv(x, y)$, then $u(x, y)$ and $v(x, y)$ are harmonic in the upper half plane $y > 0$ and
+
+$$\begin{align*}
+u(x, y) &= \frac{1}{\pi} \int_{-\infty}^\infty \frac{yu(t, 0)}{(t-x)^2 + y^2} dt \\
+v(x, y) &= \frac{1}{\pi} \int_{-\infty}^\infty \frac{(x-t)u(t, 0)}{(t-x)^2 + y^2} dt
+\end{align*}$$
+
+whenever $y > 0$. This is called the ***Schwarz integral formula***.
+:::
+
+::: {.callout-note title="Proof" collapse="true" icon=false}
+Let $C_r$ denote the upper half of a positively oriented circle of radius $R$ centered at origin. By the Cauchy integral formula, we have
+
+$$\begin{align*}
+f(z) &= \frac{1}{2\pi i} \int_{C_R \cup [-R, R]} \frac{f(s)}{s-z} ds \\
+&= \frac{1}{2\pi i} \int_{C_R} \frac{f(s)}{s-z} ds + \frac{1}{2\pi i} \int_{-R}^R \frac{f(t)}{t-z} dt
+\end{align*}$$
+
+for any $z$ interior to the simple closed contour $C_R \cup [-R, R]$.
+
+By ML Lemma, we have
+
+$$\begin{align*}
+\left \vert \int_{C_R} \frac{f(s)}{s-z} ds \right \vert &\le \frac{M}{R^a} \cdot \frac{1}{R - \vert z \vert} \cdot \pi R \\
+&= \frac{\pi M}{R^a\left( 1 - \frac{|z|}{R} \right)} \to 0
+\end{align*}$$
+
+as $R \to \infty$. 
+
+Now, we will show that the improper integral 
+
+$$\int_{-\infty}^\infty \frac{f(t)}{t-z} dt$$
+
+converges absolutely.
+
+Fix $z \in \mathbb{C}$ such that $\mathrm{Im} z > 0$, and choose a positive number $A$ such that $A > 2|z|$. If $|t| \ge A$, then $\frac{|t|}{2} > |z|$, so we have
+
+$$|t-z| \ge |t| - |z| > \frac{|t|}{2}.$$
+
+Since $|f(t)| \le \frac{M}{|t|^a}$ by assumption, we have
+
+$$\left \vert \frac{f(t)}{t-z} \right \vert \le \frac{2M}{|t|^{1+a}}.$$
+
+Since $a > 0$, we have
+
+$$\begin{align*}
+\int_A^\infty |t|^{-1-a} dt &= \lim_{s \to \infty} \int_A^s t^{-1-a} dt \\
+&= \lim_{s \to \infty} -\frac{1}{a} t^{-a} \Bigg \vert_{A}^s \\
+&= \frac{1}{aA^a} < \infty,
+\end{align*}$$
+
+By the comparison test,
+
+$$\int_A^\infty \left \vert \frac{f(t)}{t-z} \right \vert dt < \infty.$$
+
+Similarly,
+
+$$\int_{-\infty}^{-A} \left \vert \frac{f(t)}{t-z} \right \vert dt < \infty.$$
+
+Since the function $f$ is continuous on $-A \le t \le A$ and $|t-z| > 0$, the definite integral
+
+$$\int_{-A}^A \frac{f(t)}{t-z} dt$$
+
+has a finite value. For a sufficiently large $R > 0$, we have
+
+$$\int_{-R}^R \frac{f(t)}{t-z} dt = \int_{-R}^{-A} \frac{f(t)}{t-z} dt + \int_{-A}^A \frac{f(t)}{t-z} dt + \int_A^{R} \frac{f(t)}{t-z} dt,$$
+
+so letting $R \to \infty$, we conclude that the improper integral
+
+$$\int_{-\infty}^\infty \frac{f(t)}{t-z} dt$$
+
+converges absolutely. Thus,
+
+$$f(z) = \frac{1}{2\pi i} \int_{-\infty}^\infty \frac{f(t)}{t-z} dt \quad (\mathrm{Im} z > 0).$$
+
+If the point $z$ lies below the real axis, then the integrand $\displaystyle \frac{f(s)}{s-z}$ is analytic on the simple closed contour $C_R \cup [-R, R]$, so 
+
+$$f(z) = \frac{1}{2\pi i} \int_{C_R \cup [-R, R]} \frac{f(s)}{s-z} ds = 0$$
+
+by the Cauchy-Goursat theorem. 
+
+Thus, when $z$ is above the real axis, we have the following expression
+
+$$f(z) = \frac{1}{2\pi i} \int_{-\infty}^\infty \left( \frac{1}{t-z} + \frac{c}{t-\bar{z}} \right) f(t) dt, \quad (\mathrm{Im} z > 0)$$
+
+where $c$ is an arbitrary complex constant.
+
+Let us denote that $z = x+iy$ and $f(z) = u(x, y) + i v(x, y)$. If we choose $c = -1$, then it reduces to
+
+$$\begin{align*}
+f(z) &= \frac{1}{2\pi i} \int_{-\infty}^\infty \left( \frac{1}{t-z} - \frac{1}{t-\bar{z}} \right) f(t) dt \\
+&= \frac{1}{2\pi i} \int_{-\infty}^\infty \frac{z - \bar{z}}{|t-z|^2} f(t) dt \\
+&= \frac{1}{2\pi i} \int_{-\infty}^\infty \frac{2iy}{|t-z|^2} f(t) dt \\
+&= \frac{1}{\pi} \int_{-\infty}^\infty \frac{yf(t)}{|t-z|^2} dt.
+\end{align*}$$
+
+Similarly, if $c = 1$, it reduces
+
+$$f(z) = \frac{1}{\pi i} \int_{-\infty}^\infty \frac{(t-x)f(t)}{|t-z|^2} dt.$$
+
+Since $f(t) = u(x,0) + i v(x, 0)$, we have
+
+$$\begin{align*}
+u(x, y) &= \frac{1}{\pi} \int_{-\infty}^\infty \frac{yu(t, 0)}{(t-x)^2 + y^2} dt
+v(x, y) &= \frac{1}{\pi} \int_{-\infty}^\infty \frac{(x-t)u(t, 0)}{(t-x)^2 + y^2} dt
+\end{align*}$$
+
+whenever $y > 0$. $\blacksquare$
+:::
+
+## Theorem 7 (Schwarz Kernel)
+::: {.math-box}
+If we define the real-valued function 
+
+$$S(x, y, t) = \frac{y}{(t-x)^2 + y^2}$$
+
+when $y > 0$, which is called the ***Schwarz kernel***, then the Schwarz integral formula becomes
+
+$$u(x, y) = \frac{1}{\pi}\int_{-\infty}^\infty S(x, y, t)u(t, 0) dt.$$
+
+Let $z = x +iy$ with $y > 0$. Then
+
+**(i)** $S(x, y, t) > 0$.
+
+**(ii)** $S(x, y, t) = \mathrm{Im} \left( \frac{1}{t-z} \right)$.
+
+**(iii)** $S(x, y, t)$ is a harmonic function of $x$ and $y$ throughout the upper half plane $y > 0$.
+
+**(iv)** $\displaystyle \frac{1}{\pi} \int_{-\infty}^\infty S(x, y, t) dt = 1$.
+:::
+
+::: {.callout-note title="Proof" collapse="true" icon=false}
+**(i)**
+
+**(ii)**
+
+**(iii)**
+
+**(iv)**
+:::
+
+## Theorem 8 (Schwarz Integral Transform)
+::: {.math-box}
+Let $F$ be a real-valued function of $x$ that is bounded for all $x$ and that is continuous except for at most a finite number of finite jumps. The ***Schwarz integral transform*** of $F$ is defined in terms of the Schwarz kernel $S(x, y, t)$ by means of the equation
+
+$$U(x, y) = \frac{1}{\pi} \int_{-\infty}^\infty S(x, y, t)F(t) dt \quad (y > 0).$$
+
+**(i)** The function $U(x, y)$ is harmonic throughout the upper half plane $y > 0$.
+
+**(ii)** $\displaystyle \lim_{y \to 0^+} U(x, y) = F(x)$ for fixed $x$ at which $F$ is continuous.
+
+**(iii)** $U(x, y)$ is bounded.
+
+Hence, the value of a harmonic function $U(x, y)$ are the 
+:::
+
+::: {.callout-note title="Proof" collapse="true" icon=false}
+**(i)**
+
+**(ii)**
+
+**(iii)**
+:::
+
+# Dirichlet Problem
 위 정리를 사용해서 다음과 같이 경계조건이 주어진 디리클레 문제 $\Delta V(r, \theta) = 0$을 풀어보자
 
 ![](harmo.png)
@@ -279,6 +579,7 @@ $$V(x, y) = \frac{1}{\pi} \arctan \left( \frac{1 - x^2 - y^2}{2y} \right) \quad 
 # Newmann Problem
 
 # Further Examples
+::: {.math-box}
 Let $F(\theta)$ be a piecewise continuous function.
 
 **(i)** Let $f(\theta)$ be a piecewise continuous function on $0 < \theta < \pi$, and let $D^+ := \{ re^{i\theta} \in \mathbb{C} \mid 0 < r < r_0, 0 < \theta < \pi \}$ be the semicircular region. Solve the Dirichlet problem
@@ -288,6 +589,7 @@ $$\begin{cases}
 U(r, \theta) = 0 & 0 \le r < r_0, \theta \in \{ 0, \pi \} \\
 \lim_{r \to r_0^-} U(r, \theta) = f(\theta) & \text{for each fixed } \theta \in (0, \pi) \text{ at which } f \text{ is continuous}
 \end{cases}.$$
+:::
 
 ::: {.callout-note title="Solution" icon=false collapse="true"}
 문제의 정의역은 원 전체가 아닌 반원으로 주어졌다. 우리는 정의역을 원 전체로 확장해준 뒤 푸아송 적분 공식을 이용해 해를 구하고, 이를 다시 원래 정의역에서도 해가 되도록 변형해 주려고 한다.
@@ -319,6 +621,7 @@ U(r, \theta) &= \frac{1}{2\pi} \int_0^{2\pi} P(r_0, r, \phi - \theta) F(\phi) d\
 이때 $r < r_0$를 만족하는 모든 $r$에 대해서 $U(r, 0) = 0 = U(r, \pi)$를 만족하고, $0 < \theta < \pi$에서 $F(\theta) = f(\theta)$이므로 우리가 구한 $U(r, \theta)$가 원래 문제의 해가 됨을 알 수 있다.
 :::
 
+::: {.math-box}
 **(ii)** Let $f(\theta)$ be a piecewise continuous function on $0 < \theta < \pi$, and let $D^+ := \{ re^{i\theta} \in \mathbb{C} \mid 0 < r < r_0, 0 < \theta < \pi \}$ be the semicircular region. Solve the boundary value problem
 
 $$\begin{cases}
@@ -326,6 +629,7 @@ $$\begin{cases}
 U_{\theta}(r, \theta) = 0 & 0 \le r < r_0, \theta \in \{ 0, \pi \} \\
 \lim_{r \to r_0^-} U(r, \theta) = f(\theta) & \text{for each fixed } \theta \in (0, \pi) \text{ at which } f \text{ is continuous}
 \end{cases}.$$
+:::
 
 ::: {.callout-note title="Solution" icon=false collapse="true"}
 1번과 마찬가지의 방법으로 풀어주면 된다. 새로운 함수 $F$를 다음과 같이 정의하자.
@@ -359,12 +663,14 @@ $$U_\theta(r, \theta) = \frac{1}{2\pi} \int_0^{\pi} \left[ -P_\theta(r_0, r, \ph
 따라서 $r < r_0$를 만족하는 모든 $r$에 대해서 $U_\theta(r, 0) = 0 = U_\theta(r, \pi)$를 만족하고, $0 < \theta < \pi$에서 $F(\theta) = f(\theta)$이므로 우리가 구한 $U(r, \theta)$가 원래 문제의 해가 됨을 알 수 있다.
 :::
 
+::: {.math-box}
 **(iii)** Let $f(\theta)$ be a piecewise continuous function on $0 \le \theta \le 2\pi$, and let $E := \{ z \in \mathbb{C} \mid |z| > r_0 \}$. Solve the Dirichlet problem
 
 $$\begin{cases}
 \Delta H(r, \theta) = 0 & \text{in } E \\
 \lim_{r \to r_0^+} H(r, \theta) = f(\theta) & \text{for each fixed } \theta \text{ at which } f \text{ is continuous}
 \end{cases}.$$
+:::
 
 ::: {.callout-note title="Solution" icon=false collapse="true"}
 이 문제에서는 정의역이 원판 $|z| < r_0$의 외부이므로, 원판 외부를 내부로 매핑해주는 변환을 통해 정의역을 바꿔줄 필요가 있다. 특별히 함수 $w = \frac{r_0^2}{z}$은 $|z| > r_0$를 만족하는 모든 $z$에 대해서 

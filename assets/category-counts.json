@@ -1,6 +1,6 @@
 {
-  "updatedAt": "2026-11-26T12:59:11.681Z",
-  "totalPosts": 229,
+  "updatedAt": "2026-11-26T14:15:11.427Z",
+  "totalPosts": 227,
   "counts": {
     "Astronomy": 25,
     "Astronomy > AGN": 3,
@@ -16,7 +16,7 @@
     "Computer": 5,
     "Computer > Machine Learning": 5,
     "Computer > Machine Learning > Reinforcement Learning": 5,
-    "Math": 198,
+    "Math": 196,
     "Math > Abstract Algebra": 45,
     "Math > Abstract Algebra > Binary Algebraic Structure": 2,
     "Math > Abstract Algebra > Field Theory": 2,
@@ -26,7 +26,7 @@
     "Math > Analysis > Multivariable": 1,
     "Math > Calculus": 2,
     "Math > Calculus > Vector Calculus": 2,
-    "Math > Complex Analysis": 45,
+    "Math > Complex Analysis": 43,
     "Math > Differential Geometry": 7,
     "Math > Differential Geometry > Curve Theory": 6,
     "Math > Differential Geometry > Surface Theory": 1,
@@ -71,8 +71,8 @@
     "machine learning": 5,
     "Reinforcement Learning": 5,
     "reinforcement learning": 5,
-    "Math": 198,
-    "math": 198,
+    "Math": 196,
+    "math": 196,
     "Abstract Algebra": 45,
     "abstract algebra": 45,
     "Binary Algebraic Structure": 2,
@@ -91,8 +91,8 @@
     "calculus": 2,
     "Vector Calculus": 2,
     "vector calculus": 2,
-    "Complex Analysis": 45,
-    "complex analysis": 45,
+    "Complex Analysis": 43,
+    "complex analysis": 43,
     "Differential Geometry": 7,
     "differential geometry": 7,
     "Curve Theory": 6,
@@ -125,7 +125,7 @@
     "thermodynamics": 1
   },
   "topCategories": {
-    "Math": 198,
+    "Math": 196,
     "Astronomy": 25,
     "Physics": 1,
     "Computer": 5

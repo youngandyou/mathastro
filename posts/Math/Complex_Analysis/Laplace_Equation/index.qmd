@@ -267,7 +267,7 @@ $$U(r, \theta) = \frac{1}{2\pi} \int_0^{2\pi} P(r_0, r, \phi - \theta) F(\phi) d
 
 **(iii)** $\displaystyle U(0, \theta) = \frac{1}{2\pi} \int_0^{2\pi} F(\phi) d\phi$; Hence, the value of a harmonic function $U(r, \theta)$ are the center of the circle $r = r_0$ is the average of the boundary values on the circle. 
 
-Thus, $U$ is a solution of the Dirichlet problem for the disk $r < r_0$ in the sense that $U(r, \theta)$ is harmonic and approches the boundary value $F(\theta)$ as the point $(r, \theta)$ aproaches $(r_0, \theta)$ along a radius, except at the finite number of points $(r_0, \theta)$ where discontinuous of $F$ may occur.
+Thus, $U$ is a solution of the Dirichlet problem for the disk $r < r_0$ in the sense that $U(r, \theta)$ is harmonic and approaches the boundary value $F(\theta)$ as the point $(r, \theta)$ aproaches $(r_0, \theta)$ along a radius, except at the finite number of points $(r_0, \theta)$ where discontinuous of $F$ may occur.
 :::
 
 ::: {.callout-note title="Proof" icon=false collapse="true"}
@@ -512,13 +512,37 @@ Let $z = x +iy$ with $y > 0$. Then
 :::
 
 ::: {.callout-note title="Proof" collapse="true" icon=false}
-**(i)**
+**(i)** Note that 
 
-**(ii)**
+$$S(x, y, t) = \frac{y}{(t-x)^2 + y^2} = \frac{y}{|t-z|^2}.$$
 
-**(iii)**
+Since $y > 0$, $|z-t|> 0$ and $S(x, y, t) > 0$.
 
-**(iv)**
+**(ii)** Note that
+
+$$\frac{1}{t-z} = \frac{t-\bar{z}}{|t-z|^2} = \frac{t-x+iy}{|t-z|^2}.$$
+
+Hence, 
+
+$$\mathrm{Im}\left( \frac{1}{t-z} \right) = \frac{y}{|t-z|^2} = S(x, y, t).$$
+
+**(iii)** Since $\frac{1}{t-z}$ is harmonic throughout the upper half plane $\mathrm{Im} z > 0$ and $S(x, y, t)$ is the imaginary part of $\frac{1}{t-z}$, it is harmonic throughout the upper half plane $y > 0$.
+
+**(iv)** Let us substitute $\frac{t-x}{y} = \tan \tau$. Then we have
+
+$$\begin{align*}
+dt &= y\sec^2 \tau d \tau \\
+&= y \frac{(t-x)^2 + y^2}{y^2} d \tau \\
+&= \frac{(t-x)^2 + y^2}{y} d\tau.
+\end{align*}$$
+
+Hence,
+
+$$\begin{align*}
+\frac{1}{\pi} \int_{-\infty}^\infty S(x, y, t) dt &= \frac{1}{\pi} \int_{-\infty}^\infty \frac{y}{(x-t)^2 + y^2} dt \\
+&= \frac{1}{\pi} \int_{-\frac{\pi}{2}}^\frac{\pi}{2} d \tau \\
+&= 1. \blacksquare
+\end{align*}$$
 :::
 
 ## Theorem 8 (Schwarz Integral Transform)
@@ -527,21 +551,97 @@ Let $F$ be a real-valued function of $x$ that is bounded for all $x$ and that is
 
 $$U(x, y) = \frac{1}{\pi} \int_{-\infty}^\infty S(x, y, t)F(t) dt \quad (y > 0).$$
 
-**(i)** The function $U(x, y)$ is harmonic throughout the upper half plane $y > 0$.
+**(i)** The function $U(x, y)$ is bounded and harmonic throughout the upper half plane $y > 0$.
 
 **(ii)** $\displaystyle \lim_{y \to 0^+} U(x, y) = F(x)$ for fixed $x$ at which $F$ is continuous.
 
-**(iii)** $U(x, y)$ is bounded.
-
-Hence, the value of a harmonic function $U(x, y)$ are the 
+Thus, $U$ is a bounded solution of the Dirichlet problem for the upper half plane in the sense that $U(x, y)$ is harmonic and approaches the boundary value $F(x)$ as the point $(x, y)$ aproaches $(x, 0), except at the finite number of points $(x, 0)$ where discontinuous of $F$ may occur.
 :::
 
 ::: {.callout-note title="Proof" collapse="true" icon=false}
-**(i)**
+**(i)** First, we will show that the improper integral
 
-**(ii)**
+$$U(x, y) = \frac{1}{\pi} \int_{-\infty}^\infty S(x, y, t)F(t) dt$$
 
-**(iii)**
+converges absolutely whenever $y > 0$.
+
+Since $F$ is bounded and continuous except for at most a finite number of finite jumps, $M = \sup_{t \in \mathbb{R}} |F(t)|$ exists and the definite integral $\displaystyle \int_{-A}^A S(x, y, t)F(t) dt$ exists.
+
+By substituting $t = x+ys$, we have
+
+$$\begin{align*}
+\left \vert \frac{1}{\pi} \int_{-A}^A S(x, y, x+ys)F(x+ys) y ds \right \vert \\
+&\le \frac{1}{\pi} \int_{-A}^A \left \vert \frac{y^2}{y^2s^2 + y^2} F(x+ys) \right \vert ds \\
+&\le \frac{M}{\pi} \int_{-A}^A \left \vert \frac{1}{s^2 + 1} \right \vert ds \\
+&= \frac{M}{\pi} \int_{-A}^A \frac{1}{s^2 + 1} ds
+\end{align*}$$
+
+and the improper integral
+
+$$\int_{-\infty}^\infty \frac{1}{s^2 + 1} ds$$
+
+exists. By the comparison test,
+
+$$U(x, y) = \frac{1}{\pi} \int_{-\infty}^\infty S(x, y, t)F(t) dt$$
+
+converges absolutely. Furthermore, $U(x, y)$ is bounded.
+
+Let 
+
+$$I(x, y) = \int_{-\infty}^\infty g(x, y, t) dt$$
+
+where $g(x, y, t) = \frac{F(t)}{(t-x)^2 + y^2}$. Now, we will show that the sequences
+
+$$\begin{align*}
+I_n(x, y) = \int_{-n}^n g(x, y, t) dt \\
+\frac{\partial I_n}{\partial u}(x, y) = \int_{-n}^n \frac{\partial g}{\partial u} dt \\
+\frac{\partial^2 I_n}{\partial u^2}(x, y) = \int_{-n}^n \frac{\partial^2 g}{\partial u^2} dt$$
+
+where $u = x, y$, converge uniformly to $I, \frac{\partial I}{\partial u}, \frac{\partial^2 I}{\partial u^2}$ with resepct to $x$ and $y$, respectively. 
+
+Fix $\varepsilon > 0$, and put
+
+$$D_\varepsilon = \left\{ (x, y) \in \mathbb{R}^2 \mid |x| \le \frac{1}{\varepsilon}, y \ge \varepsilon \right\}, \quad \text{and} \quad A = \frac{2}{\varepsilon}.$$
+
+For every $(x, y) \in D_\varepsilon$, we have $r = |t-z| \ge \varepsilon, \forall t \in \mathbb{R}$. Moreover, if $|t| > A$, then
+
+$$r \ge |t-x| \ge |t| - |x| \ge \frac{|t|}{2}.$$
+
+Consequently,
+
+$$|g(x, y, t)| \le \frac{M}{r^2} \le H(t), \quad H(t) = \begin{cases}
+\frac{M}{\varepsilon^2} & |t| \le A \\
+\frac{4M}{t^2} & |t| > A
+\end{cases}.$$
+
+Note that the function $H(t)$ is integrable over $\mathbb{R}$ since it is constant on $[-A, A]$ and $\displaystyle \int_A^\infty t^{-2} dt = A^{-1}$.
+
+For every $n > A$ and every $(x, y) \in D_\varepsilon$, we have
+
+$$\begin{align*}
+|I(x, y) - I_n(x, y)| &\le \int_{|t| > n} |g(x, y, t)| dt \\
+& \le \int_{|t| > n} H(t) dt = 2 \int_n^\infty \frac{4M}{t^2} dt = \frac{8M}{n}.
+\end{align*}$$
+
+Given any $\eta > 0$, choose an integer $N > \max \left\{ A, \frac{8M}{\eta} \right\}$. Then $|t| > n \ge N > A$ and $\frac{8M}{N} < \eta$, so
+
+$$|I(x, y) - I_n(x, y)| \le \frac{8M}{n} \le \frac{8M}{N} < \eta, \forall n \ge N, \forall (x, y) \in D_\varepsilon.$$
+
+Hence, $\{ I_n \}$ converges uniformly to $I$ throughtout the region $D_\varepsilon$.
+
+By differentiating, we have
+
+$$\left \vert \frac{\partial g}{\partial u} \right \vert \le \frac{2M}{r^3} \quad \text{and} \quad \left \vert \frac{\partial^2 g}{\partial u^2} \right \vert \le \frac{10M}{r^4}.$$
+
+In the similar manner, we can show that the partial derivatives $\frac{\partial I_n}{\partial u}, \frac{\partial^2 I_n}{\partial u^2}$ converges uniformly to $\frac{\partial I}{\partial u}, \frac{\partial^2 I}{\partial u^2}$ for $u = x, y$ throughtout the region $D_\varepsilon$.
+
+Note that the order of differentiation and integration can be interchanged by the uniform convergence. Since $U(x, y) = \frac{y}{\pi}I(x, y)$, we have
+
+$$\Delta U = \frac{1}{\pi} \left( y \Delta I + 2\frac{\partial I}{\partial y} \right) = \frac{1}{\pi} \int_{-\infty}^\infty F(t) \Delta S(x, y, t) = 0$$
+
+throughout the region $D_\varepsilon$ for any $\varepsilon > 0$. For any $(x, y)$ with $y > 0$, we can choose $\varepsilon > 0$ such that $(x, y) \in D_\varepsilon$. Hence, $\Delta U(x, y) = 0$ throughtout the upper half plane $y > 0$.
+
+**(ii)** 
 :::
 
 # Dirichlet Problem

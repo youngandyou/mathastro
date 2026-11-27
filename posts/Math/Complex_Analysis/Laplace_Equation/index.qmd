@@ -555,7 +555,7 @@ $$U(x, y) = \frac{1}{\pi} \int_{-\infty}^\infty S(x, y, t)F(t) dt \quad (y > 0).
 
 **(ii)** $\displaystyle \lim_{y \to 0^+} U(x, y) = F(x)$ for fixed $x$ at which $F$ is continuous.
 
-Thus, $U$ is a bounded solution of the Dirichlet problem for the upper half plane in the sense that $U(x, y)$ is harmonic and approaches the boundary value $F(x)$ as the point $(x, y)$ aproaches $(x, 0), except at the finite number of points $(x, 0)$ where discontinuous of $F$ may occur.
+Thus, $U$ is a bounded solution of the Dirichlet problem for the upper half plane in the sense that $U(x, y)$ is harmonic and at every continuity point $a$ of $F$, $U(a,y)$ approaches $F(a)$ as $y \to 0^+$.
 :::
 
 ::: {.callout-note title="Proof" collapse="true" icon=false}
@@ -570,17 +570,12 @@ Since $F$ is bounded and continuous except for at most a finite number of finite
 By substituting $t = x+ys$, we have
 
 $$\begin{align*}
-\left \vert \frac{1}{\pi} \int_{-A}^A S(x, y, x+ys)F(x+ys) y ds \right \vert \\
-&\le \frac{1}{\pi} \int_{-A}^A \left \vert \frac{y^2}{y^2s^2 + y^2} F(x+ys) \right \vert ds \\
-&\le \frac{M}{\pi} \int_{-A}^A \left \vert \frac{1}{s^2 + 1} \right \vert ds \\
-&= \frac{M}{\pi} \int_{-A}^A \frac{1}{s^2 + 1} ds
+\left \vert \frac{1}{\pi} \int_{-\frac{A-x}{y}}^\frac{A-x}{y} S(x, y, x+ys)F(x+ys) y ds \right \vert &\le \frac{1}{\pi} \int_{-\frac{A-x}{y}}^\frac{A-x}{y} \left \vert \frac{y^2}{y^2s^2 + y^2} F(x+ys) \right \vert ds \\
+&\le \frac{M}{\pi} \int_{-\frac{A-x}{y}}^\frac{A-x}{y} \left \vert \frac{1}{s^2 + 1} \right \vert ds \\
+&= \frac{M}{\pi} \int_{-\frac{A-x}{y}}^\frac{A-x}{y} \frac{1}{s^2 + 1} ds
 \end{align*}$$
 
-and the improper integral
-
-$$\int_{-\infty}^\infty \frac{1}{s^2 + 1} ds$$
-
-exists. By the comparison test,
+and the improper integral $\int_{-\infty}^\infty \frac{1}{s^2 + 1} ds$ exists. By the comparison test,
 
 $$U(x, y) = \frac{1}{\pi} \int_{-\infty}^\infty S(x, y, t)F(t) dt$$
 
@@ -593,9 +588,10 @@ $$I(x, y) = \int_{-\infty}^\infty g(x, y, t) dt$$
 where $g(x, y, t) = \frac{F(t)}{(t-x)^2 + y^2}$. Now, we will show that the sequences
 
 $$\begin{align*}
-I_n(x, y) = \int_{-n}^n g(x, y, t) dt \\
-\frac{\partial I_n}{\partial u}(x, y) = \int_{-n}^n \frac{\partial g}{\partial u} dt \\
-\frac{\partial^2 I_n}{\partial u^2}(x, y) = \int_{-n}^n \frac{\partial^2 g}{\partial u^2} dt$$
+I_n(x, y) &= \int_{-n}^n g(x, y, t) dt \\
+\frac{\partial I_n}{\partial u}(x, y) &= \int_{-n}^n \frac{\partial g}{\partial u} dt \\
+\frac{\partial^2 I_n}{\partial u^2}(x, y) &= \int_{-n}^n \frac{\partial^2 g}{\partial u^2} dt
+\end{align*}$$
 
 where $u = x, y$, converge uniformly to $I, \frac{\partial I}{\partial u}, \frac{\partial^2 I}{\partial u^2}$ with resepct to $x$ and $y$, respectively. 
 
@@ -620,28 +616,101 @@ For every $n > A$ and every $(x, y) \in D_\varepsilon$, we have
 
 $$\begin{align*}
 |I(x, y) - I_n(x, y)| &\le \int_{|t| > n} |g(x, y, t)| dt \\
-& \le \int_{|t| > n} H(t) dt = 2 \int_n^\infty \frac{4M}{t^2} dt = \frac{8M}{n}.
+& \le \int_{|t| > n} H(t) dt \\
+&= 2 \int_n^\infty \frac{4M}{t^2} dt \\
+&= \frac{8M}{n}.
 \end{align*}$$
 
 Given any $\eta > 0$, choose an integer $N > \max \left\{ A, \frac{8M}{\eta} \right\}$. Then $|t| > n \ge N > A$ and $\frac{8M}{N} < \eta$, so
 
 $$|I(x, y) - I_n(x, y)| \le \frac{8M}{n} \le \frac{8M}{N} < \eta, \forall n \ge N, \forall (x, y) \in D_\varepsilon.$$
 
-Hence, $\{ I_n \}$ converges uniformly to $I$ throughtout the region $D_\varepsilon$.
+Hence, $\{ I_n \}$ converges uniformly to $I$ throughout the region $D_\varepsilon$.
 
 By differentiating, we have
 
-$$\left \vert \frac{\partial g}{\partial u} \right \vert \le \frac{2M}{r^3} \quad \text{and} \quad \left \vert \frac{\partial^2 g}{\partial u^2} \right \vert \le \frac{10M}{r^4}.$$
+$$\left \vert \frac{\partial g}{\partial u} \right \vert \le \frac{2M}{r^3} \quad \text{and} \quad \left \vert \frac{\partial^2 g}{\partial u \partial v} \right \vert \le \frac{10M}{r^4}$$
 
-In the similar manner, we can show that the partial derivatives $\frac{\partial I_n}{\partial u}, \frac{\partial^2 I_n}{\partial u^2}$ converges uniformly to $\frac{\partial I}{\partial u}, \frac{\partial^2 I}{\partial u^2}$ for $u = x, y$ throughtout the region $D_\varepsilon$.
+where $u, v \in \{ x, y\}$. In a similar manner, we can show that the sequences of partial derivatives $\frac{\partial I_n}{\partial u}, \frac{\partial^2 I_n}{\partial u^2}$ converge uniformly to $\frac{\partial I}{\partial u}, \frac{\partial^2 I}{\partial u^2}$ for $u = x, y$ throughout the region $D_\varepsilon$.
 
 Note that the order of differentiation and integration can be interchanged by the uniform convergence. Since $U(x, y) = \frac{y}{\pi}I(x, y)$, we have
 
-$$\Delta U = \frac{1}{\pi} \left( y \Delta I + 2\frac{\partial I}{\partial y} \right) = \frac{1}{\pi} \int_{-\infty}^\infty F(t) \Delta S(x, y, t) = 0$$
+$$\Delta U = \frac{1}{\pi} \left( y \Delta I + 2\frac{\partial I}{\partial y} \right) = \frac{1}{\pi} \int_{-\infty}^\infty F(t) \Delta S(x, y, t) dt = 0$$
 
-throughout the region $D_\varepsilon$ for any $\varepsilon > 0$. For any $(x, y)$ with $y > 0$, we can choose $\varepsilon > 0$ such that $(x, y) \in D_\varepsilon$. Hence, $\Delta U(x, y) = 0$ throughtout the upper half plane $y > 0$.
+throughout the region $D_\varepsilon$ for any $\varepsilon > 0$. For any $(x, y)$ with $y > 0$, we can choose $\varepsilon > 0$ such that $(x, y) \in D_\varepsilon$. Hence, $\Delta U(x, y) = 0$ throughout the upper half plane $y > 0$.
 
-**(ii)** 
+**(ii)** Fix $x \in \mathbb{R}$ at which $F$ is continuous.
+
+Substituting $t = x+y \tan \tau$,
+
+$$\begin{align*}
+U(x, y) &= \frac{1}{\pi} \int_{-\infty}^\infty S(x, y, t)F(t) dt \\
+&= \frac{1}{\pi}\int_{-\frac{\pi}{2}}^{\frac{\pi}{2}} F(x + y \tan \tau) d \tau
+\end{align*}$$
+
+If we write
+
+$$G(x, y, \tau) := F(x + y\tan \tau) - F(x)$$
+
+and $\alpha$ is some small positive constant,
+
+then
+
+$$\begin{align*}
+\pi[U(x, y) - F(x)] &= \int_{-\frac{\pi}{2}}^\frac{\pi}{2} G(x, y, \tau) d\tau \\
+&= I_1(y) + I_2(y) + I_3(y)
+\end{align*}$$
+
+where
+
+$$\begin{align*}
+I_1(y) &= \int_{-\frac{\pi}{2}}^{-\frac{\pi}{2} + \alpha} G(x, y, \tau) d \tau \\
+I_2(y) &= \int_{-\frac{\pi}{2}+\alpha}^{\frac{\pi}{2} - \alpha} G(x, y, \tau) d \tau \\
+I_3(y) &= \int_{\frac{\pi}{2} - \alpha}^{\frac{\pi}{2}} G(x, y, \tau) d \tau.
+\end{align*}$$
+
+Note that $|G(x, y, \tau)| = |F(x + y\tan \tau) - F(x)| \le 2M$. For a given $\varepsilon > 0$, we choose $\alpha$ so that $6M\alpha < \varepsilon$ and $0 < \alpha < \frac{\pi}{2}$. Then we have
+
+$$\begin{align*}
+|I_1(y)| &\le \int_{-\frac{\pi}{2}}^{-\frac{\pi}{2} + \alpha} |G(x, y, \tau)| d \tau \\
+&\le 2M\alpha \\
+&< \frac{\varepsilon}{3}
+\end{align*}$$
+
+and similarly $|I_3(y)| < \frac{\varepsilon}{3}$.
+
+Next, we will show that there exists $\delta > 0$ such that $|I_2(y)| < \frac{\varepsilon}{3}$ whenever $0 < y < \delta$, which proves the result.
+
+Since $F$ is continuous at $x$, there exists $\gamma > 0$ such that
+
+$$|G(x, y, \tau)| = |F(x + y\tan \tau) - F(x)| < \frac{\varepsilon}{3\pi}$$
+
+whenever $|x + y\tan \tau - x| = y |\tan \tau| < \gamma$.
+
+Since the maximum value of $|\tan \tau|$ as $\tau$ ranges from $-\frac{\pi}{2} + \alpha$ to $\frac{\pi}{2} - \alpha$ is $\tan \left( \frac{\pi}{2} - \alpha \right) = \cot \alpha$. 
+
+Choose $\delta = \gamma \tan \alpha$. If $0 < y < \delta$, then $0 < y \cot \alpha < \gamma$. When $-\frac{\pi}{2} + \alpha \le \tau \le \frac{\pi}{2} - \alpha$, it becomes $y |\tan \tau| < \gamma$. Hence, if $0 < y < \delta$, then we have
+
+$$\begin{align*}
+|I_2(y)| &\le \int_{-\frac{\pi}{2}+\alpha}^{\frac{\pi}{2} - \alpha} |G(x, y, \tau)| d \tau \\
+&< \frac{\varepsilon}{3\pi}(\pi - 2\alpha) \\
+&< \frac{\varepsilon}{3}.
+\end{align*}$$
+
+Thus,
+
+$$\begin{align*}
+|U(x, y) - F(x)| &= \frac{1}{\pi} |I_1(y) + I_2(y) + I_3(y)| \\
+& \le |I_1(y)| + |I_2(y)| + |I_3(y)| \\
+&< \frac{\varepsilon}{3} + \frac{\varepsilon}{3} + \frac{\varepsilon}{3} \\
+&= \varepsilon
+\end{align*}$$
+
+whenever $0 < y < \delta$, and therefore
+
+$$\lim_{y \to 0^+} U(x, y) = F(x)$$
+
+for each fixed $x$ at which $F$ is continuous. $\blacksquare$
 :::
 
 # Dirichlet Problem

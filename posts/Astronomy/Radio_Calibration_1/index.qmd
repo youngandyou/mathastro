@@ -38,10 +38,60 @@ $$
 
 ---
 
+# 2. Visibility Calibration 
+
+- 측정된 visibility는 baseline에 의존하며, baseline에 의존하는 열적 노이즈(thermal noise) $\epsilon_{ij}$ 를 더한 값으로 볼 수 있다:
+
+$$
+V_{ij} = \mathcal{V}_{ij} + \epsilon_{ij} \tag{2.1}
+$$
+
+- $V_{ij}$: 측정된 visibility
+- $\mathcal{V}_{ij}$: 실제 visibility 
+- 열적 노이즈와 더불어, 측정된 visibility는 진폭, 위상 모두에 대해 systematic errors를 포함한다.
+    - **systematic errors**: 관측을 통해 얻어낸 어떤 측정값이 실제 값과 달라지면서 생기는 오차를 의미한다. 
+- 이러한 systematic errors는 **gain**이라고 불리는 물리량의 형태로 실제 visibility의 계수에 곱해져 나타난다: 
+
+$$
+V_{ij} \approx g_i g_j^* \mathcal{V}_{ij} + \epsilon_{ij} \tag{2.2}
+$$
+
+- $g_{i,j}$: gain, 복소수 값이며, 시간과 주파수에 따라 달라진다.
+- 식 (2.2)를 진폭 gain, 위상 gain까지 포함하여 구체적으로 적으면 다음과 같다:
+
+$$
+V_{mn}^{obs} = g_m g_n^* |V_{mn}^{true}| e^{-ig_m' g_n' \phi_{mn}^{true}} \tag{2.3}
+$$
+
+- 문자 중복과 관측된 값, 실제 얻고자하는 값을 확실히 구분하기 위해서 첨자를 바꿨음에 유의하자.
+- $g_m$, $g_n^*$: 진폭 gain 
+- $g_m'$, $g_n'$: 위상 gain
+- 즉, **gain을 얻어내면 실제 visibility 값인 $V_{mn}^{true}$ 를 알 수 있다!**
+- 만약, gain이 결정되었다면, 실제 visibility를 얻어낼 수 있으므로 식 (2.3)을 푸리에 변환하여 이미징을 수행할 수 있다.
+
+<div height="2rem"></div>
+
+- visibility는 복소수 값이기 때문에 진폭과 위상을 따로 보정할 수 있다. 
+
+---
+
+## 2.1. Station-based and Baseline-based 
+
+- 서로 다른 2개의 망원경이 얻은 visibility를 다음과 같이 써보자:
+
+$$
+V_{12} = |V_1| |V_2| \cos(2\pi \nu \tau_g) = A \cos \phi \tag{2.4}
+$$
+
+- 식 (2.4)에서 $|V_1|$, $|V_2|$, $A$ 는 visibility의 진폭에 해당하는 항으로 각 안테나 1개에 따라 달라지는 값이다. 이러한 물리량을 **station-based**라고 한다. 
+    - 즉, 진폭은 station-based 물리량이다.
+- $\tau_g$, $\phi$ 는 두 안테나 사이의 관계에 따라 달라지는 물리량으로 **baseline-based**라고 불린다.
+    - 즉, 위상은 baseline-based 물리량이다. 
+- 그러므로, 진폭 보정은 station-based 물리량을 보정하고, 위상 보정은 baseline-based 물리량을 보정하는 작업으로 볼 수 있다.
+
 
 <style>
 h2 {
 border-bottom: none !important;
 }
 </style>
-

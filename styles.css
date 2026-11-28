@@ -2792,3 +2792,98 @@ body.quarto-dark .rmk-box {
   }
 }
 
+/* ==========================================================================
+   Global Terminal / Codeblock Container Styling
+   ========================================================================== */
+
+.codeblock,
+.terminal,
+.difmap-terminal,
+.aips-terminal {
+  --terminal-ink: #e0ebf1;
+  --terminal-accent: #80dec8;
+  margin: 1.25rem 0 1.75rem;
+  overflow: hidden;
+  border: 1px solid #344555;
+  border-radius: 12px;
+  background: #101922;
+  color: var(--terminal-ink);
+  font-family: var(--mag-font-mono, Consolas, monospace);
+  box-shadow: 0 5px 15px rgb(8 20 30 / 12%);
+}
+
+.codeblock > p:first-child,
+.terminal > p:first-child,
+.difmap-terminal > p:first-child,
+.aips-terminal > p:first-child {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .25em .85em;
+  margin: 0;
+  padding: .65rem 1.1rem;
+  border-bottom: 1px solid #344555;
+  background: #1b2834;
+  color: #bccbd6;
+  font: 500 .82rem/1.5 var(--mag-font-mono, Consolas, monospace);
+}
+
+.codeblock .terminal-name,
+.terminal .terminal-name,
+.difmap-terminal .terminal-name,
+.aips-terminal .terminal-name {
+  color: var(--terminal-accent);
+  font-weight: 700;
+  letter-spacing: .06em;
+}
+
+.codeblock pre,
+.codeblock div.sourceCode,
+.terminal pre,
+.terminal div.sourceCode,
+.difmap-terminal pre,
+.difmap-terminal div.sourceCode,
+.aips-terminal pre,
+.aips-terminal div.sourceCode {
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+}
+
+.codeblock pre,
+.terminal pre,
+.difmap-terminal pre,
+.aips-terminal pre {
+  overflow-x: auto;
+  padding: 1rem 1.1rem .5rem;
+}
+
+body .codeblock pre > code,
+body.quarto-dark .codeblock pre > code,
+body .terminal pre > code,
+body.quarto-dark .terminal pre > code,
+body .difmap-terminal pre > code,
+body.quarto-dark .difmap-terminal pre > code,
+body .aips-terminal pre > code,
+body.quarto-dark .aips-terminal pre > code {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--terminal-ink);
+  font: 400 .92rem/1.6 var(--mag-font-mono, Consolas, monospace);
+  white-space: pre;
+}
+
+.codeblock::after,
+.terminal::after,
+.difmap-terminal::after,
+.aips-terminal::after {
+  content: "";
+  display: block;
+  width: .55rem;
+  height: .95rem;
+  margin: 0 1.1rem 1rem;
+  background: var(--terminal-accent);
+}
+

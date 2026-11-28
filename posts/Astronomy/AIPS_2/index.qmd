@@ -7,68 +7,6 @@ categories:
   - Astronomy > Radio Astronomy > Radio Software > AIPS
 ---
 
-```{=html}
-<style>
-.aips-terminal {
-  --terminal-ink: #e0ebf1;
-  --terminal-accent: #80dec8;
-  margin: 1.25rem 0 1.75rem;
-  overflow: hidden;
-  border: 1px solid #344555;
-  border-radius: 12px;
-  background: #101922;
-  color: var(--terminal-ink);
-  font-family: var(--mag-font-mono, Consolas, monospace);
-  box-shadow: 0 5px 15px rgb(8 20 30 / 12%);
-}
-.aips-terminal > p:first-child {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: .25em .85em;
-  margin: 0;
-  padding: .65rem 1.1rem;
-  border-bottom: 1px solid #344555;
-  background: #1b2834;
-  color: #bccbd6;
-  font: 500 .82rem/1.5 var(--mag-font-mono, Consolas, monospace);
-}
-.aips-terminal .terminal-name {
-  color: var(--terminal-accent);
-  font-weight: 700;
-  letter-spacing: .06em;
-}
-.aips-terminal pre,
-.aips-terminal div.sourceCode {
-  margin: 0;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-}
-.aips-terminal pre {
-  overflow-x: auto;
-  padding: 1rem 1.1rem .5rem;
-}
-body .aips-terminal pre > code,
-body.quarto-dark .aips-terminal pre > code {
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: var(--terminal-ink);
-  font: 400 .92rem/1.6 var(--mag-font-mono, Consolas, monospace);
-  white-space: pre;
-}
-.aips-terminal::after {
-  content: "";
-  display: block;
-  width: .55rem;
-  height: .95rem;
-  margin: 0 1.1rem 1rem;
-  background: var(--terminal-accent);
-}
-</style>
-```
-
 - 이 글은 VLBI 데이터를 보정할 때, 실제로 사용되는 AIPS 코드들에 대해서 소개한다. 연습용 데이터 및 AIPS 설치 과정에 관련해서는 추후에 글을 업로드 하겠다.
 
 ---
@@ -118,9 +56,7 @@ body.quarto-dark .aips-terminal pre > code {
 - AIPS는 원본 데이터를 수정하지 않고 보정을 마친 후, 얻어낸 새로운 파일을 저장하는 방식으로 데이터를 처리한다.
 - AIPS 안으로 데이터를 불러올 때, `task 'fitld'`를 사용한다. `fitld`는 fits/uvfits 형태의 파일을 AIPS 안으로 불러오는 task이다. 
 
-::: {.aips-terminal}
-[AIPS]{.terminal-name} [FITLD / Load data]{.terminal-stage}
-
+::: {.codeblock name="AIPS" stage="FITLD / Load data"}
 ```AIPS 
 default fitld 
   # task 앞에 default를 붙이면, 이전에 작업했던 input parameter를 모두 초기화함. 
@@ -183,9 +119,7 @@ go
 
 - 이제 [2. Data get in AIPS (AIPS 안으로 데이터 불러오기)]{#AIPS_Data_get} 에서 불러온 데이터의 구조를 확인해보자. 이를 위해서 다음과 같이 수행한다.
 
-::: {.aips-terminal}
-[AIPS]{.terminal-name} [Catalog and header]{.terminal-stage}
-
+::: {.codeblock name="AIPS" stage="Catalog and header"}
 ```aips 
 pca 
 	# disk 안에 있는 카탈로그 번호 확인
@@ -194,18 +128,36 @@ getn 1
 imhe
 	# 데이터 header 정보를 확인함
 ```
-
 :::
 
 ---
 
-### 2.2.1. AIPS table 확인 및 삭제
+### 2.2.1. Data Sort 
+- 이 과정은 데이터 헤더(header)에서 **Sort order TB**로 확인되면 수행하지 않아도 된다.
+- AIPS task들이 데이터를 안정적으로 읽고 처리할 수 있도록 UV 데이터의 행(row) 순서를 정리해야 한다. 이는 `task 'msort'`로 수행할 수 있다.
+
+::: {.codeblock name="AIPS" stage="MSORT / Sort UV data"}
+```aips 
+default msort 
+task 'msort'
+getn 1 
+	# 정렬할 데이터 카탈로그 번호 선택
+sort 'TB'
+	# 데이터를 '시간 순'에서 'Baseline 순'으로 정리
+inp
+go
+```
+:::
+
+- 이 과정을 마치면, disk 안에 새로운 데이터가 생성된다.
+
+---
+
+### 2.2.2. AIPS table 확인 및 삭제
 
 - AIPS task를 통해서 생성된 table, plot 목록은 다음과 같이 수행하여 확인할 수 있다.
 
-::: {.aips-terminal}
-[AIPS]{.terminal-name} [EXTLIST / Inspect table]{.terminal-stage}
-
+::: {.codeblock name="AIPS" stage="EXTLIST / Inspect table"}
 ```AIPS 
 getn 2
 	# 보고 싶은 테이블이 있는 데이터 카탈로그 번호
@@ -220,9 +172,7 @@ extlist
 
 - AIPS의 다양한 table 중에서 특정 테이블(예: SN table)을 지우고 싶다면 다음과 같이 수행한다. 
 
-::: {.aips-terminal}
-[AIPS]{.terminal-name} [EXTDEST / Delete table]{.terminal-stage}
-
+::: {.codeblock name="AIPS" stage="EXTDEST / Delete table"}
 ```AIPS
 getn 2
 	# 지우고 싶은 테이블이 있는 데이터 카탈로그 번호
@@ -242,9 +192,7 @@ extdest
 - `task 'possm'`은 관측 데이터를 위상, 진폭 vs IF 별로 확인할 수 있게 해주는 기능을 한다. 
   - 전파 천문학의 visibility 스펙트럼을 그린다고 생각해도 된다. 
 
-::: {.aips-terminal}
-[AIPS]{.terminal-name} [POSSM / Plot spectra]{.terminal-stage}
-
+::: {.codeblock name="AIPS" stage="POSSM / Plot spectra"}
 ```AIPS  
 default possm 
 task 'possm'
@@ -292,9 +240,7 @@ go
 
 - 만약 특정 baseline으로만 이루어진 possm을 보고 싶다면 다음의 명령어를 추가하면 된다. 
 
-::: {.aips-terminal}
-[AIPS]{.terminal-name} [POSSM / Select baseline]{.terminal-stage}
-
+::: {.codeblock name="AIPS" stage="POSSM / Select baseline"}
 ```AIPS 
 antennas 6
 	# 6번 안테나를 기준 안테나로 설정함
@@ -322,9 +268,7 @@ baseline 8
 - `task 'accor'`은 현재 처리 중인 데이터의 모든 SN, CL table을 무시하기 때문에 fringe fitting 혹은 추후에 수행할 self-calibration과 같은 후속 보정을 수행하기 전에 이뤄져야 한다.
 - `task 'accor'`은 다음과 같이 수행한다: 
 
-::: {.aips-terminal}
-[AIPS]{.terminal-name} [ACCOR / Sampler bias]{.terminal-stage}
-
+::: {.codeblock name="AIPS" stage="ACCOR / Sampler bias"}
 ```aips 
 default accor 
 task 'accor'
@@ -343,9 +287,7 @@ go
   - 이 과정에서 원본 데이터는 손실되지 않는다.
 - 즉, SN -> CL -> SN -> CL이 반복되는 구조이다. 어떤 task의 시행 결과로 얻어낸 SN table을 CL table에 입력하는 방법은 다음과 같다:
 
-::: {.aips-terminal}
-[AIPS]{.terminal-name} [CLCAL / Apply ACCOR solutions]{.terminal-stage}
-
+::: {.codeblock name="AIPS" stage="CLCAL / Apply ACCOR solutions"}
 ```aips
 default clcal 
 task 'clcal'
@@ -370,9 +312,7 @@ go
 
 - 안테나가 하늘을 추적하면서 생기는 편광 좌표계 회전 효과를 보정하여 CL table에 기록하기 위해서 다음 코드를 입력한다:
 
-::: {.aips-terminal}
-[AIPS]{.terminal-name} [CLCOR / Parallactic angle]{.terminal-stage}
-
+::: {.codeblock name="AIPS" stage="CLCOR / Parallactic angle"}
 ```aips 
 default clcor 
 task 'clcor'
@@ -397,9 +337,7 @@ go
 - `task 'apcal'`은 안테나의 시스템 온도, gain curve를 이용하여 SEFD를 추정한 후, visibility 진폭을 보정하는 과정이다.
 - 안테나의 시스템 온도와 gain curve는 **antab**이라는 파일에 기록되어 있다. antab 파일을 AIPS 내부로 가져오기 위해서 다음을 실행한다:
 
-::: {.aips-terminal}
-[AIPS]{.terminal-name} [ANTAB / Load calibration data]{.terminal-stage}
-
+::: {.codeblock name="AIPS" stage="ANTAB / Load calibration data"}
 ```aips
 default antab 
 task 'antab'
@@ -418,9 +356,7 @@ go
 - `task 'antab'`은 계속 수행하면 해당 파일에 데이터를 덮어 쓴다.
 - a priori method를 통해서 진폭 보정을 수행하기 위해 `task 'apcal'`을 이용한다.
 
-::: {.aips-terminal}
-[AIPS]{.terminal-name} [APCAL / Amplitude calibration]{.terminal-stage}
-
+::: {.codeblock name="AIPS" stage="APCAL / Amplitude calibration"}
 ```aips 
 default apcal 
 task 'apcal'
@@ -437,9 +373,7 @@ snver 2
 
 - 안테나의 시스템 온도와 `task 'apcal'`로 얻어낸 gain 값을 보기 위해서 `task 'snplt'`를 아래와 같이 수행한다.
 
-::: {.aips-terminal}
-[AIPS]{.terminal-name} [SNPLT / System temperature]{.terminal-stage}
-
+::: {.codeblock name="AIPS" stage="SNPLT / System temperature"}
 ```aips 
 default snplt 
 task 'snplt'
@@ -462,9 +396,7 @@ go
 
 - 위 코드는 시스템 온도에 대한 결과만 알려준다. gain에 대한 결과도 보기 위해서 다음과 같이 수행한다.
 
-::: {.aips-terminal}
-[AIPS]{.terminal-name} [SNPLT / Amplitude gain]{.terminal-stage}
-
+::: {.codeblock name="AIPS" stage="SNPLT / Amplitude gain"}
 ```aips 
 tget snplt 
 	# 이전에 사용한 task 'snplt' 설정을 그대로 유지함
@@ -481,9 +413,7 @@ go
 
 - 시스템 온도와 gain의 경향성이 유사하게 따라가는 것을 확인했다면, 진폭 보정이 완료된 것이다. 진폭 보정을 거친 SN table을 CL table에 넣기 위해 다음과 같이 수행한다.
 
-::: {.aips-terminal}
-[AIPS]{.terminal-name} [CLCAL / Apply amplitude solutions]{.terminal-stage}
-
+::: {.codeblock name="AIPS" stage="CLCAL / Apply amplitude solutions"}
 ```aips 
 default clcal 
 task 'clcal'

@@ -58,7 +58,7 @@ website:
       - text: "Astronomy (천문학)"
         menu:
           - href: index.qmd#category=Astronomy
-            text: "🔭 천문학 전체보기 (All Astronomy) (25)"
+            text: "🔭 천문학 전체보기 (All Astronomy) (26)"
           - text: "---"
           - href: index.qmd#category=Radio%20Astronomy
             text: "전파천문학 (Radio Astronomy) (18)"
@@ -67,7 +67,7 @@ website:
           - href: index.qmd#category=High%20Energy
             text: "고에너지 천체물리학 (High Energy) (2)"
           - href: index.qmd#category=Relativistic%20Jets
-            text: "상대론적 제트 (Jets) (1)"
+            text: "상대론적 제트 (Jets) (2)"
       - text: "Physics (물리학)"
         menu:
           - href: index.qmd#category=Physics
@@ -128,6 +128,7 @@ format:
     html-math-method: mathjax
     filters:
       - pseudocode
+      - scripts/codeblock.lua
     include-in-header:
       - assets/magazine-header.html
     include-after-body:
